@@ -32,7 +32,7 @@
     [self.view addSubview:scrollView];
     for (int i = 0; i < titles.count; i ++) {
         UIView *itemView = [[UIView alloc] initWithFrame:CGRectMake(i*width, 0, width, height)];
-        itemView.backgroundColor = COLOR_WITH_RGB(arc4random()%255, arc4random()%255, arc4random()%255, 1);
+        itemView.backgroundColor = COLOR_WITH_RGB(arc4random()%255/255.0, arc4random()%255/255.0, arc4random()%255/255.0, 1);
         [scrollView addSubview:itemView];
     }
 

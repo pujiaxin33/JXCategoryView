@@ -207,18 +207,29 @@ static const NSInteger JXCategoryViewClickedIndexUnknown = -1;
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     self.clickedItemIndex = indexPath.item;
+    [self selectedTargetCellWithIndex:indexPath.item];
     [self.contentScrollView setContentOffset:CGPointMake(indexPath.item*self.contentScrollView.bounds.size.width, 0) animated:YES];
-/*
+
     UICollectionViewCell *clickedCell = [collectionView cellForItemAtIndexPath:indexPath];
+
+    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"path"];
+    animation.fromValue = (__bridge id _Nullable)(self.ellipseLayer.path);
+    UIBezierPath *toPath = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(clickedCell.frame.origin.x, (self.bounds.size.height - self.backEllipseLayerHeight)/2.0, clickedCell.bounds.size.width, self.backEllipseLayerHeight) cornerRadius:self.backEllipseLayerHeight/2];
+    animation.toValue = (__bridge id _Nullable)toPath.CGPath;
+    animation.duration = 0.3;
+    [self.ellipseLayer addAnimation:animation forKey:@"move"];
+    self.ellipseLayer.path = toPath.CGPath;
     [UIView animateWithDuration:0.3 animations:^{
+        CGRect frame = self.lineView.frame;
+        frame.size.width = clickedCell.bounds.size.width;
+        self.lineView.frame = frame;
         CGPoint center = self.lineView.center;
         center.x = clickedCell.center.x;
         self.lineView.center = center;
-
 //        下面的方案会让将要滚出屏幕的cell因为重用机制立马消失，如果用该方案，需要用UIScrollView
 //        [self.collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:NO];
     }];
- */
+
 }
 
 #pragma mark - <UICollectionViewDelegateFlowLayout>
@@ -246,7 +257,7 @@ static const NSInteger JXCategoryViewClickedIndexUnknown = -1;
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context
 {
 
-    if ([keyPath isEqualToString:@"contentOffset"]) {
+    if ([keyPath isEqualToString:@"contentOffset"] && (self.contentScrollView.isDragging || self.contentScrollView.isDecelerating)) {
         CGPoint contentOffset = [change[NSKeyValueChangeNewKey] CGPointValue];
         CGFloat ratio = contentOffset.x/self.contentScrollView.bounds.size.width;
         //限制最大最小
@@ -256,77 +267,41 @@ static const NSInteger JXCategoryViewClickedIndexUnknown = -1;
         CGFloat totalX = 0;
         CGFloat targetindicatorLineWidth = [self getLineWithWithIndex:baseIndex];
         CGFloat targetCellWidth = 0;
-        BOOL userClicked = NO;
-        if (self.clickedItemIndex != JXCategoryViewClickedIndexUnknown) {
-            userClicked = YES;
-        }
 
         if (remainderRatio == 0) {
             CGRect cellFrame = [self getTargetCellFrame:baseIndex];
             totalX = cellFrame.origin.x + cellFrame.size.width/2.0;
             totalX -= targetindicatorLineWidth/2.0;
             targetCellWidth = cellFrame.size.width;
-
-            if (userClicked) {
-                //下面代码用于处理，点击了不相连的两个cell，中间会误刷新
-                if (baseIndex == self.clickedItemIndex) {
-                    [self selectedTargetCellWithIndex:baseIndex];
-                }
-            }else {
-                [self selectedTargetCellWithIndex:baseIndex];
-            }
+            [self selectedTargetCellWithIndex:baseIndex];
         }else {
-            //leftChangeEnabled & rightChangeEnabled用于处理用于点击了没有相连的cell，中间过滤的cell不需要进行变化
-            BOOL leftChangeEnabled = YES;
-            BOOL rightChangeEnabled = YES;
-            if (self.clickedItemIndex != JXCategoryViewClickedIndexUnknown) {
-                if (!(baseIndex == self.clickedItemIndex || baseIndex == self.selectedIndex)) {
-                    leftChangeEnabled = NO;
+
+            JXCategoryCellModel *leftCellModel = self.dataSource[baseIndex];
+            JXCategoryCellModel *rightCellModel = self.dataSource[baseIndex + 1];
+            //处理颜色渐变
+            if (self.titleColorGradientEnabled) {
+                if (leftCellModel.selected) {
+                    leftCellModel.titleSelectedColor = [self interpolationColorFrom:self.titleSelectedColor to:self.titleColor percent:remainderRatio];
+                }else {
+                    leftCellModel.titleColor = [self interpolationColorFrom:self.titleSelectedColor to:self.titleColor percent:remainderRatio];
                 }
-                if (!(baseIndex + 1 == self.clickedItemIndex || baseIndex
-                      + 1 == self.selectedIndex)) {
-                    rightChangeEnabled = NO;
+                if (rightCellModel.selected) {
+                    rightCellModel.titleSelectedColor = [self interpolationColorFrom:self.titleColor to:self.titleSelectedColor percent:remainderRatio];
+                }else {
+                    rightCellModel.titleColor = [self interpolationColorFrom:self.titleColor to:self.titleSelectedColor percent:remainderRatio];
                 }
             }
-            if (leftChangeEnabled) {
-                JXCategoryCellModel *leftCellModel = self.dataSource[baseIndex];
-                //处理颜色渐变
-                if (self.titleColorGradientEnabled) {
-                    if (leftCellModel.selected) {
-                        leftCellModel.titleSelectedColor = [self interpolationColorFrom:self.titleSelectedColor to:self.titleColor percent:remainderRatio];
-                    }else {
-                        leftCellModel.titleColor = [self interpolationColorFrom:self.titleSelectedColor to:self.titleColor percent:remainderRatio];
-                    }
-                }
-                //处理缩放
-                if (self.zoomEnabled) {
-                    leftCellModel.zoomScale = [self interpolationFrom:self.zoomScale to:1.0 percent:remainderRatio];
-                }
-
-                JXCategoryCell *leftCell = (JXCategoryCell *)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:baseIndex inSection:0]];
-                [leftCell refreshUI];
+            //处理缩放
+            if (self.zoomEnabled) {
+                leftCellModel.zoomScale = [self interpolationFrom:self.zoomScale to:1.0 percent:remainderRatio];
+                rightCellModel.zoomScale = [self interpolationFrom:1.0 to:self.zoomScale percent:remainderRatio];
             }
 
-            if (rightChangeEnabled) {
-                JXCategoryCellModel *rightCellModel = self.dataSource[baseIndex + 1];
+            JXCategoryCell *leftCell = (JXCategoryCell *)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:baseIndex inSection:0]];
+            [leftCell refreshUI];
 
-                //处理颜色渐变
-                if (self.titleColorGradientEnabled) {
-                    if (rightCellModel.selected) {
-                        rightCellModel.titleSelectedColor = [self interpolationColorFrom:self.titleColor to:self.titleSelectedColor percent:remainderRatio];
-                    }else {
-                        rightCellModel.titleColor = [self interpolationColorFrom:self.titleColor to:self.titleSelectedColor percent:remainderRatio];
-                    }
-                }
-
-                //处理缩放
-                if (self.zoomEnabled) {
-                    rightCellModel.zoomScale = [self interpolationFrom:1.0 to:self.zoomScale percent:remainderRatio];
-                }
-
-                JXCategoryCell *rightCell = (JXCategoryCell *)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:baseIndex + 1 inSection:0]];
-                [rightCell refreshUI];
-            }
+            JXCategoryCell *rightCell = (JXCategoryCell *)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:baseIndex + 1 inSection:0]];
+            [rightCell refreshUI];
 
             CGRect leftCellFrame = [self getTargetCellFrame:baseIndex];
             CGRect rightCellFrame = [self getTargetCellFrame:baseIndex+1];
@@ -341,11 +316,6 @@ static const NSInteger JXCategoryViewClickedIndexUnknown = -1;
 
         if (self.indicatorViewScrollEnabled == YES ||
             (self.indicatorViewScrollEnabled == NO && remainderRatio == 0)) {
-            if (userClicked) {
-                if (!(baseIndex == self.clickedItemIndex || baseIndex == self.selectedIndex)) {
-                    return;
-                }
-            }
             self.ellipseLayer.path = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(totalX, (self.bounds.size.height - self.backEllipseLayerHeight)/2.0, targetCellWidth, self.backEllipseLayerHeight) cornerRadius:self.backEllipseLayerHeight/2].CGPath;
 
             CGRect frame = self.lineView.frame;
