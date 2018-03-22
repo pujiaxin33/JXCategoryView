@@ -201,8 +201,12 @@ static const NSInteger JXCategoryViewClickedIndexUnknown = -1;
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     JXCategoryCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([JXCategoryCell class]) forIndexPath:indexPath];
-    cell.cellModel = self.dataSource[indexPath.item];
     return cell;;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
+    JXCategoryCell *categoryCell = (JXCategoryCell *)cell;
+    categoryCell.cellModel = self.dataSource[indexPath.item];
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
