@@ -13,6 +13,11 @@
 		190A54E7206397370050B327 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 190A54E6206397370050B327 /* Assets.xcassets */; };
 		190A54EA206397370050B327 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 190A54E8206397370050B327 /* LaunchScreen.storyboard */; };
 		190A54ED206397370050B327 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 190A54EC206397370050B327 /* main.m */; };
+		190A54FE206397800050B327 /* JXCategoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 190A54F52063977F0050B327 /* JXCategoryView.m */; };
+		190A54FF206397800050B327 /* JXCategoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 190A54F82063977F0050B327 /* JXCategoryCell.m */; };
+		190A5500206397800050B327 /* JXCategoryCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 190A54FA2063977F0050B327 /* JXCategoryCollectionView.m */; };
+		190A5501206397800050B327 /* UIColor+JXAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 190A54FC206397800050B327 /* UIColor+JXAdd.m */; };
+		190A5502206397800050B327 /* JXCategoryCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 190A54FD206397800050B327 /* JXCategoryCellModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +31,16 @@
 		190A54E9206397370050B327 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		190A54EB206397370050B327 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		190A54EC206397370050B327 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		190A54F42063977F0050B327 /* JXCategoryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXCategoryView.h; sourceTree = "<group>"; };
+		190A54F52063977F0050B327 /* JXCategoryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXCategoryView.m; sourceTree = "<group>"; };
+		190A54F62063977F0050B327 /* JXCategoryCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXCategoryCellModel.h; sourceTree = "<group>"; };
+		190A54F72063977F0050B327 /* UIColor+JXAdd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+JXAdd.h"; sourceTree = "<group>"; };
+		190A54F82063977F0050B327 /* JXCategoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXCategoryCell.m; sourceTree = "<group>"; };
+		190A54F92063977F0050B327 /* JXCategoryCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXCategoryCollectionView.h; sourceTree = "<group>"; };
+		190A54FA2063977F0050B327 /* JXCategoryCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXCategoryCollectionView.m; sourceTree = "<group>"; };
+		190A54FB2063977F0050B327 /* JXCategoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXCategoryCell.h; sourceTree = "<group>"; };
+		190A54FC206397800050B327 /* UIColor+JXAdd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+JXAdd.m"; sourceTree = "<group>"; };
+		190A54FD206397800050B327 /* JXCategoryCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXCategoryCellModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +73,7 @@
 		190A54DC206397370050B327 /* JXCategoryView */ = {
 			isa = PBXGroup;
 			children = (
+				190A54F3206397480050B327 /* CategoryView */,
 				190A54DD206397370050B327 /* AppDelegate.h */,
 				190A54DE206397370050B327 /* AppDelegate.m */,
 				190A54E0206397370050B327 /* ViewController.h */,
@@ -69,6 +85,23 @@
 				190A54EC206397370050B327 /* main.m */,
 			);
 			path = JXCategoryView;
+			sourceTree = "<group>";
+		};
+		190A54F3206397480050B327 /* CategoryView */ = {
+			isa = PBXGroup;
+			children = (
+				190A54FB2063977F0050B327 /* JXCategoryCell.h */,
+				190A54F82063977F0050B327 /* JXCategoryCell.m */,
+				190A54F62063977F0050B327 /* JXCategoryCellModel.h */,
+				190A54FD206397800050B327 /* JXCategoryCellModel.m */,
+				190A54F92063977F0050B327 /* JXCategoryCollectionView.h */,
+				190A54FA2063977F0050B327 /* JXCategoryCollectionView.m */,
+				190A54F42063977F0050B327 /* JXCategoryView.h */,
+				190A54F52063977F0050B327 /* JXCategoryView.m */,
+				190A54F72063977F0050B327 /* UIColor+JXAdd.h */,
+				190A54FC206397800050B327 /* UIColor+JXAdd.m */,
+			);
+			path = CategoryView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -143,8 +176,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				190A54E2206397370050B327 /* ViewController.m in Sources */,
+				190A5502206397800050B327 /* JXCategoryCellModel.m in Sources */,
+				190A54FF206397800050B327 /* JXCategoryCell.m in Sources */,
 				190A54ED206397370050B327 /* main.m in Sources */,
+				190A54FE206397800050B327 /* JXCategoryView.m in Sources */,
+				190A5500206397800050B327 /* JXCategoryCollectionView.m in Sources */,
 				190A54DF206397370050B327 /* AppDelegate.m in Sources */,
+				190A5501206397800050B327 /* UIColor+JXAdd.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
