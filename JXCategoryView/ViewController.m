@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-#import "JXCategoryView.h"
+#import "JXCategoryTitleView.h"
 
 #define WindowsSize [UIScreen mainScreen].bounds.size
 #define COLOR_WITH_RGB(R,G,B,A) [UIColor colorWithRed:R green:G blue:B alpha:A]
@@ -36,7 +36,7 @@
         [scrollView addSubview:itemView];
     }
 
-    JXCategoryView *view = [[JXCategoryView alloc] initWithFrame:CGRectMake(0, 64, WindowsSize.width, 50)];
+    JXCategoryTitleView *view = [[JXCategoryTitleView alloc] initWithFrame:CGRectMake(0, 64, WindowsSize.width, 50)];
     view.titles = titles;
     view.delegate = self;
     view.contentScrollView = scrollView;
