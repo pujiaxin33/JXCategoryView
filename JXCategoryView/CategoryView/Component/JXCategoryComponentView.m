@@ -34,6 +34,7 @@
     _backEllipseLayerShowEnabled = NO;
     _separatorLineShowEnabled = NO;
     _backEllipseLayerColor = [UIColor yellowColor];
+    _indicatorViewPanGestureManualEnabled = NO;
 }
 
 - (void)initializeViews {
@@ -164,8 +165,9 @@
         }
     }
 
-    if (self.indicatorViewScrollEnabled == YES ||
-        (self.indicatorViewScrollEnabled == NO && remainderRatio == 0)) {
+    if ((self.indicatorViewScrollEnabled == YES ||
+        (self.indicatorViewScrollEnabled == NO && remainderRatio == 0)) &&
+        !self.indicatorViewPanGestureManualEnabled) {
 
         [CATransaction begin];
         [CATransaction setDisableActions:true];

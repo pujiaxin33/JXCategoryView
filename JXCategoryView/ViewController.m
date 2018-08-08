@@ -22,6 +22,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
 
+
     NSArray *titles = @[@"000000000", @"11111", @"2222",@"333333333", @"4444", @"5555555", @"666666", @"777", @"88", @"9999999", @"10101010101", @"1212121212", @"131313",];
 
     CGFloat width = WindowsSize.width;
@@ -41,10 +42,12 @@
     view.delegate = self;
     view.contentScrollView = scrollView;
     view.defaultSelectedIndex = 2;
+    view.lineStyle = JXCategoryLineStyle_IQIYI;
+    view.indicatorLineWidth = 20;
     //    view.indicatorViewScrollEnabled = NO;
     //    view.titleColorGradientEnabled = NO;
     //    view.indicatorLineViewShowEnabled = NO;
-    view.backEllipseLayerShowEnabled = YES;
+//    view.backEllipseLayerShowEnabled = YES;
     [self.view addSubview:view];
     [view reloadDatas];
 }

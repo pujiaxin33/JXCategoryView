@@ -22,7 +22,7 @@
     [super initializeDatas];
 
     _titleColor = [UIColor whiteColor];
-    _titleSelectedColor = [UIColor grayColor];
+    _titleSelectedColor = [UIColor blueColor];
     _titleFont = [UIFont systemFontOfSize:15];
     _titleColorGradientEnabled = NO;
 }

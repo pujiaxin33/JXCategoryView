@@ -7,8 +7,9 @@
 //
 
 #import "JXCategoryComponentView.h"
+#import "JXCategoryLineStyleView.h"
 
-@interface JXCategoryTitleView : JXCategoryComponentView
+@interface JXCategoryTitleView : JXCategoryLineStyleView
 
 @property (nonatomic, strong) NSArray <NSString *>*titles;
 

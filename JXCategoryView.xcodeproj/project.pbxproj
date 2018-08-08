@@ -27,6 +27,9 @@
 		1930230521199CC800AF1444 /* JXCategoryBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 193022F721199CC800AF1444 /* JXCategoryBaseView.m */; };
 		1930230621199CC800AF1444 /* JXCategoryBaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 193022F821199CC800AF1444 /* JXCategoryBaseCell.m */; };
 		1930230721199CC800AF1444 /* JXCategoryBaseCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 193022F921199CC800AF1444 /* JXCategoryBaseCellModel.m */; };
+		1930230B211A812F00AF1444 /* JXCategoryLineStyleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1930230A211A812F00AF1444 /* JXCategoryLineStyleView.m */; };
+		19302314211A90D700AF1444 /* JXCategoryLineStyleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 19302313211A90D700AF1444 /* JXCategoryLineStyleCell.m */; };
+		19302317211A90E800AF1444 /* JXCategoryLineStyleCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 19302316211A90E800AF1444 /* JXCategoryLineStyleCellModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +71,12 @@
 		193022F721199CC800AF1444 /* JXCategoryBaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXCategoryBaseView.m; sourceTree = "<group>"; };
 		193022F821199CC800AF1444 /* JXCategoryBaseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXCategoryBaseCell.m; sourceTree = "<group>"; };
 		193022F921199CC800AF1444 /* JXCategoryBaseCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXCategoryBaseCellModel.m; sourceTree = "<group>"; };
+		19302309211A812F00AF1444 /* JXCategoryLineStyleView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JXCategoryLineStyleView.h; sourceTree = "<group>"; };
+		1930230A211A812F00AF1444 /* JXCategoryLineStyleView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JXCategoryLineStyleView.m; sourceTree = "<group>"; };
+		19302312211A90D700AF1444 /* JXCategoryLineStyleCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JXCategoryLineStyleCell.h; sourceTree = "<group>"; };
+		19302313211A90D700AF1444 /* JXCategoryLineStyleCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JXCategoryLineStyleCell.m; sourceTree = "<group>"; };
+		19302315211A90E800AF1444 /* JXCategoryLineStyleCellModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JXCategoryLineStyleCellModel.h; sourceTree = "<group>"; };
+		19302316211A90E800AF1444 /* JXCategoryLineStyleCellModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JXCategoryLineStyleCellModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +128,7 @@
 			children = (
 				193022D921199CC800AF1444 /* Title */,
 				193022E021199CC800AF1444 /* Component */,
+				19302308211A80F200AF1444 /* LineStyle */,
 				193022E721199CC800AF1444 /* Number */,
 				193022EE21199CC800AF1444 /* Common */,
 				193022F321199CC800AF1444 /* Base */,
@@ -187,6 +197,19 @@
 				193022F921199CC800AF1444 /* JXCategoryBaseCellModel.m */,
 			);
 			path = Base;
+			sourceTree = "<group>";
+		};
+		19302308211A80F200AF1444 /* LineStyle */ = {
+			isa = PBXGroup;
+			children = (
+				19302309211A812F00AF1444 /* JXCategoryLineStyleView.h */,
+				1930230A211A812F00AF1444 /* JXCategoryLineStyleView.m */,
+				19302312211A90D700AF1444 /* JXCategoryLineStyleCell.h */,
+				19302313211A90D700AF1444 /* JXCategoryLineStyleCell.m */,
+				19302315211A90E800AF1444 /* JXCategoryLineStyleCellModel.h */,
+				19302316211A90E800AF1444 /* JXCategoryLineStyleCellModel.m */,
+			);
+			path = LineStyle;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -264,11 +287,14 @@
 				1930230121199CC800AF1444 /* JXCategoryNumberCell.m in Sources */,
 				193022FD21199CC800AF1444 /* JXCategoryComponentCell.m in Sources */,
 				1930230521199CC800AF1444 /* JXCategoryBaseView.m in Sources */,
+				19302314211A90D700AF1444 /* JXCategoryLineStyleCell.m in Sources */,
 				193022FA21199CC800AF1444 /* JXCategoryTitleCellModel.m in Sources */,
 				193022FE21199CC800AF1444 /* JXCategoryComponentView.m in Sources */,
+				1930230B211A812F00AF1444 /* JXCategoryLineStyleView.m in Sources */,
 				1930230721199CC800AF1444 /* JXCategoryBaseCellModel.m in Sources */,
 				193022FC21199CC800AF1444 /* JXCategoryTitleView.m in Sources */,
 				190A54E2206397370050B327 /* ViewController.m in Sources */,
+				19302317211A90E800AF1444 /* JXCategoryLineStyleCellModel.m in Sources */,
 				193022FB21199CC800AF1444 /* JXCategoryTitleCell.m in Sources */,
 				190A54ED206397370050B327 /* main.m in Sources */,
 				1930230621199CC800AF1444 /* JXCategoryBaseCell.m in Sources */,

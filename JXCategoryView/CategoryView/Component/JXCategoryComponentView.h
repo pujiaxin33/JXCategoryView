@@ -12,6 +12,8 @@
 
 @property (nonatomic, assign) BOOL indicatorViewScrollEnabled;   //指示器lineView、backEllipseLayer切换时是否支持滚动，默认为YES
 
+@property (nonatomic, assign) BOOL indicatorViewPanGestureManualEnabled;    //指示器lineView、backEllipseLayer随着用户手势滚动处理，是否需要子类自己处理（比如JXCategoryLineStyleView）。默认为NO。
+
 //----------------------indicatorLineView-----------------------//
 @property (nonatomic, strong, readonly) UIView *indicatorLineView;
 
@@ -37,6 +39,7 @@
 
 @property (nonatomic, assign) CGFloat zoomScale;    //默认1.2，zoomEnabled为YES才生效
 
+//----------------------separatorLine-----------------------//
 @property (nonatomic, assign) BOOL separatorLineShowEnabled;    //默认为NO
 
 /**

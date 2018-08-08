@@ -59,6 +59,7 @@ const CGFloat JXCategoryViewAutomaticDimension = -1;
 
 - (void)initializeViews
 {
+    self.backgroundColor = [UIColor lightGrayColor];
     self.collectionView = ({
         UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
         layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
