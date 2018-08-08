@@ -25,6 +25,7 @@
     _indicatorLineViewHeight = 3;
     _indicatorLineWidth = JXCategoryViewAutomaticDimension;
     _indicatorViewScrollEnabled = YES;
+    _indicatorLineViewColor = [UIColor redColor];
     _zoomEnabled = NO;
     _zoomScale = 1.2;
     _indicatorLineViewShowEnabled = YES;
@@ -33,18 +34,14 @@
     _backEllipseLayerCornerRadius = JXCategoryViewAutomaticDimension;
     _backEllipseLayerShowEnabled = NO;
     _separatorLineShowEnabled = NO;
-    _backEllipseLayerColor = [UIColor yellowColor];
+    _backEllipseLayerColor = [UIColor lightGrayColor];
     _indicatorViewPanGestureManualEnabled = NO;
 }
 
 - (void)initializeViews {
     [super initializeViews];
 
-    self.indicatorLineView = ({
-        UIView *view = [[UIView alloc] init];
-        view.backgroundColor = [UIColor yellowColor];
-        view;
-    });
+    self.indicatorLineView = [[UIView alloc] init];
     [self.collectionView insertSubview:self.indicatorLineView atIndex:0];
 
     self.ellipseLayer = [CALayer layer];
@@ -52,8 +49,8 @@
     self.collectionView.backEllipseLayer = self.ellipseLayer;
 }
 
-- (void)refreshDatas {
-    [super refreshDatas];
+- (void)refreshState {
+    [super refreshState];
 
     for (int i = 0; i < self.dataSource.count; i++) {
         JXCategoryComponentCellModel *cellModel = (JXCategoryComponentCellModel *)self.dataSource[i];
@@ -87,6 +84,8 @@
         }
     }];
     self.indicatorLineView.frame = CGRectMake(frameXOfLineView, self.bounds.size.height - self.indicatorLineViewHeight, [self getLineWidthWithIndex:self.selectedIndex], self.indicatorLineViewHeight);
+
+    self.indicatorLineView.backgroundColor = self.indicatorLineViewColor;
 
     [CATransaction begin];
     [CATransaction setDisableActions:YES];

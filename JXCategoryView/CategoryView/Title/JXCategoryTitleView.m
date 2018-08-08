@@ -21,28 +21,25 @@
 {
     [super initializeDatas];
 
-    _titleColor = [UIColor whiteColor];
-    _titleSelectedColor = [UIColor blueColor];
+    _titleColor = [UIColor blackColor];
+    _titleSelectedColor = [UIColor redColor];
     _titleFont = [UIFont systemFontOfSize:15];
     _titleColorGradientEnabled = NO;
-}
-
-- (void)setTitles:(NSArray<NSString *> *)titles {
-    _titles = titles;
-
-    NSMutableArray *tempArray = [NSMutableArray array];
-    for (int i = 0; i < self.titles.count; i++) {
-        JXCategoryTitleCellModel *cellModel = [[JXCategoryTitleCellModel alloc] init];
-        cellModel.title = self.titles[i];
-        [tempArray addObject:cellModel];
-    }
-    self.dataSource = tempArray;
 }
 
 #pragma mark - Override
 
 - (Class)preferredCellClass {
     return [JXCategoryTitleCell class];
+}
+
+- (void)refreshDataSource {
+    NSMutableArray *tempArray = [NSMutableArray array];
+    for (int i = 0; i < self.titles.count; i++) {
+        JXCategoryTitleCellModel *cellModel = [[JXCategoryTitleCellModel alloc] init];
+        [tempArray addObject:cellModel];
+    }
+    self.dataSource = tempArray;
 }
 
 - (void)refreshSelectedCellModel:(JXCategoryBaseCellModel *)selectedCellModel unselectedCellModel:(JXCategoryBaseCellModel *)unselectedCellModel {
@@ -98,6 +95,7 @@
     model.titleFont = self.titleFont;
     model.titleColor = self.titleColor;
     model.titleSelectedColor = self.titleSelectedColor;
+    model.title = self.titles[index];
 }
 
 #pragma mark - Private

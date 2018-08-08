@@ -7,12 +7,11 @@
 //
 
 #import "ViewController.h"
-#import "JXCategoryTitleView.h"
+#import "TestViewController.h"
+#import "ImageViewController.h"
+#import "NumberViewController.h"
 
-#define WindowsSize [UIScreen mainScreen].bounds.size
-#define COLOR_WITH_RGB(R,G,B,A) [UIColor colorWithRed:R green:G blue:B alpha:A]
-
-@interface ViewController () <JXCategoryViewDelegate>
+@interface ViewController ()
 
 @end
 
@@ -20,43 +19,78 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
 
+    self.navigationController.navigationBar.translucent = NO;
+}
 
-    NSArray *titles = @[@"000000000", @"11111", @"2222",@"333333333", @"4444", @"5555555", @"666666", @"777", @"88", @"9999999", @"10101010101", @"1212121212", @"131313",];
-
-    CGFloat width = WindowsSize.width;
-    CGFloat height = WindowsSize.height - 64 - 50;
-    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 64+50, width, height)];
-    scrollView.pagingEnabled = YES;
-    scrollView.contentSize = CGSizeMake(width*titles.count, height);
-    [self.view addSubview:scrollView];
-    for (int i = 0; i < titles.count; i ++) {
-        UIView *itemView = [[UIView alloc] initWithFrame:CGRectMake(i*width, 0, width, height)];
-        itemView.backgroundColor = COLOR_WITH_RGB(arc4random()%255/255.0, arc4random()%255/255.0, arc4random()%255/255.0, 1);
-        [scrollView addSubview:itemView];
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    NSString *title = @"";
+    for (UIView *subview in cell.contentView.subviews) {
+        if ([subview isKindOfClass:[UILabel class]]) {
+            title = [(UILabel *)subview text];
+        }
     }
+    if (indexPath.row == 6) {
+        //图片
+        ImageViewController *imageVC = [[ImageViewController alloc] init];
+        imageVC.title = title;
+        [self.navigationController pushViewController:imageVC animated:YES];
+        return;
+    }else if (indexPath.row == 7) {
+        //数字
+        NumberViewController *numberVC = [[NumberViewController alloc] init];
+        numberVC.title = title;
+        [self.navigationController pushViewController:numberVC animated:YES];
+        return;
+    }else if (indexPath.row == 9) {
+        //个人主页
 
-    JXCategoryTitleView *view = [[JXCategoryTitleView alloc] initWithFrame:CGRectMake(0, 64, WindowsSize.width, 50)];
-    view.titles = titles;
-    view.delegate = self;
-    view.contentScrollView = scrollView;
-    view.defaultSelectedIndex = 2;
-    view.lineStyle = JXCategoryLineStyle_IQIYI;
-    view.indicatorLineWidth = 20;
-    //    view.indicatorViewScrollEnabled = NO;
-    //    view.titleColorGradientEnabled = NO;
-    //    view.indicatorLineViewShowEnabled = NO;
-//    view.backEllipseLayerShowEnabled = YES;
-    [self.view addSubview:view];
-    [view reloadDatas];
+    }
+    TestViewController *testVC = [[TestViewController alloc] init];
+    testVC.title = title;
+    testVC.categoryView.titleColorGradientEnabled = YES;
+    switch (indexPath.row) {
+        case 0:
+        {
+            testVC.categoryView.indicatorLineViewShowEnabled = NO;
+        }
+            break;
+        case 1:
+        {
+            testVC.categoryView.indicatorLineViewShowEnabled = NO;
+            testVC.categoryView.zoomEnabled = YES;
+        }
+            break;
+        case 2:
+        {
+            testVC.categoryView.indicatorLineViewShowEnabled = YES;
+        }
+            break;
+        case 3:
+        {
+            testVC.categoryView.indicatorLineViewShowEnabled = NO;
+            testVC.categoryView.backEllipseLayerShowEnabled = YES;
+        }
+            break;
+        case 4:
+        {
+            testVC.categoryView.indicatorLineViewShowEnabled = YES;
+            testVC.categoryView.indicatorLineWidth = 20;
+            testVC.categoryView.lineStyle = JXCategoryLineStyle_JD;
+        }
+            break;
+        case 5:
+        {
+            testVC.categoryView.indicatorLineViewShowEnabled = YES;
+            testVC.categoryView.indicatorLineWidth = 20;
+            testVC.categoryView.lineStyle = JXCategoryLineStyle_IQIYI;
+        }
+            break;
+        default:
+            break;
+    }
+    [self.navigationController pushViewController:testVC animated:YES];
 }
-
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 
 @end

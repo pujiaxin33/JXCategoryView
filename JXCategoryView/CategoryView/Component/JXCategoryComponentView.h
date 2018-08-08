@@ -23,6 +23,8 @@
 
 @property (nonatomic, assign) CGFloat indicatorLineWidth;    //默认JXCategoryViewAutomaticDimension（与cellWidth相等）
 
+@property (nonatomic, strong) UIColor *indicatorLineViewColor;   //默认为[UIColor yellowColor]
+
 //----------------------backEllipseLayer-----------------------//
 @property (nonatomic, assign) BOOL backEllipseLayerShowEnabled;     //默认为NO
 
@@ -32,7 +34,7 @@
 
 @property (nonatomic, assign) CGFloat backEllipseLayerCornerRadius;   //默认JXCategoryViewAutomaticDimension(即backEllipseLayerHeight/2)
 
-@property (nonatomic, strong) UIColor *backEllipseLayerColor;   //默认为[UIColor yellowColor]
+@property (nonatomic, strong) UIColor *backEllipseLayerColor;   //默认为[UIColor redColor]
 
 //----------------------zoomEnabled-----------------------//
 @property (nonatomic, assign) BOOL zoomEnabled;     //默认为NO

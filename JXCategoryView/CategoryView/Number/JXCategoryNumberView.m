@@ -12,30 +12,30 @@
 
 @implementation JXCategoryNumberView
 
+- (void)initializeDatas {
+    [super initializeDatas];
+
+    self.cellSpacing = 15;
+}
+
 - (Class)preferredCellClass {
     return [JXCategoryNumberCell class];
 }
 
-- (void)setTitles:(NSArray<NSString *> *)titles {
-    super.titles = titles;
-
+- (void)refreshDataSource {
     NSMutableArray *tempArray = [NSMutableArray array];
     for (int i = 0; i < self.titles.count; i++) {
         JXCategoryNumberCellModel *cellModel = [[JXCategoryNumberCellModel alloc] init];
-        cellModel.title = self.titles[i];
         [tempArray addObject:cellModel];
     }
     self.dataSource = tempArray;
 }
 
-- (void)setCounts:(NSArray<NSNumber *> *)counts {
-    _counts = counts;
+- (void)refreshCellModel:(JXCategoryBaseCellModel *)cellModel index:(NSInteger)index {
+    [super refreshCellModel:cellModel index:index];
 
-    for (int i = 0; i < self.dataSource.count; i ++) {
-        JXCategoryNumberCellModel *cellModel = (JXCategoryNumberCellModel *)self.dataSource[i];
-        NSInteger count = [counts[i] integerValue];
-        cellModel.count = count;
-    }
+    JXCategoryNumberCellModel *myCellModel = (JXCategoryNumberCellModel *)cellModel;
+    myCellModel.count = [self.counts[index] integerValue];
 }
 
 @end

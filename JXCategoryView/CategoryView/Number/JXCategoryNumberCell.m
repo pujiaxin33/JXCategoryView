@@ -11,7 +11,6 @@
 
 @interface JXCategoryNumberCell ()
 @property (nonatomic, strong) UILabel *numberLabel;
-@property (nonatomic, strong) NSLayoutConstraint *numberLabelWidthLayout;
 @end
 
 @implementation JXCategoryNumberCell
@@ -30,13 +29,14 @@
         label;
     });
     [self.contentView addSubview:self.numberLabel];
-    self.numberLabel.translatesAutoresizingMaskIntoConstraints = NO;
-    NSLayoutConstraint *height = [NSLayoutConstraint constraintWithItem:self.numberLabel attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:14];
-    NSLayoutConstraint *width = [NSLayoutConstraint constraintWithItem:self.numberLabel attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:14];
-    self.numberLabelWidthLayout = width;
-    NSLayoutConstraint *top = [NSLayoutConstraint constraintWithItem:self.numberLabel attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeTop multiplier:1 constant:3];
-    NSLayoutConstraint *leading = [NSLayoutConstraint constraintWithItem:self.numberLabel attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:self.titleLabel attribute:NSLayoutAttributeTrailing multiplier:1 constant:-3];
-    [self.contentView addConstraints:@[width, height, top, leading]];
+}
+
+- (void)layoutSubviews {
+    [super layoutSubviews];
+
+    [self.numberLabel sizeToFit];
+    self.numberLabel.bounds = CGRectMake(0, 0, self.numberLabel.bounds.size.width + 10, 14);
+    self.numberLabel.center = CGPointMake(CGRectGetMaxX(self.titleLabel.frame), CGRectGetMinY(self.titleLabel.frame));
 }
 
 - (void)reloadDatas:(JXCategoryBaseCellModel *)cellModel {
@@ -45,16 +45,12 @@
     JXCategoryNumberCellModel *myCellModel = (JXCategoryNumberCellModel *)cellModel;
     self.numberLabel.hidden = myCellModel.count == 0;
     self.numberLabel.text = [NSString stringWithFormat:@"%ld", (long)myCellModel.count];
-    if (myCellModel.count < 10) {
-        self.numberLabelWidthLayout.constant = 14;
-    }else if (myCellModel.count >= 10 && myCellModel.count <= 99) {
-        self.numberLabelWidthLayout.constant = 20;
-    }else if (myCellModel.count >= 100 && myCellModel.count <= 999) {
-        self.numberLabelWidthLayout.constant = 29;
-    }else if (myCellModel.count >= 1000) {
+    if (myCellModel.count >= 1000) {
         self.numberLabel.text = @"999+";
-        self.numberLabelWidthLayout.constant = 38;
     }
+
+    [self setNeedsLayout];
+    [self layoutIfNeeded];
 }
 
 @end

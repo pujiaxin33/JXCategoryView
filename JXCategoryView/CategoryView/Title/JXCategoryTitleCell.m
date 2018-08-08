@@ -19,18 +19,15 @@
 {
     [super initializeViews];
     
-    self.titleLabel = ({
-        UILabel *label = [[UILabel alloc] init];
-        label.textAlignment = NSTextAlignmentCenter;
-        label.numberOfLines = 0;
-        label;
-    });
+    _titleLabel = [[UILabel alloc] init];
+    _titleLabel.textAlignment = NSTextAlignmentCenter;
     [self.contentView addSubview:self.titleLabel];
-    self.titleLabel.translatesAutoresizingMaskIntoConstraints = NO;
-    NSLayoutConstraint *centerX = [NSLayoutConstraint constraintWithItem:self.titleLabel attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeCenterX multiplier:1 constant:0];
-    NSLayoutConstraint *centerY = [NSLayoutConstraint constraintWithItem:self.titleLabel attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeCenterY multiplier:1 constant:0];
-    [self.contentView addConstraint:centerX];
-    [self.contentView addConstraint:centerY];
+}
+
+- (void)layoutSubviews {
+    [super layoutSubviews];
+
+    self.titleLabel.center = self.contentView.center;
 }
 
 - (void)reloadDatas:(JXCategoryBaseCellModel *)cellModel {
@@ -45,6 +42,10 @@
     }
 
     self.titleLabel.text = myCellModel.title;
+
+    [self.titleLabel sizeToFit];
+    [self setNeedsLayout];
+    [self layoutIfNeeded];
 }
 
 

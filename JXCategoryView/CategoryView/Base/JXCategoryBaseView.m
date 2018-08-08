@@ -59,7 +59,6 @@ const CGFloat JXCategoryViewAutomaticDimension = -1;
 
 - (void)initializeViews
 {
-    self.backgroundColor = [UIColor lightGrayColor];
     self.collectionView = ({
         UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
         layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
@@ -94,12 +93,17 @@ const CGFloat JXCategoryViewAutomaticDimension = -1;
 }
 
 - (void)reloadDatas {
-    [self refreshDatas];
+    [self refreshDataSource];
+    [self refreshState];
     [self.collectionView.collectionViewLayout invalidateLayout];
     [self.collectionView reloadData];
 }
 
-- (void)refreshDatas {
+- (void)refreshDataSource {
+
+}
+
+- (void)refreshState {
     if (self.selectedIndex >= self.dataSource.count) {
         self.selectedIndex = 0;
     }
@@ -133,11 +137,11 @@ const CGFloat JXCategoryViewAutomaticDimension = -1;
     __block CGFloat totalCellWidth = _cellSpacing;
     [self.dataSource enumerateObjectsUsingBlock:^(JXCategoryBaseCellModel * cellModel, NSUInteger idx, BOOL * _Nonnull stop) {
         if (idx < self.selectedIndex) {
-            frameXOfSelectedCell += cellModel.cellWidth + _cellSpacing;
+            frameXOfSelectedCell += cellModel.cellWidth + self.cellSpacing;
         }else if (idx == self.selectedIndex) {
             selectedCellWidth = cellModel.cellWidth;
         }
-        totalCellWidth += cellModel.cellWidth + _cellSpacing;
+        totalCellWidth += cellModel.cellWidth + self.cellSpacing;
     }];
 
     CGFloat minX = 0;

@@ -30,6 +30,14 @@
 		1930230B211A812F00AF1444 /* JXCategoryLineStyleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1930230A211A812F00AF1444 /* JXCategoryLineStyleView.m */; };
 		19302314211A90D700AF1444 /* JXCategoryLineStyleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 19302313211A90D700AF1444 /* JXCategoryLineStyleCell.m */; };
 		19302317211A90E800AF1444 /* JXCategoryLineStyleCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 19302316211A90E800AF1444 /* JXCategoryLineStyleCellModel.m */; };
+		1930231B211A92C200AF1444 /* JXCategoryImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1930231A211A92C200AF1444 /* JXCategoryImageView.m */; };
+		1930231E211A92D900AF1444 /* JXCategoryImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1930231D211A92D900AF1444 /* JXCategoryImageCell.m */; };
+		19302321211A92E600AF1444 /* JXCategoryImageCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 19302320211A92E600AF1444 /* JXCategoryImageCellModel.m */; };
+		19302325211AD1B300AF1444 /* ImageSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19302324211AD1B300AF1444 /* ImageSettingViewController.m */; };
+		19302329211AD31C00AF1444 /* ImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19302328211AD31C00AF1444 /* ImageViewController.m */; };
+		19302330211AD88300AF1444 /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1930232F211AD88300AF1444 /* TestViewController.m */; };
+		19302333211AD8B200AF1444 /* ListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19302332211AD8B200AF1444 /* ListViewController.m */; };
+		19302337211AEB6300AF1444 /* NumberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19302336211AEB6300AF1444 /* NumberViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -77,6 +85,22 @@
 		19302313211A90D700AF1444 /* JXCategoryLineStyleCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JXCategoryLineStyleCell.m; sourceTree = "<group>"; };
 		19302315211A90E800AF1444 /* JXCategoryLineStyleCellModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JXCategoryLineStyleCellModel.h; sourceTree = "<group>"; };
 		19302316211A90E800AF1444 /* JXCategoryLineStyleCellModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JXCategoryLineStyleCellModel.m; sourceTree = "<group>"; };
+		19302319211A92C200AF1444 /* JXCategoryImageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JXCategoryImageView.h; sourceTree = "<group>"; };
+		1930231A211A92C200AF1444 /* JXCategoryImageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JXCategoryImageView.m; sourceTree = "<group>"; };
+		1930231C211A92D900AF1444 /* JXCategoryImageCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JXCategoryImageCell.h; sourceTree = "<group>"; };
+		1930231D211A92D900AF1444 /* JXCategoryImageCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JXCategoryImageCell.m; sourceTree = "<group>"; };
+		1930231F211A92E600AF1444 /* JXCategoryImageCellModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JXCategoryImageCellModel.h; sourceTree = "<group>"; };
+		19302320211A92E600AF1444 /* JXCategoryImageCellModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JXCategoryImageCellModel.m; sourceTree = "<group>"; };
+		19302323211AD1B300AF1444 /* ImageSettingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImageSettingViewController.h; sourceTree = "<group>"; };
+		19302324211AD1B300AF1444 /* ImageSettingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImageSettingViewController.m; sourceTree = "<group>"; };
+		19302327211AD31C00AF1444 /* ImageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImageViewController.h; sourceTree = "<group>"; };
+		19302328211AD31C00AF1444 /* ImageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImageViewController.m; sourceTree = "<group>"; };
+		1930232E211AD88300AF1444 /* TestViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
+		1930232F211AD88300AF1444 /* TestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
+		19302331211AD8B200AF1444 /* ListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ListViewController.h; sourceTree = "<group>"; };
+		19302332211AD8B200AF1444 /* ListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ListViewController.m; sourceTree = "<group>"; };
+		19302335211AEB6300AF1444 /* NumberViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NumberViewController.h; sourceTree = "<group>"; };
+		19302336211AEB6300AF1444 /* NumberViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NumberViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +133,7 @@
 		190A54DC206397370050B327 /* JXCategoryView */ = {
 			isa = PBXGroup;
 			children = (
+				19302322211ACE1500AF1444 /* Example */,
 				193022D821199CC800AF1444 /* CategoryView */,
 				190A54DD206397370050B327 /* AppDelegate.h */,
 				190A54DE206397370050B327 /* AppDelegate.m */,
@@ -126,6 +151,7 @@
 		193022D821199CC800AF1444 /* CategoryView */ = {
 			isa = PBXGroup;
 			children = (
+				19302318211A929B00AF1444 /* Image */,
 				193022D921199CC800AF1444 /* Title */,
 				193022E021199CC800AF1444 /* Component */,
 				19302308211A80F200AF1444 /* LineStyle */,
@@ -212,6 +238,60 @@
 			path = LineStyle;
 			sourceTree = "<group>";
 		};
+		19302318211A929B00AF1444 /* Image */ = {
+			isa = PBXGroup;
+			children = (
+				19302319211A92C200AF1444 /* JXCategoryImageView.h */,
+				1930231A211A92C200AF1444 /* JXCategoryImageView.m */,
+				1930231C211A92D900AF1444 /* JXCategoryImageCell.h */,
+				1930231D211A92D900AF1444 /* JXCategoryImageCell.m */,
+				1930231F211A92E600AF1444 /* JXCategoryImageCellModel.h */,
+				19302320211A92E600AF1444 /* JXCategoryImageCellModel.m */,
+			);
+			path = Image;
+			sourceTree = "<group>";
+		};
+		19302322211ACE1500AF1444 /* Example */ = {
+			isa = PBXGroup;
+			children = (
+				19302334211AEB3500AF1444 /* Number */,
+				1930232A211AD33000AF1444 /* Common */,
+				19302326211AD30900AF1444 /* Image */,
+			);
+			path = Example;
+			sourceTree = "<group>";
+		};
+		19302326211AD30900AF1444 /* Image */ = {
+			isa = PBXGroup;
+			children = (
+				19302327211AD31C00AF1444 /* ImageViewController.h */,
+				19302328211AD31C00AF1444 /* ImageViewController.m */,
+				19302323211AD1B300AF1444 /* ImageSettingViewController.h */,
+				19302324211AD1B300AF1444 /* ImageSettingViewController.m */,
+			);
+			path = Image;
+			sourceTree = "<group>";
+		};
+		1930232A211AD33000AF1444 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				1930232E211AD88300AF1444 /* TestViewController.h */,
+				1930232F211AD88300AF1444 /* TestViewController.m */,
+				19302331211AD8B200AF1444 /* ListViewController.h */,
+				19302332211AD8B200AF1444 /* ListViewController.m */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		19302334211AEB3500AF1444 /* Number */ = {
+			isa = PBXGroup;
+			children = (
+				19302335211AEB6300AF1444 /* NumberViewController.h */,
+				19302336211AEB6300AF1444 /* NumberViewController.m */,
+			);
+			path = Number;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -238,7 +318,7 @@
 		190A54D2206397370050B327 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = jiaxin;
 				TargetAttributes = {
 					190A54D9206397370050B327 = {
@@ -283,20 +363,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				19302329211AD31C00AF1444 /* ImageViewController.m in Sources */,
+				19302337211AEB6300AF1444 /* NumberViewController.m in Sources */,
 				1930230321199CC800AF1444 /* JXCategoryCollectionView.m in Sources */,
+				19302333211AD8B200AF1444 /* ListViewController.m in Sources */,
 				1930230121199CC800AF1444 /* JXCategoryNumberCell.m in Sources */,
 				193022FD21199CC800AF1444 /* JXCategoryComponentCell.m in Sources */,
 				1930230521199CC800AF1444 /* JXCategoryBaseView.m in Sources */,
 				19302314211A90D700AF1444 /* JXCategoryLineStyleCell.m in Sources */,
 				193022FA21199CC800AF1444 /* JXCategoryTitleCellModel.m in Sources */,
 				193022FE21199CC800AF1444 /* JXCategoryComponentView.m in Sources */,
+				19302325211AD1B300AF1444 /* ImageSettingViewController.m in Sources */,
+				19302321211A92E600AF1444 /* JXCategoryImageCellModel.m in Sources */,
+				1930231E211A92D900AF1444 /* JXCategoryImageCell.m in Sources */,
 				1930230B211A812F00AF1444 /* JXCategoryLineStyleView.m in Sources */,
 				1930230721199CC800AF1444 /* JXCategoryBaseCellModel.m in Sources */,
 				193022FC21199CC800AF1444 /* JXCategoryTitleView.m in Sources */,
+				19302330211AD88300AF1444 /* TestViewController.m in Sources */,
 				190A54E2206397370050B327 /* ViewController.m in Sources */,
 				19302317211A90E800AF1444 /* JXCategoryLineStyleCellModel.m in Sources */,
 				193022FB21199CC800AF1444 /* JXCategoryTitleCell.m in Sources */,
 				190A54ED206397370050B327 /* main.m in Sources */,
+				1930231B211A92C200AF1444 /* JXCategoryImageView.m in Sources */,
 				1930230621199CC800AF1444 /* JXCategoryBaseCell.m in Sources */,
 				1930230221199CC800AF1444 /* JXCategoryNumberCellModel.m in Sources */,
 				193022FF21199CC800AF1444 /* JXCategoryComponentCellModel.m in Sources */,
@@ -342,6 +430,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -349,6 +438,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -376,7 +466,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -397,6 +487,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -404,6 +495,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -425,7 +517,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -437,11 +529,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = CUHY5967Q2;
 				INFOPLIST_FILE = JXCategoryView/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jiaxin.JXCategoryView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -450,11 +544,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = CUHY5967Q2;
 				INFOPLIST_FILE = JXCategoryView/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jiaxin.JXCategoryView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

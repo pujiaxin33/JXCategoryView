@@ -1,15 +1,13 @@
 //
-//  ViewController.h
+//  NumberViewController.h
 //  JXCategoryView
 //
-//  Created by jiaxin on 2018/3/22.
+//  Created by jiaxin on 2018/8/8.
 //  Copyright © 2018年 jiaxin. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UITableViewController
-
+@interface NumberViewController : UIViewController
 
 @end
-
