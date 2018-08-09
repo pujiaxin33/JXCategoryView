@@ -13,6 +13,7 @@
 #import "NumberViewController.h"
 #import "SegmentedControlViewController.h"
 #import "BackgroundImageViewController.h"
+#import "IndicatorImageViewViewController.h"
 
 @interface ViewController ()
 
@@ -34,19 +35,25 @@
             title = [(UILabel *)subview text];
         }
     }
-    if (indexPath.row == 4) {
+    if (indexPath.row == 3) {
+        //指示器IndicatorImageView
+        IndicatorImageViewViewController *indicatorImageViewVC = [[IndicatorImageViewViewController alloc] init];
+        indicatorImageViewVC.title = title;
+        [self.navigationController pushViewController:indicatorImageViewVC animated:YES];
+        return;
+    }else if (indexPath.row == 5) {
         //指示器ImageView
         BackgroundImageViewController *backgroundImageVC = [[BackgroundImageViewController alloc] init];
         backgroundImageVC.title = title;
         [self.navigationController pushViewController:backgroundImageVC animated:YES];
         return;
-    }else if (indexPath.row == 7) {
+    }else if (indexPath.row == 8) {
         //图片
         ImageViewController *imageVC = [[ImageViewController alloc] init];
         imageVC.title = title;
         [self.navigationController pushViewController:imageVC animated:YES];
         return;
-    }else if (indexPath.row == 8) {
+    }else if (indexPath.row == 9) {
         //数字
         NumberViewController *numberVC = [[NumberViewController alloc] init];
         numberVC.title = title;
@@ -55,7 +62,7 @@
     }else if (indexPath.row == 10) {
         //个人主页
         return;
-    }else if (indexPath.row == 11) {
+    }else if (indexPath.row == 12) {
         //SegmentedControl
         SegmentedControlViewController *segmentedControlVC = [[SegmentedControlViewController alloc] init];
         segmentedControlVC.title = title;
@@ -83,32 +90,32 @@
             titleCategoryView.indicatorLineViewShowEnabled = YES;
         }
             break;
-        case 3:
+        case 4:
         {
             titleCategoryView.indicatorLineViewShowEnabled = NO;
             titleCategoryView.backgroundEllipseLayerShowEnabled = YES;
-        }
-            break;
-        case 5:
-        {
-            titleCategoryView.indicatorLineViewShowEnabled = YES;
-            titleCategoryView.indicatorLineWidth = 20;
-            titleCategoryView.lineStyle = JXCategoryLineStyle_JD;
         }
             break;
         case 6:
         {
             titleCategoryView.indicatorLineViewShowEnabled = YES;
             titleCategoryView.indicatorLineWidth = 20;
+            titleCategoryView.lineStyle = JXCategoryLineStyle_JD;
+        }
+            break;
+        case 7:
+        {
+            titleCategoryView.indicatorLineViewShowEnabled = YES;
+            titleCategoryView.indicatorLineWidth = 20;
             titleCategoryView.lineStyle = JXCategoryLineStyle_IQIYI;
         }
             break;
-        case 9:
+        case 11:
         {
             //手势处理
         }
             break;
-        case 12:
+        case 13:
         {
             //SeparatorLine
             titleCategoryView.separatorLineShowEnabled = YES;

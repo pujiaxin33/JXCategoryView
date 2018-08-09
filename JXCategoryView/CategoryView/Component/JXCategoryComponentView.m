@@ -39,6 +39,8 @@
     _indicatorViewPanGestureManualEnabled = NO;
     _separatorLineColor = [UIColor lightGrayColor];
     _separatorLineSize = CGSizeMake(1/[UIScreen mainScreen].scale, 20);
+    _indicatorImageViewShowEnabled = NO;
+    _indicatorImageViewSize = CGSizeMake(30, 20);
 }
 
 - (void)initializeViews {
@@ -51,6 +53,12 @@
 
     self.indicatorLineView = [[UIView alloc] init];
     [self.collectionView insertSubview:self.indicatorLineView atIndex:0];
+
+    _indicatorImageView = [[UIImageView alloc] init];
+    self.indicatorImageView.contentMode = UIViewContentModeScaleAspectFit;
+    self.indicatorImageView.hidden = !self.indicatorImageViewShowEnabled;
+    self.indicatorImageView.bounds = CGRectMake(0, 0, self.indicatorImageViewSize.width, self.indicatorImageViewSize.height);
+    [self.collectionView insertSubview:self.indicatorImageView atIndex:0];
 
     self.backgroundEllipseLayer = [CALayer layer];
     [self.backgroundContainerView.layer addSublayer:self.backgroundEllipseLayer];
@@ -96,6 +104,9 @@
     self.indicatorLineView.layer.cornerRadius = self.indicatorLineViewHeight/2;
     self.indicatorLineView.frame = CGRectMake(lineViewX, self.bounds.size.height - self.indicatorLineViewHeight, [self getLineWidthWithIndex:self.selectedIndex], self.indicatorLineViewHeight);
 
+    self.indicatorImageView.hidden = !self.indicatorImageViewShowEnabled;
+    self.indicatorImageView.center = CGPointMake(self.indicatorLineView.center.x, self.bounds.size.height - self.indicatorImageViewSize.height/2);
+
     [CATransaction begin];
     [CATransaction setDisableActions:YES];
     self.backgroundEllipseLayer.hidden = !self.backgroundEllipseLayerShowEnabled;
@@ -107,6 +118,7 @@
     if (self.dataSource.count <= 1) {
         self.indicatorLineView.hidden = YES;
         self.backgroundEllipseLayer.hidden = YES;
+        self.indicatorImageView.hidden = YES;
     }
 }
 
@@ -152,6 +164,9 @@
         }
 
         [self refreshLeftCellModel:leftCellModel rightCellModel:rightCellModel ratio:remainderRatio];
+        if ([self.delegate respondsToSelector:@selector(categoryView:scrollingFromLeftIndex:toRightIndex:ratio:)]) {
+            [self.delegate categoryView:self scrollingFromLeftIndex:baseIndex toRightIndex:baseIndex + 1 ratio:remainderRatio];
+        }
 
         JXCategoryBaseCell *leftCell = (JXCategoryBaseCell *)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:baseIndex inSection:0]];
         [leftCell reloadDatas:leftCellModel];
@@ -196,6 +211,8 @@
         frame.origin.x = indicatorLineViewX;
         frame.size.width = targetIndicatorLineWidth;
         self.indicatorLineView.frame = frame;
+
+        self.indicatorImageView.center = CGPointMake(self.indicatorLineView.center.x, self.bounds.size.height - self.indicatorImageViewSize.height/2);
     }
 }
 
@@ -222,12 +239,14 @@
 
         [UIView animateWithDuration:0.25 delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
             self.indicatorLineView.frame = lineViewToFrame;
+            self.indicatorImageView.center = CGPointMake(self.indicatorLineView.center.x, self.bounds.size.height - self.indicatorImageViewSize.height/2);
             self.backgroundContainerView.frame = clickedCellFrame;
         } completion:^(BOOL finished) {
         }];
     }else {
         self.backgroundContainerView.frame = clickedCellFrame;
         self.indicatorLineView.frame = lineViewToFrame;
+        self.indicatorImageView.center = CGPointMake(self.indicatorLineView.center.x, self.bounds.size.height - self.indicatorImageViewSize.height/2);
         [CATransaction begin];
         [CATransaction setDisableActions:true];
         self.backgroundEllipseLayer.frame = backgroundEllipseLayerToFrame;

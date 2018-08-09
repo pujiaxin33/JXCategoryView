@@ -18,6 +18,8 @@ extern const CGFloat JXCategoryViewAutomaticDimension;
 @optional
 - (void)categoryView:(JXCategoryBaseView *)categoryView didSelectedItemAtIndex:(NSInteger)index;
 
+- (void)categoryView:(JXCategoryBaseView *)categoryView scrollingFromLeftIndex:(NSInteger)leftIndex toRightIndex:(NSInteger)rightIndex ratio:(CGFloat)ratio;
+
 @end
 
 @interface JXCategoryBaseView : UIView

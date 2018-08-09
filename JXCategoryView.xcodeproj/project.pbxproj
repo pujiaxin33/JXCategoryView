@@ -18,6 +18,7 @@
 		1912A51E211C171500A80826 /* JXCategoryBackgroundImageCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1912A51D211C171500A80826 /* JXCategoryBackgroundImageCellModel.m */; };
 		1912A522211C1BD000A80826 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1912A521211C1BD000A80826 /* BaseViewController.m */; };
 		1912A526211C257000A80826 /* BackgroundImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1912A525211C257000A80826 /* BackgroundImageViewController.m */; };
+		1912A52A211C3D1600A80826 /* IndicatorImageViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1912A529211C3D1600A80826 /* IndicatorImageViewViewController.m */; };
 		193022FA21199CC800AF1444 /* JXCategoryTitleCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 193022DD21199CC800AF1444 /* JXCategoryTitleCellModel.m */; };
 		193022FB21199CC800AF1444 /* JXCategoryTitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 193022DE21199CC800AF1444 /* JXCategoryTitleCell.m */; };
 		193022FC21199CC800AF1444 /* JXCategoryTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 193022DF21199CC800AF1444 /* JXCategoryTitleView.m */; };
@@ -67,6 +68,8 @@
 		1912A521211C1BD000A80826 /* BaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 		1912A524211C257000A80826 /* BackgroundImageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BackgroundImageViewController.h; sourceTree = "<group>"; };
 		1912A525211C257000A80826 /* BackgroundImageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BackgroundImageViewController.m; sourceTree = "<group>"; };
+		1912A528211C3D1600A80826 /* IndicatorImageViewViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IndicatorImageViewViewController.h; sourceTree = "<group>"; };
+		1912A529211C3D1600A80826 /* IndicatorImageViewViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IndicatorImageViewViewController.m; sourceTree = "<group>"; };
 		193022DA21199CC800AF1444 /* JXCategoryTitleCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXCategoryTitleCellModel.h; sourceTree = "<group>"; };
 		193022DB21199CC800AF1444 /* JXCategoryTitleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXCategoryTitleCell.h; sourceTree = "<group>"; };
 		193022DC21199CC800AF1444 /* JXCategoryTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXCategoryTitleView.h; sourceTree = "<group>"; };
@@ -197,6 +200,15 @@
 			path = Title;
 			sourceTree = "<group>";
 		};
+		1912A527211C3CF400A80826 /* IndicatorImageView */ = {
+			isa = PBXGroup;
+			children = (
+				1912A528211C3D1600A80826 /* IndicatorImageViewViewController.h */,
+				1912A529211C3D1600A80826 /* IndicatorImageViewViewController.m */,
+			);
+			path = IndicatorImageView;
+			sourceTree = "<group>";
+		};
 		193022D821199CC800AF1444 /* CategoryView */ = {
 			isa = PBXGroup;
 			children = (
@@ -304,6 +316,7 @@
 		19302322211ACE1500AF1444 /* Example */ = {
 			isa = PBXGroup;
 			children = (
+				1912A527211C3CF400A80826 /* IndicatorImageView */,
 				1930232A211AD33000AF1444 /* Common */,
 				1912A51F211C1AC100A80826 /* BackgroundImage */,
 				1912A523211C1E3800A80826 /* Title */,
@@ -454,6 +467,7 @@
 				190A54ED206397370050B327 /* main.m in Sources */,
 				1912A51B211C170500A80826 /* JXCategoryBackgroundImageCell.m in Sources */,
 				1930231B211A92C200AF1444 /* JXCategoryImageView.m in Sources */,
+				1912A52A211C3D1600A80826 /* IndicatorImageViewViewController.m in Sources */,
 				1930230621199CC800AF1444 /* JXCategoryBaseCell.m in Sources */,
 				1930230221199CC800AF1444 /* JXCategoryNumberCellModel.m in Sources */,
 				193022FF21199CC800AF1444 /* JXCategoryComponentCellModel.m in Sources */,

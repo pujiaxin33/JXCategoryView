@@ -9,7 +9,7 @@
 #import "SegmentedControlViewController.h"
 #import "JXCategoryTitleView.h"
 
-@interface SegmentedControlViewController () <JXCategoryViewDelegate>
+@interface SegmentedControlViewController ()
 @property (nonatomic, strong) NSArray *titles;
 @property (nonatomic, strong) JXCategoryTitleView *myCategoryView;
 @end

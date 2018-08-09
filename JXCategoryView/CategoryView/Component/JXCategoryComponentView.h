@@ -25,6 +25,13 @@
 
 @property (nonatomic, strong) UIColor *indicatorLineViewColor;   //默认为[UIColor yellowColor]
 
+//----------------------indicatorImageView-----------------------//
+
+@property (nonatomic, assign) BOOL indicatorImageViewShowEnabled;      //默认NO
+
+@property (nonatomic, strong, readonly) UIImageView *indicatorImageView;
+
+@property (nonatomic, assign) CGSize indicatorImageViewSize;
 
 //----------------------backgroundViews-----------------------//
 
