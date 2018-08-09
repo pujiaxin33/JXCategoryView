@@ -21,8 +21,8 @@
     [super initializeViews];
     
     _titleLabel = [[UILabel alloc] init];
-    _titleLabel.textAlignment = NSTextAlignmentCenter;
-    [self.contentView addSubview:_titleLabel];
+    self.titleLabel.textAlignment = NSTextAlignmentCenter;
+    [self.contentView addSubview:self.titleLabel];
 
     _maskTitleLabel = [[UILabel alloc] init];
 //    _maskTitleLabel.textAlignment = NSTextAlignmentCenter;
