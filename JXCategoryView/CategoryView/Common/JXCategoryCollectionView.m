@@ -14,7 +14,7 @@
 {
     [super layoutSubviews];
 
-    [self.layer insertSublayer:self.backEllipseLayer atIndex:0];
+    [self sendSubviewToBack:self.backgroundContainerView];
 }
 
 @end
