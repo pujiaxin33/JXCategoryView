@@ -61,9 +61,9 @@ static const CGFloat categoryViewHeight = 30;
     self.categoryView.titleColor = [UIColor redColor];
     self.categoryView.titleSelectedColor = [UIColor whiteColor];
     self.categoryView.indicatorLineViewShowEnabled = NO;
-    self.categoryView.backEllipseLayerShowEnabled = YES;
-    self.categoryView.backEllipseLayerHeight = 30;
-    self.categoryView.backEllipseLayerColor = [UIColor redColor];
+    self.categoryView.backgroundEllipseLayerShowEnabled = YES;
+    self.categoryView.backgroundEllipseLayerHeight = 30;
+    self.categoryView.backgroundEllipseLayerColor = [UIColor redColor];
     [self.view addSubview:self.categoryView];
 }
 

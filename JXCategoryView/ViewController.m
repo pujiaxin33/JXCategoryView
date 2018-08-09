@@ -76,7 +76,7 @@
         case 3:
         {
             testVC.categoryView.indicatorLineViewShowEnabled = NO;
-            testVC.categoryView.backEllipseLayerShowEnabled = YES;
+            testVC.categoryView.backgroundEllipseLayerShowEnabled = YES;
         }
             break;
         case 4:

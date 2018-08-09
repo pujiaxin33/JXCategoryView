@@ -10,12 +10,12 @@
 
 @interface JXCategoryComponentView : JXCategoryBaseView
 
-@property (nonatomic, assign) BOOL indicatorViewScrollEnabled;   //指示器lineView、backEllipseLayer切换时是否支持滚动，默认为YES
+@property (nonatomic, assign) BOOL indicatorViewScrollEnabled;   //指示器lineView、backgroundEllipseLayer切换时是否支持滚动，默认为YES
 
-@property (nonatomic, assign) BOOL indicatorViewPanGestureManualEnabled;    //指示器lineView、backEllipseLayer随着用户手势滚动处理，是否需要子类自己处理（比如JXCategoryLineStyleView）。默认为NO。
+@property (nonatomic, assign) BOOL indicatorViewPanGestureManualEnabled;    //指示器lineView、backgroundContainerView随着用户手势滚动处理，是否需要子类自己处理（比如JXCategoryLineStyleView）。默认为NO。
 
 /**
- 承载背景指示器视图的容器，比如backEllipseLayer就被添加到这上面。
+ 承载背景指示器视图的容器，比如backgroundEllipseLayer就被添加到这上面。
  */
 @property (nonatomic, strong, readonly) UIView *backgroundContainerView;
 
@@ -30,18 +30,18 @@
 
 @property (nonatomic, strong) UIColor *indicatorLineViewColor;   //默认为[UIColor yellowColor]
 
-//----------------------backEllipseLayer-----------------------//
-@property (nonatomic, strong, readonly) CALayer *backEllipseLayer;
+//----------------------backgroundEllipseLayer-----------------------//
+@property (nonatomic, strong, readonly) CALayer *backgroundEllipseLayer;
 
-@property (nonatomic, assign) BOOL backEllipseLayerShowEnabled;     //默认为NO
+@property (nonatomic, assign) BOOL backgroundEllipseLayerShowEnabled;     //默认为NO
 
-@property (nonatomic, assign) CGFloat backEllipseLayerWidth;     //默认JXCategoryViewAutomaticDimension（与cellWidth相等）
+@property (nonatomic, assign) CGFloat backgroundEllipseLayerWidth;     //默认JXCategoryViewAutomaticDimension（与cellWidth相等）
 
-@property (nonatomic, assign) CGFloat backEllipseLayerHeight;   //默认20
+@property (nonatomic, assign) CGFloat backgroundEllipseLayerHeight;   //默认20
 
-@property (nonatomic, assign) CGFloat backEllipseLayerCornerRadius;   //默认JXCategoryViewAutomaticDimension(即backEllipseLayerHeight/2)
+@property (nonatomic, assign) CGFloat backgroundEllipseLayerCornerRadius;   //默认JXCategoryViewAutomaticDimension(即backgroundEllipseLayerHeight/2)
 
-@property (nonatomic, strong) UIColor *backEllipseLayerColor;   //默认为[UIColor redColor]
+@property (nonatomic, strong) UIColor *backgroundEllipseLayerColor;   //默认为[UIColor redColor]
 
 //----------------------zoomEnabled-----------------------//
 @property (nonatomic, assign) BOOL zoomEnabled;     //默认为NO

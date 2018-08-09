@@ -18,7 +18,7 @@ typedef NS_ENUM(NSUInteger, JXCategoryLineStyle) {
 /*
  1、JXCategoryLineStyle不能是JXCategoryLineStyle_None；
  2、indicatorLineWidth需要是固定值；
- 3、没有处理backEllipseLayer的手势滚动处理；
+ 3、没有处理backgroundEllipseLayer的手势滚动处理；
  */
 @interface JXCategoryLineStyleView : JXCategoryComponentView
 
