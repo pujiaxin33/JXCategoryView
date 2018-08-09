@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BaseViewController.h"
 
-@interface NumberViewController : UIViewController
+@interface NumberViewController : BaseViewController
 
 @end

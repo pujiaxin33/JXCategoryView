@@ -84,10 +84,10 @@ const CGFloat JXCategoryViewAutomaticDimension = -1;
 
 - (void)setContentScrollView:(UIScrollView *)contentScrollView
 {
-    if (self.contentScrollView != nil) {
-        [self.collectionView removeObserver:self forKeyPath:@"contentOffset"];
+    if (_contentScrollView != nil) {
+        [_collectionView removeObserver:self forKeyPath:@"contentOffset"];
     }
-    self.contentScrollView = contentScrollView;
+    _contentScrollView = contentScrollView;
 
     [contentScrollView addObserver:self forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionNew context:nil];
 }

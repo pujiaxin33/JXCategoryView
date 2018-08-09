@@ -6,7 +6,7 @@
 //  Copyright © 2018年 jiaxin. All rights reserved.
 //
 
-#import "JXCategoryComponentView.h"
+#import "JXCategoryBackgroundImageView.h"
 
 typedef NS_ENUM(NSUInteger, JXCategoryLineStyle) {
     JXCategoryLineStyle_None = 0,
@@ -20,7 +20,7 @@ typedef NS_ENUM(NSUInteger, JXCategoryLineStyle) {
  2、indicatorLineWidth需要是固定值；
  3、没有处理backgroundEllipseLayer的手势滚动处理；
  */
-@interface JXCategoryLineStyleView : JXCategoryComponentView
+@interface JXCategoryLineStyleView : JXCategoryBackgroundImageView
 
 @property (nonatomic, assign) JXCategoryLineStyle lineStyle;
 

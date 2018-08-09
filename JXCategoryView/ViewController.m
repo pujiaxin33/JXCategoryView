@@ -7,10 +7,12 @@
 //
 
 #import "ViewController.h"
-#import "TestViewController.h"
+#import "JXCategoryTitleView.h"
+#import "TitleViewController.h"
 #import "ImageViewController.h"
 #import "NumberViewController.h"
 #import "SegmentedControlViewController.h"
+#import "BackgroundImageViewController.h"
 
 @interface ViewController ()
 
@@ -32,65 +34,73 @@
             title = [(UILabel *)subview text];
         }
     }
-    if (indexPath.row == 6) {
+    if (indexPath.row == 4) {
+        //指示器ImageView
+        BackgroundImageViewController *backgroundImageVC = [[BackgroundImageViewController alloc] init];
+        backgroundImageVC.title = title;
+        [self.navigationController pushViewController:backgroundImageVC animated:YES];
+        return;
+    }else if (indexPath.row == 7) {
         //图片
         ImageViewController *imageVC = [[ImageViewController alloc] init];
         imageVC.title = title;
         [self.navigationController pushViewController:imageVC animated:YES];
         return;
-    }else if (indexPath.row == 7) {
+    }else if (indexPath.row == 8) {
         //数字
         NumberViewController *numberVC = [[NumberViewController alloc] init];
         numberVC.title = title;
         [self.navigationController pushViewController:numberVC animated:YES];
         return;
-    }else if (indexPath.row == 9) {
+    }else if (indexPath.row == 10) {
         //个人主页
         return;
-    }else if (indexPath.row == 10) {
+    }else if (indexPath.row == 11) {
+        //SegmentedControl
         SegmentedControlViewController *segmentedControlVC = [[SegmentedControlViewController alloc] init];
         segmentedControlVC.title = title;
         [self.navigationController pushViewController:segmentedControlVC animated:YES];
         return;
     }
-    TestViewController *testVC = [[TestViewController alloc] init];
+    TitleViewController *testVC = [[TitleViewController alloc] init];
     testVC.title = title;
-    testVC.categoryView.titleColorGradientEnabled = YES;
+    JXCategoryTitleView *titleCategoryView = (JXCategoryTitleView *)testVC.categoryView;
+    titleCategoryView.titleColorGradientEnabled = YES;
     switch (indexPath.row) {
         case 0:
         {
-            testVC.categoryView.indicatorLineViewShowEnabled = NO;
+            titleCategoryView.indicatorLineViewShowEnabled = NO;
         }
             break;
         case 1:
         {
-            testVC.categoryView.indicatorLineViewShowEnabled = NO;
-            testVC.categoryView.zoomEnabled = YES;
+            titleCategoryView.indicatorLineViewShowEnabled = NO;
+            titleCategoryView.zoomEnabled = YES;
         }
             break;
         case 2:
         {
-            testVC.categoryView.indicatorLineViewShowEnabled = YES;
+            titleCategoryView.indicatorLineViewShowEnabled = YES;
         }
             break;
         case 3:
         {
-            testVC.categoryView.indicatorLineViewShowEnabled = NO;
-            testVC.categoryView.backgroundEllipseLayerShowEnabled = YES;
-        }
-            break;
-        case 4:
-        {
-            testVC.categoryView.indicatorLineViewShowEnabled = YES;
-            testVC.categoryView.indicatorLineWidth = 20;
-            testVC.categoryView.lineStyle = JXCategoryLineStyle_JD;
+            titleCategoryView.indicatorLineViewShowEnabled = NO;
+            titleCategoryView.backgroundEllipseLayerShowEnabled = YES;
         }
             break;
         case 5:
         {
-            testVC.categoryView.indicatorLineViewShowEnabled = YES;
-            testVC.categoryView.indicatorLineWidth = 20;
-            testVC.categoryView.lineStyle = JXCategoryLineStyle_IQIYI;
+            titleCategoryView.indicatorLineViewShowEnabled = YES;
+            titleCategoryView.indicatorLineWidth = 20;
+            titleCategoryView.lineStyle = JXCategoryLineStyle_JD;
+        }
+            break;
+        case 6:
+        {
+            titleCategoryView.indicatorLineViewShowEnabled = YES;
+            titleCategoryView.indicatorLineWidth = 20;
+            titleCategoryView.lineStyle = JXCategoryLineStyle_IQIYI;
         }
             break;
         default:

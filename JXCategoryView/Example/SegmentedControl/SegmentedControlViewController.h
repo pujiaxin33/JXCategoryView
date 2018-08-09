@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BaseViewController.h"
 
-@interface SegmentedControlViewController : UIViewController
+@interface SegmentedControlViewController : BaseViewController
 
 @end
