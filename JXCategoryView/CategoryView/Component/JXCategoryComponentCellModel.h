@@ -17,4 +17,8 @@
 
 @property (nonatomic, assign) BOOL sepratorLineShowEnabled;
 
+@property (nonatomic, strong) UIColor *separatorLineColor;
+
+@property (nonatomic, assign) CGSize separatorLineSize; 
+
 @end

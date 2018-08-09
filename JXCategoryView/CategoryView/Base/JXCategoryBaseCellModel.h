@@ -15,5 +15,7 @@
 
 @property (nonatomic, assign) CGFloat cellWidth;
 
+@property (nonatomic, assign) CGFloat cellSpacing;
+
 
 @end

@@ -103,6 +103,18 @@
             titleCategoryView.lineStyle = JXCategoryLineStyle_IQIYI;
         }
             break;
+        case 9:
+        {
+            //手势处理
+        }
+            break;
+        case 12:
+        {
+            //SeparatorLine
+            titleCategoryView.separatorLineShowEnabled = YES;
+        }
+            break;
+
         default:
             break;
     }

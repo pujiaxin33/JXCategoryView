@@ -37,6 +37,8 @@
     _separatorLineShowEnabled = NO;
     _backgroundEllipseLayerColor = [UIColor lightGrayColor];
     _indicatorViewPanGestureManualEnabled = NO;
+    _separatorLineColor = [UIColor lightGrayColor];
+    _separatorLineSize = CGSizeMake(1/[UIScreen mainScreen].scale, 20);
 }
 
 - (void)initializeViews {
@@ -63,6 +65,8 @@
         cellModel.zoomEnabled = self.zoomEnabled;
         cellModel.zoomScale = 1.0;
         cellModel.sepratorLineShowEnabled = self.separatorLineShowEnabled;
+        cellModel.separatorLineColor = self.separatorLineColor;
+        cellModel.separatorLineSize = self.separatorLineSize;
         if (i == self.dataSource.count - 1) {
             cellModel.sepratorLineShowEnabled = NO;
         }

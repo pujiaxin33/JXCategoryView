@@ -19,12 +19,8 @@
 {
     [super initializeViews];
 
-    self.separatorLine = ({
-        UIView *view = [[UIView alloc] init];
-        view.hidden = YES;
-        view.backgroundColor = [UIColor colorWithRed:40/255.0 green:44/255.0 blue:61/255.0 alpha:1];
-        view;
-    });
+    self.separatorLine = [[UIView alloc] init];
+    self.separatorLine.hidden = YES;
     [self.contentView addSubview:self.separatorLine];
 }
 
@@ -32,9 +28,11 @@
 {
     [super layoutSubviews];
 
-    CGFloat lineWidth = 1;
-    CGFloat lineHeight = self.bounds.size.height/3.0;
-    self.separatorLine.frame = CGRectMake(self.bounds.size.width-lineWidth, (self.bounds.size.height - lineHeight)/2.0, lineWidth, lineHeight);
+    JXCategoryComponentCellModel *model = (JXCategoryComponentCellModel *)self.cellModel;
+    CGFloat lineWidth = model.separatorLineSize.width;
+    CGFloat lineHeight = model.separatorLineSize.height;
+
+    self.separatorLine.frame = CGRectMake(self.bounds.size.width - lineWidth + self.cellModel.cellSpacing/2, (self.bounds.size.height - lineHeight)/2.0, lineWidth, lineHeight);
 }
 
 - (void)reloadDatas:(JXCategoryBaseCellModel *)cellModel {
@@ -46,6 +44,7 @@
     }else {
         self.transform = CGAffineTransformIdentity;
     }
+    self.separatorLine.backgroundColor = model.separatorLineColor;
     self.separatorLine.hidden = !model.sepratorLineShowEnabled;
 }
 

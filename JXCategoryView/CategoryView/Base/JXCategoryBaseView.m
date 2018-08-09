@@ -117,6 +117,7 @@ const CGFloat JXCategoryViewAutomaticDimension = -1;
             cellModel.selected = NO;
         }
         cellModel.cellWidth = [self preferredCellWidthWithIndex:i];
+        cellModel.cellSpacing = self.cellSpacing;
         totalItemWidth += cellModel.cellWidth + self.cellSpacing;
         [self refreshCellModel:cellModel index:i];
     }

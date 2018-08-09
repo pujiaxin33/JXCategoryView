@@ -14,11 +14,6 @@
 
 @property (nonatomic, assign) BOOL indicatorViewPanGestureManualEnabled;    //指示器lineView、backgroundContainerView随着用户手势滚动处理，是否需要子类自己处理（比如JXCategoryLineStyleView）。默认为NO。
 
-/**
- 承载背景指示器视图的容器，比如backgroundEllipseLayer就被添加到这上面。
- */
-@property (nonatomic, strong, readonly) UIView *backgroundContainerView;
-
 //----------------------indicatorLineView-----------------------//
 @property (nonatomic, strong, readonly) UIView *indicatorLineView;
 
@@ -30,7 +25,14 @@
 
 @property (nonatomic, strong) UIColor *indicatorLineViewColor;   //默认为[UIColor yellowColor]
 
-//----------------------backgroundEllipseLayer-----------------------//
+
+//----------------------backgroundViews-----------------------//
+
+/**
+ 承载背景指示器视图的容器，比如backgroundEllipseLayer、backgroundImageView就被添加到这上面。
+ */
+@property (nonatomic, strong, readonly) UIView *backgroundContainerView;
+
 @property (nonatomic, strong, readonly) CALayer *backgroundEllipseLayer;
 
 @property (nonatomic, assign) BOOL backgroundEllipseLayerShowEnabled;     //默认为NO
@@ -50,6 +52,10 @@
 
 //----------------------separatorLine-----------------------//
 @property (nonatomic, assign) BOOL separatorLineShowEnabled;    //默认为NO
+
+@property (nonatomic, strong) UIColor *separatorLineColor;    //默认为[UIColor lightGrayColor]
+
+@property (nonatomic, assign) CGSize separatorLineSize;    //默认为CGSizeMake(1/[UIScreen mainScreen].scale, 20)
 
 /**
  当contentScrollView滚动时候，处理跟随手势的过渡效果。
