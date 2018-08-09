@@ -10,6 +10,7 @@
 #import "TestViewController.h"
 #import "ImageViewController.h"
 #import "NumberViewController.h"
+#import "SegmentedControlViewController.h"
 
 @interface ViewController ()
 
@@ -45,7 +46,12 @@
         return;
     }else if (indexPath.row == 9) {
         //个人主页
-
+        return;
+    }else if (indexPath.row == 10) {
+        SegmentedControlViewController *segmentedControlVC = [[SegmentedControlViewController alloc] init];
+        segmentedControlVC.title = title;
+        [self.navigationController pushViewController:segmentedControlVC animated:YES];
+        return;
     }
     TestViewController *testVC = [[TestViewController alloc] init];
     testVC.title = title;

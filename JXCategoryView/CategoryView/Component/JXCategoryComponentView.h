@@ -26,6 +26,8 @@
 @property (nonatomic, strong) UIColor *indicatorLineViewColor;   //默认为[UIColor yellowColor]
 
 //----------------------backEllipseLayer-----------------------//
+@property (nonatomic, strong) CALayer *backEllipseLayer;
+
 @property (nonatomic, assign) BOOL backEllipseLayerShowEnabled;     //默认为NO
 
 @property (nonatomic, assign) CGFloat backEllipseLayerWidth;     //默认JXCategoryViewAutomaticDimension（与cellWidth相等）

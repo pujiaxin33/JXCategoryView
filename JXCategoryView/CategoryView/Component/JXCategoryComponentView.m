@@ -13,7 +13,7 @@
 @interface JXCategoryComponentView()
 
 @property (nonatomic, strong) UIView *indicatorLineView;
-@property (nonatomic, strong) CALayer *ellipseLayer;
+
 
 @end
 
@@ -44,9 +44,9 @@
     self.indicatorLineView = [[UIView alloc] init];
     [self.collectionView insertSubview:self.indicatorLineView atIndex:0];
 
-    self.ellipseLayer = [CALayer layer];
-    [self.collectionView.layer insertSublayer:self.ellipseLayer atIndex:0];
-    self.collectionView.backEllipseLayer = self.ellipseLayer;
+    self.backEllipseLayer = [CALayer layer];
+    [self.collectionView.layer insertSublayer:self.backEllipseLayer atIndex:0];
+    self.collectionView.backEllipseLayer = self.backEllipseLayer;
 }
 
 - (void)refreshState {
@@ -67,10 +67,10 @@
     }
 
     self.indicatorLineView.hidden = !self.indicatorLineViewShowEnabled;
-    self.ellipseLayer.hidden = !self.backEllipseLayerShowEnabled;
+    self.backEllipseLayer.hidden = !self.backEllipseLayerShowEnabled;
 
     self.indicatorLineView.layer.cornerRadius = _indicatorLineViewHeight/2;
-    self.ellipseLayer.cornerRadius = [self getBackEllipseLayerCornerRadius];
+    self.backEllipseLayer.cornerRadius = [self getBackEllipseLayerCornerRadius];
 
     __block CGFloat frameXOfLineView = self.cellSpacing;
     __block CGFloat frameXOfBackEllipseLayer = self.cellSpacing;
@@ -89,14 +89,14 @@
 
     [CATransaction begin];
     [CATransaction setDisableActions:YES];
-    self.ellipseLayer.backgroundColor = _backEllipseLayerColor.CGColor;
-    self.ellipseLayer.frame = CGRectMake(frameXOfBackEllipseLayer, (self.bounds.size.height - _backEllipseLayerHeight)/2.0, [self getBackEllipseLayerWidthWithIndex:self.selectedIndex], _backEllipseLayerHeight);
+    self.backEllipseLayer.backgroundColor = _backEllipseLayerColor.CGColor;
+    self.backEllipseLayer.frame = CGRectMake(frameXOfBackEllipseLayer, (self.bounds.size.height - _backEllipseLayerHeight)/2.0, [self getBackEllipseLayerWidthWithIndex:self.selectedIndex], _backEllipseLayerHeight);
     [CATransaction commit];
 
 
     if (self.dataSource.count <= 1) {
         self.indicatorLineView.hidden = YES;
-        self.ellipseLayer.hidden = YES;
+        self.backEllipseLayer.hidden = YES;
     }
 }
 
@@ -170,7 +170,7 @@
 
         [CATransaction begin];
         [CATransaction setDisableActions:true];
-        self.ellipseLayer.frame = CGRectMake(totalXOfBackEllipseLayer, (self.bounds.size.height - _backEllipseLayerHeight)/2.0, targetBackEllipseLayerWidth, _backEllipseLayerHeight);
+        self.backEllipseLayer.frame = CGRectMake(totalXOfBackEllipseLayer, (self.bounds.size.height - _backEllipseLayerHeight)/2.0, targetBackEllipseLayerWidth, _backEllipseLayerHeight);
         [CATransaction commit];
 
         CGRect frame = self.indicatorLineView.frame;
@@ -189,24 +189,24 @@
     CGRect clickedCellFrame = [self getTargetCellFrame:index];
 
     CGFloat targetEllipseLayerWidth = [self getBackEllipseLayerWidthWithIndex:index];
-    CGRect ellipseLayerToFrame = CGRectMake(clickedCellFrame.origin.x + (clickedCellFrame.size.width - targetEllipseLayerWidth)/2.0, (self.bounds.size.height - _backEllipseLayerHeight)/2.0, targetEllipseLayerWidth, _backEllipseLayerHeight);
+    CGRect backEllipseLayerToFrame = CGRectMake(clickedCellFrame.origin.x + (clickedCellFrame.size.width - targetEllipseLayerWidth)/2.0, (self.bounds.size.height - _backEllipseLayerHeight)/2.0, targetEllipseLayerWidth, _backEllipseLayerHeight);
 
     CGFloat targetLineWidth = [self getLineWidthWithIndex:index];
     CGRect lineToFrame = CGRectMake(clickedCellFrame.origin.x + (clickedCellFrame.size.width - targetLineWidth)/2.0, self.bounds.size.height - _indicatorLineViewHeight, targetLineWidth, _indicatorLineViewHeight);
     if (self.indicatorViewScrollEnabled) {
         CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"frame"];
-        animation.fromValue = [NSValue valueWithCGRect:self.ellipseLayer.frame];
-        animation.toValue = [NSValue valueWithCGRect:ellipseLayerToFrame];
+        animation.fromValue = [NSValue valueWithCGRect:self.backEllipseLayer.frame];
+        animation.toValue = [NSValue valueWithCGRect:backEllipseLayerToFrame];
         animation.duration = 0.25;
-        [self.ellipseLayer addAnimation:animation forKey:@"move"];
-        _ellipseLayer.frame = ellipseLayerToFrame;
+        [self.backEllipseLayer addAnimation:animation forKey:@"move"];
+        _backEllipseLayer.frame = backEllipseLayerToFrame;
         [UIView animateWithDuration:0.25 animations:^{
             self.indicatorLineView.frame = lineToFrame;
         }];
     }else {
         [CATransaction begin];
         [CATransaction setDisableActions:true];
-        self.ellipseLayer.frame = ellipseLayerToFrame;
+        self.backEllipseLayer.frame = backEllipseLayerToFrame;
         [CATransaction commit];
         self.indicatorLineView.frame = lineToFrame;
     }

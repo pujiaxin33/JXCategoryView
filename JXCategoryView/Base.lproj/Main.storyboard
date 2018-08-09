@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -226,6 +227,27 @@
                                                 <constraint firstItem="hJB-3Z-mkm" firstAttribute="leading" secondItem="dMC-LG-IB9" secondAttribute="leading" constant="16" id="1jX-LS-KH9"/>
                                                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="hJB-3Z-mkm" secondAttribute="trailing" constant="20" symbolic="YES" id="GYN-x7-ohH"/>
                                                 <constraint firstItem="hJB-3Z-mkm" firstAttribute="centerY" secondItem="dMC-LG-IB9" secondAttribute="centerY" id="hsA-jq-8ZI"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" id="HN2-PX-CfE">
+                                        <rect key="frame" x="0.0" y="440" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="HN2-PX-CfE" id="ARb-xi-Svw">
+                                            <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SegmentedControl" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Llj-hI-Nl9">
+                                                    <rect key="frame" x="16" y="12" width="145" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Llj-hI-Nl9" secondAttribute="trailing" constant="20" symbolic="YES" id="Z5R-CJ-9cN"/>
+                                                <constraint firstItem="Llj-hI-Nl9" firstAttribute="leading" secondItem="ARb-xi-Svw" secondAttribute="leading" constant="16" id="em4-pY-Jsc"/>
+                                                <constraint firstItem="Llj-hI-Nl9" firstAttribute="centerY" secondItem="ARb-xi-Svw" secondAttribute="centerY" id="jEH-B1-KHQ"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>

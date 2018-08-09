@@ -10,6 +10,7 @@
 #import "JXCategoryTitleCellModel.h"
 
 @interface JXCategoryTitleCell ()
+@property (nonatomic, strong) CAShapeLayer *maskLayer;
 
 @end
 
@@ -21,13 +22,19 @@
     
     _titleLabel = [[UILabel alloc] init];
     _titleLabel.textAlignment = NSTextAlignmentCenter;
-    [self.contentView addSubview:self.titleLabel];
+    [self.contentView addSubview:_titleLabel];
+
+    _maskTitleLabel = [[UILabel alloc] init];
+//    _maskTitleLabel.textAlignment = NSTextAlignmentCenter;
+//    [self.contentView addSubview:_maskTitleLabel];
+//    _maskTitleLabel.layer.mask
 }
 
 - (void)layoutSubviews {
     [super layoutSubviews];
 
     self.titleLabel.center = self.contentView.center;
+    self.maskTitleLabel.center = self.contentView.center;
 }
 
 - (void)reloadDatas:(JXCategoryBaseCellModel *)cellModel {
@@ -35,6 +42,8 @@
 
     JXCategoryTitleCellModel *myCellModel = (JXCategoryTitleCellModel *)cellModel;
     self.titleLabel.font = myCellModel.titleFont;
+    self.maskTitleLabel.font = myCellModel.titleFont;
+    self.maskTitleLabel.textColor = myCellModel.titleSelectedColor;
     if (myCellModel.selected) {
         self.titleLabel.textColor = myCellModel.titleSelectedColor;
     }else {
@@ -42,8 +51,10 @@
     }
 
     self.titleLabel.text = myCellModel.title;
+    self.maskTitleLabel.text = myCellModel.title;
 
     [self.titleLabel sizeToFit];
+    [self.maskTitleLabel sizeToFit];
     [self setNeedsLayout];
     [self layoutIfNeeded];
 }

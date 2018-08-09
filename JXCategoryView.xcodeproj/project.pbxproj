@@ -38,6 +38,7 @@
 		19302330211AD88300AF1444 /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1930232F211AD88300AF1444 /* TestViewController.m */; };
 		19302333211AD8B200AF1444 /* ListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19302332211AD8B200AF1444 /* ListViewController.m */; };
 		19302337211AEB6300AF1444 /* NumberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19302336211AEB6300AF1444 /* NumberViewController.m */; };
+		19302389211B22E300AF1444 /* SegmentedControlViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19302388211B22E300AF1444 /* SegmentedControlViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -101,6 +102,8 @@
 		19302332211AD8B200AF1444 /* ListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ListViewController.m; sourceTree = "<group>"; };
 		19302335211AEB6300AF1444 /* NumberViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NumberViewController.h; sourceTree = "<group>"; };
 		19302336211AEB6300AF1444 /* NumberViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NumberViewController.m; sourceTree = "<group>"; };
+		19302387211B22E300AF1444 /* SegmentedControlViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SegmentedControlViewController.h; sourceTree = "<group>"; };
+		19302388211B22E300AF1444 /* SegmentedControlViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SegmentedControlViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -254,6 +257,7 @@
 		19302322211ACE1500AF1444 /* Example */ = {
 			isa = PBXGroup;
 			children = (
+				19302384211B22B700AF1444 /* SegmentedControl */,
 				19302334211AEB3500AF1444 /* Number */,
 				1930232A211AD33000AF1444 /* Common */,
 				19302326211AD30900AF1444 /* Image */,
@@ -292,6 +296,15 @@
 			path = Number;
 			sourceTree = "<group>";
 		};
+		19302384211B22B700AF1444 /* SegmentedControl */ = {
+			isa = PBXGroup;
+			children = (
+				19302387211B22E300AF1444 /* SegmentedControlViewController.h */,
+				19302388211B22E300AF1444 /* SegmentedControlViewController.m */,
+			);
+			path = SegmentedControl;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -323,6 +336,7 @@
 				TargetAttributes = {
 					190A54D9206397370050B327 = {
 						CreatedOnToolsVersion = 9.0;
+						LastSwiftMigration = 0940;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -366,6 +380,7 @@
 				19302329211AD31C00AF1444 /* ImageViewController.m in Sources */,
 				19302337211AEB6300AF1444 /* NumberViewController.m in Sources */,
 				1930230321199CC800AF1444 /* JXCategoryCollectionView.m in Sources */,
+				19302389211B22E300AF1444 /* SegmentedControlViewController.m in Sources */,
 				19302333211AD8B200AF1444 /* ListViewController.m in Sources */,
 				1930230121199CC800AF1444 /* JXCategoryNumberCell.m in Sources */,
 				193022FD21199CC800AF1444 /* JXCategoryComponentCell.m in Sources */,
@@ -528,6 +543,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CUHY5967Q2;
 				INFOPLIST_FILE = JXCategoryView/Info.plist;
@@ -535,6 +551,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jiaxin.JXCategoryView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -543,6 +561,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CUHY5967Q2;
 				INFOPLIST_FILE = JXCategoryView/Info.plist;
@@ -550,6 +569,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jiaxin.JXCategoryView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
