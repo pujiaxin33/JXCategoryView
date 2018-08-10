@@ -7,8 +7,6 @@
 //
 
 #import "JXCategoryLineStyleView.h"
-#import "JXCategoryComponentCellModel.h"
-#import "JXCategoryBaseCell.h"
 
 @implementation JXCategoryLineStyleView
 

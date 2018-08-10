@@ -10,25 +10,25 @@
 
 @implementation UIColor (JXAdd)
 
-- (CGFloat)red {
+- (CGFloat)jx_red {
     CGFloat r = 0, g, b, a;
     [self getRed:&r green:&g blue:&b alpha:&a];
     return r;
 }
 
-- (CGFloat)green {
+- (CGFloat)jx_green {
     CGFloat r, g = 0, b, a;
     [self getRed:&r green:&g blue:&b alpha:&a];
     return g;
 }
 
-- (CGFloat)blue {
+- (CGFloat)jx_blue {
     CGFloat r, g, b = 0, a;
     [self getRed:&r green:&g blue:&b alpha:&a];
     return b;
 }
 
-- (CGFloat)alpha {
+- (CGFloat)jx_alpha {
     return CGColorGetAlpha(self.CGColor);
 }
 

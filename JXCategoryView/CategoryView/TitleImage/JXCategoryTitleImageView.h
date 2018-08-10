@@ -7,16 +7,10 @@
 //
 
 #import "JXCategoryTitleView.h"
+#import "JXCategoryTitleImageCell.h"
+#import "JXCategoryTitleImageCellModel.h"
 
-typedef NS_ENUM(NSUInteger, JXCategoryImageType) {
-    JXCategoryImageType_OnlyImage = 0,
-    JXCategoryImageType_TopImage,
-    JXCategoryImageType_LeftImage,
-    JXCategoryImageType_BottomImage,
-    JXCategoryImageType_RightImage,
-};
-
-@interface JXCategoryImageView : JXCategoryTitleView
+@interface JXCategoryTitleImageView : JXCategoryTitleView
 
 @property (nonatomic, strong) NSArray <NSString *>*imageNames;
 
@@ -26,7 +20,7 @@ typedef NS_ENUM(NSUInteger, JXCategoryImageType) {
 
 @property (nonatomic, strong) NSArray <NSURL *>*selectedImageURLs;
 
-@property (nonatomic, assign) JXCategoryImageType imageType;    //默认JXCategoryImageType_LeftImage
+@property (nonatomic, assign) JXCategoryTitleImageType imageType;    //默认JXCategoryTitleImageType_LeftImage
 
 @property (nonatomic, assign) CGSize imageSize;     //默认CGSizeMake(20, 20)
 

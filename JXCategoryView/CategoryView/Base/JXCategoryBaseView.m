@@ -7,9 +7,6 @@
 //
 
 #import "JXCategoryBaseView.h"
-#import "JXCategoryBaseCell.h"
-#import "JXCategoryBaseCellModel.h"
-#import "JXCategoryCollectionView.h"
 
 const CGFloat JXCategoryViewAutomaticDimension = -1;
 

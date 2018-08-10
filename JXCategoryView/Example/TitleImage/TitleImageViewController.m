@@ -6,16 +6,16 @@
 //  Copyright © 2018年 jiaxin. All rights reserved.
 //
 
-#import "ImageViewController.h"
-#import "JXCategoryImageView.h"
-#import "ImageSettingViewController.h"
+#import "TitleImageViewController.h"
+#import "JXCategoryTitleImageView.h"
+#import "TitleImageSettingViewController.h"
 
-@interface ImageViewController () <JXCategoryViewDelegate, ImageSettingViewControllerDelegate>
+@interface TitleImageViewController () <JXCategoryViewDelegate, TitleTitleImageSettingViewControllerDelegate>
 @property (nonatomic, strong) NSArray *titles;
-@property (nonatomic, strong) JXCategoryImageView *myCategoryView;
+@property (nonatomic, strong) JXCategoryTitleImageView *myCategoryView;
 @end
 
-@implementation ImageViewController
+@implementation TitleImageViewController
 
 - (void)viewDidLoad {
     _titles = @[@"螃蟹", @"小龙虾", @"苹果", @"胡萝卜", @"葡萄", @"西瓜"];
@@ -31,12 +31,12 @@
     self.myCategoryView.titles = self.titles;
     self.myCategoryView.imageNames = imageNames;
     self.myCategoryView.selectedImageNames = selectedImageNames;
-    self.myCategoryView.imageType = JXCategoryImageType_LeftImage;
+    self.myCategoryView.imageType = JXCategoryTitleImageType_LeftImage;
     self.myCategoryView.indicatorLineWidth = 20;
 }
 
-- (JXCategoryImageView *)myCategoryView {
-    return (JXCategoryImageView *)self.categoryView;
+- (JXCategoryTitleImageView *)myCategoryView {
+    return (JXCategoryTitleImageView *)self.categoryView;
 }
 
 - (NSUInteger)preferredListViewCount {
@@ -44,20 +44,20 @@
 }
 
 - (Class)preferredCategoryViewClass {
-    return [JXCategoryImageView class];
+    return [JXCategoryTitleImageView class];
 }
 
 - (void)didSettingClicked {
     UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    ImageSettingViewController *imageSettingVC = [storyBoard instantiateViewControllerWithIdentifier:NSStringFromClass([ImageSettingViewController class])];
+    TitleImageSettingViewController *imageSettingVC = [storyBoard instantiateViewControllerWithIdentifier:NSStringFromClass([TitleImageSettingViewController class])];
     imageSettingVC.imageType = self.myCategoryView.imageType;
     imageSettingVC.delegate = self;
     [self.navigationController pushViewController:imageSettingVC animated:YES];
 }
 
-#pragma mark - ImageSettingViewControllerDelegate
+#pragma mark - TitleImageSettingViewControllerDelegate
 
-- (void)imageSettingVCDidSelectedImageType:(JXCategoryImageType)imageType {
+- (void)titleImageSettingVCDidSelectedImageType:(JXCategoryTitleImageType)imageType {
     self.myCategoryView.imageType = imageType;
     [self.categoryView reloadDatas];
 }

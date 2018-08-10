@@ -9,7 +9,7 @@
 #import "ViewController.h"
 #import "JXCategoryTitleView.h"
 #import "TitleViewController.h"
-#import "ImageViewController.h"
+#import "TitleImageViewController.h"
 #import "NumberViewController.h"
 #import "SegmentedControlViewController.h"
 #import "BackgroundImageViewController.h"
@@ -50,7 +50,7 @@
         return;
     }else if (indexPath.row == 8) {
         //图片
-        ImageViewController *imageVC = [[ImageViewController alloc] init];
+        TitleImageViewController *imageVC = [[TitleImageViewController alloc] init];
         imageVC.title = title;
         [self.navigationController pushViewController:imageVC animated:YES];
         return;

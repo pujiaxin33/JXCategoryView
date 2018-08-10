@@ -1,5 +1,5 @@
 //
-//  JXCategoryImageCellModel.h
+//  JXCategoryTitleImageCellModel.h
 //  JXCategoryView
 //
 //  Created by jiaxin on 2018/8/8.
@@ -7,11 +7,18 @@
 //
 
 #import "JXCategoryTitleCellModel.h"
-#import "JXCategoryImageView.h"
 
-@interface JXCategoryImageCellModel : JXCategoryTitleCellModel
+typedef NS_ENUM(NSUInteger, JXCategoryTitleImageType) {
+    JXCategoryTitleImageType_OnlyImage = 0,
+    JXCategoryTitleImageType_TopImage,
+    JXCategoryTitleImageType_LeftImage,
+    JXCategoryTitleImageType_BottomImage,
+    JXCategoryTitleImageType_RightImage,
+};
 
-@property (nonatomic, assign) JXCategoryImageType imageType;
+@interface JXCategoryTitleImageCellModel : JXCategoryTitleCellModel
+
+@property (nonatomic, assign) JXCategoryTitleImageType imageType;
 
 @property (nonatomic, copy) NSString *imageName;    //加载bundle内的图片
 

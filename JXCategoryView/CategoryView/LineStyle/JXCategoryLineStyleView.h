@@ -7,13 +7,14 @@
 //
 
 #import "JXCategoryBackgroundImageView.h"
+#import "JXCategoryLineStyleCell.h"
+#import "JXCategoryLineStyleCellModel.h"
 
 typedef NS_ENUM(NSUInteger, JXCategoryLineStyle) {
     JXCategoryLineStyle_None = 0,
     JXCategoryLineStyle_JD,
     JXCategoryLineStyle_IQIYI,
 };
-
 
 /*
  1、JXCategoryLineStyle不能是JXCategoryLineStyle_None；

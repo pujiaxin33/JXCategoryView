@@ -6,14 +6,14 @@
 //  Copyright © 2018年 jiaxin. All rights reserved.
 //
 
-#import "JXCategoryImageCell.h"
-#import "JXCategoryImageCellModel.h"
+#import "JXCategoryTitleImageCell.h"
+#import "JXCategoryTitleImageCellModel.h"
 
-@interface JXCategoryImageCell() <NSURLSessionDownloadDelegate>
+@interface JXCategoryTitleImageCell() <NSURLSessionDownloadDelegate>
 @property (nonatomic, strong) NSURLSession *session;
 @end
 
-@implementation JXCategoryImageCell
+@implementation JXCategoryTitleImageCell
 
 - (void)initializeViews {
     [super initializeViews];
@@ -28,19 +28,19 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
 
-    JXCategoryImageCellModel *myCellModel = (JXCategoryImageCellModel *)self.cellModel;
+    JXCategoryTitleImageCellModel *myCellModel = (JXCategoryTitleImageCellModel *)self.cellModel;
     self.titleLabel.hidden = NO;
     CGSize imageSize = myCellModel.imageSize;
     self.imageView.bounds = CGRectMake(0, 0, imageSize.width, imageSize.height);
     switch (myCellModel.imageType) {
-        case JXCategoryImageType_OnlyImage:
+        case JXCategoryTitleImageType_OnlyImage:
         {
             self.titleLabel.hidden = YES;
             self.imageView.center = self.contentView.center;
         }
             break;
 
-        case JXCategoryImageType_TopImage:
+        case JXCategoryTitleImageType_TopImage:
         {
             CGFloat contentHeight = imageSize.height + myCellModel.titleImageSpacing + self.titleLabel.bounds.size.height;
             self.imageView.center = CGPointMake(self.contentView.center.x, (self.contentView.bounds.size.height - contentHeight)/2 + imageSize.height/2);
@@ -48,7 +48,7 @@
         }
             break;
 
-        case JXCategoryImageType_LeftImage:
+        case JXCategoryTitleImageType_LeftImage:
         {
             CGFloat contentWidth = imageSize.width + myCellModel.titleImageSpacing + self.titleLabel.bounds.size.width;
             self.imageView.center = CGPointMake((self.contentView.bounds.size.width - contentWidth)/2 + imageSize.width/2, self.contentView.center.y);
@@ -56,7 +56,7 @@
         }
             break;
 
-        case JXCategoryImageType_BottomImage:
+        case JXCategoryTitleImageType_BottomImage:
         {
             CGFloat contentHeight = imageSize.height + myCellModel.titleImageSpacing + self.titleLabel.bounds.size.height;
             self.titleLabel.center = CGPointMake(self.contentView.center.x, (self.contentView.bounds.size.height - contentHeight)/2 + self.titleLabel.bounds.size.height/2);
@@ -64,7 +64,7 @@
         }
             break;
 
-        case JXCategoryImageType_RightImage:
+        case JXCategoryTitleImageType_RightImage:
         {
             CGFloat contentWidth = imageSize.width + myCellModel.titleImageSpacing + self.titleLabel.bounds.size.width;
             self.titleLabel.center = CGPointMake((self.contentView.bounds.size.width - contentWidth)/2 + self.titleLabel.bounds.size.width/2, self.contentView.center.y);
@@ -80,7 +80,7 @@
 - (void)reloadDatas:(JXCategoryBaseCellModel *)cellModel {
     [super reloadDatas:cellModel];
 
-    JXCategoryImageCellModel *myCellModel = (JXCategoryImageCellModel *)cellModel;
+    JXCategoryTitleImageCellModel *myCellModel = (JXCategoryTitleImageCellModel *)cellModel;
     if (myCellModel.imageName != nil) {
         self.imageView.image = [UIImage imageNamed:myCellModel.imageName];
     }else if (myCellModel.imageURL != nil) {

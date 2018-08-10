@@ -7,8 +7,6 @@
 //
 
 #import "JXCategoryTitleView.h"
-#import "JXCategoryTitleCell.h"
-#import "JXCategoryTitleCellModel.h"
 #import "UIColor+JXAdd.h"
 
 @interface JXCategoryTitleView ()
@@ -102,9 +100,9 @@
 
 - (UIColor *)interpolationColorFrom:(UIColor *)fromColor to:(UIColor *)toColor percent:(CGFloat)percent
 {
-    CGFloat red = [self interpolationFrom:fromColor.red to:toColor.red percent:percent];
-    CGFloat green = [self interpolationFrom:fromColor.green to:toColor.green percent:percent];
-    CGFloat blue = [self interpolationFrom:fromColor.blue to:toColor.blue percent:percent];
+    CGFloat red = [self interpolationFrom:fromColor.jx_red to:toColor.jx_red percent:percent];
+    CGFloat green = [self interpolationFrom:fromColor.jx_green to:toColor.jx_green percent:percent];
+    CGFloat blue = [self interpolationFrom:fromColor.jx_blue to:toColor.jx_blue percent:percent];
     return [UIColor colorWithRed:red green:green blue:blue alpha:1];
 
 }

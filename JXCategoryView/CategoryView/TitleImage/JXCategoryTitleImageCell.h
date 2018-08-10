@@ -8,7 +8,7 @@
 
 #import "JXCategoryTitleCell.h"
 
-@interface JXCategoryImageCell : JXCategoryTitleCell
+@interface JXCategoryTitleImageCell : JXCategoryTitleCell
 
 @property (nonatomic, strong) UIImageView *imageView;
 

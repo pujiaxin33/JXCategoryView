@@ -6,28 +6,28 @@
 //  Copyright © 2018年 jiaxin. All rights reserved.
 //
 
-#import "JXCategoryImageView.h"
-#import "JXCategoryImageCell.h"
-#import "JXCategoryImageCellModel.h"
+#import "JXCategoryTitleImageView.h"
+#import "JXCategoryTitleImageCell.h"
+#import "JXCategoryTitleImageCellModel.h"
 
-@implementation JXCategoryImageView
+@implementation JXCategoryTitleImageView
 
 - (void)initializeDatas {
     [super initializeDatas];
 
-    _imageType = JXCategoryImageType_LeftImage;
+    _imageType = JXCategoryTitleImageType_LeftImage;
     _imageSize = CGSizeMake(20, 20);
     _titleImageSpacing = 5;
 }
 
 - (Class)preferredCellClass {
-    return [JXCategoryImageCell class];
+    return [JXCategoryTitleImageCell class];
 }
 
 - (void)refreshDataSource {
     NSMutableArray *tempArray = [NSMutableArray array];
     for (int i = 0; i < self.titles.count; i++) {
-        JXCategoryImageCellModel *cellModel = [[JXCategoryImageCellModel alloc] init];
+        JXCategoryTitleImageCellModel *cellModel = [[JXCategoryTitleImageCellModel alloc] init];
         [tempArray addObject:cellModel];
     }
     self.dataSource = tempArray;
@@ -36,7 +36,7 @@
 - (void)refreshCellModel:(JXCategoryBaseCellModel *)cellModel index:(NSInteger)index {
     [super refreshCellModel:cellModel index:index];
 
-    JXCategoryImageCellModel *myCellModel = (JXCategoryImageCellModel *)cellModel;
+    JXCategoryTitleImageCellModel *myCellModel = (JXCategoryTitleImageCellModel *)cellModel;
     myCellModel.imageType = self.imageType;
     myCellModel.imageSize = self.imageSize;
     myCellModel.titleImageSpacing = self.titleImageSpacing;

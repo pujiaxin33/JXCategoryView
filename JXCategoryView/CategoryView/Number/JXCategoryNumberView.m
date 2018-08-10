@@ -7,8 +7,6 @@
 //
 
 #import "JXCategoryNumberView.h"
-#import "JXCategoryNumberCell.h"
-#import "JXCategoryNumberCellModel.h"
 
 @implementation JXCategoryNumberView
 

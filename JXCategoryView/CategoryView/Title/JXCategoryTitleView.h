@@ -6,8 +6,9 @@
 //  Copyright © 2018年 jiaxin. All rights reserved.
 //
 
-#import "JXCategoryComponentView.h"
 #import "JXCategoryLineStyleView.h"
+#import "JXCategoryTitleCell.h"
+#import "JXCategoryTitleCellModel.h"
 
 @interface JXCategoryTitleView : JXCategoryLineStyleView
 

@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "JXCategoryBaseCell.h"
+#import "JXCategoryBaseCellModel.h"
 #import "JXCategoryCollectionView.h"
+
 @class JXCategoryBaseView;
-@class JXCategoryBaseCellModel;
 
 extern const CGFloat JXCategoryViewAutomaticDimension;
 

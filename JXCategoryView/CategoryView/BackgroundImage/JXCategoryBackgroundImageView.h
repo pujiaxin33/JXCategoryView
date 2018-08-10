@@ -7,6 +7,8 @@
 //
 
 #import "JXCategoryComponentView.h"
+#import "JXCategoryBackgroundImageCell.h"
+#import "JXCategoryBackgroundImageCellModel.h"
 
 @interface JXCategoryBackgroundImageView : JXCategoryComponentView
 

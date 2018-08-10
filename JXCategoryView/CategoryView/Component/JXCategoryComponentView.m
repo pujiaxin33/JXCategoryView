@@ -7,8 +7,6 @@
 //
 
 #import "JXCategoryComponentView.h"
-#import "JXCategoryComponentCellModel.h"
-#import "JXCategoryComponentCell.h"
 
 @interface JXCategoryComponentView()
 
