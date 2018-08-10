@@ -29,6 +29,8 @@
 
 @property (nonatomic, assign) BOOL indicatorImageViewShowEnabled;      //默认NO
 
+@property (nonatomic, assign) BOOL indicatorImageViewRollEnabled;      //默认NO
+
 @property (nonatomic, strong, readonly) UIImageView *indicatorImageView;
 
 @property (nonatomic, assign) CGSize indicatorImageViewSize;

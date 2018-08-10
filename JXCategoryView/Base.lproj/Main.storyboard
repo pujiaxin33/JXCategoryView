@@ -14,7 +14,7 @@
             <objects>
                 <tableViewController id="laL-bE-2bd" customClass="ViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="xT3-gc-uwg">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="1000"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <sections>
@@ -314,6 +314,27 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" id="76I-h5-hnU">
+                                        <rect key="frame" x="0.0" y="616" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="76I-h5-hnU" id="r2O-to-K0b">
+                                            <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="足球滚动" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bLR-f6-dDl">
+                                                    <rect key="frame" x="16" y="12" width="69.5" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="bLR-f6-dDl" secondAttribute="trailing" constant="20" symbolic="YES" id="Fwy-dH-ekc"/>
+                                                <constraint firstItem="bLR-f6-dDl" firstAttribute="centerY" secondItem="r2O-to-K0b" secondAttribute="centerY" id="Yg5-2K-35H"/>
+                                                <constraint firstItem="bLR-f6-dDl" firstAttribute="leading" secondItem="r2O-to-K0b" secondAttribute="leading" constant="16" id="rKA-Sk-eOI"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -323,6 +344,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="gkw-VA-0uO"/>
+                    <size key="freeformSize" width="375" height="1000"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FCi-rt-Crc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

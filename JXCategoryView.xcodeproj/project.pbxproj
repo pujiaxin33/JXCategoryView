@@ -19,6 +19,7 @@
 		1912A522211C1BD000A80826 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1912A521211C1BD000A80826 /* BaseViewController.m */; };
 		1912A526211C257000A80826 /* BackgroundImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1912A525211C257000A80826 /* BackgroundImageViewController.m */; };
 		1912A52A211C3D1600A80826 /* IndicatorImageViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1912A529211C3D1600A80826 /* IndicatorImageViewViewController.m */; };
+		1912A533211D08C800A80826 /* FootballViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1912A532211D08C800A80826 /* FootballViewController.m */; };
 		193022FA21199CC800AF1444 /* JXCategoryTitleCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 193022DD21199CC800AF1444 /* JXCategoryTitleCellModel.m */; };
 		193022FB21199CC800AF1444 /* JXCategoryTitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 193022DE21199CC800AF1444 /* JXCategoryTitleCell.m */; };
 		193022FC21199CC800AF1444 /* JXCategoryTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 193022DF21199CC800AF1444 /* JXCategoryTitleView.m */; };
@@ -70,6 +71,8 @@
 		1912A525211C257000A80826 /* BackgroundImageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BackgroundImageViewController.m; sourceTree = "<group>"; };
 		1912A528211C3D1600A80826 /* IndicatorImageViewViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IndicatorImageViewViewController.h; sourceTree = "<group>"; };
 		1912A529211C3D1600A80826 /* IndicatorImageViewViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IndicatorImageViewViewController.m; sourceTree = "<group>"; };
+		1912A531211D08C800A80826 /* FootballViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FootballViewController.h; sourceTree = "<group>"; };
+		1912A532211D08C800A80826 /* FootballViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FootballViewController.m; sourceTree = "<group>"; };
 		193022DA21199CC800AF1444 /* JXCategoryTitleCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXCategoryTitleCellModel.h; sourceTree = "<group>"; };
 		193022DB21199CC800AF1444 /* JXCategoryTitleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXCategoryTitleCell.h; sourceTree = "<group>"; };
 		193022DC21199CC800AF1444 /* JXCategoryTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXCategoryTitleView.h; sourceTree = "<group>"; };
@@ -209,6 +212,15 @@
 			path = IndicatorImageView;
 			sourceTree = "<group>";
 		};
+		1912A530211D08B500A80826 /* Football */ = {
+			isa = PBXGroup;
+			children = (
+				1912A531211D08C800A80826 /* FootballViewController.h */,
+				1912A532211D08C800A80826 /* FootballViewController.m */,
+			);
+			path = Football;
+			sourceTree = "<group>";
+		};
 		193022D821199CC800AF1444 /* CategoryView */ = {
 			isa = PBXGroup;
 			children = (
@@ -316,6 +328,7 @@
 		19302322211ACE1500AF1444 /* Example */ = {
 			isa = PBXGroup;
 			children = (
+				1912A530211D08B500A80826 /* Football */,
 				1912A527211C3CF400A80826 /* IndicatorImageView */,
 				1930232A211AD33000AF1444 /* Common */,
 				1912A51F211C1AC100A80826 /* BackgroundImage */,
@@ -456,6 +469,7 @@
 				1912A522211C1BD000A80826 /* BaseViewController.m in Sources */,
 				19302325211AD1B300AF1444 /* ImageSettingViewController.m in Sources */,
 				19302321211A92E600AF1444 /* JXCategoryImageCellModel.m in Sources */,
+				1912A533211D08C800A80826 /* FootballViewController.m in Sources */,
 				1930231E211A92D900AF1444 /* JXCategoryImageCell.m in Sources */,
 				1930230B211A812F00AF1444 /* JXCategoryLineStyleView.m in Sources */,
 				1930230721199CC800AF1444 /* JXCategoryBaseCellModel.m in Sources */,

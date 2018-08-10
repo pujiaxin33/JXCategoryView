@@ -41,6 +41,7 @@
     _separatorLineSize = CGSizeMake(1/[UIScreen mainScreen].scale, 20);
     _indicatorImageViewShowEnabled = NO;
     _indicatorImageViewSize = CGSizeMake(30, 20);
+    _indicatorImageViewRollEnabled = NO;
 }
 
 - (void)initializeViews {
@@ -213,6 +214,9 @@
         self.indicatorLineView.frame = frame;
 
         self.indicatorImageView.center = CGPointMake(self.indicatorLineView.center.x, self.bounds.size.height - self.indicatorImageViewSize.height/2);
+        if (self.indicatorImageViewRollEnabled) {
+            self.indicatorImageView.transform = CGAffineTransformMakeRotation(M_PI*2*remainderRatio);
+        }
     }
 }
 
