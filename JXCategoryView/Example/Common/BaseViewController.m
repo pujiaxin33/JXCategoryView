@@ -51,6 +51,12 @@
     [self.view addSubview:self.categoryView];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+
+    self.navigationController.interactivePopGestureRecognizer.enabled = (self.categoryView.selectedIndex == 0);
+}
+
 - (Class)preferredCategoryViewClass {
     return [JXCategoryBaseView class];
 }
