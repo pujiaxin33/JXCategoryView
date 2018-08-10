@@ -23,6 +23,7 @@
     _titleSelectedColor = [UIColor redColor];
     _titleFont = [UIFont systemFontOfSize:15];
     _titleColorGradientEnabled = NO;
+    self.backgroundEllipseLayerWidthIncrement = 10;
 }
 
 #pragma mark - Override
@@ -55,11 +56,11 @@
 - (void)refreshLeftCellModel:(JXCategoryBaseCellModel *)leftCellModel rightCellModel:(JXCategoryBaseCellModel *)rightCellModel ratio:(CGFloat)ratio {
     [super refreshLeftCellModel:leftCellModel rightCellModel:rightCellModel ratio:ratio];
 
-    //处理颜色渐变
     if (!self.titleColorGradientEnabled) {
         return;
     }
 
+    //处理颜色渐变
     JXCategoryTitleCellModel *leftModel = (JXCategoryTitleCellModel *)leftCellModel;
     JXCategoryTitleCellModel *rightModel = (JXCategoryTitleCellModel *)rightCellModel;
     if (leftModel.selected) {

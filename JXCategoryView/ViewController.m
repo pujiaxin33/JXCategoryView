@@ -124,6 +124,7 @@
         case 11:
         {
             //手势处理
+            titleCategoryView.indicatorLineViewShowEnabled = YES;
         }
             break;
         case 13:

@@ -29,7 +29,6 @@
         return;
     }
 
-
     CGFloat ratio = contentOffset.x/self.contentScrollView.bounds.size.width;
     ratio = MAX(0, MIN(self.dataSource.count - 1, ratio));
     NSInteger baseIndex = floorf(ratio);
