@@ -15,6 +15,7 @@
 #import "BackgroundImageViewController.h"
 #import "IndicatorImageViewViewController.h"
 #import "FootballViewController.h"
+#import "JXCategoryView-Swift.h"
 
 @interface ViewController ()
 
@@ -62,6 +63,9 @@
         return;
     }else if (indexPath.row == 10) {
         //个人主页
+        PagingViewController *pagingVC = [[PagingViewController alloc] init];
+        pagingVC.title = title;
+        [self.navigationController pushViewController:pagingVC animated:YES];
         return;
     }else if (indexPath.row == 12) {
         //SegmentedControl

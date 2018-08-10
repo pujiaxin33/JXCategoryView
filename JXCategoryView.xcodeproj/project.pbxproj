@@ -46,6 +46,16 @@
 		19302337211AEB6300AF1444 /* NumberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19302336211AEB6300AF1444 /* NumberViewController.m */; };
 		19302389211B22E300AF1444 /* SegmentedControlViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19302388211B22E300AF1444 /* SegmentedControlViewController.m */; };
 		194E8AF3211D5CE000C22FD4 /* JXCategoryTitleImageCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 194E8AF1211D5CE000C22FD4 /* JXCategoryTitleImageCellModel.m */; };
+		19870BC0211D7C0300C23CAA /* JXPagingMainTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19870BBD211D7C0300C23CAA /* JXPagingMainTableView.swift */; };
+		19870BC1211D7C0300C23CAA /* JXPagingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19870BBE211D7C0300C23CAA /* JXPagingView.swift */; };
+		19870BC2211D7C0300C23CAA /* JXPagingListContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19870BBF211D7C0300C23CAA /* JXPagingListContainerView.swift */; };
+		19870BCD211D7FD000C23CAA /* HobbyListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19870BC7211D7FCF00C23CAA /* HobbyListView.swift */; };
+		19870BCE211D7FD000C23CAA /* TestListBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19870BC8211D7FCF00C23CAA /* TestListBaseView.swift */; };
+		19870BCF211D7FD000C23CAA /* PartnerListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19870BC9211D7FCF00C23CAA /* PartnerListView.swift */; };
+		19870BD0211D7FD000C23CAA /* PowerListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19870BCA211D7FCF00C23CAA /* PowerListView.swift */; };
+		19870BD1211D7FD000C23CAA /* PagingViewTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19870BCB211D7FD000C23CAA /* PagingViewTableHeaderView.swift */; };
+		19870BD2211D7FD000C23CAA /* PagingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19870BCC211D7FD000C23CAA /* PagingViewController.swift */; };
+		19870BD4211D812C00C23CAA /* lufei.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 19870BD3211D812C00C23CAA /* lufei.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -126,6 +136,17 @@
 		19302388211B22E300AF1444 /* SegmentedControlViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SegmentedControlViewController.m; sourceTree = "<group>"; };
 		194E8AF1211D5CE000C22FD4 /* JXCategoryTitleImageCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXCategoryTitleImageCellModel.m; sourceTree = "<group>"; };
 		194E8AF2211D5CE000C22FD4 /* JXCategoryTitleImageCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXCategoryTitleImageCellModel.h; sourceTree = "<group>"; };
+		19870BBB211D748100C23CAA /* Objc-Swift-bridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Objc-Swift-bridge.h"; sourceTree = "<group>"; };
+		19870BBD211D7C0300C23CAA /* JXPagingMainTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JXPagingMainTableView.swift; sourceTree = "<group>"; };
+		19870BBE211D7C0300C23CAA /* JXPagingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JXPagingView.swift; sourceTree = "<group>"; };
+		19870BBF211D7C0300C23CAA /* JXPagingListContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JXPagingListContainerView.swift; sourceTree = "<group>"; };
+		19870BC7211D7FCF00C23CAA /* HobbyListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HobbyListView.swift; sourceTree = "<group>"; };
+		19870BC8211D7FCF00C23CAA /* TestListBaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestListBaseView.swift; sourceTree = "<group>"; };
+		19870BC9211D7FCF00C23CAA /* PartnerListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PartnerListView.swift; sourceTree = "<group>"; };
+		19870BCA211D7FCF00C23CAA /* PowerListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PowerListView.swift; sourceTree = "<group>"; };
+		19870BCB211D7FD000C23CAA /* PagingViewTableHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagingViewTableHeaderView.swift; sourceTree = "<group>"; };
+		19870BCC211D7FD000C23CAA /* PagingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagingViewController.swift; sourceTree = "<group>"; };
+		19870BD3211D812C00C23CAA /* lufei.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = lufei.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,6 +190,8 @@
 				190A54E8206397370050B327 /* LaunchScreen.storyboard */,
 				190A54EB206397370050B327 /* Info.plist */,
 				190A54EC206397370050B327 /* main.m */,
+				19870BBB211D748100C23CAA /* Objc-Swift-bridge.h */,
+				19870BD3211D812C00C23CAA /* lufei.jpg */,
 			);
 			path = JXCategoryView;
 			sourceTree = "<group>";
@@ -336,6 +359,7 @@
 				1912A523211C1E3800A80826 /* Title */,
 				19302326211AD30900AF1444 /* TitleImage */,
 				19302334211AEB3500AF1444 /* Number */,
+				19870BB3211D73DC00C23CAA /* PagingView */,
 				19302384211B22B700AF1444 /* SegmentedControl */,
 				1912A530211D08B500A80826 /* Football */,
 			);
@@ -380,6 +404,38 @@
 				19302388211B22E300AF1444 /* SegmentedControlViewController.m */,
 			);
 			path = SegmentedControl;
+			sourceTree = "<group>";
+		};
+		19870BB3211D73DC00C23CAA /* PagingView */ = {
+			isa = PBXGroup;
+			children = (
+				19870BC6211D7FAC00C23CAA /* Example */,
+				19870BBC211D7C0300C23CAA /* JXPagingView */,
+			);
+			path = PagingView;
+			sourceTree = "<group>";
+		};
+		19870BBC211D7C0300C23CAA /* JXPagingView */ = {
+			isa = PBXGroup;
+			children = (
+				19870BBD211D7C0300C23CAA /* JXPagingMainTableView.swift */,
+				19870BBE211D7C0300C23CAA /* JXPagingView.swift */,
+				19870BBF211D7C0300C23CAA /* JXPagingListContainerView.swift */,
+			);
+			path = JXPagingView;
+			sourceTree = "<group>";
+		};
+		19870BC6211D7FAC00C23CAA /* Example */ = {
+			isa = PBXGroup;
+			children = (
+				19870BCC211D7FD000C23CAA /* PagingViewController.swift */,
+				19870BC7211D7FCF00C23CAA /* HobbyListView.swift */,
+				19870BCB211D7FD000C23CAA /* PagingViewTableHeaderView.swift */,
+				19870BC9211D7FCF00C23CAA /* PartnerListView.swift */,
+				19870BCA211D7FCF00C23CAA /* PowerListView.swift */,
+				19870BC8211D7FCF00C23CAA /* TestListBaseView.swift */,
+			);
+			path = Example;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -442,6 +498,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				190A54EA206397370050B327 /* LaunchScreen.storyboard in Resources */,
+				19870BD4211D812C00C23CAA /* lufei.jpg in Resources */,
 				190A54E7206397370050B327 /* Assets.xcassets in Resources */,
 				190A54E5206397370050B327 /* Main.storyboard in Resources */,
 			);
@@ -457,7 +514,11 @@
 				19302329211AD31C00AF1444 /* TitleImageViewController.m in Sources */,
 				19302337211AEB6300AF1444 /* NumberViewController.m in Sources */,
 				1930230321199CC800AF1444 /* JXCategoryCollectionView.m in Sources */,
+				19870BD2211D7FD000C23CAA /* PagingViewController.swift in Sources */,
+				19870BCE211D7FD000C23CAA /* TestListBaseView.swift in Sources */,
 				1912A51E211C171500A80826 /* JXCategoryBackgroundImageCellModel.m in Sources */,
+				19870BC0211D7C0300C23CAA /* JXPagingMainTableView.swift in Sources */,
+				19870BD0211D7FD000C23CAA /* PowerListView.swift in Sources */,
 				194E8AF3211D5CE000C22FD4 /* JXCategoryTitleImageCellModel.m in Sources */,
 				1912A526211C257000A80826 /* BackgroundImageViewController.m in Sources */,
 				19302389211B22E300AF1444 /* SegmentedControlViewController.m in Sources */,
@@ -471,10 +532,12 @@
 				193022FE21199CC800AF1444 /* JXCategoryComponentView.m in Sources */,
 				1912A522211C1BD000A80826 /* BaseViewController.m in Sources */,
 				19302325211AD1B300AF1444 /* TitleImageSettingViewController.m in Sources */,
+				19870BCF211D7FD000C23CAA /* PartnerListView.swift in Sources */,
 				1912A533211D08C800A80826 /* FootballViewController.m in Sources */,
 				1930231E211A92D900AF1444 /* JXCategoryTitleImageCell.m in Sources */,
 				1930230B211A812F00AF1444 /* JXCategoryLineStyleView.m in Sources */,
 				1930230721199CC800AF1444 /* JXCategoryBaseCellModel.m in Sources */,
+				19870BC1211D7C0300C23CAA /* JXPagingView.swift in Sources */,
 				193022FC21199CC800AF1444 /* JXCategoryTitleView.m in Sources */,
 				19302330211AD88300AF1444 /* TitleViewController.m in Sources */,
 				190A54E2206397370050B327 /* ViewController.m in Sources */,
@@ -483,9 +546,12 @@
 				190A54ED206397370050B327 /* main.m in Sources */,
 				1912A51B211C170500A80826 /* JXCategoryBackgroundImageCell.m in Sources */,
 				1930231B211A92C200AF1444 /* JXCategoryTitleImageView.m in Sources */,
+				19870BC2211D7C0300C23CAA /* JXPagingListContainerView.swift in Sources */,
 				1912A52A211C3D1600A80826 /* IndicatorImageViewViewController.m in Sources */,
 				1930230621199CC800AF1444 /* JXCategoryBaseCell.m in Sources */,
+				19870BD1211D7FD000C23CAA /* PagingViewTableHeaderView.swift in Sources */,
 				1930230221199CC800AF1444 /* JXCategoryNumberCellModel.m in Sources */,
+				19870BCD211D7FD000C23CAA /* HobbyListView.swift in Sources */,
 				193022FF21199CC800AF1444 /* JXCategoryComponentCellModel.m in Sources */,
 				190A54DF206397370050B327 /* AppDelegate.m in Sources */,
 				1930230021199CC800AF1444 /* JXCategoryNumberView.m in Sources */,
@@ -635,6 +701,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jiaxin.JXCategoryView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "JXCategoryView/Objc-Swift-bridge.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -653,6 +720,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jiaxin.JXCategoryView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "JXCategoryView/Objc-Swift-bridge.h";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
