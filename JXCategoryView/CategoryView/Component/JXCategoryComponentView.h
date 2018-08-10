@@ -76,4 +76,10 @@
  */
 - (void)refreshLeftCellModel:(JXCategoryBaseCellModel *)leftCellModel rightCellModel:(JXCategoryBaseCellModel *)rightCellModel ratio:(CGFloat)ratio NS_REQUIRES_SUPER;
 
+- (CGFloat)getLineWidthWithIndex:(NSInteger)index;
+
+- (CGFloat)getbackgroundEllipseLayerWidthWithIndex:(NSInteger)index;
+
+- (CGFloat)getbackgroundEllipseLayerCornerRadius;
+
 @end
