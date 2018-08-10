@@ -55,7 +55,7 @@
 		19870BD0211D7FD000C23CAA /* PowerListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19870BCA211D7FCF00C23CAA /* PowerListView.swift */; };
 		19870BD1211D7FD000C23CAA /* PagingViewTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19870BCB211D7FD000C23CAA /* PagingViewTableHeaderView.swift */; };
 		19870BD2211D7FD000C23CAA /* PagingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19870BCC211D7FD000C23CAA /* PagingViewController.swift */; };
-		19870BD4211D812C00C23CAA /* lufei.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 19870BD3211D812C00C23CAA /* lufei.jpg */; };
+		19870C29211D857F00C23CAA /* lufei.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 19870C28211D857F00C23CAA /* lufei.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -146,7 +146,7 @@
 		19870BCA211D7FCF00C23CAA /* PowerListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PowerListView.swift; sourceTree = "<group>"; };
 		19870BCB211D7FD000C23CAA /* PagingViewTableHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagingViewTableHeaderView.swift; sourceTree = "<group>"; };
 		19870BCC211D7FD000C23CAA /* PagingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagingViewController.swift; sourceTree = "<group>"; };
-		19870BD3211D812C00C23CAA /* lufei.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = lufei.jpg; sourceTree = "<group>"; };
+		19870C28211D857F00C23CAA /* lufei.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = lufei.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,7 +180,7 @@
 			isa = PBXGroup;
 			children = (
 				19302322211ACE1500AF1444 /* Example */,
-				193022D821199CC800AF1444 /* CategoryView */,
+				193022D821199CC800AF1444 /* JXCategoryView */,
 				190A54DD206397370050B327 /* AppDelegate.h */,
 				190A54DE206397370050B327 /* AppDelegate.m */,
 				190A54E0206397370050B327 /* ViewController.h */,
@@ -191,7 +191,7 @@
 				190A54EB206397370050B327 /* Info.plist */,
 				190A54EC206397370050B327 /* main.m */,
 				19870BBB211D748100C23CAA /* Objc-Swift-bridge.h */,
-				19870BD3211D812C00C23CAA /* lufei.jpg */,
+				19870C28211D857F00C23CAA /* lufei.jpg */,
 			);
 			path = JXCategoryView;
 			sourceTree = "<group>";
@@ -245,7 +245,7 @@
 			path = Football;
 			sourceTree = "<group>";
 		};
-		193022D821199CC800AF1444 /* CategoryView */ = {
+		193022D821199CC800AF1444 /* JXCategoryView */ = {
 			isa = PBXGroup;
 			children = (
 				1912A674211D411200A80826 /* JXCategoryView.h */,
@@ -258,7 +258,7 @@
 				19302318211A929B00AF1444 /* TitleImage */,
 				193022E721199CC800AF1444 /* Number */,
 			);
-			path = CategoryView;
+			path = JXCategoryView;
 			sourceTree = "<group>";
 		};
 		193022D921199CC800AF1444 /* Title */ = {
@@ -498,7 +498,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				190A54EA206397370050B327 /* LaunchScreen.storyboard in Resources */,
-				19870BD4211D812C00C23CAA /* lufei.jpg in Resources */,
+				19870C29211D857F00C23CAA /* lufei.jpg in Resources */,
 				190A54E7206397370050B327 /* Assets.xcassets in Resources */,
 				190A54E5206397370050B327 /* Main.storyboard in Resources */,
 			);

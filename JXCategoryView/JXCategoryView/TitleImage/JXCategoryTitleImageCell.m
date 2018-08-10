@@ -84,7 +84,7 @@
     if (myCellModel.imageName != nil) {
         self.imageView.image = [UIImage imageNamed:myCellModel.imageName];
     }else if (myCellModel.imageURL != nil) {
-#warning 如果业务需要从远端下载图片进行加载，务必使用SDWebImage等第三方库进行下载。我这里只是写的demo代码，没有缓存逻辑。
+        NSAssert(NO, @"如果业务需要从远端下载图片进行加载，务必使用SDWebImage等第三方库进行下载。我这里只是写的demo代码，没有缓存逻辑。");
         NSURLRequest *request = [NSURLRequest requestWithURL:myCellModel.imageURL];
         NSURLSessionDownloadTask *task = [self.session downloadTaskWithRequest:request];
         [task resume];
@@ -93,7 +93,7 @@
         if (myCellModel.selectedImageName != nil) {
             self.imageView.image = [UIImage imageNamed:myCellModel.selectedImageName];
         }else if (myCellModel.selectedImageURL != nil) {
-#warning 如果业务需要从远端下载图片进行加载，务必使用SDWebImage等第三方库进行下载。我这里只是写的demo代码，没有缓存逻辑。
+            NSAssert(NO, @"如果业务需要从远端下载图片进行加载，务必使用SDWebImage等第三方库进行下载。我这里只是写的demo代码，没有缓存逻辑。");
             NSURLRequest *request = [NSURLRequest requestWithURL:myCellModel.selectedImageURL];
             NSURLSessionDownloadTask *task = [self.session downloadTaskWithRequest:request];
             [task resume];
