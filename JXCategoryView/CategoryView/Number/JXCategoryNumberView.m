@@ -15,7 +15,7 @@
 - (void)initializeDatas {
     [super initializeDatas];
 
-    self.cellSpacing = 15;
+    self.cellSpacing = 25;
 }
 
 - (Class)preferredCellClass {

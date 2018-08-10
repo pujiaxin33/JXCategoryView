@@ -53,7 +53,7 @@ const CGFloat JXCategoryViewAutomaticDimension = -1;
     _dataSource = [NSMutableArray array];
     _selectedIndex = 0;
     _cellWidth = JXCategoryViewAutomaticDimension;
-    _cellSpacing = 10;
+    _cellSpacing = 20;
     _averageCellWidthEnabled = YES;
 }
 
