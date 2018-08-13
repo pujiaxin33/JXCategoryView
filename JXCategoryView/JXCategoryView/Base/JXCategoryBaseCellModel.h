@@ -11,6 +11,8 @@
 
 @interface JXCategoryBaseCellModel : NSObject
 
+@property (nonatomic, assign) NSUInteger index;
+
 @property (nonatomic, assign) BOOL selected;
 
 @property (nonatomic, assign) CGFloat cellWidth;

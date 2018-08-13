@@ -56,6 +56,8 @@
 		19870BD1211D7FD000C23CAA /* PagingViewTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19870BCB211D7FD000C23CAA /* PagingViewTableHeaderView.swift */; };
 		19870BD2211D7FD000C23CAA /* PagingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19870BCC211D7FD000C23CAA /* PagingViewController.swift */; };
 		19870C29211D857F00C23CAA /* lufei.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 19870C28211D857F00C23CAA /* lufei.jpg */; };
+		19870C8321218DAC00C23CAA /* NaviSegmentedControlViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19870C8221218DAC00C23CAA /* NaviSegmentedControlViewController.m */; };
+		19870C8621218E3A00C23CAA /* SegmentedListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19870C8521218E3A00C23CAA /* SegmentedListViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -147,6 +149,10 @@
 		19870BCB211D7FD000C23CAA /* PagingViewTableHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagingViewTableHeaderView.swift; sourceTree = "<group>"; };
 		19870BCC211D7FD000C23CAA /* PagingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagingViewController.swift; sourceTree = "<group>"; };
 		19870C28211D857F00C23CAA /* lufei.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = lufei.jpg; sourceTree = "<group>"; };
+		19870C8121218DAC00C23CAA /* NaviSegmentedControlViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NaviSegmentedControlViewController.h; sourceTree = "<group>"; };
+		19870C8221218DAC00C23CAA /* NaviSegmentedControlViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NaviSegmentedControlViewController.m; sourceTree = "<group>"; };
+		19870C8421218E3A00C23CAA /* SegmentedListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SegmentedListViewController.h; sourceTree = "<group>"; };
+		19870C8521218E3A00C23CAA /* SegmentedListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SegmentedListViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -400,8 +406,12 @@
 		19302384211B22B700AF1444 /* SegmentedControl */ = {
 			isa = PBXGroup;
 			children = (
+				19870C8421218E3A00C23CAA /* SegmentedListViewController.h */,
+				19870C8521218E3A00C23CAA /* SegmentedListViewController.m */,
 				19302387211B22E300AF1444 /* SegmentedControlViewController.h */,
 				19302388211B22E300AF1444 /* SegmentedControlViewController.m */,
+				19870C8121218DAC00C23CAA /* NaviSegmentedControlViewController.h */,
+				19870C8221218DAC00C23CAA /* NaviSegmentedControlViewController.m */,
 			);
 			path = SegmentedControl;
 			sourceTree = "<group>";
@@ -527,6 +537,7 @@
 				193022FD21199CC800AF1444 /* JXCategoryComponentCell.m in Sources */,
 				1930230521199CC800AF1444 /* JXCategoryBaseView.m in Sources */,
 				19302314211A90D700AF1444 /* JXCategoryLineStyleCell.m in Sources */,
+				19870C8621218E3A00C23CAA /* SegmentedListViewController.m in Sources */,
 				193022FA21199CC800AF1444 /* JXCategoryTitleCellModel.m in Sources */,
 				1912A518211C16F000A80826 /* JXCategoryBackgroundImageView.m in Sources */,
 				193022FE21199CC800AF1444 /* JXCategoryComponentView.m in Sources */,
@@ -536,6 +547,7 @@
 				1912A533211D08C800A80826 /* FootballViewController.m in Sources */,
 				1930231E211A92D900AF1444 /* JXCategoryTitleImageCell.m in Sources */,
 				1930230B211A812F00AF1444 /* JXCategoryLineStyleView.m in Sources */,
+				19870C8321218DAC00C23CAA /* NaviSegmentedControlViewController.m in Sources */,
 				1930230721199CC800AF1444 /* JXCategoryBaseCellModel.m in Sources */,
 				19870BC1211D7C0300C23CAA /* JXPagingView.swift in Sources */,
 				193022FC21199CC800AF1444 /* JXCategoryTitleView.m in Sources */,

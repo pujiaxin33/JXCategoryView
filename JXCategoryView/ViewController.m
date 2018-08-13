@@ -11,7 +11,7 @@
 #import "TitleViewController.h"
 #import "TitleImageViewController.h"
 #import "NumberViewController.h"
-#import "SegmentedControlViewController.h"
+#import "SegmentedListViewController.h"
 #import "BackgroundImageViewController.h"
 #import "IndicatorImageViewViewController.h"
 #import "FootballViewController.h"
@@ -70,9 +70,9 @@
         return;
     }else if (indexPath.row == 12) {
         //SegmentedControl
-        SegmentedControlViewController *segmentedControlVC = [[SegmentedControlViewController alloc] init];
-        segmentedControlVC.title = title;
-        [self.navigationController pushViewController:segmentedControlVC animated:YES];
+        UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        SegmentedListViewController *segmentedVC = [storyBoard instantiateViewControllerWithIdentifier:NSStringFromClass([SegmentedListViewController class])];
+        [self.navigationController pushViewController:segmentedVC animated:YES];
         return;
     }else if (indexPath.row == 14) {
         //足球滚动
@@ -137,6 +137,15 @@
             //SeparatorLine
             titleCategoryView.indicatorLineViewShowEnabled = YES;
             titleCategoryView.separatorLineShowEnabled = YES;
+        }
+            break;
+        case 15:
+        {
+            //文字遮罩
+            titleCategoryView.indicatorLineViewShowEnabled = NO;
+            titleCategoryView.titleColorGradientEnabled = NO;
+            titleCategoryView.backgroundEllipseLayerShowEnabled = YES;
+            titleCategoryView.titleLabelMaskEnabled = YES;
         }
             break;
 

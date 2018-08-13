@@ -69,6 +69,7 @@
 
     CGRect selectedCellFrame = CGRectZero;
     CGFloat selectedLineWidth = 0;
+    JXCategoryComponentCellModel *selectedCellModel = nil;
     for (int i = 0; i < self.dataSource.count; i++) {
         JXCategoryComponentCellModel *cellModel = (JXCategoryComponentCellModel *)self.dataSource[i];
         cellModel.zoomEnabled = self.zoomEnabled;
@@ -76,10 +77,12 @@
         cellModel.sepratorLineShowEnabled = self.separatorLineShowEnabled;
         cellModel.separatorLineColor = self.separatorLineColor;
         cellModel.separatorLineSize = self.separatorLineSize;
+        cellModel.backgroundEllipseLayerMaskFrame = CGRectZero;
         if (i == self.dataSource.count - 1) {
             cellModel.sepratorLineShowEnabled = NO;
         }
         if (i == self.selectedIndex) {
+            selectedCellModel = cellModel;
             cellModel.selected = YES;
             cellModel.zoomScale = self.zoomScale;
             selectedCellFrame = [self getTargetCellFrame:i];
@@ -112,8 +115,10 @@
     self.backgroundEllipseLayer.hidden = !self.backgroundEllipseLayerShowEnabled;
     self.backgroundEllipseLayer.cornerRadius = [self getbackgroundEllipseLayerCornerRadius];
     self.backgroundEllipseLayer.backgroundColor = self.backgroundEllipseLayerColor.CGColor;
-    self.backgroundEllipseLayer.frame = CGRectMake((selectedLineWidth - selectedBackgroundEllipseLayerWidth)/2, (selectedCellFrame.size.height - self.backgroundEllipseLayerHeight)/2, selectedBackgroundEllipseLayerWidth, self.backgroundEllipseLayerHeight);
+    self.backgroundEllipseLayer.frame = CGRectMake((selectedLineWidth - selectedBackgroundEllipseLayerWidth)/2, (selectedCellFrame.size.height - self.backgroundEllipseLayerHeight)/2, selectedBackgroundEllipseLayerWidth, self.backgroundEllipseLayerHeight);;
     [CATransaction commit];
+
+    selectedCellModel.backgroundEllipseLayerMaskFrame = self.backgroundEllipseLayer.frame;
 
     if (self.dataSource.count <= 1) {
         self.indicatorLineView.hidden = YES;
@@ -127,6 +132,7 @@
 
     JXCategoryComponentCellModel *myUnselectedCellModel = (JXCategoryComponentCellModel *)unselectedCellModel;
     myUnselectedCellModel.zoomScale = 1.0;
+    myUnselectedCellModel.backgroundEllipseLayerMaskFrame = CGRectZero;
 
     JXCategoryComponentCellModel *myselectedCellModel = (JXCategoryComponentCellModel *)selectedCellModel;
     myselectedCellModel.zoomScale = self.zoomScale;
@@ -169,11 +175,6 @@
             [self.delegate categoryView:self scrollingFromLeftIndex:baseIndex toRightIndex:baseIndex + 1 ratio:remainderRatio];
         }
 
-        JXCategoryBaseCell *leftCell = (JXCategoryBaseCell *)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:baseIndex inSection:0]];
-        [leftCell reloadDatas:leftCellModel];
-        JXCategoryBaseCell *rightCell = (JXCategoryBaseCell *)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:baseIndex + 1 inSection:0]];
-        [rightCell reloadDatas:rightCellModel];
-
         CGRect rightCellFrame = [self getTargetCellFrame:baseIndex+1];
         CGFloat leftLineWidth = targetIndicatorLineWidth;
         CGFloat rightLineWidth = [self getLineWidthWithIndex:baseIndex + 1];
@@ -197,6 +198,14 @@
         if (self.backgroundEllipseLayerWidth == JXCategoryViewAutomaticDimension) {
             targetBackgroundEllipseLayerWidth = [self interpolationFrom:leftBackgroundEllipseLayerWidth to:rightBackgroundEllipseLayerWidth percent:remainderRatio];
         }
+
+        
+        leftCellModel.backgroundEllipseLayerMaskFrame = CGRectMake(targetBackgroundEllipseLayerX - leftBackgroundEllipseLayerX - self.backgroundEllipseLayerWidthIncrement/2, (leftCellFrame.size.height - self.backgroundEllipseLayerHeight)/2, targetBackgroundEllipseLayerWidth, self.backgroundEllipseLayerHeight);
+        rightCellModel.backgroundEllipseLayerMaskFrame = CGRectMake(targetBackgroundEllipseLayerX - rightBackgroundEllipseLayerX - self.backgroundEllipseLayerWidthIncrement/2, (leftCellFrame.size.height - self.backgroundEllipseLayerHeight)/2, targetBackgroundEllipseLayerWidth, self.backgroundEllipseLayerHeight);
+        JXCategoryBaseCell *leftCell = (JXCategoryBaseCell *)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:baseIndex inSection:0]];
+        [leftCell reloadDatas:leftCellModel];
+        JXCategoryBaseCell *rightCell = (JXCategoryBaseCell *)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:baseIndex + 1 inSection:0]];
+        [rightCell reloadDatas:rightCellModel];
     }
 
     if ((self.indicatorViewScrollEnabled == YES ||
@@ -220,6 +229,8 @@
             self.indicatorImageView.transform = CGAffineTransformMakeRotation(M_PI*2*remainderRatio);
         }
     }
+
+    
 }
 
 - (BOOL)selectItemWithIndex:(NSInteger)index {
@@ -234,6 +245,11 @@
 
     CGFloat targetBackgroundEllipseLayerWidth = [self getBackgroundEllipseLayerWidthWithIndex:index];
     CGRect backgroundEllipseLayerToFrame = CGRectMake((clickedCellFrame.size.width - targetBackgroundEllipseLayerWidth)/2, (clickedCellFrame.size.height - self.backgroundEllipseLayerHeight)/2, targetBackgroundEllipseLayerWidth, self.backgroundEllipseLayerHeight);
+
+    JXCategoryComponentCellModel *selectedCellModel = (JXCategoryComponentCellModel *)self.dataSource[index];
+    selectedCellModel.backgroundEllipseLayerMaskFrame = backgroundEllipseLayerToFrame;
+    JXCategoryComponentCell *selectedCell = (JXCategoryComponentCell *)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0]];
+    [selectedCell reloadDatas:selectedCellModel];
 
     if (self.indicatorViewScrollEnabled) {
         [CATransaction begin];

@@ -19,4 +19,8 @@
 
 @property (nonatomic, strong) UIFont *titleFont;
 
+@property (nonatomic, assign) BOOL titleLabelMaskEnabled;
+
+@property (nonatomic, strong) CALayer *backgroundEllipseLayer;
+
 @end

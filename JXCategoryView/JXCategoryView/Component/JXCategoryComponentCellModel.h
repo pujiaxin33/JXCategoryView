@@ -19,6 +19,8 @@
 
 @property (nonatomic, strong) UIColor *separatorLineColor;
 
-@property (nonatomic, assign) CGSize separatorLineSize; 
+@property (nonatomic, assign) CGSize separatorLineSize;
+
+@property (nonatomic, assign) CGRect backgroundEllipseLayerMaskFrame;
 
 @end

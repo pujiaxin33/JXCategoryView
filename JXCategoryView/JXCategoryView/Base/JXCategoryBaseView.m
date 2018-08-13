@@ -108,6 +108,7 @@ const CGFloat JXCategoryViewAutomaticDimension = -1;
     CGFloat totalItemWidth = self.cellSpacing;
     for (int i = 0; i < self.dataSource.count; i++) {
         JXCategoryBaseCellModel *cellModel = self.dataSource[i];
+        cellModel.index = i;
         if (i == self.selectedIndex) {
             cellModel.selected = YES;
         }else {

@@ -1,27 +1,27 @@
 //
-//  SegmentedControlViewController.m
+//  NaviSegmentedControlViewController.m
 //  JXCategoryView
 //
-//  Created by jiaxin on 2018/8/8.
+//  Created by jiaxin on 2018/8/13.
 //  Copyright © 2018年 jiaxin. All rights reserved.
 //
 
-#import "SegmentedControlViewController.h"
+#import "NaviSegmentedControlViewController.h"
 #import "JXCategoryTitleView.h"
 
-@interface SegmentedControlViewController ()
+@interface NaviSegmentedControlViewController ()
 @property (nonatomic, strong) NSArray *titles;
 @property (nonatomic, strong) JXCategoryTitleView *myCategoryView;
 @end
 
-@implementation SegmentedControlViewController
+@implementation NaviSegmentedControlViewController
 
 - (void)viewDidLoad {
-    _titles = @[@"螃蟹", @"苹果", @"胡萝卜", @"葡萄", ];
+    _titles = @[@"螃蟹", @"苹果" ];
 
     [super viewDidLoad];
 
-    self.categoryView.frame = CGRectMake(30, 10, WindowsSize.width - 30*2, 30);
+    self.categoryView.frame = CGRectMake(0, 0, 120, 30);
     self.myCategoryView.layer.cornerRadius = 15;
     self.myCategoryView.layer.masksToBounds = YES;
     self.myCategoryView.layer.borderColor = [UIColor redColor].CGColor;
@@ -36,6 +36,9 @@
     self.myCategoryView.backgroundEllipseLayerWidthIncrement = 0;
     self.myCategoryView.titleLabelMaskEnabled = YES;
     self.myCategoryView.backgroundEllipseLayerColor = [UIColor redColor];
+
+    [self.myCategoryView removeFromSuperview];
+    self.navigationItem.titleView = self.myCategoryView;
 }
 
 - (JXCategoryTitleView *)myCategoryView {
@@ -51,7 +54,7 @@
 }
 
 - (CGFloat)preferredCategoryViewHeight {
-    return 50;
+    return 0;
 }
 
 @end

@@ -23,6 +23,7 @@
     _titleSelectedColor = [UIColor redColor];
     _titleFont = [UIFont systemFontOfSize:15];
     _titleColorGradientEnabled = NO;
+    _titleLabelMaskEnabled = NO;
     self.backgroundEllipseLayerWidthIncrement = 10;
 }
 
@@ -95,6 +96,7 @@
     model.titleColor = self.titleColor;
     model.titleSelectedColor = self.titleSelectedColor;
     model.title = self.titles[index];
+    model.titleLabelMaskEnabled = self.titleLabelMaskEnabled;
 }
 
 #pragma mark - Private
