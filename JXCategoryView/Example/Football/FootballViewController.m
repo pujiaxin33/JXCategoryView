@@ -17,7 +17,7 @@
 @implementation FootballViewController
 
 - (void)viewDidLoad {
-    _titles = @[@"中国U-19", @"亚足联U-19", @"中国超级联赛", @"亚足联冠军联赛", @"亚运会足球赛", @"世界杯🎉"];
+    _titles = @[@"中国U-19", @"中国超级联赛", @"亚足联冠军联赛", @"亚运会足球赛", @"世界杯🎉"];
 
     [super viewDidLoad];
 
