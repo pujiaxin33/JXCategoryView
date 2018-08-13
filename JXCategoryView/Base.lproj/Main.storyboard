@@ -527,6 +527,7 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="id3-6r-GCz" firstAttribute="centerY" secondItem="OgF-jn-DYr" secondAttribute="centerY" id="HZs-HW-sGe"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="id3-6r-GCz" secondAttribute="trailing" constant="20" symbolic="YES" id="bgX-K6-qAM"/>
                                                 <constraint firstItem="id3-6r-GCz" firstAttribute="leading" secondItem="OgF-jn-DYr" secondAttribute="leading" constant="16" id="dep-yy-jfg"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -548,6 +549,7 @@
                                             <constraints>
                                                 <constraint firstItem="Thh-mZ-0lx" firstAttribute="leading" secondItem="6JW-hs-6Io" secondAttribute="leading" constant="16" id="MN6-FA-Jaz"/>
                                                 <constraint firstItem="Thh-mZ-0lx" firstAttribute="centerY" secondItem="6JW-hs-6Io" secondAttribute="centerY" id="aqj-Ci-eEJ"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Thh-mZ-0lx" secondAttribute="trailing" constant="20" symbolic="YES" id="rN0-2q-T4k"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
