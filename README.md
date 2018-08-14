@@ -7,7 +7,7 @@
 
 A powerful and easy to use category view (segment view, segment control, page view, scroll viewcontroller) (腾讯新闻、网易新闻、今日头条、QQ音乐、京东、爱奇艺等所有主流APP分类切换滚动视图)
 
-与其他的同类三方库对比有何不同：
+与其他的同类三方库对比的优点：
 - 效果更加全面，使用更加方便；
 - 使用子类化管理代码，逻辑更清晰，功能扩展更简单；
 
@@ -23,7 +23,7 @@ A powerful and easy to use category view (segment view, segment control, page vi
 指示器EllipseLayer  |  <img src="JXCategoryView/Images/BackgroundEllipseLayer.gif" width="343" height="80"> |
 指示器EllipseLayer遮罩  |  <img src="JXCategoryView/Images/TitleMask.gif" width="343" height="80"> |
 指示器ImageView(小船)  |  <img src="JXCategoryView/Images/IndicatorImageView.gif" width="343" height="137"> |
-指示器足球  |  <img src="JXCategoryView/Images/Football.gif" width="343" height="135"> |
+指示器滚动效果(足球)  |  <img src="JXCategoryView/Images/Football.gif" width="343" height="135"> |
 指示器背景图(菜篮) |  <img src="JXCategoryView/Images/BackgroundImageView.gif" width="343" height="80"> |
 SegmentedControl |  <img src="JXCategoryView/Images/SegmentedControl.gif" width="343" height="80"> |
 导航栏使用 |  <img src="JXCategoryView/Images/SegmentedControlNavi.gif" width="343" height="80"> |
@@ -34,12 +34,12 @@ TitleImage_Bottom |  <img src="JXCategoryView/Images/TitleImageBottom.gif" width
 TitleImage_Right |  <img src="JXCategoryView/Images/TitleImageRight.gif" width="343" height="80"> |
 TitleImage_OnlyImage |  <img src="JXCategoryView/Images/TitleImageOnlyImage.gif" width="343" height="80"> |
 自定义-数字 |  <img src="JXCategoryView/Images/Number.gif" width="343" height="80"> |
-个人主页 |  <img src="JXCategoryView/Images/UserProfile.gif" width="343" height="562"> |
+个人主页(上下左右滚动、header悬浮) |  <img src="JXCategoryView/Images/UserProfile.gif" width="343" height="562"> |
 
 ## 要求
 
 - iOS 8.0+
-- Xcode 8+
+- Xcode 9+
 - Objective-C
 
 ## 安装
@@ -177,7 +177,7 @@ self.categoryView.contentScrollView = self.scrollView;
 ## 补充
 
 该仓库保持随时更新，对于主流新的分类选择效果会第一时间支持。非常欢迎大家提供效果建议（有pull request最好了🤝）
-使用过程中，有任何建议或问题，你可以通过邮箱联系我：317437084@qq.com
+使用过程中，有任何建议或问题，可以通过邮箱联系我：317437084@qq.com
 
 ## License
 
