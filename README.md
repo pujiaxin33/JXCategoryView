@@ -2,7 +2,7 @@
 
 A powerful and easy to use category view (segment view, segment control, page view, scroll viewcontroller) (腾讯新闻、网易新闻、今日头条、QQ音乐、京东、爱奇艺等所有主流APP分类切换滚动视图)
 
-与其他的同类三方库有何不同：
+与其他的同类三方库对比有何不同：
 - 效果更加全面，使用更加方便；
 - 使用子类化管理代码，逻辑更清晰，功能扩展更简单；
 
@@ -55,12 +55,20 @@ Clone代码，把Sources文件夹拖入项目，#import "JXCategoryView.h"，就
 - JXCategoryTitleView、JXCategoryTitleImageView、JXCategoryNumberView完成cell显示自定义；
   - 如果要自定义cell样式，选择其中一个继承，并修改cell样式；
 - **特殊说明：** 即使提供了灵活扩展，我的源码也不可能满足所有情况，建议大家可以通过fork仓库，维护自己的一套效果。也可以直接拖入源文件进行修改。
+- 个人主页效果：上下左右滚动且HeaderView悬浮的实现，用的是我写的这个库[JXPagingView](https://github.com/pujiaxin33/JXPagingView)。
 
 ## 常用属性说明
 
+多个属性可以任意搭配使用，但是效果需要自己把控，效果不是越多越好哟
+
 属性     | 说明           |
 --------------|---------------|
-titles    | 所有的标题 |
+defaultSelectedIndex    | 默认选中的index，用于初始化时指定选中某个index |
+selectedIndex    | 只读属性，当前选中的index |
+cellWidth    | cell的宽度，默认：JXCategoryViewAutomaticDimension |
+cellSpacing    | cell之间的间距，默认20 |
+averageCellWidthEnabled    | 当cell内容总宽度小于JXCategoryBaseView的宽度，是否将cellWidth均分。默认为YES。 |
+contentScrollView    | 需要关联的contentScrollView，内部监听`contentOffset` |
 titleColor    | titleLabel未选中颜色 默认：[UIColor blackColor] |
 titleSelectedColor    | titleLabel选中颜色 默认：[UIColor redColor] |
 titleFont    | titleLabel的字体 默认：[UIFont systemFontOfSize:15] |
@@ -88,6 +96,7 @@ self.categoryView.contentScrollView = self.scrollView;
 //------配置各类属性------//
 [self.view addSubview:self.categoryView];
 ```
+数据源、属性配置有变动时（比如从服务器拉取回来数据），需要调用`reloadDatas`方法刷新状态。
 
 ### 子类化注意事项
 
