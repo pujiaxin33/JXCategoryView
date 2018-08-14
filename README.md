@@ -2,6 +2,10 @@
 
 A powerful and easy to use category view (segment view, segment control, page view, scroll viewcontroller) (腾讯新闻、网易新闻、今日头条、QQ音乐、京东、爱奇艺等所有主流APP分类切换滚动视图)
 
+与其他的同类三方库有何不同：
+- 效果更加全面，使用更加方便；
+- 使用子类化管理代码，逻辑更清晰，功能扩展更简单；
+
 ## 效果预览
 
 说明 | Gif |
@@ -37,13 +41,13 @@ TitleImage_OnlyImage |  <img src="JXCategoryView/Images/TitleImageOnlyImage.gif"
 
 ### 手动
 
-Clone代码，把JXCategoryView文件夹投入项目，#import "JXCategoryView.h"
+Clone代码，把Sources文件夹拖入项目，#import "JXCategoryView.h"，就可以使用了；
 
 ### CocoaPods
 
 ## 结构图
 
-<img src="JXCategoryView/Images/JXCategoryViewStructure.png" width="1326" height="410">
+<img src="JXCategoryView/Images/JXCategoryViewStructure.png" width="1326" height="400">
 
 - 学习借鉴了`MJRefresh`的子类化思想：基类搭建基础，子类实现特殊效果。便于代码管理，功能扩展；
 - JXCategoryComponentView、JXCategoryBackgroundImageView、JXCategoryLineStyleView完成指示器效果；
