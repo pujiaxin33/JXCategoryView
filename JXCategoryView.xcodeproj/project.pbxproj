@@ -79,6 +79,7 @@
 		19870CAF2122703B00C23CAA /* BackgroundEllipseLayer.gif in Resources */ = {isa = PBXBuildFile; fileRef = 19870C9A2122703B00C23CAA /* BackgroundEllipseLayer.gif */; };
 		19870CB02122703B00C23CAA /* JXCategoryView.png in Resources */ = {isa = PBXBuildFile; fileRef = 19870C9B2122703B00C23CAA /* JXCategoryView.png */; };
 		19870CB12122703B00C23CAA /* TitleColorGradient.gif in Resources */ = {isa = PBXBuildFile; fileRef = 19870C9C2122703B00C23CAA /* TitleColorGradient.gif */; };
+		19870CB32122A3C300C23CAA /* JXCategoryViewStructure.png in Resources */ = {isa = PBXBuildFile; fileRef = 19870CB22122A3C300C23CAA /* JXCategoryViewStructure.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -195,6 +196,7 @@
 		19870C9A2122703B00C23CAA /* BackgroundEllipseLayer.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = BackgroundEllipseLayer.gif; sourceTree = "<group>"; };
 		19870C9B2122703B00C23CAA /* JXCategoryView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = JXCategoryView.png; sourceTree = "<group>"; };
 		19870C9C2122703B00C23CAA /* TitleColorGradient.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = TitleColorGradient.gif; sourceTree = "<group>"; };
+		19870CB22122A3C300C23CAA /* JXCategoryViewStructure.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = JXCategoryViewStructure.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -494,6 +496,7 @@
 		19870C872122703B00C23CAA /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				19870CB22122A3C300C23CAA /* JXCategoryViewStructure.png */,
 				19870C882122703B00C23CAA /* IndicatorImageView.gif */,
 				19870C892122703B00C23CAA /* TitleMask.gif */,
 				19870C8A2122703B00C23CAA /* JDLineStyle.gif */,
@@ -580,6 +583,7 @@
 			files = (
 				19870CA42122703B00C23CAA /* IQIYILineStyle.gif in Resources */,
 				19870CA62122703B00C23CAA /* UserProfile.gif in Resources */,
+				19870CB32122A3C300C23CAA /* JXCategoryViewStructure.png in Resources */,
 				190A54EA206397370050B327 /* LaunchScreen.storyboard in Resources */,
 				19870CA52122703B00C23CAA /* TitleImageLeft.gif in Resources */,
 				19870CAF2122703B00C23CAA /* BackgroundEllipseLayer.gif in Resources */,

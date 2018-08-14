@@ -25,7 +25,7 @@
 
 @property (nonatomic, assign) CGFloat indicatorLineWidth;    //默认JXCategoryViewAutomaticDimension（与cellWidth相等）
 
-@property (nonatomic, strong) UIColor *indicatorLineViewColor;   //默认为[UIColor yellowColor]
+@property (nonatomic, strong) UIColor *indicatorLineViewColor;   //默认为[UIColor redColor]
 
 //----------------------indicatorImageView-----------------------//
 
