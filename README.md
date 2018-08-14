@@ -1,5 +1,10 @@
 <div align=center><img src="JXCategoryView/Images/JXCategoryView.png" width="405" height="63" /></div>
 
+[![platform](https://img.shields.io/badge/platform-iOS-blue.svg?style=plastic)](#)
+[![languages](https://img.shields.io/badge/language-objective--c-blue.svg)](#) 
+[![cocoapods](https://img.shields.io/badge/cocoapods-supported-4BC51D.svg?style=plastic)](https://cocoapods.org/pods/JXMarqueeView)
+[![support](https://img.shields.io/badge/support-ios%208%2B-orange.svg)](#) 
+
 A powerful and easy to use category view (segment view, segment control, page view, scroll viewcontroller) (腾讯新闻、网易新闻、今日头条、QQ音乐、京东、爱奇艺等所有主流APP分类切换滚动视图)
 
 与其他的同类三方库对比有何不同：
