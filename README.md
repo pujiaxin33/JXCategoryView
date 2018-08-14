@@ -182,9 +182,9 @@ self.categoryView.contentScrollView = self.scrollView;
 
 ## 补充
 
-该仓库保持随时更新，对于主流新的分类选择效果会第一时间支持。非常欢迎大家提供效果建议（有pull request最好了🤝）
-使用过程中，有任何建议或问题，可以通过邮箱联系我：317437084@qq.com
-点击加入QQ群 <a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=29fcc49dac3ea7a71259d76d39eaf6d87503622de93144e2735999564b1218c7"><img border="0" src="//pub.idqqimg.com/wpa/images/group.png" alt="JXCategoryView交流群" title="JXCategoryView交流群"></a>
+该仓库保持随时更新，对于主流新的分类选择效果会第一时间支持。使用过程中，有任何建议或问题，可以通过以下方式联系我：
+邮箱：317437084@qq.com
+QQ群： <a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=29fcc49dac3ea7a71259d76d39eaf6d87503622de93144e2735999564b1218c7"><img border="0" src="http://pub.idqqimg.com/wpa/images/group.png" alt="JXCategoryView交流群" title="JXCategoryView交流群"></a>
 
 ## License
 
