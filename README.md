@@ -184,7 +184,7 @@ self.categoryView.contentScrollView = self.scrollView;
 
 该仓库保持随时更新，对于主流新的分类选择效果会第一时间支持。使用过程中，有任何建议或问题，可以通过以下方式联系我：</br>
 邮箱：317437084@qq.com </br>
-QQ群： <a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=29fcc49dac3ea7a71259d76d39eaf6d87503622de93144e2735999564b1218c7"><img border="0" src="http://pub.idqqimg.com/wpa/images/group.png" alt="JXCategoryView交流群" title="JXCategoryView交流群"></a>
+QQ群： 112440151
 
 喜欢就star❤️一下吧
 
