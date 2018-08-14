@@ -17,17 +17,15 @@ Pod::Spec.new do |s|
 
   s.name         = "JXCategoryView"
   s.version      = "0.0.1"
-  s.summary      = "A short description of JXCategoryView."
+  s.summary      = "A powerful and easy to use category view (segment view, segment control, page view, scroll viewcontroller) "
 
   # This description is used to generate tags and improve search results.
   #   * Think: What does it do? Why did you write it? What is the focus?
   #   * Try to keep it short, snappy and to the point.
   #   * Write the description between the DESC delimiters below.
   #   * Finally, don't worry about the indent, CocoaPods strips it!
-  s.description  = <<-DESC
-                   DESC
 
-  s.homepage     = "http://EXAMPLE/JXCategoryView"
+  s.homepage     = "https://github.com/pujiaxin33/JXCategoryView"
   # s.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
 
 
@@ -38,7 +36,7 @@ Pod::Spec.new do |s|
   #  Popular ones are 'MIT', 'BSD' and 'Apache License, Version 2.0'.
   #
 
-  s.license      = "MIT (example)"
+  s.license      = "MIT"
   # s.license      = { :type => "MIT", :file => "FILE_LICENSE" }
 
 
@@ -52,7 +50,7 @@ Pod::Spec.new do |s|
   #  profile URL.
   #
 
-  s.author             = { "pjx" => "pujx@jingbo360.com" }
+  s.author             = { "pujiaxin33" => "317437084@qq.com" }
   # Or just: s.author    = "pjx"
   # s.authors            = { "pjx" => "pujx@jingbo360.com" }
   # s.social_media_url   = "http://twitter.com/pjx"
@@ -64,7 +62,7 @@ Pod::Spec.new do |s|
   #
 
   # s.platform     = :ios
-  # s.platform     = :ios, "5.0"
+  s.platform     = :ios, "8.0"
 
   #  When using multiple platforms
   # s.ios.deployment_target = "5.0"
@@ -79,7 +77,7 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "http://EXAMPLE/JXCategoryView.git", :tag => "#{s.version}" }
+  s.source       = { :git => "https://github.com/pujiaxin33/JXCategoryView.git", :tag => "#{s.version}" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -90,8 +88,7 @@ Pod::Spec.new do |s|
   #  Not including the public_header_files will make all headers public.
   #
 
-  s.source_files  = "Classes", "Classes/**/*.{h,m}"
-  s.exclude_files = "Classes/Exclude"
+  s.source_files  = "Sources", "Sources/**/*.{h,m}"
 
   # s.public_header_files = "Classes/**/*.h"
 
@@ -129,7 +126,7 @@ Pod::Spec.new do |s|
   #  where they will only apply to your library. If you depend on other Podspecs
   #  you can include multiple dependencies to ensure it works.
 
-  # s.requires_arc = true
+  s.requires_arc = true
 
   # s.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
   # s.dependency "JSONKit", "~> 1.4"
