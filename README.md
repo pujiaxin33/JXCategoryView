@@ -1,4 +1,4 @@
-# JXCategoryView
+<div align=center><img src="JXCategoryView/Images/JXCategoryView.png" width="405" height="63" /></div>
 
 A powerful and easy to use category view (segment view, segment control, page view, scroll viewcontroller) (腾讯新闻、网易新闻、今日头条、QQ音乐、京东、爱奇艺等所有主流APP分类切换滚动视图)
 
