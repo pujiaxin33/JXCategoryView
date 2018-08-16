@@ -40,9 +40,9 @@
     }
 
     CGFloat totalXOfIndicatorLineView = self.cellSpacing;
-    CGFloat targetindicatorLineWidth = [self getLineWidthWithIndex:baseIndex];
+    CGFloat targetindicatorLineWidth = [self getIndicatorLineViewWidthWithIndex:baseIndex];
     CGFloat leftIndicatorLineWidth = targetindicatorLineWidth;
-    CGFloat rightIndicatorLineWidth = [self getLineWidthWithIndex:baseIndex + 1];
+    CGFloat rightIndicatorLineWidth = [self getIndicatorLineViewWidthWithIndex:baseIndex + 1];
 
     if (self.lineStyle == JXCategoryLineStyle_JD) {
         if (remainderRatio == 0) {

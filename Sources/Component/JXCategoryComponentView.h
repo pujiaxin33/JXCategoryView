@@ -25,6 +25,8 @@
 
 @property (nonatomic, assign) CGFloat indicatorLineWidth;    //默认JXCategoryViewAutomaticDimension（与cellWidth相等）
 
+@property (nonatomic, assign) CGFloat indicatorLineViewCornerRadius;    //默认JXCategoryViewAutomaticDimension （等于self.indicatorLineViewHeight/2）
+
 @property (nonatomic, strong) UIColor *indicatorLineViewColor;   //默认为[UIColor redColor]
 
 //----------------------indicatorImageView-----------------------//
@@ -80,7 +82,9 @@
  */
 - (void)refreshLeftCellModel:(JXCategoryBaseCellModel *)leftCellModel rightCellModel:(JXCategoryBaseCellModel *)rightCellModel ratio:(CGFloat)ratio NS_REQUIRES_SUPER;
 
-- (CGFloat)getLineWidthWithIndex:(NSInteger)index;
+- (CGFloat)getIndicatorLineViewWidthWithIndex:(NSInteger)index;
+
+- (CGFloat)getIndicatorLineViewCornerRadius;
 
 - (CGFloat)getBackgroundEllipseLayerWidthWithIndex:(NSInteger)index;
 

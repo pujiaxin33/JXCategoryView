@@ -41,6 +41,7 @@
     _indicatorImageViewSize = CGSizeMake(30, 20);
     _indicatorImageViewRollEnabled = NO;
     _backgroundEllipseLayerWidthIncrement = 0;
+    _indicatorLineViewCornerRadius = JXCategoryViewAutomaticDimension;
 }
 
 - (void)initializeViews {
@@ -86,7 +87,7 @@
             cellModel.selected = YES;
             cellModel.zoomScale = self.zoomScale;
             selectedCellFrame = [self getTargetCellFrame:i];
-            selectedLineWidth = [self getLineWidthWithIndex:i];
+            selectedLineWidth = [self getIndicatorLineViewWidthWithIndex:i];
         }
     }
 
@@ -103,7 +104,7 @@
 
     self.indicatorLineView.hidden = !self.indicatorLineViewShowEnabled;
     self.indicatorLineView.backgroundColor = self.indicatorLineViewColor;
-    self.indicatorLineView.layer.cornerRadius = self.indicatorLineViewHeight/2;
+    self.indicatorLineView.layer.cornerRadius = [self getIndicatorLineViewCornerRadius];
     self.indicatorLineView.frame = CGRectMake(targetLineViewX, self.bounds.size.height - self.indicatorLineViewHeight, selectedLineWidth, self.indicatorLineViewHeight);
 
     self.indicatorImageView.hidden = !self.indicatorImageViewShowEnabled;
@@ -147,7 +148,7 @@
     CGFloat remainderRatio = ratio - baseIndex;
 
     CGFloat targetIndicatorLineViewX = self.cellSpacing;
-    CGFloat targetIndicatorLineWidth = [self getLineWidthWithIndex:baseIndex];
+    CGFloat targetIndicatorLineWidth = [self getIndicatorLineViewWidthWithIndex:baseIndex];
 
     CGFloat targetBackgroundEllipseLayerX = self.cellSpacing;
     CGFloat targetBackgroundEllipseLayerWidth = [self getBackgroundEllipseLayerWidthWithIndex:baseIndex];
@@ -177,7 +178,7 @@
 
         CGRect rightCellFrame = [self getTargetCellFrame:baseIndex+1];
         CGFloat leftLineWidth = targetIndicatorLineWidth;
-        CGFloat rightLineWidth = [self getLineWidthWithIndex:baseIndex + 1];
+        CGFloat rightLineWidth = [self getIndicatorLineViewWidthWithIndex:baseIndex + 1];
         CGFloat leftBackgroundEllipseLayerWidth = targetBackgroundEllipseLayerWidth;
         CGFloat rightBackgroundEllipseLayerWidth = [self getBackgroundEllipseLayerWidthWithIndex:baseIndex + 1];
 
@@ -240,7 +241,7 @@
     }
 
     CGRect clickedCellFrame = [self getTargetCellFrame:index];
-    CGFloat targetLineWidth = [self getLineWidthWithIndex:index];
+    CGFloat targetLineWidth = [self getIndicatorLineViewWidthWithIndex:index];
     CGRect lineViewToFrame = CGRectMake(clickedCellFrame.origin.x + (clickedCellFrame.size.width - targetLineWidth)/2.0, self.bounds.size.height - self.indicatorLineViewHeight, targetLineWidth, self.indicatorLineViewHeight);
 
     CGFloat targetBackgroundEllipseLayerWidth = [self getBackgroundEllipseLayerWidthWithIndex:index];
@@ -276,7 +277,7 @@
     return YES;
 }
 
-- (CGFloat)getLineWidthWithIndex:(NSInteger)index
+- (CGFloat)getIndicatorLineViewWidthWithIndex:(NSInteger)index
 {
     if (self.dataSource.count == 0) {
         return 0;
@@ -286,6 +287,14 @@
         return cellModel.cellWidth;
     }
     return self.indicatorLineWidth;
+}
+
+- (CGFloat)getIndicatorLineViewCornerRadius
+{
+    if (self.indicatorLineViewCornerRadius == JXCategoryViewAutomaticDimension) {
+        return self.indicatorLineViewHeight/2;
+    }
+    return self.indicatorLineViewCornerRadius;
 }
 
 - (CGFloat)getBackgroundEllipseLayerWidthWithIndex:(NSInteger)index
