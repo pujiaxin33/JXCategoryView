@@ -235,6 +235,11 @@
 }
 
 - (BOOL)selectItemWithIndex:(NSInteger)index {
+    //是否点击了相对于选中cell左边的cell
+    BOOL isClickedLeft = true;
+    if (index > self.selectedIndex) {
+        isClickedLeft = false;
+    }
     BOOL result = [super selectItemWithIndex:index];
     if (!result) {
         return NO;
@@ -265,6 +270,12 @@
             self.backgroundContainerView.frame = clickedCellFrame;
         } completion:^(BOOL finished) {
         }];
+        if (self.indicatorImageViewRollEnabled) {
+            CABasicAnimation *rotateAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
+            rotateAnimation.toValue = @(M_PI*2*(isClickedLeft ? -1 : 1));
+           rotateAnimation.duration = 0.25;
+           [self.indicatorImageView.layer addAnimation:rotateAnimation forKey:@"rotate"];
+        }
     }else {
         self.backgroundContainerView.frame = clickedCellFrame;
         self.indicatorLineView.frame = lineViewToFrame;
