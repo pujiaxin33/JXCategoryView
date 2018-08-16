@@ -5,6 +5,8 @@
 [![cocoapods](https://img.shields.io/badge/cocoapods-supported-4BC51D.svg?style=plastic)](https://cocoapods.org/pods/JXCategoryView)
 [![support](https://img.shields.io/badge/support-ios%208%2B-orange.svg)](#) 
 
+[There is an English version of README here. just click it！](https://github.com/pujiaxin33/JXCategoryView/blob/master/README-English.md)
+
 A powerful and easy to use category view (segmentedcontrol, pagingview, pagerview, pagecontrol, scrollview) (腾讯新闻、网易新闻、今日头条、QQ音乐、京东、爱奇艺等所有主流APP分类切换滚动视图)
 
 与其他的同类三方库对比的优点：
@@ -185,6 +187,8 @@ self.categoryView.contentScrollView = self.scrollView;
 该仓库保持随时更新，对于主流新的分类选择效果会第一时间支持。使用过程中，有任何建议或问题，可以通过以下方式联系我：</br>
 邮箱：317437084@qq.com </br>
 QQ群： 112440151
+
+<img src="https://note.youdao.com/yws/public/resource/c6fa96a65e424afcf7f6304ddf5c283a/xmlnote/WEBRESOURCE625c5369d52b2852d33e6e7887d7b5ab/2800" width="300" height="411">
 
 喜欢就star❤️一下吧
 
