@@ -10,6 +10,7 @@
 
 #import "JXCategoryFactory.h"
 #import "JXCategoryIndicatorLineView.h"
+#import "JXCategoryIndicatorTriangleView.h"
 #import "JXCategoryIndicatorImageView.h"
 #import "JXCategoryIndicatorBackgroundView.h"
 

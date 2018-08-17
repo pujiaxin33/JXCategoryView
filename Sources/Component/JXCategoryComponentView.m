@@ -7,7 +7,7 @@
 //
 
 #import "JXCategoryComponentView.h"
-
+#import "JXCategoryIndicatorBackgroundView.h"
 
 @interface JXCategoryComponentView()
 
@@ -69,12 +69,12 @@
         }
     }
 
-    //POP:刷新状态：selectedCellFrame  superView.height
     for (UIView<JXCategoryComponentProtocol> *component in self.components) {
         [component jx_refreshState:selectedCellFrame];
+//        if ([component isKindOfClass:[JXCategoryIndicatorBackgroundView class]]) {
+//            selectedCellModel.backgroundEllipseLayerMaskFrame = component.frame;
+//        }
     }
-
-//    selectedCellModel.backgroundEllipseLayerMaskFrame = self.backgroundEllipseLayer.frame;
 }
 
 - (void)refreshSelectedCellModel:(JXCategoryBaseCellModel *)selectedCellModel unselectedCellModel:(JXCategoryBaseCellModel *)unselectedCellModel {
@@ -102,7 +102,15 @@
         rightCellFrame = [self getTargetCellFrame:baseIndex+1];
     }
 
+    BOOL isLeftCellSelected = YES;
+    if (self.selectedIndex == baseIndex + 1) {
+        isLeftCellSelected = NO;
+    }
+
     if (remainderRatio == 0) {
+        for (UIView<JXCategoryComponentProtocol> *component in self.components) {
+            [component jx_contentScrollViewDidScrollWithLeftCellFrame:leftCellFrame rightCellFrame:rightCellFrame isLeftCellSelected:isLeftCellSelected percent:remainderRatio];
+        }
         //连续滑动翻页，需要更新选中状态
         [super selectItemWithIndex:baseIndex];
     }else {
@@ -117,6 +125,10 @@
         if ([self.delegate respondsToSelector:@selector(categoryView:scrollingFromLeftIndex:toRightIndex:ratio:)]) {
             [self.delegate categoryView:self scrollingFromLeftIndex:baseIndex toRightIndex:baseIndex + 1 ratio:remainderRatio];
         }
+
+        for (UIView<JXCategoryComponentProtocol> *component in self.components) {
+            [component jx_contentScrollViewDidScrollWithLeftCellFrame:leftCellFrame rightCellFrame:rightCellFrame isLeftCellSelected:isLeftCellSelected percent:remainderRatio];
+        }
         
 //        leftCellModel.backgroundEllipseLayerMaskFrame = CGRectMake(targetBackgroundEllipseLayerX - leftBackgroundEllipseLayerX - self.backgroundViewWidthIncrement/2, (leftCellFrame.size.height - self.backgroundViewHeight)/2, targetBackgroundViewWidth, self.backgroundViewHeight);
 //        rightCellModel.backgroundEllipseLayerMaskFrame = CGRectMake(targetBackgroundEllipseLayerX - rightBackgroundEllipseLayerX - self.backgroundViewWidthIncrement/2, (leftCellFrame.size.height - self.backgroundViewHeight)/2, targetBackgroundViewWidth, self.backgroundViewHeight);
@@ -124,14 +136,6 @@
         [leftCell reloadDatas:leftCellModel];
         JXCategoryBaseCell *rightCell = (JXCategoryBaseCell *)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:baseIndex + 1 inSection:0]];
         [rightCell reloadDatas:rightCellModel];
-    }
-
-    BOOL isLeftCellSelected = YES;
-    if (self.selectedIndex == baseIndex + 1) {
-        isLeftCellSelected = NO;
-    }
-    for (UIView<JXCategoryComponentProtocol> *component in self.components) {
-        [component jx_contentScrollViewDidScrollWithLeftCellFrame:leftCellFrame rightCellFrame:rightCellFrame isLeftCellSelected:isLeftCellSelected percent:remainderRatio];
     }
 }
 

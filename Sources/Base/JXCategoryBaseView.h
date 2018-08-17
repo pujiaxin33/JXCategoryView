@@ -14,8 +14,6 @@
 
 @class JXCategoryBaseView;
 
-
-
 @protocol JXCategoryViewDelegate <NSObject>
 
 @optional
