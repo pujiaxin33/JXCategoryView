@@ -9,35 +9,13 @@
 #import "JXCategoryBaseView.h"
 #import "JXCategoryComponentCell.h"
 #import "JXCategoryComponentCellModel.h"
+#import "JXCategoryComponentProtocol.h"
 
 @interface JXCategoryComponentView : JXCategoryBaseView
 
 @property (nonatomic, assign) BOOL indicatorViewScrollEnabled;   //指示器lineView、backgroundEllipseLayer切换时是否支持滚动，默认为YES
 
-@property (nonatomic, assign) BOOL indicatorViewPanGestureManualEnabled;    //指示器lineView、backgroundContainerView随着用户手势滚动处理，是否需要子类自己处理（比如JXCategoryLineStyleView）。默认为NO。
-
-//----------------------indicatorLineView-----------------------//
-@property (nonatomic, strong, readonly) UIView *indicatorLineView;
-
-@property (nonatomic, assign) BOOL indicatorLineViewShowEnabled;     //默认为YES
-
-@property (nonatomic, assign) CGFloat indicatorLineViewHeight;
-
-@property (nonatomic, assign) CGFloat indicatorLineWidth;    //默认JXCategoryViewAutomaticDimension（与cellWidth相等）
-
-@property (nonatomic, assign) CGFloat indicatorLineViewCornerRadius;    //默认JXCategoryViewAutomaticDimension （等于self.indicatorLineViewHeight/2）
-
-@property (nonatomic, strong) UIColor *indicatorLineViewColor;   //默认为[UIColor redColor]
-
-//----------------------indicatorImageView-----------------------//
-
-@property (nonatomic, assign) BOOL indicatorImageViewShowEnabled;      //默认NO
-
-@property (nonatomic, assign) BOOL indicatorImageViewRollEnabled;      //默认NO
-
-@property (nonatomic, strong, readonly) UIImageView *indicatorImageView;
-
-@property (nonatomic, assign) CGSize indicatorImageViewSize;
+@property (nonatomic, strong) NSArray <UIView<JXCategoryComponentProtocol> *> *components;
 
 //----------------------backgroundViews-----------------------//
 
@@ -81,10 +59,6 @@
  @param ratio 从左往右方向计算的百分比
  */
 - (void)refreshLeftCellModel:(JXCategoryBaseCellModel *)leftCellModel rightCellModel:(JXCategoryBaseCellModel *)rightCellModel ratio:(CGFloat)ratio NS_REQUIRES_SUPER;
-
-- (CGFloat)getIndicatorLineViewWidthWithIndex:(NSInteger)index;
-
-- (CGFloat)getIndicatorLineViewCornerRadius;
 
 - (CGFloat)getBackgroundEllipseLayerWidthWithIndex:(NSInteger)index;
 

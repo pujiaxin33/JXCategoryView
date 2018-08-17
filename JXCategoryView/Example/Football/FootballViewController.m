@@ -7,7 +7,6 @@
 //
 
 #import "FootballViewController.h"
-#import "JXCategoryTitleView.h"
 
 @interface FootballViewController ()
 @property (nonatomic, strong) NSArray *titles;
@@ -24,10 +23,11 @@
     self.categoryView.frame = CGRectMake(0, 20, WindowsSize.width, 60);
     self.myCategoryView.titles = self.titles;
     self.myCategoryView.titleColorGradientEnabled = YES;
-    self.myCategoryView.indicatorLineViewShowEnabled = NO;
-    self.myCategoryView.indicatorImageViewShowEnabled = YES;
-    self.myCategoryView.indicatorImageViewRollEnabled = YES;
-    self.myCategoryView.indicatorImageView.image = [UIImage imageNamed:@"football"];
+
+    JXCategoryIndicatorImageView *indicatorImageView = [[JXCategoryIndicatorImageView alloc] init];
+    indicatorImageView.indicatorImageViewRollEnabled = YES;
+    indicatorImageView.indicatorImageView.image = [UIImage imageNamed:@"football"];
+    self.myCategoryView.components = @[indicatorImageView];
 }
 
 - (JXCategoryTitleView *)myCategoryView {

@@ -10,10 +10,11 @@
 #import "JXCategoryBaseCell.h"
 #import "JXCategoryBaseCellModel.h"
 #import "JXCategoryCollectionView.h"
+#import "JXCategoryViewDefines.h"
 
 @class JXCategoryBaseView;
 
-extern const CGFloat JXCategoryViewAutomaticDimension;
+
 
 @protocol JXCategoryViewDelegate <NSObject>
 

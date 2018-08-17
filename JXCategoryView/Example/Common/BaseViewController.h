@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "JXCategoryBaseView.h"
+#import "JXCategoryView.h"
 
 #define WindowsSize [UIScreen mainScreen].bounds.size
 

@@ -16,6 +16,7 @@
 #import "IndicatorImageViewViewController.h"
 #import "FootballViewController.h"
 #import "JXCategoryView-Swift.h"
+#import "JXCategoryIndicatorLineView.h"
 
 @interface ViewController ()
 
@@ -85,7 +86,7 @@
     testVC.title = title;
     JXCategoryTitleView *titleCategoryView = (JXCategoryTitleView *)testVC.categoryView;
     titleCategoryView.titleColorGradientEnabled = YES;
-    titleCategoryView.indicatorLineViewShowEnabled = NO;
+    JXCategoryIndicatorLineView *lineView = [[JXCategoryIndicatorLineView alloc] init];
     switch (indexPath.row) {
         case 0:
         {
@@ -101,7 +102,7 @@
         case 2:
         {
             //指示器LineView
-            titleCategoryView.indicatorLineViewShowEnabled = YES;
+            titleCategoryView.components = @[lineView];
         }
             break;
         case 4:
@@ -113,36 +114,35 @@
         case 6:
         {
             //京东
-            titleCategoryView.indicatorLineViewShowEnabled = YES;
-            titleCategoryView.indicatorLineWidth = 20;
-            titleCategoryView.lineStyle = JXCategoryLineStyle_JD;
+            titleCategoryView.components = @[lineView];
+            lineView.indicatorLineWidth = 20;
+            lineView.lineStyle = JXCategoryIndicatorLineStyle_JD;
         }
             break;
         case 7:
         {
             //爱奇艺
-            titleCategoryView.indicatorLineViewShowEnabled = YES;
-            titleCategoryView.indicatorLineWidth = 20;
-            titleCategoryView.lineStyle = JXCategoryLineStyle_IQIYI;
+            titleCategoryView.components = @[lineView];
+            lineView.indicatorLineWidth = 20;
+            lineView.lineStyle = JXCategoryIndicatorLineStyle_IQIYI;
         }
             break;
         case 11:
         {
             //手势处理
-            titleCategoryView.indicatorLineViewShowEnabled = YES;
+            titleCategoryView.components = @[lineView];
         }
             break;
         case 13:
         {
             //SeparatorLine
-            titleCategoryView.indicatorLineViewShowEnabled = YES;
+            titleCategoryView.components = @[lineView];
             titleCategoryView.separatorLineShowEnabled = YES;
         }
             break;
         case 15:
         {
             //文字遮罩
-            titleCategoryView.indicatorLineViewShowEnabled = NO;
             titleCategoryView.titleColorGradientEnabled = NO;
             titleCategoryView.backgroundEllipseLayerShowEnabled = YES;
             titleCategoryView.titleLabelMaskEnabled = YES;

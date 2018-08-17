@@ -29,9 +29,10 @@
     self.myCategoryView.titleSelectedColor = [UIColor redColor];
     self.myCategoryView.titleColorGradientEnabled = YES;
     self.myCategoryView.zoomEnabled = YES;
-    self.myCategoryView.indicatorLineViewShowEnabled = NO;
-    self.myCategoryView.indicatorImageViewShowEnabled = YES;
-    self.myCategoryView.indicatorImageView.image = [UIImage imageNamed:@"boat"];
+
+    JXCategoryIndicatorImageView *indicatorImageView = [[JXCategoryIndicatorImageView alloc] init];
+    indicatorImageView.indicatorImageView.image = [UIImage imageNamed:@"boat"];
+    self.myCategoryView.components = @[indicatorImageView];
 
     CGRect bgImageViewFrame = CGRectMake(0, 0, WindowsSize.width, 100);
     _bgSelectedImageView = [[UIImageView alloc] initWithFrame:bgImageViewFrame];

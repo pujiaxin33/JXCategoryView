@@ -8,7 +8,7 @@
 
 #import "JXCategoryBaseView.h"
 
-const CGFloat JXCategoryViewAutomaticDimension = -1;
+
 
 @interface JXCategoryBaseView () <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 

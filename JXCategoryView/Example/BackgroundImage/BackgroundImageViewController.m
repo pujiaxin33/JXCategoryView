@@ -25,7 +25,6 @@
     self.myCategoryView.backgroundImageViewShowEnabled = YES;
     self.myCategoryView.backgroundImageView.image = [UIImage imageNamed:@"basket"];
     self.myCategoryView.backgroundImageViewSize = CGSizeMake(50, 50);
-    self.myCategoryView.indicatorLineViewShowEnabled = NO;
 }
 
 - (JXCategoryTitleView *)myCategoryView {
