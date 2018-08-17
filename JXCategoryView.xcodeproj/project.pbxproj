@@ -25,7 +25,6 @@
 		19302389211B22E300AF1444 /* SegmentedControlViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19302388211B22E300AF1444 /* SegmentedControlViewController.m */; };
 		19346D5821265E210065FD8F /* JXCategoryIndicatorLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 19346D5721265E210065FD8F /* JXCategoryIndicatorLineView.m */; };
 		19346D612126639B0065FD8F /* JXCategoryFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 19346D602126639B0065FD8F /* JXCategoryFactory.m */; };
-		19346D66212674220065FD8F /* JXCategoryViewDefines.m in Sources */ = {isa = PBXBuildFile; fileRef = 19346D65212674220065FD8F /* JXCategoryViewDefines.m */; };
 		19346D69212677A50065FD8F /* JXCategoryComponentBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 19346D68212677A50065FD8F /* JXCategoryComponentBaseView.m */; };
 		19346D6C2126934B0065FD8F /* JXCategoryIndicatorImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 19346D6B2126934B0065FD8F /* JXCategoryIndicatorImageView.m */; };
 		19870BC0211D7C0300C23CAA /* JXPagingMainTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19870BBD211D7C0300C23CAA /* JXPagingMainTableView.swift */; };
@@ -121,7 +120,6 @@
 		19346D5F2126639B0065FD8F /* JXCategoryFactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JXCategoryFactory.h; sourceTree = "<group>"; };
 		19346D602126639B0065FD8F /* JXCategoryFactory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JXCategoryFactory.m; sourceTree = "<group>"; };
 		19346D64212674220065FD8F /* JXCategoryViewDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JXCategoryViewDefines.h; sourceTree = "<group>"; };
-		19346D65212674220065FD8F /* JXCategoryViewDefines.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JXCategoryViewDefines.m; sourceTree = "<group>"; };
 		19346D67212677A50065FD8F /* JXCategoryComponentBaseView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JXCategoryComponentBaseView.h; sourceTree = "<group>"; };
 		19346D68212677A50065FD8F /* JXCategoryComponentBaseView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JXCategoryComponentBaseView.m; sourceTree = "<group>"; };
 		19346D6A2126934B0065FD8F /* JXCategoryIndicatorImageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JXCategoryIndicatorImageView.h; sourceTree = "<group>"; };
@@ -495,7 +493,6 @@
 				19346D5F2126639B0065FD8F /* JXCategoryFactory.h */,
 				19346D602126639B0065FD8F /* JXCategoryFactory.m */,
 				19346D64212674220065FD8F /* JXCategoryViewDefines.h */,
-				19346D65212674220065FD8F /* JXCategoryViewDefines.m */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -637,7 +634,6 @@
 				19870CF62122BB6100C23CAA /* JXCategoryNumberCell.m in Sources */,
 				19870BC0211D7C0300C23CAA /* JXPagingMainTableView.swift in Sources */,
 				19870BD0211D7FD000C23CAA /* PowerListView.swift in Sources */,
-				19346D66212674220065FD8F /* JXCategoryViewDefines.m in Sources */,
 				19870D022122BB6100C23CAA /* JXCategoryBaseCellModel.m in Sources */,
 				19870CF42122BB6100C23CAA /* JXCategoryComponentCellModel.m in Sources */,
 				1912A526211C257000A80826 /* BackgroundImageViewController.m in Sources */,

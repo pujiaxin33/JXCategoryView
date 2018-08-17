@@ -34,7 +34,11 @@
 
     CGFloat selectedLineWidth = [self getIndicatorLineViewWidth:selectedCellFrame];
     CGFloat x = selectedCellFrame.origin.x + (selectedCellFrame.size.width - selectedLineWidth)/2;
-    self.frame = CGRectMake(x, self.superview.bounds.size.height - self.indicatorLineViewHeight, selectedLineWidth, self.indicatorLineViewHeight);
+    CGFloat y = self.superview.bounds.size.height - self.indicatorLineViewHeight;
+    if (self.componentPosition == JXCategoryComponentPosition_Top) {
+        y = 0;
+    }
+    self.frame = CGRectMake(x, y, selectedLineWidth, self.indicatorLineViewHeight);
 }
 
 - (void)jx_contentScrollViewDidScrollWithLeftCellFrame:(CGRect)leftCellFrame rightCellFrame:(CGRect)rightCellFrame isLeftCellSelected:(BOOL)isLeftCellSelected percent:(CGFloat)percent {
@@ -92,7 +96,10 @@
 
 - (void)jx_selectedCell:(CGRect)cellFrame isLeftCellSelected:(BOOL)isLeftCellSelected {
     CGFloat targetLineWidth = [self getIndicatorLineViewWidth:cellFrame];
-    CGRect toFrame = CGRectMake(cellFrame.origin.x + (cellFrame.size.width - targetLineWidth)/2.0, self.superview.bounds.size.height - self.indicatorLineViewHeight, targetLineWidth, self.indicatorLineViewHeight);
+    CGRect toFrame = self.frame;
+    toFrame.origin.x = cellFrame.origin.x + (cellFrame.size.width - targetLineWidth)/2.0;
+    toFrame.size.width = targetLineWidth;
+
     if (self.scrollEnabled) {
         [UIView animateWithDuration:0.25 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
             self.frame = toFrame;

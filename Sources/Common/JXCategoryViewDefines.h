@@ -9,8 +9,9 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-extern const CGFloat JXCategoryViewAutomaticDimension;
+static const CGFloat JXCategoryViewAutomaticDimension = -1;
 
-@interface JXCategoryViewDefines : NSObject
-
-@end
+typedef NS_ENUM(NSUInteger, JXCategoryComponentPosition) {
+    JXCategoryComponentPosition_Bottom,
+    JXCategoryComponentPosition_Top,
+};

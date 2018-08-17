@@ -14,6 +14,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
+        _componentPosition = JXCategoryComponentPosition_Bottom;
         _scrollEnabled = YES;
     }
     return self;

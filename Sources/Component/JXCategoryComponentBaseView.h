@@ -8,9 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "JXCategoryComponentProtocol.h"
+#import "JXCategoryViewDefines.h"
 
 @interface JXCategoryComponentBaseView : UIView <JXCategoryComponentProtocol>
 
+@property (nonatomic, assign) JXCategoryComponentPosition componentPosition;
+
 @property (nonatomic, assign) BOOL scrollEnabled;   //手势滚动、点击切换的时候，是否允许滚动，默认YES
+
 
 @end

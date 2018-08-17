@@ -36,7 +36,11 @@
 
 - (void)jx_refreshState:(CGRect)selectedCellFrame {
     CGFloat x = selectedCellFrame.origin.x + (selectedCellFrame.size.width - self.indicatorImageViewSize.width)/2;
-    self.frame = CGRectMake(x, self.superview.bounds.size.height - self.indicatorImageViewSize.height, self.indicatorImageViewSize.width, self.indicatorImageViewSize.height);
+    CGFloat y = self.superview.bounds.size.height - self.indicatorImageViewSize.height;
+    if (self.componentPosition == JXCategoryComponentPosition_Top) {
+        y = 0;
+    }
+    self.frame = CGRectMake(x, y, self.indicatorImageViewSize.width, self.indicatorImageViewSize.height);
 }
 
 - (void)jx_contentScrollViewDidScrollWithLeftCellFrame:(CGRect)leftCellFrame rightCellFrame:(CGRect)rightCellFrame isLeftCellSelected:(BOOL)isLeftCellSelected percent:(CGFloat)percent {
@@ -54,7 +58,9 @@
 
     //允许变动frame的情况：1、允许滚动；2、不允许滚动，但是已经通过手势滚动切换一页内容了；
     if (self.scrollEnabled == YES || (self.scrollEnabled == NO && percent == 0)) {
-        self.frame = CGRectMake(targetX, self.superview.bounds.size.height - self.indicatorImageViewSize.height, self.indicatorImageViewSize.width, self.indicatorImageViewSize.height);
+        CGRect frame = self.frame;
+        frame.origin.x = targetX;
+        self.frame = frame;
         
         if (self.indicatorImageViewRollEnabled) {
             self.indicatorImageView.transform = CGAffineTransformMakeRotation(M_PI*2*percent);
@@ -63,8 +69,8 @@
 }
 
 - (void)jx_selectedCell:(CGRect)cellFrame isLeftCellSelected:(BOOL)isLeftCellSelected {
-    CGFloat x = cellFrame.origin.x + (cellFrame.size.width - self.indicatorImageViewSize.width)/2;
-    CGRect toFrame = CGRectMake(x, self.superview.bounds.size.height - self.indicatorImageViewSize.height, self.indicatorImageViewSize.width, self.indicatorImageViewSize.height);
+    CGRect toFrame = self.frame;
+    toFrame.origin.x = cellFrame.origin.x + (cellFrame.size.width - self.indicatorImageViewSize.width)/2;
     if (self.scrollEnabled) {
         [UIView animateWithDuration:0.25 delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
             self.frame = toFrame;
