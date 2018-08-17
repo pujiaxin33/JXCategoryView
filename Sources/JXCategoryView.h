@@ -11,4 +11,5 @@
 #import "JXCategoryFactory.h"
 #import "JXCategoryIndicatorLineView.h"
 #import "JXCategoryIndicatorImageView.h"
+#import "JXCategoryIndicatorBackgroundView.h"
 

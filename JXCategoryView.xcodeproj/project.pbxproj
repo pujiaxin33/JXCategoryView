@@ -27,6 +27,7 @@
 		19346D612126639B0065FD8F /* JXCategoryFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 19346D602126639B0065FD8F /* JXCategoryFactory.m */; };
 		19346D69212677A50065FD8F /* JXCategoryComponentBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 19346D68212677A50065FD8F /* JXCategoryComponentBaseView.m */; };
 		19346D6C2126934B0065FD8F /* JXCategoryIndicatorImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 19346D6B2126934B0065FD8F /* JXCategoryIndicatorImageView.m */; };
+		19346D6F21269F3A0065FD8F /* JXCategoryIndicatorBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 19346D6E21269F3A0065FD8F /* JXCategoryIndicatorBackgroundView.m */; };
 		19870BC0211D7C0300C23CAA /* JXPagingMainTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19870BBD211D7C0300C23CAA /* JXPagingMainTableView.swift */; };
 		19870BC1211D7C0300C23CAA /* JXPagingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19870BBE211D7C0300C23CAA /* JXPagingView.swift */; };
 		19870BC2211D7C0300C23CAA /* JXPagingListContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19870BBF211D7C0300C23CAA /* JXPagingListContainerView.swift */; };
@@ -124,6 +125,8 @@
 		19346D68212677A50065FD8F /* JXCategoryComponentBaseView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JXCategoryComponentBaseView.m; sourceTree = "<group>"; };
 		19346D6A2126934B0065FD8F /* JXCategoryIndicatorImageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JXCategoryIndicatorImageView.h; sourceTree = "<group>"; };
 		19346D6B2126934B0065FD8F /* JXCategoryIndicatorImageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JXCategoryIndicatorImageView.m; sourceTree = "<group>"; };
+		19346D6D21269F3A0065FD8F /* JXCategoryIndicatorBackgroundView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JXCategoryIndicatorBackgroundView.h; sourceTree = "<group>"; };
+		19346D6E21269F3A0065FD8F /* JXCategoryIndicatorBackgroundView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JXCategoryIndicatorBackgroundView.m; sourceTree = "<group>"; };
 		19870BBB211D748100C23CAA /* Objc-Swift-bridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Objc-Swift-bridge.h"; sourceTree = "<group>"; };
 		19870BBD211D7C0300C23CAA /* JXPagingMainTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JXPagingMainTableView.swift; sourceTree = "<group>"; };
 		19870BBE211D7C0300C23CAA /* JXPagingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JXPagingView.swift; sourceTree = "<group>"; };
@@ -465,6 +468,8 @@
 				19346D5721265E210065FD8F /* JXCategoryIndicatorLineView.m */,
 				19346D6A2126934B0065FD8F /* JXCategoryIndicatorImageView.h */,
 				19346D6B2126934B0065FD8F /* JXCategoryIndicatorImageView.m */,
+				19346D6D21269F3A0065FD8F /* JXCategoryIndicatorBackgroundView.h */,
+				19346D6E21269F3A0065FD8F /* JXCategoryIndicatorBackgroundView.m */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -647,6 +652,7 @@
 				19302325211AD1B300AF1444 /* TitleImageSettingViewController.m in Sources */,
 				19870CFE2122BB6100C23CAA /* JXCategoryBackgroundImageCell.m in Sources */,
 				19870BCF211D7FD000C23CAA /* PartnerListView.swift in Sources */,
+				19346D6F21269F3A0065FD8F /* JXCategoryIndicatorBackgroundView.m in Sources */,
 				1912A533211D08C800A80826 /* FootballViewController.m in Sources */,
 				19870D012122BB6100C23CAA /* JXCategoryBaseCell.m in Sources */,
 				19870CF82122BB6100C23CAA /* JXCategoryCollectionView.m in Sources */,

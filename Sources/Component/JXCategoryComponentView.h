@@ -13,30 +13,7 @@
 
 @interface JXCategoryComponentView : JXCategoryBaseView
 
-@property (nonatomic, assign) BOOL indicatorViewScrollEnabled;   //指示器lineView、backgroundEllipseLayer切换时是否支持滚动，默认为YES
-
 @property (nonatomic, strong) NSArray <UIView<JXCategoryComponentProtocol> *> *components;
-
-//----------------------backgroundViews-----------------------//
-
-/**
- 承载背景指示器视图的容器，比如backgroundEllipseLayer、backgroundImageView就被添加到这上面。backgroundContainerView的frame和选中的cell相同。
- */
-@property (nonatomic, strong, readonly) UIView *backgroundContainerView;
-
-@property (nonatomic, strong, readonly) CALayer *backgroundEllipseLayer;
-
-@property (nonatomic, assign) BOOL backgroundEllipseLayerShowEnabled;     //默认为NO
-
-@property (nonatomic, assign) CGFloat backgroundEllipseLayerWidth;     //默认JXCategoryViewAutomaticDimension（与cellWidth相等）
-
-@property (nonatomic, assign) CGFloat backgroundEllipseLayerWidthIncrement;    //宽度增量补偿，因为backgroundEllipseLayer一般会比实际内容大一些。默认0
-
-@property (nonatomic, assign) CGFloat backgroundEllipseLayerHeight;   //默认20
-
-@property (nonatomic, assign) CGFloat backgroundEllipseLayerCornerRadius;   //默认JXCategoryViewAutomaticDimension(即backgroundEllipseLayerHeight/2)
-
-@property (nonatomic, strong) UIColor *backgroundEllipseLayerColor;   //默认为[UIColor redColor]
 
 //----------------------zoomEnabled-----------------------//
 @property (nonatomic, assign) BOOL zoomEnabled;     //默认为NO
@@ -59,9 +36,5 @@
  @param ratio 从左往右方向计算的百分比
  */
 - (void)refreshLeftCellModel:(JXCategoryBaseCellModel *)leftCellModel rightCellModel:(JXCategoryBaseCellModel *)rightCellModel ratio:(CGFloat)ratio NS_REQUIRES_SUPER;
-
-- (CGFloat)getBackgroundEllipseLayerWidthWithIndex:(NSInteger)index;
-
-- (CGFloat)getbackgroundEllipseLayerCornerRadius;
 
 @end

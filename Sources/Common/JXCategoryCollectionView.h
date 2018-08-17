@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "JXCategoryComponentProtocol.h"
 
 @interface JXCategoryCollectionView : UICollectionView
 
-@property (nonatomic, weak) UIView *backgroundContainerView;
+@property (nonatomic, strong) NSArray <UIView<JXCategoryComponentProtocol> *> *components;
 
 @end

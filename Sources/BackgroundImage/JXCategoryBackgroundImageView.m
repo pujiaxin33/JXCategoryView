@@ -28,7 +28,7 @@
     self.backgroundImageView.contentMode = UIViewContentModeScaleAspectFit;
     self.backgroundImageView.hidden = !self.backgroundImageViewShowEnabled;
     self.backgroundImageView.bounds = CGRectMake(0, 0, self.backgroundImageViewSize.width, self.backgroundImageViewSize.height);
-    [self.backgroundContainerView addSubview:self.backgroundImageView];
+//    [self.backgroundContainerView addSubview:self.backgroundImageView];
     UIViewAutoresizing mask = UIViewAutoresizingFlexibleTopMargin |
     UIViewAutoresizingFlexibleLeftMargin |
     UIViewAutoresizingFlexibleBottomMargin |

@@ -24,7 +24,6 @@
     _titleFont = [UIFont systemFontOfSize:15];
     _titleColorGradientEnabled = NO;
     _titleLabelMaskEnabled = NO;
-    self.backgroundEllipseLayerWidthIncrement = 10;
 }
 
 #pragma mark - Override

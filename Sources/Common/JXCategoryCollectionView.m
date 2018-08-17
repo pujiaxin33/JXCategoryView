@@ -14,7 +14,9 @@
 {
     [super layoutSubviews];
 
-    [self sendSubviewToBack:self.backgroundContainerView];
+    for (UIView<JXCategoryComponentProtocol> *view in self.components) {
+        [self sendSubviewToBack:view];
+    }
 }
 
 @end
