@@ -65,7 +65,7 @@
     self.frame = CGRectMake(x, y, self.triangleViewSize.width, self.triangleViewSize.height);
 }
 
-- (void)jx_contentScrollViewDidScrollWithLeftCellFrame:(CGRect)leftCellFrame rightCellFrame:(CGRect)rightCellFrame isLeftCellSelected:(BOOL)isLeftCellSelected percent:(CGFloat)percent {
+- (void)jx_contentScrollViewDidScrollWithLeftCellFrame:(CGRect)leftCellFrame rightCellFrame:(CGRect)rightCellFrame clickedPosition:(JXCategoryCellClickedPosition)clickedPosition percent:(CGFloat)percent {
 
     CGFloat targetWidth = self.triangleViewSize.width;
     CGFloat targetX = leftCellFrame.origin.x + (leftCellFrame.size.width - targetWidth)/2.0;
@@ -86,7 +86,7 @@
     }
 }
 
-- (void)jx_selectedCell:(CGRect)cellFrame isLeftCellSelected:(BOOL)isLeftCellSelected {
+- (void)jx_selectedCell:(CGRect)cellFrame clickedPosition:(JXCategoryCellClickedPosition)clickedPosition {
     CGRect toFrame = self.frame;
     toFrame.origin.x = cellFrame.origin.x + (cellFrame.size.width - self.triangleViewSize.width)/2;
     if (self.scrollEnabled) {

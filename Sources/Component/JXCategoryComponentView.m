@@ -104,14 +104,14 @@
         rightCellFrame = [self getTargetCellFrame:baseIndex+1];
     }
 
-    BOOL isLeftCellSelected = YES;
+    JXCategoryCellClickedPosition position = JXCategoryCellClickedPosition_Left;
     if (self.selectedIndex == baseIndex + 1) {
-        isLeftCellSelected = NO;
+        position = JXCategoryCellClickedPosition_Right;
     }
 
     if (remainderRatio == 0) {
         for (UIView<JXCategoryComponentProtocol> *component in self.components) {
-            [component jx_contentScrollViewDidScrollWithLeftCellFrame:leftCellFrame rightCellFrame:rightCellFrame isLeftCellSelected:isLeftCellSelected percent:remainderRatio];
+            [component jx_contentScrollViewDidScrollWithLeftCellFrame:leftCellFrame rightCellFrame:rightCellFrame clickedPosition:position percent:remainderRatio];
         }
         //连续滑动翻页，需要更新选中状态
         [super selectItemWithIndex:baseIndex];
@@ -129,7 +129,7 @@
         }
 
         for (UIView<JXCategoryComponentProtocol> *component in self.components) {
-            [component jx_contentScrollViewDidScrollWithLeftCellFrame:leftCellFrame rightCellFrame:rightCellFrame isLeftCellSelected:isLeftCellSelected percent:remainderRatio];
+            [component jx_contentScrollViewDidScrollWithLeftCellFrame:leftCellFrame rightCellFrame:rightCellFrame clickedPosition:position percent:remainderRatio];
             if ([component isKindOfClass:[JXCategoryIndicatorBackgroundView class]]) {
                 CGRect leftMaskFrame = component.frame;
                 leftMaskFrame.origin.x = leftMaskFrame.origin.x - leftCellFrame.origin.x;
@@ -150,9 +150,9 @@
 
 - (BOOL)selectItemWithIndex:(NSInteger)index {
     //是否点击了相对于选中cell左边的cell
-    BOOL isLeftCellSelected = true;
+    JXCategoryCellClickedPosition clickedPosition = JXCategoryCellClickedPosition_Left;
     if (index > self.selectedIndex) {
-        isLeftCellSelected = false;
+        clickedPosition = JXCategoryCellClickedPosition_Right;
     }
     BOOL result = [super selectItemWithIndex:index];
     if (!result) {
@@ -163,7 +163,7 @@
 
     JXCategoryComponentCellModel *selectedCellModel = (JXCategoryComponentCellModel *)self.dataSource[index];
     for (UIView<JXCategoryComponentProtocol> *component in self.components) {
-        [component jx_selectedCell:clickedCellFrame  isLeftCellSelected:isLeftCellSelected];
+        [component jx_selectedCell:clickedCellFrame clickedPosition:clickedPosition];
         if ([component isKindOfClass:[JXCategoryIndicatorBackgroundView class]]) {
             CGRect maskFrame = component.frame;
             maskFrame.origin.x = maskFrame.origin.x - clickedCellFrame.origin.x;

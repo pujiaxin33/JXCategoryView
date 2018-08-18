@@ -8,19 +8,20 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "JXCategoryViewDefines.h"
 
 @protocol JXCategoryComponentProtocol <NSObject>
 
 - (void)jx_refreshState:(CGRect)selectedCellFrame;
 
-- (void)jx_contentScrollViewDidScrollWithLeftCellFrame:(CGRect)leftCellFrame rightCellFrame:(CGRect)rightCellFrame isLeftCellSelected:(BOOL)isLeftCellSelected percent:(CGFloat)percent;
+- (void)jx_contentScrollViewDidScrollWithLeftCellFrame:(CGRect)leftCellFrame rightCellFrame:(CGRect)rightCellFrame clickedPosition:(JXCategoryCellClickedPosition)clickedPosition percent:(CGFloat)percent;
 
 /**
  点击选中了某一个cell
 
  @param cellFrame cell的frame
- @param isLeftCellSelected 是否点击了相对于当前已选中cell左边的cell。比如 A、B、C 当前处于选中状态的是B。点击了A，isLeftCellSelected=YES;点击了C，isLeftCellSelected=NO;
+ @param clickedPosition 相对于已选中cell，当前点击的cell位置。比如 A、B、C 当前处于选中状态的是B。点击了A是JXCategoryCellClickedPosition_Left；点击了C是JXCategoryCellClickedPosition_Right;
  */
-- (void)jx_selectedCell:(CGRect)cellFrame isLeftCellSelected:(BOOL)isLeftCellSelected;
+- (void)jx_selectedCell:(CGRect)cellFrame clickedPosition:(JXCategoryCellClickedPosition)clickedPosition;
 
 @end
