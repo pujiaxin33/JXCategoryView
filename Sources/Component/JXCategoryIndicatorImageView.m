@@ -43,7 +43,7 @@
     self.frame = CGRectMake(x, y, self.indicatorImageViewSize.width, self.indicatorImageViewSize.height);
 }
 
-- (void)jx_contentScrollViewDidScrollWithLeftCellFrame:(CGRect)leftCellFrame rightCellFrame:(CGRect)rightCellFrame clickedPosition:(JXCategoryCellClickedPosition)clickedPosition percent:(CGFloat)percent {
+- (void)jx_contentScrollViewDidScrollWithLeftCellFrame:(CGRect)leftCellFrame rightCellFrame:(CGRect)rightCellFrame selectedPosition:(JXCategoryCellClickedPosition)selectedPosition percent:(CGFloat)percent {
 
     CGFloat targetWidth = self.indicatorImageViewSize.width;
     CGFloat targetX = leftCellFrame.origin.x + (leftCellFrame.size.width - targetWidth)/2.0;
@@ -68,7 +68,7 @@
     }
 }
 
-- (void)jx_selectedCell:(CGRect)cellFrame clickedPosition:(JXCategoryCellClickedPosition)clickedPosition {
+- (void)jx_selectedCell:(CGRect)cellFrame clickedRelativePosition:(JXCategoryCellClickedPosition)clickedRelativePosition {
     CGRect toFrame = self.frame;
     toFrame.origin.x = cellFrame.origin.x + (cellFrame.size.width - self.indicatorImageViewSize.width)/2;
     if (self.scrollEnabled) {
@@ -78,7 +78,7 @@
         }];
         if (self.indicatorImageViewRollEnabled) {
             CABasicAnimation *rotateAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
-            rotateAnimation.toValue = @(M_PI*2*((clickedPosition == JXCategoryCellClickedPosition_Left) ? -1 : 1));
+            rotateAnimation.toValue = @(M_PI*2*((clickedRelativePosition == JXCategoryCellClickedPosition_Left) ? -1 : 1));
             rotateAnimation.duration = 0.25;
             [self.indicatorImageView.layer addAnimation:rotateAnimation forKey:@"rotate"];
         }

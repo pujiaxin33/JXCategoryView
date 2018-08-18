@@ -41,7 +41,7 @@
     self.frame = CGRectMake(x, y, selectedLineWidth, self.indicatorLineViewHeight);
 }
 
-- (void)jx_contentScrollViewDidScrollWithLeftCellFrame:(CGRect)leftCellFrame rightCellFrame:(CGRect)rightCellFrame clickedPosition:(JXCategoryCellClickedPosition)clickedPosition percent:(CGFloat)percent {
+- (void)jx_contentScrollViewDidScrollWithLeftCellFrame:(CGRect)leftCellFrame rightCellFrame:(CGRect)rightCellFrame selectedPosition:(JXCategoryCellClickedPosition)selectedPosition percent:(CGFloat)percent {
 
     CGFloat targetX = leftCellFrame.origin.x;
     CGFloat targetWidth = [self getIndicatorLineViewWidth:leftCellFrame];
@@ -94,7 +94,7 @@
     }
 }
 
-- (void)jx_selectedCell:(CGRect)cellFrame clickedPosition:(JXCategoryCellClickedPosition)clickedPosition {
+- (void)jx_selectedCell:(CGRect)cellFrame clickedRelativePosition:(JXCategoryCellClickedPosition)clickedRelativePosition {
     CGFloat targetWidth = [self getIndicatorLineViewWidth:cellFrame];
     CGRect toFrame = self.frame;
     toFrame.origin.x = cellFrame.origin.x + (cellFrame.size.width - targetWidth)/2.0;

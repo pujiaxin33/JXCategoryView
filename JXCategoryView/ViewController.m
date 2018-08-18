@@ -97,8 +97,6 @@
         {
             //缩放
             titleCategoryView.zoomEnabled = YES;
-            JXCategoryIndicatorTriangleView *triangleView = [[JXCategoryIndicatorTriangleView alloc] init];
-            titleCategoryView.components = @[triangleView];
         }
             break;
         case 2:

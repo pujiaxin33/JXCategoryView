@@ -36,7 +36,7 @@
     self.frame = CGRectMake(x, y, width, self.backgroundViewHeight);
 }
 
-- (void)jx_contentScrollViewDidScrollWithLeftCellFrame:(CGRect)leftCellFrame rightCellFrame:(CGRect)rightCellFrame clickedPosition:(JXCategoryCellClickedPosition)clickedPosition percent:(CGFloat)percent {
+- (void)jx_contentScrollViewDidScrollWithLeftCellFrame:(CGRect)leftCellFrame rightCellFrame:(CGRect)rightCellFrame selectedPosition:(JXCategoryCellClickedPosition)selectedPosition percent:(CGFloat)percent {
 
     CGFloat targetX = leftCellFrame.origin.x;
     CGFloat targetWidth = [self getBackgroundViewWidth:leftCellFrame];
@@ -64,7 +64,7 @@
     }
 }
 
-- (void)jx_selectedCell:(CGRect)cellFrame clickedPosition:(JXCategoryCellClickedPosition)clickedPosition {
+- (void)jx_selectedCell:(CGRect)cellFrame clickedRelativePosition:(JXCategoryCellClickedPosition)clickedRelativePosition {
     CGFloat width = [self getBackgroundViewWidth:cellFrame];
     CGFloat x = cellFrame.origin.x + (cellFrame.size.width - width)/2;
     CGFloat y = (cellFrame.size.height - self.backgroundViewHeight)/2;
