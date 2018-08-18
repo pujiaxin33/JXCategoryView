@@ -21,6 +21,6 @@
 
 @property (nonatomic, assign) CGSize separatorLineSize;
 
-@property (nonatomic, assign) CGRect backgroundEllipseLayerMaskFrame;
+@property (nonatomic, assign) CGRect backgroundViewMaskFrame;
 
 @end

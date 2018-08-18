@@ -111,9 +111,6 @@
         {
             //指示器BackgroundEllipseLayer
             JXCategoryIndicatorBackgroundView *backgroundView = [[JXCategoryIndicatorBackgroundView alloc] init];
-//            backgroundView.backgroundViewHeight = 30;
-//            backgroundView.backgroundViewWidthIncrement = 0;
-//            backgroundView.backgroundViewColor = [UIColor redColor];
             titleCategoryView.components = @[backgroundView];
         }
             break;
@@ -153,9 +150,7 @@
             titleCategoryView.titleLabelMaskEnabled = YES;
 
             JXCategoryIndicatorBackgroundView *backgroundView = [[JXCategoryIndicatorBackgroundView alloc] init];
-//            backgroundView.backgroundViewHeight = 30;
             backgroundView.backgroundViewWidthIncrement = 10;
-//            backgroundView.backgroundViewColor = [UIColor redColor];
             titleCategoryView.components = @[backgroundView];
         }
             break;

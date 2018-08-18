@@ -57,7 +57,7 @@
         cellModel.sepratorLineShowEnabled = self.separatorLineShowEnabled;
         cellModel.separatorLineColor = self.separatorLineColor;
         cellModel.separatorLineSize = self.separatorLineSize;
-        cellModel.backgroundEllipseLayerMaskFrame = CGRectZero;
+        cellModel.backgroundViewMaskFrame = CGRectZero;
         if (i == self.dataSource.count - 1) {
             cellModel.sepratorLineShowEnabled = NO;
         }
@@ -71,9 +71,11 @@
 
     for (UIView<JXCategoryComponentProtocol> *component in self.components) {
         [component jx_refreshState:selectedCellFrame];
-//        if ([component isKindOfClass:[JXCategoryIndicatorBackgroundView class]]) {
-//            selectedCellModel.backgroundEllipseLayerMaskFrame = component.frame;
-//        }
+        if ([component isKindOfClass:[JXCategoryIndicatorBackgroundView class]]) {
+            CGRect maskFrame = component.frame;
+            maskFrame.origin.x = maskFrame.origin.x - selectedCellFrame.origin.x;
+            selectedCellModel.backgroundViewMaskFrame = maskFrame;
+        }
     }
 }
 
@@ -82,7 +84,7 @@
 
     JXCategoryComponentCellModel *myUnselectedCellModel = (JXCategoryComponentCellModel *)unselectedCellModel;
     myUnselectedCellModel.zoomScale = 1.0;
-    myUnselectedCellModel.backgroundEllipseLayerMaskFrame = CGRectZero;
+    myUnselectedCellModel.backgroundViewMaskFrame = CGRectZero;
 
     JXCategoryComponentCellModel *myselectedCellModel = (JXCategoryComponentCellModel *)selectedCellModel;
     myselectedCellModel.zoomScale = self.zoomScale;
@@ -128,10 +130,17 @@
 
         for (UIView<JXCategoryComponentProtocol> *component in self.components) {
             [component jx_contentScrollViewDidScrollWithLeftCellFrame:leftCellFrame rightCellFrame:rightCellFrame isLeftCellSelected:isLeftCellSelected percent:remainderRatio];
+            if ([component isKindOfClass:[JXCategoryIndicatorBackgroundView class]]) {
+                CGRect leftMaskFrame = component.frame;
+                leftMaskFrame.origin.x = leftMaskFrame.origin.x - leftCellFrame.origin.x;
+                leftCellModel.backgroundViewMaskFrame = leftMaskFrame;
+
+                CGRect rightMaskFrame = component.frame;
+                rightMaskFrame.origin.x = rightMaskFrame.origin.x - rightCellFrame.origin.x;
+                rightCellModel.backgroundViewMaskFrame = rightMaskFrame;
+            }
         }
-        
-//        leftCellModel.backgroundEllipseLayerMaskFrame = CGRectMake(targetBackgroundEllipseLayerX - leftBackgroundEllipseLayerX - self.backgroundViewWidthIncrement/2, (leftCellFrame.size.height - self.backgroundViewHeight)/2, targetBackgroundViewWidth, self.backgroundViewHeight);
-//        rightCellModel.backgroundEllipseLayerMaskFrame = CGRectMake(targetBackgroundEllipseLayerX - rightBackgroundEllipseLayerX - self.backgroundViewWidthIncrement/2, (leftCellFrame.size.height - self.backgroundViewHeight)/2, targetBackgroundViewWidth, self.backgroundViewHeight);
+
         JXCategoryBaseCell *leftCell = (JXCategoryBaseCell *)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:baseIndex inSection:0]];
         [leftCell reloadDatas:leftCellModel];
         JXCategoryBaseCell *rightCell = (JXCategoryBaseCell *)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:baseIndex + 1 inSection:0]];
@@ -153,13 +162,17 @@
     CGRect clickedCellFrame = [self getTargetCellFrame:index];
 
     JXCategoryComponentCellModel *selectedCellModel = (JXCategoryComponentCellModel *)self.dataSource[index];
-//    selectedCellModel.backgroundEllipseLayerMaskFrame = backgroundEllipseLayerToFrame;
-    JXCategoryComponentCell *selectedCell = (JXCategoryComponentCell *)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0]];
-    [selectedCell reloadDatas:selectedCellModel];
-
     for (UIView<JXCategoryComponentProtocol> *component in self.components) {
         [component jx_selectedCell:clickedCellFrame  isLeftCellSelected:isLeftCellSelected];
+        if ([component isKindOfClass:[JXCategoryIndicatorBackgroundView class]]) {
+            CGRect maskFrame = component.frame;
+            maskFrame.origin.x = maskFrame.origin.x - clickedCellFrame.origin.x;
+            selectedCellModel.backgroundViewMaskFrame = maskFrame;
+        }
     }
+
+    JXCategoryComponentCell *selectedCell = (JXCategoryComponentCell *)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0]];
+    [selectedCell reloadDatas:selectedCellModel];
 
     return YES;
 }
