@@ -2,7 +2,6 @@
 
 #import "JXCategoryBaseView.h"
 #import "JXCategoryComponentView.h"
-#import "JXCategoryBackgroundImageView.h"
 #import "JXCategoryTitleView.h"
 #import "JXCategoryTitleImageView.h"
 #import "JXCategoryNumberView.h"

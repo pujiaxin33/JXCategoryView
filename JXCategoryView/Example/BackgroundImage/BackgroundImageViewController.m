@@ -17,14 +17,16 @@
 @implementation BackgroundImageViewController
 
 - (void)viewDidLoad {
-    _titles = @[@"螃蟹", @"麻辣小龙虾", @"苹果", @"营养胡萝卜", @"葡萄", @"美味西瓜", @"香蕉", @"香甜菠萝", @"鸡肉", @"鱼", @"海星"];
+    _titles = @[@"周杰伦", @"林俊杰", @"潘玮柏", @"陶吉吉", @"孙燕姿", @"周星驰", @"成龙", @"甄子丹"];
 
     [super viewDidLoad];
 
     self.myCategoryView.titles = self.titles;
-    self.myCategoryView.backgroundImageViewShowEnabled = YES;
-    self.myCategoryView.backgroundImageView.image = [UIImage imageNamed:@"basket"];
-    self.myCategoryView.backgroundImageViewSize = CGSizeMake(50, 50);
+
+    JXCategoryIndicatorImageView *indicatorImageView = [[JXCategoryIndicatorImageView alloc] init];
+    indicatorImageView.indicatorImageView.image = [UIImage imageNamed:@"light"];
+    indicatorImageView.indicatorImageViewSize = CGSizeMake(50, 50);
+    self.myCategoryView.components = @[indicatorImageView];
 }
 
 - (JXCategoryTitleView *)myCategoryView {
@@ -38,5 +40,6 @@
 - (Class)preferredCategoryViewClass {
     return [JXCategoryTitleView class];
 }
+
 
 @end

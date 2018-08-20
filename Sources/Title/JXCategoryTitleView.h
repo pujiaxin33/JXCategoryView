@@ -6,11 +6,11 @@
 //  Copyright © 2018年 jiaxin. All rights reserved.
 //
 
-#import "JXCategoryBackgroundImageView.h"
+#import "JXCategoryComponentView.h"
 #import "JXCategoryTitleCell.h"
 #import "JXCategoryTitleCellModel.h"
 
-@interface JXCategoryTitleView : JXCategoryBackgroundImageView
+@interface JXCategoryTitleView : JXCategoryComponentView
 
 @property (nonatomic, strong) NSArray <NSString *>*titles;
 

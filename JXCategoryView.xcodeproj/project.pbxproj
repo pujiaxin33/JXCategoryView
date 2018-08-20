@@ -77,9 +77,6 @@
 		19870CF72122BB6100C23CAA /* JXCategoryNumberCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 19870CCF2122BB6100C23CAA /* JXCategoryNumberCellModel.m */; };
 		19870CF82122BB6100C23CAA /* JXCategoryCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 19870CD52122BB6100C23CAA /* JXCategoryCollectionView.m */; };
 		19870CF92122BB6100C23CAA /* UIColor+JXAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 19870CD62122BB6100C23CAA /* UIColor+JXAdd.m */; };
-		19870CFD2122BB6100C23CAA /* JXCategoryBackgroundImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 19870CDF2122BB6100C23CAA /* JXCategoryBackgroundImageView.m */; };
-		19870CFE2122BB6100C23CAA /* JXCategoryBackgroundImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 19870CE12122BB6100C23CAA /* JXCategoryBackgroundImageCell.m */; };
-		19870CFF2122BB6100C23CAA /* JXCategoryBackgroundImageCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 19870CE42122BB6100C23CAA /* JXCategoryBackgroundImageCellModel.m */; };
 		19870D002122BB6100C23CAA /* JXCategoryBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 19870CE92122BB6100C23CAA /* JXCategoryBaseView.m */; };
 		19870D012122BB6100C23CAA /* JXCategoryBaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 19870CEA2122BB6100C23CAA /* JXCategoryBaseCell.m */; };
 		19870D022122BB6100C23CAA /* JXCategoryBaseCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 19870CEB2122BB6100C23CAA /* JXCategoryBaseCellModel.m */; };
@@ -196,12 +193,6 @@
 		19870CD42122BB6100C23CAA /* UIColor+JXAdd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+JXAdd.h"; sourceTree = "<group>"; };
 		19870CD52122BB6100C23CAA /* JXCategoryCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXCategoryCollectionView.m; sourceTree = "<group>"; };
 		19870CD62122BB6100C23CAA /* UIColor+JXAdd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+JXAdd.m"; sourceTree = "<group>"; };
-		19870CDF2122BB6100C23CAA /* JXCategoryBackgroundImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXCategoryBackgroundImageView.m; sourceTree = "<group>"; };
-		19870CE02122BB6100C23CAA /* JXCategoryBackgroundImageCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXCategoryBackgroundImageCellModel.h; sourceTree = "<group>"; };
-		19870CE12122BB6100C23CAA /* JXCategoryBackgroundImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXCategoryBackgroundImageCell.m; sourceTree = "<group>"; };
-		19870CE22122BB6100C23CAA /* JXCategoryBackgroundImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXCategoryBackgroundImageView.h; sourceTree = "<group>"; };
-		19870CE32122BB6100C23CAA /* JXCategoryBackgroundImageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXCategoryBackgroundImageCell.h; sourceTree = "<group>"; };
-		19870CE42122BB6100C23CAA /* JXCategoryBackgroundImageCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXCategoryBackgroundImageCellModel.m; sourceTree = "<group>"; };
 		19870CE62122BB6100C23CAA /* JXCategoryBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXCategoryBaseView.h; sourceTree = "<group>"; };
 		19870CE72122BB6100C23CAA /* JXCategoryBaseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXCategoryBaseCell.h; sourceTree = "<group>"; };
 		19870CE82122BB6100C23CAA /* JXCategoryBaseCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXCategoryBaseCellModel.h; sourceTree = "<group>"; };
@@ -253,7 +244,6 @@
 				190A54EB206397370050B327 /* Info.plist */,
 				190A54EC206397370050B327 /* main.m */,
 				19870BBB211D748100C23CAA /* Objc-Swift-bridge.h */,
-				19870C28211D857F00C23CAA /* lufei.jpg */,
 			);
 			path = JXCategoryView;
 			sourceTree = "<group>";
@@ -411,6 +401,7 @@
 				19870C9A2122703B00C23CAA /* BackgroundEllipseLayer.gif */,
 				19870C9B2122703B00C23CAA /* JXCategoryView.png */,
 				19870C9C2122703B00C23CAA /* TitleColorGradient.gif */,
+				19870C28211D857F00C23CAA /* lufei.jpg */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -424,7 +415,6 @@
 				19870CC42122BB6100C23CAA /* Component */,
 				19870CCB2122BB6100C23CAA /* Number */,
 				19870CD22122BB6100C23CAA /* Common */,
-				19870CDE2122BB6100C23CAA /* BackgroundImage */,
 				19870CE52122BB6100C23CAA /* Base */,
 			);
 			path = Sources;
@@ -505,19 +495,6 @@
 				19346D64212674220065FD8F /* JXCategoryViewDefines.h */,
 			);
 			path = Common;
-			sourceTree = "<group>";
-		};
-		19870CDE2122BB6100C23CAA /* BackgroundImage */ = {
-			isa = PBXGroup;
-			children = (
-				19870CDF2122BB6100C23CAA /* JXCategoryBackgroundImageView.m */,
-				19870CE02122BB6100C23CAA /* JXCategoryBackgroundImageCellModel.h */,
-				19870CE12122BB6100C23CAA /* JXCategoryBackgroundImageCell.m */,
-				19870CE22122BB6100C23CAA /* JXCategoryBackgroundImageView.h */,
-				19870CE32122BB6100C23CAA /* JXCategoryBackgroundImageCell.h */,
-				19870CE42122BB6100C23CAA /* JXCategoryBackgroundImageCellModel.m */,
-			);
-			path = BackgroundImage;
 			sourceTree = "<group>";
 		};
 		19870CE52122BB6100C23CAA /* Base */ = {
@@ -640,7 +617,6 @@
 				19870CEE2122BB6100C23CAA /* JXCategoryTitleImageCellModel.m in Sources */,
 				19870CF02122BB6100C23CAA /* JXCategoryTitleCell.m in Sources */,
 				19870CED2122BB6100C23CAA /* JXCategoryTitleImageCell.m in Sources */,
-				19870CFF2122BB6100C23CAA /* JXCategoryBackgroundImageCellModel.m in Sources */,
 				19870CF62122BB6100C23CAA /* JXCategoryNumberCell.m in Sources */,
 				19870BC0211D7C0300C23CAA /* JXPagingMainTableView.swift in Sources */,
 				19870BD0211D7FD000C23CAA /* PowerListView.swift in Sources */,
@@ -656,7 +632,6 @@
 				19870CEF2122BB6100C23CAA /* JXCategoryTitleCellModel.m in Sources */,
 				1912A522211C1BD000A80826 /* BaseViewController.m in Sources */,
 				19302325211AD1B300AF1444 /* TitleImageSettingViewController.m in Sources */,
-				19870CFE2122BB6100C23CAA /* JXCategoryBackgroundImageCell.m in Sources */,
 				19870BCF211D7FD000C23CAA /* PartnerListView.swift in Sources */,
 				19346D6F21269F3A0065FD8F /* JXCategoryIndicatorBackgroundView.m in Sources */,
 				1912A533211D08C800A80826 /* FootballViewController.m in Sources */,
@@ -676,7 +651,6 @@
 				19870CF72122BB6100C23CAA /* JXCategoryNumberCellModel.m in Sources */,
 				19870BD1211D7FD000C23CAA /* PagingViewTableHeaderView.swift in Sources */,
 				19870BCD211D7FD000C23CAA /* HobbyListView.swift in Sources */,
-				19870CFD2122BB6100C23CAA /* JXCategoryBackgroundImageView.m in Sources */,
 				190A54DF206397370050B327 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
