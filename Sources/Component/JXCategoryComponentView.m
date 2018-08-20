@@ -143,6 +143,10 @@
     [super contentOffsetOfContentScrollViewDidChanged:contentOffset];
     
     CGFloat ratio = contentOffset.x/self.contentScrollView.bounds.size.width;
+    if (ratio > self.dataSource.count - 1 || ratio < 0) {
+        //超过了边界，不需要处理
+        return;
+    }
     ratio = MAX(0, MIN(self.dataSource.count - 1, ratio));
     NSInteger baseIndex = floorf(ratio);
     CGFloat remainderRatio = ratio - baseIndex;
