@@ -270,7 +270,7 @@
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context
 {
-    if ([keyPath isEqualToString:@"contentOffset"] && (self.contentScrollView.isDragging || self.contentScrollView.isDecelerating)) {
+    if ([keyPath isEqualToString:@"contentOffset"] && (self.contentScrollView.isTracking || self.contentScrollView.isDecelerating)) {
         //用户滚动引起的contentOffset变化，才处理。
         CGPoint contentOffset = [change[NSKeyValueChangeNewKey] CGPointValue];
         [self contentOffsetOfContentScrollViewDidChanged:contentOffset];
