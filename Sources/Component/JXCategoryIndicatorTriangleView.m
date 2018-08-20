@@ -28,11 +28,19 @@
     return self;
 }
 
-- (void)layoutSubviews {
-    [super layoutSubviews];
+#pragma mark - JXCategoryComponentProtocol
+
+- (void)jx_refreshState:(CGRect)selectedCellFrame {
+    CGFloat x = selectedCellFrame.origin.x + (selectedCellFrame.size.width - self.triangleViewSize.width)/2;
+    CGFloat y = self.superview.bounds.size.height - self.triangleViewSize.height;
+    if (self.componentPosition == JXCategoryComponentPosition_Top) {
+        y = 0;
+    }
+    self.frame = CGRectMake(x, y, self.triangleViewSize.width, self.triangleViewSize.height);
 
     [CATransaction begin];
     [CATransaction setDisableActions:NO];
+    self.triangleLayer.fillColor = self.triangleViewColor.CGColor;
     self.triangleLayer.frame = self.bounds;
     UIBezierPath *path = [UIBezierPath bezierPath];
     if (self.componentPosition == JXCategoryComponentPosition_Bottom) {
@@ -47,22 +55,6 @@
     [path closePath];
     self.triangleLayer.path = path.CGPath;
     [CATransaction commit];
-}
-
-#pragma mark - JXCategoryComponentProtocol
-
-- (void)jx_refreshState:(CGRect)selectedCellFrame {
-    [CATransaction begin];
-    [CATransaction setDisableActions:NO];
-    self.triangleLayer.fillColor = self.triangleViewColor.CGColor;
-    [CATransaction commit];
-
-    CGFloat x = selectedCellFrame.origin.x + (selectedCellFrame.size.width - self.triangleViewSize.width)/2;
-    CGFloat y = self.superview.bounds.size.height - self.triangleViewSize.height;
-    if (self.componentPosition == JXCategoryComponentPosition_Top) {
-        y = 0;
-    }
-    self.frame = CGRectMake(x, y, self.triangleViewSize.width, self.triangleViewSize.height);
 }
 
 - (void)jx_contentScrollViewDidScrollWithLeftCellFrame:(CGRect)leftCellFrame rightCellFrame:(CGRect)rightCellFrame selectedPosition:(JXCategoryCellClickedPosition)selectedPosition percent:(CGFloat)percent {

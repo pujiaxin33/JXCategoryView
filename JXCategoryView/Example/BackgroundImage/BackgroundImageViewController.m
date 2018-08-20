@@ -17,11 +17,14 @@
 @implementation BackgroundImageViewController
 
 - (void)viewDidLoad {
-    _titles = @[@"周杰伦", @"林俊杰", @"潘玮柏", @"陶吉吉", @"孙燕姿", @"周星驰", @"成龙", @"甄子丹"];
+    _titles = @[@"周杰伦", @"王力宏", @"林俊杰", @"潘玮柏", @"陶吉吉", @"薛之谦", @"五月天", @"毛不易"];
 
     [super viewDidLoad];
 
+    self.title = @"最佳男歌手们";
+
     self.myCategoryView.titles = self.titles;
+    self.myCategoryView.titleColorGradientEnabled = YES;
 
     JXCategoryIndicatorImageView *indicatorImageView = [[JXCategoryIndicatorImageView alloc] init];
     indicatorImageView.indicatorImageView.image = [UIImage imageNamed:@"light"];

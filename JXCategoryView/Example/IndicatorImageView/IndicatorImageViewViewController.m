@@ -20,6 +20,7 @@
 
 - (void)viewDidLoad {
     _titles = @[@"荷花", @"河流", @"海洋", @"城市", ];
+    self.isNeedIndicatorPositionChangeItem = YES;
 
     [super viewDidLoad];
 

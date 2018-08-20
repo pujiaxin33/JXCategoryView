@@ -16,7 +16,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         _backgroundViewWidth = JXCategoryViewAutomaticDimension;
-        _backgroundViewHeight = 20;
+        _backgroundViewHeight = JXCategoryViewAutomaticDimension;
         _backgroundViewCornerRadius = JXCategoryViewAutomaticDimension;
         _backgroundViewColor = [UIColor lightGrayColor];
         _backgroundViewWidthIncrement = 10;
@@ -27,13 +27,14 @@
 #pragma mark - JXCategoryComponentProtocol
 
 - (void)jx_refreshState:(CGRect)selectedCellFrame {
-    self.layer.cornerRadius = [self getBackgroundViewCornerRadius];
+    self.layer.cornerRadius = [self getBackgroundViewCornerRadius:selectedCellFrame];
     self.backgroundColor = self.backgroundViewColor;
 
     CGFloat width = [self getBackgroundViewWidth:selectedCellFrame];
+    CGFloat height = [self getBackgroundViewHeight:selectedCellFrame];
     CGFloat x = selectedCellFrame.origin.x + (selectedCellFrame.size.width - width)/2;
-    CGFloat y = (selectedCellFrame.size.height - self.backgroundViewHeight)/2;
-    self.frame = CGRectMake(x, y, width, self.backgroundViewHeight);
+    CGFloat y = (selectedCellFrame.size.height - height)/2;
+    self.frame = CGRectMake(x, y, width, height);
 }
 
 - (void)jx_contentScrollViewDidScrollWithLeftCellFrame:(CGRect)leftCellFrame rightCellFrame:(CGRect)rightCellFrame selectedPosition:(JXCategoryCellClickedPosition)selectedPosition percent:(CGFloat)percent {
@@ -59,16 +60,18 @@
 
     //允许变动frame的情况：1、允许滚动；2、不允许滚动，但是已经通过手势滚动切换一页内容了；
     if (self.scrollEnabled == YES || (self.scrollEnabled == NO && percent == 0)) {
-        CGFloat y = (leftCellFrame.size.height - self.backgroundViewHeight)/2;
-        self.frame = CGRectMake(targetX, y, targetWidth, self.backgroundViewHeight);
+        CGFloat height = [self getBackgroundViewHeight:leftCellFrame];
+        CGFloat y = (leftCellFrame.size.height - height)/2;
+        self.frame = CGRectMake(targetX, y, targetWidth, height);
     }
 }
 
 - (void)jx_selectedCell:(CGRect)cellFrame clickedRelativePosition:(JXCategoryCellClickedPosition)clickedRelativePosition {
     CGFloat width = [self getBackgroundViewWidth:cellFrame];
+    CGFloat height = [self getBackgroundViewHeight:cellFrame];
     CGFloat x = cellFrame.origin.x + (cellFrame.size.width - width)/2;
-    CGFloat y = (cellFrame.size.height - self.backgroundViewHeight)/2;
-    CGRect toFrame = CGRectMake(x, y, width, self.backgroundViewHeight);
+    CGFloat y = (cellFrame.size.height - height)/2;
+    CGRect toFrame = CGRectMake(x, y, width, height);
 
     if (self.scrollEnabled) {
         [UIView animateWithDuration:0.25 delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
@@ -90,9 +93,17 @@
     return self.backgroundViewWidth + self.backgroundViewWidthIncrement;
 }
 
-- (CGFloat)getBackgroundViewCornerRadius {
+- (CGFloat)getBackgroundViewHeight:(CGRect)cellFrame
+{
+    if (self.backgroundViewHeight == JXCategoryViewAutomaticDimension) {
+        return cellFrame.size.height;
+    }
+    return self.backgroundViewHeight;
+}
+
+- (CGFloat)getBackgroundViewCornerRadius:(CGRect)cellFrame {
     if (self.backgroundViewCornerRadius == JXCategoryViewAutomaticDimension) {
-        return self.backgroundViewHeight/2;
+        return [self getBackgroundViewHeight:cellFrame]/2;
     }
     return self.backgroundViewCornerRadius;
 }

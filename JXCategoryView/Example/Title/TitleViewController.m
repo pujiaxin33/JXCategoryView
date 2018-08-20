@@ -10,14 +10,16 @@
 #import "JXCategoryTitleView.h"
 
 @interface TitleViewController ()
-@property (nonatomic, strong) NSArray *titles;
+
 @property (nonatomic, strong) JXCategoryTitleView *myCategoryView;
 @end
 
 @implementation TitleViewController
 
 - (void)viewDidLoad {
-    _titles = @[@"螃蟹", @"麻辣小龙虾", @"苹果", @"营养胡萝卜", @"葡萄", @"美味西瓜", @"香蕉", @"香甜菠萝", @"鸡肉", @"鱼", @"海星"];
+    if (self.titles == nil) {
+        _titles = @[@"螃蟹", @"麻辣小龙虾", @"苹果", @"营养胡萝卜", @"葡萄", @"美味西瓜", @"香蕉", @"香甜菠萝", @"鸡肉", @"鱼", @"海星"];
+    }
 
     [super viewDidLoad];
 

@@ -43,10 +43,19 @@
 
 @property (nonatomic, assign) BOOL averageCellWidthEnabled;     //当cell内容总宽度小于JXCategoryBaseView的宽度，是否将cellWidth均分。默认为YES。
 
+
 /**
- //初始化的时候无需调用。初始化之后更新其他配置属性，需要调用该方法，进行刷新。
+ 初始化的时候无需调用。初始化之后更新其他配置属性，需要调用该方法，进行刷新。
  */
 - (void)reloadDatas;
+
+
+/**
+ 刷新指定的index的cell
+
+ @param index 指定cell的index
+ */
+- (void)reloadCell:(NSUInteger)index;
 
 #pragma mark - Subclass use
 

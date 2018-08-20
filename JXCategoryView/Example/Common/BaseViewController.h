@@ -13,6 +13,8 @@
 
 @interface BaseViewController : UIViewController
 
+@property (nonatomic, assign) BOOL isNeedIndicatorPositionChangeItem;
+
 @property (nonatomic, strong) JXCategoryBaseView *categoryView;
 
 @property (nonatomic, strong) UIScrollView *scrollView;
@@ -23,5 +25,9 @@
 - (NSUInteger)preferredListViewCount;
 
 - (CGFloat)preferredCategoryViewHeight;
+
+- (Class)preferredListViewControllerClass;
+
+- (void)configListViewController:(UIViewController *)controller index:(NSUInteger)index;
 
 @end

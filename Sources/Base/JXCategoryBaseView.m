@@ -96,6 +96,16 @@
     [self.collectionView reloadData];
 }
 
+- (void)reloadCell:(NSUInteger)index {
+    if (index >= self.dataSource.count) {
+        return;
+    }
+    JXCategoryBaseCellModel *cellModel = self.dataSource[index];
+    [self refreshCellModel:cellModel index:index];
+    JXCategoryBaseCell *cell = (JXCategoryBaseCell *)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0]];
+    [cell reloadDatas:cellModel];
+}
+
 - (void)refreshDataSource {
 
 }
