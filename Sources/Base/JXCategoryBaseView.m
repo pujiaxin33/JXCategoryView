@@ -173,12 +173,12 @@
         return NO;
     }
 
-    if (targetIndex == self.selectedIndex) {
-        return NO;
-    }
-
     if (self.delegate && [self.delegate respondsToSelector:@selector(categoryView:didSelectedItemAtIndex:)]) {
         [self.delegate categoryView:self didSelectedItemAtIndex:targetIndex];
+    }
+
+    if (targetIndex == self.selectedIndex) {
+        return NO;
     }
 
     JXCategoryBaseCellModel *lastCellModel = self.dataSource[self.selectedIndex];
