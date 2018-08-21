@@ -14,6 +14,6 @@
 
 @property (nonatomic, assign) BOOL indicatorImageViewRollEnabled;      //默认NO
 
-@property (nonatomic, assign) CGSize indicatorImageViewSize;
+@property (nonatomic, assign) CGSize indicatorImageViewSize;    //默认：CGSizeMake(30, 20)
 
 @end

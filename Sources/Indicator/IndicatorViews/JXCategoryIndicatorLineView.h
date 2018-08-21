@@ -24,7 +24,7 @@ typedef NS_ENUM(NSUInteger, JXCategoryIndicatorLineStyle) {
  */
 @property (nonatomic, assign) CGFloat lineScrollOffsetX;
 
-@property (nonatomic, assign) CGFloat indicatorLineViewHeight;
+@property (nonatomic, assign) CGFloat indicatorLineViewHeight;  //默认：3
 
 @property (nonatomic, assign) CGFloat indicatorLineWidth;    //默认JXCategoryViewAutomaticDimension（与cellWidth相等）
 
