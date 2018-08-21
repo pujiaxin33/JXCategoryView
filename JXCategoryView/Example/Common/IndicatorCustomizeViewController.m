@@ -35,19 +35,19 @@
         }
     }
 
-    if (indexPath.row == 9) {
+    if (indexPath.row == 10) {
         //IndicatorImageView底部
         IndicatorImageViewViewController *indicatorImageViewVC = [[IndicatorImageViewViewController alloc] init];
         indicatorImageViewVC.title = title;
         [self.navigationController pushViewController:indicatorImageViewVC animated:YES];
         return;
-    }else if (indexPath.row == 10) {
+    }else if (indexPath.row == 11) {
         //IndicatorImageView cell背景
         BackgroundImageViewController *backgroundImageVC = [[BackgroundImageViewController alloc] init];
         backgroundImageVC.title = title;
         [self.navigationController pushViewController:backgroundImageVC animated:YES];
         return;
-    }else if (indexPath.row == 11) {
+    }else if (indexPath.row == 12) {
         //足球滚动
         FootballViewController *footballVC = [[FootballViewController alloc] init];
         footballVC.title = title;
@@ -107,11 +107,20 @@
             //三角形
             testVC.isNeedIndicatorPositionChangeItem = YES;
             titleCategoryView.titleColorGradientEnabled = YES;
+            JXCategoryIndicatorBallView *ballView = [[JXCategoryIndicatorBallView alloc] init];
+            titleCategoryView.indicators = @[ballView];
+        }
+            break;
+        case 5:
+        {
+            //三角形
+            testVC.isNeedIndicatorPositionChangeItem = YES;
+            titleCategoryView.titleColorGradientEnabled = YES;
             JXCategoryIndicatorTriangleView *triangleView = [[JXCategoryIndicatorTriangleView alloc] init];
             titleCategoryView.indicators = @[triangleView];
         }
             break;
-        case 5:
+        case 6:
         {
             //椭圆形
             titleCategoryView.titleColorGradientEnabled = YES;
@@ -120,7 +129,7 @@
             titleCategoryView.indicators = @[backgroundView];
         }
             break;
-        case 6:
+        case 7:
         {
             //长方形
             titleCategoryView.titleColorGradientEnabled = YES;
@@ -130,7 +139,7 @@
             titleCategoryView.indicators = @[backgroundView];
         }
             break;
-        case 7:
+        case 8:
         {
             //文字遮罩有背景
             titleCategoryView.titleColorGradientEnabled = NO;
@@ -142,7 +151,7 @@
             titleCategoryView.indicators = @[backgroundView];
         }
             break;
-        case 8:
+        case 9:
         {
             //文字遮罩无背景
             titleCategoryView.titleColorGradientEnabled = NO;
@@ -155,7 +164,7 @@
             titleCategoryView.indicators = @[backgroundView];
         }
             break;
-        case 12:
+        case 13:
         {
             //混合使用
             titleCategoryView.titleColorGradientEnabled = NO;

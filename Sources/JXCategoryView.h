@@ -17,4 +17,5 @@
 #import "JXCategoryIndicatorTriangleView.h"
 #import "JXCategoryIndicatorImageView.h"
 #import "JXCategoryIndicatorBackgroundView.h"
+#import "JXCategoryIndicatorBallView.h"
 
