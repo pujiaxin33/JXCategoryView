@@ -22,6 +22,8 @@
 
 @property (nonatomic, assign) JXCategoryTitleImageType imageType;    //默认JXCategoryTitleImageType_LeftImage
 
+@property (nonatomic, copy) void(^loadImageCallback)(UIImageView *imageView);   //使用imageURLs从远端下载图片进行加载，建议使用SDWebImage等第三方库进行下载。
+
 @property (nonatomic, assign) CGSize imageSize;     //默认CGSizeMake(20, 20)
 
 @property (nonatomic, assign) CGFloat titleImageSpacing;    //titleLabel和ImageView的间距，默认5

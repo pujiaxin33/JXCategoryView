@@ -39,7 +39,8 @@
     [self.view addSubview:self.scrollView];
 
     for (int i = 0; i < count; i ++) {
-        ListViewController *listVC = [[ListViewController alloc] init];
+        UIViewController *listVC = [[[self preferredListViewControllerClass] alloc] init];
+        [self configListViewController:listVC index:i];
         [self addChildViewController:listVC];
         listVC.view.frame = CGRectMake(i*width, 0, width, height);
         [self.scrollView addSubview:listVC.view];
@@ -49,6 +50,11 @@
     self.categoryView.delegate = self;
     self.categoryView.contentScrollView = self.scrollView;
     [self.view addSubview:self.categoryView];
+
+    if (self.isNeedIndicatorPositionChangeItem) {
+        UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithTitle:@"指示器位置切换" style:UIBarButtonItemStylePlain target:self action:@selector(rightItemClicked)];
+        self.navigationItem.rightBarButtonItem = rightItem;
+    }
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -69,11 +75,31 @@
     return 50;
 }
 
+- (Class)preferredListViewControllerClass {
+    return [ListViewController class];
+}
+
+- (void)configListViewController:(UIViewController *)controller index:(NSUInteger)index {
+    
+}
+
 - (JXCategoryBaseView *)categoryView {
     if (_categoryView == nil) {
         _categoryView = [[[self preferredCategoryViewClass] alloc] init];
     }
     return _categoryView;
+}
+
+- (void)rightItemClicked {
+    JXCategoryIndicatorView *componentView = (JXCategoryIndicatorView *)self.categoryView;
+    for (JXCategoryIndicatorComponentView *view in componentView.indicators) {
+        if (view.componentPosition == JXCategoryComponentPosition_Top) {
+            view.componentPosition = JXCategoryComponentPosition_Bottom;
+        }else {
+            view.componentPosition = JXCategoryComponentPosition_Top;
+        }
+    }
+    [componentView reloadDatas];
 }
 
 #pragma mark - JXCategoryViewDelegate

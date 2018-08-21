@@ -9,8 +9,8 @@
 #import "JXCategoryTitleImageCell.h"
 #import "JXCategoryTitleImageCellModel.h"
 
-@interface JXCategoryTitleImageCell() <NSURLSessionDownloadDelegate>
-@property (nonatomic, strong) NSURLSession *session;
+@interface JXCategoryTitleImageCell()
+
 @end
 
 @implementation JXCategoryTitleImageCell
@@ -21,8 +21,6 @@
     _imageView = [[UIImageView alloc] init];
     _imageView.contentMode = UIViewContentModeScaleAspectFit;
     [self.contentView addSubview:_imageView];
-
-    _session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:self delegateQueue:nil];
 }
 
 - (void)layoutSubviews {
@@ -33,12 +31,6 @@
     CGSize imageSize = myCellModel.imageSize;
     self.imageView.bounds = CGRectMake(0, 0, imageSize.width, imageSize.height);
     switch (myCellModel.imageType) {
-        case JXCategoryTitleImageType_OnlyImage:
-        {
-            self.titleLabel.hidden = YES;
-            self.imageView.center = self.contentView.center;
-        }
-            break;
 
         case JXCategoryTitleImageType_TopImage:
         {
@@ -84,28 +76,20 @@
     if (myCellModel.imageName != nil) {
         self.imageView.image = [UIImage imageNamed:myCellModel.imageName];
     }else if (myCellModel.imageURL != nil) {
-        NSAssert(NO, @"如果业务需要从远端下载图片进行加载，务必使用SDWebImage等第三方库进行下载。我这里只是写的demo代码，没有缓存逻辑。");
-        NSURLRequest *request = [NSURLRequest requestWithURL:myCellModel.imageURL];
-        NSURLSessionDownloadTask *task = [self.session downloadTaskWithRequest:request];
-        [task resume];
+        if (myCellModel.loadImageCallback != nil) {
+            myCellModel.loadImageCallback(self.imageView);
+        }
     }
     if (myCellModel.selected) {
         if (myCellModel.selectedImageName != nil) {
             self.imageView.image = [UIImage imageNamed:myCellModel.selectedImageName];
         }else if (myCellModel.selectedImageURL != nil) {
-            NSAssert(NO, @"如果业务需要从远端下载图片进行加载，务必使用SDWebImage等第三方库进行下载。我这里只是写的demo代码，没有缓存逻辑。");
-            NSURLRequest *request = [NSURLRequest requestWithURL:myCellModel.selectedImageURL];
-            NSURLSessionDownloadTask *task = [self.session downloadTaskWithRequest:request];
-            [task resume];
+            if (myCellModel.loadImageCallback != nil) {
+                myCellModel.loadImageCallback(self.imageView);
+            }
         }
     }
 }
 
-#pragma mark - NSURLSessionDownloadDelegate
-
-- (void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask didFinishDownloadingToURL:(NSURL *)location {
-    NSData *imageData = [NSData dataWithContentsOfURL:location];
-    self.imageView.image = [UIImage imageWithData:imageData];
-}
 
 @end

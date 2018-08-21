@@ -8,7 +8,7 @@
 
 #import "JXCategoryBaseView.h"
 
-const CGFloat JXCategoryViewAutomaticDimension = -1;
+
 
 @interface JXCategoryBaseView () <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 
@@ -50,6 +50,7 @@ const CGFloat JXCategoryViewAutomaticDimension = -1;
     _dataSource = [NSMutableArray array];
     _selectedIndex = 0;
     _cellWidth = JXCategoryViewAutomaticDimension;
+    _cellWidthIncrement = 0;
     _cellSpacing = 20;
     _averageCellWidthEnabled = YES;
 }
@@ -96,6 +97,16 @@ const CGFloat JXCategoryViewAutomaticDimension = -1;
     [self.collectionView reloadData];
 }
 
+- (void)reloadCell:(NSUInteger)index {
+    if (index >= self.dataSource.count) {
+        return;
+    }
+    JXCategoryBaseCellModel *cellModel = self.dataSource[index];
+    [self refreshCellModel:cellModel index:index];
+    JXCategoryBaseCell *cell = (JXCategoryBaseCell *)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0]];
+    [cell reloadDatas:cellModel];
+}
+
 - (void)refreshDataSource {
 
 }
@@ -114,7 +125,7 @@ const CGFloat JXCategoryViewAutomaticDimension = -1;
         }else {
             cellModel.selected = NO;
         }
-        cellModel.cellWidth = [self preferredCellWidthWithIndex:i];
+        cellModel.cellWidth = [self preferredCellWidthWithIndex:i] + self.cellWidthIncrement;
         cellModel.cellSpacing = self.cellSpacing;
         totalItemWidth += cellModel.cellWidth + self.cellSpacing;
         [self refreshCellModel:cellModel index:i];
@@ -260,7 +271,7 @@ const CGFloat JXCategoryViewAutomaticDimension = -1;
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context
 {
-    if ([keyPath isEqualToString:@"contentOffset"] && (self.contentScrollView.isDragging || self.contentScrollView.isDecelerating)) {
+    if ([keyPath isEqualToString:@"contentOffset"] && (self.contentScrollView.isTracking || self.contentScrollView.isDecelerating)) {
         //用户滚动引起的contentOffset变化，才处理。
         CGPoint contentOffset = [change[NSKeyValueChangeNewKey] CGPointValue];
         [self contentOffsetOfContentScrollViewDidChanged:contentOffset];

@@ -12,6 +12,11 @@
 
 @implementation JXCategoryTitleImageView
 
+- (void)dealloc
+{
+    self.loadImageCallback = nil;
+}
+
 - (void)initializeDatas {
     [super initializeDatas];
 
@@ -37,6 +42,7 @@
     [super refreshCellModel:cellModel index:index];
 
     JXCategoryTitleImageCellModel *myCellModel = (JXCategoryTitleImageCellModel *)cellModel;
+    myCellModel.loadImageCallback = self.loadImageCallback;
     myCellModel.imageType = self.imageType;
     myCellModel.imageSize = self.imageSize;
     myCellModel.titleImageSpacing = self.titleImageSpacing;

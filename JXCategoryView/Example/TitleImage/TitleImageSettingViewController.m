@@ -36,8 +36,7 @@
 }
 
 - (JXCategoryTitleImageType)converIndexToImageType:(NSUInteger)index {
-    NSArray <NSNumber *> *imageTypes = @[@(JXCategoryTitleImageType_OnlyImage),
-                            @(JXCategoryTitleImageType_TopImage),
+    NSArray <NSNumber *> *imageTypes = @[@(JXCategoryTitleImageType_TopImage),
                             @(JXCategoryTitleImageType_LeftImage),
                             @(JXCategoryTitleImageType_BottomImage),
                             @(JXCategoryTitleImageType_RightImage)];
@@ -45,8 +44,7 @@
 }
 
 - (JXCategoryTitleImageType)converImageTypeToIndex:(JXCategoryTitleImageType)imageType {
-    NSArray <NSNumber *> *imageTypes = @[@(JXCategoryTitleImageType_OnlyImage),
-                                         @(JXCategoryTitleImageType_TopImage),
+    NSArray <NSNumber *> *imageTypes = @[@(JXCategoryTitleImageType_TopImage),
                                          @(JXCategoryTitleImageType_LeftImage),
                                          @(JXCategoryTitleImageType_BottomImage),
                                          @(JXCategoryTitleImageType_RightImage)];

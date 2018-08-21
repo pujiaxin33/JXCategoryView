@@ -30,12 +30,13 @@
     self.myCategoryView.cellSpacing = 0;
     self.myCategoryView.titleColor = [UIColor redColor];
     self.myCategoryView.titleSelectedColor = [UIColor whiteColor];
-    self.myCategoryView.indicatorLineViewShowEnabled = NO;
-    self.myCategoryView.backgroundEllipseLayerShowEnabled = YES;
-    self.myCategoryView.backgroundEllipseLayerHeight = 30;
-    self.myCategoryView.backgroundEllipseLayerWidthIncrement = 0;
     self.myCategoryView.titleLabelMaskEnabled = YES;
-    self.myCategoryView.backgroundEllipseLayerColor = [UIColor redColor];
+
+    JXCategoryIndicatorBackgroundView *backgroundView = [[JXCategoryIndicatorBackgroundView alloc] init];
+    backgroundView.backgroundViewHeight = 30;
+    backgroundView.backgroundViewWidthIncrement = 0;
+    backgroundView.backgroundViewColor = [UIColor redColor];
+    self.myCategoryView.indicators = @[backgroundView];
 
     [self.myCategoryView removeFromSuperview];
     self.navigationItem.titleView = self.myCategoryView;

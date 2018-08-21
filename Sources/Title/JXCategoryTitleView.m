@@ -7,7 +7,7 @@
 //
 
 #import "JXCategoryTitleView.h"
-#import "UIColor+JXAdd.h"
+#import "JXCategoryFactory.h"
 
 @interface JXCategoryTitleView ()
 
@@ -24,7 +24,6 @@
     _titleFont = [UIFont systemFontOfSize:15];
     _titleColorGradientEnabled = NO;
     _titleLabelMaskEnabled = NO;
-    self.backgroundEllipseLayerWidthIncrement = 10;
 }
 
 #pragma mark - Override
@@ -65,17 +64,17 @@
     JXCategoryTitleCellModel *leftModel = (JXCategoryTitleCellModel *)leftCellModel;
     JXCategoryTitleCellModel *rightModel = (JXCategoryTitleCellModel *)rightCellModel;
     if (leftModel.selected) {
-        leftModel.titleSelectedColor = [self interpolationColorFrom:self.titleSelectedColor to:self.titleColor percent:ratio];
+        leftModel.titleSelectedColor = [JXCategoryFactory interpolationColorFrom:self.titleSelectedColor to:self.titleColor percent:ratio];
         leftModel.titleColor = self.titleColor;
     }else {
-        leftModel.titleColor = [self interpolationColorFrom:self.titleSelectedColor to:self.titleColor percent:ratio];
+        leftModel.titleColor = [JXCategoryFactory interpolationColorFrom:self.titleSelectedColor to:self.titleColor percent:ratio];
         leftModel.titleSelectedColor = self.titleSelectedColor;
     }
     if (rightModel.selected) {
-        rightModel.titleSelectedColor = [self interpolationColorFrom:self.titleColor to:self.titleSelectedColor percent:ratio];
+        rightModel.titleSelectedColor = [JXCategoryFactory interpolationColorFrom:self.titleColor to:self.titleSelectedColor percent:ratio];
         rightModel.titleColor = self.titleColor;
     }else {
-        rightModel.titleColor = [self interpolationColorFrom:self.titleColor to:self.titleSelectedColor percent:ratio];
+        rightModel.titleColor = [JXCategoryFactory interpolationColorFrom:self.titleColor to:self.titleSelectedColor percent:ratio];
         rightModel.titleSelectedColor = self.titleSelectedColor;
     }
 }
@@ -97,17 +96,6 @@
     model.titleSelectedColor = self.titleSelectedColor;
     model.title = self.titles[index];
     model.titleLabelMaskEnabled = self.titleLabelMaskEnabled;
-}
-
-#pragma mark - Private
-
-- (UIColor *)interpolationColorFrom:(UIColor *)fromColor to:(UIColor *)toColor percent:(CGFloat)percent
-{
-    CGFloat red = [self interpolationFrom:fromColor.jx_red to:toColor.jx_red percent:percent];
-    CGFloat green = [self interpolationFrom:fromColor.jx_green to:toColor.jx_green percent:percent];
-    CGFloat blue = [self interpolationFrom:fromColor.jx_blue to:toColor.jx_blue percent:percent];
-    return [UIColor colorWithRed:red green:green blue:blue alpha:1];
-
 }
 
 @end

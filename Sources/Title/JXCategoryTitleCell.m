@@ -56,7 +56,7 @@
         self.maskTitleLabel.text = myCellModel.title;
         [self.maskTitleLabel sizeToFit];
 
-        CGRect frame = myCellModel.backgroundEllipseLayerMaskFrame;
+        CGRect frame = myCellModel.backgroundViewMaskFrame;
         frame.origin.x -= (self.contentView.bounds.size.width - self.maskTitleLabel.bounds.size.width)/2;
         frame.origin.y = 0;
         [CATransaction begin];

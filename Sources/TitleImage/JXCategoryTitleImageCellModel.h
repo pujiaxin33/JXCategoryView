@@ -9,8 +9,7 @@
 #import "JXCategoryTitleCellModel.h"
 
 typedef NS_ENUM(NSUInteger, JXCategoryTitleImageType) {
-    JXCategoryTitleImageType_OnlyImage = 0,
-    JXCategoryTitleImageType_TopImage,
+    JXCategoryTitleImageType_TopImage = 0,
     JXCategoryTitleImageType_LeftImage,
     JXCategoryTitleImageType_BottomImage,
     JXCategoryTitleImageType_RightImage,
@@ -19,6 +18,8 @@ typedef NS_ENUM(NSUInteger, JXCategoryTitleImageType) {
 @interface JXCategoryTitleImageCellModel : JXCategoryTitleCellModel
 
 @property (nonatomic, assign) JXCategoryTitleImageType imageType;
+
+@property (nonatomic, copy) void(^loadImageCallback)(UIImageView *imageView);
 
 @property (nonatomic, copy) NSString *imageName;    //加载bundle内的图片
 

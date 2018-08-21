@@ -11,6 +11,7 @@
 
 @interface NumberViewController () <JXCategoryViewDelegate>
 @property (nonatomic, strong) NSArray *titles;
+@property (nonatomic, strong) NSArray *numbers;
 @property (nonatomic, strong) JXCategoryNumberView *myCategoryView;
 @end
 
@@ -21,11 +22,16 @@
 
     [super viewDidLoad];
 
-    NSArray *numbers = @[@0, @111111, @5, @10, @2, @100, @66, @999, @33, @33, @11];
+    UIBarButtonItem *reloadItem = [[UIBarButtonItem alloc] initWithTitle:@"刷新" style:UIBarButtonItemStylePlain target:self action:@selector(reloadNumbers)];
+    self.navigationItem.rightBarButtonItem = reloadItem;
+
+    _numbers = @[@0, @111111, @5, @10, @2, @100, @66, @999, @33, @33, @11];
 
     self.myCategoryView.titles = self.titles;
-    self.myCategoryView.counts = numbers;
+    self.myCategoryView.counts = self.numbers;
 
+    JXCategoryIndicatorLineView *lineView = [[JXCategoryIndicatorLineView alloc] init];
+    self.myCategoryView.indicators = @[lineView];
 }
 
 - (JXCategoryNumberView *)myCategoryView {
@@ -38,6 +44,12 @@
 
 - (Class)preferredCategoryViewClass {
     return [JXCategoryNumberView class];
+}
+
+- (void)reloadNumbers {
+    self.numbers = @[@33, @33, @33, @33, @33, @33, @33, @33, @33, @33, @33];
+    self.myCategoryView.counts = self.numbers;
+    [self.myCategoryView reloadDatas];
 }
 
 

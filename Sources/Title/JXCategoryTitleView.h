@@ -6,11 +6,11 @@
 //  Copyright © 2018年 jiaxin. All rights reserved.
 //
 
-#import "JXCategoryLineStyleView.h"
+#import "JXCategoryIndicatorView.h"
 #import "JXCategoryTitleCell.h"
 #import "JXCategoryTitleCellModel.h"
 
-@interface JXCategoryTitleView : JXCategoryLineStyleView
+@interface JXCategoryTitleView : JXCategoryIndicatorView
 
 @property (nonatomic, strong) NSArray <NSString *>*titles;
 

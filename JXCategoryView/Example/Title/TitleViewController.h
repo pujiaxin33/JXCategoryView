@@ -11,4 +11,6 @@
 
 @interface TitleViewController : BaseViewController
 
+@property (nonatomic, strong) NSArray *titles;
+
 @end

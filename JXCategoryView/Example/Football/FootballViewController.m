@@ -7,7 +7,6 @@
 //
 
 #import "FootballViewController.h"
-#import "JXCategoryTitleView.h"
 
 @interface FootballViewController ()
 @property (nonatomic, strong) NSArray *titles;
@@ -18,16 +17,18 @@
 
 - (void)viewDidLoad {
     _titles = @[@"中国U-19", @"中国超级联赛", @"亚足联冠军联赛", @"亚运会足球赛", @"世界杯🎉"];
+    self.isNeedIndicatorPositionChangeItem = YES;
 
     [super viewDidLoad];
 
     self.categoryView.frame = CGRectMake(0, 20, WindowsSize.width, 60);
     self.myCategoryView.titles = self.titles;
     self.myCategoryView.titleColorGradientEnabled = YES;
-    self.myCategoryView.indicatorLineViewShowEnabled = NO;
-    self.myCategoryView.indicatorImageViewShowEnabled = YES;
-    self.myCategoryView.indicatorImageViewRollEnabled = YES;
-    self.myCategoryView.indicatorImageView.image = [UIImage imageNamed:@"football"];
+
+    JXCategoryIndicatorImageView *indicatorImageView = [[JXCategoryIndicatorImageView alloc] init];
+    indicatorImageView.indicatorImageViewRollEnabled = YES;
+    indicatorImageView.indicatorImageView.image = [UIImage imageNamed:@"football"];
+    self.myCategoryView.indicators = @[indicatorImageView];
 }
 
 - (JXCategoryTitleView *)myCategoryView {

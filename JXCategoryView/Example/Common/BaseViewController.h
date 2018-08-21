@@ -7,11 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "JXCategoryBaseView.h"
+#import "JXCategoryView.h"
 
 #define WindowsSize [UIScreen mainScreen].bounds.size
 
 @interface BaseViewController : UIViewController
+
+@property (nonatomic, assign) BOOL isNeedIndicatorPositionChangeItem;
 
 @property (nonatomic, strong) JXCategoryBaseView *categoryView;
 
@@ -23,5 +25,9 @@
 - (NSUInteger)preferredListViewCount;
 
 - (CGFloat)preferredCategoryViewHeight;
+
+- (Class)preferredListViewControllerClass;
+
+- (void)configListViewController:(UIViewController *)controller index:(NSUInteger)index;
 
 @end

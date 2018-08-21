@@ -32,7 +32,10 @@
     self.myCategoryView.imageNames = imageNames;
     self.myCategoryView.selectedImageNames = selectedImageNames;
     self.myCategoryView.imageType = JXCategoryTitleImageType_LeftImage;
-    self.myCategoryView.indicatorLineWidth = 20;
+
+    JXCategoryIndicatorLineView *lineView = [[JXCategoryIndicatorLineView alloc] init];
+    lineView.indicatorLineWidth = 20;
+    self.myCategoryView.indicators = @[lineView];
 }
 
 - (JXCategoryTitleImageView *)myCategoryView {

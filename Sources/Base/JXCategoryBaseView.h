@@ -10,10 +10,9 @@
 #import "JXCategoryBaseCell.h"
 #import "JXCategoryBaseCellModel.h"
 #import "JXCategoryCollectionView.h"
+#import "JXCategoryViewDefines.h"
 
 @class JXCategoryBaseView;
-
-extern const CGFloat JXCategoryViewAutomaticDimension;
 
 @protocol JXCategoryViewDelegate <NSObject>
 
@@ -40,14 +39,25 @@ extern const CGFloat JXCategoryViewAutomaticDimension;
 
 @property (nonatomic, assign) CGFloat cellWidth;    //默认JXCategoryViewAutomaticDimension
 
+@property (nonatomic, assign) CGFloat cellWidthIncrement;    //cell宽度补偿。默认：0
+
 @property (nonatomic, assign) CGFloat cellSpacing;    //cell之间的间距，默认20
 
 @property (nonatomic, assign) BOOL averageCellWidthEnabled;     //当cell内容总宽度小于JXCategoryBaseView的宽度，是否将cellWidth均分。默认为YES。
 
+
 /**
- //初始化的时候无需调用。初始化之后更新其他配置属性，需要调用该方法，进行刷新。
+ 初始化的时候无需调用。初始化之后更新其他配置属性，需要调用该方法，进行刷新。
  */
 - (void)reloadDatas;
+
+
+/**
+ 刷新指定的index的cell
+
+ @param index 指定cell的index
+ */
+- (void)reloadCell:(NSUInteger)index;
 
 #pragma mark - Subclass use
 
