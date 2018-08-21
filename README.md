@@ -55,9 +55,11 @@ Image |  <img src="JXCategoryView/Images/CellImage.gif" width="343" height="80">
 
 ### 特殊效果预览
 
+说明 | Gif |
+----|------|
 SegmentedControl |  <img src="JXCategoryView/Images/SegmentedControl.gif" width="343" height="80"> |
 导航栏使用 |  <img src="JXCategoryView/Images/SegmentedControlNavi.gif" width="343" height="80"> |
-嵌套使用 |  <img src="JXCategoryView/Images/SegmentedControlNavi.gif" width="343" height="272"> |
+嵌套使用 |  <img src="JXCategoryView/Images/Nest.gif" width="343" height="272"> |
 个人主页(上下左右滚动、header悬浮) |  <img src="JXCategoryView/Images/UserProfile.gif" width="343" height="562"> |
 
 
@@ -183,7 +185,7 @@ titleCategoryView.indicators = @[lineView, triangleView, ballView, backgroundVie
 - `- (void)refreshSelectedCellModel:(JXCategoryBaseCellModel *)selectedCellModel unselectedCellModel:(JXCategoryBaseCellModel *)unselectedCellModel`cell选中时进行状态刷新；
 - `- (void)refreshLeftCellModel:(JXCategoryBaseCellModel *)leftCellModel rightCellModel:(JXCategoryBaseCellModel *)rightCellModel ratio:(CGFloat)ratio`cell左右滚动切换的时候，进行状态刷新；
 
-#### 指示器样式自定义
+### 指示器样式自定义
 
 参考：`JXCategoryIndicatorLineView、JXCategoryIndicatorTriangleView、JXCategoryIndicatorImageView、JXCategoryIndicatorBackgroundView、JXCategoryIndicatorBallView`
 
@@ -241,6 +243,10 @@ titleCategoryView.indicators = @[lineView, triangleView, ballView, backgroundVie
     [self.scrollView setContentOffset:CGPointMake(self.scrollView.bounds.size.width*index, 0) animated:YES];
 }
 ```
+
+## 更新记录
+
+- 2018.8.12 发布1.0.0版本，更新内容：使用POP（面向协议编程）重构指示器视图；
 
 ## 补充
 
