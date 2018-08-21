@@ -64,6 +64,19 @@
             break;
         case 2:
         {
+            //cell背景色渐变
+            TitleViewController *testVC = [[TitleViewController alloc] init];
+            testVC.title = title;
+            JXCategoryTitleView *titleCategoryView = (JXCategoryTitleView *)testVC.categoryView;
+            titleCategoryView.titleColorGradientEnabled = YES;
+            titleCategoryView.cellBackgroundColorGradientEnabled = YES;
+            titleCategoryView.cellSpacing = 0;
+            titleCategoryView.cellWidthIncrement = 20;
+            [self.navigationController pushViewController:testVC animated:YES];
+        }
+            break;
+        case 3:
+        {
             //SeparatorLine
             TitleViewController *testVC = [[TitleViewController alloc] init];
             testVC.title = title;
@@ -74,7 +87,7 @@
             [self.navigationController pushViewController:testVC animated:YES];
         }
             break;
-        case 3:
+        case 4:
         {
             //图片
             ImageViewController *testVC = [[ImageViewController alloc] init];
@@ -85,7 +98,7 @@
             [self.navigationController pushViewController:testVC animated:YES];
         }
             break;
-        case 4:
+        case 5:
         {
             //数字
             NumberViewController *numberVC = [[NumberViewController alloc] init];
@@ -93,7 +106,7 @@
             [self.navigationController pushViewController:numberVC animated:YES];
         }
             break;
-        case 5:
+        case 6:
         {
             //红点
             DotViewController *dotVC = [[DotViewController alloc] init];
@@ -101,7 +114,7 @@
             [self.navigationController pushViewController:dotVC animated:YES];
         }
             break;
-        case 6:
+        case 7:
         {
             //title&image
             TitleImageViewController *imageVC = [[TitleImageViewController alloc] init];

@@ -50,6 +50,7 @@
     _dataSource = [NSMutableArray array];
     _selectedIndex = 0;
     _cellWidth = JXCategoryViewAutomaticDimension;
+    _cellWidthIncrement = 0;
     _cellSpacing = 20;
     _averageCellWidthEnabled = YES;
 }
@@ -124,7 +125,7 @@
         }else {
             cellModel.selected = NO;
         }
-        cellModel.cellWidth = [self preferredCellWidthWithIndex:i];
+        cellModel.cellWidth = [self preferredCellWidthWithIndex:i] + self.cellWidthIncrement;
         cellModel.cellSpacing = self.cellSpacing;
         totalItemWidth += cellModel.cellWidth + self.cellSpacing;
         [self refreshCellModel:cellModel index:i];

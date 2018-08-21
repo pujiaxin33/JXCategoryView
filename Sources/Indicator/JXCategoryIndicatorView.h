@@ -20,6 +20,13 @@
 
 @property (nonatomic, assign) CGFloat zoomScale;    //默认1.2，zoomEnabled为YES才生效
 
+//----------------------ellBackgroundColor-----------------------//
+@property (nonatomic, assign) BOOL cellBackgroundColorGradientEnabled;      //默认：NO
+
+@property (nonatomic, strong) UIColor *cellBackgroundUnselectedColor;       //默认：[UIColor clearColor]
+
+@property (nonatomic, strong) UIColor *cellBackgroundSelectedColor;     //默认：[UIColor grayColor]
+
 //----------------------separatorLine-----------------------//
 @property (nonatomic, assign) BOOL separatorLineShowEnabled;    //默认为NO
 

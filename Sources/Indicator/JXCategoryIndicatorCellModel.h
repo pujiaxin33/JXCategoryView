@@ -23,4 +23,10 @@
 
 @property (nonatomic, assign) CGRect backgroundViewMaskFrame;
 
+@property (nonatomic, assign) BOOL cellBackgroundColorGradientEnabled;
+
+@property (nonatomic, strong) UIColor *cellBackgroundUnselectedColor;
+
+@property (nonatomic, strong) UIColor *cellBackgroundSelectedColor;
+
 @end

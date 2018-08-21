@@ -46,6 +46,14 @@
     }
     self.separatorLine.backgroundColor = model.separatorLineColor;
     self.separatorLine.hidden = !model.sepratorLineShowEnabled;
+
+    if (model.cellBackgroundColorGradientEnabled) {
+        if (model.selected) {
+            self.contentView.backgroundColor = model.cellBackgroundSelectedColor;
+        }else {
+            self.contentView.backgroundColor = model.cellBackgroundUnselectedColor;
+        }
+    }
 }
 
 @end
