@@ -44,7 +44,7 @@
             testVC.title = title;
             JXCategoryTitleView *titleCategoryView = (JXCategoryTitleView *)testVC.categoryView;
             JXCategoryIndicatorLineView *lineView = [[JXCategoryIndicatorLineView alloc] init];
-            titleCategoryView.components = @[lineView];
+            titleCategoryView.indicators = @[lineView];
             titleCategoryView.titleColorGradientEnabled = YES;
             [self.navigationController pushViewController:testVC animated:YES];
         }
@@ -56,7 +56,7 @@
             testVC.title = title;
             JXCategoryTitleView *titleCategoryView = (JXCategoryTitleView *)testVC.categoryView;
             JXCategoryIndicatorLineView *lineView = [[JXCategoryIndicatorLineView alloc] init];
-            titleCategoryView.components = @[lineView];
+            titleCategoryView.indicators = @[lineView];
             titleCategoryView.titleColorGradientEnabled = YES;
             titleCategoryView.zoomEnabled = YES;
             [self.navigationController pushViewController:testVC animated:YES];
@@ -69,7 +69,7 @@
             testVC.title = title;
             JXCategoryTitleView *titleCategoryView = (JXCategoryTitleView *)testVC.categoryView;
             JXCategoryIndicatorLineView *lineView = [[JXCategoryIndicatorLineView alloc] init];
-            titleCategoryView.components = @[lineView];
+            titleCategoryView.indicators = @[lineView];
             titleCategoryView.separatorLineShowEnabled = YES;
             [self.navigationController pushViewController:testVC animated:YES];
         }
@@ -81,7 +81,7 @@
             testVC.title = title;
             JXCategoryImageView *imageCategoryView = (JXCategoryImageView *)testVC.categoryView;
             JXCategoryIndicatorLineView *lineView = [[JXCategoryIndicatorLineView alloc] init];
-            imageCategoryView.components = @[lineView];
+            imageCategoryView.indicators = @[lineView];
             [self.navigationController pushViewController:testVC animated:YES];
         }
             break;

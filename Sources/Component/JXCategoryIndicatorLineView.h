@@ -6,7 +6,7 @@
 //  Copyright © 2018年 jiaxin. All rights reserved.
 //
 
-#import "JXCategoryComponentBaseView.h"
+#import "JXCategoryIndicatorComponentView.h"
 
 typedef NS_ENUM(NSUInteger, JXCategoryIndicatorLineStyle) {
     JXCategoryIndicatorLineStyle_Normal = 0,
@@ -14,7 +14,7 @@ typedef NS_ENUM(NSUInteger, JXCategoryIndicatorLineStyle) {
     JXCategoryIndicatorLineStyle_IQIYI,
 };
 
-@interface JXCategoryIndicatorLineView : JXCategoryComponentBaseView
+@interface JXCategoryIndicatorLineView : JXCategoryIndicatorComponentView
 
 @property (nonatomic, assign) JXCategoryIndicatorLineStyle lineStyle;
 

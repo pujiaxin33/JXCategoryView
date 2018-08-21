@@ -10,7 +10,7 @@
 #import <UIKit/UIKit.h>
 #import "JXCategoryViewDefines.h"
 
-@protocol JXCategoryComponentProtocol <NSObject>
+@protocol JXCategoryIndicatorProtocol <NSObject>
 
 - (void)jx_refreshState:(CGRect)selectedCellFrame;
 

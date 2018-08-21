@@ -36,7 +36,7 @@
     backgroundView.backgroundViewHeight = 30;
     backgroundView.backgroundViewWidthIncrement = 0;
     backgroundView.backgroundViewColor = [UIColor redColor];
-    self.myCategoryView.components = @[backgroundView];
+    self.myCategoryView.indicators = @[backgroundView];
 }
 
 - (JXCategoryTitleView *)myCategoryView {

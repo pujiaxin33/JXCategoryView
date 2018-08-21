@@ -33,7 +33,7 @@
 
     JXCategoryIndicatorImageView *indicatorImageView = [[JXCategoryIndicatorImageView alloc] init];
     indicatorImageView.indicatorImageView.image = [UIImage imageNamed:@"boat"];
-    self.myCategoryView.components = @[indicatorImageView];
+    self.myCategoryView.indicators = @[indicatorImageView];
 
     CGRect bgImageViewFrame = CGRectMake(0, 0, WindowsSize.width, 100);
     _bgSelectedImageView = [[UIImageView alloc] initWithFrame:bgImageViewFrame];

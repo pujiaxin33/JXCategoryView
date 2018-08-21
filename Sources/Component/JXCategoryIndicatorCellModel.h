@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "JXCategoryBaseCellModel.h"
 
-@interface JXCategoryComponentCellModel : JXCategoryBaseCellModel
+@interface JXCategoryIndicatorCellModel : JXCategoryBaseCellModel
 
 @property (nonatomic, assign) BOOL zoomEnabled;
 

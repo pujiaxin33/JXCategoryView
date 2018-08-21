@@ -28,7 +28,7 @@
     JXCategoryIndicatorImageView *indicatorImageView = [[JXCategoryIndicatorImageView alloc] init];
     indicatorImageView.indicatorImageViewRollEnabled = YES;
     indicatorImageView.indicatorImageView.image = [UIImage imageNamed:@"football"];
-    self.myCategoryView.components = @[indicatorImageView];
+    self.myCategoryView.indicators = @[indicatorImageView];
 }
 
 - (JXCategoryTitleView *)myCategoryView {

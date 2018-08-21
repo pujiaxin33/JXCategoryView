@@ -6,9 +6,9 @@
 //  Copyright © 2018年 jiaxin. All rights reserved.
 //
 
-#import "JXCategoryComponentBaseView.h"
+#import "JXCategoryIndicatorComponentView.h"
 
-@interface JXCategoryIndicatorTriangleView : JXCategoryComponentBaseView
+@interface JXCategoryIndicatorTriangleView : JXCategoryIndicatorComponentView
 
 @property (nonatomic, assign) CGSize triangleViewSize;  //默认：CGSizeMake(14, 10)
 

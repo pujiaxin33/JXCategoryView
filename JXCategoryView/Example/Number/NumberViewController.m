@@ -31,7 +31,7 @@
     self.myCategoryView.counts = self.numbers;
 
     JXCategoryIndicatorLineView *lineView = [[JXCategoryIndicatorLineView alloc] init];
-    self.myCategoryView.components = @[lineView];
+    self.myCategoryView.indicators = @[lineView];
 }
 
 - (JXCategoryNumberView *)myCategoryView {

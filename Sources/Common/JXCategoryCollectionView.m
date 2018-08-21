@@ -14,7 +14,7 @@
 {
     [super layoutSubviews];
 
-    for (UIView<JXCategoryComponentProtocol> *view in self.components) {
+    for (UIView<JXCategoryIndicatorProtocol> *view in self.indicators) {
         [self sendSubviewToBack:view];
     }
 }

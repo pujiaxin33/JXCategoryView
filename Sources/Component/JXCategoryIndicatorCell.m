@@ -6,14 +6,14 @@
 //  Copyright © 2018年 jingbo. All rights reserved.
 //
 
-#import "JXCategoryComponentCell.h"
-#import "JXCategoryComponentCellModel.h"
+#import "JXCategoryIndicatorCell.h"
+#import "JXCategoryIndicatorCellModel.h"
 
-@interface JXCategoryComponentCell ()
+@interface JXCategoryIndicatorCell ()
 @property (nonatomic, strong) UIView *separatorLine;
 @end
 
-@implementation JXCategoryComponentCell
+@implementation JXCategoryIndicatorCell
 
 - (void)initializeViews
 {
@@ -28,7 +28,7 @@
 {
     [super layoutSubviews];
 
-    JXCategoryComponentCellModel *model = (JXCategoryComponentCellModel *)self.cellModel;
+    JXCategoryIndicatorCellModel *model = (JXCategoryIndicatorCellModel *)self.cellModel;
     CGFloat lineWidth = model.separatorLineSize.width;
     CGFloat lineHeight = model.separatorLineSize.height;
 
@@ -38,7 +38,7 @@
 - (void)reloadDatas:(JXCategoryBaseCellModel *)cellModel {
     [super reloadDatas:cellModel];
 
-    JXCategoryComponentCellModel *model = (JXCategoryComponentCellModel *)cellModel;
+    JXCategoryIndicatorCellModel *model = (JXCategoryIndicatorCellModel *)cellModel;
     if (model.zoomEnabled) {
         self.transform = CGAffineTransformMakeScale(model.zoomScale, model.zoomScale);
     }else {

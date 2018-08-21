@@ -6,16 +6,16 @@
 //  Copyright © 2018年 jingbo. All rights reserved.
 //
 
-#import "JXCategoryComponentView.h"
+#import "JXCategoryIndicatorView.h"
 #import "JXCategoryIndicatorBackgroundView.h"
 
-@interface JXCategoryComponentView()
+@interface JXCategoryIndicatorView()
 
 @property (nonatomic, strong) CALayer *backgroundEllipseLayer;
 
 @end
 
-@implementation JXCategoryComponentView
+@implementation JXCategoryIndicatorView
 
 - (void)initializeDatas {
     [super initializeDatas];
@@ -31,27 +31,27 @@
     [super initializeViews];
 }
 
-- (void)setComponents:(NSArray<UIView<JXCategoryComponentProtocol> *> *)components {
-    for (UIView *component in self.components) {
+- (void)setIndicators:(NSArray<UIView<JXCategoryIndicatorProtocol> *> *)indicators {
+    for (UIView *component in self.indicators) {
         //先移除之前的component
         [component removeFromSuperview];
     }
-    _components = components;
+    _indicators = indicators;
 
-    for (UIView *component in self.components) {
+    for (UIView *component in self.indicators) {
         [self.collectionView addSubview:component];
     }
 
-    self.collectionView.components = components;
+    self.collectionView.indicators = indicators;
 }
 
 - (void)refreshState {
     [super refreshState];
 
     CGRect selectedCellFrame = CGRectZero;
-    JXCategoryComponentCellModel *selectedCellModel = nil;
+    JXCategoryIndicatorCellModel *selectedCellModel = nil;
     for (int i = 0; i < self.dataSource.count; i++) {
-        JXCategoryComponentCellModel *cellModel = (JXCategoryComponentCellModel *)self.dataSource[i];
+        JXCategoryIndicatorCellModel *cellModel = (JXCategoryIndicatorCellModel *)self.dataSource[i];
         cellModel.zoomEnabled = self.zoomEnabled;
         cellModel.zoomScale = 1.0;
         cellModel.sepratorLineShowEnabled = self.separatorLineShowEnabled;
@@ -69,7 +69,7 @@
         }
     }
 
-    for (UIView<JXCategoryComponentProtocol> *component in self.components) {
+    for (UIView<JXCategoryIndicatorProtocol> *component in self.indicators) {
         [component jx_refreshState:selectedCellFrame];
         if ([component isKindOfClass:[JXCategoryIndicatorBackgroundView class]]) {
             CGRect maskFrame = component.frame;
@@ -82,11 +82,11 @@
 - (void)refreshSelectedCellModel:(JXCategoryBaseCellModel *)selectedCellModel unselectedCellModel:(JXCategoryBaseCellModel *)unselectedCellModel {
     [super refreshSelectedCellModel:selectedCellModel unselectedCellModel:unselectedCellModel];
 
-    JXCategoryComponentCellModel *myUnselectedCellModel = (JXCategoryComponentCellModel *)unselectedCellModel;
+    JXCategoryIndicatorCellModel *myUnselectedCellModel = (JXCategoryIndicatorCellModel *)unselectedCellModel;
     myUnselectedCellModel.zoomScale = 1.0;
     myUnselectedCellModel.backgroundViewMaskFrame = CGRectZero;
 
-    JXCategoryComponentCellModel *myselectedCellModel = (JXCategoryComponentCellModel *)selectedCellModel;
+    JXCategoryIndicatorCellModel *myselectedCellModel = (JXCategoryIndicatorCellModel *)selectedCellModel;
     myselectedCellModel.zoomScale = self.zoomScale;
 }
 
@@ -114,14 +114,14 @@
     }
 
     if (remainderRatio == 0) {
-        for (UIView<JXCategoryComponentProtocol> *component in self.components) {
+        for (UIView<JXCategoryIndicatorProtocol> *component in self.indicators) {
             [component jx_contentScrollViewDidScrollWithLeftCellFrame:leftCellFrame rightCellFrame:rightCellFrame selectedPosition:position percent:remainderRatio];
         }
         //连续滑动翻页，需要更新选中状态
         [super selectItemWithIndex:baseIndex];
     }else {
-        JXCategoryComponentCellModel *leftCellModel = (JXCategoryComponentCellModel *)self.dataSource[baseIndex];
-        JXCategoryComponentCellModel *rightCellModel = (JXCategoryComponentCellModel *)self.dataSource[baseIndex + 1];
+        JXCategoryIndicatorCellModel *leftCellModel = (JXCategoryIndicatorCellModel *)self.dataSource[baseIndex];
+        JXCategoryIndicatorCellModel *rightCellModel = (JXCategoryIndicatorCellModel *)self.dataSource[baseIndex + 1];
         if (self.zoomEnabled) {
             leftCellModel.zoomScale = [self interpolationFrom:self.zoomScale to:1.0 percent:remainderRatio];
             rightCellModel.zoomScale = [self interpolationFrom:1.0 to:self.zoomScale percent:remainderRatio];
@@ -132,7 +132,7 @@
             [self.delegate categoryView:self scrollingFromLeftIndex:baseIndex toRightIndex:baseIndex + 1 ratio:remainderRatio];
         }
 
-        for (UIView<JXCategoryComponentProtocol> *component in self.components) {
+        for (UIView<JXCategoryIndicatorProtocol> *component in self.indicators) {
             [component jx_contentScrollViewDidScrollWithLeftCellFrame:leftCellFrame rightCellFrame:rightCellFrame selectedPosition:position percent:remainderRatio];
             if ([component isKindOfClass:[JXCategoryIndicatorBackgroundView class]]) {
                 CGRect leftMaskFrame = component.frame;
@@ -165,8 +165,8 @@
 
     CGRect clickedCellFrame = [self getTargetCellFrame:index];
 
-    JXCategoryComponentCellModel *selectedCellModel = (JXCategoryComponentCellModel *)self.dataSource[index];
-    for (UIView<JXCategoryComponentProtocol> *component in self.components) {
+    JXCategoryIndicatorCellModel *selectedCellModel = (JXCategoryIndicatorCellModel *)self.dataSource[index];
+    for (UIView<JXCategoryIndicatorProtocol> *component in self.indicators) {
         [component jx_selectedCell:clickedCellFrame clickedRelativePosition:clickedPosition];
         if ([component isKindOfClass:[JXCategoryIndicatorBackgroundView class]]) {
             CGRect maskFrame = component.frame;
@@ -175,7 +175,7 @@
         }
     }
 
-    JXCategoryComponentCell *selectedCell = (JXCategoryComponentCell *)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0]];
+    JXCategoryIndicatorCell *selectedCell = (JXCategoryIndicatorCell *)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0]];
     [selectedCell reloadDatas:selectedCellModel];
 
     return YES;

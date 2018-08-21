@@ -29,7 +29,7 @@
     JXCategoryIndicatorImageView *indicatorImageView = [[JXCategoryIndicatorImageView alloc] init];
     indicatorImageView.indicatorImageView.image = [UIImage imageNamed:@"light"];
     indicatorImageView.indicatorImageViewSize = CGSizeMake(50, 50);
-    self.myCategoryView.components = @[indicatorImageView];
+    self.myCategoryView.indicators = @[indicatorImageView];
 }
 
 - (JXCategoryTitleView *)myCategoryView {

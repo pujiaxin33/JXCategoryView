@@ -35,19 +35,19 @@
         }
     }
 
-    if (indexPath.row == 8) {
+    if (indexPath.row == 9) {
         //IndicatorImageView底部
         IndicatorImageViewViewController *indicatorImageViewVC = [[IndicatorImageViewViewController alloc] init];
         indicatorImageViewVC.title = title;
         [self.navigationController pushViewController:indicatorImageViewVC animated:YES];
         return;
-    }else if (indexPath.row == 9) {
+    }else if (indexPath.row == 10) {
         //IndicatorImageView cell背景
         BackgroundImageViewController *backgroundImageVC = [[BackgroundImageViewController alloc] init];
         backgroundImageVC.title = title;
         [self.navigationController pushViewController:backgroundImageVC animated:YES];
         return;
-    }else if (indexPath.row == 10) {
+    }else if (indexPath.row == 11) {
         //足球滚动
         FootballViewController *footballVC = [[FootballViewController alloc] init];
         footballVC.title = title;
@@ -67,7 +67,7 @@
             titleCategoryView.titleColorGradientEnabled = YES;
             JXCategoryIndicatorLineView *lineView = [[JXCategoryIndicatorLineView alloc] init];
             lineView.indicatorLineWidth = 20;
-            titleCategoryView.components = @[lineView];
+            titleCategoryView.indicators = @[lineView];
         }
             break;
         case 1:
@@ -77,7 +77,7 @@
             titleCategoryView.titleColorGradientEnabled = YES;
             JXCategoryIndicatorLineView *lineView = [[JXCategoryIndicatorLineView alloc] init];
             lineView.indicatorLineWidth = JXCategoryViewAutomaticDimension;
-            titleCategoryView.components = @[lineView];
+            titleCategoryView.indicators = @[lineView];
         }
             break;
         case 2:
@@ -88,7 +88,7 @@
             JXCategoryIndicatorLineView *lineView = [[JXCategoryIndicatorLineView alloc] init];
             lineView.indicatorLineWidth = 20;
             lineView.lineStyle = JXCategoryIndicatorLineStyle_JD;
-            titleCategoryView.components = @[lineView];
+            titleCategoryView.indicators = @[lineView];
         }
             break;
         case 3:
@@ -99,7 +99,7 @@
             JXCategoryIndicatorLineView *lineView = [[JXCategoryIndicatorLineView alloc] init];
             lineView.indicatorLineWidth = 20;
             lineView.lineStyle = JXCategoryIndicatorLineStyle_IQIYI;
-            titleCategoryView.components = @[lineView];
+            titleCategoryView.indicators = @[lineView];
         }
             break;
         case 4:
@@ -108,7 +108,7 @@
             testVC.isNeedIndicatorPositionChangeItem = YES;
             titleCategoryView.titleColorGradientEnabled = YES;
             JXCategoryIndicatorTriangleView *triangleView = [[JXCategoryIndicatorTriangleView alloc] init];
-            titleCategoryView.components = @[triangleView];
+            titleCategoryView.indicators = @[triangleView];
         }
             break;
         case 5:
@@ -117,7 +117,7 @@
             titleCategoryView.titleColorGradientEnabled = YES;
             JXCategoryIndicatorBackgroundView *backgroundView = [[JXCategoryIndicatorBackgroundView alloc] init];
             backgroundView.backgroundViewHeight = 20;
-            titleCategoryView.components = @[backgroundView];
+            titleCategoryView.indicators = @[backgroundView];
         }
             break;
         case 6:
@@ -127,22 +127,35 @@
             JXCategoryIndicatorBackgroundView *backgroundView = [[JXCategoryIndicatorBackgroundView alloc] init];
             backgroundView.backgroundViewCornerRadius = 0;
             backgroundView.backgroundViewHeight = JXCategoryViewAutomaticDimension;
-            titleCategoryView.components = @[backgroundView];
+            titleCategoryView.indicators = @[backgroundView];
         }
             break;
         case 7:
         {
-            //文字遮罩
+            //文字遮罩有背景
             titleCategoryView.titleColorGradientEnabled = NO;
             titleCategoryView.titleLabelMaskEnabled = YES;
 
             JXCategoryIndicatorBackgroundView *backgroundView = [[JXCategoryIndicatorBackgroundView alloc] init];
             backgroundView.backgroundViewWidthIncrement = 10;
             backgroundView.backgroundViewHeight = 20;
-            titleCategoryView.components = @[backgroundView];
+            titleCategoryView.indicators = @[backgroundView];
         }
             break;
-        case 11:
+        case 8:
+        {
+            //文字遮罩无背景
+            titleCategoryView.titleColorGradientEnabled = NO;
+            titleCategoryView.titleLabelMaskEnabled = YES;
+
+            JXCategoryIndicatorBackgroundView *backgroundView = [[JXCategoryIndicatorBackgroundView alloc] init];
+            backgroundView.backgroundViewWidthIncrement = 10;
+            backgroundView.backgroundViewHeight = 20;
+            backgroundView.alpha = 0;
+            titleCategoryView.indicators = @[backgroundView];
+        }
+            break;
+        case 12:
         {
             //混合使用
             titleCategoryView.titleColorGradientEnabled = NO;
@@ -152,7 +165,7 @@
             JXCategoryIndicatorBackgroundView *backgroundView = [[JXCategoryIndicatorBackgroundView alloc] init];
             backgroundView.backgroundViewHeight = 20;
 
-            titleCategoryView.components = @[backgroundView, lineView];
+            titleCategoryView.indicators = @[backgroundView, lineView];
         }
             break;
 

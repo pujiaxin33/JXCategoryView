@@ -39,7 +39,7 @@
     backgroundView.backgroundViewHeight = 30;
     backgroundView.backgroundViewWidthIncrement = 0;
     backgroundView.backgroundViewColor = [UIColor redColor];
-    self.myCategoryView.components = @[backgroundView];
+    self.myCategoryView.indicators = @[backgroundView];
 
     [self.myCategoryView removeFromSuperview];
     self.navigationItem.titleView = self.myCategoryView;
@@ -78,7 +78,7 @@
     JXCategoryTitleView *titleCategoryView = (JXCategoryTitleView *)listController.categoryView;
 
     JXCategoryIndicatorLineView *lineView = [[JXCategoryIndicatorLineView alloc ]init];
-    titleCategoryView.components = @[lineView];
+    titleCategoryView.indicators = @[lineView];
 
 }
 

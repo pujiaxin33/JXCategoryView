@@ -91,8 +91,8 @@
 }
 
 - (void)rightItemClicked {
-    JXCategoryComponentView *componentView = (JXCategoryComponentView *)self.categoryView;
-    for (JXCategoryComponentBaseView *view in componentView.components) {
+    JXCategoryIndicatorView *componentView = (JXCategoryIndicatorView *)self.categoryView;
+    for (JXCategoryIndicatorComponentView *view in componentView.indicators) {
         if (view.componentPosition == JXCategoryComponentPosition_Top) {
             view.componentPosition = JXCategoryComponentPosition_Bottom;
         }else {

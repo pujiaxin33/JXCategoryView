@@ -8,6 +8,6 @@
 
 #import "JXCategoryBaseCell.h"
 
-@interface JXCategoryComponentCell : JXCategoryBaseCell
+@interface JXCategoryIndicatorCell : JXCategoryBaseCell
 
 @end

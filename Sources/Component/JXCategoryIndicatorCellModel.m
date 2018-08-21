@@ -6,8 +6,8 @@
 //  Copyright © 2018年 jingbo. All rights reserved.
 //
 
-#import "JXCategoryComponentCellModel.h"
+#import "JXCategoryIndicatorCellModel.h"
 
-@implementation JXCategoryComponentCellModel
+@implementation JXCategoryIndicatorCellModel
 
 @end

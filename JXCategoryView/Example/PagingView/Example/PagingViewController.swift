@@ -48,7 +48,7 @@ class PagingViewController: UIViewController {
         let lineView = JXCategoryIndicatorLineView()
         lineView.indicatorLineWidth = 30
         lineView.indicatorLineViewColor = UIColor(red: 105/255, green: 144/255, blue: 239/255, alpha: 1)
-        categoryView.components = [lineView]
+        categoryView.indicators = [lineView]
 
         let lineWidth = 1/UIScreen.main.scale
         let lineLayer = CALayer()

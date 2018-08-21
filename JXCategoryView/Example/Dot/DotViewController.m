@@ -31,7 +31,7 @@
     self.myCategoryView.dotStates = self.dotStates;
 
     JXCategoryIndicatorLineView *lineView = [[JXCategoryIndicatorLineView alloc] init];
-    self.myCategoryView.components = @[lineView];
+    self.myCategoryView.indicators = @[lineView];
 }
 
 - (JXCategoryDotView *)myCategoryView {

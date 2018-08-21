@@ -29,7 +29,7 @@
 
     JXCategoryIndicatorLineView *lineView = [[JXCategoryIndicatorLineView alloc] init];
     lineView.indicatorLineWidth = 20;
-    self.myCategoryView.components = @[lineView];
+    self.myCategoryView.indicators = @[lineView];
 }
 
 - (JXCategoryImageView *)myCategoryView {

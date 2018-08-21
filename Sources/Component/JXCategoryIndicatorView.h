@@ -7,13 +7,13 @@
 //
 
 #import "JXCategoryBaseView.h"
-#import "JXCategoryComponentCell.h"
-#import "JXCategoryComponentCellModel.h"
-#import "JXCategoryComponentProtocol.h"
+#import "JXCategoryIndicatorCell.h"
+#import "JXCategoryIndicatorCellModel.h"
+#import "JXCategoryIndicatorProtocol.h"
 
-@interface JXCategoryComponentView : JXCategoryBaseView
+@interface JXCategoryIndicatorView : JXCategoryBaseView
 
-@property (nonatomic, strong) NSArray <UIView<JXCategoryComponentProtocol> *> *components;
+@property (nonatomic, strong) NSArray <UIView<JXCategoryIndicatorProtocol> *> *indicators;
 
 //----------------------zoomEnabled-----------------------//
 @property (nonatomic, assign) BOOL zoomEnabled;     //默认为NO

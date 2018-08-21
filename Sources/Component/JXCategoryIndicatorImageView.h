@@ -6,9 +6,9 @@
 //  Copyright © 2018年 jiaxin. All rights reserved.
 //
 
-#import "JXCategoryComponentBaseView.h"
+#import "JXCategoryIndicatorComponentView.h"
 
-@interface JXCategoryIndicatorImageView : JXCategoryComponentBaseView
+@interface JXCategoryIndicatorImageView : JXCategoryIndicatorComponentView
 
 @property (nonatomic, strong, readonly) UIImageView *indicatorImageView;
 
