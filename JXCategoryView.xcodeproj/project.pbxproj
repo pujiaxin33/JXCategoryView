@@ -320,6 +320,23 @@
 			path = Football;
 			sourceTree = "<group>";
 		};
+		191A95DD212BA89600DBF784 /* IndicatorViews */ = {
+			isa = PBXGroup;
+			children = (
+				19346D67212677A50065FD8F /* JXCategoryIndicatorComponentView.h */,
+				19346D68212677A50065FD8F /* JXCategoryIndicatorComponentView.m */,
+				19346D5621265E210065FD8F /* JXCategoryIndicatorLineView.h */,
+				19346D5721265E210065FD8F /* JXCategoryIndicatorLineView.m */,
+				19346D702126B0D80065FD8F /* JXCategoryIndicatorTriangleView.h */,
+				19346D712126B0D80065FD8F /* JXCategoryIndicatorTriangleView.m */,
+				19346D6A2126934B0065FD8F /* JXCategoryIndicatorImageView.h */,
+				19346D6B2126934B0065FD8F /* JXCategoryIndicatorImageView.m */,
+				19346D6D21269F3A0065FD8F /* JXCategoryIndicatorBackgroundView.h */,
+				19346D6E21269F3A0065FD8F /* JXCategoryIndicatorBackgroundView.m */,
+			);
+			path = IndicatorViews;
+			sourceTree = "<group>";
+		};
 		19302322211ACE1500AF1444 /* Example */ = {
 			isa = PBXGroup;
 			children = (
@@ -510,7 +527,7 @@
 				19870CC32122BB6100C23CAA /* JXCategoryView.h */,
 				19870CE52122BB6100C23CAA /* Base */,
 				19870CD22122BB6100C23CAA /* Common */,
-				19870CC42122BB6100C23CAA /* Component */,
+				19870CC42122BB6100C23CAA /* Indicator */,
 				19870CBC2122BB6100C23CAA /* Title */,
 				19562CD6212A934F0095AA27 /* Image */,
 				19870CB52122BB6100C23CAA /* TitleImage */,
@@ -546,27 +563,18 @@
 			path = Title;
 			sourceTree = "<group>";
 		};
-		19870CC42122BB6100C23CAA /* Component */ = {
+		19870CC42122BB6100C23CAA /* Indicator */ = {
 			isa = PBXGroup;
 			children = (
+				191A95DD212BA89600DBF784 /* IndicatorViews */,
 				19870CC92122BB6100C23CAA /* JXCategoryIndicatorView.h */,
 				19870CC62122BB6100C23CAA /* JXCategoryIndicatorView.m */,
 				19870CC82122BB6100C23CAA /* JXCategoryIndicatorCell.h */,
 				19870CC52122BB6100C23CAA /* JXCategoryIndicatorCell.m */,
 				19870CCA2122BB6100C23CAA /* JXCategoryIndicatorCellModel.h */,
 				19870CC72122BB6100C23CAA /* JXCategoryIndicatorCellModel.m */,
-				19346D67212677A50065FD8F /* JXCategoryIndicatorComponentView.h */,
-				19346D68212677A50065FD8F /* JXCategoryIndicatorComponentView.m */,
-				19346D5621265E210065FD8F /* JXCategoryIndicatorLineView.h */,
-				19346D5721265E210065FD8F /* JXCategoryIndicatorLineView.m */,
-				19346D702126B0D80065FD8F /* JXCategoryIndicatorTriangleView.h */,
-				19346D712126B0D80065FD8F /* JXCategoryIndicatorTriangleView.m */,
-				19346D6A2126934B0065FD8F /* JXCategoryIndicatorImageView.h */,
-				19346D6B2126934B0065FD8F /* JXCategoryIndicatorImageView.m */,
-				19346D6D21269F3A0065FD8F /* JXCategoryIndicatorBackgroundView.h */,
-				19346D6E21269F3A0065FD8F /* JXCategoryIndicatorBackgroundView.m */,
 			);
-			path = Component;
+			path = Indicator;
 			sourceTree = "<group>";
 		};
 		19870CCB2122BB6100C23CAA /* Number */ = {
