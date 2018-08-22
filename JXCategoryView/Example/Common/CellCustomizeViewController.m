@@ -60,6 +60,7 @@
             titleCategoryView.indicators = @[lineView];
             titleCategoryView.titleColorGradientEnabled = YES;
             titleCategoryView.zoomEnabled = YES;
+            titleCategoryView.zoomScale = 1.7;
             [self.navigationController pushViewController:testVC animated:YES];
         }
             break;
