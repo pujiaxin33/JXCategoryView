@@ -11,10 +11,6 @@
 
 @interface JXCategoryIndicatorCellModel : JXCategoryBaseCellModel
 
-@property (nonatomic, assign) BOOL zoomEnabled;
-
-@property (nonatomic, assign) CGFloat zoomScale;
-
 @property (nonatomic, assign) BOOL sepratorLineShowEnabled;
 
 @property (nonatomic, strong) UIColor *separatorLineColor;

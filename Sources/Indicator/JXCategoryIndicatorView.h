@@ -15,11 +15,6 @@
 
 @property (nonatomic, strong) NSArray <UIView<JXCategoryIndicatorProtocol> *> *indicators;
 
-//----------------------zoomEnabled-----------------------//
-@property (nonatomic, assign) BOOL zoomEnabled;     //默认为NO
-
-@property (nonatomic, assign) CGFloat zoomScale;    //默认1.2，zoomEnabled为YES才生效
-
 //----------------------ellBackgroundColor-----------------------//
 @property (nonatomic, assign) BOOL cellBackgroundColorGradientEnabled;      //默认：NO
 

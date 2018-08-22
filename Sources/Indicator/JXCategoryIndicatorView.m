@@ -21,8 +21,6 @@
 - (void)initializeDatas {
     [super initializeDatas];
 
-    _zoomEnabled = NO;
-    _zoomScale = 1.2;
     _separatorLineShowEnabled = NO;
     _separatorLineColor = [UIColor lightGrayColor];
     _separatorLineSize = CGSizeMake(1/[UIScreen mainScreen].scale, 20);
@@ -56,8 +54,6 @@
     JXCategoryIndicatorCellModel *selectedCellModel = nil;
     for (int i = 0; i < self.dataSource.count; i++) {
         JXCategoryIndicatorCellModel *cellModel = (JXCategoryIndicatorCellModel *)self.dataSource[i];
-        cellModel.zoomEnabled = self.zoomEnabled;
-        cellModel.zoomScale = 1.0;
         cellModel.sepratorLineShowEnabled = self.separatorLineShowEnabled;
         cellModel.separatorLineColor = self.separatorLineColor;
         cellModel.separatorLineSize = self.separatorLineSize;
@@ -71,7 +67,6 @@
         if (i == self.selectedIndex) {
             selectedCellModel = cellModel;
             cellModel.selected = YES;
-            cellModel.zoomScale = self.zoomScale;
             selectedCellFrame = [self getTargetCellFrame:i];
         }
     }
@@ -90,13 +85,11 @@
     [super refreshSelectedCellModel:selectedCellModel unselectedCellModel:unselectedCellModel];
 
     JXCategoryIndicatorCellModel *myUnselectedCellModel = (JXCategoryIndicatorCellModel *)unselectedCellModel;
-    myUnselectedCellModel.zoomScale = 1.0;
     myUnselectedCellModel.backgroundViewMaskFrame = CGRectZero;
     myUnselectedCellModel.cellBackgroundUnselectedColor = self.cellBackgroundUnselectedColor;
     myUnselectedCellModel.cellBackgroundSelectedColor = self.cellBackgroundSelectedColor;
 
     JXCategoryIndicatorCellModel *myselectedCellModel = (JXCategoryIndicatorCellModel *)selectedCellModel;
-    myselectedCellModel.zoomScale = self.zoomScale;
     myselectedCellModel.cellBackgroundUnselectedColor = self.cellBackgroundUnselectedColor;
     myselectedCellModel.cellBackgroundSelectedColor = self.cellBackgroundSelectedColor;
 }
@@ -133,10 +126,6 @@
     }else {
         JXCategoryIndicatorCellModel *leftCellModel = (JXCategoryIndicatorCellModel *)self.dataSource[baseIndex];
         JXCategoryIndicatorCellModel *rightCellModel = (JXCategoryIndicatorCellModel *)self.dataSource[baseIndex + 1];
-        if (self.zoomEnabled) {
-            leftCellModel.zoomScale = [JXCategoryFactory interpolationFrom:self.zoomScale to:1.0 percent:remainderRatio];
-            rightCellModel.zoomScale = [JXCategoryFactory interpolationFrom:1.0 to:self.zoomScale percent:remainderRatio];
-        }
         [self refreshLeftCellModel:leftCellModel rightCellModel:rightCellModel ratio:remainderRatio];
 
         if ([self.delegate respondsToSelector:@selector(categoryView:scrollingFromLeftIndex:toRightIndex:ratio:)]) {
@@ -189,6 +178,7 @@
     JXCategoryIndicatorCell *selectedCell = (JXCategoryIndicatorCell *)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0]];
     [selectedCell reloadDatas:selectedCellModel];
 
+//    [self.collectionView reloadItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:index inSection:0]]];
     return YES;
 }
 

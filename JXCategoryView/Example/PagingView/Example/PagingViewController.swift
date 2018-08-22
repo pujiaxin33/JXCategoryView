@@ -43,7 +43,7 @@ class PagingViewController: UIViewController {
         categoryView.titleSelectedColor = UIColor(red: 105/255, green: 144/255, blue: 239/255, alpha: 1)
         categoryView.titleColor = UIColor.black
         categoryView.titleColorGradientEnabled = true
-        categoryView.zoomEnabled = true
+        categoryView.titleLabelZoomEnabled = true
 
         let lineView = JXCategoryIndicatorLineView()
         lineView.indicatorLineWidth = 30

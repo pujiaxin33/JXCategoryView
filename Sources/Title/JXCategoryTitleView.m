@@ -19,6 +19,8 @@
 {
     [super initializeDatas];
 
+    _titleLabelZoomEnabled = NO;
+    _titleLabelZoomScale = 1.2;
     _titleColor = [UIColor blackColor];
     _titleSelectedColor = [UIColor redColor];
     _titleFont = [UIFont systemFontOfSize:15];
@@ -47,35 +49,41 @@
     JXCategoryTitleCellModel *myUnselectedCellModel = (JXCategoryTitleCellModel *)unselectedCellModel;
     myUnselectedCellModel.titleColor = self.titleColor;
     myUnselectedCellModel.titleSelectedColor = self.titleSelectedColor;
+    myUnselectedCellModel.titleLabelZoomScale = 1.0;
 
     JXCategoryTitleCellModel *myselectedCellModel = (JXCategoryTitleCellModel *)selectedCellModel;
     myselectedCellModel.titleColor = self.titleColor;
     myselectedCellModel.titleSelectedColor = self.titleSelectedColor;
+    myselectedCellModel.titleLabelZoomScale = self.titleLabelZoomScale;
 }
 
 - (void)refreshLeftCellModel:(JXCategoryBaseCellModel *)leftCellModel rightCellModel:(JXCategoryBaseCellModel *)rightCellModel ratio:(CGFloat)ratio {
     [super refreshLeftCellModel:leftCellModel rightCellModel:rightCellModel ratio:ratio];
 
-    if (!self.titleColorGradientEnabled) {
-        return;
-    }
-
-    //处理颜色渐变
     JXCategoryTitleCellModel *leftModel = (JXCategoryTitleCellModel *)leftCellModel;
     JXCategoryTitleCellModel *rightModel = (JXCategoryTitleCellModel *)rightCellModel;
-    if (leftModel.selected) {
-        leftModel.titleSelectedColor = [JXCategoryFactory interpolationColorFrom:self.titleSelectedColor to:self.titleColor percent:ratio];
-        leftModel.titleColor = self.titleColor;
-    }else {
-        leftModel.titleColor = [JXCategoryFactory interpolationColorFrom:self.titleSelectedColor to:self.titleColor percent:ratio];
-        leftModel.titleSelectedColor = self.titleSelectedColor;
+
+    if (self.titleLabelZoomEnabled) {
+        leftModel.titleLabelZoomScale = [JXCategoryFactory interpolationFrom:self.titleLabelZoomScale to:1.0 percent:ratio];
+        rightModel.titleLabelZoomScale = [JXCategoryFactory interpolationFrom:1.0 to:self.titleLabelZoomScale percent:ratio];
     }
-    if (rightModel.selected) {
-        rightModel.titleSelectedColor = [JXCategoryFactory interpolationColorFrom:self.titleColor to:self.titleSelectedColor percent:ratio];
-        rightModel.titleColor = self.titleColor;
-    }else {
-        rightModel.titleColor = [JXCategoryFactory interpolationColorFrom:self.titleColor to:self.titleSelectedColor percent:ratio];
-        rightModel.titleSelectedColor = self.titleSelectedColor;
+
+    if (self.titleColorGradientEnabled) {
+        //处理颜色渐变
+        if (leftModel.selected) {
+            leftModel.titleSelectedColor = [JXCategoryFactory interpolationColorFrom:self.titleSelectedColor to:self.titleColor percent:ratio];
+            leftModel.titleColor = self.titleColor;
+        }else {
+            leftModel.titleColor = [JXCategoryFactory interpolationColorFrom:self.titleSelectedColor to:self.titleColor percent:ratio];
+            leftModel.titleSelectedColor = self.titleSelectedColor;
+        }
+        if (rightModel.selected) {
+            rightModel.titleSelectedColor = [JXCategoryFactory interpolationColorFrom:self.titleColor to:self.titleSelectedColor percent:ratio];
+            rightModel.titleColor = self.titleColor;
+        }else {
+            rightModel.titleColor = [JXCategoryFactory interpolationColorFrom:self.titleColor to:self.titleSelectedColor percent:ratio];
+            rightModel.titleSelectedColor = self.titleSelectedColor;
+        }
     }
 }
 
@@ -96,6 +104,11 @@
     model.titleSelectedColor = self.titleSelectedColor;
     model.title = self.titles[index];
     model.titleLabelMaskEnabled = self.titleLabelMaskEnabled;
+    model.titleLabelZoomEnabled = self.titleLabelZoomEnabled;
+    model.titleLabelZoomScale = 1.0;
+    if (index == self.selectedIndex) {
+        model.titleLabelZoomScale = self.titleLabelZoomScale;
+    }
 }
 
 @end

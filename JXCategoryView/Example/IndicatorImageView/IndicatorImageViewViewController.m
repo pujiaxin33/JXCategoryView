@@ -29,7 +29,7 @@
     self.myCategoryView.titleColor = [UIColor whiteColor];
     self.myCategoryView.titleSelectedColor = [UIColor redColor];
     self.myCategoryView.titleColorGradientEnabled = YES;
-    self.myCategoryView.zoomEnabled = YES;
+    self.myCategoryView.titleLabelZoomEnabled = YES;
 
     JXCategoryIndicatorImageView *indicatorImageView = [[JXCategoryIndicatorImageView alloc] init];
     indicatorImageView.indicatorImageView.image = [UIImage imageNamed:@"boat"];

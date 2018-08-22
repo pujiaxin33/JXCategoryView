@@ -24,4 +24,9 @@
 
 @property (nonatomic, assign) BOOL titleLabelMaskEnabled;   //默认：NO，titleLabel是否遮罩过滤。（需要backgroundEllipseLayerShowEnabled = YES）
 
+//----------------------titleLabelZoomEnabled-----------------------//
+@property (nonatomic, assign) BOOL titleLabelZoomEnabled;     //默认为NO
+
+@property (nonatomic, assign) CGFloat titleLabelZoomScale;    //默认1.2，titleLabelZoomEnabled为YES才生效
+
 @end

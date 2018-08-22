@@ -39,11 +39,6 @@
     [super reloadDatas:cellModel];
 
     JXCategoryIndicatorCellModel *model = (JXCategoryIndicatorCellModel *)cellModel;
-    if (model.zoomEnabled) {
-        self.transform = CGAffineTransformMakeScale(model.zoomScale, model.zoomScale);
-    }else {
-        self.transform = CGAffineTransformIdentity;
-    }
     self.separatorLine.backgroundColor = model.separatorLineColor;
     self.separatorLine.hidden = !model.sepratorLineShowEnabled;
 

@@ -47,6 +47,15 @@
     JXCategoryTitleCellModel *myCellModel = (JXCategoryTitleCellModel *)cellModel;
     self.titleLabel.font = myCellModel.titleFont;
 
+    
+    if (myCellModel.titleLabelZoomEnabled) {
+        self.titleLabel.transform = CGAffineTransformMakeScale(myCellModel.titleLabelZoomScale, myCellModel.titleLabelZoomScale);
+        self.maskTitleLabel.transform = CGAffineTransformMakeScale(myCellModel.titleLabelZoomScale, myCellModel.titleLabelZoomScale);
+    }else {
+        self.titleLabel.transform = CGAffineTransformIdentity;
+        self.maskTitleLabel.transform = CGAffineTransformIdentity;
+    }
+
     self.maskTitleLabel.hidden = !myCellModel.titleLabelMaskEnabled;
     if (myCellModel.titleLabelMaskEnabled) {
         self.titleLabel.textColor = myCellModel.titleColor;
