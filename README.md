@@ -34,6 +34,7 @@ ImageView底部(小船)  |  <img src="JXCategoryView/Images/IndicatorImageView.g
 ImageView背景(最佳男歌手)  |  <img src="JXCategoryView/Images/BackgroundImageView.gif" width="343" height="80"> |
 ImageView滚动效果(足球)  |  <img src="JXCategoryView/Images/Football.gif" width="343" height="135"> |
 混合使用 |  <img src="JXCategoryView/Images/Mixed.gif" width="343" height="80"> |
+indicator自定义-点线效果 |  <img src="JXCategoryView/Images/IndicatorCustomizeGuide.gif" width="343" height="80"> |
 
 JXCategoryIndicatorLineView、JXCategoryIndicatorImageView、JXCategoryIndicatorBallView、JXCategoryIndicatorTriangleView均支持上下位置切换。
 
@@ -119,8 +120,10 @@ titleSelectedColor    | titleLabel选中颜色 默认：[UIColor redColor] |
 titleFont    | titleLabel的字体 默认：[UIFont systemFontOfSize:15] |
 titleColorGradientEnabled    | title的颜色是否渐变过渡 默认：NO |
 titleLabelMaskEnabled    | titleLabel是否遮罩过滤 默认：NO |
-zoomEnabled    | cell是否缩放 默认：NO |
-zoomScale    | cell缩放比例 默认：1.2 |
+titleLabelZoomEnabled    | titleLabel是否缩放 默认：NO |
+titleLabelZoomScale    | citleLabel缩放比例 默认：1.2 |
+imageZoomEnabled    | imageView是否缩放 默认：NO |
+imageZoomScale    | imageView缩放比例 默认：1.2 |
 separatorLineShowEnabled    | cell分割线是否展示 默认：NO (颜色、宽高可以设置) |
 JXCategoryTitleImageType    | 图片所在位置：上面、左边、下面、右边 默认：左边 |
 
@@ -179,21 +182,22 @@ titleCategoryView.indicators = @[lineView, triangleView, ballView, backgroundVie
 
 ### 指示器样式自定义
 
-参考：`JXCategoryIndicatorLineView、JXCategoryIndicatorTriangleView、JXCategoryIndicatorImageView、JXCategoryIndicatorBackgroundView、JXCategoryIndicatorBallView`
+仓库自带：`JXCategoryIndicatorLineView、JXCategoryIndicatorTriangleView、JXCategoryIndicatorImageView、JXCategoryIndicatorBackgroundView、JXCategoryIndicatorBallView`
 
+主要实现的方法：
 - 继承JXCategoryIndicatorComponentView，内部遵从了`JXCategoryIndicatorProtocol`协议；
 - 实现协议方法，自定义效果：
     - `- (void)jx_refreshState:(CGRect)selectedCellFrame`初始化或reloadDatas，重置状态；
     - `- (void)jx_contentScrollViewDidScrollWithLeftCellFrame:(CGRect)leftCellFrame rightCellFrame:(CGRect)rightCellFrame selectedPosition:(JXCategoryCellClickedPosition)selectedPosition percent:(CGFloat)percent` contentScrollView在进行手势滑动时，处理指示器跟随手势变化UI逻辑；
     - `- (void)jx_selectedCell:(CGRect)cellFrame clickedRelativePosition:(JXCategoryCellClickedPosition)clickedRelativePosition`根据选中的某个cell，处理过渡效果；
+    
+具体实例：参考demo工程里面的`JXCategoryIndicatorDotLineView`
 
 ### Cell子类化注意事项
 
-任何子类化，view、cell、cellModel三个都要子类化，即使某个子类cell什么事情都不做。用于维护继承链，以免以后子类化都不知道要继承谁了
+仓库自带：`JXCategoryTitleView、JXCategoryTitleImageView、JXCategoryNumberView、JXCategoryDotView、JXCategoryImageView`
 
-参考：`JXCategoryTitleAttributeView、JXCategoryTitleView、JXCategoryTitleImageView、JXCategoryNumberView、JXCategoryDotView、JXCategoryImageView`
-
-主要重载的方法：
+主要实现的方法：
 - `- (Class)preferredCellClass`返回自定义的cell；
 - `- (void)refreshDataSource`刷新数据源，使用自定义的cellModel；
 - `- (void)refreshCellModel:(JXCategoryBaseCellModel *)cellModel index:(NSInteger)index `初始化、reloadDatas时对数据源重置；
@@ -201,6 +205,13 @@ titleCategoryView.indicators = @[lineView, triangleView, ballView, backgroundVie
 - `- (void)refreshSelectedCellModel:(JXCategoryBaseCellModel *)selectedCellModel unselectedCellModel:(JXCategoryBaseCellModel *)unselectedCellModel`cell选中时进行状态刷新；
 - `- (void)refreshLeftCellModel:(JXCategoryBaseCellModel *)leftCellModel rightCellModel:(JXCategoryBaseCellModel *)rightCellModel ratio:(CGFloat)ratio`cell左右滚动切换的时候，进行状态刷新；
 
+具体实例：参考demo工程里面的`JXCategoryTitleAttributeView`
+
+#### 继承提示
+
+- 任何子类化，view、cell、cellModel三个都要子类化，即使某个子类cell什么事情都不做。用于维护继承链，以免以后子类化都不知道要继承谁了；
+- 如果你先完全自定义cell里面的内容，那就继承`JXCategoryIndicatorView、JXCategoryIndicatorCell、JXCategoryIndicatorCellModel`，就像`JXCategoryTitleView、JXCategoryTitleCell、JXCategoryTitleCellModel`那样去做；
+- 如果你只是在父类进行一些微调，那就继承目标view、cell、cellModel，对cell原有控件微调、或者加入新的控件皆可。就像`JXCategoryTitleImageView系列、JXCategoryTitleAttributeView系列`那样去做；
 
 ### 侧滑手势
 
