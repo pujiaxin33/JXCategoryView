@@ -59,7 +59,7 @@
             JXCategoryIndicatorLineView *lineView = [[JXCategoryIndicatorLineView alloc] init];
             titleCategoryView.indicators = @[lineView];
             titleCategoryView.titleColorGradientEnabled = YES;
-            titleCategoryView.zoomEnabled = YES;
+            titleCategoryView.titleLabelZoomEnabled = YES;
             [self.navigationController pushViewController:testVC animated:YES];
         }
             break;

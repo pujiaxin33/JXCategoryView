@@ -107,6 +107,7 @@
 		19870D012122BB6100C23CAA /* JXCategoryBaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 19870CEA2122BB6100C23CAA /* JXCategoryBaseCell.m */; };
 		19870D022122BB6100C23CAA /* JXCategoryBaseCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 19870CEB2122BB6100C23CAA /* JXCategoryBaseCellModel.m */; };
 		19D57E6E212D01180077DCA6 /* AttributeView.gif in Resources */ = {isa = PBXBuildFile; fileRef = 19D57E6D212D01180077DCA6 /* AttributeView.gif */; };
+		19D57E78212D3FD30077DCA6 /* JXCategoryIndicatorDotLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 19D57E77212D3FD30077DCA6 /* JXCategoryIndicatorDotLineView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -270,6 +271,8 @@
 		19870CEA2122BB6100C23CAA /* JXCategoryBaseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXCategoryBaseCell.m; sourceTree = "<group>"; };
 		19870CEB2122BB6100C23CAA /* JXCategoryBaseCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXCategoryBaseCellModel.m; sourceTree = "<group>"; };
 		19D57E6D212D01180077DCA6 /* AttributeView.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = AttributeView.gif; sourceTree = "<group>"; };
+		19D57E76212D3FD30077DCA6 /* JXCategoryIndicatorDotLineView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JXCategoryIndicatorDotLineView.h; sourceTree = "<group>"; };
+		19D57E77212D3FD30077DCA6 /* JXCategoryIndicatorDotLineView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JXCategoryIndicatorDotLineView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -377,6 +380,7 @@
 		191A9608212CF66500DBF784 /* Customize */ = {
 			isa = PBXGroup;
 			children = (
+				19D57E75212D3FA50077DCA6 /* IndicatorDotLine */,
 				191A9609212CF68000DBF784 /* CellAdjust */,
 			);
 			path = Customize;
@@ -689,6 +693,15 @@
 			path = Base;
 			sourceTree = "<group>";
 		};
+		19D57E75212D3FA50077DCA6 /* IndicatorDotLine */ = {
+			isa = PBXGroup;
+			children = (
+				19D57E76212D3FD30077DCA6 /* JXCategoryIndicatorDotLineView.h */,
+				19D57E77212D3FD30077DCA6 /* JXCategoryIndicatorDotLineView.m */,
+			);
+			path = IndicatorDotLine;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -834,6 +847,7 @@
 				19346D6F21269F3A0065FD8F /* JXCategoryIndicatorBackgroundView.m in Sources */,
 				1912A533211D08C800A80826 /* FootballViewController.m in Sources */,
 				19562CE7212A9B6E0095AA27 /* JXCategoryDotView.m in Sources */,
+				19D57E78212D3FD30077DCA6 /* JXCategoryIndicatorDotLineView.m in Sources */,
 				19870D012122BB6100C23CAA /* JXCategoryBaseCell.m in Sources */,
 				19870CF82122BB6100C23CAA /* JXCategoryCollectionView.m in Sources */,
 				19870C8321218DAC00C23CAA /* NaviSegmentedControlViewController.m in Sources */,

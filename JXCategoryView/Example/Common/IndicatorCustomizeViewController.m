@@ -12,6 +12,7 @@
 #import "IndicatorImageViewViewController.h"
 #import "BackgroundImageViewController.h"
 #import "FootballViewController.h"
+#import "JXCategoryIndicatorDotLineView.h"
 
 @interface IndicatorCustomizeViewController ()
 
@@ -175,6 +176,15 @@
             backgroundView.backgroundViewHeight = 20;
 
             titleCategoryView.indicators = @[backgroundView, lineView];
+        }
+            break;
+        case 14:
+        {
+            //indicator自定义-点线效果
+            testVC.isNeedIndicatorPositionChangeItem = YES;
+            titleCategoryView.titleColorGradientEnabled = YES;
+            JXCategoryIndicatorDotLineView *lineView = [[JXCategoryIndicatorDotLineView alloc] init];
+            titleCategoryView.indicators = @[lineView];
         }
             break;
 
