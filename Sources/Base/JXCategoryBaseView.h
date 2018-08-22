@@ -61,8 +61,6 @@
 
 #pragma mark - Subclass use
 
-- (CGFloat)interpolationFrom:(CGFloat)from to:(CGFloat)to percent:(CGFloat)percent;
-
 - (CGRect)getTargetCellFrame:(NSInteger)targetIndex;
 
 #pragma mark - Subclass Override
@@ -71,8 +69,14 @@
 
 - (void)initializeViews NS_REQUIRES_SUPER;
 
+/**
+ reloadDatas方法调用，重新生成数据源赋值到self.dataSource
+ */
 - (void)refreshDataSource;
 
+/**
+ reloadDatas方法调用，根据数据源重新刷新状态；
+ */
 - (void)refreshState NS_REQUIRES_SUPER;
 
 /**
@@ -108,6 +112,12 @@
  */
 - (CGFloat)preferredCellWidthWithIndex:(NSInteger)index;
 
+
+/**
+ 返回自定义cell的class
+
+ @return cell class
+ */
 - (Class)preferredCellClass;
 
 /**

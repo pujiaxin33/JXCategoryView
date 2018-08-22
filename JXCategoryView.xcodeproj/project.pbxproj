@@ -30,6 +30,10 @@
 		191A95F8212BF5DA00DBF784 /* TriangleBottom.gif in Resources */ = {isa = PBXBuildFile; fileRef = 191A95EC212BF5DA00DBF784 /* TriangleBottom.gif */; };
 		191A95F9212BF5DA00DBF784 /* CellBackgroundColorGradient.gif in Resources */ = {isa = PBXBuildFile; fileRef = 191A95ED212BF5DA00DBF784 /* CellBackgroundColorGradient.gif */; };
 		191A95FB212BFE3200DBF784 /* JXCategoryViewStructure.png in Resources */ = {isa = PBXBuildFile; fileRef = 191A95FA212BFE3200DBF784 /* JXCategoryViewStructure.png */; };
+		191A960C212CF6EA00DBF784 /* JXCategoryTitleAttributeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 191A960B212CF6EA00DBF784 /* JXCategoryTitleAttributeView.m */; };
+		191A960F212CF6F600DBF784 /* JXCategoryTitleAttributeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 191A960E212CF6F600DBF784 /* JXCategoryTitleAttributeCell.m */; };
+		191A9612212CF70300DBF784 /* JXCategoryTitleAttributeCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 191A9611212CF70300DBF784 /* JXCategoryTitleAttributeCellModel.m */; };
+		191A9615212CFA4D00DBF784 /* AttributeViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 191A9614212CFA4D00DBF784 /* AttributeViewViewController.m */; };
 		19302325211AD1B300AF1444 /* TitleImageSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19302324211AD1B300AF1444 /* TitleImageSettingViewController.m */; };
 		19302329211AD31C00AF1444 /* TitleImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19302328211AD31C00AF1444 /* TitleImageViewController.m */; };
 		19302330211AD88300AF1444 /* TitleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1930232F211AD88300AF1444 /* TitleViewController.m */; };
@@ -137,6 +141,14 @@
 		191A95EC212BF5DA00DBF784 /* TriangleBottom.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = TriangleBottom.gif; sourceTree = "<group>"; };
 		191A95ED212BF5DA00DBF784 /* CellBackgroundColorGradient.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = CellBackgroundColorGradient.gif; sourceTree = "<group>"; };
 		191A95FA212BFE3200DBF784 /* JXCategoryViewStructure.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = JXCategoryViewStructure.png; sourceTree = "<group>"; };
+		191A960A212CF6EA00DBF784 /* JXCategoryTitleAttributeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JXCategoryTitleAttributeView.h; sourceTree = "<group>"; };
+		191A960B212CF6EA00DBF784 /* JXCategoryTitleAttributeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JXCategoryTitleAttributeView.m; sourceTree = "<group>"; };
+		191A960D212CF6F600DBF784 /* JXCategoryTitleAttributeCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JXCategoryTitleAttributeCell.h; sourceTree = "<group>"; };
+		191A960E212CF6F600DBF784 /* JXCategoryTitleAttributeCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JXCategoryTitleAttributeCell.m; sourceTree = "<group>"; };
+		191A9610212CF70300DBF784 /* JXCategoryTitleAttributeCellModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JXCategoryTitleAttributeCellModel.h; sourceTree = "<group>"; };
+		191A9611212CF70300DBF784 /* JXCategoryTitleAttributeCellModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JXCategoryTitleAttributeCellModel.m; sourceTree = "<group>"; };
+		191A9613212CFA4D00DBF784 /* AttributeViewViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AttributeViewViewController.h; sourceTree = "<group>"; };
+		191A9614212CFA4D00DBF784 /* AttributeViewViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AttributeViewViewController.m; sourceTree = "<group>"; };
 		19302323211AD1B300AF1444 /* TitleImageSettingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TitleImageSettingViewController.h; sourceTree = "<group>"; };
 		19302324211AD1B300AF1444 /* TitleImageSettingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TitleImageSettingViewController.m; sourceTree = "<group>"; };
 		19302327211AD31C00AF1444 /* TitleImageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TitleImageViewController.h; sourceTree = "<group>"; };
@@ -360,6 +372,29 @@
 			path = IndicatorViews;
 			sourceTree = "<group>";
 		};
+		191A9608212CF66500DBF784 /* Customize */ = {
+			isa = PBXGroup;
+			children = (
+				191A9609212CF68000DBF784 /* CellAdjust */,
+			);
+			path = Customize;
+			sourceTree = "<group>";
+		};
+		191A9609212CF68000DBF784 /* CellAdjust */ = {
+			isa = PBXGroup;
+			children = (
+				191A960A212CF6EA00DBF784 /* JXCategoryTitleAttributeView.h */,
+				191A960B212CF6EA00DBF784 /* JXCategoryTitleAttributeView.m */,
+				191A960D212CF6F600DBF784 /* JXCategoryTitleAttributeCell.h */,
+				191A960E212CF6F600DBF784 /* JXCategoryTitleAttributeCell.m */,
+				191A9610212CF70300DBF784 /* JXCategoryTitleAttributeCellModel.h */,
+				191A9611212CF70300DBF784 /* JXCategoryTitleAttributeCellModel.m */,
+				191A9613212CFA4D00DBF784 /* AttributeViewViewController.h */,
+				191A9614212CFA4D00DBF784 /* AttributeViewViewController.m */,
+			);
+			path = CellAdjust;
+			sourceTree = "<group>";
+		};
 		19302322211ACE1500AF1444 /* Example */ = {
 			isa = PBXGroup;
 			children = (
@@ -375,6 +410,7 @@
 				19302384211B22B700AF1444 /* SegmentedControl */,
 				19562CF2212AA3400095AA27 /* Nest */,
 				1912A530211D08B500A80826 /* Football */,
+				191A9608212CF66500DBF784 /* Customize */,
 			);
 			path = Example;
 			sourceTree = "<group>";
@@ -754,13 +790,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				191A9612212CF70300DBF784 /* JXCategoryTitleAttributeCellModel.m in Sources */,
 				19302329211AD31C00AF1444 /* TitleImageViewController.m in Sources */,
 				19870CF92122BB6100C23CAA /* UIColor+JXAdd.m in Sources */,
 				19302337211AEB6300AF1444 /* NumberViewController.m in Sources */,
 				19870D002122BB6100C23CAA /* JXCategoryBaseView.m in Sources */,
 				19870CF32122BB6100C23CAA /* JXCategoryIndicatorView.m in Sources */,
+				191A9615212CFA4D00DBF784 /* AttributeViewViewController.m in Sources */,
 				19346D6C2126934B0065FD8F /* JXCategoryIndicatorImageView.m in Sources */,
 				19562CE3212A997F0095AA27 /* ImageViewController.m in Sources */,
+				191A960C212CF6EA00DBF784 /* JXCategoryTitleAttributeView.m in Sources */,
 				19870BD2211D7FD000C23CAA /* PagingViewController.swift in Sources */,
 				19870BCE211D7FD000C23CAA /* TestListBaseView.swift in Sources */,
 				19562CD9212A94A40095AA27 /* JXCategoryImageView.m in Sources */,
@@ -780,6 +819,7 @@
 				191A95E0212BBC2500DBF784 /* JXCategoryIndicatorBallView.m in Sources */,
 				19346D722126B0D80065FD8F /* JXCategoryIndicatorTriangleView.m in Sources */,
 				19302333211AD8B200AF1444 /* ListViewController.m in Sources */,
+				191A960F212CF6F600DBF784 /* JXCategoryTitleAttributeCell.m in Sources */,
 				19870C8621218E3A00C23CAA /* SegmentedListViewController.m in Sources */,
 				19346D69212677A50065FD8F /* JXCategoryIndicatorComponentView.m in Sources */,
 				19870CF12122BB6100C23CAA /* JXCategoryTitleView.m in Sources */,

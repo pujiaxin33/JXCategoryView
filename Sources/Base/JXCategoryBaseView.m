@@ -291,10 +291,4 @@
     return CGRectMake(x, 0, width, self.bounds.size.height);
 }
 
-- (CGFloat)interpolationFrom:(CGFloat)from to:(CGFloat)to percent:(CGFloat)percent
-{
-    percent = MAX(0, MIN(1, percent));
-    return from + (to - from)*percent;
-}
-
 @end

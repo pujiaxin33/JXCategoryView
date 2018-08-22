@@ -12,6 +12,7 @@
 #import "TitleImageViewController.h"
 #import "ImageViewController.h"
 #import "DotViewController.h"
+#import "AttributeViewViewController.h"
 
 @interface CellCustomizeViewController ()
 
@@ -122,7 +123,14 @@
             [self.navigationController pushViewController:imageVC animated:YES];
         }
             break;
-
+        case 8:
+        {
+            //cell自定义多行富文本
+            AttributeViewViewController *vc = [[AttributeViewViewController alloc] init];
+            vc.title = title;
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+            break;
         default:
             break;
     }

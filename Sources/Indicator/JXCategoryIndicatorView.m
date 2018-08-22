@@ -134,8 +134,8 @@
         JXCategoryIndicatorCellModel *leftCellModel = (JXCategoryIndicatorCellModel *)self.dataSource[baseIndex];
         JXCategoryIndicatorCellModel *rightCellModel = (JXCategoryIndicatorCellModel *)self.dataSource[baseIndex + 1];
         if (self.zoomEnabled) {
-            leftCellModel.zoomScale = [self interpolationFrom:self.zoomScale to:1.0 percent:remainderRatio];
-            rightCellModel.zoomScale = [self interpolationFrom:1.0 to:self.zoomScale percent:remainderRatio];
+            leftCellModel.zoomScale = [JXCategoryFactory interpolationFrom:self.zoomScale to:1.0 percent:remainderRatio];
+            rightCellModel.zoomScale = [JXCategoryFactory interpolationFrom:1.0 to:self.zoomScale percent:remainderRatio];
         }
         [self refreshLeftCellModel:leftCellModel rightCellModel:rightCellModel ratio:remainderRatio];
 
