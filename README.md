@@ -5,7 +5,7 @@
 [![cocoapods](https://img.shields.io/badge/cocoapods-supported-4BC51D.svg?style=plastic)](https://cocoapods.org/pods/JXCategoryView)
 [![support](https://img.shields.io/badge/support-ios%208%2B-orange.svg)](#) 
 
-A powerful and easy to use category view (segmentedcontrol, segmentview, pagingview, pagerview, pagecontrol) (腾讯新闻、网易新闻、今日头条、QQ音乐、京东、爱奇艺、淘宝、天猫、简书、微博等所有主流APP分类切换滚动视图)
+A powerful and easy to use category view (segmentedcontrol, segmentview, pagingview, pagerview, pagecontrol) (腾讯新闻、今日头条、QQ音乐、网易云音乐、京东、爱奇艺、淘宝、天猫、简书、微博等所有主流APP分类切换滚动视图)
 
 与其他的同类三方库对比的优点：
 - 使用POP(Protocol Oriented Programming面对协议编程)封装指示器逻辑，可以为所欲为的自定义指示器效果；
