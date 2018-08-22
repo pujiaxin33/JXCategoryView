@@ -615,12 +615,12 @@
 		19870CB52122BB6100C23CAA /* TitleImage */ = {
 			isa = PBXGroup;
 			children = (
-				19870CB62122BB6100C23CAA /* JXCategoryTitleImageView.m */,
-				19870CB72122BB6100C23CAA /* JXCategoryTitleImageCell.m */,
-				19870CB82122BB6100C23CAA /* JXCategoryTitleImageCellModel.h */,
 				19870CB92122BB6100C23CAA /* JXCategoryTitleImageView.h */,
+				19870CB62122BB6100C23CAA /* JXCategoryTitleImageView.m */,
+				19870CB82122BB6100C23CAA /* JXCategoryTitleImageCellModel.h */,
 				19870CBA2122BB6100C23CAA /* JXCategoryTitleImageCellModel.m */,
 				19870CBB2122BB6100C23CAA /* JXCategoryTitleImageCell.h */,
+				19870CB72122BB6100C23CAA /* JXCategoryTitleImageCell.m */,
 			);
 			path = TitleImage;
 			sourceTree = "<group>";

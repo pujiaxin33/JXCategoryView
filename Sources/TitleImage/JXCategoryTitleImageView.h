@@ -28,4 +28,8 @@
 
 @property (nonatomic, assign) CGFloat titleImageSpacing;    //titleLabel和ImageView的间距，默认5
 
+@property (nonatomic, assign) BOOL imageZoomEnabled;     //默认为NO
+
+@property (nonatomic, assign) CGFloat imageZoomScale;    //默认1.2，imageZoomEnabled为YES才生效
+
 @end
