@@ -52,6 +52,7 @@ TitleImage_Right |  <img src="JXCategoryView/Images/TitleImageRight.gif" width="
 Image |  <img src="JXCategoryView/Images/CellImage.gif" width="343" height="80"> |
 数字 |  <img src="JXCategoryView/Images/Number.gif" width="343" height="80"> |
 红点 |  <img src="JXCategoryView/Images/CellRedDot.gif" width="343" height="80"> |
+自定义-多行+富文本 |  <img src="JXCategoryView/Images/AttributeView.gif" width="343" height="80"> |
 
 ### 特殊效果预览
 
@@ -89,7 +90,10 @@ end
 
 - 指示器样式自定义：使用POP(Protocol Oriented Programming面对协议编程)封装指示器逻辑，只要遵从`JXCategoryIndicatorProtocol`协议，就可以实现你的指示器效果。参考：JXCategoryIndicatorLineView；
 - Cell样式自定义：使用子类化，基类搭建基础，子类实现特殊效果。便于代码管理，功能扩展；参考：JXCategoryNumberView；
-- **特殊说明：** 即使提供了灵活扩展，我的源码也不可能满足所有情况，建议大家可以通过fork仓库，维护自己的一套效果。也可以直接拖入源文件进行修改。
+
+## 特殊说明
+
+- 自定义：即使提供了灵活扩展，我的源码也不可能满足所有情况，建议大家可以通过fork仓库，维护自己的一套效果。也可以直接拖入源文件进行修改。
 - 个人主页效果：上下左右滚动且HeaderView悬浮的实现，用的是我写的这个库[JXPagingView](https://github.com/pujiaxin33/JXPagingView)。
 
 ## 常用属性说明
@@ -170,20 +174,8 @@ titleCategoryView.indicators = @[lineView, triangleView, ballView, backgroundVie
 [self.view addSubview:self.categoryView];
 ```
 
-- 刷新单个cell，比如红点示例里面，调用`- (void)reloadCell:(NSUInteger)index`
-- 数据源、属性配置有变动时（比如从服务器拉取回来数据），需要调用`reloadDatas`方法刷新状态。
-
-### Cell子类化注意事项
-
-任何子类化，view、cell、cellModel三个都要子类化，即使某个子类cell什么事情都不做。用于维护继承链，以免以后子类化都不知道要继承谁了
-
-主要重载的方法，参考：`JXCategoryTitleView、JXCategoryTitleImageView、JXCategoryNumberView、JXCategoryDotView、JXCategoryImageView`
-- `- (Class)preferredCellClass`返回自定义的cell；
-- `- (void)refreshDataSource`刷新数据源，使用自定义的cellModel；
-- `- (void)refreshCellModel:(JXCategoryBaseCellModel *)cellModel index:(NSInteger)index `初始化、reloadDatas时对数据源重置；
-- `- (CGFloat)preferredCellWidthWithIndex:(NSInteger)index`根据cell的内容返回对应的宽度；
-- `- (void)refreshSelectedCellModel:(JXCategoryBaseCellModel *)selectedCellModel unselectedCellModel:(JXCategoryBaseCellModel *)unselectedCellModel`cell选中时进行状态刷新；
-- `- (void)refreshLeftCellModel:(JXCategoryBaseCellModel *)leftCellModel rightCellModel:(JXCategoryBaseCellModel *)rightCellModel ratio:(CGFloat)ratio`cell左右滚动切换的时候，进行状态刷新；
+- 单个cell刷新：比如红点示例里面，调用`- (void)reloadCell:(NSUInteger)index`
+- 所有状态重置：数据源、属性配置有变动时（比如从服务器拉取回来数据），需要调用`reloadDatas`方法刷新状态。
 
 ### 指示器样式自定义
 
@@ -194,6 +186,20 @@ titleCategoryView.indicators = @[lineView, triangleView, ballView, backgroundVie
     - `- (void)jx_refreshState:(CGRect)selectedCellFrame`初始化或reloadDatas，重置状态；
     - `- (void)jx_contentScrollViewDidScrollWithLeftCellFrame:(CGRect)leftCellFrame rightCellFrame:(CGRect)rightCellFrame selectedPosition:(JXCategoryCellClickedPosition)selectedPosition percent:(CGFloat)percent` contentScrollView在进行手势滑动时，处理指示器跟随手势变化UI逻辑；
     - `- (void)jx_selectedCell:(CGRect)cellFrame clickedRelativePosition:(JXCategoryCellClickedPosition)clickedRelativePosition`根据选中的某个cell，处理过渡效果；
+
+### Cell子类化注意事项
+
+任何子类化，view、cell、cellModel三个都要子类化，即使某个子类cell什么事情都不做。用于维护继承链，以免以后子类化都不知道要继承谁了
+
+参考：`JXCategoryTitleAttributeView、JXCategoryTitleView、JXCategoryTitleImageView、JXCategoryNumberView、JXCategoryDotView、JXCategoryImageView`
+
+主要重载的方法：
+- `- (Class)preferredCellClass`返回自定义的cell；
+- `- (void)refreshDataSource`刷新数据源，使用自定义的cellModel；
+- `- (void)refreshCellModel:(JXCategoryBaseCellModel *)cellModel index:(NSInteger)index `初始化、reloadDatas时对数据源重置；
+- `- (CGFloat)preferredCellWidthWithIndex:(NSInteger)index`根据cell的内容返回对应的宽度；
+- `- (void)refreshSelectedCellModel:(JXCategoryBaseCellModel *)selectedCellModel unselectedCellModel:(JXCategoryBaseCellModel *)unselectedCellModel`cell选中时进行状态刷新；
+- `- (void)refreshLeftCellModel:(JXCategoryBaseCellModel *)leftCellModel rightCellModel:(JXCategoryBaseCellModel *)rightCellModel ratio:(CGFloat)ratio`cell左右滚动切换的时候，进行状态刷新；
 
 
 ### 侧滑手势
