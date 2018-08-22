@@ -106,6 +106,7 @@
 		19870D002122BB6100C23CAA /* JXCategoryBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 19870CE92122BB6100C23CAA /* JXCategoryBaseView.m */; };
 		19870D012122BB6100C23CAA /* JXCategoryBaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 19870CEA2122BB6100C23CAA /* JXCategoryBaseCell.m */; };
 		19870D022122BB6100C23CAA /* JXCategoryBaseCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 19870CEB2122BB6100C23CAA /* JXCategoryBaseCellModel.m */; };
+		19D57E6E212D01180077DCA6 /* AttributeView.gif in Resources */ = {isa = PBXBuildFile; fileRef = 19D57E6D212D01180077DCA6 /* AttributeView.gif */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -268,6 +269,7 @@
 		19870CE92122BB6100C23CAA /* JXCategoryBaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXCategoryBaseView.m; sourceTree = "<group>"; };
 		19870CEA2122BB6100C23CAA /* JXCategoryBaseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXCategoryBaseCell.m; sourceTree = "<group>"; };
 		19870CEB2122BB6100C23CAA /* JXCategoryBaseCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXCategoryBaseCellModel.m; sourceTree = "<group>"; };
+		19D57E6D212D01180077DCA6 /* AttributeView.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = AttributeView.gif; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -553,6 +555,7 @@
 		19870C872122703B00C23CAA /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				19D57E6D212D01180077DCA6 /* AttributeView.gif */,
 				191A95FA212BFE3200DBF784 /* JXCategoryViewStructure.png */,
 				19870C882122703B00C23CAA /* IndicatorImageView.gif */,
 				19870C892122703B00C23CAA /* TitleMask.gif */,
@@ -745,6 +748,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				19D57E6E212D01180077DCA6 /* AttributeView.gif in Resources */,
 				191A95F9212BF5DA00DBF784 /* CellBackgroundColorGradient.gif in Resources */,
 				19870CA42122703B00C23CAA /* IQIYILineStyle.gif in Resources */,
 				19870CA62122703B00C23CAA /* UserProfile.gif in Resources */,
