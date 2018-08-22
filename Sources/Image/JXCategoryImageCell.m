@@ -47,6 +47,12 @@
             }
         }
     }
+
+    if (myCellModel.imageZoomEnabled) {
+        self.imageView.transform = CGAffineTransformMakeScale(myCellModel.imageZoomScale, myCellModel.imageZoomScale);
+    }else {
+        self.imageView.transform = CGAffineTransformIdentity;
+    }
 }
 
 @end

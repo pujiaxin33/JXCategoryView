@@ -47,7 +47,6 @@
     JXCategoryTitleCellModel *myCellModel = (JXCategoryTitleCellModel *)cellModel;
     self.titleLabel.font = myCellModel.titleFont;
 
-    
     if (myCellModel.titleLabelZoomEnabled) {
         self.titleLabel.transform = CGAffineTransformMakeScale(myCellModel.titleLabelZoomScale, myCellModel.titleLabelZoomScale);
         self.maskTitleLabel.transform = CGAffineTransformMakeScale(myCellModel.titleLabelZoomScale, myCellModel.titleLabelZoomScale);

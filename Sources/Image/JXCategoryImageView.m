@@ -7,6 +7,7 @@
 //
 
 #import "JXCategoryImageView.h"
+#import "JXCategoryFactory.h"
 
 @implementation JXCategoryImageView
 
@@ -19,6 +20,8 @@
     [super initializeDatas];
 
     _imageSize = CGSizeMake(20, 20);
+    _imageZoomEnabled = NO;
+    _imageZoomScale = 1.2;
 }
 
 - (Class)preferredCellClass {
@@ -33,6 +36,16 @@
         [tempArray addObject:cellModel];
     }
     self.dataSource = tempArray;
+}
+
+- (void)refreshSelectedCellModel:(JXCategoryBaseCellModel *)selectedCellModel unselectedCellModel:(JXCategoryBaseCellModel *)unselectedCellModel {
+    [super refreshSelectedCellModel:selectedCellModel unselectedCellModel:unselectedCellModel];
+
+    JXCategoryImageCellModel *myUnselectedCellModel = (JXCategoryImageCellModel *)unselectedCellModel;
+    myUnselectedCellModel.imageZoomScale = 1.0;
+
+    JXCategoryImageCellModel *myselectedCellModel = (JXCategoryImageCellModel *)selectedCellModel;
+    myselectedCellModel.imageZoomScale = self.imageZoomScale;
 }
 
 - (void)refreshCellModel:(JXCategoryBaseCellModel *)cellModel index:(NSInteger)index {
@@ -50,6 +63,23 @@
         myCellModel.selectedImageName = self.selectedImageNames[index];
     }else if (self.selectedImageURLs != nil) {
         myCellModel.selectedImageURL = self.selectedImageURLs[index];
+    }
+    myCellModel.imageZoomEnabled = self.imageZoomEnabled;
+    myCellModel.imageZoomScale = 1.0;
+    if (index == self.selectedIndex) {
+        myCellModel.imageZoomScale = self.imageZoomScale;
+    }
+}
+
+- (void)refreshLeftCellModel:(JXCategoryBaseCellModel *)leftCellModel rightCellModel:(JXCategoryBaseCellModel *)rightCellModel ratio:(CGFloat)ratio {
+    [super refreshLeftCellModel:leftCellModel rightCellModel:rightCellModel ratio:ratio];
+
+    JXCategoryImageCellModel *leftModel = (JXCategoryImageCellModel *)leftCellModel;
+    JXCategoryImageCellModel *rightModel = (JXCategoryImageCellModel *)rightCellModel;
+
+    if (self.imageZoomEnabled) {
+        leftModel.imageZoomScale = [JXCategoryFactory interpolationFrom:self.imageZoomScale to:1.0 percent:ratio];
+        rightModel.imageZoomScale = [JXCategoryFactory interpolationFrom:1.0 to:self.imageZoomScale percent:ratio];
     }
 }
 

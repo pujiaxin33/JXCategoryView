@@ -24,4 +24,8 @@
 
 @property (nonatomic, assign) CGSize imageSize;     //默认CGSizeMake(20, 20)
 
+@property (nonatomic, assign) BOOL imageZoomEnabled;     //默认为NO
+
+@property (nonatomic, assign) CGFloat imageZoomScale;    //默认1.2，imageZoomEnabled为YES才生效
+
 @end
