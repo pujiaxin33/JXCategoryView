@@ -7,7 +7,7 @@
 
 [There is an English version of README here. just click it！](https://github.com/pujiaxin33/JXCategoryView/blob/master/README-English.md)
 
-A powerful and easy to use category view (segmentedcontrol, segmentview, pagingview, pagerview, pagecontrol) (腾讯新闻、今日头条、QQ音乐、网易云音乐、京东、爱奇艺、淘宝、天猫、简书、微博等所有主流APP分类切换滚动视图)
+A powerful and easy to use category view (segmentedcontrol, segmentview, pagingview, pagerview, pagecontrol) (腾讯新闻、今日头条、QQ音乐、网易云音乐、京东、爱奇艺、腾讯视频、淘宝、天猫、简书、微博等所有主流APP分类切换滚动视图)
 
 与其他的同类三方库对比的优点：
 - 使用POP(Protocol Oriented Programming面对协议编程)封装指示器逻辑，可以为所欲为的自定义指示器效果；
@@ -54,6 +54,7 @@ Image |  <img src="JXCategoryView/Images/CellImage.gif" width="343" height="80">
 数字 |  <img src="JXCategoryView/Images/Number.gif" width="343" height="80"> |
 红点 |  <img src="JXCategoryView/Images/CellRedDot.gif" width="343" height="80"> |
 自定义-多行+富文本 |  <img src="JXCategoryView/Images/AttributeView.gif" width="343" height="80"> |
+腾讯视频效果  |  <img src="JXCategoryView/Images/TXVedio.gif" width="343" height="80">  |
 
 ### 特殊效果预览
 
