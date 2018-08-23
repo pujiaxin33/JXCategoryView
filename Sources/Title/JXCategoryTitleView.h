@@ -27,6 +27,8 @@
 //----------------------titleLabelZoomEnabled-----------------------//
 @property (nonatomic, assign) BOOL titleLabelZoomEnabled;     //默认为NO
 
+@property (nonatomic, assign) BOOL titleLabelZoomScrollGradientEnabled;     //手势滚动中，是否需要更新状态。默认为YES
+
 @property (nonatomic, assign) CGFloat titleLabelZoomScale;    //默认1.2，titleLabelZoomEnabled为YES才生效
 
 @end

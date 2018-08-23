@@ -178,33 +178,31 @@
     JXCategoryIndicatorCell *selectedCell = (JXCategoryIndicatorCell *)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0]];
     [selectedCell reloadDatas:selectedCellModel];
 
-//    [self.collectionView reloadItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:index inSection:0]]];
     return YES;
 }
 
 
 - (void)refreshLeftCellModel:(JXCategoryBaseCellModel *)leftCellModel rightCellModel:(JXCategoryBaseCellModel *)rightCellModel ratio:(CGFloat)ratio {
-    if (!self.cellBackgroundColorGradientEnabled) {
-        return;
+    if (self.cellBackgroundColorGradientEnabled) {
+        //处理cell背景色渐变
+        JXCategoryIndicatorCellModel *leftModel = (JXCategoryIndicatorCellModel *)leftCellModel;
+        JXCategoryIndicatorCellModel *rightModel = (JXCategoryIndicatorCellModel *)rightCellModel;
+        if (leftModel.selected) {
+            leftModel.cellBackgroundSelectedColor = [JXCategoryFactory interpolationColorFrom:self.cellBackgroundSelectedColor to:self.cellBackgroundUnselectedColor percent:ratio];
+            leftModel.cellBackgroundUnselectedColor = self.cellBackgroundUnselectedColor;
+        }else {
+            leftModel.cellBackgroundUnselectedColor = [JXCategoryFactory interpolationColorFrom:self.cellBackgroundSelectedColor to:self.cellBackgroundUnselectedColor percent:ratio];
+            leftModel.cellBackgroundSelectedColor = self.cellBackgroundSelectedColor;
+        }
+        if (rightModel.selected) {
+            rightModel.cellBackgroundSelectedColor = [JXCategoryFactory interpolationColorFrom:self.cellBackgroundUnselectedColor to:self.cellBackgroundSelectedColor percent:ratio];
+            rightModel.cellBackgroundUnselectedColor = self.cellBackgroundUnselectedColor;
+        }else {
+            rightModel.cellBackgroundUnselectedColor = [JXCategoryFactory interpolationColorFrom:self.cellBackgroundUnselectedColor to:self.cellBackgroundSelectedColor percent:ratio];
+            rightModel.cellBackgroundSelectedColor = self.cellBackgroundSelectedColor;
+        }
     }
 
-    //处理颜色渐变
-    JXCategoryIndicatorCellModel *leftModel = (JXCategoryIndicatorCellModel *)leftCellModel;
-    JXCategoryIndicatorCellModel *rightModel = (JXCategoryIndicatorCellModel *)rightCellModel;
-    if (leftModel.selected) {
-        leftModel.cellBackgroundSelectedColor = [JXCategoryFactory interpolationColorFrom:self.cellBackgroundSelectedColor to:self.cellBackgroundUnselectedColor percent:ratio];
-        leftModel.cellBackgroundUnselectedColor = self.cellBackgroundUnselectedColor;
-    }else {
-        leftModel.cellBackgroundUnselectedColor = [JXCategoryFactory interpolationColorFrom:self.cellBackgroundSelectedColor to:self.cellBackgroundUnselectedColor percent:ratio];
-        leftModel.cellBackgroundSelectedColor = self.cellBackgroundSelectedColor;
-    }
-    if (rightModel.selected) {
-        rightModel.cellBackgroundSelectedColor = [JXCategoryFactory interpolationColorFrom:self.cellBackgroundUnselectedColor to:self.cellBackgroundSelectedColor percent:ratio];
-        rightModel.cellBackgroundUnselectedColor = self.cellBackgroundUnselectedColor;
-    }else {
-        rightModel.cellBackgroundUnselectedColor = [JXCategoryFactory interpolationColorFrom:self.cellBackgroundUnselectedColor to:self.cellBackgroundSelectedColor percent:ratio];
-        rightModel.cellBackgroundSelectedColor = self.cellBackgroundSelectedColor;
-    }
 }
 
 @end

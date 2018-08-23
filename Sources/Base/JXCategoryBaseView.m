@@ -7,8 +7,7 @@
 //
 
 #import "JXCategoryBaseView.h"
-
-
+#import "JXCategoryFactory.h"
 
 @interface JXCategoryBaseView () <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 
@@ -53,6 +52,9 @@
     _cellWidthIncrement = 0;
     _cellSpacing = 20;
     _averageCellWidthEnabled = YES;
+    _cellWidthZoomEnabled = NO;
+    _cellWidthZoomScale = 1.2;
+    _cellWidthZoomScrollGradientEnabled = YES;
 }
 
 - (void)initializeViews
@@ -120,14 +122,17 @@
     for (int i = 0; i < self.dataSource.count; i++) {
         JXCategoryBaseCellModel *cellModel = self.dataSource[i];
         cellModel.index = i;
+        cellModel.cellWidth = [self preferredCellWidthWithIndex:i] + self.cellWidthIncrement;
+        cellModel.cellWidthZoomEnabled = self.cellWidthZoomEnabled;
+        cellModel.cellWidthZoomScale = 1.0;
+        cellModel.cellSpacing = self.cellSpacing;
+        totalItemWidth += cellModel.cellWidth + self.cellSpacing;
         if (i == self.selectedIndex) {
             cellModel.selected = YES;
+            cellModel.cellWidthZoomScale = self.cellWidthZoomScale;
         }else {
             cellModel.selected = NO;
         }
-        cellModel.cellWidth = [self preferredCellWidthWithIndex:i] + self.cellWidthIncrement;
-        cellModel.cellSpacing = self.cellSpacing;
-        totalItemWidth += cellModel.cellWidth + self.cellSpacing;
         [self refreshCellModel:cellModel index:i];
     }
 
@@ -192,10 +197,20 @@
     JXCategoryBaseCell *selectedCell = (JXCategoryBaseCell *)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:targetIndex inSection:0]];
     [selectedCell reloadDatas:selectedCellModel];
 
-    self.selectedIndex = targetIndex;
-    [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:targetIndex inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
+    if (self.cellWidthZoomEnabled) {
+        [self.collectionView.collectionViewLayout invalidateLayout];
+
+        //延时为了解决cellwidth变化，点击最后几个cell，scrollToItem会出现位置偏移bug
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.01 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:targetIndex inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
+        });
+    }else {
+        [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:targetIndex inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
+    }
 
     [self.contentScrollView setContentOffset:CGPointMake(targetIndex*self.contentScrollView.bounds.size.width, 0) animated:YES];
+
+    self.selectedIndex = targetIndex;
 
     return YES;
 }
@@ -205,11 +220,30 @@
 
 - (void)refreshSelectedCellModel:(JXCategoryBaseCellModel *)selectedCellModel unselectedCellModel:(JXCategoryBaseCellModel *)unselectedCellModel {
     selectedCellModel.selected = YES;
+    selectedCellModel.cellWidthZoomScale = self.cellWidthZoomScale;
     unselectedCellModel.selected = NO;
+    unselectedCellModel.cellWidthZoomScale = 1.0;
 }
 
 - (void)contentOffsetOfContentScrollViewDidChanged:(CGPoint)contentOffset {
+    CGFloat ratio = contentOffset.x/self.contentScrollView.bounds.size.width;
+    if (ratio > self.dataSource.count - 1 || ratio < 0) {
+        //超过了边界，不需要处理
+        return;
+    }
+    ratio = MAX(0, MIN(self.dataSource.count - 1, ratio));
+    NSInteger baseIndex = floorf(ratio);
+    CGFloat remainderRatio = ratio - baseIndex;
 
+    if (remainderRatio != 0) {
+        if (self.cellWidthZoomEnabled && self.cellWidthZoomScrollGradientEnabled) {
+            JXCategoryBaseCellModel *leftCellModel = (JXCategoryBaseCellModel *)self.dataSource[baseIndex];
+            JXCategoryBaseCellModel *rightCellModel = (JXCategoryBaseCellModel *)self.dataSource[baseIndex + 1];
+            leftCellModel.cellWidthZoomScale = [JXCategoryFactory interpolationFrom:self.cellWidthZoomScale to:1.0 percent:remainderRatio];
+            rightCellModel.cellWidthZoomScale = [JXCategoryFactory interpolationFrom:1.0 to:self.cellWidthZoomScale percent:remainderRatio];
+            [self.collectionView.collectionViewLayout invalidateLayout];
+        }
+    }
 }
 
 - (CGFloat)preferredCellWidthWithIndex:(NSInteger)index {

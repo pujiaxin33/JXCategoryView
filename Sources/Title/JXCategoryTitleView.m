@@ -21,11 +21,13 @@
 
     _titleLabelZoomEnabled = NO;
     _titleLabelZoomScale = 1.2;
+    _titleLabelZoomScale = YES;
     _titleColor = [UIColor blackColor];
     _titleSelectedColor = [UIColor redColor];
     _titleFont = [UIFont systemFontOfSize:15];
     _titleColorGradientEnabled = NO;
     _titleLabelMaskEnabled = NO;
+    _titleLabelZoomScrollGradientEnabled = YES;
 }
 
 #pragma mark - Override
@@ -63,7 +65,7 @@
     JXCategoryTitleCellModel *leftModel = (JXCategoryTitleCellModel *)leftCellModel;
     JXCategoryTitleCellModel *rightModel = (JXCategoryTitleCellModel *)rightCellModel;
 
-    if (self.titleLabelZoomEnabled) {
+    if (self.titleLabelZoomEnabled && self.titleLabelZoomScrollGradientEnabled) {
         leftModel.titleLabelZoomScale = [JXCategoryFactory interpolationFrom:self.titleLabelZoomScale to:1.0 percent:ratio];
         rightModel.titleLabelZoomScale = [JXCategoryFactory interpolationFrom:1.0 to:self.titleLabelZoomScale percent:ratio];
     }

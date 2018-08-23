@@ -19,5 +19,8 @@
 
 @property (nonatomic, assign) CGFloat cellSpacing;
 
+@property (nonatomic, assign) BOOL cellWidthZoomEnabled;
+
+@property (nonatomic, assign) CGFloat cellWidthZoomScale;
 
 @end

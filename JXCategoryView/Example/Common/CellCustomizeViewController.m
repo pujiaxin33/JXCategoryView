@@ -56,14 +56,47 @@
             TitleViewController *testVC = [[TitleViewController alloc] init];
             testVC.title = title;
             JXCategoryTitleView *titleCategoryView = (JXCategoryTitleView *)testVC.categoryView;
-            JXCategoryIndicatorLineView *lineView = [[JXCategoryIndicatorLineView alloc] init];
-            titleCategoryView.indicators = @[lineView];
             titleCategoryView.titleColorGradientEnabled = YES;
             titleCategoryView.titleLabelZoomEnabled = YES;
+            titleCategoryView.titleLabelZoomScale = 1.2;
+
             [self.navigationController pushViewController:testVC animated:YES];
         }
             break;
         case 2:
+        {
+            //腾讯视频大小缩放
+            TitleViewController *testVC = [[TitleViewController alloc] init];
+            testVC.title = title;
+            JXCategoryTitleView *titleCategoryView = (JXCategoryTitleView *)testVC.categoryView;
+            titleCategoryView.titleColorGradientEnabled = NO;
+            titleCategoryView.titleLabelZoomEnabled = YES;
+            titleCategoryView.titleLabelZoomScale = 1.7;
+            titleCategoryView.titleLabelZoomScrollGradientEnabled = NO;
+            titleCategoryView.cellWidthZoomEnabled = YES;
+            titleCategoryView.cellWidthZoomScale = 1.7;
+            titleCategoryView.cellWidthZoomScrollGradientEnabled = NO;
+
+            [self.navigationController pushViewController:testVC animated:YES];
+        }
+            break;
+        case 3:
+        {
+            //腾讯视频大小缩放-手势渐变
+            TitleViewController *testVC = [[TitleViewController alloc] init];
+            testVC.title = title;
+            JXCategoryTitleView *titleCategoryView = (JXCategoryTitleView *)testVC.categoryView;
+            titleCategoryView.titleColorGradientEnabled = YES;
+            titleCategoryView.titleLabelZoomEnabled = YES;
+            titleCategoryView.titleLabelZoomScale = 1.7;
+            titleCategoryView.titleLabelZoomScrollGradientEnabled = YES;
+            titleCategoryView.cellWidthZoomEnabled = YES;
+            titleCategoryView.cellWidthZoomScale = 1.7;
+
+            [self.navigationController pushViewController:testVC animated:YES];
+        }
+            break;
+        case 4:
         {
             //cell背景色渐变
             TitleViewController *testVC = [[TitleViewController alloc] init];
@@ -76,7 +109,7 @@
             [self.navigationController pushViewController:testVC animated:YES];
         }
             break;
-        case 3:
+        case 5:
         {
             //SeparatorLine
             TitleViewController *testVC = [[TitleViewController alloc] init];
@@ -88,7 +121,7 @@
             [self.navigationController pushViewController:testVC animated:YES];
         }
             break;
-        case 4:
+        case 6:
         {
             //图片
             ImageViewController *testVC = [[ImageViewController alloc] init];
@@ -99,7 +132,7 @@
             [self.navigationController pushViewController:testVC animated:YES];
         }
             break;
-        case 5:
+        case 7:
         {
             //数字
             NumberViewController *numberVC = [[NumberViewController alloc] init];
@@ -107,7 +140,7 @@
             [self.navigationController pushViewController:numberVC animated:YES];
         }
             break;
-        case 6:
+        case 8:
         {
             //红点
             DotViewController *dotVC = [[DotViewController alloc] init];
@@ -115,7 +148,7 @@
             [self.navigationController pushViewController:dotVC animated:YES];
         }
             break;
-        case 7:
+        case 9:
         {
             //title&image
             TitleImageViewController *imageVC = [[TitleImageViewController alloc] init];
@@ -123,7 +156,7 @@
             [self.navigationController pushViewController:imageVC animated:YES];
         }
             break;
-        case 8:
+        case 10:
         {
             //cell自定义多行富文本
             AttributeViewViewController *vc = [[AttributeViewViewController alloc] init];
