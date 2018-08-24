@@ -64,7 +64,7 @@ SegmentedControl |  <img src="JXCategoryView/Images/SegmentedControl.gif" width=
 导航栏使用 |  <img src="JXCategoryView/Images/SegmentedControlNavi.gif" width="343" height="80"> |
 嵌套使用 |  <img src="JXCategoryView/Images/Nest.gif" width="343" height="272"> |
 个人主页(上下左右滚动、header悬浮) |  <img src="JXCategoryView/Images/UserProfile.gif" width="343" height="562"> |
-垂直列表滚动<br/>（背景色异常是录屏软件bug） |  <img src="JXCategoryView/Images/VerticalList.gif" width="334" height="594"> |
+垂直列表滚动<br/> 高仿腾讯视频<br/>（背景色异常是录屏软件bug） |  <img src="JXCategoryView/Images/VerticalList.gif" width="343" height="607"> |
 
 
 ## 要求
