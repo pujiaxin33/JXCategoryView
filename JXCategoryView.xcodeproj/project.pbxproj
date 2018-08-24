@@ -34,6 +34,7 @@
 		191A960F212CF6F600DBF784 /* JXCategoryTitleAttributeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 191A960E212CF6F600DBF784 /* JXCategoryTitleAttributeCell.m */; };
 		191A9612212CF70300DBF784 /* JXCategoryTitleAttributeCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 191A9611212CF70300DBF784 /* JXCategoryTitleAttributeCellModel.m */; };
 		191A9615212CFA4D00DBF784 /* AttributeViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 191A9614212CFA4D00DBF784 /* AttributeViewViewController.m */; };
+		192AD159212FB37E0031AD46 /* VerticalList.gif in Resources */ = {isa = PBXBuildFile; fileRef = 192AD158212FB37E0031AD46 /* VerticalList.gif */; };
 		19302325211AD1B300AF1444 /* TitleImageSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19302324211AD1B300AF1444 /* TitleImageSettingViewController.m */; };
 		19302329211AD31C00AF1444 /* TitleImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19302328211AD31C00AF1444 /* TitleImageViewController.m */; };
 		19302330211AD88300AF1444 /* TitleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1930232F211AD88300AF1444 /* TitleViewController.m */; };
@@ -159,6 +160,7 @@
 		191A9611212CF70300DBF784 /* JXCategoryTitleAttributeCellModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JXCategoryTitleAttributeCellModel.m; sourceTree = "<group>"; };
 		191A9613212CFA4D00DBF784 /* AttributeViewViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AttributeViewViewController.h; sourceTree = "<group>"; };
 		191A9614212CFA4D00DBF784 /* AttributeViewViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AttributeViewViewController.m; sourceTree = "<group>"; };
+		192AD158212FB37E0031AD46 /* VerticalList.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = VerticalList.gif; sourceTree = "<group>"; };
 		19302323211AD1B300AF1444 /* TitleImageSettingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TitleImageSettingViewController.h; sourceTree = "<group>"; };
 		19302324211AD1B300AF1444 /* TitleImageSettingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TitleImageSettingViewController.m; sourceTree = "<group>"; };
 		19302327211AD31C00AF1444 /* TitleImageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TitleImageViewController.h; sourceTree = "<group>"; };
@@ -582,6 +584,7 @@
 		19870C872122703B00C23CAA /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				192AD158212FB37E0031AD46 /* VerticalList.gif */,
 				19D57E8E212E5BE30077DCA6 /* TXVedio.gif */,
 				19D57E79212D48AB0077DCA6 /* IndicatorCustomizeGuide.gif */,
 				19D57E6D212D01180077DCA6 /* AttributeView.gif */,
@@ -817,6 +820,7 @@
 				191A95FB212BFE3200DBF784 /* JXCategoryViewStructure.png in Resources */,
 				191A95F7212BF5DA00DBF784 /* Rectangle.gif in Resources */,
 				191A95F4212BF5DA00DBF784 /* TriangleTop.gif in Resources */,
+				192AD159212FB37E0031AD46 /* VerticalList.gif in Resources */,
 				19D57E8F212E5BE30077DCA6 /* TXVedio.gif in Resources */,
 				19870CA12122703B00C23CAA /* Football.gif in Resources */,
 				191A95F3212BF5DA00DBF784 /* TitleMaskNoBackgroundView.gif in Resources */,
