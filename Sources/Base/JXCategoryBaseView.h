@@ -17,8 +17,39 @@
 @protocol JXCategoryViewDelegate <NSObject>
 
 @optional
+//为什么会把选中代理分为三个，因为有时候只关心点击选中的，有时候只关心滚动选中的，有时候只关心选中。所以具体情况，使用对应方法。
+/**
+ 点击选择或者滚动选中都会调用该方法，如果外部不关心具体是点击还是滚动选中的，只关心选中这个事件，就实现该方法。
+
+ @param categoryView categoryView description
+ @param index 选中的index
+ */
 - (void)categoryView:(JXCategoryBaseView *)categoryView didSelectedItemAtIndex:(NSInteger)index;
 
+/**
+ 点击选中的情况才会调用该方法
+
+ @param categoryView categoryView description
+ @param index 选中的index
+ */
+- (void)categoryView:(JXCategoryBaseView *)categoryView didClickSelectedItemAtIndex:(NSInteger)index;
+
+/**
+ 滚动选中的情况才会调用该方法
+
+ @param categoryView categoryView description
+ @param index 选中的index
+ */
+- (void)categoryView:(JXCategoryBaseView *)categoryView didScrollSelectedItemAtIndex:(NSInteger)index;
+
+/**
+ 正在滚动中的回调
+
+ @param categoryView categoryView description
+ @param leftIndex 正在滚动中，相对位置处于左边的index
+ @param rightIndex 正在滚动中，相对位置处于右边的index
+ @param ratio 百分比
+ */
 - (void)categoryView:(JXCategoryBaseView *)categoryView scrollingFromLeftIndex:(NSInteger)leftIndex toRightIndex:(NSInteger)rightIndex ratio:(CGFloat)ratio;
 
 @end
@@ -54,10 +85,16 @@
 @property (nonatomic, assign) CGFloat cellWidthZoomScale;    //默认1.2，cellWidthZoomEnabled为YES才生效
 
 /**
+ 代码调用选中了目标index的item
+
+ @param index 目标index
+ */
+- (void)selectItemWithIndex:(NSUInteger)index;
+
+/**
  初始化的时候无需调用。初始化之后更新其他配置属性，需要调用该方法，进行刷新。
  */
 - (void)reloadDatas;
-
 
 /**
  刷新指定的index的cell
@@ -103,13 +140,13 @@
 
 
 /**
+ 该方法用于子类重载，如果外部要选中某个index，请使用`- (void)selectItemWithIndex:(NSUInteger)index;`
  点击某一个item，或者contentScrollView滚动到某一个item的时候调用。根据selectIndex刷新选中状态。
 
  @param index 选中的index
  @return 返回值为NO，表示触发内部某些判断（点击了同一个cell），子类无需后续操作。
  */
-- (BOOL)selectItemWithIndex:(NSInteger)index NS_REQUIRES_SUPER;
-
+- (BOOL)selectCellWithIndex:(NSInteger)index NS_REQUIRES_SUPER;
 
 /**
  reloadData时，返回每个cell的宽度

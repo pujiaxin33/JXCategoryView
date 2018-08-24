@@ -16,6 +16,7 @@
     if (self) {
         _componentPosition = JXCategoryComponentPosition_Bottom;
         _scrollEnabled = YES;
+        _verticalMargin = 0;
     }
     return self;
 }

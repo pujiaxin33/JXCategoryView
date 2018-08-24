@@ -50,9 +50,9 @@
     self.bigBall.layer.cornerRadius = self.ballViewSize.height/2;
 
     CGFloat x = selectedCellFrame.origin.x + (selectedCellFrame.size.width - self.ballViewSize.width)/2;
-    CGFloat y = self.superview.bounds.size.height - self.ballViewSize.height;
+    CGFloat y = self.superview.bounds.size.height - self.ballViewSize.height - self.verticalMargin;
     if (self.componentPosition == JXCategoryComponentPosition_Top) {
-        y = 0;
+        y = self.verticalMargin;
     }
     self.smallBall.frame = CGRectMake(x, y, self.ballViewSize.width, self.ballViewSize.height);
     self.bigBall.frame = CGRectMake(x, y, self.ballViewSize.width, self.ballViewSize.height);
@@ -89,9 +89,9 @@
         self.bigBall.frame = bigBallFrame;
         self.bigBall.layer.cornerRadius = bigBallFrame.size.height/2;
 
-        CGFloat targetYOfSmallBall = self.superview.bounds.size.height - self.ballViewSize.height/2 - targetWidthOfSmallBall/2;
+        CGFloat targetYOfSmallBall = self.superview.bounds.size.height - self.ballViewSize.height/2 - targetWidthOfSmallBall/2 - self.verticalMargin;
         if (self.componentPosition == JXCategoryComponentPosition_Top) {
-            targetYOfSmallBall = self.ballViewSize.height/2 - targetWidthOfSmallBall/2;
+            targetYOfSmallBall = self.ballViewSize.height/2 - targetWidthOfSmallBall/2 + self.verticalMargin;
         }
         self.smallBall.frame = CGRectMake(targetXOfSmallBall, targetYOfSmallBall, targetWidthOfSmallBall, targetWidthOfSmallBall);
         self.smallBall.layer.cornerRadius = targetWidthOfSmallBall/2;
@@ -106,9 +106,9 @@
 - (void)jx_selectedCell:(CGRect)cellFrame clickedRelativePosition:(JXCategoryCellClickedPosition)clickedRelativePosition {
 
     CGFloat x = cellFrame.origin.x + (cellFrame.size.width - self.ballViewSize.width)/2;
-    CGFloat y = self.superview.bounds.size.height - self.ballViewSize.height;
+    CGFloat y = self.superview.bounds.size.height - self.ballViewSize.height - self.verticalMargin;
     if (self.componentPosition == JXCategoryComponentPosition_Top) {
-        y = 0;
+        y = self.verticalMargin;
     }
     CGRect toFrame = CGRectMake(x, y, self.ballViewSize.width, self.ballViewSize.height);
 

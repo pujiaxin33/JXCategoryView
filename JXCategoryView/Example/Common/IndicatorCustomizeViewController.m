@@ -105,7 +105,7 @@
             break;
         case 4:
         {
-            //三角形
+            //qq红点
             testVC.isNeedIndicatorPositionChangeItem = YES;
             titleCategoryView.titleColorGradientEnabled = YES;
             JXCategoryIndicatorBallView *ballView = [[JXCategoryIndicatorBallView alloc] init];
@@ -127,6 +127,7 @@
             titleCategoryView.titleColorGradientEnabled = YES;
             JXCategoryIndicatorBackgroundView *backgroundView = [[JXCategoryIndicatorBackgroundView alloc] init];
             backgroundView.backgroundViewHeight = 20;
+            backgroundView.backgroundViewCornerRadius = JXCategoryViewAutomaticDimension;
             titleCategoryView.indicators = @[backgroundView];
         }
             break;
@@ -135,8 +136,8 @@
             //长方形
             titleCategoryView.titleColorGradientEnabled = YES;
             JXCategoryIndicatorBackgroundView *backgroundView = [[JXCategoryIndicatorBackgroundView alloc] init];
-            backgroundView.backgroundViewCornerRadius = 0;
             backgroundView.backgroundViewHeight = JXCategoryViewAutomaticDimension;
+            backgroundView.backgroundViewCornerRadius = 0;
             titleCategoryView.indicators = @[backgroundView];
         }
             break;

@@ -109,6 +109,20 @@
     [cell reloadDatas:cellModel];
 }
 
+- (void)selectItemWithIndex:(NSUInteger)index {
+    [self selectCellWithIndex:index];
+}
+
+
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+
+    [self reloadDatas];
+}
+
+#pragma mark - Subclass Override
+
 - (void)refreshDataSource {
 
 }
@@ -167,14 +181,7 @@
     [self.contentScrollView setContentOffset:CGPointMake(self.selectedIndex*self.contentScrollView.bounds.size.width, 0) animated:NO];
 }
 
-- (void)layoutSubviews
-{
-    [super layoutSubviews];
-
-    [self reloadDatas];
-}
-
-- (BOOL)selectItemWithIndex:(NSInteger)targetIndex {
+- (BOOL)selectCellWithIndex:(NSInteger)targetIndex {
     if (targetIndex >= self.dataSource.count) {
         return NO;
     }
@@ -216,8 +223,6 @@
 }
 
 
-#pragma mark - Subclass Override
-
 - (void)refreshSelectedCellModel:(JXCategoryBaseCellModel *)selectedCellModel unselectedCellModel:(JXCategoryBaseCellModel *)unselectedCellModel {
     selectedCellModel.selected = YES;
     selectedCellModel.cellWidthZoomScale = self.cellWidthZoomScale;
@@ -235,7 +240,10 @@
     NSInteger baseIndex = floorf(ratio);
     CGFloat remainderRatio = ratio - baseIndex;
 
-    if (remainderRatio != 0) {
+    if (remainderRatio == 0) {
+        //连续滑动翻页，需要更新选中状态
+        [self scrollSelectItemWithIndex:baseIndex];
+    }else {
         if (self.cellWidthZoomEnabled && self.cellWidthZoomScrollGradientEnabled) {
             JXCategoryBaseCellModel *leftCellModel = (JXCategoryBaseCellModel *)self.dataSource[baseIndex];
             JXCategoryBaseCellModel *rightCellModel = (JXCategoryBaseCellModel *)self.dataSource[baseIndex + 1];
@@ -278,7 +286,7 @@
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    [self selectItemWithIndex:indexPath.row];
+    [self clickSelectItemWithIndex:indexPath.row];
 }
 
 #pragma mark - <UICollectionViewDelegateFlowLayout>
@@ -323,6 +331,24 @@
     }
     CGFloat width = self.dataSource[targetIndex].cellWidth;
     return CGRectMake(x, 0, width, self.bounds.size.height);
+}
+
+#pragma mark - Private
+
+- (void)clickSelectItemWithIndex:(NSInteger)index {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(categoryView:didClickSelectedItemAtIndex:)]) {
+        [self.delegate categoryView:self didClickSelectedItemAtIndex:index];
+    }
+
+    [self selectCellWithIndex:index];
+}
+
+- (void)scrollSelectItemWithIndex:(NSInteger)index {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(categoryView:didScrollSelectedItemAtIndex:)]) {
+        [self.delegate categoryView:self didScrollSelectedItemAtIndex:index];
+    }
+
+    [self selectCellWithIndex:index];
 }
 
 @end

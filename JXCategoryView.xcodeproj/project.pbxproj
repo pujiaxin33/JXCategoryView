@@ -109,7 +109,13 @@
 		19D57E6E212D01180077DCA6 /* AttributeView.gif in Resources */ = {isa = PBXBuildFile; fileRef = 19D57E6D212D01180077DCA6 /* AttributeView.gif */; };
 		19D57E78212D3FD30077DCA6 /* JXCategoryIndicatorDotLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 19D57E77212D3FD30077DCA6 /* JXCategoryIndicatorDotLineView.m */; };
 		19D57E7A212D48AC0077DCA6 /* IndicatorCustomizeGuide.gif in Resources */ = {isa = PBXBuildFile; fileRef = 19D57E79212D48AB0077DCA6 /* IndicatorCustomizeGuide.gif */; };
+		19D57E7E212D5C600077DCA6 /* VerticalListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19D57E7D212D5C600077DCA6 /* VerticalListViewController.m */; };
+		19D57E81212D5DFB0077DCA6 /* VerticalListSectionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 19D57E80212D5DFB0077DCA6 /* VerticalListSectionModel.m */; };
+		19D57E84212D5E0E0077DCA6 /* VerticalListCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 19D57E83212D5E0E0077DCA6 /* VerticalListCellModel.m */; };
+		19D57E8A212D66C20077DCA6 /* VerticalListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 19D57E89212D66C20077DCA6 /* VerticalListCell.m */; };
+		19D57E8D212D68D10077DCA6 /* VerticalSectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 19D57E8C212D68D10077DCA6 /* VerticalSectionHeaderView.m */; };
 		19D57E8F212E5BE30077DCA6 /* TXVedio.gif in Resources */ = {isa = PBXBuildFile; fileRef = 19D57E8E212E5BE30077DCA6 /* TXVedio.gif */; };
+		19D57E92212E8F340077DCA6 /* VerticalSectionCategoryHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 19D57E91212E8F340077DCA6 /* VerticalSectionCategoryHeaderView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -276,7 +282,19 @@
 		19D57E76212D3FD30077DCA6 /* JXCategoryIndicatorDotLineView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JXCategoryIndicatorDotLineView.h; sourceTree = "<group>"; };
 		19D57E77212D3FD30077DCA6 /* JXCategoryIndicatorDotLineView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JXCategoryIndicatorDotLineView.m; sourceTree = "<group>"; };
 		19D57E79212D48AB0077DCA6 /* IndicatorCustomizeGuide.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = IndicatorCustomizeGuide.gif; sourceTree = "<group>"; };
+		19D57E7C212D5C600077DCA6 /* VerticalListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VerticalListViewController.h; sourceTree = "<group>"; };
+		19D57E7D212D5C600077DCA6 /* VerticalListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VerticalListViewController.m; sourceTree = "<group>"; };
+		19D57E7F212D5DFB0077DCA6 /* VerticalListSectionModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VerticalListSectionModel.h; sourceTree = "<group>"; };
+		19D57E80212D5DFB0077DCA6 /* VerticalListSectionModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VerticalListSectionModel.m; sourceTree = "<group>"; };
+		19D57E82212D5E0E0077DCA6 /* VerticalListCellModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VerticalListCellModel.h; sourceTree = "<group>"; };
+		19D57E83212D5E0E0077DCA6 /* VerticalListCellModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VerticalListCellModel.m; sourceTree = "<group>"; };
+		19D57E88212D66C20077DCA6 /* VerticalListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VerticalListCell.h; sourceTree = "<group>"; };
+		19D57E89212D66C20077DCA6 /* VerticalListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VerticalListCell.m; sourceTree = "<group>"; };
+		19D57E8B212D68D10077DCA6 /* VerticalSectionHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VerticalSectionHeaderView.h; sourceTree = "<group>"; };
+		19D57E8C212D68D10077DCA6 /* VerticalSectionHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VerticalSectionHeaderView.m; sourceTree = "<group>"; };
 		19D57E8E212E5BE30077DCA6 /* TXVedio.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = TXVedio.gif; sourceTree = "<group>"; };
+		19D57E90212E8F340077DCA6 /* VerticalSectionCategoryHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VerticalSectionCategoryHeaderView.h; sourceTree = "<group>"; };
+		19D57E91212E8F340077DCA6 /* VerticalSectionCategoryHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VerticalSectionCategoryHeaderView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -408,6 +426,7 @@
 		19302322211ACE1500AF1444 /* Example */ = {
 			isa = PBXGroup;
 			children = (
+				19D57E7B212D5C180077DCA6 /* VerticalListView */,
 				1930232A211AD33000AF1444 /* Common */,
 				1912A527211C3CF400A80826 /* IndicatorImageView */,
 				1912A51F211C1AC100A80826 /* BackgroundImage */,
@@ -708,6 +727,25 @@
 			path = IndicatorDotLine;
 			sourceTree = "<group>";
 		};
+		19D57E7B212D5C180077DCA6 /* VerticalListView */ = {
+			isa = PBXGroup;
+			children = (
+				19D57E7C212D5C600077DCA6 /* VerticalListViewController.h */,
+				19D57E7D212D5C600077DCA6 /* VerticalListViewController.m */,
+				19D57E8B212D68D10077DCA6 /* VerticalSectionHeaderView.h */,
+				19D57E8C212D68D10077DCA6 /* VerticalSectionHeaderView.m */,
+				19D57E90212E8F340077DCA6 /* VerticalSectionCategoryHeaderView.h */,
+				19D57E91212E8F340077DCA6 /* VerticalSectionCategoryHeaderView.m */,
+				19D57E88212D66C20077DCA6 /* VerticalListCell.h */,
+				19D57E89212D66C20077DCA6 /* VerticalListCell.m */,
+				19D57E7F212D5DFB0077DCA6 /* VerticalListSectionModel.h */,
+				19D57E80212D5DFB0077DCA6 /* VerticalListSectionModel.m */,
+				19D57E82212D5E0E0077DCA6 /* VerticalListCellModel.h */,
+				19D57E83212D5E0E0077DCA6 /* VerticalListCellModel.m */,
+			);
+			path = VerticalListView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -827,16 +865,20 @@
 				191A960C212CF6EA00DBF784 /* JXCategoryTitleAttributeView.m in Sources */,
 				19870BD2211D7FD000C23CAA /* PagingViewController.swift in Sources */,
 				19870BCE211D7FD000C23CAA /* TestListBaseView.swift in Sources */,
+				19D57E8D212D68D10077DCA6 /* VerticalSectionHeaderView.m in Sources */,
 				19562CD9212A94A40095AA27 /* JXCategoryImageView.m in Sources */,
 				19870CF52122BB6100C23CAA /* JXCategoryNumberView.m in Sources */,
 				19870CEE2122BB6100C23CAA /* JXCategoryTitleImageCellModel.m in Sources */,
 				19870CF02122BB6100C23CAA /* JXCategoryTitleCell.m in Sources */,
 				19870CED2122BB6100C23CAA /* JXCategoryTitleImageCell.m in Sources */,
+				19D57E84212D5E0E0077DCA6 /* VerticalListCellModel.m in Sources */,
 				19562CCE212A8C350095AA27 /* IndicatorCustomizeViewController.m in Sources */,
 				19870CF62122BB6100C23CAA /* JXCategoryNumberCell.m in Sources */,
 				19870BC0211D7C0300C23CAA /* JXPagingMainTableView.swift in Sources */,
 				19870BD0211D7FD000C23CAA /* PowerListView.swift in Sources */,
 				19870D022122BB6100C23CAA /* JXCategoryBaseCellModel.m in Sources */,
+				19D57E7E212D5C600077DCA6 /* VerticalListViewController.m in Sources */,
+				19D57E81212D5DFB0077DCA6 /* VerticalListSectionModel.m in Sources */,
 				19870CF42122BB6100C23CAA /* JXCategoryIndicatorCellModel.m in Sources */,
 				1912A526211C257000A80826 /* BackgroundImageViewController.m in Sources */,
 				19302389211B22E300AF1444 /* SegmentedControlViewController.m in Sources */,
@@ -868,7 +910,9 @@
 				19562CDC212A94BE0095AA27 /* JXCategoryImageCell.m in Sources */,
 				190A54E2206397370050B327 /* ViewController.m in Sources */,
 				190A54ED206397370050B327 /* main.m in Sources */,
+				19D57E92212E8F340077DCA6 /* VerticalSectionCategoryHeaderView.m in Sources */,
 				19562CEA212A9B920095AA27 /* JXCategoryDotCell.m in Sources */,
+				19D57E8A212D66C20077DCA6 /* VerticalListCell.m in Sources */,
 				19870BC2211D7C0300C23CAA /* JXPagingListContainerView.swift in Sources */,
 				19870CF22122BB6100C23CAA /* JXCategoryIndicatorCell.m in Sources */,
 				19346D5821265E210065FD8F /* JXCategoryIndicatorLineView.m in Sources */,

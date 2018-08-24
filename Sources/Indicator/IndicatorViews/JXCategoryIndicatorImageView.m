@@ -36,9 +36,9 @@
 
 - (void)jx_refreshState:(CGRect)selectedCellFrame {
     CGFloat x = selectedCellFrame.origin.x + (selectedCellFrame.size.width - self.indicatorImageViewSize.width)/2;
-    CGFloat y = self.superview.bounds.size.height - self.indicatorImageViewSize.height;
+    CGFloat y = self.superview.bounds.size.height - self.indicatorImageViewSize.height - self.verticalMargin;
     if (self.componentPosition == JXCategoryComponentPosition_Top) {
-        y = 0;
+        y = self.verticalMargin;
     }
     self.frame = CGRectMake(x, y, self.indicatorImageViewSize.width, self.indicatorImageViewSize.height);
 }

@@ -34,9 +34,9 @@
 
     CGFloat selectedLineWidth = [self getIndicatorLineViewWidth:selectedCellFrame];
     CGFloat x = selectedCellFrame.origin.x + (selectedCellFrame.size.width - selectedLineWidth)/2;
-    CGFloat y = self.superview.bounds.size.height - self.indicatorLineViewHeight;
+    CGFloat y = self.superview.bounds.size.height - self.indicatorLineViewHeight - self.verticalMargin;
     if (self.componentPosition == JXCategoryComponentPosition_Top) {
-        y = 0;
+        y = self.verticalMargin;
     }
     self.frame = CGRectMake(x, y, selectedLineWidth, self.indicatorLineViewHeight);
 }

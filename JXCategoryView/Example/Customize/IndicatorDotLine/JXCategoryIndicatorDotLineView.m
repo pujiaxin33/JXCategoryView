@@ -29,9 +29,9 @@
     self.layer.cornerRadius = self.dotSize.height/2;
 
     CGFloat x = selectedCellFrame.origin.x + (selectedCellFrame.size.width - self.dotSize.width)/2;
-    CGFloat y = self.superview.bounds.size.height - self.dotSize.height;
+    CGFloat y = self.superview.bounds.size.height - self.dotSize.height - self.verticalMargin;
     if (self.componentPosition == JXCategoryComponentPosition_Top) {
-        y = 0;
+        y = self.verticalMargin;
     }
     self.frame = CGRectMake(x, y, self.dotSize.width, self.dotSize.height);
 }
@@ -72,9 +72,9 @@
 
 - (void)jx_selectedCell:(CGRect)cellFrame clickedRelativePosition:(JXCategoryCellClickedPosition)clickedRelativePosition {
     CGFloat x = cellFrame.origin.x + (cellFrame.size.width - self.dotSize.width)/2;
-    CGFloat y = self.superview.bounds.size.height - self.dotSize.height;
+    CGFloat y = self.superview.bounds.size.height - self.dotSize.height - self.verticalMargin;
     if (self.componentPosition == JXCategoryComponentPosition_Top) {
-        y = 0;
+        y = self.verticalMargin;
     }
     CGRect toFrame = CGRectMake(x, y, self.dotSize.width, self.dotSize.height);
 

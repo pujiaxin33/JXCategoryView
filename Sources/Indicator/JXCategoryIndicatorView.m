@@ -121,8 +121,6 @@
         for (UIView<JXCategoryIndicatorProtocol> *component in self.indicators) {
             [component jx_contentScrollViewDidScrollWithLeftCellFrame:leftCellFrame rightCellFrame:rightCellFrame selectedPosition:position percent:remainderRatio];
         }
-        //连续滑动翻页，需要更新选中状态
-        [super selectItemWithIndex:baseIndex];
     }else {
         JXCategoryIndicatorCellModel *leftCellModel = (JXCategoryIndicatorCellModel *)self.dataSource[baseIndex];
         JXCategoryIndicatorCellModel *rightCellModel = (JXCategoryIndicatorCellModel *)self.dataSource[baseIndex + 1];
@@ -152,13 +150,13 @@
     }
 }
 
-- (BOOL)selectItemWithIndex:(NSInteger)index {
+- (BOOL)selectCellWithIndex:(NSInteger)index {
     //是否点击了相对于选中cell左边的cell
     JXCategoryCellClickedPosition clickedPosition = JXCategoryCellClickedPosition_Left;
     if (index > self.selectedIndex) {
         clickedPosition = JXCategoryCellClickedPosition_Right;
     }
-    BOOL result = [super selectItemWithIndex:index];
+    BOOL result = [super selectCellWithIndex:index];
     if (!result) {
         return NO;
     }

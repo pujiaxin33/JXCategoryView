@@ -32,9 +32,9 @@
 
 - (void)jx_refreshState:(CGRect)selectedCellFrame {
     CGFloat x = selectedCellFrame.origin.x + (selectedCellFrame.size.width - self.triangleViewSize.width)/2;
-    CGFloat y = self.superview.bounds.size.height - self.triangleViewSize.height;
+    CGFloat y = self.superview.bounds.size.height - self.triangleViewSize.height - self.verticalMargin;
     if (self.componentPosition == JXCategoryComponentPosition_Top) {
-        y = 0;
+        y = self.verticalMargin;
     }
     self.frame = CGRectMake(x, y, self.triangleViewSize.width, self.triangleViewSize.height);
 

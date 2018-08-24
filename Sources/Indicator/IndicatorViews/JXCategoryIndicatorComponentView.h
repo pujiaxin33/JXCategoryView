@@ -14,6 +14,8 @@
 
 @property (nonatomic, assign) JXCategoryComponentPosition componentPosition;
 
+@property (nonatomic, assign) CGFloat verticalMargin;     //垂直方向边距；默认：0
+
 @property (nonatomic, assign) BOOL scrollEnabled;   //手势滚动、点击切换的时候，是否允许滚动，默认YES
 
 

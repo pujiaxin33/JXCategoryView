@@ -11,6 +11,7 @@
 #import "SegmentedControlViewController.h"
 #import "NaviSegmentedControlViewController.h"
 #import "NestViewController.h"
+#import "VerticalListViewController.h"
 
 @interface SpecialCustomizeViewController ()
 
@@ -63,6 +64,14 @@
         {
             //嵌套使用
             NestViewController *vc = [[NestViewController alloc] init];
+            vc.title = title;
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+            break;
+        case 4:
+        {
+            //垂直列表滚动
+            VerticalListViewController *vc = [[VerticalListViewController alloc] init];
             vc.title = title;
             [self.navigationController pushViewController:vc animated:YES];
         }
