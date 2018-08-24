@@ -27,6 +27,7 @@ BallView QQ黏性红点  |  <img src="JXCategoryView/Images/QQBall.gif" width="3
 TriangleView 三角形底部  |  <img src="JXCategoryView/Images/TriangleBottom.gif" width="343" height="80"> |
 TriangleView 三角形顶部  |  <img src="JXCategoryView/Images/TriangleTop.gif" width="343" height="80"> |
 BackgroundView椭圆形  |  <img src="JXCategoryView/Images/BackgroundEllipseLayer.gif" width="343" height="80"> |
+BackgroundView椭圆形+阴影  |  <img src="JXCategoryView/Images/BackgroundViewShadow.gif" width="343" height="80"> |
 BackgroundView长方形  |  <img src="JXCategoryView/Images/Rectangle.gif" width="343" height="80"> |
 BackgroundView遮罩有背景  |  <img src="JXCategoryView/Images/TitleMask.gif" width="343" height="80"> |
 BackgroundView遮罩无背景  |  <img src="JXCategoryView/Images/TitleMaskNoBackgroundView.gif" width="343" height="80"> |
