@@ -210,7 +210,7 @@ static const NSUInteger VerticalListPinSectionIndex = 1;    //悬浮固定sectio
     //这里关心点击选中的回调！！！
     UICollectionViewLayoutAttributes *targetAttri = self.sectionHeaderAttributes[index + VerticalListPinSectionIndex];
     if (index == 0) {
-        //选中了第一个，特殊处理一下
+        //选中了第一个，特殊处理一下，滚动到sectionHeaer的最上面
         [self.collectionView setContentOffset:CGPointMake(0, targetAttri.frame.origin.y) animated:YES];
     }else {
         //不是第一个，需要滚动到categoryView下面
