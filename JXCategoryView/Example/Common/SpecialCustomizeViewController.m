@@ -7,11 +7,11 @@
 //
 
 #import "SpecialCustomizeViewController.h"
-#import "JXCategoryView-Swift.h"
 #import "SegmentedControlViewController.h"
 #import "NaviSegmentedControlViewController.h"
 #import "NestViewController.h"
 #import "VerticalListViewController.h"
+#import "PagingViewController.h"
 
 @interface SpecialCustomizeViewController ()
 

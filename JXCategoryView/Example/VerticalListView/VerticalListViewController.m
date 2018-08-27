@@ -160,7 +160,7 @@ static const NSUInteger VerticalListPinSectionIndex = 1;    //悬浮固定sectio
     }
 
     if (!(scrollView.isTracking || scrollView.isDecelerating)) {
-        //不用用户滚动的，比如setContentOffset等方法，引起的滚动不需要处理。
+        //不是用户滚动的，比如setContentOffset等方法，引起的滚动不需要处理。
         return;
     }
     //用户滚动的才处理
