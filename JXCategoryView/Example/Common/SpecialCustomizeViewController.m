@@ -12,6 +12,7 @@
 #import "NestViewController.h"
 #import "VerticalListViewController.h"
 #import "PagingViewController.h"
+#import "LoadDataViewController.h"
 
 @interface SpecialCustomizeViewController ()
 
@@ -72,6 +73,14 @@
         {
             //垂直列表滚动
             VerticalListViewController *vc = [[VerticalListViewController alloc] init];
+            vc.title = title;
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+            break;
+        case 5:
+        {
+            //数据源刷新&列表数据加载
+            LoadDataViewController *vc = [[LoadDataViewController alloc] init];
             vc.title = title;
             [self.navigationController pushViewController:vc animated:YES];
         }

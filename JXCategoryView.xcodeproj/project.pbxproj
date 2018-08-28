@@ -57,6 +57,9 @@
 		194DCDC62133DF86000E89EF /* PartnerListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 194DCDC52133DF86000E89EF /* PartnerListView.m */; };
 		194DCDC92133DFC6000E89EF /* HobbyListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 194DCDC82133DFC6000E89EF /* HobbyListView.m */; };
 		194DCDCC2133DFD1000E89EF /* PowerListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 194DCDCB2133DFD1000E89EF /* PowerListView.m */; };
+		194DCDD02133F1F5000E89EF /* LoadDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 194DCDCF2133F1F5000E89EF /* LoadDataViewController.m */; };
+		194DCDD52134DEF2000E89EF /* LoadDataListBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 194DCDD42134DEF2000E89EF /* LoadDataListBaseViewController.m */; };
+		194DCDD72134EF18000E89EF /* LoadData.gif in Resources */ = {isa = PBXBuildFile; fileRef = 194DCDD62134EF18000E89EF /* LoadData.gif */; };
 		19562CCE212A8C350095AA27 /* IndicatorCustomizeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19562CCD212A8C350095AA27 /* IndicatorCustomizeViewController.m */; };
 		19562CD1212A8C450095AA27 /* CellCustomizeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19562CD0212A8C450095AA27 /* CellCustomizeViewController.m */; };
 		19562CD4212A8C740095AA27 /* SpecialCustomizeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19562CD3212A8C740095AA27 /* SpecialCustomizeViewController.m */; };
@@ -207,6 +210,11 @@
 		194DCDC82133DFC6000E89EF /* HobbyListView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HobbyListView.m; sourceTree = "<group>"; };
 		194DCDCA2133DFD1000E89EF /* PowerListView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PowerListView.h; sourceTree = "<group>"; };
 		194DCDCB2133DFD1000E89EF /* PowerListView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PowerListView.m; sourceTree = "<group>"; };
+		194DCDCE2133F1F5000E89EF /* LoadDataViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoadDataViewController.h; sourceTree = "<group>"; };
+		194DCDCF2133F1F5000E89EF /* LoadDataViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoadDataViewController.m; sourceTree = "<group>"; };
+		194DCDD32134DEF2000E89EF /* LoadDataListBaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoadDataListBaseViewController.h; sourceTree = "<group>"; };
+		194DCDD42134DEF2000E89EF /* LoadDataListBaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoadDataListBaseViewController.m; sourceTree = "<group>"; };
+		194DCDD62134EF18000E89EF /* LoadData.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = LoadData.gif; sourceTree = "<group>"; };
 		19562CCC212A8C350095AA27 /* IndicatorCustomizeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IndicatorCustomizeViewController.h; sourceTree = "<group>"; };
 		19562CCD212A8C350095AA27 /* IndicatorCustomizeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IndicatorCustomizeViewController.m; sourceTree = "<group>"; };
 		19562CCF212A8C450095AA27 /* CellCustomizeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CellCustomizeViewController.h; sourceTree = "<group>"; };
@@ -437,7 +445,6 @@
 		19302322211ACE1500AF1444 /* Example */ = {
 			isa = PBXGroup;
 			children = (
-				19D57E7B212D5C180077DCA6 /* VerticalListView */,
 				1930232A211AD33000AF1444 /* Common */,
 				1912A527211C3CF400A80826 /* IndicatorImageView */,
 				1912A51F211C1AC100A80826 /* BackgroundImage */,
@@ -451,6 +458,8 @@
 				19562CF2212AA3400095AA27 /* Nest */,
 				1912A530211D08B500A80826 /* Football */,
 				191A9608212CF66500DBF784 /* Customize */,
+				19D57E7B212D5C180077DCA6 /* VerticalListView */,
+				194DCDCD2133F1D8000E89EF /* LoadData */,
 			);
 			path = Example;
 			sourceTree = "<group>";
@@ -516,6 +525,17 @@
 				194DCDBA2133C918000E89EF /* JXPagingMainTableView.m */,
 			);
 			path = "JXPagingView-OC";
+			sourceTree = "<group>";
+		};
+		194DCDCD2133F1D8000E89EF /* LoadData */ = {
+			isa = PBXGroup;
+			children = (
+				194DCDCE2133F1F5000E89EF /* LoadDataViewController.h */,
+				194DCDCF2133F1F5000E89EF /* LoadDataViewController.m */,
+				194DCDD32134DEF2000E89EF /* LoadDataListBaseViewController.h */,
+				194DCDD42134DEF2000E89EF /* LoadDataListBaseViewController.m */,
+			);
+			path = LoadData;
 			sourceTree = "<group>";
 		};
 		19562CD6212A934F0095AA27 /* Image */ = {
@@ -602,6 +622,7 @@
 		19870C872122703B00C23CAA /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				194DCDD62134EF18000E89EF /* LoadData.gif */,
 				192AD166212FF45E0031AD46 /* BackgroundViewShadow.gif */,
 				192AD15A212FCD650031AD46 /* VerticalList.gif */,
 				19D57E8E212E5BE30077DCA6 /* TXVedio.gif */,
@@ -860,6 +881,7 @@
 				191A95F6212BF5DA00DBF784 /* Nest.gif in Resources */,
 				19870CA72122703B00C23CAA /* TitleImageBottom.gif in Resources */,
 				190A54E7206397370050B327 /* Assets.xcassets in Resources */,
+				194DCDD72134EF18000E89EF /* LoadData.gif in Resources */,
 				19870CA22122703B00C23CAA /* LineView.gif in Resources */,
 				191A95F5212BF5DA00DBF784 /* CellImage.gif in Resources */,
 				19870CB12122703B00C23CAA /* TitleColorGradient.gif in Resources */,
@@ -888,6 +910,7 @@
 				191A9615212CFA4D00DBF784 /* AttributeViewViewController.m in Sources */,
 				19346D6C2126934B0065FD8F /* JXCategoryIndicatorImageView.m in Sources */,
 				194DCDBB2133C918000E89EF /* JXPagingListContainerView.m in Sources */,
+				194DCDD52134DEF2000E89EF /* LoadDataListBaseViewController.m in Sources */,
 				194DCDC02133C948000E89EF /* PagingViewTableHeaderView.m in Sources */,
 				19562CE3212A997F0095AA27 /* ImageViewController.m in Sources */,
 				191A960C212CF6EA00DBF784 /* JXCategoryTitleAttributeView.m in Sources */,
@@ -913,6 +936,7 @@
 				19562CD4212A8C740095AA27 /* SpecialCustomizeViewController.m in Sources */,
 				191A95E0212BBC2500DBF784 /* JXCategoryIndicatorBallView.m in Sources */,
 				19346D722126B0D80065FD8F /* JXCategoryIndicatorTriangleView.m in Sources */,
+				194DCDD02133F1F5000E89EF /* LoadDataViewController.m in Sources */,
 				194DCDC92133DFC6000E89EF /* HobbyListView.m in Sources */,
 				19302333211AD8B200AF1444 /* ListViewController.m in Sources */,
 				191A960F212CF6F600DBF784 /* JXCategoryTitleAttributeCell.m in Sources */,
