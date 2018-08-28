@@ -27,7 +27,7 @@
 
 }
 
-- (void)reloadDatas:(JXCategoryBaseCellModel *)cellModel {
+- (void)reloadData:(JXCategoryBaseCellModel *)cellModel {
     self.cellModel = cellModel;
     
 }

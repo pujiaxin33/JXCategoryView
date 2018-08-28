@@ -99,7 +99,7 @@
             view.componentPosition = JXCategoryComponentPosition_Top;
         }
     }
-    [componentView reloadDatas];
+    [componentView reloadData];
 }
 
 #pragma mark - JXCategoryViewDelegate

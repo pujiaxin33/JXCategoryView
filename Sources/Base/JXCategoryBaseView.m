@@ -92,7 +92,7 @@
     [contentScrollView addObserver:self forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionNew context:nil];
 }
 
-- (void)reloadDatas {
+- (void)reloadData {
     [self refreshDataSource];
     [self refreshState];
     [self.collectionView.collectionViewLayout invalidateLayout];
@@ -106,7 +106,7 @@
     JXCategoryBaseCellModel *cellModel = self.dataSource[index];
     [self refreshCellModel:cellModel index:index];
     JXCategoryBaseCell *cell = (JXCategoryBaseCell *)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0]];
-    [cell reloadDatas:cellModel];
+    [cell reloadData:cellModel];
 }
 
 - (void)selectItemWithIndex:(NSUInteger)index {
@@ -118,7 +118,7 @@
 {
     [super layoutSubviews];
 
-    [self reloadDatas];
+    [self reloadData];
 }
 
 #pragma mark - Subclass Override
@@ -199,10 +199,10 @@
     [self refreshSelectedCellModel:selectedCellModel unselectedCellModel:lastCellModel];
 
     JXCategoryBaseCell *lastCell = (JXCategoryBaseCell *)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:self.selectedIndex inSection:0]];
-    [lastCell reloadDatas:lastCellModel];
+    [lastCell reloadData:lastCellModel];
 
     JXCategoryBaseCell *selectedCell = (JXCategoryBaseCell *)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:targetIndex inSection:0]];
-    [selectedCell reloadDatas:selectedCellModel];
+    [selectedCell reloadData:selectedCellModel];
 
     if (self.cellWidthZoomEnabled) {
         [self.collectionView.collectionViewLayout invalidateLayout];
@@ -282,7 +282,7 @@
 
 - (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
     JXCategoryBaseCell *categoryCell = (JXCategoryBaseCell *)cell;
-    [categoryCell reloadDatas:self.dataSource[indexPath.item]];
+    [categoryCell reloadData:self.dataSource[indexPath.item]];
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {

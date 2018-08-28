@@ -95,7 +95,7 @@
     //重载之后默认回到0，你也可以指定一个index
     self.categoryView.defaultSelectedIndex = 0;
     self.categoryView.titles = titles;
-    [self.categoryView reloadDatas];
+    [self.categoryView reloadData];
     //触发首次加载
     [self.listVCArray.firstObject loadDataForFirst];
 }

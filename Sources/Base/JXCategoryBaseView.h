@@ -94,7 +94,7 @@
 /**
  初始化的时候无需调用。初始化之后更新其他配置属性，需要调用该方法，进行刷新。
  */
-- (void)reloadDatas;
+- (void)reloadData;
 
 /**
  刷新指定的index的cell
@@ -114,12 +114,12 @@
 - (void)initializeViews NS_REQUIRES_SUPER;
 
 /**
- reloadDatas方法调用，重新生成数据源赋值到self.dataSource
+ reloadData方法调用，重新生成数据源赋值到self.dataSource
  */
 - (void)refreshDataSource;
 
 /**
- reloadDatas方法调用，根据数据源重新刷新状态；
+ reloadData方法调用，根据数据源重新刷新状态；
  */
 - (void)refreshState NS_REQUIRES_SUPER;
 

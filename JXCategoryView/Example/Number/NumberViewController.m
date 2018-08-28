@@ -49,7 +49,7 @@
 - (void)reloadNumbers {
     self.numbers = @[@33, @33, @33, @33, @33, @33, @33, @33, @33, @33, @33];
     self.myCategoryView.counts = self.numbers;
-    [self.myCategoryView reloadDatas];
+    [self.myCategoryView reloadData];
 }
 
 

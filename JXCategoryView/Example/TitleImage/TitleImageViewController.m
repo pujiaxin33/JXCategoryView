@@ -64,7 +64,7 @@
 
 - (void)titleImageSettingVCDidSelectedImageType:(JXCategoryTitleImageType)imageType {
     self.myCategoryView.imageType = imageType;
-    [self.categoryView reloadDatas];
+    [self.categoryView reloadData];
 }
 
 @end

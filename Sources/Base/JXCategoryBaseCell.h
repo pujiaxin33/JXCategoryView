@@ -15,6 +15,6 @@
 
 - (void)initializeViews NS_REQUIRES_SUPER;
 
-- (void)reloadDatas:(JXCategoryBaseCellModel *)cellModel NS_REQUIRES_SUPER;
+- (void)reloadData:(JXCategoryBaseCellModel *)cellModel NS_REQUIRES_SUPER;
 
 @end
