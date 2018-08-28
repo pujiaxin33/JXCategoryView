@@ -38,6 +38,10 @@
     self.scrollView.contentSize = CGSizeMake(width*count, height);
     [self.view addSubview:self.scrollView];
 
+    if (@available(iOS 11.0, *)) {
+        self.scrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+    }
+
     for (int i = 0; i < count; i ++) {
         UIViewController *listVC = [[[self preferredListViewControllerClass] alloc] init];
         [self configListViewController:listVC index:i];
