@@ -85,7 +85,7 @@
 - (void)setContentScrollView:(UIScrollView *)contentScrollView
 {
     if (_contentScrollView != nil) {
-        [_collectionView removeObserver:self forKeyPath:@"contentOffset"];
+        [_contentScrollView removeObserver:self forKeyPath:@"contentOffset"];
     }
     _contentScrollView = contentScrollView;
 
