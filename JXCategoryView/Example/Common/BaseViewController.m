@@ -8,13 +8,22 @@
 
 #import "BaseViewController.h"
 #import "ListViewController.h"
+#import "NestViewController.h"
 
-
-@interface BaseViewController () <JXCategoryViewDelegate>
-
+@interface BaseViewController () <JXCategoryViewDelegate, UIScrollViewDelegate>
+@property (nonatomic, assign) NSInteger currentIndex;
 @end
 
 @implementation BaseViewController
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        _shouldHandleScreenEdgeGesture = YES;
+    }
+    return self;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -33,9 +42,12 @@
     CGFloat categoryViewHeight = [self preferredCategoryViewHeight];
     CGFloat width = WindowsSize.width;
     CGFloat height = WindowsSize.height - naviHeight - categoryViewHeight;
-    self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, categoryViewHeight, width, height)];
+
+    _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, categoryViewHeight, width, height)];
+    self.scrollView.delegate = self;
     self.scrollView.pagingEnabled = YES;
     self.scrollView.contentSize = CGSizeMake(width*count, height);
+    self.scrollView.bounces = NO;
     [self.view addSubview:self.scrollView];
 
     if (@available(iOS 11.0, *)) {
@@ -58,6 +70,19 @@
     if (self.isNeedIndicatorPositionChangeItem) {
         UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithTitle:@"指示器位置切换" style:UIBarButtonItemStylePlain target:self action:@selector(rightItemClicked)];
         self.navigationItem.rightBarButtonItem = rightItem;
+    }
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    if ([self isKindOfClass:[NestViewController class]]) {
+        CGFloat index = scrollView.contentOffset.x/scrollView.bounds.size.width;
+        CGFloat absIndex = fabs(index - self.currentIndex);
+        if (absIndex >= 1) {
+            //嵌套使用的时候，最外层的VC持有的scrollView在翻页之后，就断掉一次手势。解决快速滑动的时候，只响应最外层VC持有的scrollView。子VC持有的scrollView却没有响应
+            self.scrollView.panGestureRecognizer.enabled = NO;
+            self.scrollView.panGestureRecognizer.enabled = YES;
+            _currentIndex = floor(index);
+        }
     }
 }
 
@@ -111,7 +136,10 @@
 - (void)categoryView:(JXCategoryBaseView *)categoryView didSelectedItemAtIndex:(NSInteger)index {
     [self.scrollView setContentOffset:CGPointMake(self.scrollView.bounds.size.width*index, 0) animated:YES];
     //侧滑手势处理
-    self.navigationController.interactivePopGestureRecognizer.enabled = (index == 0);
+    if (_shouldHandleScreenEdgeGesture) {
+        self.navigationController.interactivePopGestureRecognizer.enabled = (index == 0);
+    }
+
 }
 
 @end

@@ -67,6 +67,7 @@
 
 - (void)configListViewController:(UIViewController *)controller index:(NSUInteger)index {
     TitleViewController *listController = (TitleViewController *)controller;
+    listController.shouldHandleScreenEdgeGesture = NO;
     if (index == 0) {
         listController.titles = @[@"香蕉", @"苹果", @"荔枝"];
     }else if(index == 1) {
@@ -79,7 +80,6 @@
 
     JXCategoryIndicatorLineView *lineView = [[JXCategoryIndicatorLineView alloc ]init];
     titleCategoryView.indicators = @[lineView];
-
 }
 
 @end

@@ -19,6 +19,8 @@
 
 @property (nonatomic, strong) UIScrollView *scrollView;
 
+@property (nonatomic, assign) BOOL shouldHandleScreenEdgeGesture;
+
 
 - (Class)preferredCategoryViewClass;
 
