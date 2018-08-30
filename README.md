@@ -89,6 +89,8 @@ target '<Your Target Name>' do
 end
 ```
 
+`pod install`之前务必`pod repo udpate`一下
+
 ## 结构图
 
 <img src="JXCategoryView/Images/JXCategoryViewStructure.png" width="933" height="482">
