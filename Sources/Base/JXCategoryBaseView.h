@@ -109,7 +109,7 @@
 
 #pragma mark - Subclass Override
 
-- (void)initializeDatas NS_REQUIRES_SUPER;
+- (void)initializeData NS_REQUIRES_SUPER;
 
 - (void)initializeViews NS_REQUIRES_SUPER;
 

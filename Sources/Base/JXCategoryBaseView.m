@@ -28,7 +28,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        [self initializeDatas];
+        [self initializeData];
         [self initializeViews];
     }
     return self;
@@ -38,13 +38,13 @@
 {
     self = [super initWithCoder:coder];
     if (self) {
-        [self initializeDatas];
+        [self initializeData];
         [self initializeViews];
     }
     return self;
 }
 
-- (void)initializeDatas
+- (void)initializeData
 {
     _dataSource = [NSMutableArray array];
     _selectedIndex = 0;

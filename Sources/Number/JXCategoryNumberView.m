@@ -10,8 +10,8 @@
 
 @implementation JXCategoryNumberView
 
-- (void)initializeDatas {
-    [super initializeDatas];
+- (void)initializeData {
+    [super initializeData];
 
     self.cellSpacing = 25;
 }

@@ -18,8 +18,8 @@
 
 @implementation JXCategoryIndicatorView
 
-- (void)initializeDatas {
-    [super initializeDatas];
+- (void)initializeData {
+    [super initializeData];
 
     _separatorLineShowEnabled = NO;
     _separatorLineColor = [UIColor lightGrayColor];

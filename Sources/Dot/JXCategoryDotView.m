@@ -10,8 +10,8 @@
 
 @implementation JXCategoryDotView
 
-- (void)initializeDatas {
-    [super initializeDatas];
+- (void)initializeData {
+    [super initializeData];
 
     _relativePosition = JXCategoryDotRelativePosition_TopRight;
     _dotSize = CGSizeMake(10, 10);

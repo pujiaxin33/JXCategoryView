@@ -16,8 +16,8 @@
     self.loadImageCallback = nil;
 }
 
-- (void)initializeDatas {
-    [super initializeDatas];
+- (void)initializeData {
+    [super initializeData];
 
     _imageSize = CGSizeMake(20, 20);
     _imageZoomEnabled = NO;

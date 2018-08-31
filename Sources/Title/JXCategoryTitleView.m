@@ -15,9 +15,9 @@
 
 @implementation JXCategoryTitleView
 
-- (void)initializeDatas
+- (void)initializeData
 {
-    [super initializeDatas];
+    [super initializeData];
 
     _titleLabelZoomEnabled = NO;
     _titleLabelZoomScale = 1.2;
