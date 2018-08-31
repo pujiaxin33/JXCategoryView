@@ -185,7 +185,7 @@ titleCategoryView.indicators = @[lineView, triangleView, ballView, backgroundVie
 ```
 
 - 单个cell刷新：比如红点示例里面，调用`- (void)reloadCell:(NSUInteger)index`
-- 所有状态重置：数据源、属性配置有变动时（比如从服务器拉取回来数据），需要调用`reloadDatas`方法刷新状态。
+- 所有状态重置：数据源、属性配置有变动时（比如从服务器拉取回来数据），需要调用`reloadData`方法刷新状态。
 
 ### 指示器样式自定义
 
@@ -194,7 +194,7 @@ titleCategoryView.indicators = @[lineView, triangleView, ballView, backgroundVie
 主要实现的方法：
 - 继承JXCategoryIndicatorComponentView，内部遵从了`JXCategoryIndicatorProtocol`协议；
 - 实现协议方法，自定义效果：
-    - `- (void)jx_refreshState:(CGRect)selectedCellFrame`初始化或reloadDatas，重置状态；
+    - `- (void)jx_refreshState:(CGRect)selectedCellFrame`初始化或reloadData，重置状态；
     - `- (void)jx_contentScrollViewDidScrollWithLeftCellFrame:(CGRect)leftCellFrame rightCellFrame:(CGRect)rightCellFrame selectedPosition:(JXCategoryCellClickedPosition)selectedPosition percent:(CGFloat)percent` contentScrollView在进行手势滑动时，处理指示器跟随手势变化UI逻辑；
     - `- (void)jx_selectedCell:(CGRect)cellFrame clickedRelativePosition:(JXCategoryCellClickedPosition)clickedRelativePosition`根据选中的某个cell，处理过渡效果；
     
@@ -207,7 +207,7 @@ titleCategoryView.indicators = @[lineView, triangleView, ballView, backgroundVie
 主要实现的方法：
 - `- (Class)preferredCellClass`返回自定义的cell；
 - `- (void)refreshDataSource`刷新数据源，使用自定义的cellModel；
-- `- (void)refreshCellModel:(JXCategoryBaseCellModel *)cellModel index:(NSInteger)index `初始化、reloadDatas时对数据源重置；
+- `- (void)refreshCellModel:(JXCategoryBaseCellModel *)cellModel index:(NSInteger)index `初始化、reloadData时对数据源重置；
 - `- (CGFloat)preferredCellWidthWithIndex:(NSInteger)index`根据cell的内容返回对应的宽度；
 - `- (void)refreshSelectedCellModel:(JXCategoryBaseCellModel *)selectedCellModel unselectedCellModel:(JXCategoryBaseCellModel *)unselectedCellModel`cell选中时进行状态刷新；
 - `- (void)refreshLeftCellModel:(JXCategoryBaseCellModel *)leftCellModel rightCellModel:(JXCategoryBaseCellModel *)rightCellModel ratio:(CGFloat)ratio`cell左右滚动切换的时候，进行状态刷新；
