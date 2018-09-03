@@ -150,13 +150,13 @@
     }
 }
 
-- (BOOL)selectCellWithIndex:(NSInteger)index {
+- (BOOL)selectCellAtIndex:(NSInteger)index {
     //是否点击了相对于选中cell左边的cell
     JXCategoryCellClickedPosition clickedPosition = JXCategoryCellClickedPosition_Left;
     if (index > self.selectedIndex) {
         clickedPosition = JXCategoryCellClickedPosition_Right;
     }
-    BOOL result = [super selectCellWithIndex:index];
+    BOOL result = [super selectCellAtIndex:index];
     if (!result) {
         return NO;
     }

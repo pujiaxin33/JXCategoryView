@@ -83,7 +83,7 @@
     }
 }
 
-- (CGFloat)preferredCellWidthWithIndex:(NSInteger)index {
+- (CGFloat)preferredCellWidthAtIndex:(NSInteger)index {
     return self.imageSize.width;
 }
 

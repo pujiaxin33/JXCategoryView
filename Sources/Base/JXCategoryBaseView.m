@@ -109,8 +109,8 @@
     [cell reloadData:cellModel];
 }
 
-- (void)selectItemWithIndex:(NSUInteger)index {
-    [self selectCellWithIndex:index];
+- (void)selectItemAtIndex:(NSUInteger)index {
+    [self selectCellAtIndex:index];
 }
 
 
@@ -136,7 +136,7 @@
     for (int i = 0; i < self.dataSource.count; i++) {
         JXCategoryBaseCellModel *cellModel = self.dataSource[i];
         cellModel.index = i;
-        cellModel.cellWidth = [self preferredCellWidthWithIndex:i] + self.cellWidthIncrement;
+        cellModel.cellWidth = [self preferredCellWidthAtIndex:i] + self.cellWidthIncrement;
         cellModel.cellWidthZoomEnabled = self.cellWidthZoomEnabled;
         cellModel.cellWidthZoomScale = 1.0;
         cellModel.cellSpacing = self.cellSpacing;
@@ -181,7 +181,7 @@
     [self.contentScrollView setContentOffset:CGPointMake(self.selectedIndex*self.contentScrollView.bounds.size.width, 0) animated:NO];
 }
 
-- (BOOL)selectCellWithIndex:(NSInteger)targetIndex {
+- (BOOL)selectCellAtIndex:(NSInteger)targetIndex {
     if (targetIndex >= self.dataSource.count) {
         return NO;
     }
@@ -242,7 +242,7 @@
 
     if (remainderRatio == 0) {
         //连续滑动翻页，需要更新选中状态
-        [self scrollSelectItemWithIndex:baseIndex];
+        [self scrollselectItemAtIndex:baseIndex];
     }else {
         if (self.cellWidthZoomEnabled && self.cellWidthZoomScrollGradientEnabled) {
             JXCategoryBaseCellModel *leftCellModel = (JXCategoryBaseCellModel *)self.dataSource[baseIndex];
@@ -254,7 +254,7 @@
     }
 }
 
-- (CGFloat)preferredCellWidthWithIndex:(NSInteger)index {
+- (CGFloat)preferredCellWidthAtIndex:(NSInteger)index {
     return 0;
 }
 
@@ -286,7 +286,7 @@
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    [self clickSelectItemWithIndex:indexPath.row];
+    [self clickselectItemAtIndex:indexPath.row];
 }
 
 #pragma mark - <UICollectionViewDelegateFlowLayout>
@@ -335,20 +335,20 @@
 
 #pragma mark - Private
 
-- (void)clickSelectItemWithIndex:(NSInteger)index {
+- (void)clickselectItemAtIndex:(NSInteger)index {
     if (self.delegate && [self.delegate respondsToSelector:@selector(categoryView:didClickSelectedItemAtIndex:)]) {
         [self.delegate categoryView:self didClickSelectedItemAtIndex:index];
     }
 
-    [self selectCellWithIndex:index];
+    [self selectCellAtIndex:index];
 }
 
-- (void)scrollSelectItemWithIndex:(NSInteger)index {
+- (void)scrollselectItemAtIndex:(NSInteger)index {
     if (self.delegate && [self.delegate respondsToSelector:@selector(categoryView:didScrollSelectedItemAtIndex:)]) {
         [self.delegate categoryView:self didScrollSelectedItemAtIndex:index];
     }
 
-    [self selectCellWithIndex:index];
+    [self selectCellAtIndex:index];
 }
 
 @end

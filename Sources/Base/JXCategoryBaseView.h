@@ -89,7 +89,7 @@
 
  @param index 目标index
  */
-- (void)selectItemWithIndex:(NSUInteger)index;
+- (void)selectItemAtIndex:(NSUInteger)index;
 
 /**
  初始化的时候无需调用。初始化之后更新其他配置属性，需要调用该方法，进行刷新。
@@ -140,13 +140,13 @@
 
 
 /**
- 该方法用于子类重载，如果外部要选中某个index，请使用`- (void)selectItemWithIndex:(NSUInteger)index;`
+ 该方法用于子类重载，如果外部要选中某个index，请使用`- (void)selectItemAtIndex:(NSUInteger)index;`
  点击某一个item，或者contentScrollView滚动到某一个item的时候调用。根据selectIndex刷新选中状态。
 
  @param index 选中的index
  @return 返回值为NO，表示触发内部某些判断（点击了同一个cell），子类无需后续操作。
  */
-- (BOOL)selectCellWithIndex:(NSInteger)index NS_REQUIRES_SUPER;
+- (BOOL)selectCellAtIndex:(NSInteger)index NS_REQUIRES_SUPER;
 
 /**
  reloadData时，返回每个cell的宽度
@@ -154,7 +154,7 @@
  @param index 目标index
  @return cellWidth
  */
-- (CGFloat)preferredCellWidthWithIndex:(NSInteger)index;
+- (CGFloat)preferredCellWidthAtIndex:(NSInteger)index;
 
 
 /**

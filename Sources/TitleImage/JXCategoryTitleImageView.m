@@ -88,8 +88,8 @@
     }
 }
 
-- (CGFloat)preferredCellWidthWithIndex:(NSInteger)index {
-    CGFloat width = [super preferredCellWidthWithIndex:index];
+- (CGFloat)preferredCellWidthAtIndex:(NSInteger)index {
+    CGFloat width = [super preferredCellWidthAtIndex:index];
     return width + self.titleImageSpacing + self.imageSize.width;
 }
 
