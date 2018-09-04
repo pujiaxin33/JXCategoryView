@@ -71,12 +71,14 @@
         }
     }
 
-    for (UIView<JXCategoryIndicatorProtocol> *component in self.indicators) {
-        [component jx_refreshState:selectedCellFrame];
-        if ([component isKindOfClass:[JXCategoryIndicatorBackgroundView class]]) {
-            CGRect maskFrame = component.frame;
-            maskFrame.origin.x = maskFrame.origin.x - selectedCellFrame.origin.x;
-            selectedCellModel.backgroundViewMaskFrame = maskFrame;
+    if (!CGRectEqualToRect(selectedCellFrame, CGRectZero)) {
+        for (UIView<JXCategoryIndicatorProtocol> *component in self.indicators) {
+            [component jx_refreshState:selectedCellFrame];
+            if ([component isKindOfClass:[JXCategoryIndicatorBackgroundView class]]) {
+                CGRect maskFrame = component.frame;
+                maskFrame.origin.x = maskFrame.origin.x - selectedCellFrame.origin.x;
+                selectedCellModel.backgroundViewMaskFrame = maskFrame;
+            }
         }
     }
 }
