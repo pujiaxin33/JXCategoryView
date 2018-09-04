@@ -275,6 +275,7 @@ titleCategoryView.indicators = @[lineView, triangleView, ballView, backgroundVie
 - 2018.8.22 发布1.0.1版本，更新内容：删除zoomEnabled,新增titleLabelZoomEnabled、imageZoomEnabled;
 - 2018.8.23 发布1.0.2版本，更新内容：添加cellWidthZoomEnabled实现腾讯视频效果;
 - 2018.8.24 发布1.0.3版本，更新内容：添加垂直列表滚动效果、指示器添加verticalMargin属性、JXCategoryViewDelegate代理方法优化;
+- 2018.9.4 发布1.0.4版本，更新内容：修复bug、添加cell图文混用示例;
 
 ## 补充
 
