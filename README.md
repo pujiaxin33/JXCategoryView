@@ -51,6 +51,7 @@ TitleImage_Top |  <img src="JXCategoryView/Images/TitleImageTop.gif" width="343"
 TitleImage_Left |  <img src="JXCategoryView/Images/TitleImageLeft.gif" width="343" height="80"> |
 TitleImage_Bottom |  <img src="JXCategoryView/Images/TitleImageBottom.gif" width="343" height="80"> |
 TitleImage_Right |  <img src="JXCategoryView/Images/TitleImageRight.gif" width="343" height="80"> |
+cell图文混用 |  <img src="JXCategoryView/Images/CellMixed.gif" width="343" height="90"> |
 Image |  <img src="JXCategoryView/Images/CellImage.gif" width="343" height="80"> |
 数字 |  <img src="JXCategoryView/Images/Number.gif" width="343" height="80"> |
 红点 |  <img src="JXCategoryView/Images/CellRedDot.gif" width="343" height="80"> |
