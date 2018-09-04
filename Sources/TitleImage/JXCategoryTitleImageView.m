@@ -21,7 +21,6 @@
 - (void)initializeData {
     [super initializeData];
 
-    _imageType = JXCategoryTitleImageType_LeftImage;
     _imageSize = CGSizeMake(20, 20);
     _titleImageSpacing = 5;
     _imageZoomEnabled = NO;
@@ -38,6 +37,13 @@
         JXCategoryTitleImageCellModel *cellModel = [[JXCategoryTitleImageCellModel alloc] init];
         [tempArray addObject:cellModel];
     }
+    if (self.imageTypes == nil || self.imageTypes.count == 0) {
+        NSMutableArray *types = [NSMutableArray array];
+        for (int i = 0; i < self.titles.count; i++) {
+            [types addObject:@(JXCategoryTitleImageType_LeftImage)];
+        }
+        self.imageTypes = types;
+    }
     self.dataSource = tempArray;
 }
 
@@ -46,7 +52,7 @@
 
     JXCategoryTitleImageCellModel *myCellModel = (JXCategoryTitleImageCellModel *)cellModel;
     myCellModel.loadImageCallback = self.loadImageCallback;
-    myCellModel.imageType = self.imageType;
+    myCellModel.imageType = [self.imageTypes[index] integerValue];
     myCellModel.imageSize = self.imageSize;
     myCellModel.titleImageSpacing = self.titleImageSpacing;
     if (self.imageNames != nil) {
@@ -89,8 +95,26 @@
 }
 
 - (CGFloat)preferredCellWidthAtIndex:(NSInteger)index {
-    CGFloat width = [super preferredCellWidthAtIndex:index];
-    return width + self.titleImageSpacing + self.imageSize.width;
+    CGFloat titleWidth = [super preferredCellWidthAtIndex:index];
+    JXCategoryTitleImageType type = [self.imageTypes[index] integerValue];
+    CGFloat cellWidth = 0;
+    switch (type) {
+        case JXCategoryTitleImageType_OnlyTitle:
+            cellWidth = titleWidth;
+            break;
+        case JXCategoryTitleImageType_OnlyImage:
+            cellWidth = self.imageSize.width;
+            break;
+        case JXCategoryTitleImageType_LeftImage:
+        case JXCategoryTitleImageType_RightImage:
+            cellWidth = titleWidth + self.titleImageSpacing + self.imageSize.width;
+            break;
+        case JXCategoryTitleImageType_TopImage:
+        case JXCategoryTitleImageType_BottomImage:
+            cellWidth = MAX(titleWidth, self.imageSize.width);
+            break;
+    }
+    return cellWidth;
 }
 
 @end

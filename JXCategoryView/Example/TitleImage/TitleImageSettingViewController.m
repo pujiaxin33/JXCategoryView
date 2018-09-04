@@ -22,7 +22,7 @@
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
 
-    NSUInteger selectedIndex = [self converIndexToImageType:self.imageType];
+    NSUInteger selectedIndex = [self converImageTypeToIndex:self.imageType];
     UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:selectedIndex inSection:0]];
     cell.accessoryType = UITableViewCellAccessoryCheckmark;
 }
@@ -39,15 +39,23 @@
     NSArray <NSNumber *> *imageTypes = @[@(JXCategoryTitleImageType_TopImage),
                             @(JXCategoryTitleImageType_LeftImage),
                             @(JXCategoryTitleImageType_BottomImage),
-                            @(JXCategoryTitleImageType_RightImage)];
+                            @(JXCategoryTitleImageType_RightImage),
+                                         @(JXCategoryTitleImageType_OnlyImage),
+                                         @(JXCategoryTitleImageType_OnlyTitle),
+                                         @(100)
+
+                                         ];
     return [imageTypes[index] integerValue];
 }
 
-- (JXCategoryTitleImageType)converImageTypeToIndex:(JXCategoryTitleImageType)imageType {
+- (NSInteger)converImageTypeToIndex:(JXCategoryTitleImageType)imageType {
     NSArray <NSNumber *> *imageTypes = @[@(JXCategoryTitleImageType_TopImage),
                                          @(JXCategoryTitleImageType_LeftImage),
                                          @(JXCategoryTitleImageType_BottomImage),
-                                         @(JXCategoryTitleImageType_RightImage)];
+                                         @(JXCategoryTitleImageType_RightImage),
+                                         @(JXCategoryTitleImageType_OnlyImage),
+                                         @(JXCategoryTitleImageType_OnlyTitle),
+                                         @(100),];
     return [imageTypes indexOfObject:@(imageType)];
 }
 

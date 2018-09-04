@@ -13,6 +13,7 @@
 		190A54E7206397370050B327 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 190A54E6206397370050B327 /* Assets.xcassets */; };
 		190A54EA206397370050B327 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 190A54E8206397370050B327 /* LaunchScreen.storyboard */; };
 		190A54ED206397370050B327 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 190A54EC206397370050B327 /* main.m */; };
+		190F6A6C213E889F00870498 /* CellMixed.gif in Resources */ = {isa = PBXBuildFile; fileRef = 190F6A6B213E889E00870498 /* CellMixed.gif */; };
 		1912A522211C1BD000A80826 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1912A521211C1BD000A80826 /* BaseViewController.m */; };
 		1912A526211C257000A80826 /* BackgroundImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1912A525211C257000A80826 /* BackgroundImageViewController.m */; };
 		1912A52A211C3D1600A80826 /* IndicatorImageViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1912A529211C3D1600A80826 /* IndicatorImageViewViewController.m */; };
@@ -134,6 +135,7 @@
 		190A54E9206397370050B327 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		190A54EB206397370050B327 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		190A54EC206397370050B327 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		190F6A6B213E889E00870498 /* CellMixed.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = CellMixed.gif; sourceTree = "<group>"; };
 		1912A520211C1BD000A80826 /* BaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		1912A521211C1BD000A80826 /* BaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 		1912A524211C257000A80826 /* BackgroundImageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BackgroundImageViewController.h; sourceTree = "<group>"; };
@@ -622,6 +624,7 @@
 		19870C872122703B00C23CAA /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				190F6A6B213E889E00870498 /* CellMixed.gif */,
 				194DCDD62134EF18000E89EF /* LoadData.gif */,
 				192AD166212FF45E0031AD46 /* BackgroundViewShadow.gif */,
 				192AD15A212FCD650031AD46 /* VerticalList.gif */,
@@ -864,6 +867,7 @@
 				19D57E8F212E5BE30077DCA6 /* TXVedio.gif in Resources */,
 				19870CA12122703B00C23CAA /* Football.gif in Resources */,
 				191A95F3212BF5DA00DBF784 /* TitleMaskNoBackgroundView.gif in Resources */,
+				190F6A6C213E889F00870498 /* CellMixed.gif in Resources */,
 				19870CB02122703B00C23CAA /* JXCategoryView.png in Resources */,
 				19870C9D2122703B00C23CAA /* IndicatorImageView.gif in Resources */,
 				191A95F1212BF5DA00DBF784 /* BackgroundImageView.gif in Resources */,

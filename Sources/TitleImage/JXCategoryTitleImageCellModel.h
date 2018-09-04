@@ -13,6 +13,8 @@ typedef NS_ENUM(NSUInteger, JXCategoryTitleImageType) {
     JXCategoryTitleImageType_LeftImage,
     JXCategoryTitleImageType_BottomImage,
     JXCategoryTitleImageType_RightImage,
+    JXCategoryTitleImageType_OnlyImage,
+    JXCategoryTitleImageType_OnlyTitle,
 };
 
 @interface JXCategoryTitleImageCellModel : JXCategoryTitleCellModel

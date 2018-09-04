@@ -28,6 +28,7 @@
 
     JXCategoryTitleImageCellModel *myCellModel = (JXCategoryTitleImageCellModel *)self.cellModel;
     self.titleLabel.hidden = NO;
+    self.imageView.hidden = NO;
     CGSize imageSize = myCellModel.imageSize;
     self.imageView.bounds = CGRectMake(0, 0, imageSize.width, imageSize.height);
     switch (myCellModel.imageType) {
@@ -61,6 +62,20 @@
             CGFloat contentWidth = imageSize.width + myCellModel.titleImageSpacing + self.titleLabel.bounds.size.width;
             self.titleLabel.center = CGPointMake((self.contentView.bounds.size.width - contentWidth)/2 + self.titleLabel.bounds.size.width/2, self.contentView.center.y);
             self.imageView.center = CGPointMake(CGRectGetMaxX(self.titleLabel.frame) + myCellModel.titleImageSpacing + imageSize.width/2, self.contentView.center.y);
+        }
+            break;
+
+        case JXCategoryTitleImageType_OnlyImage:
+        {
+            self.titleLabel.hidden = YES;
+            self.imageView.center = self.contentView.center;
+        }
+            break;
+
+        case JXCategoryTitleImageType_OnlyTitle:
+        {
+            self.imageView.hidden = YES;
+            self.titleLabel.center = self.contentView.center;
         }
             break;
 

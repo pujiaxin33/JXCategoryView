@@ -20,7 +20,7 @@
 
 @property (nonatomic, strong) NSArray <NSURL *>*selectedImageURLs;
 
-@property (nonatomic, assign) JXCategoryTitleImageType imageType;    //默认JXCategoryTitleImageType_LeftImage
+@property (nonatomic, strong) NSArray <NSNumber *> *imageTypes;    //默认JXCategoryTitleImageType_LeftImage
 
 @property (nonatomic, copy) void(^loadImageCallback)(UIImageView *imageView);   //使用imageURLs从远端下载图片进行加载，建议使用SDWebImage等第三方库进行下载。
 
