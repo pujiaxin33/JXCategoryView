@@ -166,22 +166,23 @@ JXCategoryIndicatorBallView.ballViewColor    | 默认为[UIColor redColor] |
 ## 使用
 
 ```
+//1、初始化JXCategoryTitleView
 self.categoryView = [[JXCategoryTitleView alloc] initWithFrame:CGRectMake(0, 0, WindowsSize.width, categoryViewHeight)];
 self.categoryView.delegate = self;
-self.categoryView.contentScrollView = self.scrollView;
-//------指示器属性配置------//
+
+//2、添加并配置指示器
 //lineView
 JXCategoryIndicatorLineView *lineView = [[JXCategoryIndicatorLineView alloc] init];
-//triangleView
-JXCategoryIndicatorTriangleView *triangleView = [[JXCategoryIndicatorTriangleView alloc] init];
-lineView.indicatorLineWidth = 20;
-//ballView
-JXCategoryIndicatorBallView *ballView = [[JXCategoryIndicatorBallView alloc] init];
+lineView.indicatorLineViewColor = [UIColor redColor];
+lineView.indicatorLineWidth = JXCategoryViewAutomaticDimension;
 //backgroundView
 JXCategoryIndicatorBackgroundView *backgroundView = [[JXCategoryIndicatorBackgroundView alloc] init];
+backgroundView.backgroundViewColor = [UIColor redColor];
+backgroundView.backgroundViewWidth = JXCategoryViewAutomaticDimension;
+titleCategoryView.indicators = @[lineView, backgroundView];
 
-titleCategoryView.indicators = @[lineView, triangleView, ballView, backgroundView];
-
+//3、绑定contentScrollView。self.scrollView的初始化细节参考源码。
+self.categoryView.contentScrollView = self.scrollView;
 [self.view addSubview:self.categoryView];
 ```
 
