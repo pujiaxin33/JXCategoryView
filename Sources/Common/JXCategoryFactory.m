@@ -22,7 +22,8 @@
     CGFloat red = [self interpolationFrom:fromColor.jx_red to:toColor.jx_red percent:percent];
     CGFloat green = [self interpolationFrom:fromColor.jx_green to:toColor.jx_green percent:percent];
     CGFloat blue = [self interpolationFrom:fromColor.jx_blue to:toColor.jx_blue percent:percent];
-    return [UIColor colorWithRed:red green:green blue:blue alpha:1];
+    CGFloat alpha = [self interpolationFrom:fromColor.jx_alpha to:toColor.jx_alpha percent:percent];
+    return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
 }
 
 @end
