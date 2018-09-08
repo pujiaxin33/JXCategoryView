@@ -166,22 +166,23 @@ JXCategoryIndicatorBallView.ballViewColor    | 默认为[UIColor redColor] |
 ## 使用
 
 ```
+//1、初始化JXCategoryTitleView
 self.categoryView = [[JXCategoryTitleView alloc] initWithFrame:CGRectMake(0, 0, WindowsSize.width, categoryViewHeight)];
 self.categoryView.delegate = self;
-self.categoryView.contentScrollView = self.scrollView;
-//------指示器属性配置------//
+
+//2、添加并配置指示器
 //lineView
 JXCategoryIndicatorLineView *lineView = [[JXCategoryIndicatorLineView alloc] init];
-//triangleView
-JXCategoryIndicatorTriangleView *triangleView = [[JXCategoryIndicatorTriangleView alloc] init];
-lineView.indicatorLineWidth = 20;
-//ballView
-JXCategoryIndicatorBallView *ballView = [[JXCategoryIndicatorBallView alloc] init];
+lineView.indicatorLineViewColor = [UIColor redColor];
+lineView.indicatorLineWidth = JXCategoryViewAutomaticDimension;
 //backgroundView
 JXCategoryIndicatorBackgroundView *backgroundView = [[JXCategoryIndicatorBackgroundView alloc] init];
+backgroundView.backgroundViewColor = [UIColor redColor];
+backgroundView.backgroundViewWidth = JXCategoryViewAutomaticDimension;
+titleCategoryView.indicators = @[lineView, backgroundView];
 
-titleCategoryView.indicators = @[lineView, triangleView, ballView, backgroundView];
-
+//3、绑定contentScrollView。self.scrollView的初始化细节参考源码。
+self.categoryView.contentScrollView = self.scrollView;
 [self.view addSubview:self.categoryView];
 ```
 
@@ -218,7 +219,7 @@ titleCategoryView.indicators = @[lineView, triangleView, ballView, backgroundVie
 #### 继承提示
 
 - 任何子类化，view、cell、cellModel三个都要子类化，即使某个子类cell什么事情都不做。用于维护继承链，以免以后子类化都不知道要继承谁了；
-- 如果你先完全自定义cell里面的内容，那就继承`JXCategoryIndicatorView、JXCategoryIndicatorCell、JXCategoryIndicatorCellModel`，就像`JXCategoryTitleView、JXCategoryTitleCell、JXCategoryTitleCellModel`那样去做；
+- 如果你想完全自定义cell里面的内容，那就继承`JXCategoryIndicatorView、JXCategoryIndicatorCell、JXCategoryIndicatorCellModel`，就像`JXCategoryTitleView、JXCategoryTitleCell、JXCategoryTitleCellModel`那样去做；
 - 如果你只是在父类进行一些微调，那就继承目标view、cell、cellModel，对cell原有控件微调、或者加入新的控件皆可。就像`JXCategoryTitleImageView系列、JXCategoryTitleAttributeView系列`那样去做；
 
 ### 侧滑手势
