@@ -90,7 +90,7 @@ target '<Your Target Name>' do
 end
 ```
 
-`pod install`之前务必`pod repo udpate`一下
+`pod install`之前务必`pod repo update`一下
 
 ## 结构图
 
