@@ -262,13 +262,6 @@ self.categoryView.contentScrollView = self.scrollView;
 ### contentScrollView
 
 - 布局灵活：JXCategoryView没有与contentScrollView强关联，你甚至可以不设置这个属性，把它当做简单的SegmentedControl。他们之间布局没有任何要求，可以把JXCategoryView放入导航栏、UITableViewSectionHeader等任何你想要的地方。
-- 点击处理：因为充分解耦，在JXCategoryView点击回调中，你需要添加如下代码进行内容滚动切换：
-```
-#pragma mark - JXCategoryViewDelegate
-- (void)categoryView:(JXCategoryBaseView *)categoryView didSelectedItemAtIndex:(NSInteger)index {
-    [self.scrollView setContentOffset:CGPointMake(self.scrollView.bounds.size.width*index, 0) animated:YES];
-}
-```
 
 ## 更新记录
 
