@@ -9,5 +9,5 @@
 #import "JXCategoryTitleCell.h"
 
 @interface JXCategoryNumberCell : JXCategoryTitleCell
-
+@property (nonatomic, strong) UILabel *numberLabel;
 @end

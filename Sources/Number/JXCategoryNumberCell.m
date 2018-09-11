@@ -10,7 +10,7 @@
 #import "JXCategoryNumberCellModel.h"
 
 @interface JXCategoryNumberCell ()
-@property (nonatomic, strong) UILabel *numberLabel;
+
 @end
 
 @implementation JXCategoryNumberCell
