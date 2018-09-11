@@ -89,7 +89,7 @@
 
  @param index 目标index
  */
-- (void)selectItemAtIndex:(NSUInteger)index;
+- (void)selectItemAtIndex:(NSInteger)index;
 
 /**
  初始化的时候无需调用。初始化之后更新其他配置属性，需要调用该方法，进行刷新。
@@ -101,7 +101,7 @@
 
  @param index 指定cell的index
  */
-- (void)reloadCell:(NSUInteger)index;
+- (void)reloadCell:(NSInteger)index;
 
 #pragma mark - Subclass use
 

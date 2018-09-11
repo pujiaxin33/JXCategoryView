@@ -99,7 +99,7 @@
     [self.collectionView reloadData];
 }
 
-- (void)reloadCell:(NSUInteger)index {
+- (void)reloadCell:(NSInteger)index {
     if (index >= self.dataSource.count) {
         return;
     }
@@ -109,7 +109,7 @@
     [cell reloadData:cellModel];
 }
 
-- (void)selectItemAtIndex:(NSUInteger)index {
+- (void)selectItemAtIndex:(NSInteger)index {
     [self selectCellAtIndex:index];
 }
 
