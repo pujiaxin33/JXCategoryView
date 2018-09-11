@@ -186,7 +186,7 @@ self.categoryView.contentScrollView = self.scrollView;
 [self.view addSubview:self.categoryView];
 ```
 
-- 单个cell刷新：比如红点示例里面，调用`- (void)reloadCell:(NSUInteger)index`
+- 单个cell刷新：比如红点示例里面，调用`- (void)reloadCellAtIndex:(NSUInteger)index`
 - 所有状态重置：数据源、属性配置有变动时（比如从服务器拉取回来数据），需要调用`reloadData`方法刷新状态。
 
 ### 指示器样式自定义
