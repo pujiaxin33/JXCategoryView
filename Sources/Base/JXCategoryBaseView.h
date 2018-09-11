@@ -101,7 +101,7 @@
 
  @param index 指定cell的index
  */
-- (void)reloadCell:(NSInteger)index;
+- (void)reloadCellAtIndex:(NSInteger)index;
 
 #pragma mark - Subclass use
 

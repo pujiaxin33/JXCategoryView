@@ -62,7 +62,7 @@
     if ([self.dotStates[index] boolValue] == YES) {
         self.dotStates[index] = @(NO);
         self.myCategoryView.dotStates = self.dotStates;
-        [categoryView reloadCell:index];
+        [categoryView reloadCellAtIndex:index];
     }
 }
 

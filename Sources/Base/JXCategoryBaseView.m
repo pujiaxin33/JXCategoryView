@@ -99,7 +99,7 @@
     [self.collectionView reloadData];
 }
 
-- (void)reloadCell:(NSInteger)index {
+- (void)reloadCellAtIndex:(NSInteger)index {
     if (index >= self.dataSource.count) {
         return;
     }
