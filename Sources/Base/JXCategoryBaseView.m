@@ -186,11 +186,10 @@
         return NO;
     }
 
-    if (self.delegate && [self.delegate respondsToSelector:@selector(categoryView:didSelectedItemAtIndex:)]) {
-        [self.delegate categoryView:self didSelectedItemAtIndex:targetIndex];
-    }
-
-    if (targetIndex == self.selectedIndex) {
+    if (self.selectedIndex == targetIndex) {
+        if (self.delegate && [self.delegate respondsToSelector:@selector(categoryView:didSelectedItemAtIndex:)]) {
+            [self.delegate categoryView:self didSelectedItemAtIndex:targetIndex];
+        }
         return NO;
     }
 
@@ -218,6 +217,9 @@
     [self.contentScrollView setContentOffset:CGPointMake(targetIndex*self.contentScrollView.bounds.size.width, 0) animated:YES];
 
     self.selectedIndex = targetIndex;
+    if (self.delegate && [self.delegate respondsToSelector:@selector(categoryView:didSelectedItemAtIndex:)]) {
+        [self.delegate categoryView:self didSelectedItemAtIndex:targetIndex];
+    }
 
     return YES;
 }
@@ -234,6 +236,14 @@
     CGFloat ratio = contentOffset.x/self.contentScrollView.bounds.size.width;
     if (ratio > self.dataSource.count - 1 || ratio < 0) {
         //超过了边界，不需要处理
+        return;
+    }
+    if (contentOffset.x == 0 && self.selectedIndex == 0) {
+        //滚动到了最左边，且已经选中了第一个
+        return;
+    }
+    if (contentOffset.x + self.contentScrollView.bounds.size.width == self.contentScrollView.contentSize.width && self.selectedIndex == self.dataSource.count - 1) {
+        //滚动到了最右边，且已经选中了最后一个
         return;
     }
     ratio = MAX(0, MIN(self.dataSource.count - 1, ratio));
