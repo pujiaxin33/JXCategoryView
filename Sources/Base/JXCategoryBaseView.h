@@ -74,7 +74,7 @@
 
 @property (nonatomic, assign) CGFloat cellSpacing;    //cell之间的间距，默认20
 
-@property (nonatomic, assign) BOOL averageCellWidthEnabled;     //当cell内容总宽度小于JXCategoryBaseView的宽度，是否将cellWidth均分。默认为YES。
+@property (nonatomic, assign) BOOL averageCellSpacingEnabled;     //当item内容总宽度小于JXCategoryBaseView的宽度，是否将cellSpacing均分。默认为YES。
 
 //----------------------cellWidthZoomEnabled-----------------------//
 //cell宽度的缩放主要是为了腾讯视频效果打造的，一般情况下慎用，不太好控制。

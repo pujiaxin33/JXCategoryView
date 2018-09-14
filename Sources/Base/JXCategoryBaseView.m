@@ -12,6 +12,7 @@
 @interface JXCategoryBaseView () <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 
 @property (nonatomic, assign) NSInteger selectedIndex;
+@property (nonatomic, assign) CGFloat innerCellSpacing;
 
 @end
 
@@ -51,7 +52,7 @@
     _cellWidth = JXCategoryViewAutomaticDimension;
     _cellWidthIncrement = 0;
     _cellSpacing = 20;
-    _averageCellWidthEnabled = YES;
+    _averageCellSpacingEnabled = YES;
     _cellWidthZoomEnabled = NO;
     _cellWidthZoomScale = 1.2;
     _cellWidthZoomScrollGradientEnabled = YES;
@@ -132,11 +133,13 @@
         self.selectedIndex = 0;
     }
 
-    CGFloat totalItemWidth = self.cellSpacing;
+    __block CGFloat totalItemWidth = self.cellSpacing;
+    CGFloat totalCellWidth = 0;
     for (int i = 0; i < self.dataSource.count; i++) {
         JXCategoryBaseCellModel *cellModel = self.dataSource[i];
         cellModel.index = i;
         cellModel.cellWidth = [self preferredCellWidthAtIndex:i] + self.cellWidthIncrement;
+        totalCellWidth += cellModel.cellWidth;
         cellModel.cellWidthZoomEnabled = self.cellWidthZoomEnabled;
         cellModel.cellWidthZoomScale = 1.0;
         cellModel.cellSpacing = self.cellSpacing;
@@ -150,31 +153,34 @@
         [self refreshCellModel:cellModel index:i];
     }
 
-    if (self.averageCellWidthEnabled && totalItemWidth < self.bounds.size.width) {
+    if (self.averageCellSpacingEnabled && totalItemWidth < self.bounds.size.width) {
         //如果总的内容宽度都没有超过视图度，就将cellWidth等分
-        CGFloat cellWidth = 0;
+        CGFloat cellSpacing = 0;
         if (self.dataSource.count > 0) {
-            cellWidth = (self.bounds.size.width - (self.dataSource.count + 1)*self.cellSpacing)/self.dataSource.count;
+            cellSpacing = (self.bounds.size.width - totalCellWidth)/(self.dataSource.count - 1 + 2);
         }
+        self.innerCellSpacing = cellSpacing;
         [self.dataSource enumerateObjectsUsingBlock:^(JXCategoryBaseCellModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            obj.cellWidth = cellWidth;
+            obj.cellSpacing = cellSpacing;
         }];
+    }else {
+        self.innerCellSpacing = self.cellSpacing;
     }
 
-    __block CGFloat frameXOfSelectedCell = self.cellSpacing;
+    __block CGFloat frameXOfSelectedCell = self.innerCellSpacing;
     __block CGFloat selectedCellWidth = 0;
-    __block CGFloat totalCellWidth = self.cellSpacing;
+    totalItemWidth = self.innerCellSpacing;
     [self.dataSource enumerateObjectsUsingBlock:^(JXCategoryBaseCellModel * cellModel, NSUInteger idx, BOOL * _Nonnull stop) {
         if (idx < self.selectedIndex) {
-            frameXOfSelectedCell += cellModel.cellWidth + self.cellSpacing;
+            frameXOfSelectedCell += cellModel.cellWidth + self.innerCellSpacing;
         }else if (idx == self.selectedIndex) {
             selectedCellWidth = cellModel.cellWidth;
         }
-        totalCellWidth += cellModel.cellWidth + self.cellSpacing;
+        totalItemWidth += cellModel.cellWidth + self.innerCellSpacing;
     }];
 
     CGFloat minX = 0;
-    CGFloat maxX = totalCellWidth - self.bounds.size.width;
+    CGFloat maxX = totalItemWidth - self.bounds.size.width;
     CGFloat targetX = frameXOfSelectedCell - self.bounds.size.width/2.0 + selectedCellWidth/2.0;
     [self.collectionView setContentOffset:CGPointMake(MAX(MIN(maxX, targetX), minX), 0) animated:NO];
 
@@ -306,7 +312,7 @@
 #pragma mark - <UICollectionViewDelegateFlowLayout>
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
-    return UIEdgeInsetsMake(0, self.cellSpacing, 0, self.cellSpacing);
+    return UIEdgeInsetsMake(0, self.innerCellSpacing, 0, self.innerCellSpacing);
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -316,11 +322,11 @@
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
-    return self.cellSpacing;
+    return self.innerCellSpacing;
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
-    return self.cellSpacing;
+    return self.innerCellSpacing;
 }
 
 #pragma mark - KVO
@@ -338,10 +344,10 @@
 
 - (CGRect)getTargetCellFrame:(NSInteger)targetIndex
 {
-    CGFloat x = self.cellSpacing;
+    CGFloat x = self.innerCellSpacing;
     for (int i = 0; i < targetIndex; i ++) {
         JXCategoryBaseCellModel *cellModel = self.dataSource[i];
-        x += cellModel.cellWidth + self.cellSpacing;
+        x += cellModel.cellWidth + self.innerCellSpacing;
     }
     CGFloat width = self.dataSource[targetIndex].cellWidth;
     return CGRectMake(x, 0, width, self.bounds.size.height);

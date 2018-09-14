@@ -34,7 +34,7 @@
     self.myCategoryView.selectedImageNames = selectedImageNames;
     self.myCategoryView.imageZoomEnabled = YES;
     self.myCategoryView.imageZoomScale = 1.3;
-    self.myCategoryView.averageCellWidthEnabled = NO;
+    self.myCategoryView.averageCellSpacingEnabled = NO;
 
     [self configCategoryViewWithType:JXCategoryTitleImageType_LeftImage];
 
