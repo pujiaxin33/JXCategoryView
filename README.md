@@ -116,7 +116,7 @@ selectedIndex    | 只读属性，当前选中的index |
 cellWidth    | cell的宽度，默认：JXCategoryViewAutomaticDimension |
 cellSpacing    | cell之间的间距，默认20 |
 cellWidthIncrement    | cell宽度的补偿值，默认0 |
-averageCellWidthEnabled    | 当cell内容总宽度小于JXCategoryBaseView的宽度，是否将cellWidth均分。默认为YES。 |
+averageCellSpacingEnabled    | 当item内容总宽度小于JXCategoryBaseView的宽度，是否将cellSpacing均分。默认为YES。 |
 contentScrollView    | 需要关联的contentScrollView，内部监听`contentOffset` |
 
 ### Cell样式常用属性说明
