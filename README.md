@@ -62,6 +62,8 @@ Image |  <img src="JXCategoryView/Images/CellImage.gif" width="343" height="80">
 
 说明 | Gif |
 ----|------|
+数据源过少<br/> averageCellSpacingEnabled默认为YES |  <img src="JXCategoryView/Images/averageCellSpacingEnabledYES.gif" width="343" height="80"> |
+数据源过少<br/> averageCellSpacingEnabled为NO |  <img src="JXCategoryView/Images/averageCellSpacingEnabledNO.gif" width="343" height="80"> |
 SegmentedControl |  <img src="JXCategoryView/Images/SegmentedControl.gif" width="343" height="80"> |
 导航栏使用 |  <img src="JXCategoryView/Images/SegmentedControlNavi.gif" width="343" height="80"> |
 嵌套使用 |  <img src="JXCategoryView/Images/Nest.gif" width="343" height="272"> |
