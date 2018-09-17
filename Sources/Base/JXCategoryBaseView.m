@@ -220,7 +220,11 @@
         [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:targetIndex inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
     }
 
-    [self.contentScrollView setContentOffset:CGPointMake(targetIndex*self.contentScrollView.bounds.size.width, 0) animated:YES];
+    if ([self.delegate respondsToSelector:@selector(categoryView:contentScrollViewTransitionToIndex:)]) {
+        [self.delegate categoryView:self contentScrollViewTransitionToIndex:targetIndex];
+    }else {
+        [self.contentScrollView setContentOffset:CGPointMake(targetIndex*self.contentScrollView.bounds.size.width, 0) animated:YES];
+    }
 
     self.selectedIndex = targetIndex;
     if (self.delegate && [self.delegate respondsToSelector:@selector(categoryView:didSelectedItemAtIndex:)]) {
