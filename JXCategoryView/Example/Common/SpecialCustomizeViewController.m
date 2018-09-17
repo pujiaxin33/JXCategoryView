@@ -85,6 +85,15 @@
             [self.navigationController pushViewController:vc animated:YES];
         }
             break;
+        case 6:
+        {
+            //数据源刷新&列表加载数据（ListVCContainerView封装）
+            LoadDataViewController *vc = [[LoadDataViewController alloc] init];
+            vc.isNeedCategoryListContainerView = YES;
+            vc.title = title;
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+            break;
 
         default:
             break;

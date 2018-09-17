@@ -11,6 +11,7 @@
 #import "JXCategoryFactory.h"
 #import "JXCategoryIndicatorProtocol.h"
 #import "JXCategoryViewDefines.h"
+#import "JXCategoryListVCContainerView.h"
 
 #import "JXCategoryIndicatorComponentView.h"
 #import "JXCategoryIndicatorLineView.h"

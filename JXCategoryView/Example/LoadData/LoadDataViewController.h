@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface LoadDataViewController : UIViewController
-
+@property (nonatomic, assign) BOOL isNeedCategoryListContainerView;
 @end

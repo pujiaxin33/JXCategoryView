@@ -20,3 +20,4 @@ typedef NS_ENUM(NSUInteger, JXCategoryCellClickedPosition) {
     JXCategoryCellClickedPosition_Left,
     JXCategoryCellClickedPosition_Right,
 };
+

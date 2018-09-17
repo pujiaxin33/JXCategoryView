@@ -1039,6 +1039,27 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="80" id="9RH-N6-RHk">
+                                        <rect key="frame" x="0.0" y="264" width="375" height="80"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9RH-N6-RHk" id="oIJ-xf-k3V">
+                                            <rect key="frame" x="0.0" y="0.0" width="341" height="79.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="数据源刷新&amp;列表加载数据（ListVCContainerView封装）" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OOg-IN-cx9">
+                                                    <rect key="frame" x="16" y="19.5" width="230.5" height="41"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="OOg-IN-cx9" firstAttribute="centerY" secondItem="oIJ-xf-k3V" secondAttribute="centerY" id="0ZN-Dq-7Zh"/>
+                                                <constraint firstItem="OOg-IN-cx9" firstAttribute="leading" secondItem="oIJ-xf-k3V" secondAttribute="leading" constant="16" id="YKf-c4-ITc"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="OOg-IN-cx9" secondAttribute="trailing" constant="20" symbolic="YES" id="Z0c-hM-Dh8"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
