@@ -45,14 +45,14 @@
     [super reloadData:cellModel];
 
     JXCategoryTitleCellModel *myCellModel = (JXCategoryTitleCellModel *)cellModel;
-    self.titleLabel.font = myCellModel.titleFont;
 
+    CGFloat pointSize = myCellModel.titleFont.pointSize;
     if (myCellModel.titleLabelZoomEnabled) {
-        self.titleLabel.transform = CGAffineTransformMakeScale(myCellModel.titleLabelZoomScale, myCellModel.titleLabelZoomScale);
-        self.maskTitleLabel.transform = CGAffineTransformMakeScale(myCellModel.titleLabelZoomScale, myCellModel.titleLabelZoomScale);
+        self.titleLabel.font = [UIFont fontWithDescriptor:myCellModel.titleFont.fontDescriptor size:pointSize*myCellModel.titleLabelZoomScale];
+        self.maskTitleLabel.font = [UIFont fontWithDescriptor:myCellModel.titleFont.fontDescriptor size:pointSize*myCellModel.titleLabelZoomScale];
     }else {
-        self.titleLabel.transform = CGAffineTransformIdentity;
-        self.maskTitleLabel.transform = CGAffineTransformIdentity;
+        self.titleLabel.font = myCellModel.titleFont;
+        self.maskTitleLabel.font = myCellModel.titleFont;
     }
 
     self.maskTitleLabel.hidden = !myCellModel.titleLabelMaskEnabled;
