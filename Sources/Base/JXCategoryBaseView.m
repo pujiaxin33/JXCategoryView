@@ -9,8 +9,17 @@
 #import "JXCategoryBaseView.h"
 #import "JXCategoryFactory.h"
 
+struct DelegateFlags {
+    unsigned int didSelectedItemAtIndexFlag : 1;
+    unsigned int didClickSelectedItemAtIndexFlag : 1;
+    unsigned int didScrollSelectedItemAtIndexFlag : 1;
+    unsigned int contentScrollViewTransitionToIndexFlag : 1;
+    unsigned int scrollingFromLeftIndexToRightIndexFlag : 1;
+};
+
 @interface JXCategoryBaseView () <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 
+@property (nonatomic, assign) struct DelegateFlags delegateFlags;
 @property (nonatomic, assign) NSInteger selectedIndex;
 @property (nonatomic, assign) CGFloat innerCellSpacing;
 
@@ -43,6 +52,16 @@
         [self initializeViews];
     }
     return self;
+}
+
+- (void)setDelegate:(id<JXCategoryViewDelegate>)delegate {
+    _delegate = delegate;
+
+    _delegateFlags.didSelectedItemAtIndexFlag = [delegate respondsToSelector:@selector(categoryView:didSelectedItemAtIndex:)];
+    _delegateFlags.didClickSelectedItemAtIndexFlag = [delegate respondsToSelector:@selector(categoryView:didClickSelectedItemAtIndex:)];
+    _delegateFlags.didScrollSelectedItemAtIndexFlag = [delegate respondsToSelector:@selector(categoryView:didScrollSelectedItemAtIndex:)];
+    _delegateFlags.contentScrollViewTransitionToIndexFlag = [delegate respondsToSelector:@selector(categoryView:contentScrollViewTransitionToIndex:)];
+    _delegateFlags.scrollingFromLeftIndexToRightIndexFlag = [delegate respondsToSelector:@selector(categoryView:scrollingFromLeftIndex:toRightIndex:ratio:)];
 }
 
 - (void)initializeData
@@ -193,7 +212,7 @@
     }
 
     if (self.selectedIndex == targetIndex) {
-        if (self.delegate && [self.delegate respondsToSelector:@selector(categoryView:didSelectedItemAtIndex:)]) {
+        if (self.delegateFlags.didSelectedItemAtIndexFlag) {
             [self.delegate categoryView:self didSelectedItemAtIndex:targetIndex];
         }
         return NO;
@@ -220,14 +239,14 @@
         [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:targetIndex inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
     }
 
-    if ([self.delegate respondsToSelector:@selector(categoryView:contentScrollViewTransitionToIndex:)]) {
+    if (self.delegateFlags.contentScrollViewTransitionToIndexFlag) {
         [self.delegate categoryView:self contentScrollViewTransitionToIndex:targetIndex];
     }else {
         [self.contentScrollView setContentOffset:CGPointMake(targetIndex*self.contentScrollView.bounds.size.width, 0) animated:YES];
     }
 
     self.selectedIndex = targetIndex;
-    if (self.delegate && [self.delegate respondsToSelector:@selector(categoryView:didSelectedItemAtIndex:)]) {
+    if (self.delegateFlags.didSelectedItemAtIndexFlag) {
         [self.delegate categoryView:self didSelectedItemAtIndex:targetIndex];
     }
 
@@ -272,7 +291,7 @@
             [self.collectionView.collectionViewLayout invalidateLayout];
         }
 
-        if ([self.delegate respondsToSelector:@selector(categoryView:scrollingFromLeftIndex:toRightIndex:ratio:)]) {
+        if (self.delegateFlags.scrollingFromLeftIndexToRightIndexFlag) {
             [self.delegate categoryView:self scrollingFromLeftIndex:baseIndex toRightIndex:baseIndex + 1 ratio:remainderRatio];
         }
     }
@@ -360,7 +379,7 @@
 #pragma mark - Private
 
 - (void)clickselectItemAtIndex:(NSInteger)index {
-    if (self.delegate && [self.delegate respondsToSelector:@selector(categoryView:didClickSelectedItemAtIndex:)]) {
+    if (self.delegateFlags.didClickSelectedItemAtIndexFlag) {
         [self.delegate categoryView:self didClickSelectedItemAtIndex:index];
     }
 
@@ -368,7 +387,7 @@
 }
 
 - (void)scrollselectItemAtIndex:(NSInteger)index {
-    if (self.delegate && [self.delegate respondsToSelector:@selector(categoryView:didScrollSelectedItemAtIndex:)]) {
+    if (self.delegateFlags.didScrollSelectedItemAtIndexFlag) {
         [self.delegate categoryView:self didScrollSelectedItemAtIndex:index];
     }
 
