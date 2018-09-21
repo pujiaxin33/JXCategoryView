@@ -10,7 +10,7 @@
 A powerful and easy to use category view (segmentedcontrol, segmentview, pagingview, pagerview, pagecontrol) (腾讯新闻、今日头条、QQ音乐、网易云音乐、京东、爱奇艺、腾讯视频、淘宝、天猫、简书、微博等所有主流APP分类切换滚动视图)
 
 与其他的同类三方库对比的优点：
-- 使用POP(Protocol Oriented Programming面对协议编程)封装指示器逻辑，可以为所欲为的自定义指示器效果；
+- 使用协议封装指示器逻辑，可以为所欲为的自定义指示器效果；
 - 提供更加全面丰富的效果，交互更加顺畅；
 - 使用子类化管理cell样式，逻辑更清晰，扩展更简单；
 
