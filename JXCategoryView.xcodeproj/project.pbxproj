@@ -50,14 +50,8 @@
 		19346D6F21269F3A0065FD8F /* JXCategoryIndicatorBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 19346D6E21269F3A0065FD8F /* JXCategoryIndicatorBackgroundView.m */; };
 		19346D722126B0D80065FD8F /* JXCategoryIndicatorTriangleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 19346D712126B0D80065FD8F /* JXCategoryIndicatorTriangleView.m */; };
 		194DCDB32133C8E8000E89EF /* PagingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 194DCDB12133C8E8000E89EF /* PagingViewController.m */; };
-		194DCDBB2133C918000E89EF /* JXPagingListContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 194DCDB52133C918000E89EF /* JXPagingListContainerView.m */; };
-		194DCDBC2133C918000E89EF /* JXPagingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 194DCDB62133C918000E89EF /* JXPagingView.m */; };
-		194DCDBD2133C918000E89EF /* JXPagingMainTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 194DCDBA2133C918000E89EF /* JXPagingMainTableView.m */; };
 		194DCDC02133C948000E89EF /* PagingViewTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 194DCDBF2133C948000E89EF /* PagingViewTableHeaderView.m */; };
 		194DCDC32133CAA8000E89EF /* TestListBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 194DCDC22133CAA8000E89EF /* TestListBaseView.m */; };
-		194DCDC62133DF86000E89EF /* PartnerListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 194DCDC52133DF86000E89EF /* PartnerListView.m */; };
-		194DCDC92133DFC6000E89EF /* HobbyListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 194DCDC82133DFC6000E89EF /* HobbyListView.m */; };
-		194DCDCC2133DFD1000E89EF /* PowerListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 194DCDCB2133DFD1000E89EF /* PowerListView.m */; };
 		194DCDD02133F1F5000E89EF /* LoadDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 194DCDCF2133F1F5000E89EF /* LoadDataViewController.m */; };
 		194DCDD52134DEF2000E89EF /* LoadDataListBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 194DCDD42134DEF2000E89EF /* LoadDataListBaseViewController.m */; };
 		194DCDD72134EF18000E89EF /* LoadData.gif in Resources */ = {isa = PBXBuildFile; fileRef = 194DCDD62134EF18000E89EF /* LoadData.gif */; };
@@ -76,6 +70,10 @@
 		196428FC2148FA5C009C1D31 /* JXCategoryListVCContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 196428FB2148FA5C009C1D31 /* JXCategoryListVCContainerView.m */; };
 		196429E7214B8091009C1D31 /* averageCellSpacingEnabledNO.gif in Resources */ = {isa = PBXBuildFile; fileRef = 196429E5214B8090009C1D31 /* averageCellSpacingEnabledNO.gif */; };
 		196429E8214B8091009C1D31 /* averageCellSpacingEnabledYES.gif in Resources */ = {isa = PBXBuildFile; fileRef = 196429E6214B8091009C1D31 /* averageCellSpacingEnabledYES.gif */; };
+		197597652154DA97005447D1 /* JXPagerListContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1975975D2154DA96005447D1 /* JXPagerListContainerView.m */; };
+		197597662154DA97005447D1 /* JXPagerMainTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1975975E2154DA96005447D1 /* JXPagerMainTableView.m */; };
+		197597672154DA97005447D1 /* JXPagerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1975975F2154DA96005447D1 /* JXPagerView.m */; };
+		197597682154DA97005447D1 /* JXPagerListRefreshView.m in Sources */ = {isa = PBXBuildFile; fileRef = 197597642154DA96005447D1 /* JXPagerListRefreshView.m */; };
 		19870C29211D857F00C23CAA /* lufei.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 19870C28211D857F00C23CAA /* lufei.jpg */; };
 		19870C8321218DAC00C23CAA /* NaviSegmentedControlViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19870C8221218DAC00C23CAA /* NaviSegmentedControlViewController.m */; };
 		19870C8621218E3A00C23CAA /* SegmentedListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19870C8521218E3A00C23CAA /* SegmentedListViewController.m */; };
@@ -199,22 +197,10 @@
 		19346D712126B0D80065FD8F /* JXCategoryIndicatorTriangleView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JXCategoryIndicatorTriangleView.m; sourceTree = "<group>"; };
 		194DCDB12133C8E8000E89EF /* PagingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PagingViewController.m; sourceTree = "<group>"; };
 		194DCDB22133C8E8000E89EF /* PagingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PagingViewController.h; sourceTree = "<group>"; };
-		194DCDB52133C918000E89EF /* JXPagingListContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXPagingListContainerView.m; sourceTree = "<group>"; };
-		194DCDB62133C918000E89EF /* JXPagingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXPagingView.m; sourceTree = "<group>"; };
-		194DCDB72133C918000E89EF /* JXPagingMainTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXPagingMainTableView.h; sourceTree = "<group>"; };
-		194DCDB82133C918000E89EF /* JXPagingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXPagingView.h; sourceTree = "<group>"; };
-		194DCDB92133C918000E89EF /* JXPagingListContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXPagingListContainerView.h; sourceTree = "<group>"; };
-		194DCDBA2133C918000E89EF /* JXPagingMainTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXPagingMainTableView.m; sourceTree = "<group>"; };
 		194DCDBE2133C948000E89EF /* PagingViewTableHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PagingViewTableHeaderView.h; sourceTree = "<group>"; };
 		194DCDBF2133C948000E89EF /* PagingViewTableHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PagingViewTableHeaderView.m; sourceTree = "<group>"; };
 		194DCDC12133CAA8000E89EF /* TestListBaseView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestListBaseView.h; sourceTree = "<group>"; };
 		194DCDC22133CAA8000E89EF /* TestListBaseView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestListBaseView.m; sourceTree = "<group>"; };
-		194DCDC42133DF86000E89EF /* PartnerListView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PartnerListView.h; sourceTree = "<group>"; };
-		194DCDC52133DF86000E89EF /* PartnerListView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PartnerListView.m; sourceTree = "<group>"; };
-		194DCDC72133DFC6000E89EF /* HobbyListView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HobbyListView.h; sourceTree = "<group>"; };
-		194DCDC82133DFC6000E89EF /* HobbyListView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HobbyListView.m; sourceTree = "<group>"; };
-		194DCDCA2133DFD1000E89EF /* PowerListView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PowerListView.h; sourceTree = "<group>"; };
-		194DCDCB2133DFD1000E89EF /* PowerListView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PowerListView.m; sourceTree = "<group>"; };
 		194DCDCE2133F1F5000E89EF /* LoadDataViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoadDataViewController.h; sourceTree = "<group>"; };
 		194DCDCF2133F1F5000E89EF /* LoadDataViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoadDataViewController.m; sourceTree = "<group>"; };
 		194DCDD32134DEF2000E89EF /* LoadDataListBaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoadDataListBaseViewController.h; sourceTree = "<group>"; };
@@ -248,6 +234,14 @@
 		196428FB2148FA5C009C1D31 /* JXCategoryListVCContainerView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JXCategoryListVCContainerView.m; sourceTree = "<group>"; };
 		196429E5214B8090009C1D31 /* averageCellSpacingEnabledNO.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = averageCellSpacingEnabledNO.gif; sourceTree = "<group>"; };
 		196429E6214B8091009C1D31 /* averageCellSpacingEnabledYES.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = averageCellSpacingEnabledYES.gif; sourceTree = "<group>"; };
+		1975975D2154DA96005447D1 /* JXPagerListContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXPagerListContainerView.m; sourceTree = "<group>"; };
+		1975975E2154DA96005447D1 /* JXPagerMainTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXPagerMainTableView.m; sourceTree = "<group>"; };
+		1975975F2154DA96005447D1 /* JXPagerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXPagerView.m; sourceTree = "<group>"; };
+		197597602154DA96005447D1 /* JXPagerListRefreshView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXPagerListRefreshView.h; sourceTree = "<group>"; };
+		197597612154DA96005447D1 /* JXPagerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXPagerView.h; sourceTree = "<group>"; };
+		197597622154DA96005447D1 /* JXPagerListContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXPagerListContainerView.h; sourceTree = "<group>"; };
+		197597632154DA96005447D1 /* JXPagerMainTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXPagerMainTableView.h; sourceTree = "<group>"; };
+		197597642154DA96005447D1 /* JXPagerListRefreshView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXPagerListRefreshView.m; sourceTree = "<group>"; };
 		19870C28211D857F00C23CAA /* lufei.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = lufei.jpg; sourceTree = "<group>"; };
 		19870C8121218DAC00C23CAA /* NaviSegmentedControlViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NaviSegmentedControlViewController.h; sourceTree = "<group>"; };
 		19870C8221218DAC00C23CAA /* NaviSegmentedControlViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NaviSegmentedControlViewController.m; sourceTree = "<group>"; };
@@ -523,19 +517,6 @@
 			path = SegmentedControl;
 			sourceTree = "<group>";
 		};
-		194DCDB42133C918000E89EF /* JXPagingView-OC */ = {
-			isa = PBXGroup;
-			children = (
-				194DCDB52133C918000E89EF /* JXPagingListContainerView.m */,
-				194DCDB62133C918000E89EF /* JXPagingView.m */,
-				194DCDB72133C918000E89EF /* JXPagingMainTableView.h */,
-				194DCDB82133C918000E89EF /* JXPagingView.h */,
-				194DCDB92133C918000E89EF /* JXPagingListContainerView.h */,
-				194DCDBA2133C918000E89EF /* JXPagingMainTableView.m */,
-			);
-			path = "JXPagingView-OC";
-			sourceTree = "<group>";
-		};
 		194DCDCD2133F1D8000E89EF /* LoadData */ = {
 			isa = PBXGroup;
 			children = (
@@ -600,10 +581,25 @@
 			path = Nest;
 			sourceTree = "<group>";
 		};
+		1975975C2154DA96005447D1 /* JXPagerView */ = {
+			isa = PBXGroup;
+			children = (
+				1975975D2154DA96005447D1 /* JXPagerListContainerView.m */,
+				1975975E2154DA96005447D1 /* JXPagerMainTableView.m */,
+				1975975F2154DA96005447D1 /* JXPagerView.m */,
+				197597602154DA96005447D1 /* JXPagerListRefreshView.h */,
+				197597612154DA96005447D1 /* JXPagerView.h */,
+				197597622154DA96005447D1 /* JXPagerListContainerView.h */,
+				197597632154DA96005447D1 /* JXPagerMainTableView.h */,
+				197597642154DA96005447D1 /* JXPagerListRefreshView.m */,
+			);
+			path = JXPagerView;
+			sourceTree = "<group>";
+		};
 		19870BB3211D73DC00C23CAA /* PagingView */ = {
 			isa = PBXGroup;
 			children = (
-				194DCDB42133C918000E89EF /* JXPagingView-OC */,
+				1975975C2154DA96005447D1 /* JXPagerView */,
 				19870BC6211D7FAC00C23CAA /* Example */,
 			);
 			path = PagingView;
@@ -618,12 +614,6 @@
 				194DCDBF2133C948000E89EF /* PagingViewTableHeaderView.m */,
 				194DCDC12133CAA8000E89EF /* TestListBaseView.h */,
 				194DCDC22133CAA8000E89EF /* TestListBaseView.m */,
-				194DCDC42133DF86000E89EF /* PartnerListView.h */,
-				194DCDC52133DF86000E89EF /* PartnerListView.m */,
-				194DCDC72133DFC6000E89EF /* HobbyListView.h */,
-				194DCDC82133DFC6000E89EF /* HobbyListView.m */,
-				194DCDCA2133DFD1000E89EF /* PowerListView.h */,
-				194DCDCB2133DFD1000E89EF /* PowerListView.m */,
 			);
 			path = Example;
 			sourceTree = "<group>";
@@ -917,21 +907,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				191A9612212CF70300DBF784 /* JXCategoryTitleAttributeCellModel.m in Sources */,
-				194DCDC62133DF86000E89EF /* PartnerListView.m in Sources */,
 				19302329211AD31C00AF1444 /* TitleImageViewController.m in Sources */,
 				19870CF92122BB6100C23CAA /* UIColor+JXAdd.m in Sources */,
 				19302337211AEB6300AF1444 /* NumberViewController.m in Sources */,
 				19870D002122BB6100C23CAA /* JXCategoryBaseView.m in Sources */,
-				194DCDCC2133DFD1000E89EF /* PowerListView.m in Sources */,
 				19870CF32122BB6100C23CAA /* JXCategoryIndicatorView.m in Sources */,
 				191A9615212CFA4D00DBF784 /* AttributeViewViewController.m in Sources */,
 				19346D6C2126934B0065FD8F /* JXCategoryIndicatorImageView.m in Sources */,
-				194DCDBB2133C918000E89EF /* JXPagingListContainerView.m in Sources */,
 				194DCDD52134DEF2000E89EF /* LoadDataListBaseViewController.m in Sources */,
 				194DCDC02133C948000E89EF /* PagingViewTableHeaderView.m in Sources */,
 				19562CE3212A997F0095AA27 /* ImageViewController.m in Sources */,
 				191A960C212CF6EA00DBF784 /* JXCategoryTitleAttributeView.m in Sources */,
-				194DCDBC2133C918000E89EF /* JXPagingView.m in Sources */,
 				19D57E8D212D68D10077DCA6 /* VerticalSectionHeaderView.m in Sources */,
 				19562CD9212A94A40095AA27 /* JXCategoryImageView.m in Sources */,
 				19870CF52122BB6100C23CAA /* JXCategoryNumberView.m in Sources */,
@@ -939,10 +925,10 @@
 				19870CF02122BB6100C23CAA /* JXCategoryTitleCell.m in Sources */,
 				194DCDB32133C8E8000E89EF /* PagingViewController.m in Sources */,
 				194DCDC32133CAA8000E89EF /* TestListBaseView.m in Sources */,
-				194DCDBD2133C918000E89EF /* JXPagingMainTableView.m in Sources */,
 				19870CED2122BB6100C23CAA /* JXCategoryTitleImageCell.m in Sources */,
 				19D57E84212D5E0E0077DCA6 /* VerticalListCellModel.m in Sources */,
 				19562CCE212A8C350095AA27 /* IndicatorCustomizeViewController.m in Sources */,
+				197597652154DA97005447D1 /* JXPagerListContainerView.m in Sources */,
 				19870CF62122BB6100C23CAA /* JXCategoryNumberCell.m in Sources */,
 				19870D022122BB6100C23CAA /* JXCategoryBaseCellModel.m in Sources */,
 				19D57E7E212D5C600077DCA6 /* VerticalListViewController.m in Sources */,
@@ -955,19 +941,20 @@
 				191A95E0212BBC2500DBF784 /* JXCategoryIndicatorBallView.m in Sources */,
 				19346D722126B0D80065FD8F /* JXCategoryIndicatorTriangleView.m in Sources */,
 				194DCDD02133F1F5000E89EF /* LoadDataViewController.m in Sources */,
-				194DCDC92133DFC6000E89EF /* HobbyListView.m in Sources */,
 				19302333211AD8B200AF1444 /* ListViewController.m in Sources */,
 				191A960F212CF6F600DBF784 /* JXCategoryTitleAttributeCell.m in Sources */,
 				19870C8621218E3A00C23CAA /* SegmentedListViewController.m in Sources */,
 				19346D69212677A50065FD8F /* JXCategoryIndicatorComponentView.m in Sources */,
 				19870CF12122BB6100C23CAA /* JXCategoryTitleView.m in Sources */,
 				19870CEF2122BB6100C23CAA /* JXCategoryTitleCellModel.m in Sources */,
+				197597662154DA97005447D1 /* JXPagerMainTableView.m in Sources */,
 				1912A522211C1BD000A80826 /* BaseViewController.m in Sources */,
 				19302325211AD1B300AF1444 /* TitleImageSettingViewController.m in Sources */,
 				19346D6F21269F3A0065FD8F /* JXCategoryIndicatorBackgroundView.m in Sources */,
 				1912A533211D08C800A80826 /* FootballViewController.m in Sources */,
 				19562CE7212A9B6E0095AA27 /* JXCategoryDotView.m in Sources */,
 				19D57E78212D3FD30077DCA6 /* JXCategoryIndicatorDotLineView.m in Sources */,
+				197597682154DA97005447D1 /* JXPagerListRefreshView.m in Sources */,
 				19870D012122BB6100C23CAA /* JXCategoryBaseCell.m in Sources */,
 				19870CF82122BB6100C23CAA /* JXCategoryCollectionView.m in Sources */,
 				19870C8321218DAC00C23CAA /* NaviSegmentedControlViewController.m in Sources */,
@@ -989,6 +976,7 @@
 				19562CF1212AA1360095AA27 /* DotViewController.m in Sources */,
 				19870CEC2122BB6100C23CAA /* JXCategoryTitleImageView.m in Sources */,
 				19870CF72122BB6100C23CAA /* JXCategoryNumberCellModel.m in Sources */,
+				197597672154DA97005447D1 /* JXPagerView.m in Sources */,
 				190A54DF206397370050B327 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

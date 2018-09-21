@@ -9,7 +9,7 @@
 #import "TestListBaseView.h"
 
 @interface TestListBaseView()<UITableViewDataSource, UITableViewDelegate>
-
+@property (nonatomic, copy) void(^scrollCallback)(UIScrollView *scrollView);
 @end
 
 @implementation TestListBaseView
@@ -52,10 +52,9 @@
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    if (self.delegate && [self.delegate respondsToSelector:@selector(listViewDidScroll:)]) {
-        [self.delegate listViewDidScroll:scrollView];
-    }
+    self.scrollCallback(scrollView);
 }
+
 
 #pragma mark - JXPagingViewListViewDelegate
 
@@ -63,6 +62,9 @@
     return self.tableView;
 }
 
+- (void)listViewDidScrollCallback:(void (^)(UIScrollView *))callback {
+    self.scrollCallback = callback;
+}
 
 
 

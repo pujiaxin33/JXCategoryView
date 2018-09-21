@@ -1,21 +1,21 @@
 //
-//  JXPagingListContainerView.m
-//  JXPagingView
+//  JXPagerListContainerView.m
+//  JXPagerView
 //
 //  Created by jiaxin on 2018/8/27.
 //  Copyright © 2018年 jiaxin. All rights reserved.
 //
 
-#import "JXPagingListContainerView.h"
-#import "JXPagingMainTableView.h"
+#import "JXPagerListContainerView.h"
+#import "JXPagerMainTableView.h"
 
-@interface JXPagingListContainerView() <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
+@interface JXPagerListContainerView() <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 @property (nonatomic, strong) UICollectionView *collectionView;
 @end
 
-@implementation JXPagingListContainerView
+@implementation JXPagerListContainerView
 
-- (instancetype)initWithDelegate:(id<JXPagingListContainerViewDelegate>)delegate {
+- (instancetype)initWithDelegate:(id<JXPagerListContainerViewDelegate>)delegate {
     self = [super initWithFrame:CGRectZero];
     if (self) {
         _delegate = delegate;
@@ -68,6 +68,10 @@
     return cell;
 }
 
+- (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
+    [self.delegate listContainerView:self willDisplayCellAtRow:indexPath.item];
+}
+
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     self.mainTableView.scrollEnabled = YES;
 }
@@ -81,7 +85,9 @@
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    self.mainTableView.scrollEnabled = NO;
+    if (scrollView.isTracking || scrollView.isDecelerating) {
+        self.mainTableView.scrollEnabled = NO;
+    }
 }
 
 #pragma mark - UICollectionViewDelegateFlowLayout

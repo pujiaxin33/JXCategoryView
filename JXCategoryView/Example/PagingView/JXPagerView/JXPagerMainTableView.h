@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface JXPagingMainTableView : UITableView
+@interface JXPagerMainTableView : UITableView
 
 @end

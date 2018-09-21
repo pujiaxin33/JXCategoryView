@@ -7,16 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "JXPagingView.h"
+#import "JXPagerView.h"
 
-@protocol TestListViewDelegate <NSObject>
-- (void)listViewDidScroll:(UIScrollView *)scrollView;
-@end
-
-@interface TestListBaseView : UIView <JXPagingViewListViewDelegate>
+@interface TestListBaseView : UIView <JXPagerViewListViewDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSArray <NSString *> *dataSource;
-@property (nonatomic, weak) id<TestListViewDelegate> delegate;
 
 @end

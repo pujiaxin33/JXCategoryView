@@ -7,18 +7,16 @@
 //
 
 #import "PagingViewController.h"
-#import "JXPagingView.h"
+#import "JXPagerView.h"
 #import "JXCategoryView.h"
 #import "PagingViewTableHeaderView.h"
-#import "PartnerListView.h"
-#import "HobbyListView.h"
-#import "PowerListView.h"
+#import "TestListBaseView.h"
 
 static const CGFloat JXTableHeaderViewHeight = 200;
 static const CGFloat JXheightForHeaderInSection = 50;
 
-@interface PagingViewController () <TestListViewDelegate, JXPagingViewDelegate, JXCategoryViewDelegate>
-@property (nonatomic, strong) JXPagingView *pagingView;
+@interface PagingViewController () <JXPagerViewDelegate, JXCategoryViewDelegate>
+@property (nonatomic, strong) JXPagerView *pagingView;
 @property (nonatomic, strong) PagingViewTableHeaderView *userHeaderView;
 @property (nonatomic, strong) JXCategoryTitleView *categoryView;
 @property (nonatomic, strong) NSArray <TestListBaseView *> *listViewArray;
@@ -34,15 +32,14 @@ static const CGFloat JXheightForHeaderInSection = 50;
     self.navigationController.navigationBar.translucent = false;
     _titles = @[@"能力", @"爱好", @"队友"];
 
-    
-    PowerListView *powerListView = [[PowerListView alloc] init];
-    powerListView.delegate = self;
+    TestListBaseView *powerListView = [[TestListBaseView alloc] init];
+    powerListView.dataSource = @[@"橡胶火箭", @"橡胶火箭炮", @"橡胶机关枪", @"橡胶子弹", @"橡胶攻城炮", @"橡胶象枪", @"橡胶象枪乱打", @"橡胶灰熊铳", @"橡胶雷神象枪", @"橡胶猿王枪", @"橡胶犀·榴弹炮", @"橡胶大蛇炮", @"橡胶火箭", @"橡胶火箭炮", @"橡胶机关枪", @"橡胶子弹", @"橡胶攻城炮", @"橡胶象枪", @"橡胶象枪乱打", @"橡胶灰熊铳", @"橡胶雷神象枪", @"橡胶猿王枪", @"橡胶犀·榴弹炮", @"橡胶大蛇炮"].mutableCopy;
 
-    HobbyListView *hobbyListView = [[HobbyListView alloc] init];
-    hobbyListView.delegate = self;
+    TestListBaseView *hobbyListView = [[TestListBaseView alloc] init];
+    hobbyListView.dataSource = @[@"吃烤肉", @"吃鸡腿肉", @"吃牛肉", @"各种肉"].mutableCopy;
 
-    PartnerListView *partnerListView = [[PartnerListView alloc] init];
-    partnerListView.delegate = self;
+    TestListBaseView *partnerListView = [[TestListBaseView alloc] init];
+    partnerListView.dataSource = @[@"【剑士】罗罗诺亚·索隆", @"【航海士】娜美", @"【狙击手】乌索普", @"【厨师】香吉士", @"【船医】托尼托尼·乔巴", @"【船匠】 弗兰奇", @"【音乐家】布鲁克", @"【考古学家】妮可·罗宾"].mutableCopy;
 
     _listViewArray = @[powerListView, hobbyListView, partnerListView];
 
@@ -63,7 +60,7 @@ static const CGFloat JXheightForHeaderInSection = 50;
     lineView.indicatorLineWidth = 30;
     self.categoryView.indicators = @[lineView];
 
-    _pagingView = [[JXPagingView alloc] initWithDelegate:self];
+    _pagingView = [[JXPagerView alloc] initWithDelegate:self];
     [self.view addSubview:self.pagingView];
 
     self.categoryView.contentScrollView = self.pagingView.listContainerView.collectionView;
@@ -77,36 +74,26 @@ static const CGFloat JXheightForHeaderInSection = 50;
     self.pagingView.frame = self.view.bounds;
 }
 
-#pragma mark - TestListViewDelegate
-
-- (void)listViewDidScroll:(UIScrollView *)scrollView {
-    [self.pagingView listViewDidScroll:scrollView];
-}
-
 #pragma mark - JXPagingViewDelegate
 
-- (UIView *)tableHeaderViewInPagingView:(JXPagingView *)pagingView {
+- (UIView *)tableHeaderViewInPagerView:(JXPagerView *)pagerView {
     return self.userHeaderView;
 }
 
-- (CGFloat)tableHeaderViewHeightInPagingView:(JXPagingView *)pagingView {
+- (CGFloat)tableHeaderViewHeightInPagerView:(JXPagerView *)pagerView {
     return JXTableHeaderViewHeight;
 }
 
-- (CGFloat)heightForPinSectionHeaderInPagingView:(JXPagingView *)pagingView {
+- (CGFloat)heightForPinSectionHeaderInPagerView:(JXPagerView *)pagerView {
     return JXheightForHeaderInSection;
 }
 
-- (UIView *)viewForPinSectionHeaderInPagingView:(JXPagingView *)pagingView {
+- (UIView *)viewForPinSectionHeaderInPagerView:(JXPagerView *)pagerView {
     return self.categoryView;
 }
 
-- (NSInteger)numberOfListViewsInPagingView:(JXPagingView *)pagingView {
-    return self.titles.count;
-}
-
-- (UIView<JXPagingViewListViewDelegate> *)pagingView:(JXPagingView *)pagingView listViewInRow:(NSInteger)row {
-    return self.listViewArray[row];
+- (NSArray<UIView<JXPagerViewListViewDelegate> *> *)listViewsInPagerView:(JXPagerView *)pagerView {
+    return self.listViewArray;
 }
 
 - (void)mainTableViewDidScroll:(UIScrollView *)scrollView {
