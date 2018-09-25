@@ -207,6 +207,10 @@ struct DelegateFlags {
 }
 
 - (BOOL)selectCellAtIndex:(NSInteger)targetIndex {
+    return [self _selectCellAtIndex:targetIndex handleContentScrollView:YES];
+}
+
+- (BOOL)_selectCellAtIndex:(NSInteger)targetIndex handleContentScrollView:(BOOL)handleContentScrollView{
     if (targetIndex >= self.dataSource.count) {
         return NO;
     }
@@ -239,10 +243,12 @@ struct DelegateFlags {
         [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:targetIndex inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
     }
 
-    if (self.delegateFlags.contentScrollViewTransitionToIndexFlag) {
-        [self.delegate categoryView:self contentScrollViewTransitionToIndex:targetIndex];
-    }else {
-        [self.contentScrollView setContentOffset:CGPointMake(targetIndex*self.contentScrollView.bounds.size.width, 0) animated:YES];
+    if (handleContentScrollView) {
+        if (self.delegateFlags.contentScrollViewTransitionToIndexFlag) {
+            [self.delegate categoryView:self contentScrollViewTransitionToIndex:targetIndex];
+        }else {
+            [self.contentScrollView setContentOffset:CGPointMake(targetIndex*self.contentScrollView.bounds.size.width, 0) animated:YES];
+        }
     }
 
     self.selectedIndex = targetIndex;
@@ -280,9 +286,20 @@ struct DelegateFlags {
     CGFloat remainderRatio = ratio - baseIndex;
 
     if (remainderRatio == 0) {
-        //连续滑动翻页，需要更新选中状态
+        //滑动翻页，需要更新选中状态
         [self scrollselectItemAtIndex:baseIndex];
     }else {
+        //快速滑动翻页，当remainderRatio没有变成0，但是已经翻页了，需要通过下面的判断，触发选中
+        if (fabs(ratio - self.selectedIndex) > 1) {
+            NSInteger targetIndex = baseIndex;
+            if (ratio < self.selectedIndex) {
+                targetIndex = baseIndex + 1;
+            }
+            if (self.delegateFlags.didScrollSelectedItemAtIndexFlag) {
+                [self.delegate categoryView:self didScrollSelectedItemAtIndex:targetIndex];
+            }
+            [self _selectCellAtIndex:targetIndex handleContentScrollView:NO];
+        }
         if (self.cellWidthZoomEnabled && self.cellWidthZoomScrollGradientEnabled) {
             JXCategoryBaseCellModel *leftCellModel = (JXCategoryBaseCellModel *)self.dataSource[baseIndex];
             JXCategoryBaseCellModel *rightCellModel = (JXCategoryBaseCellModel *)self.dataSource[baseIndex + 1];
