@@ -182,7 +182,7 @@ lineView.indicatorLineWidth = JXCategoryViewAutomaticDimension;
 JXCategoryIndicatorBackgroundView *backgroundView = [[JXCategoryIndicatorBackgroundView alloc] init];
 backgroundView.backgroundViewColor = [UIColor redColor];
 backgroundView.backgroundViewWidth = JXCategoryViewAutomaticDimension;
-titleCategoryView.indicators = @[lineView, backgroundView];
+self.categoryView.indicators = @[lineView, backgroundView];
 
 //3、绑定contentScrollView。self.scrollView的初始化细节参考源码。
 self.categoryView.contentScrollView = self.scrollView;
