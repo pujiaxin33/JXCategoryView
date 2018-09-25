@@ -47,12 +47,17 @@
     JXCategoryTitleCellModel *myCellModel = (JXCategoryTitleCellModel *)cellModel;
 
     CGFloat pointSize = myCellModel.titleFont.pointSize;
+    UIFontDescriptor *fontDescriptor = myCellModel.titleFont.fontDescriptor;
+    if (myCellModel.selected) {
+        fontDescriptor = myCellModel.titleSelectedFont.fontDescriptor;
+        pointSize = myCellModel.titleSelectedFont.pointSize;
+    }
     if (myCellModel.titleLabelZoomEnabled) {
-        self.titleLabel.font = [UIFont fontWithDescriptor:myCellModel.titleFont.fontDescriptor size:pointSize*myCellModel.titleLabelZoomScale];
-        self.maskTitleLabel.font = [UIFont fontWithDescriptor:myCellModel.titleFont.fontDescriptor size:pointSize*myCellModel.titleLabelZoomScale];
+        self.titleLabel.font = [UIFont fontWithDescriptor:fontDescriptor size:pointSize*myCellModel.titleLabelZoomScale];
+        self.maskTitleLabel.font = [UIFont fontWithDescriptor:fontDescriptor size:pointSize*myCellModel.titleLabelZoomScale];
     }else {
-        self.titleLabel.font = myCellModel.titleFont;
-        self.maskTitleLabel.font = myCellModel.titleFont;
+        self.titleLabel.font = [UIFont fontWithDescriptor:fontDescriptor size:pointSize];
+        self.maskTitleLabel.font = [UIFont fontWithDescriptor:fontDescriptor size:pointSize];
     }
 
     self.maskTitleLabel.hidden = !myCellModel.titleLabelMaskEnabled;

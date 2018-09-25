@@ -20,6 +20,8 @@
 
 @property (nonatomic, strong) UIFont *titleFont;    //默认：[UIFont systemFontOfSize:15]
 
+@property (nonatomic, strong) UIFont *titleSelectedFont;    //文字被选中的字体。默认：与titleFont一样
+
 @property (nonatomic, assign) BOOL titleColorGradientEnabled;   //默认：NO，title的颜色是否渐变过渡
 
 @property (nonatomic, assign) BOOL titleLabelMaskEnabled;   //默认：NO，titleLabel是否遮罩过滤。（需要backgroundEllipseLayerShowEnabled = YES）
