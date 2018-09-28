@@ -71,9 +71,13 @@
         }
     }
 
-    if (!CGRectEqualToRect(selectedCellFrame, CGRectZero)) {
-        for (UIView<JXCategoryIndicatorProtocol> *component in self.indicators) {
+    for (UIView<JXCategoryIndicatorProtocol> *component in self.indicators) {
+        if (self.dataSource.count <= 0) {
+            component.hidden = YES;
+        }else {
+            component.hidden = NO;
             [component jx_refreshState:selectedCellFrame];
+
             if ([component isKindOfClass:[JXCategoryIndicatorBackgroundView class]]) {
                 CGRect maskFrame = component.frame;
                 maskFrame.origin.x = maskFrame.origin.x - selectedCellFrame.origin.x;
