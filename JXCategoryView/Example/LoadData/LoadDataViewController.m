@@ -9,6 +9,7 @@
 #import "LoadDataViewController.h"
 #import "JXCategoryView.h"
 #import "LoadDataListBaseViewController.h"
+#import "UIWindow+JXSafeArea.h"
 
 #define WindowsSize [UIScreen mainScreen].bounds.size
 
@@ -29,12 +30,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
     self.edgesForExtendedLayout = UIRectEdgeNone;
 
-    CGFloat naviHeight = 64;
-    if (@available(iOS 11.0, *)) {
-        if (WindowsSize.height == 812) {
-            naviHeight = [UIApplication sharedApplication].keyWindow.safeAreaInsets.top + 44;
-        }
-    }
+    CGFloat naviHeight = [UIApplication.sharedApplication.keyWindow jx_navigationHeight];
 
     NSArray *titles = [self getRandomTitles];
     NSUInteger count = titles.count;

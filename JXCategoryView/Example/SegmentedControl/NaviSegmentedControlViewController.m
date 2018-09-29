@@ -28,6 +28,7 @@
     self.myCategoryView.layer.borderWidth = 1/[UIScreen mainScreen].scale;
     self.myCategoryView.titles = self.titles;
     self.myCategoryView.cellSpacing = 0;
+    self.myCategoryView.cellWidth = 120/2;
     self.myCategoryView.titleColor = [UIColor redColor];
     self.myCategoryView.titleSelectedColor = [UIColor whiteColor];
     self.myCategoryView.titleLabelMaskEnabled = YES;

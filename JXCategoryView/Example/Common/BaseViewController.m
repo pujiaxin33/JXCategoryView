@@ -9,6 +9,7 @@
 #import "BaseViewController.h"
 #import "ListViewController.h"
 #import "NestViewController.h"
+#import "UIWindow+JXSafeArea.h"
 
 @interface BaseViewController () <JXCategoryViewDelegate, UIScrollViewDelegate>
 @property (nonatomic, assign) NSInteger currentIndex;
@@ -31,12 +32,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
     self.edgesForExtendedLayout = UIRectEdgeNone;
 
-    CGFloat naviHeight = 64;
-    if (@available(iOS 11.0, *)) {
-        if (WindowsSize.height == 812) {
-            naviHeight = [UIApplication sharedApplication].keyWindow.safeAreaInsets.top + 44;
-        }
-    }
+    CGFloat naviHeight = [UIApplication.sharedApplication.keyWindow jx_navigationHeight];
 
     NSUInteger count = [self preferredListViewCount];
     CGFloat categoryViewHeight = [self preferredCategoryViewHeight];

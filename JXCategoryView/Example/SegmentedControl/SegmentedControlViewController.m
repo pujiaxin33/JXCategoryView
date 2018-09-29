@@ -21,13 +21,15 @@
 
     [super viewDidLoad];
 
-    self.categoryView.frame = CGRectMake(30, 10, WindowsSize.width - 30*2, 30);
+    CGFloat totalItemWidth = WindowsSize.width - 30*2;
+    self.categoryView.frame = CGRectMake(30, 10, totalItemWidth, 30);
     self.myCategoryView.layer.cornerRadius = 15;
     self.myCategoryView.layer.masksToBounds = YES;
     self.myCategoryView.layer.borderColor = [UIColor redColor].CGColor;
     self.myCategoryView.layer.borderWidth = 1/[UIScreen mainScreen].scale;
     self.myCategoryView.titles = self.titles;
     self.myCategoryView.cellSpacing = 0;
+    self.myCategoryView.cellWidth = totalItemWidth/self.titles.count;
     self.myCategoryView.titleColor = [UIColor redColor];
     self.myCategoryView.titleSelectedColor = [UIColor whiteColor];
     self.myCategoryView.titleLabelMaskEnabled = YES;
