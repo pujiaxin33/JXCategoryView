@@ -67,7 +67,7 @@ Image |  <img src="JXCategoryView/Images/CellImage.gif" width="343" height="80">
 SegmentedControl |  <img src="JXCategoryView/Images/SegmentedControl.gif" width="343" height="80"> |
 导航栏使用 |  <img src="JXCategoryView/Images/SegmentedControlNavi.gif" width="343" height="80"> |
 嵌套使用 |  <img src="JXCategoryView/Images/Nest.gif" width="343" height="272"> |
-个人主页(上下左右滚动、header悬浮) |  <img src="JXCategoryView/Images/UserProfile.gif" width="343" height="562"> |
+个人主页(上下左右滚动、header悬浮)<br/> 更多样式请点击查看[JXPagingView](https://github.com/pujiaxin33/JXPagingView) |  <img src="JXCategoryView/Images/UserProfile.gif" width="343" height="562"> |
 垂直列表滚动<br/> 高仿腾讯视频<br/>（背景色异常是录屏软件bug） |  <img src="JXCategoryView/Images/VerticalList.gif" width="343" height="607"> |
 数据源刷新&列表数据加载 示例 |  <img src="JXCategoryView/Images/LoadData.gif" width="343" height="619"> |
 
