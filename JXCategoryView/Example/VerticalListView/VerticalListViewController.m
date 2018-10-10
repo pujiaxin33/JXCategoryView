@@ -12,13 +12,14 @@
 #import "VerticalSectionHeaderView.h"
 #import "JXCategoryView.h"
 #import "VerticalSectionCategoryHeaderView.h"
+#import "VerticalListCollectionView.h"
 
 static const CGFloat VerticalListCategoryViewHeight = 60;   //悬浮categoryView的高度
 static const NSUInteger VerticalListPinSectionIndex = 1;    //悬浮固定section的index
 
 @interface VerticalListViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, JXCategoryViewDelegate>
 
-@property (nonatomic, strong) UICollectionView *collectionView;
+@property (nonatomic, strong) VerticalListCollectionView *collectionView;
 @property (nonatomic, strong) NSArray <VerticalListSectionModel *> *dataSource;
 @property (nonatomic, strong) NSArray <NSString *> *headerTitles;
 @property (nonatomic, strong) JXCategoryTitleView *pinCategoryView;
@@ -35,28 +36,15 @@ static const NSUInteger VerticalListPinSectionIndex = 1;    //悬浮固定sectio
     self.view.backgroundColor = [UIColor whiteColor];
     self.edgesForExtendedLayout = UIRectEdgeNone;
 
-    NSMutableArray *dataSource = [NSMutableArray array];
-    self.headerTitles = @[@"我的频道", @"超级大IP", @"热门HOT", @"周边衍生", @"影视综", @"游戏集锦", @"搞笑百事"];
-    NSArray *imageNames = @[@"boat", @"crab", @"lobster", @"apple", @"carrot", @"grape", @"watermelon"];
-    [self.headerTitles enumerateObjectsUsingBlock:^(NSString *title, NSUInteger idx, BOOL * _Nonnull stop) {
-        VerticalListSectionModel *sectionModel = [[VerticalListSectionModel alloc] init];
-        sectionModel.sectionTitle = title;
-        NSUInteger randomCount = arc4random()%10 + 5;
-        NSMutableArray *cellModels = [NSMutableArray array];
-        for (int i = 0; i < randomCount; i ++) {
-            VerticalListCellModel *cellModel = [[VerticalListCellModel alloc] init];
-            cellModel.imageName = imageNames[idx];
-            cellModel.itemName = title;
-            [cellModels addObject:cellModel];
-        }
-        sectionModel.cellModels = cellModels;
-        [dataSource addObject:sectionModel];
-    }];
-    self.dataSource = dataSource;
-
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     layout.scrollDirection = UICollectionViewScrollDirectionVertical;
-    self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
+    self.collectionView = [[VerticalListCollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
+
+    __weak typeof(self)weakSelf = self;
+    self.collectionView.layoutSubviewsCallback = ^{
+        [weakSelf updateSectionHeaderAttributes];
+    };
+    
     self.collectionView.backgroundColor = [UIColor colorWithRed:0.94 green:0.94 blue:0.94 alpha:1];
     self.collectionView.dataSource = self;
     self.collectionView.delegate = self;
@@ -74,21 +62,58 @@ static const NSUInteger VerticalListPinSectionIndex = 1;    //悬浮固定sectio
     lineView.verticalMargin = 15;
     self.pinCategoryView.indicators = @[lineView];
     self.pinCategoryView.delegate = self;
+
+    UIActivityIndicatorView *loading = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    loading.bounds = CGRectMake(0, 0, 100, 100);
+    loading.transform = CGAffineTransformMakeScale(3, 3);
+    loading.center = self.view.center;
+    [loading startAnimating];
+    [self.view addSubview:loading];
+
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        //模拟数据加载
+        [loading stopAnimating];
+        [loading removeFromSuperview];
+
+        NSMutableArray *dataSource = [NSMutableArray array];
+        self.headerTitles = @[@"我的频道", @"超级大IP", @"热门HOT", @"周边衍生", @"影视综", @"游戏集锦", @"搞笑百事"];
+        NSArray *imageNames = @[@"boat", @"crab", @"lobster", @"apple", @"carrot", @"grape", @"watermelon"];
+        [self.headerTitles enumerateObjectsUsingBlock:^(NSString *title, NSUInteger idx, BOOL * _Nonnull stop) {
+            VerticalListSectionModel *sectionModel = [[VerticalListSectionModel alloc] init];
+            sectionModel.sectionTitle = title;
+            NSUInteger randomCount = arc4random()%10 + 5;
+            NSMutableArray *cellModels = [NSMutableArray array];
+            for (int i = 0; i < randomCount; i ++) {
+                VerticalListCellModel *cellModel = [[VerticalListCellModel alloc] init];
+                cellModel.imageName = imageNames[idx];
+                cellModel.itemName = title;
+                [cellModels addObject:cellModel];
+            }
+            sectionModel.cellModels = cellModels;
+            [dataSource addObject:sectionModel];
+        }];
+        self.dataSource = dataSource;
+
+        [self.collectionView reloadData];
+    });
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-
+- (void)updateSectionHeaderAttributes {
     if (self.sectionHeaderAttributes == nil) {
         //获取到所有的sectionHeaderAtrributes，用于后续的点击，滚动到指定contentOffset.y使用
         NSMutableArray *attributes = [NSMutableArray array];
         UICollectionViewLayoutAttributes *lastHeaderAttri = nil;
         for (int i = 0; i < self.headerTitles.count; i++) {
             UICollectionViewLayoutAttributes *attri = [self.collectionView.collectionViewLayout layoutAttributesForSupplementaryViewOfKind:UICollectionElementKindSectionHeader atIndexPath:[NSIndexPath indexPathForItem:0 inSection:i]];
-            [attributes addObject:attri];
+            if (attri) {
+                [attributes addObject:attri];
+            }
             if (i == self.headerTitles.count - 1) {
                 lastHeaderAttri = attri;
             }
+        }
+        if (attributes.count == 0) {
+            return;
         }
         self.sectionHeaderAttributes = attributes;
 

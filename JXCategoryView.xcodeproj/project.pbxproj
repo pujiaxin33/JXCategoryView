@@ -114,6 +114,7 @@
 		19870D012122BB6100C23CAA /* JXCategoryBaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 19870CEA2122BB6100C23CAA /* JXCategoryBaseCell.m */; };
 		19870D022122BB6100C23CAA /* JXCategoryBaseCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 19870CEB2122BB6100C23CAA /* JXCategoryBaseCellModel.m */; };
 		19C417C8215F14E30090E518 /* UIWindow+JXSafeArea.m in Sources */ = {isa = PBXBuildFile; fileRef = 19C417C7215F14E30090E518 /* UIWindow+JXSafeArea.m */; };
+		19CF184B216D9BD90093C775 /* VerticalListCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 19CF184A216D9BD90093C775 /* VerticalListCollectionView.m */; };
 		19D57E6E212D01180077DCA6 /* AttributeView.gif in Resources */ = {isa = PBXBuildFile; fileRef = 19D57E6D212D01180077DCA6 /* AttributeView.gif */; };
 		19D57E78212D3FD30077DCA6 /* JXCategoryIndicatorDotLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 19D57E77212D3FD30077DCA6 /* JXCategoryIndicatorDotLineView.m */; };
 		19D57E7A212D48AC0077DCA6 /* IndicatorCustomizeGuide.gif in Resources */ = {isa = PBXBuildFile; fileRef = 19D57E79212D48AB0077DCA6 /* IndicatorCustomizeGuide.gif */; };
@@ -304,6 +305,8 @@
 		19870CEB2122BB6100C23CAA /* JXCategoryBaseCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXCategoryBaseCellModel.m; sourceTree = "<group>"; };
 		19C417C6215F14E30090E518 /* UIWindow+JXSafeArea.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIWindow+JXSafeArea.h"; sourceTree = "<group>"; };
 		19C417C7215F14E30090E518 /* UIWindow+JXSafeArea.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+JXSafeArea.m"; sourceTree = "<group>"; };
+		19CF1849216D9BD90093C775 /* VerticalListCollectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VerticalListCollectionView.h; sourceTree = "<group>"; };
+		19CF184A216D9BD90093C775 /* VerticalListCollectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VerticalListCollectionView.m; sourceTree = "<group>"; };
 		19D57E6D212D01180077DCA6 /* AttributeView.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = AttributeView.gif; sourceTree = "<group>"; };
 		19D57E76212D3FD30077DCA6 /* JXCategoryIndicatorDotLineView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JXCategoryIndicatorDotLineView.h; sourceTree = "<group>"; };
 		19D57E77212D3FD30077DCA6 /* JXCategoryIndicatorDotLineView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JXCategoryIndicatorDotLineView.m; sourceTree = "<group>"; };
@@ -784,6 +787,8 @@
 			children = (
 				19D57E7C212D5C600077DCA6 /* VerticalListViewController.h */,
 				19D57E7D212D5C600077DCA6 /* VerticalListViewController.m */,
+				19CF1849216D9BD90093C775 /* VerticalListCollectionView.h */,
+				19CF184A216D9BD90093C775 /* VerticalListCollectionView.m */,
 				19D57E8B212D68D10077DCA6 /* VerticalSectionHeaderView.h */,
 				19D57E8C212D68D10077DCA6 /* VerticalSectionHeaderView.m */,
 				19D57E90212E8F340077DCA6 /* VerticalSectionCategoryHeaderView.h */,
@@ -969,6 +974,7 @@
 				19562CF5212AA3600095AA27 /* NestViewController.m in Sources */,
 				19562CDF212A94C90095AA27 /* JXCategoryImageCellModel.m in Sources */,
 				19302330211AD88300AF1444 /* TitleViewController.m in Sources */,
+				19CF184B216D9BD90093C775 /* VerticalListCollectionView.m in Sources */,
 				19562CDC212A94BE0095AA27 /* JXCategoryImageCell.m in Sources */,
 				190A54E2206397370050B327 /* ViewController.m in Sources */,
 				190A54ED206397370050B327 /* main.m in Sources */,
