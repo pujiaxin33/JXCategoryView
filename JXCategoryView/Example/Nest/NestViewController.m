@@ -37,7 +37,7 @@
 
     JXCategoryIndicatorBackgroundView *backgroundView = [[JXCategoryIndicatorBackgroundView alloc] init];
     backgroundView.backgroundViewHeight = 30;
-    backgroundView.backgroundViewWidthIncrement = 0;
+    backgroundView.backgroundViewWidthIncrement = 20;
     backgroundView.backgroundViewColor = [UIColor redColor];
     self.myCategoryView.indicators = @[backgroundView];
 
