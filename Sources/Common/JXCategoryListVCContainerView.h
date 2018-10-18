@@ -17,6 +17,7 @@
 @property (nonatomic, weak) UIViewController *parentViewController;
 @property (nonatomic, strong, readonly) UIScrollView *scrollView;
 @property (nonatomic, strong) NSArray <UIViewController *> *listVCArray;
+//这个defaultSelectedIndex仅仅用于触发对应index的数据加载，如果要让categoryView和listView都处于对应的index。还应该添加后面这段代码：self.categoryView.defaultSelectedIndex = n
 @property (nonatomic, assign) NSInteger defaultSelectedIndex;
 
 - (void)reloadData;

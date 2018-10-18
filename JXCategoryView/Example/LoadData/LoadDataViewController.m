@@ -56,6 +56,7 @@
     if (self.isNeedCategoryListContainerView) {
         self.listVCContainerView = [[JXCategoryListVCContainerView alloc] initWithFrame:CGRectMake(0, categoryViewHeight, width, height)];
         self.listVCContainerView.defaultSelectedIndex = 0;
+        self.categoryView.defaultSelectedIndex = 0;
         self.listVCContainerView.listVCArray = self.listVCArray;
         [self.view addSubview:self.listVCContainerView];
 
