@@ -121,6 +121,8 @@ cellSpacing    | cell之间的间距，默认20 |
 cellWidthIncrement    | cell宽度的补偿值，默认0 |
 averageCellSpacingEnabled    | 当item内容总宽度小于JXCategoryBaseView的宽度，是否将cellSpacing均分。默认为YES。 |
 contentScrollView    | 需要关联的contentScrollView，内部监听`contentOffset` |
+contentEdgeInsetLeft    | 整体内容的左边距，默认JXCategoryViewAutomaticDimension（等于cellSpacing） |
+contentEdgeInsetRight    | 整体内容的右边距，默认JXCategoryViewAutomaticDimension（等于cellSpacing） |
 
 ### Cell样式常用属性说明
 
