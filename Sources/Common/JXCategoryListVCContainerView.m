@@ -102,13 +102,15 @@
     }
     if (self.targetIndex != targetIndex) {
         [self listVCWillAppear:targetIndex];
+        [self listVCDidAppear:targetIndex];
+
         [self listVCWillDisappear:self.currentIndex];
+        [self listVCDidDisappear:self.currentIndex];
     }
 }
 
 - (void)didScrollSelectedItemAtIndex:(NSInteger)index {
-    [self listVCDidDisappear:self.currentIndex];
-    [self listVCDidAppear:index];
+
 }
 
 - (void)didClickSelectedItemAtIndex:(NSInteger)index {
