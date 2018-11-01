@@ -75,6 +75,8 @@ struct DelegateFlags {
     _cellWidthZoomEnabled = NO;
     _cellWidthZoomScale = 1.2;
     _cellWidthZoomScrollGradientEnabled = YES;
+    _contentEdgeInsetLeft = JXCategoryViewAutomaticDimension;
+    _contentEdgeInsetRight = JXCategoryViewAutomaticDimension;
 }
 
 - (void)initializeViews
@@ -152,7 +154,8 @@ struct DelegateFlags {
         self.selectedIndex = 0;
     }
 
-    __block CGFloat totalItemWidth = self.cellSpacing;
+    self.innerCellSpacing = self.cellSpacing;
+    __block CGFloat totalItemWidth = [self getContentEdgeInsetLeft];
     CGFloat totalCellWidth = 0;
     for (int i = 0; i < self.dataSource.count; i++) {
         JXCategoryBaseCellModel *cellModel = self.dataSource[i];
@@ -162,7 +165,11 @@ struct DelegateFlags {
         cellModel.cellWidthZoomEnabled = self.cellWidthZoomEnabled;
         cellModel.cellWidthZoomScale = 1.0;
         cellModel.cellSpacing = self.cellSpacing;
-        totalItemWidth += cellModel.cellWidth + self.cellSpacing;
+        if (i == self.dataSource.count - 1) {
+            totalItemWidth += cellModel.cellWidth + [self getContentEdgeInsetRight];
+        }else {
+            totalItemWidth += cellModel.cellWidth + self.cellSpacing;
+        }
         if (i == self.selectedIndex) {
             cellModel.selected = YES;
             cellModel.cellWidthZoomScale = self.cellWidthZoomScale;
@@ -174,16 +181,29 @@ struct DelegateFlags {
 
     if (self.averageCellSpacingEnabled && totalItemWidth < self.bounds.size.width) {
         //如果总的内容宽度都没有超过视图度，就将cellWidth等分
+        NSInteger cellSpacingItemCount = self.dataSource.count - 1;
+        CGFloat totalCellSpacingWidth = self.bounds.size.width - totalCellWidth;
+        //如果内容左边距是Automatic，就加1
+        if (self.contentEdgeInsetLeft == JXCategoryViewAutomaticDimension) {
+            cellSpacingItemCount += 1;
+        }else {
+            totalCellSpacingWidth -= self.contentEdgeInsetLeft;
+        }
+        //如果内容右边距是Automatic，就加1
+        if (self.contentEdgeInsetRight == JXCategoryViewAutomaticDimension) {
+            cellSpacingItemCount += 1;
+        }else {
+            totalCellSpacingWidth -= self.contentEdgeInsetRight;
+        }
+
         CGFloat cellSpacing = 0;
-        if (self.dataSource.count > 0) {
-            cellSpacing = (self.bounds.size.width - totalCellWidth)/(self.dataSource.count - 1 + 2);
+        if (cellSpacingItemCount > 0) {
+            cellSpacing = totalCellSpacingWidth/cellSpacingItemCount;
         }
         self.innerCellSpacing = cellSpacing;
         [self.dataSource enumerateObjectsUsingBlock:^(JXCategoryBaseCellModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             obj.cellSpacing = cellSpacing;
         }];
-    }else {
-        self.innerCellSpacing = self.cellSpacing;
     }
 
     __block CGFloat frameXOfSelectedCell = self.innerCellSpacing;
@@ -357,7 +377,7 @@ struct DelegateFlags {
 #pragma mark - <UICollectionViewDelegateFlowLayout>
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
-    return UIEdgeInsetsMake(0, self.innerCellSpacing, 0, self.innerCellSpacing);
+    return UIEdgeInsetsMake(0, [self getContentEdgeInsetLeft], 0, [self getContentEdgeInsetRight]);
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -389,7 +409,7 @@ struct DelegateFlags {
 
 - (CGRect)getTargetCellFrame:(NSInteger)targetIndex
 {
-    CGFloat x = self.innerCellSpacing;
+    CGFloat x = [self getContentEdgeInsetLeft];
     for (int i = 0; i < targetIndex; i ++) {
         JXCategoryBaseCellModel *cellModel = self.dataSource[i];
         x += cellModel.cellWidth + self.innerCellSpacing;
@@ -399,6 +419,20 @@ struct DelegateFlags {
 }
 
 #pragma mark - Private
+
+- (CGFloat)getContentEdgeInsetLeft {
+    if (self.contentEdgeInsetLeft == JXCategoryViewAutomaticDimension) {
+        return self.innerCellSpacing;
+    }
+    return self.contentEdgeInsetLeft;
+}
+
+- (CGFloat)getContentEdgeInsetRight {
+    if (self.contentEdgeInsetRight == JXCategoryViewAutomaticDimension) {
+        return self.innerCellSpacing;
+    }
+    return self.contentEdgeInsetRight;
+}
 
 - (void)clickselectItemAtIndex:(NSInteger)index {
     if (self.delegateFlags.didClickSelectedItemAtIndexFlag) {
