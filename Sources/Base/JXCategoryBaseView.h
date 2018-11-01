@@ -77,9 +77,9 @@
 
 @property (nonatomic, assign, readonly) NSInteger selectedIndex;
 
-@property (nonatomic, assign) CGFloat contentEdgeInsetLeft;     //默认JXCategoryViewAutomaticDimension（等于cellSpacing）
+@property (nonatomic, assign) CGFloat contentEdgeInsetLeft;     //整体内容的左边距，默认JXCategoryViewAutomaticDimension（等于cellSpacing）
 
-@property (nonatomic, assign) CGFloat contentEdgeInsetRight;    //默认JXCategoryViewAutomaticDimension（等于cellSpacing）
+@property (nonatomic, assign) CGFloat contentEdgeInsetRight;    //整体内容的右边距，默认JXCategoryViewAutomaticDimension（等于cellSpacing）
 
 @property (nonatomic, assign) CGFloat cellWidth;    //默认JXCategoryViewAutomaticDimension
 
