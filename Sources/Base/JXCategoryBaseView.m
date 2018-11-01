@@ -22,6 +22,7 @@ struct DelegateFlags {
 @property (nonatomic, assign) struct DelegateFlags delegateFlags;
 @property (nonatomic, assign) NSInteger selectedIndex;
 @property (nonatomic, assign) CGFloat innerCellSpacing;
+@property (nonatomic, assign) CGPoint lastContentViewContentOffset;
 
 @end
 
@@ -77,6 +78,7 @@ struct DelegateFlags {
     _cellWidthZoomScrollGradientEnabled = YES;
     _contentEdgeInsetLeft = JXCategoryViewAutomaticDimension;
     _contentEdgeInsetRight = JXCategoryViewAutomaticDimension;
+    _lastContentViewContentOffset = CGPointZero;
 }
 
 - (void)initializeViews
@@ -312,7 +314,10 @@ struct DelegateFlags {
 
     if (remainderRatio == 0) {
         //滑动翻页，需要更新选中状态
-        [self scrollselectItemAtIndex:baseIndex];
+        //滑动一小段距离，然后放开回到原位，contentOffset同样的值会回调多次。例如在index为1的情况，滑动放开回到原位，contentOffset会多次回调CGPoint(width, 0)
+        if (!(self.lastContentViewContentOffset.x == contentOffset.x && self.selectedIndex == baseIndex)) {
+            [self scrollselectItemAtIndex:baseIndex];
+        }
     }else {
         //快速滑动翻页，当remainderRatio没有变成0，但是已经翻页了，需要通过下面的判断，触发选中
         if (fabs(ratio - self.selectedIndex) > 1) {
@@ -337,6 +342,7 @@ struct DelegateFlags {
             [self.delegate categoryView:self scrollingFromLeftIndex:baseIndex toRightIndex:baseIndex + 1 ratio:remainderRatio];
         }
     }
+    self.lastContentViewContentOffset = contentOffset;
 }
 
 - (CGFloat)preferredCellWidthAtIndex:(NSInteger)index {
