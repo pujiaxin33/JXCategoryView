@@ -114,10 +114,10 @@
 }
 
 - (void)didClickSelectedItemAtIndex:(NSInteger)index {
-    [self listVCWillAppear:index];
     [self listVCWillDisappear:self.currentIndex];
-
     [self listVCDidDisappear:self.currentIndex];
+
+    [self listVCWillAppear:index];
     [self listVCDidAppear:index];
 }
 
