@@ -300,12 +300,13 @@ struct DelegateFlags {
         //超过了边界，不需要处理
         return;
     }
-    if (contentOffset.x == 0 && self.selectedIndex == 0) {
-        //滚动到了最左边，且已经选中了第一个
+    if (contentOffset.x == 0 && self.selectedIndex == 0 && self.lastContentViewContentOffset.x == 0) {
+        //滚动到了最左边，且已经选中了第一个，且之前的contentOffset.x为0
         return;
     }
-    if (contentOffset.x + self.contentScrollView.bounds.size.width == self.contentScrollView.contentSize.width && self.selectedIndex == self.dataSource.count - 1) {
-        //滚动到了最右边，且已经选中了最后一个
+    CGFloat maxContentOffsetX = self.contentScrollView.contentSize.width - self.contentScrollView.bounds.size.width;
+    if (contentOffset.x == maxContentOffsetX && self.selectedIndex == self.dataSource.count - 1 && self.lastContentViewContentOffset.x == maxContentOffsetX) {
+        //滚动到了最右边，且已经选中了最后一个，且之前的contentOffset.x为maxContentOffsetX
         return;
     }
     ratio = MAX(0, MIN(self.dataSource.count - 1, ratio));
