@@ -66,6 +66,8 @@
     self.scrollCallback = callback;
 }
 
-
+- (UIView *)listView {
+    return self;
+}
 
 @end

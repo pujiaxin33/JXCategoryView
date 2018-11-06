@@ -10,6 +10,16 @@
 
 @class JXPagerMainTableView;
 @class JXPagerListContainerView;
+@class JXPagerListContainerCollectionView;
+
+@protocol JXPagerListContainerCollectionViewGestureDelegate <NSObject>
+- (BOOL)pagerListContainerCollectionViewGestureRecognizerShouldBegin:(JXPagerListContainerCollectionView *)collectionView gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer;
+@end
+
+@interface JXPagerListContainerCollectionView: UICollectionView<UIGestureRecognizerDelegate>
+@property (nonatomic, assign) BOOL isNestEnabled;
+@property (nonatomic, weak) id<JXPagerListContainerCollectionViewGestureDelegate> gestureDelegate;
+@end
 
 @protocol JXPagerListContainerViewDelegate <NSObject>
 
@@ -24,7 +34,7 @@
 
 @interface JXPagerListContainerView : UIView
 
-@property (nonatomic, strong, readonly) UICollectionView *collectionView;
+@property (nonatomic, strong, readonly) JXPagerListContainerCollectionView *collectionView;
 @property (nonatomic, weak) id<JXPagerListContainerViewDelegate> delegate;
 @property (nonatomic, weak) JXPagerMainTableView *mainTableView;
 
@@ -39,3 +49,5 @@
 - (void)reloadData;
 
 @end
+
+

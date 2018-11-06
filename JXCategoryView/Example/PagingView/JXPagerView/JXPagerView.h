@@ -17,6 +17,12 @@
  */
 @protocol JXPagerViewListViewDelegate <NSObject>
 
+/**
+ 返回listView。如果是vc包裹的就是vc.view；如果是自定义view包裹的，就是自定义view自己。
+
+ @return UIView
+ */
+- (UIView *)listView;
 
 /**
  返回listView内部持有的UIScrollView或UITableView或UICollectionView
@@ -34,18 +40,25 @@
  */
 - (void)listViewDidScrollCallback:(void (^)(UIScrollView *scrollView))callback;
 
+@optional
+
+/**
+ 将要重置listScrollView的contentOffset
+ */
+- (void)listScrollViewWillResetContentOffset;
+
 @end
 
 @protocol JXPagerViewDelegate <NSObject>
 
 
 /**
- 返回tableHeaderView的高度
+ 返回tableHeaderView的高度，因为内部需要比对判断，只能是整型数
 
  @param pagerView pagerView description
  @return return tableHeaderView的高度
  */
-- (CGFloat)tableHeaderViewHeightInPagerView:(JXPagerView *)pagerView;
+- (NSUInteger)tableHeaderViewHeightInPagerView:(JXPagerView *)pagerView;
 
 
 /**
@@ -58,12 +71,12 @@
 
 
 /**
- 返回悬浮HeaderView的高度。
+ 返回悬浮HeaderView的高度，因为内部需要比对判断，只能是整型数
 
  @param pagerView pagerView description
  @return 悬浮HeaderView的高度
  */
-- (CGFloat)heightForPinSectionHeaderInPagerView:(JXPagerView *)pagerView;
+- (NSUInteger)heightForPinSectionHeaderInPagerView:(JXPagerView *)pagerView;
 
 
 /**
@@ -75,13 +88,12 @@
 - (UIView *)viewForPinSectionHeaderInPagerView:(JXPagerView *)pagerView;
 
 /**
- 返回listViews，数组的item需要是UIView的子类，且要遵循JXPagerViewListViewDelegate。
- 数组item要求返回一个UIView而不是一个UIScrollView，因为列表的UIScrollView一般是被包装到一个view里面，里面会处理数据源和其他逻辑。
+ 返回listViews，只要遵循JXPagerViewListViewDelegate即可，无论你返回的是UIView还是UIViewController都可以。
 
  @param pagerView pagerView description
  @return listViews
  */
-- (NSArray <UIView <JXPagerViewListViewDelegate>*>*)listViewsInPagerView:(JXPagerView *)pagerView;
+- (NSArray <id<JXPagerViewListViewDelegate>> *)listViewsInPagerView:(JXPagerView *)pagerView;
 
 @optional
 
@@ -105,6 +117,8 @@
 - (instancetype)initWithDelegate:(id<JXPagerViewDelegate>)delegate NS_DESIGNATED_INITIALIZER;
 
 @property (nonatomic, strong, readonly) UIScrollView *currentScrollingListView;
+
+@property (nonatomic, strong, readonly) id<JXPagerViewListViewDelegate> currentListView;
 
 - (instancetype)init NS_UNAVAILABLE;
 

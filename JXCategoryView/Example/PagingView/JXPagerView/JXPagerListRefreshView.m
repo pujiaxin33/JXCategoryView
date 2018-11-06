@@ -32,6 +32,9 @@
         }else {
             if (self.mainTableView.contentOffset.y < [self.delegate tableHeaderViewHeightInPagerView:self]) {
                 //mainTableView的header还没有消失，让listScrollView一直为0
+                if (self.currentListView && [self.currentListView respondsToSelector:@selector(listScrollViewWillResetContentOffset)]) {
+                    [self.currentListView listScrollViewWillResetContentOffset];
+                }
                 self.currentScrollingListView.contentOffset = CGPointZero;
                 self.currentScrollingListView.showsVerticalScrollIndicator = false;
             }
@@ -42,6 +45,9 @@
             //处于下拉刷新的状态，scrollView.contentOffset.y为负数，就重置为0
             if (self.currentScrollingListView.contentOffset.y > 0) {
                 //mainTableView的header还没有消失，让listScrollView一直为0
+                if (self.currentListView && [self.currentListView respondsToSelector:@selector(listScrollViewWillResetContentOffset)]) {
+                    [self.currentListView listScrollViewWillResetContentOffset];
+                }
                 self.currentScrollingListView.contentOffset = CGPointZero;
                 self.currentScrollingListView.showsVerticalScrollIndicator = false;
             }
@@ -63,10 +69,13 @@
     if (scrollView.contentOffset.y < [self.delegate tableHeaderViewHeightInPagerView:self]) {
         //mainTableView已经显示了header，listView的contentOffset需要重置
         NSArray *listViews = [self.delegate listViewsInPagerView:self];
-        for (UIView <JXPagerViewListViewDelegate>* listView in listViews) {
+        for (id<JXPagerViewListViewDelegate> listView in listViews) {
             //正在下拉刷新时，不需要重置
             UIScrollView *listScrollView = [listView listScrollView];
             if (listScrollView.contentOffset.y > 0) {
+                if ([listView respondsToSelector:@selector(listScrollViewWillResetContentOffset)]) {
+                    [listView listScrollViewWillResetContentOffset];
+                }
                 listScrollView.contentOffset = CGPointZero;
             }
         }

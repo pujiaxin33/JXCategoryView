@@ -13,6 +13,7 @@
 @property (nonatomic, strong) JXPagerMainTableView *mainTableView;
 @property (nonatomic, strong) JXPagerListContainerView *listContainerView;
 @property (nonatomic, strong) UIScrollView *currentScrollingListView;
+@property (nonatomic, strong) id<JXPagerViewListViewDelegate> currentListView;
 
 @end
 
@@ -54,6 +55,8 @@
 }
 
 - (void)reloadData {
+    self.currentListView = nil;
+    self.currentScrollingListView = nil;
     [self configListViewDidScrollCallback];
     [self.mainTableView reloadData];
     [self.listContainerView reloadData];
@@ -62,6 +65,9 @@
 - (void)preferredProcessListViewDidScroll:(UIScrollView *)scrollView {
     if (self.mainTableView.contentOffset.y < [self.delegate tableHeaderViewHeightInPagerView:self]) {
         //mainTableView的header还没有消失，让listScrollView一直为0
+        if (self.currentListView && [self.currentListView respondsToSelector:@selector(listScrollViewWillResetContentOffset)]) {
+            [self.currentListView listScrollViewWillResetContentOffset];
+        }
         scrollView.contentOffset = CGPointZero;
         scrollView.showsVerticalScrollIndicator = NO;
     }else {
@@ -80,9 +86,17 @@
     if (scrollView.contentOffset.y < [self.delegate tableHeaderViewHeightInPagerView:self]) {
         //mainTableView已经显示了header，listView的contentOffset需要重置
         NSArray *listViews = [self.delegate listViewsInPagerView:self];
-        for (UIView <JXPagerViewListViewDelegate>* listView in listViews) {
+        for (id<JXPagerViewListViewDelegate> listView in listViews) {
+            if ([listView respondsToSelector:@selector(listScrollViewWillResetContentOffset)]) {
+                [listView listScrollViewWillResetContentOffset];
+            }
             [listView listScrollView].contentOffset = CGPointZero;
         }
+    }
+
+    if (scrollView.contentOffset.y > [self.delegate tableHeaderViewHeightInPagerView:self] && self.currentScrollingListView.contentOffset.y == 0) {
+        //当往上滚动mainTableView的headerView时，滚动到底时，修复listView往上小幅度滚动
+        self.mainTableView.contentOffset = CGPointMake(0, [self.delegate tableHeaderViewHeightInPagerView:self]);
     }
 }
 
@@ -90,9 +104,10 @@
 
 - (void)configListViewDidScrollCallback {
     NSArray *listViews = [self.delegate listViewsInPagerView:self];
-    for (UIView <JXPagerViewListViewDelegate>* listView in listViews) {
+    for (id<JXPagerViewListViewDelegate> listView in listViews) {
         __weak typeof(self)weakSelf = self;
         [listView listViewDidScrollCallback:^(UIScrollView *scrollView) {
+            weakSelf.currentListView = listView;
             [weakSelf listViewDidScroll:scrollView];
         }];
     }
@@ -121,6 +136,8 @@
     }
     self.listContainerView.frame = cell.contentView.bounds;
     [cell.contentView addSubview:self.listContainerView];
+    [self.listContainerView setNeedsLayout];
+    [self.listContainerView layoutIfNeeded];
     return cell;
 }
 
@@ -147,7 +164,23 @@
         [self.delegate mainTableViewDidScroll:scrollView];
     }
 
+    if (scrollView.isTracking) {
+        self.listContainerView.collectionView.scrollEnabled = NO;
+    }
+
     [self preferredProcessMainTableViewDidScroll:scrollView];
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    self.listContainerView.collectionView.scrollEnabled = YES;
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    self.listContainerView.collectionView.scrollEnabled = YES;
+}
+
+- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView {
+    self.listContainerView.collectionView.scrollEnabled = YES;
 }
 
 #pragma mark - JXPagingListContainerViewDelegate
@@ -159,7 +192,7 @@
 
 - (UIView *)listContainerView:(JXPagerListContainerView *)listContainerView listViewInRow:(NSInteger)row {
     NSArray *listViews = [self.delegate listViewsInPagerView:self];
-    return listViews[row];
+    return [listViews[row] listView];
 }
 
 - (void)listContainerView:(JXPagerListContainerView *)listContainerView willDisplayCellAtRow:(NSInteger)row {

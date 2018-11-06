@@ -10,7 +10,7 @@
 #import "JXPagerMainTableView.h"
 
 @interface JXPagerListContainerView() <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
-@property (nonatomic, strong) UICollectionView *collectionView;
+@property (nonatomic, strong) JXPagerListContainerCollectionView *collectionView;
 @end
 
 @implementation JXPagerListContainerView
@@ -30,7 +30,7 @@
     layout.minimumInteritemSpacing = 0;
     layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
 
-    _collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
+    _collectionView = [[JXPagerListContainerCollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
     self.collectionView.showsHorizontalScrollIndicator = NO;
     self.collectionView.showsVerticalScrollIndicator = NO;
     self.collectionView.pagingEnabled = YES;
@@ -96,4 +96,36 @@
     return self.bounds.size;
 }
 
+@end
+
+
+@interface JXPagerListContainerCollectionView ()
+
+@end
+
+@implementation JXPagerListContainerCollectionView
+
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
+    if (self.gestureDelegate) {
+        return [self.gestureDelegate pagerListContainerCollectionViewGestureRecognizerShouldBegin:self gestureRecognizer:gestureRecognizer];
+    }else {
+        if (self.isNestEnabled) {
+            if ([gestureRecognizer isMemberOfClass:NSClassFromString(@"UIScrollViewPanGestureRecognizer")]) {
+                CGFloat velocityX = [(UIPanGestureRecognizer *)gestureRecognizer velocityInView:gestureRecognizer.view].x;
+                //x大于0就是往右滑
+                if (velocityX > 0) {
+                    if (self.contentOffset.x == 0) {
+                        return NO;
+                    }
+                }else if (velocityX < 0) {
+                    //x小于0就是往左滑
+                    if (self.contentOffset.x + self.bounds.size.width == self.contentSize.width) {
+                        return NO;
+                    }
+                }
+            }
+        }
+    }
+    return YES;
+}
 @end

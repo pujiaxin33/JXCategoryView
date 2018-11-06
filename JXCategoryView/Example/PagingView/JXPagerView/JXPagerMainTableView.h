@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface JXPagerMainTableView : UITableView
+@protocol JXPagerMainTableViewGestureDelegate <NSObject>
 
+- (BOOL)mainTableViewGestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer;
+
+@end
+
+@interface JXPagerMainTableView : UITableView
+@property (nonatomic, weak) id<JXPagerMainTableViewGestureDelegate> gestureDelegate;
 @end
