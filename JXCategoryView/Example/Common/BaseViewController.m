@@ -46,6 +46,7 @@
     self.scrollView.bounces = NO;
     [self.view addSubview:self.scrollView];
 
+    self.automaticallyAdjustsScrollViewInsets = NO;
     if (@available(iOS 11.0, *)) {
         self.scrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
     }
