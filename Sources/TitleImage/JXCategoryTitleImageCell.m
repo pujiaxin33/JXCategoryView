@@ -92,7 +92,7 @@
         self.imageView.image = [UIImage imageNamed:myCellModel.imageName];
     }else if (myCellModel.imageURL != nil) {
         if (myCellModel.loadImageCallback != nil) {
-            myCellModel.loadImageCallback(self.imageView);
+            myCellModel.loadImageCallback(self.imageView, myCellModel.imageURL);
         }
     }
     if (myCellModel.selected) {
@@ -100,7 +100,7 @@
             self.imageView.image = [UIImage imageNamed:myCellModel.selectedImageName];
         }else if (myCellModel.selectedImageURL != nil) {
             if (myCellModel.loadImageCallback != nil) {
-                myCellModel.loadImageCallback(self.imageView);
+                myCellModel.loadImageCallback(self.imageView, myCellModel.selectedImageURL);
             }
         }
     }

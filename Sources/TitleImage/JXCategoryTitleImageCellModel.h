@@ -21,7 +21,7 @@ typedef NS_ENUM(NSUInteger, JXCategoryTitleImageType) {
 
 @property (nonatomic, assign) JXCategoryTitleImageType imageType;
 
-@property (nonatomic, copy) void(^loadImageCallback)(UIImageView *imageView);
+@property (nonatomic, copy) void(^loadImageCallback)(UIImageView *imageView, NSURL *imageURL);
 
 @property (nonatomic, copy) NSString *imageName;    //加载bundle内的图片
 
