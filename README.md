@@ -171,6 +171,13 @@ JXCategoryIndicatorBallView.ballViewColor    | 默认为[UIColor redColor] |
 ## 使用
 
 ```
+//在使用JXCategoryView的VC里面加上下面的代码
+if (@available(iOS 11.0, *)) {
+    self.scrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+}else {
+    self.automaticallyAdjustsScrollViewInsets = NO;
+}
+
 //1、初始化JXCategoryTitleView
 self.categoryView = [[JXCategoryTitleView alloc] initWithFrame:CGRectMake(0, 0, WindowsSize.width, categoryViewHeight)];
 self.categoryView.delegate = self;
