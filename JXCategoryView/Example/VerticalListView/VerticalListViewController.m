@@ -169,7 +169,7 @@ static const NSUInteger VerticalListPinSectionIndex = 1;    //悬浮固定sectio
             return headerView;
         }
     }
-    return nil;
+    return [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"other" forIndexPath:indexPath];
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {

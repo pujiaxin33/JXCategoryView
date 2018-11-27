@@ -38,7 +38,7 @@
 
 - (void)jx_contentScrollViewDidScrollWithLeftCellFrame:(CGRect)leftCellFrame rightCellFrame:(CGRect)rightCellFrame selectedPosition:(JXCategoryCellClickedPosition)selectedPosition percent:(CGFloat)percent {
 
-    CGFloat targetX = leftCellFrame.origin.x + (leftCellFrame.size.width - self.dotSize.width)/2;
+    CGFloat targetX = 0;
     CGFloat targetWidth = self.dotSize.width;
 
     if (percent == 0) {

@@ -60,7 +60,7 @@
 
 - (void)jx_contentScrollViewDidScrollWithLeftCellFrame:(CGRect)leftCellFrame rightCellFrame:(CGRect)rightCellFrame selectedPosition:(JXCategoryCellClickedPosition)selectedPosition percent:(CGFloat)percent {
 
-    CGFloat targetXOfBigBall = leftCellFrame.origin.x + (leftCellFrame.size.width - self.ballViewSize.width)/2;
+    CGFloat targetXOfBigBall = 0;
     CGFloat targetXOfSmallBall = leftCellFrame.origin.x + (leftCellFrame.size.width - self.ballViewSize.width)/2;
     CGFloat targetWidthOfSmallBall = self.ballViewSize.width;
 
