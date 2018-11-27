@@ -94,7 +94,7 @@
     }
 }
 
-- (void)jx_selectedCell:(CGRect)cellFrame clickedRelativePosition:(JXCategoryCellClickedPosition)clickedRelativePosition {
+- (void)jx_selectedCell:(CGRect)cellFrame clickedRelativePosition:(JXCategoryCellClickedPosition)clickedRelativePosition isClicked:(BOOL)isClicked {
     CGFloat targetWidth = [self getIndicatorLineViewWidth:cellFrame];
     CGRect toFrame = self.frame;
     toFrame.origin.x = cellFrame.origin.x + (cellFrame.size.width - targetWidth)/2.0;

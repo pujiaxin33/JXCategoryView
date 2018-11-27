@@ -152,13 +152,13 @@
     }
 }
 
-- (BOOL)selectCellAtIndex:(NSInteger)index {
+- (BOOL)selectCellAtIndex:(NSInteger)index isClicked:(BOOL)isClicked {
     //是否点击了相对于选中cell左边的cell
     JXCategoryCellClickedPosition clickedPosition = JXCategoryCellClickedPosition_Left;
     if (index > self.selectedIndex) {
         clickedPosition = JXCategoryCellClickedPosition_Right;
     }
-    BOOL result = [super selectCellAtIndex:index];
+    BOOL result = [super selectCellAtIndex:index isClicked:isClicked];
     if (!result) {
         return NO;
     }
@@ -167,7 +167,7 @@
 
     JXCategoryIndicatorCellModel *selectedCellModel = (JXCategoryIndicatorCellModel *)self.dataSource[index];
     for (UIView<JXCategoryIndicatorProtocol> *component in self.indicators) {
-        [component jx_selectedCell:clickedCellFrame clickedRelativePosition:clickedPosition];
+        [component jx_selectedCell:clickedCellFrame clickedRelativePosition:clickedPosition isClicked:isClicked];
         if ([component isKindOfClass:[JXCategoryIndicatorBackgroundView class]]) {
             CGRect maskFrame = component.frame;
             maskFrame.origin.x = maskFrame.origin.x - clickedCellFrame.origin.x;

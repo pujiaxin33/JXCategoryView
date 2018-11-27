@@ -68,7 +68,7 @@
     }
 }
 
-- (void)jx_selectedCell:(CGRect)cellFrame clickedRelativePosition:(JXCategoryCellClickedPosition)clickedRelativePosition {
+- (void)jx_selectedCell:(CGRect)cellFrame clickedRelativePosition:(JXCategoryCellClickedPosition)clickedRelativePosition isClicked:(BOOL)isClicked {
     CGRect toFrame = self.frame;
     toFrame.origin.x = cellFrame.origin.x + (cellFrame.size.width - self.indicatorImageViewSize.width)/2;
     if (self.scrollEnabled) {
@@ -76,7 +76,7 @@
             self.frame = toFrame;
         } completion:^(BOOL finished) {
         }];
-        if (self.indicatorImageViewRollEnabled) {
+        if (self.indicatorImageViewRollEnabled && isClicked) {
             CABasicAnimation *rotateAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
             rotateAnimation.toValue = @(M_PI*2*((clickedRelativePosition == JXCategoryCellClickedPosition_Left) ? -1 : 1));
             rotateAnimation.duration = 0.25;

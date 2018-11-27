@@ -135,7 +135,10 @@
     if (_shouldHandleScreenEdgeGesture) {
         self.navigationController.interactivePopGestureRecognizer.enabled = (index == 0);
     }
+}
 
+- (void)categoryView:(JXCategoryBaseView *)categoryView didScrollSelectedItemAtIndex:(NSInteger)index {
+    
 }
 
 @end

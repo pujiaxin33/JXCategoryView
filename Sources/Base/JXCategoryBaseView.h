@@ -157,9 +157,10 @@
  点击某一个item，或者contentScrollView滚动到某一个item的时候调用。根据selectIndex刷新选中状态。
 
  @param index 选中的index
+ @param isClicked YES：点击选中；NO：滚动选中。
  @return 返回值为NO，表示触发内部某些判断（点击了同一个cell），子类无需后续操作。
  */
-- (BOOL)selectCellAtIndex:(NSInteger)index NS_REQUIRES_SUPER;
+- (BOOL)selectCellAtIndex:(NSInteger)index isClicked:(BOOL)isClicked NS_REQUIRES_SUPER;
 
 /**
  reloadData时，返回每个cell的宽度

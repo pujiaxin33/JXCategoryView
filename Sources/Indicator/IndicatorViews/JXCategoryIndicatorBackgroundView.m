@@ -66,7 +66,7 @@
     }
 }
 
-- (void)jx_selectedCell:(CGRect)cellFrame clickedRelativePosition:(JXCategoryCellClickedPosition)clickedRelativePosition {
+- (void)jx_selectedCell:(CGRect)cellFrame clickedRelativePosition:(JXCategoryCellClickedPosition)clickedRelativePosition isClicked:(BOOL)isClicked {
     CGFloat width = [self getBackgroundViewWidth:cellFrame];
     CGFloat height = [self getBackgroundViewHeight:cellFrame];
     CGFloat x = cellFrame.origin.x + (cellFrame.size.width - width)/2;

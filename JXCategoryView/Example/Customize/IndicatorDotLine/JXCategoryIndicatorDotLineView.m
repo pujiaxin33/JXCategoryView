@@ -70,7 +70,7 @@
     }
 }
 
-- (void)jx_selectedCell:(CGRect)cellFrame clickedRelativePosition:(JXCategoryCellClickedPosition)clickedRelativePosition {
+- (void)jx_selectedCell:(CGRect)cellFrame clickedRelativePosition:(JXCategoryCellClickedPosition)clickedRelativePosition isClicked:(BOOL)isClicked {
     CGFloat x = cellFrame.origin.x + (cellFrame.size.width - self.dotSize.width)/2;
     CGFloat y = self.superview.bounds.size.height - self.dotSize.height - self.verticalMargin;
     if (self.componentPosition == JXCategoryComponentPosition_Top) {

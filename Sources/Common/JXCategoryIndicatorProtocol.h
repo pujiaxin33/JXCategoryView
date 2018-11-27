@@ -30,7 +30,8 @@
 
  @param cellFrame cell的frame
  @param clickedRelativePosition 相对于已选中cell，当前点击的cell的相对位置。比如 A、B、C 当前处于选中状态的是B。点击了A是JXCategoryCellClickedPosition_Left；点击了C是JXCategoryCellClickedPosition_Right;
+ @param isClicked YES：点击选中；NO：滚动选中。
  */
-- (void)jx_selectedCell:(CGRect)cellFrame clickedRelativePosition:(JXCategoryCellClickedPosition)clickedRelativePosition;
+- (void)jx_selectedCell:(CGRect)cellFrame clickedRelativePosition:(JXCategoryCellClickedPosition)clickedRelativePosition isClicked:(BOOL)isClicked;
 
 @end

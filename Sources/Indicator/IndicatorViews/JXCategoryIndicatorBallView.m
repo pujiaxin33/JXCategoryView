@@ -103,7 +103,7 @@
     }
 }
 
-- (void)jx_selectedCell:(CGRect)cellFrame clickedRelativePosition:(JXCategoryCellClickedPosition)clickedRelativePosition {
+- (void)jx_selectedCell:(CGRect)cellFrame clickedRelativePosition:(JXCategoryCellClickedPosition)clickedRelativePosition isClicked:(BOOL)isClicked {
 
     CGFloat x = cellFrame.origin.x + (cellFrame.size.width - self.ballViewSize.width)/2;
     CGFloat y = self.superview.bounds.size.height - self.ballViewSize.height - self.verticalMargin;
