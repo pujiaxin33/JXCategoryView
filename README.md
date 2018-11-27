@@ -145,6 +145,7 @@ JXCategoryTitleImageType    | 图片所在位置：上面、左边、下面、�
 属性     | 说明           |
 --------------|---------------|
 JXCategoryIndicatorComponentView.componentPosition    | 指示器的位置 默认：Bottom |
+JXCategoryIndicatorComponentView.verticalMargin    | 垂直方向边距，lineView的上下位置调整；默认：0 |
 JXCategoryIndicatorComponentView.scrollEnabled    | 手势滚动、点击切换的时候，是否允许滚动，默认YES |
 JXCategoryIndicatorLineView.lineStyle    | 普通、京东、爱奇艺效果 默认：Normal |
 JXCategoryIndicatorLineView.lineScrollOffsetX    | 爱奇艺效果专用，line滚动时x的偏移量，默认为10； |
@@ -171,6 +172,13 @@ JXCategoryIndicatorBallView.ballViewColor    | 默认为[UIColor redColor] |
 ## 使用
 
 ```
+//在使用JXCategoryView的VC里面加上下面的代码
+if (@available(iOS 11.0, *)) {
+    self.scrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+}else {
+    self.automaticallyAdjustsScrollViewInsets = NO;
+}
+
 //1、初始化JXCategoryTitleView
 self.categoryView = [[JXCategoryTitleView alloc] initWithFrame:CGRectMake(0, 0, WindowsSize.width, categoryViewHeight)];
 self.categoryView.delegate = self;
