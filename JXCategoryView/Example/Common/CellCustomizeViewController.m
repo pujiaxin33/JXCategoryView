@@ -86,6 +86,9 @@
             TitleViewController *testVC = [[TitleViewController alloc] init];
             testVC.title = title;
             JXCategoryTitleView *titleCategoryView = (JXCategoryTitleView *)testVC.categoryView;
+            titleCategoryView.titleFont = [UIFont systemFontOfSize:15];
+            titleCategoryView.titleSelectedFont = [UIFont systemFontOfSize:15];
+            titleCategoryView.titleLabelStrokeWidthEnabled = YES;
             titleCategoryView.titleColorGradientEnabled = YES;
             titleCategoryView.titleLabelZoomEnabled = YES;
             titleCategoryView.titleLabelZoomScale = 1.7;

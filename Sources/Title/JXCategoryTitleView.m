@@ -27,6 +27,8 @@
     _titleColorGradientEnabled = NO;
     _titleLabelMaskEnabled = NO;
     _titleLabelZoomScrollGradientEnabled = YES;
+    _titleLabelStrokeWidthEnabled = NO;
+    _titleLabelSelectedStrokeWidth = -3;
 }
 
 - (UIFont *)titleSelectedFont {
@@ -58,11 +60,13 @@
     myUnselectedCellModel.titleColor = self.titleColor;
     myUnselectedCellModel.titleSelectedColor = self.titleSelectedColor;
     myUnselectedCellModel.titleLabelZoomScale = 1.0;
+    myUnselectedCellModel.titleLabelSelectedStrokeWidth = 0;
 
     JXCategoryTitleCellModel *myselectedCellModel = (JXCategoryTitleCellModel *)selectedCellModel;
     myselectedCellModel.titleColor = self.titleColor;
     myselectedCellModel.titleSelectedColor = self.titleSelectedColor;
     myselectedCellModel.titleLabelZoomScale = self.titleLabelZoomScale;
+    myselectedCellModel.titleLabelSelectedStrokeWidth = self.titleLabelSelectedStrokeWidth;
 }
 
 - (void)refreshLeftCellModel:(JXCategoryBaseCellModel *)leftCellModel rightCellModel:(JXCategoryBaseCellModel *)rightCellModel ratio:(CGFloat)ratio {
@@ -74,6 +78,11 @@
     if (self.titleLabelZoomEnabled && self.titleLabelZoomScrollGradientEnabled) {
         leftModel.titleLabelZoomScale = [JXCategoryFactory interpolationFrom:self.titleLabelZoomScale to:1.0 percent:ratio];
         rightModel.titleLabelZoomScale = [JXCategoryFactory interpolationFrom:1.0 to:self.titleLabelZoomScale percent:ratio];
+    }
+
+    if (self.titleLabelStrokeWidthEnabled) {
+        leftModel.titleLabelSelectedStrokeWidth = [JXCategoryFactory interpolationFrom:self.titleLabelSelectedStrokeWidth to:0 percent:ratio];
+        rightModel.titleLabelSelectedStrokeWidth = [JXCategoryFactory interpolationFrom:0 to:self.titleLabelSelectedStrokeWidth percent:ratio];
     }
 
     if (self.titleColorGradientEnabled) {
@@ -115,8 +124,11 @@
     model.titleLabelMaskEnabled = self.titleLabelMaskEnabled;
     model.titleLabelZoomEnabled = self.titleLabelZoomEnabled;
     model.titleLabelZoomScale = 1.0;
+    model.titleLabelStrokeWidthEnabled = self.titleLabelStrokeWidthEnabled;
+    model.titleLabelSelectedStrokeWidth = 0;
     if (index == self.selectedIndex) {
         model.titleLabelZoomScale = self.titleLabelZoomScale;
+        model.titleLabelSelectedStrokeWidth = self.titleLabelSelectedStrokeWidth;
     }
 }
 

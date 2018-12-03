@@ -48,6 +48,7 @@
 
     CGFloat pointSize = myCellModel.titleFont.pointSize;
     UIFontDescriptor *fontDescriptor = myCellModel.titleFont.fontDescriptor;
+
     if (myCellModel.selected) {
         fontDescriptor = myCellModel.titleSelectedFont.fontDescriptor;
         pointSize = myCellModel.titleSelectedFont.pointSize;
@@ -60,13 +61,19 @@
         self.maskTitleLabel.font = [UIFont fontWithDescriptor:fontDescriptor size:pointSize];
     }
 
+    NSString *titleString = myCellModel.title ? myCellModel.title : @"";
+    NSMutableAttributedString *attriString = [[NSMutableAttributedString alloc] initWithString:titleString];
+    if (myCellModel.titleLabelStrokeWidthEnabled) {
+        [attriString addAttribute:NSStrokeWidthAttributeName value:@(myCellModel.titleLabelSelectedStrokeWidth) range:NSMakeRange(0, myCellModel.title.length)];
+    }
+
     self.maskTitleLabel.hidden = !myCellModel.titleLabelMaskEnabled;
     if (myCellModel.titleLabelMaskEnabled) {
         self.titleLabel.textColor = myCellModel.titleColor;
         self.maskTitleLabel.font = myCellModel.titleFont;
         self.maskTitleLabel.textColor = myCellModel.titleSelectedColor;
 
-        self.maskTitleLabel.text = myCellModel.title;
+        self.maskTitleLabel.attributedText = attriString;
         [self.maskTitleLabel sizeToFit];
 
         CGRect frame = myCellModel.backgroundViewMaskFrame;
@@ -84,7 +91,7 @@
         }
     }
 
-    self.titleLabel.text = myCellModel.title;
+    self.titleLabel.attributedText = attriString;
     [self.titleLabel sizeToFit];
     [self setNeedsLayout];
     [self layoutIfNeeded];

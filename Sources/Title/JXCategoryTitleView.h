@@ -33,4 +33,9 @@
 
 @property (nonatomic, assign) CGFloat titleLabelZoomScale;    //默认1.2，titleLabelZoomEnabled为YES才生效
 
+//----------------------titleLabelStrokeWidth-----------------------//
+@property (nonatomic, assign) CGFloat titleLabelStrokeWidthEnabled;     //默认：NO
+
+@property (nonatomic, assign) CGFloat titleLabelSelectedStrokeWidth;    //默认：-3，用于控制字体的粗细（底层通过NSStrokeWidthAttributeName实现）。使用该属性，务必让titleFont和titleSelectedFont设置为一样的！！！
+
 @end
