@@ -135,10 +135,15 @@
     if (_shouldHandleScreenEdgeGesture) {
         self.navigationController.interactivePopGestureRecognizer.enabled = (index == 0);
     }
+    NSLog(@"%@", NSStringFromSelector(_cmd));
 }
 
 - (void)categoryView:(JXCategoryBaseView *)categoryView didScrollSelectedItemAtIndex:(NSInteger)index {
-    
+    NSLog(@"%@", NSStringFromSelector(_cmd));
+}
+
+- (void)categoryView:(JXCategoryBaseView *)categoryView didClickSelectedItemAtIndex:(NSInteger)index {
+    NSLog(@"%@", NSStringFromSelector(_cmd));
 }
 
 @end
