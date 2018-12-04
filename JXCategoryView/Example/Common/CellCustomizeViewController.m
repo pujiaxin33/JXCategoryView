@@ -82,7 +82,7 @@
             break;
         case 3:
         {
-            //腾讯视频大小缩放-手势渐变
+            //汽车之家字体大小粗细缩放
             TitleViewController *testVC = [[TitleViewController alloc] init];
             testVC.title = title;
             JXCategoryTitleView *titleCategoryView = (JXCategoryTitleView *)testVC.categoryView;

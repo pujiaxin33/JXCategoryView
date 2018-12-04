@@ -74,6 +74,7 @@
 		196428FC2148FA5C009C1D31 /* JXCategoryListVCContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 196428FB2148FA5C009C1D31 /* JXCategoryListVCContainerView.m */; };
 		196429E7214B8091009C1D31 /* averageCellSpacingEnabledNO.gif in Resources */ = {isa = PBXBuildFile; fileRef = 196429E5214B8090009C1D31 /* averageCellSpacingEnabledNO.gif */; };
 		196429E8214B8091009C1D31 /* averageCellSpacingEnabledYES.gif in Resources */ = {isa = PBXBuildFile; fileRef = 196429E6214B8091009C1D31 /* averageCellSpacingEnabledYES.gif */; };
+		1979813021B625B900A587B5 /* CarHome.gif in Resources */ = {isa = PBXBuildFile; fileRef = 1979812F21B625B800A587B5 /* CarHome.gif */; };
 		19870C29211D857F00C23CAA /* lufei.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 19870C28211D857F00C23CAA /* lufei.jpg */; };
 		19870C8321218DAC00C23CAA /* NaviSegmentedControlViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19870C8221218DAC00C23CAA /* NaviSegmentedControlViewController.m */; };
 		19870C8621218E3A00C23CAA /* SegmentedListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19870C8521218E3A00C23CAA /* SegmentedListViewController.m */; };
@@ -123,7 +124,6 @@
 		19D57E84212D5E0E0077DCA6 /* VerticalListCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 19D57E83212D5E0E0077DCA6 /* VerticalListCellModel.m */; };
 		19D57E8A212D66C20077DCA6 /* VerticalListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 19D57E89212D66C20077DCA6 /* VerticalListCell.m */; };
 		19D57E8D212D68D10077DCA6 /* VerticalSectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 19D57E8C212D68D10077DCA6 /* VerticalSectionHeaderView.m */; };
-		19D57E8F212E5BE30077DCA6 /* TXVedio.gif in Resources */ = {isa = PBXBuildFile; fileRef = 19D57E8E212E5BE30077DCA6 /* TXVedio.gif */; };
 		19D57E92212E8F340077DCA6 /* VerticalSectionCategoryHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 19D57E91212E8F340077DCA6 /* VerticalSectionCategoryHeaderView.m */; };
 /* End PBXBuildFile section */
 
@@ -244,6 +244,7 @@
 		196428FB2148FA5C009C1D31 /* JXCategoryListVCContainerView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JXCategoryListVCContainerView.m; sourceTree = "<group>"; };
 		196429E5214B8090009C1D31 /* averageCellSpacingEnabledNO.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = averageCellSpacingEnabledNO.gif; sourceTree = "<group>"; };
 		196429E6214B8091009C1D31 /* averageCellSpacingEnabledYES.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = averageCellSpacingEnabledYES.gif; sourceTree = "<group>"; };
+		1979812F21B625B800A587B5 /* CarHome.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = CarHome.gif; sourceTree = "<group>"; };
 		19870C28211D857F00C23CAA /* lufei.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = lufei.jpg; sourceTree = "<group>"; };
 		19870C8121218DAC00C23CAA /* NaviSegmentedControlViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NaviSegmentedControlViewController.h; sourceTree = "<group>"; };
 		19870C8221218DAC00C23CAA /* NaviSegmentedControlViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NaviSegmentedControlViewController.m; sourceTree = "<group>"; };
@@ -321,7 +322,6 @@
 		19D57E89212D66C20077DCA6 /* VerticalListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VerticalListCell.m; sourceTree = "<group>"; };
 		19D57E8B212D68D10077DCA6 /* VerticalSectionHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VerticalSectionHeaderView.h; sourceTree = "<group>"; };
 		19D57E8C212D68D10077DCA6 /* VerticalSectionHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VerticalSectionHeaderView.m; sourceTree = "<group>"; };
-		19D57E8E212E5BE30077DCA6 /* TXVedio.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = TXVedio.gif; sourceTree = "<group>"; };
 		19D57E90212E8F340077DCA6 /* VerticalSectionCategoryHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VerticalSectionCategoryHeaderView.h; sourceTree = "<group>"; };
 		19D57E91212E8F340077DCA6 /* VerticalSectionCategoryHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VerticalSectionCategoryHeaderView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -635,7 +635,6 @@
 				194DCDD62134EF18000E89EF /* LoadData.gif */,
 				192AD166212FF45E0031AD46 /* BackgroundViewShadow.gif */,
 				192AD15A212FCD650031AD46 /* VerticalList.gif */,
-				19D57E8E212E5BE30077DCA6 /* TXVedio.gif */,
 				19D57E79212D48AB0077DCA6 /* IndicatorCustomizeGuide.gif */,
 				19D57E6D212D01180077DCA6 /* AttributeView.gif */,
 				191A95FA212BFE3200DBF784 /* JXCategoryViewStructure.png */,
@@ -649,6 +648,7 @@
 				19870C8F2122703B00C23CAA /* IQIYILineStyle.gif */,
 				19870C902122703B00C23CAA /* TitleImageLeft.gif */,
 				19870C912122703B00C23CAA /* UserProfile.gif */,
+				1979812F21B625B800A587B5 /* CarHome.gif */,
 				19870C922122703B00C23CAA /* TitleImageBottom.gif */,
 				19870C942122703B00C23CAA /* SegmentedControlNavi.gif */,
 				19870C962122703B00C23CAA /* Number.gif */,
@@ -876,7 +876,6 @@
 				191A95F7212BF5DA00DBF784 /* Rectangle.gif in Resources */,
 				191A95F4212BF5DA00DBF784 /* TriangleTop.gif in Resources */,
 				192AD15B212FCD660031AD46 /* VerticalList.gif in Resources */,
-				19D57E8F212E5BE30077DCA6 /* TXVedio.gif in Resources */,
 				19870CA12122703B00C23CAA /* Football.gif in Resources */,
 				191A95F3212BF5DA00DBF784 /* TitleMaskNoBackgroundView.gif in Resources */,
 				190F6A6C213E889F00870498 /* CellMixed.gif in Resources */,
@@ -901,6 +900,7 @@
 				194DCDD72134EF18000E89EF /* LoadData.gif in Resources */,
 				19870CA22122703B00C23CAA /* LineView.gif in Resources */,
 				191A95F5212BF5DA00DBF784 /* CellImage.gif in Resources */,
+				1979813021B625B900A587B5 /* CarHome.gif in Resources */,
 				19870CB12122703B00C23CAA /* TitleColorGradient.gif in Resources */,
 				191A95EF212BF5DA00DBF784 /* CellRedDot.gif in Resources */,
 				19870CA02122703B00C23CAA /* SeparatorLine.gif in Resources */,
