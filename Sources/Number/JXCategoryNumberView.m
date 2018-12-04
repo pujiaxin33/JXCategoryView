@@ -14,6 +14,11 @@
     [super initializeData];
 
     self.cellSpacing = 25;
+    _numberTitleColor = [UIColor whiteColor];
+    _numberBackgroundColor = [UIColor colorWithRed:241/255.0 green:147/255.0 blue:95/255.0 alpha:1];
+    _numberLabelHeight = 14;
+    _numberLabelWidthIncrement = 10;
+    _numberLabelFont = [UIFont systemFontOfSize:11];
 }
 
 - (Class)preferredCellClass {
@@ -34,6 +39,11 @@
 
     JXCategoryNumberCellModel *myCellModel = (JXCategoryNumberCellModel *)cellModel;
     myCellModel.count = [self.counts[index] integerValue];
+    myCellModel.numberBackgroundColor = self.numberBackgroundColor;
+    myCellModel.numberTitleColor = self.numberTitleColor;
+    myCellModel.numberLabelHeight = self.numberLabelHeight;
+    myCellModel.numberLabelWidthIncrement = self.numberLabelWidthIncrement;
+    myCellModel.numberLabelFont = self.numberLabelFont;
 }
 
 @end
