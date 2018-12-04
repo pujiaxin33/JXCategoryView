@@ -244,13 +244,16 @@ struct DelegateFlags {
 
     if (self.selectedIndex == targetIndex) {
         if (isClicked) {
-            if (self.delegateFlags.didSelectedItemAtIndexFlag) {
-                [self.delegate categoryView:self didSelectedItemAtIndex:targetIndex];
+            if (self.delegateFlags.didClickSelectedItemAtIndexFlag) {
+                [self.delegate categoryView:self didClickSelectedItemAtIndex:targetIndex];
             }
         }else {
             if (self.delegateFlags.didScrollSelectedItemAtIndexFlag) {
                 [self.delegate categoryView:self didScrollSelectedItemAtIndex:targetIndex];
             }
+        }
+        if (self.delegateFlags.didSelectedItemAtIndexFlag) {
+            [self.delegate categoryView:self didSelectedItemAtIndex:targetIndex];
         }
         return NO;
     }
@@ -286,13 +289,16 @@ struct DelegateFlags {
 
     self.selectedIndex = targetIndex;
     if (isClicked) {
-        if (self.delegateFlags.didSelectedItemAtIndexFlag) {
-            [self.delegate categoryView:self didSelectedItemAtIndex:targetIndex];
+        if (self.delegateFlags.didClickSelectedItemAtIndexFlag) {
+            [self.delegate categoryView:self didClickSelectedItemAtIndex:targetIndex];
         }
     }else {
         if (self.delegateFlags.didScrollSelectedItemAtIndexFlag) {
             [self.delegate categoryView:self didScrollSelectedItemAtIndex:targetIndex];
         }
+    }
+    if (self.delegateFlags.didSelectedItemAtIndexFlag) {
+        [self.delegate categoryView:self didSelectedItemAtIndex:targetIndex];
     }
 
     return YES;
@@ -337,9 +343,6 @@ struct DelegateFlags {
             NSInteger targetIndex = baseIndex;
             if (ratio < self.selectedIndex) {
                 targetIndex = baseIndex + 1;
-            }
-            if (self.delegateFlags.didScrollSelectedItemAtIndexFlag) {
-                [self.delegate categoryView:self didScrollSelectedItemAtIndex:targetIndex];
             }
             [self _selectCellAtIndex:targetIndex handleContentScrollView:NO isClicked:NO];
         }
