@@ -56,7 +56,7 @@ Image |  <img src="JXCategoryView/Images/CellImage.gif" width="343" height="80">
 数字 |  <img src="JXCategoryView/Images/Number.gif" width="343" height="80"> |
 红点 |  <img src="JXCategoryView/Images/CellRedDot.gif" width="343" height="80"> |
 自定义-多行+富文本 |  <img src="JXCategoryView/Images/AttributeView.gif" width="343" height="80"> |
-腾讯视频效果  |  <img src="JXCategoryView/Images/TXVedio.gif" width="343" height="80">  |
+汽车之家效果<br/>字体大小、粗细、颜色<br/>皆有变化  |  <img src="JXCategoryView/Images/CarHome.gif" width="343" height="80">  |
 
 ### 特殊效果预览
 
@@ -135,6 +135,8 @@ titleColorGradientEnabled    | title的颜色是否渐变过渡 默认：NO |
 titleLabelMaskEnabled    | titleLabel是否遮罩过滤 默认：NO |
 titleLabelZoomEnabled    | titleLabel是否缩放 默认：NO |
 titleLabelZoomScale    | citleLabel缩放比例 默认：1.2 |
+titleLabelStrokeWidthEnabled    | titleLabel的字体是否支持粗细变化 默认：NO |
+titleLabelSelectedStrokeWidth    | 默认：-3，用于控制字体的粗细<br/>（底层通过NSStrokeWidthAttributeName实现）。<br/>使用该属性，务必让titleFont和titleSelectedFont设置为一样的！！！ |
 imageZoomEnabled    | imageView是否缩放 默认：NO |
 imageZoomScale    | imageView缩放比例 默认：1.2 |
 separatorLineShowEnabled    | cell分割线是否展示 默认：NO (颜色、宽高可以设置) |
