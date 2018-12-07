@@ -22,6 +22,7 @@
     _imageSize = CGSizeMake(20, 20);
     _imageZoomEnabled = NO;
     _imageZoomScale = 1.2;
+    _imageCornerRadius = 0;
 }
 
 - (Class)preferredCellClass {
@@ -54,6 +55,7 @@
     JXCategoryImageCellModel *myCellModel = (JXCategoryImageCellModel *)cellModel;
     myCellModel.loadImageCallback = self.loadImageCallback;
     myCellModel.imageSize = self.imageSize;
+    myCellModel.imageCornerRadius = self.imageCornerRadius;
     if (self.imageNames != nil) {
         myCellModel.imageName = self.imageNames[index];
     }else if (self.imageURLs != nil) {

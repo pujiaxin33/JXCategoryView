@@ -16,6 +16,7 @@
 
     _imageView = [[UIImageView alloc] init];
     _imageView.contentMode = UIViewContentModeScaleAspectFit;
+    _imageView.layer.masksToBounds = YES;
     [self.contentView addSubview:_imageView];
 }
 
@@ -25,6 +26,7 @@
     JXCategoryImageCellModel *myCellModel = (JXCategoryImageCellModel *)self.cellModel;
     self.imageView.bounds = CGRectMake(0, 0, myCellModel.imageSize.width, myCellModel.imageSize.height);
     self.imageView.center = self.contentView.center;
+    self.imageView.layer.cornerRadius = myCellModel.imageCornerRadius;
 }
 
 - (void)reloadData:(JXCategoryBaseCellModel *)cellModel {
