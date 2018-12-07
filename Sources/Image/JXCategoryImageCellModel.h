@@ -22,6 +22,8 @@
 
 @property (nonatomic, assign) CGSize imageSize;
 
+@property (nonatomic, assign) CGFloat imageCornerRadius;
+
 @property (nonatomic, assign) BOOL imageZoomEnabled;    
 
 @property (nonatomic, assign) CGFloat imageZoomScale;

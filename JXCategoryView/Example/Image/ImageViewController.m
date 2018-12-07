@@ -26,6 +26,7 @@
     self.myCategoryView.imageNames = self.imageNames;
     self.myCategoryView.selectedImageNames = selectedImageNames;
     self.myCategoryView.imageZoomEnabled = YES;
+    self.myCategoryView.imageCornerRadius = 0;
 
     JXCategoryIndicatorLineView *lineView = [[JXCategoryIndicatorLineView alloc] init];
     lineView.indicatorLineWidth = 20;
