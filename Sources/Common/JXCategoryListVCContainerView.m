@@ -96,16 +96,26 @@
 - (void)scrollingFromLeftIndex:(NSInteger)leftIndex toRightIndex:(NSInteger)rightIndex ratio:(CGFloat)ratio {
     NSInteger targetIndex = 0;
     if (ratio > 0.5) {
-        targetIndex = leftIndex;
-    }else {
         targetIndex = rightIndex;
+    }else {
+        targetIndex = leftIndex;
     }
     if (self.targetIndex != targetIndex) {
         [self listVCWillAppear:targetIndex];
         [self listVCDidAppear:targetIndex];
-
-        [self listVCWillDisappear:self.currentIndex];
-        [self listVCDidDisappear:self.currentIndex];
+        
+        //源代码
+        //[self listVCWillDisappear:self.currentIndex];
+        //[self listVCDidDisappear:self.currentIndex];
+        
+        //add by wuna 解决了部分生命周期问题和标题跟页面正确对应问题
+        if (ratio > 0.5) {
+            [self listVCWillDisappear:leftIndex];
+            [self listVCDidDisappear:leftIndex];
+        }else{
+            [self listVCWillDisappear:rightIndex];
+            [self listVCDidDisappear:rightIndex];
+        }
     }
 }
 
