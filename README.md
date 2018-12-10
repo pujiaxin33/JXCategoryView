@@ -107,6 +107,7 @@ end
 - 个人主页效果：上下左右滚动且HeaderView悬浮的实现，用的是我写的这个库[JXPagingView](https://github.com/pujiaxin33/JXPagingView)。
 - 垂直列表滚动：参考demo工程的`VerticalListViewController`，未做功能封装，参考里面的代码做，多注意注释，就可以实现了。
 - 底部列表封装：一个列表都是VC封装起来的，可以参考demo工程`LoadDataViewController`类。一种就是直接操作VC控制加载，一种是用`JXCategoryListVCContainerView`封装起来，通过生命周期加载。详情请查看源码。
+- 列表懒加载：`LazyLoadViewController`类实现了，显示到对应index时才初始化对应ViewController，代码仅供参考。
 
 ## 常用属性说明
 
