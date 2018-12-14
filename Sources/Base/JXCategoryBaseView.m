@@ -90,6 +90,7 @@ struct DelegateFlags {
         collectionView.backgroundColor = [UIColor clearColor];
         collectionView.showsHorizontalScrollIndicator = NO;
         collectionView.showsVerticalScrollIndicator = NO;
+        collectionView.scrollsToTop = NO;
         collectionView.dataSource = self;
         collectionView.delegate = self;
         [collectionView registerClass:[self preferredCellClass] forCellWithReuseIdentifier:NSStringFromClass([self preferredCellClass])];
@@ -112,6 +113,7 @@ struct DelegateFlags {
         [_contentScrollView removeObserver:self forKeyPath:@"contentOffset"];
     }
     _contentScrollView = contentScrollView;
+    _contentScrollView.scrollsToTop = NO;
 
     [contentScrollView addObserver:self forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionNew context:nil];
 }
