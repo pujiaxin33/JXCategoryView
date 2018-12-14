@@ -633,6 +633,27 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" id="Ddj-Gc-eHI">
+                                        <rect key="frame" x="0.0" y="704" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ddj-Gc-eHI" id="6wd-pp-y1B">
+                                            <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="indicatorLineView-🌈彩虹效果" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6oU-Xw-aEF">
+                                                    <rect key="frame" x="16" y="11.5" width="235" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="6oU-Xw-aEF" secondAttribute="trailing" constant="20" symbolic="YES" id="6Vh-22-y6f"/>
+                                                <constraint firstItem="6oU-Xw-aEF" firstAttribute="leading" secondItem="6wd-pp-y1B" secondAttribute="leading" constant="16" id="QlB-E9-Cra"/>
+                                                <constraint firstItem="6oU-Xw-aEF" firstAttribute="centerY" secondItem="6wd-pp-y1B" secondAttribute="centerY" id="u8H-po-StF"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>

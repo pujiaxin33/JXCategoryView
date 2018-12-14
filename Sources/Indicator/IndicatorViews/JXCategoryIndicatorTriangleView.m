@@ -28,10 +28,10 @@
     return self;
 }
 
-#pragma mark - JXCategoryComponentProtocol
+#pragma mark - JXCategoryIndicatorProtocol
 
-- (void)jx_refreshState:(CGRect)selectedCellFrame {
-    CGFloat x = selectedCellFrame.origin.x + (selectedCellFrame.size.width - self.triangleViewSize.width)/2;
+- (void)jx_refreshState:(JXCategoryIndicatorParamsModel *)model {
+    CGFloat x = model.selectedCellFrame.origin.x + (model.selectedCellFrame.size.width - self.triangleViewSize.width)/2;
     CGFloat y = self.superview.bounds.size.height - self.triangleViewSize.height - self.verticalMargin;
     if (self.componentPosition == JXCategoryComponentPosition_Top) {
         y = self.verticalMargin;
@@ -57,8 +57,10 @@
     [CATransaction commit];
 }
 
-- (void)jx_contentScrollViewDidScrollWithLeftCellFrame:(CGRect)leftCellFrame rightCellFrame:(CGRect)rightCellFrame selectedPosition:(JXCategoryCellClickedPosition)selectedPosition percent:(CGFloat)percent {
-
+- (void)jx_contentScrollViewDidScroll:(JXCategoryIndicatorParamsModel *)model {
+    CGRect rightCellFrame = model.rightCellFrame;
+    CGRect leftCellFrame = model.leftCellFrame;
+    CGFloat percent = model.percent;
     CGFloat targetWidth = self.triangleViewSize.width;
     CGFloat targetX = 0;
 
@@ -78,9 +80,9 @@
     }
 }
 
-- (void)jx_selectedCell:(CGRect)cellFrame clickedRelativePosition:(JXCategoryCellClickedPosition)clickedRelativePosition isClicked:(BOOL)isClicked {
+- (void)jx_selectedCell:(JXCategoryIndicatorParamsModel *)model {
     CGRect toFrame = self.frame;
-    toFrame.origin.x = cellFrame.origin.x + (cellFrame.size.width - self.triangleViewSize.width)/2;
+    toFrame.origin.x = model.selectedCellFrame.origin.x + (model.selectedCellFrame.size.width - self.triangleViewSize.width)/2;
     if (self.scrollEnabled) {
         [UIView animateWithDuration:0.25 delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
             self.frame = toFrame;

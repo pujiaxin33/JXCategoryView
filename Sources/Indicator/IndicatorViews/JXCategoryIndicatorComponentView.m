@@ -30,17 +30,17 @@
     return self;
 }
 
-#pragma mark - JXCategoryComponentProtocol
+#pragma mark - JXCategoryIndicatorProtocol
 
-- (void)jx_refreshState:(CGRect)selectedCellFrame {
+- (void)jx_refreshState:(JXCategoryIndicatorParamsModel *)model {
 
 }
 
-- (void)jx_contentScrollViewDidScrollWithLeftCellFrame:(CGRect)leftCellFrame rightCellFrame:(CGRect)rightCellFrame selectedPosition:(JXCategoryCellClickedPosition)selectedPosition percent:(CGFloat)percent {
-    
+- (void)jx_contentScrollViewDidScroll:(JXCategoryIndicatorParamsModel *)model {
+
 }
 
-- (void)jx_selectedCell:(CGRect)cellFrame clickedRelativePosition:(JXCategoryCellClickedPosition)clickedRelativePosition isClicked:(BOOL)isClicked {
+- (void)jx_selectedCell:(JXCategoryIndicatorParamsModel *)model {
     
 }
 

@@ -24,21 +24,23 @@
     return self;
 }
 
-#pragma mark - JXCategoryComponentProtocol
+#pragma mark - JXCategoryIndicatorProtocol
 
-- (void)jx_refreshState:(CGRect)selectedCellFrame {
-    self.layer.cornerRadius = [self getBackgroundViewCornerRadius:selectedCellFrame];
+- (void)jx_refreshState:(JXCategoryIndicatorParamsModel *)model {
+    self.layer.cornerRadius = [self getBackgroundViewCornerRadius:model.selectedCellFrame];
     self.backgroundColor = self.backgroundViewColor;
 
-    CGFloat width = [self getBackgroundViewWidth:selectedCellFrame];
-    CGFloat height = [self getBackgroundViewHeight:selectedCellFrame];
-    CGFloat x = selectedCellFrame.origin.x + (selectedCellFrame.size.width - width)/2;
-    CGFloat y = (selectedCellFrame.size.height - height)/2;
+    CGFloat width = [self getBackgroundViewWidth:model.selectedCellFrame];
+    CGFloat height = [self getBackgroundViewHeight:model.selectedCellFrame];
+    CGFloat x = model.selectedCellFrame.origin.x + (model.selectedCellFrame.size.width - width)/2;
+    CGFloat y = (model.selectedCellFrame.size.height - height)/2;
     self.frame = CGRectMake(x, y, width, height);
 }
 
-- (void)jx_contentScrollViewDidScrollWithLeftCellFrame:(CGRect)leftCellFrame rightCellFrame:(CGRect)rightCellFrame selectedPosition:(JXCategoryCellClickedPosition)selectedPosition percent:(CGFloat)percent {
-
+- (void)jx_contentScrollViewDidScroll:(JXCategoryIndicatorParamsModel *)model {
+    CGRect rightCellFrame = model.rightCellFrame;
+    CGRect leftCellFrame = model.leftCellFrame;
+    CGFloat percent = model.percent;
     CGFloat targetX = 0;
     CGFloat targetWidth = [self getBackgroundViewWidth:leftCellFrame];
 
@@ -66,11 +68,11 @@
     }
 }
 
-- (void)jx_selectedCell:(CGRect)cellFrame clickedRelativePosition:(JXCategoryCellClickedPosition)clickedRelativePosition isClicked:(BOOL)isClicked {
-    CGFloat width = [self getBackgroundViewWidth:cellFrame];
-    CGFloat height = [self getBackgroundViewHeight:cellFrame];
-    CGFloat x = cellFrame.origin.x + (cellFrame.size.width - width)/2;
-    CGFloat y = (cellFrame.size.height - height)/2;
+- (void)jx_selectedCell:(JXCategoryIndicatorParamsModel *)model {
+    CGFloat width = [self getBackgroundViewWidth:model.selectedCellFrame];
+    CGFloat height = [self getBackgroundViewHeight:model.selectedCellFrame];
+    CGFloat x = model.selectedCellFrame.origin.x + (model.selectedCellFrame.size.width - width)/2;
+    CGFloat y = (model.selectedCellFrame.size.height - height)/2;
     CGRect toFrame = CGRectMake(x, y, width, height);
 
     if (self.scrollEnabled) {

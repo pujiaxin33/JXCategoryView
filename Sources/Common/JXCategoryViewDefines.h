@@ -16,8 +16,3 @@ typedef NS_ENUM(NSUInteger, JXCategoryComponentPosition) {
     JXCategoryComponentPosition_Top,
 };
 
-typedef NS_ENUM(NSUInteger, JXCategoryCellClickedPosition) {
-    JXCategoryCellClickedPosition_Left,
-    JXCategoryCellClickedPosition_Right,
-};
-

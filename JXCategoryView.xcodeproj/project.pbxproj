@@ -40,6 +40,9 @@
 		191A9612212CF70300DBF784 /* JXCategoryTitleAttributeCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 191A9611212CF70300DBF784 /* JXCategoryTitleAttributeCellModel.m */; };
 		191A9615212CFA4D00DBF784 /* AttributeViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 191A9614212CFA4D00DBF784 /* AttributeViewViewController.m */; };
 		1920460721BE3039006538C0 /* LazyLoadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1920460621BE3039006538C0 /* LazyLoadViewController.m */; };
+		1920463521C25A93006538C0 /* JXCategoryIndicatorRainbowLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1920463421C25A93006538C0 /* JXCategoryIndicatorRainbowLineView.m */; };
+		1920463821C26A7F006538C0 /* JXCategoryIndicatorParamsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1920463721C26A7F006538C0 /* JXCategoryIndicatorParamsModel.m */; };
+		1920463A21C3557E006538C0 /* RainbowLineView.gif in Resources */ = {isa = PBXBuildFile; fileRef = 1920463921C3557D006538C0 /* RainbowLineView.gif */; };
 		192AD15B212FCD660031AD46 /* VerticalList.gif in Resources */ = {isa = PBXBuildFile; fileRef = 192AD15A212FCD650031AD46 /* VerticalList.gif */; };
 		192AD167212FF45F0031AD46 /* BackgroundViewShadow.gif in Resources */ = {isa = PBXBuildFile; fileRef = 192AD166212FF45E0031AD46 /* BackgroundViewShadow.gif */; };
 		19302325211AD1B300AF1444 /* TitleImageSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19302324211AD1B300AF1444 /* TitleImageSettingViewController.m */; };
@@ -180,6 +183,11 @@
 		191A9614212CFA4D00DBF784 /* AttributeViewViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AttributeViewViewController.m; sourceTree = "<group>"; };
 		1920460521BE3039006538C0 /* LazyLoadViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LazyLoadViewController.h; sourceTree = "<group>"; };
 		1920460621BE3039006538C0 /* LazyLoadViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LazyLoadViewController.m; sourceTree = "<group>"; };
+		1920463321C25A93006538C0 /* JXCategoryIndicatorRainbowLineView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JXCategoryIndicatorRainbowLineView.h; sourceTree = "<group>"; };
+		1920463421C25A93006538C0 /* JXCategoryIndicatorRainbowLineView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JXCategoryIndicatorRainbowLineView.m; sourceTree = "<group>"; };
+		1920463621C26A7F006538C0 /* JXCategoryIndicatorParamsModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JXCategoryIndicatorParamsModel.h; sourceTree = "<group>"; };
+		1920463721C26A7F006538C0 /* JXCategoryIndicatorParamsModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JXCategoryIndicatorParamsModel.m; sourceTree = "<group>"; };
+		1920463921C3557D006538C0 /* RainbowLineView.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = RainbowLineView.gif; sourceTree = "<group>"; };
 		192AD15A212FCD650031AD46 /* VerticalList.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = VerticalList.gif; sourceTree = "<group>"; };
 		192AD166212FF45E0031AD46 /* BackgroundViewShadow.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = BackgroundViewShadow.gif; sourceTree = "<group>"; };
 		19302323211AD1B300AF1444 /* TitleImageSettingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TitleImageSettingViewController.h; sourceTree = "<group>"; };
@@ -433,6 +441,8 @@
 				19346D68212677A50065FD8F /* JXCategoryIndicatorComponentView.m */,
 				19346D5621265E210065FD8F /* JXCategoryIndicatorLineView.h */,
 				19346D5721265E210065FD8F /* JXCategoryIndicatorLineView.m */,
+				1920463321C25A93006538C0 /* JXCategoryIndicatorRainbowLineView.h */,
+				1920463421C25A93006538C0 /* JXCategoryIndicatorRainbowLineView.m */,
 				19346D702126B0D80065FD8F /* JXCategoryIndicatorTriangleView.h */,
 				19346D712126B0D80065FD8F /* JXCategoryIndicatorTriangleView.m */,
 				19346D6A2126934B0065FD8F /* JXCategoryIndicatorImageView.h */,
@@ -642,6 +652,7 @@
 		19870C872122703B00C23CAA /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				1920463921C3557D006538C0 /* RainbowLineView.gif */,
 				196429E5214B8090009C1D31 /* averageCellSpacingEnabledNO.gif */,
 				196429E6214B8091009C1D31 /* averageCellSpacingEnabledYES.gif */,
 				190F6A6B213E889E00870498 /* CellMixed.gif */,
@@ -764,6 +775,8 @@
 				19870CD52122BB6100C23CAA /* JXCategoryCollectionView.m */,
 				19870CD42122BB6100C23CAA /* UIColor+JXAdd.h */,
 				19870CD62122BB6100C23CAA /* UIColor+JXAdd.m */,
+				1920463621C26A7F006538C0 /* JXCategoryIndicatorParamsModel.h */,
+				1920463721C26A7F006538C0 /* JXCategoryIndicatorParamsModel.m */,
 				19346D5521265AA80065FD8F /* JXCategoryIndicatorProtocol.h */,
 				19346D5F2126639B0065FD8F /* JXCategoryFactory.h */,
 				19346D602126639B0065FD8F /* JXCategoryFactory.m */,
@@ -905,6 +918,7 @@
 				19870CA92122703B00C23CAA /* SegmentedControlNavi.gif in Resources */,
 				19870CAE2122703B00C23CAA /* TitleImageTop.gif in Resources */,
 				191A95F8212BF5DA00DBF784 /* TriangleBottom.gif in Resources */,
+				1920463A21C3557E006538C0 /* RainbowLineView.gif in Resources */,
 				191A95F2212BF5DA00DBF784 /* QQBall.gif in Resources */,
 				196429E8214B8091009C1D31 /* averageCellSpacingEnabledYES.gif in Resources */,
 				191A95F6212BF5DA00DBF784 /* Nest.gif in Resources */,
@@ -950,6 +964,7 @@
 				194DCDC32133CAA8000E89EF /* TestListBaseView.m in Sources */,
 				19870CED2122BB6100C23CAA /* JXCategoryTitleImageCell.m in Sources */,
 				19C417C8215F14E30090E518 /* UIWindow+JXSafeArea.m in Sources */,
+				1920463521C25A93006538C0 /* JXCategoryIndicatorRainbowLineView.m in Sources */,
 				19D57E84212D5E0E0077DCA6 /* VerticalListCellModel.m in Sources */,
 				19562CCE212A8C350095AA27 /* IndicatorCustomizeViewController.m in Sources */,
 				19870CF62122BB6100C23CAA /* JXCategoryNumberCell.m in Sources */,
@@ -999,6 +1014,7 @@
 				19870CF22122BB6100C23CAA /* JXCategoryIndicatorCell.m in Sources */,
 				19346D5821265E210065FD8F /* JXCategoryIndicatorLineView.m in Sources */,
 				19562CD1212A8C450095AA27 /* CellCustomizeViewController.m in Sources */,
+				1920463821C26A7F006538C0 /* JXCategoryIndicatorParamsModel.m in Sources */,
 				1912A52A211C3D1600A80826 /* IndicatorImageViewViewController.m in Sources */,
 				19562CF1212AA1360095AA27 /* DotViewController.m in Sources */,
 				19870CEC2122BB6100C23CAA /* JXCategoryTitleImageView.m in Sources */,

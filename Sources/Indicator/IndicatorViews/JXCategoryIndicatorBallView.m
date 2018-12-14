@@ -37,9 +37,9 @@
     return self;
 }
 
-#pragma mark - JXCategoryComponentProtocol
+#pragma mark - JXCategoryIndicatorProtocol
 
-- (void)jx_refreshState:(CGRect)selectedCellFrame {
+- (void)jx_refreshState:(JXCategoryIndicatorParamsModel *)model {
     [CATransaction begin];
     [CATransaction setDisableActions:YES];
     self.shapeLayer.fillColor = self.ballViewColor.CGColor;
@@ -49,7 +49,7 @@
     self.bigBall.backgroundColor = self.ballViewColor;
     self.bigBall.layer.cornerRadius = self.ballViewSize.height/2;
 
-    CGFloat x = selectedCellFrame.origin.x + (selectedCellFrame.size.width - self.ballViewSize.width)/2;
+    CGFloat x = model.selectedCellFrame.origin.x + (model.selectedCellFrame.size.width - self.ballViewSize.width)/2;
     CGFloat y = self.superview.bounds.size.height - self.ballViewSize.height - self.verticalMargin;
     if (self.componentPosition == JXCategoryComponentPosition_Top) {
         y = self.verticalMargin;
@@ -58,8 +58,10 @@
     self.bigBall.frame = CGRectMake(x, y, self.ballViewSize.width, self.ballViewSize.height);
 }
 
-- (void)jx_contentScrollViewDidScrollWithLeftCellFrame:(CGRect)leftCellFrame rightCellFrame:(CGRect)rightCellFrame selectedPosition:(JXCategoryCellClickedPosition)selectedPosition percent:(CGFloat)percent {
-
+- (void)jx_contentScrollViewDidScroll:(JXCategoryIndicatorParamsModel *)model {
+    CGRect rightCellFrame = model.rightCellFrame;
+    CGRect leftCellFrame = model.leftCellFrame;
+    CGFloat percent = model.percent;
     CGFloat targetXOfBigBall = 0;
     CGFloat targetXOfSmallBall = leftCellFrame.origin.x + (leftCellFrame.size.width - self.ballViewSize.width)/2;
     CGFloat targetWidthOfSmallBall = self.ballViewSize.width;
@@ -103,9 +105,9 @@
     }
 }
 
-- (void)jx_selectedCell:(CGRect)cellFrame clickedRelativePosition:(JXCategoryCellClickedPosition)clickedRelativePosition isClicked:(BOOL)isClicked {
+- (void)jx_selectedCell:(JXCategoryIndicatorParamsModel *)model {
 
-    CGFloat x = cellFrame.origin.x + (cellFrame.size.width - self.ballViewSize.width)/2;
+    CGFloat x = model.selectedCellFrame.origin.x + (model.selectedCellFrame.size.width - self.ballViewSize.width)/2;
     CGFloat y = self.superview.bounds.size.height - self.ballViewSize.height - self.verticalMargin;
     if (self.componentPosition == JXCategoryComponentPosition_Top) {
         y = self.verticalMargin;

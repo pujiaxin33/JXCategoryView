@@ -76,7 +76,10 @@
             component.hidden = YES;
         }else {
             component.hidden = NO;
-            [component jx_refreshState:selectedCellFrame];
+            JXCategoryIndicatorParamsModel *indicatorParamsModel = [[JXCategoryIndicatorParamsModel alloc] init];
+            indicatorParamsModel.selectedIndex = self.selectedIndex;
+            indicatorParamsModel.selectedCellFrame = selectedCellFrame;
+            [component jx_refreshState:indicatorParamsModel];
 
             if ([component isKindOfClass:[JXCategoryIndicatorBackgroundView class]]) {
                 CGRect maskFrame = component.frame;
@@ -110,22 +113,25 @@
     }
     ratio = MAX(0, MIN(self.dataSource.count - 1, ratio));
     NSInteger baseIndex = floorf(ratio);
+    if (baseIndex + 1 >= self.dataSource.count) {
+        //右边越界了，不需要处理
+        return;
+    }
     CGFloat remainderRatio = ratio - baseIndex;
 
     CGRect leftCellFrame = [self getTargetCellFrame:baseIndex];
-    CGRect rightCellFrame = CGRectZero;
-    if (baseIndex + 1 < self.dataSource.count) {
-        rightCellFrame = [self getTargetCellFrame:baseIndex+1];
-    }
+    CGRect rightCellFrame = [self getTargetCellFrame:baseIndex + 1];
 
-    JXCategoryCellClickedPosition position = JXCategoryCellClickedPosition_Left;
-    if (self.selectedIndex == baseIndex + 1) {
-        position = JXCategoryCellClickedPosition_Right;
-    }
-
+    JXCategoryIndicatorParamsModel *indicatorParamsModel = [[JXCategoryIndicatorParamsModel alloc] init];
+    indicatorParamsModel.selectedIndex = self.selectedIndex;
+    indicatorParamsModel.leftIndex = baseIndex;
+    indicatorParamsModel.leftCellFrame = leftCellFrame;
+    indicatorParamsModel.rightIndex = baseIndex + 1;
+    indicatorParamsModel.rightCellFrame = rightCellFrame;
+    indicatorParamsModel.percent = remainderRatio;
     if (remainderRatio == 0) {
         for (UIView<JXCategoryIndicatorProtocol> *component in self.indicators) {
-            [component jx_contentScrollViewDidScrollWithLeftCellFrame:leftCellFrame rightCellFrame:rightCellFrame selectedPosition:position percent:remainderRatio];
+            [component jx_contentScrollViewDidScroll:indicatorParamsModel];
         }
     }else {
         JXCategoryIndicatorCellModel *leftCellModel = (JXCategoryIndicatorCellModel *)self.dataSource[baseIndex];
@@ -133,7 +139,7 @@
         [self refreshLeftCellModel:leftCellModel rightCellModel:rightCellModel ratio:remainderRatio];
 
         for (UIView<JXCategoryIndicatorProtocol> *component in self.indicators) {
-            [component jx_contentScrollViewDidScrollWithLeftCellFrame:leftCellFrame rightCellFrame:rightCellFrame selectedPosition:position percent:remainderRatio];
+            [component jx_contentScrollViewDidScroll:indicatorParamsModel];
             if ([component isKindOfClass:[JXCategoryIndicatorBackgroundView class]]) {
                 CGRect leftMaskFrame = component.frame;
                 leftMaskFrame.origin.x = leftMaskFrame.origin.x - leftCellFrame.origin.x;
@@ -153,11 +159,7 @@
 }
 
 - (BOOL)selectCellAtIndex:(NSInteger)index isClicked:(BOOL)isClicked {
-    //是否点击了相对于选中cell左边的cell
-    JXCategoryCellClickedPosition clickedPosition = JXCategoryCellClickedPosition_Left;
-    if (index > self.selectedIndex) {
-        clickedPosition = JXCategoryCellClickedPosition_Right;
-    }
+    NSInteger lastSelectedIndex = self.selectedIndex;
     BOOL result = [super selectCellAtIndex:index isClicked:isClicked];
     if (!result) {
         return NO;
@@ -167,7 +169,12 @@
 
     JXCategoryIndicatorCellModel *selectedCellModel = (JXCategoryIndicatorCellModel *)self.dataSource[index];
     for (UIView<JXCategoryIndicatorProtocol> *component in self.indicators) {
-        [component jx_selectedCell:clickedCellFrame clickedRelativePosition:clickedPosition isClicked:isClicked];
+        JXCategoryIndicatorParamsModel *indicatorParamsModel = [[JXCategoryIndicatorParamsModel alloc] init];
+        indicatorParamsModel.lastSelectedIndex = lastSelectedIndex;
+        indicatorParamsModel.selectedIndex = index;
+        indicatorParamsModel.selectedCellFrame = clickedCellFrame;
+        indicatorParamsModel.isClicked = isClicked;
+        [component jx_selectedCell:indicatorParamsModel];
         if ([component isKindOfClass:[JXCategoryIndicatorBackgroundView class]]) {
             CGRect maskFrame = component.frame;
             maskFrame.origin.x = maskFrame.origin.x - clickedCellFrame.origin.x;

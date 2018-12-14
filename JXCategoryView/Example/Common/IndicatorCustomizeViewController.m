@@ -202,6 +202,28 @@
             titleCategoryView.indicators = @[lineView];
         }
             break;
+        case 16:
+        {
+            //indicatorLineView-🌈彩虹效果
+            testVC.isNeedIndicatorPositionChangeItem = YES;
+//            titleCategoryView.titleColorGradientEnabled = YES;
+            JXCategoryIndicatorRainbowLineView *lineView = [[JXCategoryIndicatorRainbowLineView alloc] init];
+            NSArray *colors = @[[UIColor redColor],
+                               [UIColor yellowColor],
+                               [UIColor blueColor],
+                               [UIColor orangeColor],
+                               [UIColor purpleColor],
+                               [UIColor cyanColor],
+                               [UIColor magentaColor],
+                               [UIColor grayColor],
+                               [UIColor redColor],
+                               [UIColor yellowColor],
+                               [UIColor blueColor],];
+            lineView.indicatorColors = colors;
+            lineView.indicatorLineWidth = JXCategoryViewAutomaticDimension;
+            titleCategoryView.indicators = @[lineView];
+        }
+            break;
 
         default:
             break;

@@ -1,5 +1,5 @@
 //
-//  JXCategoryComponentProtocol.h
+//  JXCategoryIndicatorProtocol.h
 //  JXCategoryView
 //
 //  Created by jiaxin on 2018/8/17.
@@ -9,29 +9,42 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "JXCategoryViewDefines.h"
+#import "JXCategoryIndicatorParamsModel.h"
 
 @protocol JXCategoryIndicatorProtocol <NSObject>
 
-- (void)jx_refreshState:(CGRect)selectedCellFrame;
 
+/**
+ 视图重置状态时调用
+
+ param selectedIndex 当前选中的index
+ param selectedCellFrame 当前选中的cellFrame
+ @param model 数据模型
+ */
+- (void)jx_refreshState:(JXCategoryIndicatorParamsModel *)model;
 
 /**
  contentScrollView在进行手势滑动时，处理指示器跟随手势变化UI逻辑；
 
- @param leftCellFrame 正在过渡中的两个cell，相对位置在左边的cell的frame
- @param rightCellFrame 正在过渡中的两个cell，相对位置在右边的cell的frame
- @param selectedPosition 当前处于选中状态的cell的位置
- @param percent 过渡百分比
+ param selectedIndex 当前选中的index
+ param leftIndex 正在过渡中的两个cell，相对位置在左边的cell的index
+ param leftCellFrame 正在过渡中的两个cell，相对位置在左边的cell的frame
+ param rightIndex 正在过渡中的两个cell，相对位置在右边的cell的index
+ param rightCellFrame 正在过渡中的两个cell，相对位置在右边的cell的frame
+ param percent 过渡百分比
+ @param model 数据模型
  */
-- (void)jx_contentScrollViewDidScrollWithLeftCellFrame:(CGRect)leftCellFrame rightCellFrame:(CGRect)rightCellFrame selectedPosition:(JXCategoryCellClickedPosition)selectedPosition percent:(CGFloat)percent;
+- (void)jx_contentScrollViewDidScroll:(JXCategoryIndicatorParamsModel *)model;
 
 /**
  点击选中了某一个cell
 
- @param cellFrame cell的frame
- @param clickedRelativePosition 相对于已选中cell，当前点击的cell的相对位置。比如 A、B、C 当前处于选中状态的是B。点击了A是JXCategoryCellClickedPosition_Left；点击了C是JXCategoryCellClickedPosition_Right;
- @param isClicked YES：点击选中；NO：滚动选中。
+ param lastSelectedIndex 之前选中的index
+ param selectedIndex 选中的index
+ param selectedCellFrame 选中的cellFrame
+ param isClicked YES：点击选中；NO：滚动选中。
+ @param model 数据模型
  */
-- (void)jx_selectedCell:(CGRect)cellFrame clickedRelativePosition:(JXCategoryCellClickedPosition)clickedRelativePosition isClicked:(BOOL)isClicked;
+- (void)jx_selectedCell:(JXCategoryIndicatorParamsModel *)model;
 
 @end
