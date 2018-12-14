@@ -39,6 +39,7 @@
 		191A960F212CF6F600DBF784 /* JXCategoryTitleAttributeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 191A960E212CF6F600DBF784 /* JXCategoryTitleAttributeCell.m */; };
 		191A9612212CF70300DBF784 /* JXCategoryTitleAttributeCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 191A9611212CF70300DBF784 /* JXCategoryTitleAttributeCellModel.m */; };
 		191A9615212CFA4D00DBF784 /* AttributeViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 191A9614212CFA4D00DBF784 /* AttributeViewViewController.m */; };
+		1920460721BE3039006538C0 /* LazyLoadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1920460621BE3039006538C0 /* LazyLoadViewController.m */; };
 		192AD15B212FCD660031AD46 /* VerticalList.gif in Resources */ = {isa = PBXBuildFile; fileRef = 192AD15A212FCD650031AD46 /* VerticalList.gif */; };
 		192AD167212FF45F0031AD46 /* BackgroundViewShadow.gif in Resources */ = {isa = PBXBuildFile; fileRef = 192AD166212FF45E0031AD46 /* BackgroundViewShadow.gif */; };
 		19302325211AD1B300AF1444 /* TitleImageSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19302324211AD1B300AF1444 /* TitleImageSettingViewController.m */; };
@@ -177,6 +178,8 @@
 		191A9611212CF70300DBF784 /* JXCategoryTitleAttributeCellModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JXCategoryTitleAttributeCellModel.m; sourceTree = "<group>"; };
 		191A9613212CFA4D00DBF784 /* AttributeViewViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AttributeViewViewController.h; sourceTree = "<group>"; };
 		191A9614212CFA4D00DBF784 /* AttributeViewViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AttributeViewViewController.m; sourceTree = "<group>"; };
+		1920460521BE3039006538C0 /* LazyLoadViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LazyLoadViewController.h; sourceTree = "<group>"; };
+		1920460621BE3039006538C0 /* LazyLoadViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LazyLoadViewController.m; sourceTree = "<group>"; };
 		192AD15A212FCD650031AD46 /* VerticalList.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = VerticalList.gif; sourceTree = "<group>"; };
 		192AD166212FF45E0031AD46 /* BackgroundViewShadow.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = BackgroundViewShadow.gif; sourceTree = "<group>"; };
 		19302323211AD1B300AF1444 /* TitleImageSettingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TitleImageSettingViewController.h; sourceTree = "<group>"; };
@@ -466,6 +469,15 @@
 			path = CellAdjust;
 			sourceTree = "<group>";
 		};
+		1920460421BE2FF7006538C0 /* LazyLoad */ = {
+			isa = PBXGroup;
+			children = (
+				1920460521BE3039006538C0 /* LazyLoadViewController.h */,
+				1920460621BE3039006538C0 /* LazyLoadViewController.m */,
+			);
+			path = LazyLoad;
+			sourceTree = "<group>";
+		};
 		19302322211ACE1500AF1444 /* Example */ = {
 			isa = PBXGroup;
 			children = (
@@ -484,6 +496,7 @@
 				191A9608212CF66500DBF784 /* Customize */,
 				19D57E7B212D5C180077DCA6 /* VerticalListView */,
 				194DCDCD2133F1D8000E89EF /* LoadData */,
+				1920460421BE2FF7006538C0 /* LazyLoad */,
 			);
 			path = Example;
 			sourceTree = "<group>";
@@ -943,6 +956,7 @@
 				19870D022122BB6100C23CAA /* JXCategoryBaseCellModel.m in Sources */,
 				19D57E7E212D5C600077DCA6 /* VerticalListViewController.m in Sources */,
 				190639BB21919FDA00153BE9 /* JXPagerMainTableView.m in Sources */,
+				1920460721BE3039006538C0 /* LazyLoadViewController.m in Sources */,
 				19D57E81212D5DFB0077DCA6 /* VerticalListSectionModel.m in Sources */,
 				190639BA21919FDA00153BE9 /* JXPagerListContainerView.m in Sources */,
 				190639BC21919FDA00153BE9 /* JXPagerView.m in Sources */,
@@ -1133,7 +1147,7 @@
 				INFOPLIST_FILE = JXCategoryView/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = jiaxin.JXCategoryView.33;
+				PRODUCT_BUNDLE_IDENTIFIER = jiaxin.JXCategoryView.3333;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1152,7 +1166,7 @@
 				INFOPLIST_FILE = JXCategoryView/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = jiaxin.JXCategoryView.33;
+				PRODUCT_BUNDLE_IDENTIFIER = jiaxin.JXCategoryView.3333;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 3.0;

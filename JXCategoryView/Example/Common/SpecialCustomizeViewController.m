@@ -13,6 +13,7 @@
 #import "VerticalListViewController.h"
 #import "PagingViewController.h"
 #import "LoadDataViewController.h"
+#import "LazyLoadViewController.h"
 
 @interface SpecialCustomizeViewController ()
 
@@ -90,6 +91,14 @@
             //数据源刷新&列表加载数据（ListVCContainerView封装）
             LoadDataViewController *vc = [[LoadDataViewController alloc] init];
             vc.isNeedCategoryListContainerView = YES;
+            vc.title = title;
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+            break;
+        case 7:
+        {
+            //列表懒加载
+            LazyLoadViewController *vc = [[LazyLoadViewController alloc] init];
             vc.title = title;
             [self.navigationController pushViewController:vc animated:YES];
         }
