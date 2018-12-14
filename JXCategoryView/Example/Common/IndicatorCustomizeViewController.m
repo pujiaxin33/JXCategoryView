@@ -206,7 +206,6 @@
         {
             //indicatorLineView-🌈彩虹效果
             testVC.isNeedIndicatorPositionChangeItem = YES;
-//            titleCategoryView.titleColorGradientEnabled = YES;
             JXCategoryIndicatorRainbowLineView *lineView = [[JXCategoryIndicatorRainbowLineView alloc] init];
             NSArray *colors = @[[UIColor redColor],
                                [UIColor yellowColor],
