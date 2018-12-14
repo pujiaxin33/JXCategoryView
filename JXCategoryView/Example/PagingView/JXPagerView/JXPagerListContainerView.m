@@ -34,6 +34,7 @@
     self.collectionView.showsHorizontalScrollIndicator = NO;
     self.collectionView.showsVerticalScrollIndicator = NO;
     self.collectionView.pagingEnabled = YES;
+    self.collectionView.scrollsToTop = NO;
     self.collectionView.bounces = NO;
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
