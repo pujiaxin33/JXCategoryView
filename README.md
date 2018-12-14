@@ -23,6 +23,7 @@ A powerful and easy to use category view (segmentedcontrol, segmentview, pagingv
 LineView  |  <img src="JXCategoryView/Images/LineView.gif" width="343" height="80"> |
 LineView京东风格  |  <img src="JXCategoryView/Images/JDLineStyle.gif" width="343" height="80"> |
 LineView爱奇艺风格  |  <img src="JXCategoryView/Images/IQIYILineStyle.gif" width="343" height="80"> |
+LineView🌈彩虹风格  |  <img src="JXCategoryView/Images/RainbowLineView.gif" width="343" height="80"> |
 BallView QQ黏性红点  |  <img src="JXCategoryView/Images/QQBall.gif" width="343" height="84"> |
 TriangleView 三角形底部  |  <img src="JXCategoryView/Images/TriangleBottom.gif" width="343" height="80"> |
 TriangleView 三角形顶部  |  <img src="JXCategoryView/Images/TriangleTop.gif" width="343" height="80"> |
@@ -156,6 +157,7 @@ JXCategoryIndicatorLineView.indicatorLineWidth   | 默认JXCategoryViewAutomatic
 JXCategoryIndicatorLineView.indicatorLineViewHeight    | 默认：3 |
 JXCategoryIndicatorLineView.indicatorLineViewCornerRadius    | 默认JXCategoryViewAutomaticDimension （等于self.indicatorLineViewHeight/2） |
 JXCategoryIndicatorLineView.indicatorLineViewColor    | 默认为[UIColor redColor]  |
+JXCategoryIndicatorRainbowLineView.indicatorColors    | 数量需要与cell的数量相等。没有提供默认值，必须要赋值该属性。<br/>categoryView在reloadData的时候，也要一并更新该属性。  |
 JXCategoryIndicatorTriangleView.triangleViewSize   | 默认：CGSizeMake(14, 10)  |
 JXCategoryIndicatorTriangleView.triangleViewColor    | 默认为[UIColor redColor]  |
 JXCategoryIndicatorImageView.indicatorImageView    | 设置image |
