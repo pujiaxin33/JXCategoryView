@@ -42,9 +42,8 @@
 }
 
 - (void)reloadData {
-    for (UIViewController *vc in self.listVCDict.allValues) {
-        [vc removeFromParentViewController];
-        [vc.view removeFromSuperview];
+    for (id<JXCategoryListContentViewDelegate> list in self.listVCDict.allValues) {
+        [list.listView removeFromSuperview];
     }
     [self.listVCDict removeAllObjects];
 
@@ -60,6 +59,7 @@
     self.scrollView.contentSize = CGSizeMake(self.scrollView.bounds.size.width*[self.delegate numberOfListsInlistContainerView:self], self.scrollView.bounds.size.height);
     if (!self.isLayoutSubviewsed) {
         self.isLayoutSubviewsed = YES;
+        //初始化第一次调用
         [self listDidAppear:self.currentIndex];
     }
 }
@@ -114,12 +114,16 @@
         [self.scrollView addSubview:list.listView];
         self.listVCDict[@(index)] = list;
     }
-    [list listDidAppear];
+    if (list && [list respondsToSelector:@selector(listDidAppear)]) {
+        [list listDidAppear];
+    }
 }
 
 - (void)listDidDisappear:(NSInteger)index {
     id<JXCategoryListContentViewDelegate> list = self.listVCDict[@(index)];
-    [list listDidDisappear];
+    if (list && [list respondsToSelector:@selector(listDidDisappear)]) {
+        [list listDidDisappear];
+    }
 }
 
 
