@@ -176,6 +176,7 @@ JXCategoryIndicatorBallView.ballViewColor    | 默认为[UIColor redColor] |
 
 ## 使用
 
+### 高度自定义使用示例代码
 ```
 //在使用JXCategoryView的VC里面加上下面的代码
 if (@available(iOS 11.0, *)) {
@@ -203,6 +204,13 @@ self.categoryView.indicators = @[lineView, backgroundView];
 self.categoryView.contentScrollView = self.scrollView;
 [self.view addSubview:self.categoryView];
 ```
+
+### `JXCategoryListContainerView`封装类使用示例
+如果要自己处理contentScrollView，需要处理布局，列表加载等，而且列表如果一次性加载完，push页面会有卡顿现象。
+强烈建议先使用`JXCategoryListContainerView`，如果需求比较特殊，再使用上面的高度自定义。
+[JXCategoryListContainerView的详细使用说明](https://github.com/pujiaxin33/JXCategoryView/blob/master/Document/JXCategoryListContainerView%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md)
+
+### 其他使用注意事项
 
 - 单个cell刷新：比如红点示例里面，调用`- (void)reloadCellAtIndex:(NSUInteger)index`
 - 所有状态重置：数据源、属性配置有变动时（比如从服务器拉取回来数据），需要调用`reloadData`方法刷新状态。
