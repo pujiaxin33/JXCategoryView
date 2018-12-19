@@ -24,6 +24,7 @@
     if (self) {
         _didAppearPercent = 0.5;
         _parentViewController = parentVC;
+        _parentViewController.automaticallyAdjustsScrollViewInsets = NO;
         _delegate = delegate;
         _listVCDict = [NSMutableDictionary dictionary];
         [self initializeViews];
@@ -38,6 +39,9 @@
     self.scrollView.showsHorizontalScrollIndicator = NO;
     self.scrollView.scrollsToTop = NO;
     self.scrollView.bounces = NO;
+    if (@available(iOS 11.0, *)) {
+        self.scrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+    }
     [self addSubview:self.scrollView];
 }
 
