@@ -35,6 +35,9 @@
     _scrollView = [[UIScrollView alloc] init];
     self.scrollView.pagingEnabled = YES;
     self.scrollView.showsHorizontalScrollIndicator = NO;
+    self.scrollView.showsHorizontalScrollIndicator = NO;
+    self.scrollView.scrollsToTop = NO;
+    self.scrollView.bounces = NO;
     [self addSubview:self.scrollView];
 }
 
