@@ -110,65 +110,7 @@ end
 
 ## 常用属性说明
 
-### JXCategoryView常用属性说明
-
-属性     | 说明           |
---------------|---------------|
-defaultSelectedIndex    | 默认选中的index，用于初始化时指定选中某个index |
-selectedIndex    | 只读属性，当前选中的index |
-cellWidth    | cell的宽度，默认：JXCategoryViewAutomaticDimension |
-cellSpacing    | cell之间的间距，默认20 |
-cellWidthIncrement    | cell宽度的补偿值，默认0 |
-averageCellSpacingEnabled    | 当item内容总宽度小于JXCategoryBaseView的宽度，是否将cellSpacing均分。默认为YES。 |
-contentScrollView    | 需要关联的contentScrollView，内部监听`contentOffset` |
-contentEdgeInsetLeft    | 整体内容的左边距，默认JXCategoryViewAutomaticDimension（等于cellSpacing） |
-contentEdgeInsetRight    | 整体内容的右边距，默认JXCategoryViewAutomaticDimension（等于cellSpacing） |
-
-### Cell样式常用属性说明
-
-属性     | 说明           |
---------------|---------------|
-titleColor    | titleLabel未选中颜色 默认：[UIColor blackColor] |
-titleSelectedColor    | titleLabel选中颜色 默认：[UIColor redColor] |
-titleFont    | titleLabel的字体 默认：[UIFont systemFontOfSize:15] |
-titleColorGradientEnabled    | title的颜色是否渐变过渡 默认：NO |
-titleLabelMaskEnabled    | titleLabel是否遮罩过滤 默认：NO |
-titleLabelZoomEnabled    | titleLabel是否缩放 默认：NO |
-titleLabelZoomScale    | citleLabel缩放比例 默认：1.2 |
-titleLabelStrokeWidthEnabled    | titleLabel的字体是否支持粗细变化 默认：NO |
-titleLabelSelectedStrokeWidth    | 默认：-3，用于控制字体的粗细<br/>（底层通过NSStrokeWidthAttributeName实现）。<br/>使用该属性，务必让titleFont和titleSelectedFont设置为一样的！！！ |
-imageZoomEnabled    | imageView是否缩放 默认：NO |
-imageZoomScale    | imageView缩放比例 默认：1.2 |
-separatorLineShowEnabled    | cell分割线是否展示 默认：NO (颜色、宽高可以设置) |
-JXCategoryTitleImageType    | 图片所在位置：上面、左边、下面、右边 默认：左边 |
-
-### 指示器常用属性说明
-
-属性     | 说明           |
---------------|---------------|
-JXCategoryIndicatorComponentView.componentPosition    | 指示器的位置 默认：Bottom |
-JXCategoryIndicatorComponentView.verticalMargin    | 垂直方向边距，lineView的上下位置调整；默认：0 |
-JXCategoryIndicatorComponentView.scrollEnabled    | 手势滚动、点击切换的时候，是否允许滚动，默认YES |
-JXCategoryIndicatorLineView.lineStyle    | 普通、京东、爱奇艺效果 默认：Normal |
-JXCategoryIndicatorLineView.lineScrollOffsetX    | 爱奇艺效果专用，line滚动时x的偏移量，默认为10； |
-JXCategoryIndicatorLineView.indicatorLineWidth   | 默认JXCategoryViewAutomaticDimension（与cellWidth相等） |
-JXCategoryIndicatorLineView.indicatorLineViewHeight    | 默认：3 |
-JXCategoryIndicatorLineView.indicatorLineViewCornerRadius    | 默认JXCategoryViewAutomaticDimension （等于self.indicatorLineViewHeight/2） |
-JXCategoryIndicatorLineView.indicatorLineViewColor    | 默认为[UIColor redColor]  |
-JXCategoryIndicatorRainbowLineView.indicatorColors    | 数量需要与cell的数量相等。没有提供默认值，必须要赋值该属性。<br/>categoryView在reloadData的时候，也要一并更新该属性。  |
-JXCategoryIndicatorTriangleView.triangleViewSize   | 默认：CGSizeMake(14, 10)  |
-JXCategoryIndicatorTriangleView.triangleViewColor    | 默认为[UIColor redColor]  |
-JXCategoryIndicatorImageView.indicatorImageView    | 设置image |
-JXCategoryIndicatorImageView.indicatorImageViewRollEnabled    | 是否允许滚动，默认：NO |
-JXCategoryIndicatorImageView.indicatorImageViewSize    | 默认：CGSizeMake(30, 20)  |
-JXCategoryIndicatorBackgroundView.backgroundViewWidth    | 默认JXCategoryViewAutomaticDimension（与cellWidth相等） |
-JXCategoryIndicatorBackgroundView.backgroundViewWidthIncrement    | 宽度增量补偿，因为backgroundEllipseLayer一般会比实际内容大一些。默认10 |
-JXCategoryIndicatorBackgroundView.backgroundViewHeight    | 默认JXCategoryViewAutomaticDimension（与cell高度相等） |
-JXCategoryIndicatorBackgroundView.backgroundViewCornerRadius    | 默认JXCategoryViewAutomaticDimension(即backgroundViewHeight/2) |
-JXCategoryIndicatorBackgroundView.backgroundViewColor    | 默认为[UIColor redColor] |
-JXCategoryIndicatorBallView.ballViewSize    | 默认：CGSizeMake(15, 15) |
-JXCategoryIndicatorBallView.ballScrollOffsetX    | 小红点的偏移量 默认：20 |
-JXCategoryIndicatorBallView.ballViewColor    | 默认为[UIColor redColor] |
+[常用属性说明文档地址](https://github.com/pujiaxin33/JXCategoryView/blob/master/Document/%E5%B8%B8%E7%94%A8%E5%B1%9E%E6%80%A7%E8%AF%B4%E6%98%8E.md)
 
 可以多个IndicatorView搭配使用，但是效果需要自己把控，效果不是越多越好。参考混合使用；
 
