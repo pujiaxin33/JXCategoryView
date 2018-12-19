@@ -107,8 +107,6 @@ end
 - 自定义：即使提供了灵活扩展，我的源码也不可能满足所有情况，建议大家可以通过fork仓库，维护自己的一套效果。也可以直接拖入源文件进行修改。
 - 个人主页效果：上下左右滚动且HeaderView悬浮的实现，用的是我写的这个库[JXPagingView](https://github.com/pujiaxin33/JXPagingView)。
 - 垂直列表滚动：参考demo工程的`VerticalListViewController`，未做功能封装，参考里面的代码做，多注意注释，就可以实现了。
-- 底部列表封装：一个列表都是VC封装起来的，可以参考demo工程`LoadDataViewController`类。一种就是直接操作VC控制加载，一种是用`JXCategoryListVCContainerView`封装起来，通过生命周期加载。详情请查看源码。
-- 列表懒加载：`LazyLoadViewController`类实现了，显示到对应index时才初始化对应ViewController，代码仅供参考。
 
 ## 常用属性说明
 
@@ -176,6 +174,7 @@ JXCategoryIndicatorBallView.ballViewColor    | 默认为[UIColor redColor] |
 
 ## 使用
 
+### 高度自定义使用示例代码
 ```
 //在使用JXCategoryView的VC里面加上下面的代码
 if (@available(iOS 11.0, *)) {
@@ -203,6 +202,16 @@ self.categoryView.indicators = @[lineView, backgroundView];
 self.categoryView.contentScrollView = self.scrollView;
 [self.view addSubview:self.categoryView];
 ```
+
+### `JXCategoryListContainerView`封装类使用示例
+
+- 高度封装contentScrollView逻辑，只需少量代码即可完成列表容器逻辑；
+- 列表懒加载，当通过滚动、点击选中显示某个列表的时候，才进行列表初始化，性能更优；
+
+强烈建议先使用`JXCategoryListContainerView`，如果需求比较特殊，再使用上面的高度自定义。
+[JXCategoryListContainerView的详细使用说明](https://github.com/pujiaxin33/JXCategoryView/blob/master/Document/JXCategoryListContainerView%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md)
+
+### 其他使用注意事项
 
 - 单个cell刷新：比如红点示例里面，调用`- (void)reloadCellAtIndex:(NSUInteger)index`
 - 所有状态重置：数据源、属性配置有变动时（比如从服务器拉取回来数据），需要调用`reloadData`方法刷新状态。
