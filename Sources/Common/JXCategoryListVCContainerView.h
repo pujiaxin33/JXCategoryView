@@ -10,7 +10,7 @@
 
 
 /**
- 使用方法参照demo工程的LoadDataViewController文件
+ 此类已不再维护，推荐使用JXCategoryListContainerView类！！！
  */
 @interface JXCategoryListVCContainerView : UIView
 

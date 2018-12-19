@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LoadDataBaseViewController.h"
 
-@interface LoadDataViewController : UIViewController
-@property (nonatomic, assign) BOOL isNeedCategoryListContainerView;
+@interface LoadDataNormalViewController : LoadDataBaseViewController
 @end

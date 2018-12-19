@@ -32,12 +32,6 @@
     [self.tableView reloadData];
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-
-    [self loadDataForFirst];
-}
-
 - (void)headerRefresh {
     [self.refreshControl beginRefreshing];
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];

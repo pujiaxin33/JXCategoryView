@@ -12,8 +12,9 @@
 #import "NestViewController.h"
 #import "VerticalListViewController.h"
 #import "PagingViewController.h"
-#import "LoadDataViewController.h"
-#import "LazyLoadViewController.h"
+#import "LoadDataNormalViewController.h"
+#import "LoadDataListVCContainerViewController.h"
+#import "LoadDataListContainerViewController.h"
 
 @interface SpecialCustomizeViewController ()
 
@@ -81,7 +82,7 @@
         case 5:
         {
             //数据源刷新&列表数据加载
-            LoadDataViewController *vc = [[LoadDataViewController alloc] init];
+            LoadDataNormalViewController *vc = [[LoadDataNormalViewController alloc] init];
             vc.title = title;
             [self.navigationController pushViewController:vc animated:YES];
         }
@@ -89,16 +90,15 @@
         case 6:
         {
             //数据源刷新&列表加载数据（ListVCContainerView封装）
-            LoadDataViewController *vc = [[LoadDataViewController alloc] init];
-            vc.isNeedCategoryListContainerView = YES;
+            LoadDataListVCContainerViewController *vc = [[LoadDataListVCContainerViewController alloc] init];
             vc.title = title;
             [self.navigationController pushViewController:vc animated:YES];
         }
             break;
         case 7:
         {
-            //列表懒加载
-            LazyLoadViewController *vc = [[LazyLoadViewController alloc] init];
+            //数据源刷新&列表加载数据（ListContainerView封装）
+            LoadDataListContainerViewController *vc = [[LoadDataListContainerViewController alloc] init];
             vc.title = title;
             [self.navigationController pushViewController:vc animated:YES];
         }
