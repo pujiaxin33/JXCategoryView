@@ -13,6 +13,7 @@
 #import "BackgroundImageViewController.h"
 #import "FootballViewController.h"
 #import "JXCategoryIndicatorDotLineView.h"
+#import "JXGradientView.h"
 
 @interface IndicatorCustomizeViewController ()
 
@@ -35,19 +36,19 @@
         }
     }
 
-    if (indexPath.row == 11) {
+    if (indexPath.row == 12) {
         //IndicatorImageView底部
         IndicatorImageViewViewController *indicatorImageViewVC = [[IndicatorImageViewViewController alloc] init];
         indicatorImageViewVC.title = title;
         [self.navigationController pushViewController:indicatorImageViewVC animated:YES];
         return;
-    }else if (indexPath.row == 12) {
+    }else if (indexPath.row == 13) {
         //IndicatorImageView cell背景
         BackgroundImageViewController *backgroundImageVC = [[BackgroundImageViewController alloc] init];
         backgroundImageVC.title = title;
         [self.navigationController pushViewController:backgroundImageVC animated:YES];
         return;
-    }else if (indexPath.row == 13) {
+    }else if (indexPath.row == 14) {
         //足球滚动
         FootballViewController *footballVC = [[FootballViewController alloc] init];
         footballVC.title = title;
@@ -125,6 +126,13 @@
             //椭圆形
             titleCategoryView.titleColorGradientEnabled = YES;
             JXCategoryIndicatorBackgroundView *backgroundView = [[JXCategoryIndicatorBackgroundView alloc] init];
+            JXGradientView *gradientView = [JXGradientView new];
+            gradientView.gradientLayer.endPoint = CGPointMake(1, 0);
+            gradientView.gradientLayer.colors = @[(__bridge id)[UIColor colorWithRed:90.0/255 green:215.0/255 blue:202.0/255 alpha:1].CGColor, (__bridge id)[UIColor colorWithRed:122.0/255 green:232.0/255 blue:169.0/255 alpha:1].CGColor,];
+            //设置gradientView的渐变色
+            //用约束gradientView与backgroundView一样的大小
+            gradientView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+            [backgroundView addSubview:gradientView];
             backgroundView.backgroundViewHeight = 20;
             backgroundView.backgroundViewCornerRadius = JXCategoryViewAutomaticDimension;
             titleCategoryView.indicators = @[backgroundView];
@@ -179,7 +187,25 @@
             titleCategoryView.indicators = @[backgroundView];
         }
             break;
-        case 14:
+        case 11:
+        {
+            //渐变色
+            titleCategoryView.titleColorGradientEnabled = YES;
+            titleCategoryView.titleSelectedColor = [UIColor whiteColor];
+            JXCategoryIndicatorBackgroundView *backgroundView = [[JXCategoryIndicatorBackgroundView alloc] init];
+
+            JXGradientView *gradientView = [JXGradientView new];
+            gradientView.gradientLayer.endPoint = CGPointMake(1, 0);
+            gradientView.gradientLayer.colors = @[(__bridge id)[UIColor colorWithRed:90.0/255 green:215.0/255 blue:202.0/255 alpha:1].CGColor, (__bridge id)[UIColor colorWithRed:122.0/255 green:232.0/255 blue:169.0/255 alpha:1].CGColor,];
+            gradientView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+            [backgroundView addSubview:gradientView];
+
+            backgroundView.backgroundViewHeight = 20;
+            backgroundView.backgroundViewCornerRadius = 0;
+            titleCategoryView.indicators = @[backgroundView];
+            break;
+        }
+        case 15:
         {
             //混合使用
             titleCategoryView.titleColorGradientEnabled = NO;
@@ -192,7 +218,7 @@
             titleCategoryView.indicators = @[backgroundView, lineView];
         }
             break;
-        case 15:
+        case 16:
         {
             //indicator自定义-点线效果
             testVC.isNeedIndicatorPositionChangeItem = YES;
@@ -201,7 +227,7 @@
             titleCategoryView.indicators = @[lineView];
         }
             break;
-        case 16:
+        case 17:
         {
             //indicatorLineView-🌈彩虹效果
             testVC.isNeedIndicatorPositionChangeItem = YES;

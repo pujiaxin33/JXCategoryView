@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1904A8BB21CB949A00316F97 /* JXGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1904A8BA21CB949A00316F97 /* JXGradientView.m */; };
 		190639BA21919FDA00153BE9 /* JXPagerListContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 190639B221919FDA00153BE9 /* JXPagerListContainerView.m */; };
 		190639BB21919FDA00153BE9 /* JXPagerMainTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 190639B321919FDA00153BE9 /* JXPagerMainTableView.m */; };
 		190639BC21919FDA00153BE9 /* JXPagerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 190639B421919FDA00153BE9 /* JXPagerView.m */; };
@@ -137,6 +138,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1904A8B921CB949A00316F97 /* JXGradientView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JXGradientView.h; sourceTree = "<group>"; };
+		1904A8BA21CB949A00316F97 /* JXGradientView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JXGradientView.m; sourceTree = "<group>"; };
 		190639B221919FDA00153BE9 /* JXPagerListContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXPagerListContainerView.m; sourceTree = "<group>"; };
 		190639B321919FDA00153BE9 /* JXPagerMainTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXPagerMainTableView.m; sourceTree = "<group>"; };
 		190639B421919FDA00153BE9 /* JXPagerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXPagerView.m; sourceTree = "<group>"; };
@@ -542,6 +545,8 @@
 				19562CD3212A8C740095AA27 /* SpecialCustomizeViewController.m */,
 				19C417C6215F14E30090E518 /* UIWindow+JXSafeArea.h */,
 				19C417C7215F14E30090E518 /* UIWindow+JXSafeArea.m */,
+				1904A8B921CB949A00316F97 /* JXGradientView.h */,
+				1904A8BA21CB949A00316F97 /* JXGradientView.m */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1001,6 +1006,7 @@
 				19302389211B22E300AF1444 /* SegmentedControlViewController.m in Sources */,
 				19562CD4212A8C740095AA27 /* SpecialCustomizeViewController.m in Sources */,
 				196428FC2148FA5C009C1D31 /* JXCategoryListVCContainerView.m in Sources */,
+				1904A8BB21CB949A00316F97 /* JXGradientView.m in Sources */,
 				191A95E0212BBC2500DBF784 /* JXCategoryIndicatorBallView.m in Sources */,
 				19346D722126B0D80065FD8F /* JXCategoryIndicatorTriangleView.m in Sources */,
 				194DCDD02133F1F5000E89EF /* LoadDataNormalViewController.m in Sources */,
