@@ -24,7 +24,6 @@
     [super viewDidLoad];
 
     self.view.backgroundColor = [UIColor whiteColor];
-    self.edgesForExtendedLayout = UIRectEdgeNone;
 
     CGFloat naviHeight = [UIApplication.sharedApplication.keyWindow jx_navigationHeight];
 

@@ -6,8 +6,8 @@
 //  Copyright © 2018年 jiaxin. All rights reserved.
 //
 
-#import "BaseViewController.h"
+#import "ContentBaseViewController.h"
 
-@interface DotViewController : BaseViewController
+@interface DotViewController : ContentBaseViewController
 
 @end

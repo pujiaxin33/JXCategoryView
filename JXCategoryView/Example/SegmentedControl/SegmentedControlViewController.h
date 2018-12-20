@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "BaseViewController.h"
+#import "ContentBaseViewController.h"
 
-@interface SegmentedControlViewController : BaseViewController
+@interface SegmentedControlViewController : ContentBaseViewController
 
 @end

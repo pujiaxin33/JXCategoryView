@@ -6,16 +6,16 @@
 //  Copyright © 2018年 jiaxin. All rights reserved.
 //
 
-#import "BaseViewController.h"
+#import "ContentBaseViewController.h"
 #import "ListViewController.h"
 #import "NestViewController.h"
 #import "UIWindow+JXSafeArea.h"
 
-@interface BaseViewController () <JXCategoryViewDelegate, UIScrollViewDelegate>
+@interface ContentBaseViewController () <JXCategoryViewDelegate, UIScrollViewDelegate>
 @property (nonatomic, assign) NSInteger currentIndex;
 @end
 
-@implementation BaseViewController
+@implementation ContentBaseViewController
 
 - (instancetype)init
 {
@@ -30,7 +30,6 @@
     [super viewDidLoad];
 
     self.view.backgroundColor = [UIColor whiteColor];
-    self.edgesForExtendedLayout = UIRectEdgeNone;
 
     CGFloat naviHeight = [UIApplication.sharedApplication.keyWindow jx_navigationHeight];
 

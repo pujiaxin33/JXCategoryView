@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "BaseViewController.h"
+#import "ContentBaseViewController.h"
 
-@interface TitleViewController : BaseViewController
+@interface TitleViewController : ContentBaseViewController
 
 @property (nonatomic, strong) NSArray *titles;
 

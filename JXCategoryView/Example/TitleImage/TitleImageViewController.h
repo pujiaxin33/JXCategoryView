@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "BaseViewController.h"
+#import "ContentBaseViewController.h"
 
-@interface TitleImageViewController : BaseViewController
+@interface TitleImageViewController : ContentBaseViewController
 
 @end

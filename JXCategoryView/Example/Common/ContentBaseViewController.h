@@ -11,7 +11,7 @@
 
 #define WindowsSize [UIScreen mainScreen].bounds.size
 
-@interface BaseViewController : UIViewController
+@interface ContentBaseViewController : UIViewController
 
 @property (nonatomic, assign) BOOL isNeedIndicatorPositionChangeItem;
 

@@ -29,7 +29,6 @@ static const CGFloat JXheightForHeaderInSection = 50;
     [super viewDidLoad];
 
     self.title = @"个人中心";
-    self.navigationController.navigationBar.translucent = false;
     _titles = @[@"能力", @"爱好", @"队友"];
 
     TestListBaseView *powerListView = [[TestListBaseView alloc] init];

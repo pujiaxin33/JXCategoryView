@@ -18,7 +18,6 @@
     [super viewDidLoad];
 
     self.view.backgroundColor = [UIColor whiteColor];
-    self.edgesForExtendedLayout = UIRectEdgeNone;
     
     UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithTitle:@"刷新数据" style:UIBarButtonItemStylePlain target:self action:@selector(reloadData)];
     self.navigationItem.rightBarButtonItem = rightItem;

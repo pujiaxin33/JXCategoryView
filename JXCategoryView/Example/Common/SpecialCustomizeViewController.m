@@ -25,7 +25,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.navigationController.navigationBar.translucent = NO;
     self.tableView.rowHeight = 44;
 }
 

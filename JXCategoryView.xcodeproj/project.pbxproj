@@ -18,7 +18,7 @@
 		190A54EA206397370050B327 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 190A54E8206397370050B327 /* LaunchScreen.storyboard */; };
 		190A54ED206397370050B327 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 190A54EC206397370050B327 /* main.m */; };
 		190F6A6C213E889F00870498 /* CellMixed.gif in Resources */ = {isa = PBXBuildFile; fileRef = 190F6A6B213E889E00870498 /* CellMixed.gif */; };
-		1912A522211C1BD000A80826 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1912A521211C1BD000A80826 /* BaseViewController.m */; };
+		1912A522211C1BD000A80826 /* ContentBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1912A521211C1BD000A80826 /* ContentBaseViewController.m */; };
 		1912A526211C257000A80826 /* BackgroundImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1912A525211C257000A80826 /* BackgroundImageViewController.m */; };
 		1912A52A211C3D1600A80826 /* IndicatorImageViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1912A529211C3D1600A80826 /* IndicatorImageViewViewController.m */; };
 		1912A533211D08C800A80826 /* FootballViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1912A532211D08C800A80826 /* FootballViewController.m */; };
@@ -156,8 +156,8 @@
 		190A54EB206397370050B327 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		190A54EC206397370050B327 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		190F6A6B213E889E00870498 /* CellMixed.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = CellMixed.gif; sourceTree = "<group>"; };
-		1912A520211C1BD000A80826 /* BaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
-		1912A521211C1BD000A80826 /* BaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
+		1912A520211C1BD000A80826 /* ContentBaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContentBaseViewController.h; sourceTree = "<group>"; };
+		1912A521211C1BD000A80826 /* ContentBaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContentBaseViewController.m; sourceTree = "<group>"; };
 		1912A524211C257000A80826 /* BackgroundImageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BackgroundImageViewController.h; sourceTree = "<group>"; };
 		1912A525211C257000A80826 /* BackgroundImageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BackgroundImageViewController.m; sourceTree = "<group>"; };
 		1912A528211C3D1600A80826 /* IndicatorImageViewViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IndicatorImageViewViewController.h; sourceTree = "<group>"; };
@@ -530,8 +530,8 @@
 		1930232A211AD33000AF1444 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				1912A520211C1BD000A80826 /* BaseViewController.h */,
-				1912A521211C1BD000A80826 /* BaseViewController.m */,
+				1912A520211C1BD000A80826 /* ContentBaseViewController.h */,
+				1912A521211C1BD000A80826 /* ContentBaseViewController.m */,
 				19302331211AD8B200AF1444 /* ListViewController.h */,
 				19302332211AD8B200AF1444 /* ListViewController.m */,
 				19562CCC212A8C350095AA27 /* IndicatorCustomizeViewController.h */,
@@ -1011,7 +1011,7 @@
 				1979336A21C9DBD500007733 /* LoadDataListContainerViewController.m in Sources */,
 				19870CF12122BB6100C23CAA /* JXCategoryTitleView.m in Sources */,
 				19870CEF2122BB6100C23CAA /* JXCategoryTitleCellModel.m in Sources */,
-				1912A522211C1BD000A80826 /* BaseViewController.m in Sources */,
+				1912A522211C1BD000A80826 /* ContentBaseViewController.m in Sources */,
 				19302325211AD1B300AF1444 /* TitleImageSettingViewController.m in Sources */,
 				19346D6F21269F3A0065FD8F /* JXCategoryIndicatorBackgroundView.m in Sources */,
 				1912A533211D08C800A80826 /* FootballViewController.m in Sources */,

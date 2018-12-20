@@ -34,7 +34,6 @@ static const NSUInteger VerticalListPinSectionIndex = 1;    //悬浮固定sectio
     [super viewDidLoad];
 
     self.view.backgroundColor = [UIColor whiteColor];
-    self.edgesForExtendedLayout = UIRectEdgeNone;
 
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     layout.scrollDirection = UICollectionViewScrollDirectionVertical;
