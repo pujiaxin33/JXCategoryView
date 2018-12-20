@@ -9,5 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "LoadDataBaseViewController.h"
 
+
+/**
+ 强烈建议使用LoadDataListContainerViewController类，实现高度封装列表逻辑，懒加载列表。使用更简单，性能更优！！！
+ */
 @interface LoadDataNormalViewController : LoadDataBaseViewController
 @end

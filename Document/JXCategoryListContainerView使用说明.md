@@ -7,7 +7,7 @@
 - 支持设置didAppearPercent。滚动距离超过一页的多少百分比，就认为切换了页面。默认0.5（即滚动超过了半屏，就认为翻页了）。范围0~1，开区间不包括0和1
 
 
-## `JXCategoryListContainerViewDelegate`代理方法
+## ViewController需要实现`JXCategoryListContainerViewDelegate`代理方法
 
 ```
 /**
@@ -28,9 +28,8 @@
 - (id<JXCategoryListContentViewDelegate>)listContainerView:(JXCategoryListContainerView *)listContainerView initListForIndex:(NSInteger)index;
 ```
 
-## `JXCategoryListContentViewDelegate`代理方法
+## 每个列表需要实现`JXCategoryListContentViewDelegate`代理方法
 
-列表需要实现该协议
 
 ```
 /**
@@ -55,7 +54,7 @@
 
 ## 注意事项
 
-必须要调用JXCategoryListContainerView的下列两个方法
+ViewController必须要在CategoryView的回调里面，调用JXCategoryListContainerView的下列两个方法
 ```
 //必须调用，请按照demo示例那样调用
 - (void)scrollingFromLeftIndex:(NSInteger)leftIndex toRightIndex:(NSInteger)rightIndex ratio:(CGFloat)ratio selectedIndex:(NSInteger)selectedIndex;
@@ -66,5 +65,5 @@
 
 ## 示例
 
-请参考`LoadDataListContainerViewController`类
+请参考`LoadDataListContainerViewController`类，[地址](https://github.com/pujiaxin33/JXCategoryView/blob/master/JXCategoryView/Example/LoadData/LoadDataListContainerViewController.m)
 
