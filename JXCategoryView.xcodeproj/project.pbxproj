@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1904A8BB21CB949A00316F97 /* JXGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1904A8BA21CB949A00316F97 /* JXGradientView.m */; };
+		1904A8BD21CB9C4700316F97 /* GradientBGIndicatorView.gif in Resources */ = {isa = PBXBuildFile; fileRef = 1904A8BC21CB9C4700316F97 /* GradientBGIndicatorView.gif */; };
 		190639BA21919FDA00153BE9 /* JXPagerListContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 190639B221919FDA00153BE9 /* JXPagerListContainerView.m */; };
 		190639BB21919FDA00153BE9 /* JXPagerMainTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 190639B321919FDA00153BE9 /* JXPagerMainTableView.m */; };
 		190639BC21919FDA00153BE9 /* JXPagerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 190639B421919FDA00153BE9 /* JXPagerView.m */; };
@@ -140,6 +141,7 @@
 /* Begin PBXFileReference section */
 		1904A8B921CB949A00316F97 /* JXGradientView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JXGradientView.h; sourceTree = "<group>"; };
 		1904A8BA21CB949A00316F97 /* JXGradientView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JXGradientView.m; sourceTree = "<group>"; };
+		1904A8BC21CB9C4700316F97 /* GradientBGIndicatorView.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = GradientBGIndicatorView.gif; sourceTree = "<group>"; };
 		190639B221919FDA00153BE9 /* JXPagerListContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXPagerListContainerView.m; sourceTree = "<group>"; };
 		190639B321919FDA00153BE9 /* JXPagerMainTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXPagerMainTableView.m; sourceTree = "<group>"; };
 		190639B421919FDA00153BE9 /* JXPagerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXPagerView.m; sourceTree = "<group>"; };
@@ -672,6 +674,7 @@
 		19870C872122703B00C23CAA /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				1904A8BC21CB9C4700316F97 /* GradientBGIndicatorView.gif */,
 				1920463921C3557D006538C0 /* RainbowLineView.gif */,
 				196429E5214B8090009C1D31 /* averageCellSpacingEnabledNO.gif */,
 				196429E6214B8091009C1D31 /* averageCellSpacingEnabledYES.gif */,
@@ -924,6 +927,7 @@
 				191A95F7212BF5DA00DBF784 /* Rectangle.gif in Resources */,
 				191A95F4212BF5DA00DBF784 /* TriangleTop.gif in Resources */,
 				192AD15B212FCD660031AD46 /* VerticalList.gif in Resources */,
+				1904A8BD21CB9C4700316F97 /* GradientBGIndicatorView.gif in Resources */,
 				19870CA12122703B00C23CAA /* Football.gif in Resources */,
 				191A95F3212BF5DA00DBF784 /* TitleMaskNoBackgroundView.gif in Resources */,
 				190F6A6C213E889F00870498 /* CellMixed.gif in Resources */,

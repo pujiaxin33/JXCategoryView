@@ -194,9 +194,11 @@
             titleCategoryView.titleSelectedColor = [UIColor whiteColor];
             JXCategoryIndicatorBackgroundView *backgroundView = [[JXCategoryIndicatorBackgroundView alloc] init];
 
+            //相当于把JXCategoryIndicatorBackgroundView当做视图容器，你可以在上面添加任何想要的效果
             JXGradientView *gradientView = [JXGradientView new];
             gradientView.gradientLayer.endPoint = CGPointMake(1, 0);
             gradientView.gradientLayer.colors = @[(__bridge id)[UIColor colorWithRed:90.0/255 green:215.0/255 blue:202.0/255 alpha:1].CGColor, (__bridge id)[UIColor colorWithRed:122.0/255 green:232.0/255 blue:169.0/255 alpha:1].CGColor,];
+            //设置gradientView布局和JXCategoryIndicatorBackgroundView一样
             gradientView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
             [backgroundView addSubview:gradientView];
 
