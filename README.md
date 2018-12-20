@@ -65,12 +65,12 @@ Image |  <img src="JXCategoryView/Images/CellImage.gif" width="343" height="80">
 ----|------|
 数据源过少<br/> averageCellSpacingEnabled默认为YES |  <img src="JXCategoryView/Images/averageCellSpacingEnabledYES.gif" width="343" height="80"> |
 数据源过少<br/> averageCellSpacingEnabled为NO |  <img src="JXCategoryView/Images/averageCellSpacingEnabledNO.gif" width="343" height="80"> |
-SegmentedControl |  <img src="JXCategoryView/Images/SegmentedControl.gif" width="343" height="80"> |
-导航栏使用 |  <img src="JXCategoryView/Images/SegmentedControlNavi.gif" width="343" height="80"> |
-嵌套使用 |  <img src="JXCategoryView/Images/Nest.gif" width="343" height="272"> |
-个人主页(上下左右滚动、header悬浮)<br/> 更多样式请点击查看[JXPagingView](https://github.com/pujiaxin33/JXPagingView) |  <img src="JXCategoryView/Images/UserProfile.gif" width="343" height="562"> |
-垂直列表滚动<br/> 高仿腾讯视频<br/>（背景色异常是录屏软件bug） |  <img src="JXCategoryView/Images/VerticalList.gif" width="343" height="607"> |
-数据源刷新&列表数据加载 示例 |  <img src="JXCategoryView/Images/LoadData.gif" width="343" height="619"> |
+SegmentedControl<br/>参考`SegmentedControlViewController`类 |  <img src="JXCategoryView/Images/SegmentedControl.gif" width="343" height="80"> |
+导航栏使用<br/>参考`NaviSegmentedControlViewController`类 |  <img src="JXCategoryView/Images/SegmentedControlNavi.gif" width="343" height="80"> |
+嵌套使用<br/>参考`NestViewController`类 |  <img src="JXCategoryView/Images/Nest.gif" width="343" height="272"> |
+个人主页(上下左右滚动、header悬浮)<br/>参考`PagingViewController`类<br/> 更多样式请点击查看[JXPagingView](https://github.com/pujiaxin33/JXPagingView) |  <img src="JXCategoryView/Images/UserProfile.gif" width="343" height="562"> |
+垂直列表滚动<br/>参考`VerticalListViewController`类<br/> 高仿腾讯视频<br/>（背景色异常是录屏软件bug） |  <img src="JXCategoryView/Images/VerticalList.gif" width="343" height="607"> |
+数据源刷新&列表数据加载<br/>参考`LoadDataListContainerViewController`类 |  <img src="JXCategoryView/Images/LoadData.gif" width="343" height="619"> |
 
 
 ## 要求
@@ -92,18 +92,11 @@ target '<Your Target Name>' do
     pod 'JXCategoryView'
 end
 ```
-
-`pod install`如果失败，请先执行`pod repo update`
+先执行`pod repo update`，再执行`pod install`
 
 ## 结构图
 
 <img src="JXCategoryView/Images/JXCategoryViewStructure.png" width="933" height="482">
-
-## 特殊效果说明
-
-- 自定义建议：`JXCategoryView`即使提供了灵活扩展，也不可能满足所有情况。未能满足特殊需求的情况，建议通过fork仓库，实现特殊效果。
-- 个人主页效果：上下左右滚动且HeaderView悬浮的实现，使用的是[JXPagingView](https://github.com/pujiaxin33/JXPagingView) ，里面有更丰富的样式，强烈建议阅读！！！
-- 垂直列表滚动：参考demo工程的`VerticalListViewController`。未做代码封装，请参考里面的代码做，多注意注释，就可以实现了。
 
 ## 使用
 
@@ -132,7 +125,7 @@ backgroundView.backgroundViewColor = [UIColor redColor];
 backgroundView.backgroundViewWidth = JXCategoryViewAutomaticDimension;
 self.categoryView.indicators = @[lineView, backgroundView];
 
-//3、绑定contentScrollView。self.scrollView的初始化细节参考源码。
+//3、绑定contentScrollView。self.scrollView的初始化细节参考BaseViewController类。
 self.categoryView.contentScrollView = self.scrollView;
 [self.view addSubview:self.categoryView];
 ```
@@ -151,6 +144,7 @@ self.categoryView.contentScrollView = self.scrollView;
 - *所有状态重置：* 数据源、属性配置有变动时（比如从服务器拉取回来数据），需要调用`reloadData`方法刷新状态。
 - *contentScrollView关联说明：* JXCategoryView没有与contentScrollView强关联，你甚至可以不设置这个属性，把它当做简单的SegmentedControl。他们之间布局没有任何要求，可以把JXCategoryView放入导航栏、UITableViewSectionHeader等任何你想要的地方。
 - *点击Item之后contentScrollView切换自定义：* 实现协议方法`- (void)categoryView:(JXCategoryBaseView *)categoryView contentScrollViewTransitionToIndex:(NSInteger)index`即可。
+- *自定义建议：* `JXCategoryView`即使提供了灵活扩展，也不可能满足所有情况。未能满足特殊需求的情况，建议通过fork仓库，实现特殊效果。
 
 ### 指示器样式自定义
 
