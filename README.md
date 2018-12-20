@@ -65,12 +65,12 @@ Image |  <img src="JXCategoryView/Images/CellImage.gif" width="343" height="80">
 ----|------|
 数据源过少<br/> averageCellSpacingEnabled默认为YES |  <img src="JXCategoryView/Images/averageCellSpacingEnabledYES.gif" width="343" height="80"> |
 数据源过少<br/> averageCellSpacingEnabled为NO |  <img src="JXCategoryView/Images/averageCellSpacingEnabledNO.gif" width="343" height="80"> |
-SegmentedControl<br/>参考`SegmentedControlViewController`类 |  <img src="JXCategoryView/Images/SegmentedControl.gif" width="343" height="80"> |
-导航栏使用<br/>参考`NaviSegmentedControlViewController`类 |  <img src="JXCategoryView/Images/SegmentedControlNavi.gif" width="343" height="80"> |
-嵌套使用<br/>参考`NestViewController`类 |  <img src="JXCategoryView/Images/Nest.gif" width="343" height="272"> |
-个人主页(上下左右滚动、header悬浮)<br/>参考`PagingViewController`类<br/> 更多样式请点击查看[JXPagingView](https://github.com/pujiaxin33/JXPagingView) |  <img src="JXCategoryView/Images/UserProfile.gif" width="343" height="562"> |
-垂直列表滚动<br/>参考`VerticalListViewController`类<br/> 高仿腾讯视频<br/>（背景色异常是录屏软件bug） |  <img src="JXCategoryView/Images/VerticalList.gif" width="343" height="607"> |
-数据源刷新&列表数据加载<br/>参考`LoadDataListContainerViewController`类 |  <img src="JXCategoryView/Images/LoadData.gif" width="343" height="619"> |
+SegmentedControl<br/>参考[`SegmentedControlViewController`](https://github.com/pujiaxin33/JXCategoryView/blob/master/JXCategoryView/Example/SegmentedControl/SegmentedControlViewController.m)类 |  <img src="JXCategoryView/Images/SegmentedControl.gif" width="343" height="80"> |
+导航栏使用<br/>参考[`NaviSegmentedControlViewController`](https://github.com/pujiaxin33/JXCategoryView/blob/master/JXCategoryView/Example/SegmentedControl/NaviSegmentedControlViewController.m)类 |  <img src="JXCategoryView/Images/SegmentedControlNavi.gif" width="343" height="80"> |
+嵌套使用<br/>参考[`NestViewController`](https://github.com/pujiaxin33/JXCategoryView/blob/master/JXCategoryView/Example/Nest/NestViewController.m)类 |  <img src="JXCategoryView/Images/Nest.gif" width="343" height="272"> |
+个人主页(上下左右滚动、header悬浮)<br/>参考[`PagingViewController`](https://github.com/pujiaxin33/JXCategoryView/blob/master/JXCategoryView/Example/PagingView/Example/PagingViewController.m)类<br/> 更多样式请点击查看[JXPagingView库](https://github.com/pujiaxin33/JXPagingView) |  <img src="JXCategoryView/Images/UserProfile.gif" width="343" height="562"> |
+垂直列表滚动<br/>参考[`VerticalListViewController`](https://github.com/pujiaxin33/JXCategoryView/blob/master/JXCategoryView/Example/VerticalListView/VerticalListViewController.m)类<br/> 高仿腾讯视频<br/>（背景色异常是录屏软件bug） |  <img src="JXCategoryView/Images/VerticalList.gif" width="343" height="607"> |
+数据源刷新&列表数据加载<br/>参考[`LoadDataListContainerViewController`](https://github.com/pujiaxin33/JXCategoryView/blob/master/JXCategoryView/Example/LoadData/LoadDataListContainerViewController.m)类 |  <img src="JXCategoryView/Images/LoadData.gif" width="343" height="619"> |
 
 
 ## 要求
@@ -102,7 +102,7 @@ end
 
 ### 高度自定义使用示例代码
 
-```
+```Objective-C
 //在使用JXCategoryView的VC里面加上下面的代码
 if (@available(iOS 11.0, *)) {
     self.scrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
@@ -186,7 +186,7 @@ self.categoryView.contentScrollView = self.scrollView;
 ### 侧滑手势
 
 首先，在viewDidAppear加上下面代码：
-```
+```Objective-C
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     self.navigationController.interactivePopGestureRecognizer.enabled = (self.categoryView.selectedIndex == 0);
@@ -196,7 +196,7 @@ self.categoryView.contentScrollView = self.scrollView;
 #### 系统默认返回Item
 
 - 点击处理：
-```
+```Objective-C
 #pragma mark - JXCategoryViewDelegate
 - (void)categoryView:(JXCategoryBaseView *)categoryView didSelectedItemAtIndex:(NSInteger)index {
     self.navigationController.interactivePopGestureRecognizer.enabled = (index == 0);
@@ -207,13 +207,13 @@ self.categoryView.contentScrollView = self.scrollView;
 
 - 设置代理：self.navigationController.interactivePopGestureRecognizer.delegate = (id)self;
 - 实现代理方法：
-```
+```Objective-C
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
     return YES;
 }
 ```
 - 点击处理：
-```
+```Objective-C
 #pragma mark - JXCategoryViewDelegate
 - (void)categoryView:(JXCategoryBaseView *)categoryView didSelectedItemAtIndex:(NSInteger)index {
     self.navigationController.interactivePopGestureRecognizer.enabled = (index == 0);
