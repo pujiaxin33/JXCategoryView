@@ -11,7 +11,7 @@ A powerful and easy to use category view (segmentedcontrol, segmentview, pagingv
 
 与其他的同类三方库对比的优点：
 - 使用协议封装指示器逻辑，可以为所欲为的自定义指示器效果；
-- 提供更加全面丰富的效果，交互更加顺畅；
+- 提供更加全面丰富、高度自定义的效果；
 - 使用子类化管理cell样式，逻辑更清晰，扩展更简单；
 
 ## 效果预览
@@ -65,12 +65,12 @@ Image |  <img src="JXCategoryView/Images/CellImage.gif" width="343" height="80">
 ----|------|
 数据源过少<br/> averageCellSpacingEnabled默认为YES |  <img src="JXCategoryView/Images/averageCellSpacingEnabledYES.gif" width="343" height="80"> |
 数据源过少<br/> averageCellSpacingEnabled为NO |  <img src="JXCategoryView/Images/averageCellSpacingEnabledNO.gif" width="343" height="80"> |
-SegmentedControl |  <img src="JXCategoryView/Images/SegmentedControl.gif" width="343" height="80"> |
-导航栏使用 |  <img src="JXCategoryView/Images/SegmentedControlNavi.gif" width="343" height="80"> |
-嵌套使用 |  <img src="JXCategoryView/Images/Nest.gif" width="343" height="272"> |
-个人主页(上下左右滚动、header悬浮)<br/> 更多样式请点击查看[JXPagingView](https://github.com/pujiaxin33/JXPagingView) |  <img src="JXCategoryView/Images/UserProfile.gif" width="343" height="562"> |
-垂直列表滚动<br/> 高仿腾讯视频<br/>（背景色异常是录屏软件bug） |  <img src="JXCategoryView/Images/VerticalList.gif" width="343" height="607"> |
-数据源刷新&列表数据加载 示例 |  <img src="JXCategoryView/Images/LoadData.gif" width="343" height="619"> |
+SegmentedControl<br/>参考[`SegmentedControlViewController`](https://github.com/pujiaxin33/JXCategoryView/blob/master/JXCategoryView/Example/SegmentedControl/SegmentedControlViewController.m)类 |  <img src="JXCategoryView/Images/SegmentedControl.gif" width="343" height="80"> |
+导航栏使用<br/>参考[`NaviSegmentedControlViewController`](https://github.com/pujiaxin33/JXCategoryView/blob/master/JXCategoryView/Example/SegmentedControl/NaviSegmentedControlViewController.m)类 |  <img src="JXCategoryView/Images/SegmentedControlNavi.gif" width="343" height="80"> |
+嵌套使用<br/>参考[`NestViewController`](https://github.com/pujiaxin33/JXCategoryView/blob/master/JXCategoryView/Example/Nest/NestViewController.m)类 |  <img src="JXCategoryView/Images/Nest.gif" width="343" height="272"> |
+个人主页(上下左右滚动、header悬浮)<br/>参考[`PagingViewController`](https://github.com/pujiaxin33/JXCategoryView/blob/master/JXCategoryView/Example/PagingView/Example/PagingViewController.m)类<br/> 更多样式请点击查看[JXPagingView库](https://github.com/pujiaxin33/JXPagingView) |  <img src="JXCategoryView/Images/UserProfile.gif" width="343" height="562"> |
+垂直列表滚动<br/>参考[`VerticalListViewController`](https://github.com/pujiaxin33/JXCategoryView/blob/master/JXCategoryView/Example/VerticalListView/VerticalListViewController.m)类<br/> 高仿腾讯视频<br/>（背景色异常是录屏软件bug） |  <img src="JXCategoryView/Images/VerticalList.gif" width="343" height="607"> |
+数据源刷新&列表数据加载<br/>参考[`LoadDataListContainerViewController`](https://github.com/pujiaxin33/JXCategoryView/blob/master/JXCategoryView/Example/LoadData/LoadDataListContainerViewController.m)类 |  <img src="JXCategoryView/Images/LoadData.gif" width="343" height="619"> |
 
 
 ## 要求
@@ -92,32 +92,17 @@ target '<Your Target Name>' do
     pod 'JXCategoryView'
 end
 ```
-
-`pod install`之前务必`pod repo update`一下
+先执行`pod repo update`，再执行`pod install`
 
 ## 结构图
 
 <img src="JXCategoryView/Images/JXCategoryViewStructure.png" width="933" height="482">
 
-- 指示器样式自定义：使用POP(Protocol Oriented Programming面对协议编程)封装指示器逻辑，只要遵从`JXCategoryIndicatorProtocol`协议，就可以实现你的指示器效果。参考：JXCategoryIndicatorLineView；
-- Cell样式自定义：使用子类化，基类搭建基础，子类实现特殊效果。便于代码管理，功能扩展；参考：JXCategoryNumberView；
-
-## 特殊说明
-
-- 自定义：即使提供了灵活扩展，我的源码也不可能满足所有情况，建议大家可以通过fork仓库，维护自己的一套效果。也可以直接拖入源文件进行修改。
-- 个人主页效果：上下左右滚动且HeaderView悬浮的实现，用的是我写的这个库[JXPagingView](https://github.com/pujiaxin33/JXPagingView)。
-- 垂直列表滚动：参考demo工程的`VerticalListViewController`，未做功能封装，参考里面的代码做，多注意注释，就可以实现了。
-
-## 常用属性说明
-
-[常用属性说明文档地址](https://github.com/pujiaxin33/JXCategoryView/blob/master/Document/%E5%B8%B8%E7%94%A8%E5%B1%9E%E6%80%A7%E8%AF%B4%E6%98%8E.md)
-
-可以多个IndicatorView搭配使用，但是效果需要自己把控，效果不是越多越好。参考混合使用；
-
 ## 使用
 
 ### 高度自定义使用示例代码
-```
+
+```Objective-C
 //在使用JXCategoryView的VC里面加上下面的代码
 if (@available(iOS 11.0, *)) {
     self.scrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
@@ -140,12 +125,12 @@ backgroundView.backgroundViewColor = [UIColor redColor];
 backgroundView.backgroundViewWidth = JXCategoryViewAutomaticDimension;
 self.categoryView.indicators = @[lineView, backgroundView];
 
-//3、绑定contentScrollView。self.scrollView的初始化细节参考源码。
+//3、绑定contentScrollView。self.scrollView的初始化细节参考BaseViewController类。
 self.categoryView.contentScrollView = self.scrollView;
 [self.view addSubview:self.categoryView];
 ```
 
-### `JXCategoryListContainerView`封装类使用示例
+### `JXCategoryListContainerView`封装类使用示例，强烈建议！！！
 
 - 高度封装contentScrollView逻辑，只需少量代码即可完成列表容器逻辑；
 - 列表懒加载，当通过滚动、点击选中显示某个列表的时候，才进行列表初始化，性能更优；
@@ -155,8 +140,11 @@ self.categoryView.contentScrollView = self.scrollView;
 
 ### 其他使用注意事项
 
-- 单个cell刷新：比如红点示例里面，调用`- (void)reloadCellAtIndex:(NSUInteger)index`
-- 所有状态重置：数据源、属性配置有变动时（比如从服务器拉取回来数据），需要调用`reloadData`方法刷新状态。
+- **单个cell刷新：** 比如红点示例里面，调用`- (void)reloadCellAtIndex:(NSUInteger)index`
+- **所有状态重置：** 数据源、属性配置有变动时（比如从服务器拉取回来数据），需要调用`reloadData`方法刷新状态。
+- **contentScrollView关联说明：** JXCategoryView没有与contentScrollView强关联，你甚至可以不设置这个属性，把它当做简单的SegmentedControl。他们之间布局没有任何要求，可以把JXCategoryView放入导航栏、UITableViewSectionHeader等任何你想要的地方。
+- **点击Item之后contentScrollView切换自定义：** 实现协议方法`- (void)categoryView:(JXCategoryBaseView *)categoryView contentScrollViewTransitionToIndex:(NSInteger)index`即可。
+- **自定义建议：** `JXCategoryView`即使提供了灵活扩展，也不可能满足所有情况。未能满足特殊需求的情况，建议通过fork仓库，实现特殊效果。
 
 ### 指示器样式自定义
 
@@ -165,9 +153,9 @@ self.categoryView.contentScrollView = self.scrollView;
 主要实现的方法：
 - 继承JXCategoryIndicatorComponentView，内部遵从了`JXCategoryIndicatorProtocol`协议；
 - 实现协议方法，自定义效果：
-    - `- (void)jx_refreshState:(CGRect)selectedCellFrame`初始化或reloadData，重置状态；
-    - `- (void)jx_contentScrollViewDidScrollWithLeftCellFrame:(CGRect)leftCellFrame rightCellFrame:(CGRect)rightCellFrame selectedPosition:(JXCategoryCellClickedPosition)selectedPosition percent:(CGFloat)percent` contentScrollView在进行手势滑动时，处理指示器跟随手势变化UI逻辑；
-    - `- (void)jx_selectedCell:(CGRect)cellFrame clickedRelativePosition:(JXCategoryCellClickedPosition)clickedRelativePosition`根据选中的某个cell，处理过渡效果；
+    - `- (void)jx_refreshState:(JXCategoryIndicatorParamsModel *)model`视图重置状态时调用；
+    - `- (void)jx_contentScrollViewDidScroll:(JXCategoryIndicatorParamsModel *)model` contentScrollView在进行手势滑动时，处理指示器跟随手势变化UI逻辑；
+    - `- (void)jx_selectedCell:(JXCategoryIndicatorParamsModel *)model`根据选中的某个cell，处理过渡效果；
     
 具体实例：参考demo工程里面的`JXCategoryIndicatorDotLineView`
 
@@ -185,16 +173,20 @@ self.categoryView.contentScrollView = self.scrollView;
 
 具体实例：参考demo工程里面的`JXCategoryTitleAttributeView`
 
-#### 继承提示
+#### 子类化注意事项
 
-- 任何子类化，view、cell、cellModel三个都要子类化，即使某个子类cell什么事情都不做。用于维护继承链，以免以后子类化都不知道要继承谁了；
+- 任何子类化需求，view、cell、cellModel三个都要子类化，即使某个子类cell什么事情都不做。用于维护继承链，以免以后子类化都不知道要继承谁了；
 - 如果你想完全自定义cell里面的内容，那就继承`JXCategoryIndicatorView、JXCategoryIndicatorCell、JXCategoryIndicatorCellModel`，就像`JXCategoryTitleView、JXCategoryTitleCell、JXCategoryTitleCellModel`那样去做；
 - 如果你只是在父类进行一些微调，那就继承目标view、cell、cellModel，对cell原有控件微调、或者加入新的控件皆可。就像`JXCategoryTitleImageView系列、JXCategoryTitleAttributeView系列`那样去做；
+
+## 常用属性说明
+
+[常用属性说明文档地址](https://github.com/pujiaxin33/JXCategoryView/blob/master/Document/%E5%B8%B8%E7%94%A8%E5%B1%9E%E6%80%A7%E8%AF%B4%E6%98%8E.md)
 
 ### 侧滑手势
 
 首先，在viewDidAppear加上下面代码：
-```
+```Objective-C
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     self.navigationController.interactivePopGestureRecognizer.enabled = (self.categoryView.selectedIndex == 0);
@@ -204,7 +196,7 @@ self.categoryView.contentScrollView = self.scrollView;
 #### 系统默认返回Item
 
 - 点击处理：
-```
+```Objective-C
 #pragma mark - JXCategoryViewDelegate
 - (void)categoryView:(JXCategoryBaseView *)categoryView didSelectedItemAtIndex:(NSInteger)index {
     self.navigationController.interactivePopGestureRecognizer.enabled = (index == 0);
@@ -215,31 +207,17 @@ self.categoryView.contentScrollView = self.scrollView;
 
 - 设置代理：self.navigationController.interactivePopGestureRecognizer.delegate = (id)self;
 - 实现代理方法：
-```
+```Objective-C
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
     return YES;
 }
 ```
 - 点击处理：
-```
+```Objective-C
 #pragma mark - JXCategoryViewDelegate
 - (void)categoryView:(JXCategoryBaseView *)categoryView didSelectedItemAtIndex:(NSInteger)index {
     self.navigationController.interactivePopGestureRecognizer.enabled = (index == 0);
 }
-```
-
-### contentScrollView
-
-- 布局灵活：JXCategoryView没有与contentScrollView强关联，你甚至可以不设置这个属性，把它当做简单的SegmentedControl。他们之间布局没有任何要求，可以把JXCategoryView放入导航栏、UITableViewSectionHeader等任何你想要的地方。
-- 点击切换自定义处理
-```
-/**
- 因为用户点击，contentScrollView即将过渡到目标index的配置。内部默认实现`[self.contentScrollView setContentOffset:CGPointMake(targetIndex*self.contentScrollView.bounds.size.width, 0) animated:YES];`。如果实现该代理方法，以自定义实现为准。比如将animated设置为NO，点击切换时无需滚动效果。类似于今日头条APP。
-
- @param categoryView categoryView description
- @param index index description
- */
-- (void)categoryView:(JXCategoryBaseView *)categoryView contentScrollViewTransitionToIndex:(NSInteger)index;
 ```
 
 ## 更新记录
@@ -249,6 +227,7 @@ self.categoryView.contentScrollView = self.scrollView;
 - 2018.8.23 发布1.0.2版本，更新内容：添加cellWidthZoomEnabled实现腾讯视频效果;
 - 2018.8.24 发布1.0.3版本，更新内容：添加垂直列表滚动效果、指示器添加verticalMargin属性、JXCategoryViewDelegate代理方法优化;
 - 2018.9.4 发布1.0.4版本，更新内容：修复bug、添加cell图文混用示例;
+- 2018.12.19 发布1.1.7版本，更新内容：添加`JXCategoryListContainerView`，高度封装列表逻辑，支持懒加载列表，提升初始化性能；
 
 ## 补充
 
