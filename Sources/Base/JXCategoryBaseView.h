@@ -50,7 +50,7 @@
  @param categoryView categoryView description
  @param index index description
  */
-- (void)categoryView:(JXCategoryBaseView *)categoryView contentScrollViewTransitionToIndex:(NSInteger)index;
+- (void)categoryView:(JXCategoryBaseView *)categoryView didClickedItemContentScrollViewTransitionToIndex:(NSInteger)index;
 
 /**
  正在滚动中的回调
