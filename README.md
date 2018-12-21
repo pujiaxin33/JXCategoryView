@@ -32,6 +32,7 @@ BackgroundView椭圆形+阴影  |  <img src="JXCategoryView/Images/BackgroundVie
 BackgroundView长方形  |  <img src="JXCategoryView/Images/Rectangle.gif" width="343" height="80"> |
 BackgroundView遮罩有背景  |  <img src="JXCategoryView/Images/TitleMask.gif" width="343" height="80"> |
 BackgroundView遮罩无背景  |  <img src="JXCategoryView/Images/TitleMaskNoBackgroundView.gif" width="343" height="80"> |
+BackgroundView渐变色  |  <img src="JXCategoryView/Images/GradientBGIndicatorView.gif" width="350" height="80"> |
 ImageView底部(小船)  |  <img src="JXCategoryView/Images/IndicatorImageView.gif" width="343" height="137"> |
 ImageView背景(最佳男歌手)  |  <img src="JXCategoryView/Images/BackgroundImageView.gif" width="343" height="80"> |
 ImageView滚动效果(足球)  |  <img src="JXCategoryView/Images/Football.gif" width="343" height="135"> |
