@@ -236,10 +236,10 @@ struct DelegateFlags {
 }
 
 - (BOOL)selectCellAtIndex:(NSInteger)targetIndex isClicked:(BOOL)isClicked {
-    return [self _selectCellAtIndex:targetIndex handleContentScrollView:YES isClicked:isClicked];
+    return [self _selectCellAtIndex:targetIndex isClicked:isClicked];
 }
 
-- (BOOL)_selectCellAtIndex:(NSInteger)targetIndex handleContentScrollView:(BOOL)handleContentScrollView isClicked:(BOOL)isClicked{
+- (BOOL)_selectCellAtIndex:(NSInteger)targetIndex isClicked:(BOOL)isClicked{
     if (targetIndex >= self.dataSource.count) {
         return NO;
     }
@@ -281,7 +281,7 @@ struct DelegateFlags {
         [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:targetIndex inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
     }
 
-    if (handleContentScrollView) {
+    if (isClicked) {
         if (self.delegateFlags.contentScrollViewTransitionToIndexFlag) {
             [self.delegate categoryView:self contentScrollViewTransitionToIndex:targetIndex];
         }else {
@@ -346,7 +346,7 @@ struct DelegateFlags {
             if (ratio < self.selectedIndex) {
                 targetIndex = baseIndex + 1;
             }
-            [self _selectCellAtIndex:targetIndex handleContentScrollView:NO isClicked:NO];
+            [self _selectCellAtIndex:targetIndex isClicked:NO];
         }
         if (self.cellWidthZoomEnabled && self.cellWidthZoomScrollGradientEnabled) {
             JXCategoryBaseCellModel *leftCellModel = (JXCategoryBaseCellModel *)self.dataSource[baseIndex];

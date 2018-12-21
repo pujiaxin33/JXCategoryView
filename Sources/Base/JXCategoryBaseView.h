@@ -44,6 +44,7 @@
 
 
 /**
+  只有点击的切换才会调用！！！
   因为用户点击，contentScrollView即将过渡到目标index的配置。内部默认实现`[self.contentScrollView setContentOffset:CGPointMake(targetIndex*self.contentScrollView.bounds.size.width, 0) animated:YES];`。如果实现该代理方法，以自定义实现为准。比如将animated设置为NO，点击切换时无需滚动效果。类似于今日头条APP。
 
  @param categoryView categoryView description
