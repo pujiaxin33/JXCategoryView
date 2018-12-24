@@ -107,6 +107,10 @@
 #pragma mark - Private
 
 - (void)listDidAppear:(NSInteger)index {
+    NSUInteger count = [self.delegate numberOfListsInlistContainerView:self];
+    if (count <= 0 || index >= count) {
+        return;
+    }
     self.currentIndex = index;
 
     id<JXCategoryListContentViewDelegate> list = _validListDict[@(index)];
@@ -124,6 +128,10 @@
 }
 
 - (void)listDidDisappear:(NSInteger)index {
+    NSUInteger count = [self.delegate numberOfListsInlistContainerView:self];
+    if (count <= 0 || index >= count) {
+        return;
+    }
     id<JXCategoryListContentViewDelegate> list = _validListDict[@(index)];
     if (list && [list respondsToSelector:@selector(listDidDisappear)]) {
         [list listDidDisappear];
