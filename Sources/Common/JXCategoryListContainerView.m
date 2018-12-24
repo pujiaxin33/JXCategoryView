@@ -13,7 +13,7 @@
 @property (nonatomic, weak) UIViewController *parentViewController;
 @property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, assign) NSInteger currentIndex;
-@property (nonatomic, strong) NSMutableDictionary <NSNumber *, id<JXCategoryListContentViewDelegate>> *listVCDict;
+@property (nonatomic, strong) NSMutableDictionary <NSNumber *, id<JXCategoryListContentViewDelegate>> *validListDict;
 @property (nonatomic, assign) BOOL isLayoutSubviewsed;
 @end
 
@@ -26,7 +26,7 @@
         _parentViewController = parentVC;
         _parentViewController.automaticallyAdjustsScrollViewInsets = NO;
         _delegate = delegate;
-        _listVCDict = [NSMutableDictionary dictionary];
+        _validListDict = [NSMutableDictionary dictionary];
         [self initializeViews];
     }
     return self;
@@ -46,10 +46,10 @@
 }
 
 - (void)reloadData {
-    for (id<JXCategoryListContentViewDelegate> list in self.listVCDict.allValues) {
+    for (id<JXCategoryListContentViewDelegate> list in _validListDict.allValues) {
         [list.listView removeFromSuperview];
     }
-    [self.listVCDict removeAllObjects];
+    [_validListDict removeAllObjects];
 
     self.scrollView.contentSize = CGSizeMake(self.scrollView.bounds.size.width*[self.delegate numberOfListsInlistContainerView:self], self.scrollView.bounds.size.height);
 
@@ -109,14 +109,14 @@
 - (void)listDidAppear:(NSInteger)index {
     self.currentIndex = index;
 
-    id<JXCategoryListContentViewDelegate> list = self.listVCDict[@(index)];
+    id<JXCategoryListContentViewDelegate> list = _validListDict[@(index)];
     if (list == nil) {
         list = [self.delegate listContainerView:self initListForIndex:index];
     }
     if (list.listView.superview == nil) {
         list.listView.frame = CGRectMake(index*self.scrollView.bounds.size.width, 0, self.scrollView.bounds.size.width, self.scrollView.bounds.size.height);
         [self.scrollView addSubview:list.listView];
-        self.listVCDict[@(index)] = list;
+        _validListDict[@(index)] = list;
     }
     if (list && [list respondsToSelector:@selector(listDidAppear)]) {
         [list listDidAppear];
@@ -124,7 +124,7 @@
 }
 
 - (void)listDidDisappear:(NSInteger)index {
-    id<JXCategoryListContentViewDelegate> list = self.listVCDict[@(index)];
+    id<JXCategoryListContentViewDelegate> list = _validListDict[@(index)];
     if (list && [list respondsToSelector:@selector(listDidDisappear)]) {
         [list listDidDisappear];
     }
