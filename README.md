@@ -144,7 +144,8 @@ self.categoryView.contentScrollView = self.scrollView;
 - **单个cell刷新：** 比如红点示例里面，调用`- (void)reloadCellAtIndex:(NSUInteger)index`
 - **所有状态重置：** 数据源、属性配置有变动时（比如从服务器拉取回来数据），需要调用`reloadData`方法刷新状态。
 - **contentScrollView关联说明：** JXCategoryView没有与contentScrollView强关联，你甚至可以不设置这个属性，把它当做简单的SegmentedControl。他们之间布局没有任何要求，可以把JXCategoryView放入导航栏、UITableViewSectionHeader等任何你想要的地方。
-- **点击Item之后contentScrollView切换自定义：** 实现协议方法`- (void)categoryView:(JXCategoryBaseView *)categoryView contentScrollViewTransitionToIndex:(NSInteger)index`即可。
+- **点击Item之后contentScrollView切换自定义：** 实现协议方法`- (void)categoryView:(JXCategoryBaseView *)categoryView didClickedItemContentScrollViewTransitionToIndex:(NSInteger)index`即可。
+- **侧滑手势处理：**[侧滑手势处理说明文档](https://github.com/pujiaxin33/JXCategoryView/blob/master/Document/%E4%BE%A7%E6%BB%91%E6%89%8B%E5%8A%BF%E5%A4%84%E7%90%86.md)
 - **自定义建议：** `JXCategoryView`即使提供了灵活扩展，也不可能满足所有情况。未能满足特殊需求的情况，建议通过fork仓库，实现特殊效果。
 
 ### 指示器样式自定义
@@ -183,43 +184,6 @@ self.categoryView.contentScrollView = self.scrollView;
 ## 常用属性说明
 
 [常用属性说明文档地址](https://github.com/pujiaxin33/JXCategoryView/blob/master/Document/%E5%B8%B8%E7%94%A8%E5%B1%9E%E6%80%A7%E8%AF%B4%E6%98%8E.md)
-
-### 侧滑手势
-
-首先，在viewDidAppear加上下面代码：
-```Objective-C
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    self.navigationController.interactivePopGestureRecognizer.enabled = (self.categoryView.selectedIndex == 0);
-}
-```
-
-#### 系统默认返回Item
-
-- 点击处理：
-```Objective-C
-#pragma mark - JXCategoryViewDelegate
-- (void)categoryView:(JXCategoryBaseView *)categoryView didSelectedItemAtIndex:(NSInteger)index {
-    self.navigationController.interactivePopGestureRecognizer.enabled = (index == 0);
-}
-```
-
-#### 自定义导航栏返回Item
-
-- 设置代理：self.navigationController.interactivePopGestureRecognizer.delegate = (id)self;
-- 实现代理方法：
-```Objective-C
-- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
-    return YES;
-}
-```
-- 点击处理：
-```Objective-C
-#pragma mark - JXCategoryViewDelegate
-- (void)categoryView:(JXCategoryBaseView *)categoryView didSelectedItemAtIndex:(NSInteger)index {
-    self.navigationController.interactivePopGestureRecognizer.enabled = (index == 0);
-}
-```
 
 ## 更新记录
 
