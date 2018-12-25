@@ -10,6 +10,7 @@
 
 @interface LoadDataListBaseViewController : UITableViewController
 
+@property (nonatomic, strong) UINavigationController *naviController;
 - (void)loadDataForFirst;
 
 @end

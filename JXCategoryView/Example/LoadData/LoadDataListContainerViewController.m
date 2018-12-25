@@ -77,7 +77,9 @@
 #pragma mark - JXCategoryListContainerViewDelegate
 
 - (id<JXCategoryListContentViewDelegate>)listContainerView:(JXCategoryListContainerView *)listContainerView initListForIndex:(NSInteger)index {
-    return [[LoadDataListContainerListViewController alloc] init];
+    LoadDataListContainerListViewController *listVC = [[LoadDataListContainerListViewController alloc] init];
+    listVC.naviController = self.navigationController;
+    return listVC;
 }
 
 - (NSInteger)numberOfListsInlistContainerView:(JXCategoryListContainerView *)listContainerView {

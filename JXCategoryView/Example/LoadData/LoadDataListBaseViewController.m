@@ -7,7 +7,7 @@
 //
 
 #import "LoadDataListBaseViewController.h"
-
+#import "DetailViewController.h"
 
 @interface LoadDataListBaseViewController ()
 @property (nonatomic, strong) NSMutableArray *dataSource;
@@ -68,6 +68,12 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     cell.textLabel.text = self.dataSource[indexPath.row];
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    DetailViewController *vc = [[DetailViewController alloc] init];
+    UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:vc];
+    [self.naviController presentViewController:navi animated:true completion:nil];
 }
 
 @end

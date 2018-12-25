@@ -26,17 +26,11 @@
     CGFloat naviHeight = [UIApplication.sharedApplication.keyWindow jx_navigationHeight];
 
     NSArray *titles = [self getRandomTitles];
-    NSUInteger count = titles.count;
     CGFloat categoryViewHeight = 50;
     CGFloat width = WindowsSize.width;
     CGFloat height = WindowsSize.height - naviHeight - categoryViewHeight;
 
     self.listVCArray = [NSMutableArray array];
-    for (int i = 0; i < count; i ++) {
-        LoadDataListVCContainerListViewController *listVC = [[LoadDataListVCContainerListViewController alloc] initWithStyle:UITableViewStylePlain];
-        listVC.view.frame = CGRectMake(i*width, 0, width, height);
-        [self.listVCArray addObject:listVC];
-    }
 
     self.categoryView = [[JXCategoryTitleView alloc] init];
     self.categoryView.frame = CGRectMake(0, 0, WindowsSize.width, categoryViewHeight);
@@ -47,12 +41,11 @@
     [self.view addSubview:self.categoryView];
 
     self.listVCContainerView = [[JXCategoryListVCContainerView alloc] initWithFrame:CGRectMake(0, categoryViewHeight, width, height)];
-    self.listVCContainerView.defaultSelectedIndex = 0;
-    self.categoryView.defaultSelectedIndex = 0;
-    self.listVCContainerView.listVCArray = self.listVCArray;
     [self.view addSubview:self.listVCContainerView];
 
     self.categoryView.contentScrollView = self.listVCContainerView.scrollView;
+
+    [self reloadData];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -99,6 +92,7 @@
 
     for (int i = 0; i < titles.count; i ++) {
         LoadDataListVCContainerListViewController *listVC = [[LoadDataListVCContainerListViewController alloc] initWithStyle:UITableViewStylePlain];
+        listVC.naviController = self.navigationController;
         listVC.view.frame = CGRectMake(i*self.scrollView.bounds.size.width, 0, self.scrollView.bounds.size.width, self.scrollView.bounds.size.height);
         [self.listVCArray addObject:listVC];
     }

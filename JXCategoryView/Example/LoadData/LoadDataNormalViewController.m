@@ -26,17 +26,11 @@
     CGFloat naviHeight = [UIApplication.sharedApplication.keyWindow jx_navigationHeight];
 
     NSArray *titles = [self getRandomTitles];
-    NSUInteger count = titles.count;
     CGFloat categoryViewHeight = 50;
     CGFloat width = WindowsSize.width;
     CGFloat height = WindowsSize.height - naviHeight - categoryViewHeight;
 
     self.listVCArray = [NSMutableArray array];
-    for (int i = 0; i < count; i ++) {
-        LoadDataListBaseViewController *listVC = [[LoadDataListBaseViewController alloc] initWithStyle:UITableViewStylePlain];
-        listVC.view.frame = CGRectMake(i*width, 0, width, height);
-        [self.listVCArray addObject:listVC];
-    }
 
     self.categoryView = [[JXCategoryTitleView alloc] init];
     self.categoryView.frame = CGRectMake(0, 0, WindowsSize.width, categoryViewHeight);
@@ -48,16 +42,11 @@
 
     self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, categoryViewHeight, width, height)];
     self.scrollView.pagingEnabled = YES;
-    self.scrollView.contentSize = CGSizeMake(width*count, height);
     [self.view addSubview:self.scrollView];
 
-    for (int i = 0; i < count; i ++) {
-        LoadDataListBaseViewController *listVC = self.listVCArray[i];
-        [self.scrollView addSubview:listVC.view];
-    }
-
     self.categoryView.contentScrollView = self.scrollView;
-    [self.listVCArray.firstObject loadDataForFirst];
+
+    [self reloadData];
 }
 
 
@@ -80,6 +69,7 @@
 
     for (int i = 0; i < titles.count; i ++) {
         LoadDataListBaseViewController *listVC = [[LoadDataListBaseViewController alloc] initWithStyle:UITableViewStylePlain];
+        listVC.naviController = self.navigationController;
         listVC.view.frame = CGRectMake(i*self.scrollView.bounds.size.width, 0, self.scrollView.bounds.size.width, self.scrollView.bounds.size.height);
         [self.listVCArray addObject:listVC];
     }

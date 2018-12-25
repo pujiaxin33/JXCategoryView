@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1904A8BB21CB949A00316F97 /* JXGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1904A8BA21CB949A00316F97 /* JXGradientView.m */; };
 		1904A8BD21CB9C4700316F97 /* GradientBGIndicatorView.gif in Resources */ = {isa = PBXBuildFile; fileRef = 1904A8BC21CB9C4700316F97 /* GradientBGIndicatorView.gif */; };
+		1904AA1921D1D61800316F97 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1904AA1821D1D61800316F97 /* DetailViewController.m */; };
 		190639BA21919FDA00153BE9 /* JXPagerListContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 190639B221919FDA00153BE9 /* JXPagerListContainerView.m */; };
 		190639BB21919FDA00153BE9 /* JXPagerMainTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 190639B321919FDA00153BE9 /* JXPagerMainTableView.m */; };
 		190639BC21919FDA00153BE9 /* JXPagerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 190639B421919FDA00153BE9 /* JXPagerView.m */; };
@@ -142,6 +143,8 @@
 		1904A8B921CB949A00316F97 /* JXGradientView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JXGradientView.h; sourceTree = "<group>"; };
 		1904A8BA21CB949A00316F97 /* JXGradientView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JXGradientView.m; sourceTree = "<group>"; };
 		1904A8BC21CB9C4700316F97 /* GradientBGIndicatorView.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = GradientBGIndicatorView.gif; sourceTree = "<group>"; };
+		1904AA1721D1D61800316F97 /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		1904AA1821D1D61800316F97 /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		190639B221919FDA00153BE9 /* JXPagerListContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXPagerListContainerView.m; sourceTree = "<group>"; };
 		190639B321919FDA00153BE9 /* JXPagerMainTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXPagerMainTableView.m; sourceTree = "<group>"; };
 		190639B421919FDA00153BE9 /* JXPagerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXPagerView.m; sourceTree = "<group>"; };
@@ -545,6 +548,8 @@
 				19562CD0212A8C450095AA27 /* CellCustomizeViewController.m */,
 				19562CD2212A8C740095AA27 /* SpecialCustomizeViewController.h */,
 				19562CD3212A8C740095AA27 /* SpecialCustomizeViewController.m */,
+				1904AA1721D1D61800316F97 /* DetailViewController.h */,
+				1904AA1821D1D61800316F97 /* DetailViewController.m */,
 				19C417C6215F14E30090E518 /* UIWindow+JXSafeArea.h */,
 				19C417C7215F14E30090E518 /* UIWindow+JXSafeArea.m */,
 				1904A8B921CB949A00316F97 /* JXGradientView.h */,
@@ -1052,6 +1057,7 @@
 				19870CEC2122BB6100C23CAA /* JXCategoryTitleImageView.m in Sources */,
 				19870CF72122BB6100C23CAA /* JXCategoryNumberCellModel.m in Sources */,
 				190A54DF206397370050B327 /* AppDelegate.m in Sources */,
+				1904AA1921D1D61800316F97 /* DetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
