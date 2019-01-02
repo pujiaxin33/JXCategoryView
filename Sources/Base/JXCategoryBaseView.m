@@ -212,14 +212,18 @@ struct DelegateFlags {
 
     __block CGFloat frameXOfSelectedCell = self.innerCellSpacing;
     __block CGFloat selectedCellWidth = 0;
-    totalItemWidth = self.innerCellSpacing;
+    totalItemWidth = [self getContentEdgeInsetLeft];
     [self.dataSource enumerateObjectsUsingBlock:^(JXCategoryBaseCellModel * cellModel, NSUInteger idx, BOOL * _Nonnull stop) {
         if (idx < self.selectedIndex) {
             frameXOfSelectedCell += cellModel.cellWidth + self.innerCellSpacing;
         }else if (idx == self.selectedIndex) {
             selectedCellWidth = cellModel.cellWidth;
         }
-        totalItemWidth += cellModel.cellWidth + self.innerCellSpacing;
+        if (idx == self.dataSource.count - 1) {
+            totalItemWidth += cellModel.cellWidth + [self getContentEdgeInsetRight];
+        }else {
+            totalItemWidth += cellModel.cellWidth + self.innerCellSpacing;
+        }
     }];
 
     CGFloat minX = 0;
