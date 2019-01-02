@@ -126,13 +126,6 @@
             //椭圆形
             titleCategoryView.titleColorGradientEnabled = YES;
             JXCategoryIndicatorBackgroundView *backgroundView = [[JXCategoryIndicatorBackgroundView alloc] init];
-            JXGradientView *gradientView = [JXGradientView new];
-            gradientView.gradientLayer.endPoint = CGPointMake(1, 0);
-            gradientView.gradientLayer.colors = @[(__bridge id)[UIColor colorWithRed:90.0/255 green:215.0/255 blue:202.0/255 alpha:1].CGColor, (__bridge id)[UIColor colorWithRed:122.0/255 green:232.0/255 blue:169.0/255 alpha:1].CGColor,];
-            //设置gradientView的渐变色
-            //用约束gradientView与backgroundView一样的大小
-            gradientView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-            [backgroundView addSubview:gradientView];
             backgroundView.backgroundViewHeight = 20;
             backgroundView.backgroundViewCornerRadius = JXCategoryViewAutomaticDimension;
             titleCategoryView.indicators = @[backgroundView];
