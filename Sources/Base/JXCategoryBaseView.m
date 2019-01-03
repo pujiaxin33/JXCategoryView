@@ -233,8 +233,13 @@ struct DelegateFlags {
 
     if (CGRectEqualToRect(self.contentScrollView.frame, CGRectZero) && self.contentScrollView.superview != nil) {
         //某些情况、系统会出现JXCategoryView先布局，contentScrollView后布局。就会导致下面指定defaultSelectedIndex失效，所以发现frame为zero时，强行触发布局。
-        [self.contentScrollView.superview setNeedsLayout];
-        [self.contentScrollView.superview layoutIfNeeded];
+        UIView *parentView = self.contentScrollView.superview;
+        if (self.contentScrollView.superview.superview != nil) {
+            //比如JXSegmentedListContainerView会将contentScrollView包裹起来使用，所以折中情况需要JXSegmentedListContainerView.superView触发布局更新
+            parentView = self.contentScrollView.superview.superview;
+        }
+        [parentView setNeedsLayout];
+        [parentView layoutIfNeeded];
     }
     [self.contentScrollView setContentOffset:CGPointMake(self.selectedIndex*self.contentScrollView.bounds.size.width, 0) animated:NO];
 }
