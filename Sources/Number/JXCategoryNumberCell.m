@@ -45,10 +45,7 @@
     self.numberLabel.backgroundColor = myCellModel.numberBackgroundColor;
     self.numberLabel.font = myCellModel.numberLabelFont;
     self.numberLabel.textColor = myCellModel.numberTitleColor;
-    self.numberLabel.text = [NSString stringWithFormat:@"%ld", (long)myCellModel.count];
-    if (myCellModel.count >= 1000) {
-        self.numberLabel.text = @"999+";
-    }
+    self.numberLabel.text = myCellModel.numberString;
 
     [self setNeedsLayout];
     [self layoutIfNeeded];

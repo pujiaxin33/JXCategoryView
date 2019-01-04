@@ -18,6 +18,11 @@
 @property (nonatomic, strong) NSArray <NSNumber *> *counts;
 
 /**
+ 内部默认不会格式化数字，直接转成字符串显示。比如业务需要数字超过999显示999+，可以通过该block实现。
+ */
+@property (nonatomic, copy) NSString *(^numberStringFormatterBlock)(NSInteger number);
+
+/**
  numberLabel的font，默认：[UIFont systemFontOfSize:11]
  */
 @property (nonatomic, strong) UIFont *numberLabelFont;

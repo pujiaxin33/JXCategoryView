@@ -15,7 +15,7 @@
 
 
 /**
- 视图重置状态时调用
+ categoryView重置状态时调用
 
  param selectedIndex 当前选中的index
  param selectedCellFrame 当前选中的cellFrame
@@ -37,7 +37,7 @@
 - (void)jx_contentScrollViewDidScroll:(JXCategoryIndicatorParamsModel *)model;
 
 /**
- 点击选中了某一个cell
+ 选中了某一个cell
 
  param lastSelectedIndex 之前选中的index
  param selectedIndex 选中的index

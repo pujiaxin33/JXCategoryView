@@ -11,7 +11,7 @@
 
 @interface JXCategoryBaseCell : UICollectionViewCell
 
-@property (nonatomic, strong) JXCategoryBaseCellModel *cellModel;
+@property (nonatomic, strong, readonly) JXCategoryBaseCellModel *cellModel;
 
 - (void)initializeViews NS_REQUIRES_SUPER;
 

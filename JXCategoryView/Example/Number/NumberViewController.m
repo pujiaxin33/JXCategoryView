@@ -29,6 +29,12 @@
 
     self.myCategoryView.titles = self.titles;
     self.myCategoryView.counts = self.numbers;
+    self.myCategoryView.numberStringFormatterBlock = ^NSString *(NSInteger number) {
+        if (number > 999) {
+            return @"999+";
+        }
+        return [NSString stringWithFormat:@"%ld", (long)number];
+    };
 
     JXCategoryIndicatorLineView *lineView = [[JXCategoryIndicatorLineView alloc] init];
     self.myCategoryView.indicators = @[lineView];

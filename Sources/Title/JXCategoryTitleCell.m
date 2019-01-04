@@ -70,7 +70,6 @@
     self.maskTitleLabel.hidden = !myCellModel.titleLabelMaskEnabled;
     if (myCellModel.titleLabelMaskEnabled) {
         self.titleLabel.textColor = myCellModel.titleColor;
-        self.maskTitleLabel.font = myCellModel.titleFont;
         self.maskTitleLabel.textColor = myCellModel.titleSelectedColor;
 
         self.maskTitleLabel.attributedText = attriString;

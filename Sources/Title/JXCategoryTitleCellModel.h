@@ -23,8 +23,6 @@
 
 @property (nonatomic, assign) BOOL titleLabelMaskEnabled;
 
-@property (nonatomic, strong) CALayer *backgroundEllipseLayer;
-
 @property (nonatomic, assign) BOOL titleLabelZoomEnabled;
 
 @property (nonatomic, assign) CGFloat titleLabelZoomScale;

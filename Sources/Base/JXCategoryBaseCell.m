@@ -9,12 +9,12 @@
 #import "JXCategoryBaseCell.h"
 
 @interface JXCategoryBaseCell ()
+@property (nonatomic, strong) JXCategoryBaseCellModel *cellModel;
 @end
 
 @implementation JXCategoryBaseCell
 
-- (instancetype)initWithFrame:(CGRect)frame
-{
+- (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
         [self initializeViews];
@@ -22,8 +22,7 @@
     return self;
 }
 
-- (void)initializeViews
-{
+- (void)initializeViews {
 
 }
 

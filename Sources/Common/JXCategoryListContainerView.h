@@ -22,11 +22,12 @@
 @optional
 
 /**
- 可选实现，列表逻辑层面显示的时候调用
+ 可选实现，列表显示的时候调用
  */
 - (void)listDidAppear;
+
 /**
- 可选实现，列表逻辑层面消失的时候调用
+ 可选实现，列表消失的时候调用
  */
 - (void)listDidDisappear;
 
@@ -42,7 +43,10 @@
 - (NSInteger)numberOfListsInlistContainerView:(JXCategoryListContainerView *)listContainerView;
 
 /**
- 根据index初始化对应的遵从JXCategoryListContentViewDelegate协议的list，注意是初始化哟，要new一个新的实例！！！
+ 根据index初始化一个对应列表实例，需要是遵从`JXCategoryListContentViewDelegate`协议的对象。
+ 如果列表是用自定义UIView封装的，就让自定义UIView遵从`JXCategoryListContentViewDelegate`协议，该方法返回自定义UIView即可。
+ 如果列表是用自定义UIViewController封装的，就让自定义UIViewController遵从`JXCategoryListContentViewDelegate`协议，该方法返回自定义UIViewController即可。
+ 注意：一定要是新生成的实例！！！
 
  @param listContainerView 列表的容器视图
  @param index 目标下标

@@ -123,12 +123,13 @@
     model.title = self.titles[index];
     model.titleLabelMaskEnabled = self.titleLabelMaskEnabled;
     model.titleLabelZoomEnabled = self.titleLabelZoomEnabled;
-    model.titleLabelZoomScale = 1.0;
     model.titleLabelStrokeWidthEnabled = self.titleLabelStrokeWidthEnabled;
-    model.titleLabelSelectedStrokeWidth = 0;
     if (index == self.selectedIndex) {
         model.titleLabelZoomScale = self.titleLabelZoomScale;
         model.titleLabelSelectedStrokeWidth = self.titleLabelSelectedStrokeWidth;
+    }else {
+        model.titleLabelZoomScale = 1.0;
+        model.titleLabelSelectedStrokeWidth = 0;
     }
 }
 

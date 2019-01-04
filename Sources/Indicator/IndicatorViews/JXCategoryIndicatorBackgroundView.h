@@ -12,7 +12,7 @@
 
 @property (nonatomic, assign) CGFloat backgroundViewWidth;     //默认JXCategoryViewAutomaticDimension（与cellWidth相等）
 
-@property (nonatomic, assign) CGFloat backgroundViewWidthIncrement;    //宽度增量补偿，因为backgroundEllipseLayer一般会比实际内容大一些。默认10
+@property (nonatomic, assign) CGFloat backgroundViewWidthIncrement;    //宽度增量补偿。默认10
 
 @property (nonatomic, assign) CGFloat backgroundViewHeight;   //默认JXCategoryViewAutomaticDimension（与cell高度相等）
 

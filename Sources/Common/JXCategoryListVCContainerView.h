@@ -8,10 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-
-/**
- 此类已不再维护，推荐使用JXCategoryListContainerView类！！！
- */
+__attribute__((deprecated("此类已不再维护，推荐使用JXCategoryListContainerView类！！！")))
 @interface JXCategoryListVCContainerView : UIView
 
 @property (nonatomic, weak) UIViewController *parentViewController;

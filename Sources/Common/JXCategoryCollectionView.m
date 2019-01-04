@@ -10,6 +10,19 @@
 
 @implementation JXCategoryCollectionView
 
+- (void)setIndicators:(NSArray<UIView<JXCategoryIndicatorProtocol> *> *)indicators {
+    for (UIView *indicator in _indicators) {
+        //先移除之前的indicator
+        [indicator removeFromSuperview];
+    }
+
+    _indicators = indicators;
+
+    for (UIView *indicator in indicators) {
+        [self addSubview:indicator];
+    }
+}
+
 - (void)layoutSubviews
 {
     [super layoutSubviews];

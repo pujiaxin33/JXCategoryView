@@ -24,7 +24,7 @@
 
 @property (nonatomic, assign) BOOL titleColorGradientEnabled;   //默认：NO，title的颜色是否渐变过渡
 
-@property (nonatomic, assign) BOOL titleLabelMaskEnabled;   //默认：NO，titleLabel是否遮罩过滤。（需要backgroundEllipseLayerShowEnabled = YES）
+@property (nonatomic, assign) BOOL titleLabelMaskEnabled;   //默认：NO，titleLabel是否遮罩过滤。
 
 //----------------------titleLabelZoomEnabled-----------------------//
 @property (nonatomic, assign) BOOL titleLabelZoomEnabled;     //默认为NO
