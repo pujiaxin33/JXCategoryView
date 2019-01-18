@@ -46,25 +46,28 @@
 
     JXCategoryTitleCellModel *myCellModel = (JXCategoryTitleCellModel *)cellModel;
 
-    CGFloat pointSize = myCellModel.titleFont.pointSize;
-    UIFontDescriptor *fontDescriptor = myCellModel.titleFont.fontDescriptor;
-
-    if (myCellModel.selected) {
-        fontDescriptor = myCellModel.titleSelectedFont.fontDescriptor;
-        pointSize = myCellModel.titleSelectedFont.pointSize;
-    }
     if (myCellModel.titleLabelZoomEnabled) {
-        self.titleLabel.font = [UIFont fontWithDescriptor:fontDescriptor size:pointSize*myCellModel.titleLabelZoomScale];
-        self.maskTitleLabel.font = [UIFont fontWithDescriptor:fontDescriptor size:pointSize*myCellModel.titleLabelZoomScale];
+        //先把font设置为缩放的最大值，再缩小到最小值，最后根据当前的titleLabelZoomScale值，进行缩放更新。这样就能避免transform从小到大时字体模糊
+        UIFont *maxScaleFont = [UIFont fontWithDescriptor:myCellModel.titleFont.fontDescriptor size:myCellModel.titleFont.pointSize*myCellModel.titleLabelMaxZoomScale];
+        CGFloat baseScale = myCellModel.titleFont.lineHeight/maxScaleFont.lineHeight;
+        self.titleLabel.font = maxScaleFont;
+        self.maskTitleLabel.font = maxScaleFont;
+        self.titleLabel.transform = CGAffineTransformMakeScale(baseScale, baseScale);
+        self.titleLabel.transform  = CGAffineTransformMakeScale(baseScale*myCellModel.titleLabelZoomScale, baseScale*myCellModel.titleLabelZoomScale);
     }else {
-        self.titleLabel.font = [UIFont fontWithDescriptor:fontDescriptor size:pointSize];
-        self.maskTitleLabel.font = [UIFont fontWithDescriptor:fontDescriptor size:pointSize];
+        if (myCellModel.selected) {
+            self.titleLabel.font = myCellModel.titleSelectedFont;
+            self.maskTitleLabel.font = myCellModel.titleSelectedFont;
+        }else {
+            self.titleLabel.font = myCellModel.titleFont;
+            self.maskTitleLabel.font = myCellModel.titleFont;
+        }
     }
 
     NSString *titleString = myCellModel.title ? myCellModel.title : @"";
     NSMutableAttributedString *attriString = [[NSMutableAttributedString alloc] initWithString:titleString];
     if (myCellModel.titleLabelStrokeWidthEnabled) {
-        [attriString addAttribute:NSStrokeWidthAttributeName value:@(myCellModel.titleLabelSelectedStrokeWidth) range:NSMakeRange(0, myCellModel.title.length)];
+        [attriString addAttribute:NSStrokeWidthAttributeName value:@(myCellModel.titleLabelSelectedStrokeWidth) range:NSMakeRange(0, titleString.length)];
     }
 
     self.maskTitleLabel.hidden = !myCellModel.titleLabelMaskEnabled;

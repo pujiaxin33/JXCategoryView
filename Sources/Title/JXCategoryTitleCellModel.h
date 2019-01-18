@@ -25,7 +25,9 @@
 
 @property (nonatomic, assign) BOOL titleLabelZoomEnabled;
 
-@property (nonatomic, assign) CGFloat titleLabelZoomScale;
+@property (nonatomic, assign) CGFloat titleLabelZoomScale;  //字号当前的缩放值
+
+@property (nonatomic, assign) CGFloat titleLabelMaxZoomScale;   //字号的最大缩放值
 
 @property (nonatomic, assign) BOOL titleLabelStrokeWidthEnabled;
 

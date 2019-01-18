@@ -124,6 +124,7 @@
     model.titleLabelMaskEnabled = self.titleLabelMaskEnabled;
     model.titleLabelZoomEnabled = self.titleLabelZoomEnabled;
     model.titleLabelStrokeWidthEnabled = self.titleLabelStrokeWidthEnabled;
+    model.titleLabelMaxZoomScale = self.titleLabelZoomScale;
     if (index == self.selectedIndex) {
         model.titleLabelZoomScale = self.titleLabelZoomScale;
         model.titleLabelSelectedStrokeWidth = self.titleLabelSelectedStrokeWidth;
