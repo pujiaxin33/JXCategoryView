@@ -115,7 +115,9 @@ struct DelegateFlags {
 {
     [super layoutSubviews];
 
-    self.collectionView.frame = self.bounds;
+    //部分使用者为了适配不同的手机屏幕尺寸，JXCategoryView的宽高比要求保持一样，所以它的高度就会因为不同宽度的屏幕而不一样。计算出来的高度，有时候会是位数很长的浮点数，如果把这个高度设置给UICollectionView就会触发内部的一个错误。所以，为了规避这个问题，在这里对高度统一向下取整。
+    //如果向下取整导致了你的页面异常，请自己重新设置JXCategoryView的高度，保证为整数即可。
+    self.collectionView.frame = CGRectMake(0, 0, self.bounds.size.width, floor(self.bounds.size.height));
     [self reloadData];
 }
 
