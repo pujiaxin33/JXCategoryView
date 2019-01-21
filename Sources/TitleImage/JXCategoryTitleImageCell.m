@@ -10,10 +10,18 @@
 #import "JXCategoryTitleImageCellModel.h"
 
 @interface JXCategoryTitleImageCell()
-
+@property (nonatomic, strong) NSString *currentImageName;
+@property (nonatomic, strong) NSURL *currentImageURL;
 @end
 
 @implementation JXCategoryTitleImageCell
+
+- (void)prepareForReuse {
+    [super prepareForReuse];
+
+    self.currentImageName = nil;
+    self.currentImageURL = nil;
+}
 
 - (void)initializeViews {
     [super initializeViews];
@@ -88,19 +96,26 @@
     [super reloadData:cellModel];
 
     JXCategoryTitleImageCellModel *myCellModel = (JXCategoryTitleImageCellModel *)cellModel;
-    if (myCellModel.imageName != nil) {
-        self.imageView.image = [UIImage imageNamed:myCellModel.imageName];
-    }else if (myCellModel.imageURL != nil) {
-        if (myCellModel.loadImageCallback != nil) {
-            myCellModel.loadImageCallback(self.imageView, myCellModel.imageURL);
-        }
-    }
+
+    //因为`- (void)reloadData:(JXCategoryBaseCellModel *)cellModel`方法会回调多次，尤其是左右滚动的时候会调用无数次，如果每次都触发图片加载，会非常消耗性能。所以只会在图片发生了变化的时候，才进行图片加载。
     if (myCellModel.selected) {
-        if (myCellModel.selectedImageName != nil) {
+        if (myCellModel.selectedImageName != nil && self.currentImageName != myCellModel.selectedImageName) {
+            self.currentImageName = myCellModel.selectedImageName;
             self.imageView.image = [UIImage imageNamed:myCellModel.selectedImageName];
-        }else if (myCellModel.selectedImageURL != nil) {
+        }else if (myCellModel.selectedImageURL != nil && self.currentImageURL != myCellModel.selectedImageURL) {
+            self.currentImageURL = myCellModel.selectedImageURL;
             if (myCellModel.loadImageCallback != nil) {
                 myCellModel.loadImageCallback(self.imageView, myCellModel.selectedImageURL);
+            }
+        }
+    }else {
+        if (myCellModel.imageName != nil && self.currentImageName != myCellModel.imageName) {
+            self.currentImageName = myCellModel.imageName;
+            self.imageView.image = [UIImage imageNamed:myCellModel.imageName];
+        }else if (myCellModel.imageURL != nil && self.currentImageURL != myCellModel.imageURL) {
+            self.currentImageURL = myCellModel.imageURL;
+            if (myCellModel.loadImageCallback != nil) {
+                myCellModel.loadImageCallback(self.imageView, myCellModel.imageURL);
             }
         }
     }
