@@ -195,7 +195,7 @@ static const NSUInteger VerticalListPinSectionIndex = 1;    //悬浮固定sectio
     if (topAttributes != nil && topSection >= VerticalListPinSectionIndex) {
         if (self.pinCategoryView.selectedIndex != topSection - VerticalListPinSectionIndex) {
             //不相同才切换
-            [self.pinCategoryView selectItemAtIndex:topSection - VerticalListPinSectionIndex];
+            [self.pinCategoryView selectCellAtIndex:topSection - VerticalListPinSectionIndex isClicked:NO];
         }
     }
 }
