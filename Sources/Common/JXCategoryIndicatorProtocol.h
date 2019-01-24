@@ -42,7 +42,7 @@
  param lastSelectedIndex 之前选中的index
  param selectedIndex 选中的index
  param selectedCellFrame 选中的cellFrame
- param isClicked YES：点击选中；NO：滚动选中。
+ param selectedType cell被选中类型
  @param model 数据模型
  */
 - (void)jx_selectedCell:(JXCategoryIndicatorParamsModel *)model;

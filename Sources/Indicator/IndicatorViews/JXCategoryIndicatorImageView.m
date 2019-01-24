@@ -78,7 +78,7 @@
             self.frame = toFrame;
         } completion:^(BOOL finished) {
         }];
-        if (self.indicatorImageViewRollEnabled && model.isClicked) {
+        if (self.indicatorImageViewRollEnabled && (model.selectedType == JXCategoryCellSelectedTypeCode || model.selectedType == JXCategoryCellSelectedTypeClick)) {
             [self.indicatorImageView.layer removeAnimationForKey:@"rotate"];
             CABasicAnimation *rotateAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
             if (model.selectedIndex > model.lastSelectedIndex) {

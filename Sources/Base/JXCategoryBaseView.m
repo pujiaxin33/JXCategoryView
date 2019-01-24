@@ -108,7 +108,7 @@ struct DelegateFlags {
 }
 
 - (void)selectItemAtIndex:(NSInteger)index {
-    [self selectCellAtIndex:index isClicked:YES];
+    [self selectCellAtIndex:index selectedType:JXCategoryCellSelectedTypeCode];
 }
 
 - (void)layoutSubviews
@@ -254,18 +254,18 @@ struct DelegateFlags {
     [self.contentScrollView setContentOffset:CGPointMake(self.selectedIndex*self.contentScrollView.bounds.size.width, 0) animated:NO];
 }
 
-- (BOOL)selectCellAtIndex:(NSInteger)targetIndex isClicked:(BOOL)isClicked{
+- (BOOL)selectCellAtIndex:(NSInteger)targetIndex selectedType:(JXCategoryCellSelectedType)selectedType {
     if (targetIndex < 0 || targetIndex >= self.dataSource.count) {
         return NO;
     }
 
     if (self.selectedIndex == targetIndex) {
         //目标index和当前选中的index相等，就不需要处理后续的选中更新逻辑，只需要回调代理方法即可。
-        if (isClicked) {
+        if (selectedType == JXCategoryCellSelectedTypeClick) {
             if (self.delegateFlags.didClickSelectedItemAtIndexFlag) {
                 [self.delegate categoryView:self didClickSelectedItemAtIndex:targetIndex];
             }
-        }else {
+        }else if (selectedType == JXCategoryCellSelectedTypeScroll) {
             if (self.delegateFlags.didScrollSelectedItemAtIndexFlag) {
                 [self.delegate categoryView:self didScrollSelectedItemAtIndex:targetIndex];
             }
@@ -297,7 +297,7 @@ struct DelegateFlags {
         [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:targetIndex inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
     }
 
-    if (isClicked) {
+    if (selectedType == JXCategoryCellSelectedTypeClick) {
         if (self.delegateFlags.didClickedItemContentScrollViewTransitionToIndexFlag) {
             [self.delegate categoryView:self didClickedItemContentScrollViewTransitionToIndex:targetIndex];
         }else {
@@ -306,11 +306,11 @@ struct DelegateFlags {
     }
 
     self.selectedIndex = targetIndex;
-    if (isClicked) {
+    if (selectedType == JXCategoryCellSelectedTypeClick) {
         if (self.delegateFlags.didClickSelectedItemAtIndexFlag) {
             [self.delegate categoryView:self didClickSelectedItemAtIndex:targetIndex];
         }
-    }else {
+    }else if(selectedType == JXCategoryCellSelectedTypeScroll) {
         if (self.delegateFlags.didScrollSelectedItemAtIndexFlag) {
             [self.delegate categoryView:self didScrollSelectedItemAtIndex:targetIndex];
         }
@@ -473,11 +473,11 @@ struct DelegateFlags {
 }
 
 - (void)clickSelectItemAtIndex:(NSInteger)index {
-    [self selectCellAtIndex:index isClicked:YES];
+    [self selectCellAtIndex:index selectedType:JXCategoryCellSelectedTypeClick];
 }
 
 - (void)scrollSelectItemAtIndex:(NSInteger)index {
-    [self selectCellAtIndex:index isClicked:NO];
+    [self selectCellAtIndex:index selectedType:JXCategoryCellSelectedTypeScroll];
 }
 
 @end

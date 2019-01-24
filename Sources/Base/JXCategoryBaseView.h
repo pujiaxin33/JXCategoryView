@@ -155,15 +155,13 @@
 
 /**
  选中某一个item的时候调用，该方法用于子类重载。
- isClicked=YES，表示点击选中
- isClicked=NO，表示滚动选中
  如果外部要选中某个index，请使用`- (void)selectItemAtIndex:(NSUInteger)index;`
 
  @param index 选中的index
- @param isClicked YES：点击选中；NO：滚动选中。
+ @param selectedType JXCategoryCellSelectedType
  @return 返回值为NO，表示触发内部某些判断（点击了同一个cell），子类无需后续操作。
  */
-- (BOOL)selectCellAtIndex:(NSInteger)index isClicked:(BOOL)isClicked NS_REQUIRES_SUPER;
+- (BOOL)selectCellAtIndex:(NSInteger)index selectedType:(JXCategoryCellSelectedType)selectedType NS_REQUIRES_SUPER;
 
 /**
  reloadData时，返回每个cell的宽度

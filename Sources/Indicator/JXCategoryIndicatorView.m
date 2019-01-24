@@ -147,9 +147,9 @@
     }
 }
 
-- (BOOL)selectCellAtIndex:(NSInteger)index isClicked:(BOOL)isClicked {
+- (BOOL)selectCellAtIndex:(NSInteger)index selectedType:(JXCategoryCellSelectedType)selectedType {
     NSInteger lastSelectedIndex = self.selectedIndex;
-    BOOL result = [super selectCellAtIndex:index isClicked:isClicked];
+    BOOL result = [super selectCellAtIndex:index selectedType:selectedType];
     if (!result) {
         return NO;
     }
@@ -162,7 +162,7 @@
         indicatorParamsModel.lastSelectedIndex = lastSelectedIndex;
         indicatorParamsModel.selectedIndex = index;
         indicatorParamsModel.selectedCellFrame = clickedCellFrame;
-        indicatorParamsModel.isClicked = isClicked;
+        indicatorParamsModel.selectedType = selectedType;
         [indicator jx_selectedCell:indicatorParamsModel];
         if ([indicator isKindOfClass:[JXCategoryIndicatorBackgroundView class]]) {
             CGRect maskFrame = indicator.frame;
