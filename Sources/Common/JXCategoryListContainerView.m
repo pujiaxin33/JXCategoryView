@@ -33,7 +33,11 @@
 }
 
 - (void)initializeViews {
-    _scrollView = [[UIScrollView alloc] init];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(scrollViewInlistContainerView:)]) {
+        _scrollView = [self.delegate scrollViewInlistContainerView:self];
+    }else {
+        _scrollView = [[UIScrollView alloc] init];
+    }
     self.scrollView.pagingEnabled = YES;
     self.scrollView.showsHorizontalScrollIndicator = NO;
     self.scrollView.showsHorizontalScrollIndicator = NO;

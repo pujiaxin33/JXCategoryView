@@ -53,6 +53,16 @@
  @return 新的遵从JXCategoryListContentViewDelegate协议的list实例
  */
 - (id<JXCategoryListContentViewDelegate>)listContainerView:(JXCategoryListContainerView *)listContainerView initListForIndex:(NSInteger)index;
+
+@optional
+/**
+ 返回自定义UIScrollView实例
+ 某些特殊情况需要自己处理UIScrollView内部逻辑。比如项目用了FDFullscreenPopGesture，需要处理手势相关代理。
+
+ @param listContainerView JXCategoryListContainerView
+ @return 自定义UIScrollView实例
+ */
+- (UIScrollView *)scrollViewInlistContainerView:(JXCategoryListContainerView *)listContainerView;
 @end
 
 
