@@ -6,19 +6,18 @@
 //  Copyright © 2018年 jiaxin. All rights reserved.
 //
 
-#import "LoadDataNormalViewController.h"
+#import "LoadDataListCustomViewController.h"
 #import "JXCategoryView.h"
 #import "LoadDataListBaseViewController.h"
 #import "UIWindow+JXSafeArea.h"
 
-@interface LoadDataNormalViewController () <JXCategoryViewDelegate>
+@interface LoadDataListCustomViewController () <JXCategoryViewDelegate>
 @property (nonatomic, strong) JXCategoryTitleView *categoryView;
 @property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) NSMutableArray <LoadDataListBaseViewController *> *listVCArray;
-@property (nonatomic, strong) JXCategoryListVCContainerView *listVCContainerView;
 @end
 
-@implementation LoadDataNormalViewController
+@implementation LoadDataListCustomViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -42,13 +41,18 @@
 
     self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, categoryViewHeight, width, height)];
     self.scrollView.pagingEnabled = YES;
+    self.scrollView.bounces = NO;
     [self.view addSubview:self.scrollView];
+
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    if (@available(iOS 11.0, *)) {
+        self.scrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+    }
 
     self.categoryView.contentScrollView = self.scrollView;
 
     [self reloadData];
 }
-
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];

@@ -28,7 +28,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    //FIXME:默认使用JXCategoryListContainerView
     self.view.backgroundColor = [UIColor whiteColor];
 
     CGFloat naviHeight = [UIApplication.sharedApplication.keyWindow jx_navigationHeight];
@@ -74,6 +74,7 @@
         CGFloat index = scrollView.contentOffset.x/scrollView.bounds.size.width;
         CGFloat absIndex = fabs(index - self.currentIndex);
         if (absIndex >= 1) {
+            //”快速滑动的时候，只响应最外层VC持有的scrollView“，说实话，完全可以不用处理这种情况。如果你们的产品经理坚持认为这是个问题，就把这块代码加上吧。
             //嵌套使用的时候，最外层的VC持有的scrollView在翻页之后，就断掉一次手势。解决快速滑动的时候，只响应最外层VC持有的scrollView。子VC持有的scrollView却没有响应
             self.scrollView.panGestureRecognizer.enabled = NO;
             self.scrollView.panGestureRecognizer.enabled = YES;

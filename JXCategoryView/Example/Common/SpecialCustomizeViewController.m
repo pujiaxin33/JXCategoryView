@@ -12,8 +12,7 @@
 #import "NestViewController.h"
 #import "VerticalListViewController.h"
 #import "PagingViewController.h"
-#import "LoadDataNormalViewController.h"
-#import "LoadDataListVCContainerViewController.h"
+#import "LoadDataListCustomViewController.h"
 #import "LoadDataListContainerViewController.h"
 
 @interface SpecialCustomizeViewController ()
@@ -64,18 +63,10 @@
         vc.title = title;
         [self.navigationController pushViewController:vc animated:YES];
     }else if ([title isEqualToString:@"刷新数据+列表自定义"]) {
-        LoadDataNormalViewController *vc = [[LoadDataNormalViewController alloc] init];
+        LoadDataListCustomViewController *vc = [[LoadDataListCustomViewController alloc] init];
         vc.title = title;
         [self.navigationController pushViewController:vc animated:YES];
     }
-
-    /*
-    //比较老的列表容器封装方法，如果你感兴趣也可以试一下。不过已经被弃用。
-    //数据源刷新&列表加载数据（JXCategoryListVCContainerView封装）
-    LoadDataListVCContainerViewController *vc = [[LoadDataListVCContainerViewController alloc] init];
-    vc.title = title;
-    [self.navigationController pushViewController:vc animated:YES];
-     */
 }
 
 @end
