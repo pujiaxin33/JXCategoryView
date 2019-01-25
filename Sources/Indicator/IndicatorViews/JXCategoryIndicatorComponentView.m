@@ -17,6 +17,7 @@
         _componentPosition = JXCategoryComponentPosition_Bottom;
         _scrollEnabled = YES;
         _verticalMargin = 0;
+        _scrollAnimationDuration = 0.25;
     }
     return self;
 }

@@ -115,7 +115,7 @@
     CGRect toFrame = CGRectMake(x, y, self.ballViewSize.width, self.ballViewSize.height);
 
     if (self.scrollEnabled) {
-        [UIView animateWithDuration:0.25 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+        [UIView animateWithDuration:self.scrollAnimationDuration delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
             self.smallBall.frame = toFrame;
             self.bigBall.frame = toFrame;
             self.smallBall.layer.cornerRadius = self.ballViewSize.height/2;

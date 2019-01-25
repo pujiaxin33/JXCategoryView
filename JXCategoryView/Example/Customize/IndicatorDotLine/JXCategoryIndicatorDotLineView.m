@@ -81,7 +81,7 @@
     CGRect toFrame = CGRectMake(x, y, self.dotSize.width, self.dotSize.height);
 
     if (self.scrollEnabled) {
-        [UIView animateWithDuration:0.25 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+        [UIView animateWithDuration:self.scrollAnimationDuration delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
             self.frame = toFrame;
         } completion:^(BOOL finished) {
 

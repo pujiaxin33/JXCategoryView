@@ -18,5 +18,7 @@
 
 @property (nonatomic, assign) BOOL scrollEnabled;   //手势滚动、点击切换的时候，是否允许滚动，默认YES
 
+@property (nonatomic, assign) NSTimeInterval scrollAnimationDuration;   //滚动动画的时间。默认0.25
+
 
 @end

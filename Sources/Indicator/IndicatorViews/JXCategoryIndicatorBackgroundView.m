@@ -76,7 +76,7 @@
     CGRect toFrame = CGRectMake(x, y, width, height);
 
     if (self.scrollEnabled) {
-        [UIView animateWithDuration:0.25 delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
+        [UIView animateWithDuration:self.scrollAnimationDuration delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
             self.frame = toFrame;
         } completion:^(BOOL finished) {
         }];
