@@ -9,9 +9,12 @@
 #import "JXCategoryIndicatorComponentView.h"
 
 typedef NS_ENUM(NSUInteger, JXCategoryIndicatorLineStyle) {
-    JXCategoryIndicatorLineStyle_Normal = 0,
-    JXCategoryIndicatorLineStyle_JD,
-    JXCategoryIndicatorLineStyle_IQIYI,
+    JXCategoryIndicatorLineStyle_Normal             = 0,
+    JXCategoryIndicatorLineStyle_Lengthen           = 1,
+    JXCategoryIndicatorLineStyle_LengthenOffset     = 2,
+    
+    JXCategoryIndicatorLineStyle_JD                 = 1,    // Deprecated. Use JXCategoryIndicatorLineStyle_Lengthen
+    JXCategoryIndicatorLineStyle_IQIYI              = 2,    // Deprecated. Use JXCategoryIndicatorLineStyle_LengthenOffset
 };
 
 @interface JXCategoryIndicatorLineView : JXCategoryIndicatorComponentView

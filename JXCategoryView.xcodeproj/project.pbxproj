@@ -477,6 +477,8 @@
 				19346D6E21269F3A0065FD8F /* JXCategoryIndicatorBackgroundView.m */,
 				191A95DE212BBC2500DBF784 /* JXCategoryIndicatorBallView.h */,
 				191A95DF212BBC2500DBF784 /* JXCategoryIndicatorBallView.m */,
+				19D57E76212D3FD30077DCA6 /* JXCategoryIndicatorDotLineView.h */,
+				19D57E77212D3FD30077DCA6 /* JXCategoryIndicatorDotLineView.m */,
 			);
 			path = IndicatorViews;
 			sourceTree = "<group>";
@@ -484,7 +486,6 @@
 		191A9608212CF66500DBF784 /* Customize */ = {
 			isa = PBXGroup;
 			children = (
-				19D57E75212D3FA50077DCA6 /* IndicatorDotLine */,
 				191A9609212CF68000DBF784 /* CellAdjust */,
 			);
 			path = Customize;
@@ -590,16 +591,16 @@
 				1979336C21C9DC3500007733 /* LoadDataBaseViewController.m */,
 				194DCDD32134DEF2000E89EF /* LoadDataListBaseViewController.h */,
 				194DCDD42134DEF2000E89EF /* LoadDataListBaseViewController.m */,
+				1979336821C9DBD500007733 /* LoadDataListContainerViewController.h */,
+				1979336921C9DBD500007733 /* LoadDataListContainerViewController.m */,
+				1979337621CA32B000007733 /* LoadDataListContainerListViewController.h */,
+				1979337721CA32B000007733 /* LoadDataListContainerListViewController.m */,
 				194DCDCE2133F1F5000E89EF /* LoadDataNormalViewController.h */,
 				194DCDCF2133F1F5000E89EF /* LoadDataNormalViewController.m */,
 				1979336E21C9DD1100007733 /* LoadDataListVCContainerViewController.h */,
 				1979336F21C9DD1100007733 /* LoadDataListVCContainerViewController.m */,
 				1979337321CA324C00007733 /* LoadDataListVCContainerListViewController.h */,
 				1979337421CA324C00007733 /* LoadDataListVCContainerListViewController.m */,
-				1979336821C9DBD500007733 /* LoadDataListContainerViewController.h */,
-				1979336921C9DBD500007733 /* LoadDataListContainerViewController.m */,
-				1979337621CA32B000007733 /* LoadDataListContainerListViewController.h */,
-				1979337721CA32B000007733 /* LoadDataListContainerListViewController.m */,
 			);
 			path = LoadData;
 			sourceTree = "<group>";
@@ -832,15 +833,6 @@
 				19870CEA2122BB6100C23CAA /* JXCategoryBaseCell.m */,
 			);
 			path = Base;
-			sourceTree = "<group>";
-		};
-		19D57E75212D3FA50077DCA6 /* IndicatorDotLine */ = {
-			isa = PBXGroup;
-			children = (
-				19D57E76212D3FD30077DCA6 /* JXCategoryIndicatorDotLineView.h */,
-				19D57E77212D3FD30077DCA6 /* JXCategoryIndicatorDotLineView.m */,
-			);
-			path = IndicatorDotLine;
 			sourceTree = "<group>";
 		};
 		19D57E7B212D5C180077DCA6 /* VerticalListView */ = {

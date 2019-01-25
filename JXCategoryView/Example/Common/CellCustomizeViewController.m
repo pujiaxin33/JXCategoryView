@@ -35,143 +35,118 @@
         }
     }
 
+    if ([title isEqualToString:@"颜色渐变"]) {
 
-    switch (indexPath.row) {
-        case 0:
-        {
-            //渐变
-            TitleViewController *testVC = [[TitleViewController alloc] init];
-            testVC.title = title;
-            JXCategoryTitleView *titleCategoryView = (JXCategoryTitleView *)testVC.categoryView;
-            JXCategoryIndicatorLineView *lineView = [[JXCategoryIndicatorLineView alloc] init];
-            titleCategoryView.indicators = @[lineView];
-            titleCategoryView.titleColorGradientEnabled = YES;
-            [self.navigationController pushViewController:testVC animated:YES];
-        }
-            break;
-        case 1:
-        {
-            //缩放
-            TitleViewController *testVC = [[TitleViewController alloc] init];
-            testVC.title = title;
-            JXCategoryTitleView *titleCategoryView = (JXCategoryTitleView *)testVC.categoryView;
-            titleCategoryView.titleColorGradientEnabled = YES;
-            titleCategoryView.titleLabelZoomEnabled = YES;
-            titleCategoryView.titleLabelZoomScale = 1.2;
-            titleCategoryView.selectedAnimationEnabled = YES;
+        TitleViewController *testVC = [[TitleViewController alloc] init];
+        testVC.title = title;
+        JXCategoryTitleView *titleCategoryView = (JXCategoryTitleView *)testVC.categoryView;
+        JXCategoryIndicatorLineView *lineView = [[JXCategoryIndicatorLineView alloc] init];
+        titleCategoryView.indicators = @[lineView];
+        titleCategoryView.titleColorGradientEnabled = YES;
+        [self.navigationController pushViewController:testVC animated:YES];
 
-            [self.navigationController pushViewController:testVC animated:YES];
-        }
-            break;
-        case 2:
-        {
-            //腾讯视频大小缩放
-            TitleViewController *testVC = [[TitleViewController alloc] init];
-            testVC.title = title;
-            JXCategoryTitleView *titleCategoryView = (JXCategoryTitleView *)testVC.categoryView;
-            titleCategoryView.titleColorGradientEnabled = NO;
-            titleCategoryView.titleLabelZoomEnabled = YES;
-            titleCategoryView.titleLabelZoomScale = 1.7;
-            titleCategoryView.titleLabelZoomScrollGradientEnabled = NO;
-            titleCategoryView.cellWidthZoomEnabled = YES;
-            titleCategoryView.cellWidthZoomScale = 1.7;
-            titleCategoryView.cellWidthZoomScrollGradientEnabled = NO;
+    }else if ([title isEqualToString:@"大小缩放"]) {
 
-            [self.navigationController pushViewController:testVC animated:YES];
-        }
-            break;
-        case 3:
-        {
-            //汽车之家字体大小粗细缩放
-            TitleViewController *testVC = [[TitleViewController alloc] init];
-            testVC.title = title;
-            JXCategoryTitleView *titleCategoryView = (JXCategoryTitleView *)testVC.categoryView;
-            titleCategoryView.titleFont = [UIFont systemFontOfSize:15];
-            titleCategoryView.titleSelectedFont = [UIFont systemFontOfSize:15];
-            titleCategoryView.titleLabelStrokeWidthEnabled = YES;
-            titleCategoryView.titleColorGradientEnabled = YES;
-            titleCategoryView.titleLabelZoomEnabled = YES;
-            titleCategoryView.titleLabelZoomScale = 1.7;
-            titleCategoryView.titleLabelZoomScrollGradientEnabled = YES;
-            titleCategoryView.cellWidthZoomEnabled = YES;
-            titleCategoryView.cellWidthZoomScale = 1.7;
-            titleCategoryView.selectedAnimationEnabled = YES;
+        TitleViewController *testVC = [[TitleViewController alloc] init];
+        testVC.title = title;
+        JXCategoryTitleView *titleCategoryView = (JXCategoryTitleView *)testVC.categoryView;
+        titleCategoryView.titleColorGradientEnabled = YES;
+        titleCategoryView.titleLabelZoomEnabled = YES;
+        titleCategoryView.titleLabelZoomScale = 1.3;
+        [self.navigationController pushViewController:testVC animated:YES];
 
-            [self.navigationController pushViewController:testVC animated:YES];
-        }
-            break;
-        case 4:
-        {
-            //cell背景色渐变
-            TitleViewController *testVC = [[TitleViewController alloc] init];
-            testVC.title = title;
-            JXCategoryTitleView *titleCategoryView = (JXCategoryTitleView *)testVC.categoryView;
-            titleCategoryView.titleColorGradientEnabled = YES;
-            titleCategoryView.cellBackgroundColorGradientEnabled = YES;
-            titleCategoryView.cellSpacing = 0;
-            titleCategoryView.cellWidthIncrement = 20;
-            [self.navigationController pushViewController:testVC animated:YES];
-        }
-            break;
-        case 5:
-        {
-            //SeparatorLine
-            TitleViewController *testVC = [[TitleViewController alloc] init];
-            testVC.title = title;
-            JXCategoryTitleView *titleCategoryView = (JXCategoryTitleView *)testVC.categoryView;
-            JXCategoryIndicatorLineView *lineView = [[JXCategoryIndicatorLineView alloc] init];
-            titleCategoryView.indicators = @[lineView];
-            titleCategoryView.separatorLineShowEnabled = YES;
-            [self.navigationController pushViewController:testVC animated:YES];
-        }
-            break;
-        case 6:
-        {
-            //图片
-            ImageViewController *testVC = [[ImageViewController alloc] init];
-            testVC.title = title;
-            JXCategoryImageView *imageCategoryView = (JXCategoryImageView *)testVC.categoryView;
-            JXCategoryIndicatorLineView *lineView = [[JXCategoryIndicatorLineView alloc] init];
-            imageCategoryView.indicators = @[lineView];
-            [self.navigationController pushViewController:testVC animated:YES];
-        }
-            break;
-        case 7:
-        {
-            //数字
-            NumberViewController *numberVC = [[NumberViewController alloc] init];
-            numberVC.title = title;
-            [self.navigationController pushViewController:numberVC animated:YES];
-        }
-            break;
-        case 8:
-        {
-            //红点
-            DotViewController *dotVC = [[DotViewController alloc] init];
-            dotVC.title = title;
-            [self.navigationController pushViewController:dotVC animated:YES];
-        }
-            break;
-        case 9:
-        {
-            //title&image
-            TitleImageViewController *imageVC = [[TitleImageViewController alloc] init];
-            imageVC.title = title;
-            [self.navigationController pushViewController:imageVC animated:YES];
-        }
-            break;
-        case 10:
-        {
-            //cell自定义多行富文本
-            AttributeViewViewController *vc = [[AttributeViewViewController alloc] init];
-            vc.title = title;
-            [self.navigationController pushViewController:vc animated:YES];
-        }
-            break;
-        default:
-            break;
+    }else if ([title isEqualToString:@"大小缩放+字体粗细"]) {
+
+        TitleViewController *testVC = [[TitleViewController alloc] init];
+        testVC.title = title;
+        JXCategoryTitleView *titleCategoryView = (JXCategoryTitleView *)testVC.categoryView;
+        titleCategoryView.titleColorGradientEnabled = YES;
+        titleCategoryView.titleLabelZoomEnabled = YES;
+        titleCategoryView.titleLabelZoomScale = 1.3;
+        titleCategoryView.titleLabelStrokeWidthEnabled = YES;
+        [self.navigationController pushViewController:testVC animated:YES];
+
+    }else if ([title isEqualToString:@"大小缩放+点击动画"]) {
+
+        TitleViewController *testVC = [[TitleViewController alloc] init];
+        testVC.title = title;
+        JXCategoryTitleView *titleCategoryView = (JXCategoryTitleView *)testVC.categoryView;
+        titleCategoryView.titleColorGradientEnabled = YES;
+        titleCategoryView.titleLabelZoomEnabled = YES;
+        titleCategoryView.titleLabelZoomScale = 1.3;
+        titleCategoryView.titleLabelStrokeWidthEnabled = YES;
+        titleCategoryView.selectedAnimationEnabled = YES;
+        [self.navigationController pushViewController:testVC animated:YES];
+
+    }else if ([title isEqualToString:@"大小缩放+Cell宽度缩放"]) {
+
+        TitleViewController *testVC = [[TitleViewController alloc] init];
+        testVC.title = title;
+        JXCategoryTitleView *titleCategoryView = (JXCategoryTitleView *)testVC.categoryView;
+        titleCategoryView.titleColorGradientEnabled = YES;
+        titleCategoryView.titleLabelZoomEnabled = YES;
+        titleCategoryView.titleLabelZoomScale = 1.3;
+        titleCategoryView.titleLabelStrokeWidthEnabled = YES;
+        titleCategoryView.selectedAnimationEnabled = YES;
+        titleCategoryView.cellWidthZoomEnabled = YES;
+        titleCategoryView.cellWidthZoomScale = 1.3;
+        [self.navigationController pushViewController:testVC animated:YES];
+
+    }else if ([title isEqualToString:@"Cell图片样式"]) {
+
+        ImageViewController *testVC = [[ImageViewController alloc] init];
+        testVC.title = title;
+        JXCategoryImageView *imageCategoryView = (JXCategoryImageView *)testVC.categoryView;
+        JXCategoryIndicatorLineView *lineView = [[JXCategoryIndicatorLineView alloc] init];
+        imageCategoryView.indicators = @[lineView];
+        [self.navigationController pushViewController:testVC animated:YES];
+
+    }else if ([title isEqualToString:@"Cell数字样式"]) {
+
+        NumberViewController *numberVC = [[NumberViewController alloc] init];
+        numberVC.title = title;
+        [self.navigationController pushViewController:numberVC animated:YES];
+
+    }else if ([title isEqualToString:@"Cell红点样式"]) {
+
+        DotViewController *dotVC = [[DotViewController alloc] init];
+        dotVC.title = title;
+        [self.navigationController pushViewController:dotVC animated:YES];
+
+    }else if ([title isEqualToString:@"Cell Title&图片样式"]) {
+
+        TitleImageViewController *imageVC = [[TitleImageViewController alloc] init];
+        imageVC.title = title;
+        [self.navigationController pushViewController:imageVC animated:YES];
+
+    }else if ([title isEqualToString:@"多行富文本"]) {
+
+        AttributeViewViewController *vc = [[AttributeViewViewController alloc] init];
+        vc.title = title;
+        [self.navigationController pushViewController:vc animated:YES];
+
+    }else if ([title isEqualToString:@"Cell背景色渐变"]) {
+
+        TitleViewController *testVC = [[TitleViewController alloc] init];
+        testVC.title = title;
+        JXCategoryTitleView *titleCategoryView = (JXCategoryTitleView *)testVC.categoryView;
+        titleCategoryView.titleColorGradientEnabled = YES;
+        titleCategoryView.cellBackgroundColorGradientEnabled = YES;
+        titleCategoryView.cellSpacing = 0;
+        titleCategoryView.cellWidthIncrement = 20;
+        [self.navigationController pushViewController:testVC animated:YES];
+
+    }else if ([title isEqualToString:@"分割线"]) {
+
+        TitleViewController *testVC = [[TitleViewController alloc] init];
+        testVC.title = title;
+        JXCategoryTitleView *titleCategoryView = (JXCategoryTitleView *)testVC.categoryView;
+        JXCategoryIndicatorLineView *lineView = [[JXCategoryIndicatorLineView alloc] init];
+        titleCategoryView.indicators = @[lineView];
+        titleCategoryView.separatorLineShowEnabled = YES;
+        [self.navigationController pushViewController:testVC animated:YES];
+
     }
-
 }
 
 @end

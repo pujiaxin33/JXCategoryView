@@ -37,75 +37,45 @@
         }
     }
 
-    switch (indexPath.row) {
-        case 0:
-        {
-            //个人主页
-            PagingViewController *pagingVC = [[PagingViewController alloc] init];
-            pagingVC.title = title;
-            [self.navigationController pushViewController:pagingVC animated:YES];
-        }
-            break;
-        case 1:
-        {
-            //segmentedControl
-            SegmentedControlViewController *segmentedVC = [[SegmentedControlViewController alloc] init];
-            segmentedVC.title = title;
-            [self.navigationController pushViewController:segmentedVC animated:YES];
-        }
-            break;
-        case 2:
-        {
-            //导航栏
-            NaviSegmentedControlViewController *segmentedVC = [[NaviSegmentedControlViewController alloc] init];
-            segmentedVC.title = title;
-            [self.navigationController pushViewController:segmentedVC animated:YES];
-        }
-            break;
-        case 3:
-        {
-            //嵌套使用
-            NestViewController *vc = [[NestViewController alloc] init];
-            vc.title = title;
-            [self.navigationController pushViewController:vc animated:YES];
-        }
-            break;
-        case 4:
-        {
-            //垂直列表滚动
-            VerticalListViewController *vc = [[VerticalListViewController alloc] init];
-            vc.title = title;
-            [self.navigationController pushViewController:vc animated:YES];
-        }
-            break;
-        case 5:
-        {
-            //数据源刷新&列表数据加载
-            LoadDataNormalViewController *vc = [[LoadDataNormalViewController alloc] init];
-            vc.title = title;
-            [self.navigationController pushViewController:vc animated:YES];
-        }
-            break;
-        case 6:
-        {
-            //数据源刷新&列表加载数据（ListVCContainerView封装）
-            LoadDataListVCContainerViewController *vc = [[LoadDataListVCContainerViewController alloc] init];
-            vc.title = title;
-            [self.navigationController pushViewController:vc animated:YES];
-        }
-            break;
-        case 7:
-        {
-            //数据源刷新&列表加载数据（ListContainerView封装）
-            LoadDataListContainerViewController *vc = [[LoadDataListContainerViewController alloc] init];
-            vc.title = title;
-            [self.navigationController pushViewController:vc animated:YES];
-        }
-            break;
-
-        default:
-            break;
+    //FIXME:部分点击加动画
+    //FIXME:多加点个人主页示例
+    if ([title isEqualToString:@"个人主页"]) {
+        PagingViewController *pagingVC = [[PagingViewController alloc] init];
+        pagingVC.title = title;
+        [self.navigationController pushViewController:pagingVC animated:YES];
+    }else if ([title isEqualToString:@"SegmentedControl效果"]) {
+        SegmentedControlViewController *segmentedVC = [[SegmentedControlViewController alloc] init];
+        segmentedVC.title = title;
+        [self.navigationController pushViewController:segmentedVC animated:YES];
+    }else if ([title isEqualToString:@"导航栏使用"]) {
+        NaviSegmentedControlViewController *segmentedVC = [[NaviSegmentedControlViewController alloc] init];
+        segmentedVC.title = title;
+        [self.navigationController pushViewController:segmentedVC animated:YES];
+    }else if ([title isEqualToString:@"嵌套使用"]) {
+        NestViewController *vc = [[NestViewController alloc] init];
+        vc.title = title;
+        [self.navigationController pushViewController:vc animated:YES];
+    }else if ([title isEqualToString:@"垂直列表滚动"]) {
+        VerticalListViewController *vc = [[VerticalListViewController alloc] init];
+        vc.title = title;
+        [self.navigationController pushViewController:vc animated:YES];
+    }else if ([title isEqualToString:@"刷新数据+ListContainerView"]) {
+        LoadDataListContainerViewController *vc = [[LoadDataListContainerViewController alloc] init];
+        vc.title = title;
+        [self.navigationController pushViewController:vc animated:YES];
+    }else if ([title isEqualToString:@"刷新数据+列表自定义"]) {
+        LoadDataNormalViewController *vc = [[LoadDataNormalViewController alloc] init];
+        vc.title = title;
+        [self.navigationController pushViewController:vc animated:YES];
     }
+
+    /*
+    //比较老的列表容器封装方法，如果你感兴趣也可以试一下。不过已经被弃用。
+    //数据源刷新&列表加载数据（JXCategoryListVCContainerView封装）
+    LoadDataListVCContainerViewController *vc = [[LoadDataListVCContainerViewController alloc] init];
+    vc.title = title;
+    [self.navigationController pushViewController:vc animated:YES];
+     */
 }
 
 @end

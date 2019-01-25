@@ -63,7 +63,7 @@
             if (self.indicatorLineWidth == JXCategoryViewAutomaticDimension) {
                 targetWidth = [JXCategoryFactory interpolationFrom:leftCellFrame.size.width to:rightCellFrame.size.width percent:percent];
             }
-        }else if (self.lineStyle == JXCategoryIndicatorLineStyle_JD) {
+        }else if (self.lineStyle == JXCategoryIndicatorLineStyle_Lengthen) {
             CGFloat maxWidth = rightX - leftX + rightWidth;
             //前50%，只增加width；后50%，移动x并减小width
             if (percent <= 0.5) {
@@ -73,7 +73,7 @@
                 targetX = [JXCategoryFactory interpolationFrom:leftX to:rightX percent:(percent - 0.5)*2];
                 targetWidth = [JXCategoryFactory interpolationFrom:maxWidth to:rightWidth percent:(percent - 0.5)*2];
             }
-        }else if (self.lineStyle == JXCategoryIndicatorLineStyle_IQIYI) {
+        }else if (self.lineStyle == JXCategoryIndicatorLineStyle_LengthenOffset) {
             //前50%，增加width，并少量移动x；后50%，少量移动x并减小width
             CGFloat offsetX = self.lineScrollOffsetX;//x的少量偏移量
             CGFloat maxWidth = rightX - leftX + rightWidth - offsetX*2;
