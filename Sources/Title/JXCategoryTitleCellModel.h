@@ -13,7 +13,9 @@
 
 @property (nonatomic, copy) NSString *title;
 
-@property (nonatomic, strong) UIColor *titleColor;
+@property (nonatomic, strong) UIColor *titleNormalColor;
+
+@property (nonatomic, strong) UIColor *titleCurrentColor;
 
 @property (nonatomic, strong) UIColor *titleSelectedColor;
 
@@ -25,11 +27,17 @@
 
 @property (nonatomic, assign) BOOL titleLabelZoomEnabled;
 
-@property (nonatomic, assign) CGFloat titleLabelZoomScale;  //字号当前的缩放值
+@property (nonatomic, assign) CGFloat titleLabelNormalZoomScale;
 
-@property (nonatomic, assign) CGFloat titleLabelMaxZoomScale;   //字号的最大缩放值
+@property (nonatomic, assign) CGFloat titleLabelCurrentZoomScale;
+
+@property (nonatomic, assign) CGFloat titleLabelSelectedZoomScale;
 
 @property (nonatomic, assign) BOOL titleLabelStrokeWidthEnabled;
+
+@property (nonatomic, assign) CGFloat titleLabelNormalStrokeWidth;
+
+@property (nonatomic, assign) CGFloat titleLabelCurrentStrokeWidth;
 
 @property (nonatomic, assign) CGFloat titleLabelSelectedStrokeWidth;
 

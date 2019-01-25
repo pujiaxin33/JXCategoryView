@@ -124,7 +124,9 @@
         }
     }else {
         JXCategoryIndicatorCellModel *leftCellModel = (JXCategoryIndicatorCellModel *)self.dataSource[baseIndex];
+        leftCellModel.selectedType = JXCategoryCellSelectedTypeUnknown;
         JXCategoryIndicatorCellModel *rightCellModel = (JXCategoryIndicatorCellModel *)self.dataSource[baseIndex + 1];
+        rightCellModel.selectedType = JXCategoryCellSelectedTypeUnknown;
         [self refreshLeftCellModel:leftCellModel rightCellModel:rightCellModel ratio:remainderRatio];
 
         for (UIView<JXCategoryIndicatorProtocol> *indicator in self.indicators) {
@@ -157,6 +159,7 @@
     CGRect clickedCellFrame = [self getTargetCellFrame:index];
 
     JXCategoryIndicatorCellModel *selectedCellModel = (JXCategoryIndicatorCellModel *)self.dataSource[index];
+    selectedCellModel.selectedType = selectedType;
     for (UIView<JXCategoryIndicatorProtocol> *indicator in self.indicators) {
         JXCategoryIndicatorParamsModel *indicatorParamsModel = [[JXCategoryIndicatorParamsModel alloc] init];
         indicatorParamsModel.lastSelectedIndex = lastSelectedIndex;

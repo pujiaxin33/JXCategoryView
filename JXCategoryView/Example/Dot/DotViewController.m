@@ -25,7 +25,7 @@
     UIBarButtonItem *reloadItem = [[UIBarButtonItem alloc] initWithTitle:@"刷新" style:UIBarButtonItemStylePlain target:self action:@selector(reloadDot)];
     self.navigationItem.rightBarButtonItem = reloadItem;
 
-    _dotStates = @[@YES, @YES, @NO, @NO, @YES, @YES, @YES, @NO, @YES, @YES, @NO].mutableCopy;
+    _dotStates = @[@NO, @YES, @NO, @NO, @YES, @YES, @YES, @NO, @YES, @YES, @NO].mutableCopy;
 
     self.myCategoryView.titles = self.titles;
     self.myCategoryView.dotStates = self.dotStates;

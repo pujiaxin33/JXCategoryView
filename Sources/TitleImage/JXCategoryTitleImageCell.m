@@ -129,7 +129,6 @@
     }
 
     [self setNeedsLayout];
-    [self layoutIfNeeded];
 }
 
 

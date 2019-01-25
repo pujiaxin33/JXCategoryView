@@ -58,6 +58,7 @@
             titleCategoryView.titleColorGradientEnabled = YES;
             titleCategoryView.titleLabelZoomEnabled = YES;
             titleCategoryView.titleLabelZoomScale = 1.2;
+            titleCategoryView.selectedAnimationEnabled = YES;
 
             [self.navigationController pushViewController:testVC animated:YES];
         }
@@ -94,6 +95,7 @@
             titleCategoryView.titleLabelZoomScrollGradientEnabled = YES;
             titleCategoryView.cellWidthZoomEnabled = YES;
             titleCategoryView.cellWidthZoomScale = 1.7;
+            titleCategoryView.selectedAnimationEnabled = YES;
 
             [self.navigationController pushViewController:testVC animated:YES];
         }

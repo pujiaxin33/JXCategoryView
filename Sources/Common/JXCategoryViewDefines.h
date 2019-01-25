@@ -11,6 +11,8 @@
 
 static const CGFloat JXCategoryViewAutomaticDimension = -1;
 
+typedef void(^JXCategoryCellSelectedAnimationBlock)(CGFloat percent);
+
 typedef NS_ENUM(NSUInteger, JXCategoryComponentPosition) {
     JXCategoryComponentPosition_Bottom,
     JXCategoryComponentPosition_Top,

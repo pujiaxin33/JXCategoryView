@@ -48,7 +48,6 @@
     self.numberLabel.text = myCellModel.numberString;
 
     [self setNeedsLayout];
-    [self layoutIfNeeded];
 }
 
 @end

@@ -28,7 +28,6 @@
     self.titleLabel.attributedText = myCellModel.attributeTitle;
     [self.titleLabel sizeToFit];
     [self setNeedsLayout];
-    [self layoutIfNeeded];
 }
 
 

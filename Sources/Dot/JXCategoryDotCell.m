@@ -72,7 +72,6 @@
     [CATransaction commit];
 
     [self setNeedsLayout];
-    [self layoutIfNeeded];
 }
 
 @end

@@ -20,6 +20,7 @@
 		190A54E7206397370050B327 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 190A54E6206397370050B327 /* Assets.xcassets */; };
 		190A54EA206397370050B327 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 190A54E8206397370050B327 /* LaunchScreen.storyboard */; };
 		190A54ED206397370050B327 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 190A54EC206397370050B327 /* main.m */; };
+		190C48E121F95F6C008032C7 /* JXCategoryViewAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 190C48E021F95F6C008032C7 /* JXCategoryViewAnimator.m */; };
 		190F6A6C213E889F00870498 /* CellMixed.gif in Resources */ = {isa = PBXBuildFile; fileRef = 190F6A6B213E889E00870498 /* CellMixed.gif */; };
 		1912A522211C1BD000A80826 /* ContentBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1912A521211C1BD000A80826 /* ContentBaseViewController.m */; };
 		1912A526211C257000A80826 /* BackgroundImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1912A525211C257000A80826 /* BackgroundImageViewController.m */; };
@@ -163,6 +164,8 @@
 		190A54E9206397370050B327 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		190A54EB206397370050B327 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		190A54EC206397370050B327 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		190C48DF21F95F6C008032C7 /* JXCategoryViewAnimator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JXCategoryViewAnimator.h; sourceTree = "<group>"; };
+		190C48E021F95F6C008032C7 /* JXCategoryViewAnimator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JXCategoryViewAnimator.m; sourceTree = "<group>"; };
 		190F6A6B213E889E00870498 /* CellMixed.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = CellMixed.gif; sourceTree = "<group>"; };
 		1912A520211C1BD000A80826 /* ContentBaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContentBaseViewController.h; sourceTree = "<group>"; };
 		1912A521211C1BD000A80826 /* ContentBaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContentBaseViewController.m; sourceTree = "<group>"; };
@@ -758,12 +761,12 @@
 		19870CBC2122BB6100C23CAA /* Title */ = {
 			isa = PBXGroup;
 			children = (
-				19870CBD2122BB6100C23CAA /* JXCategoryTitleCellModel.h */,
-				19870CBE2122BB6100C23CAA /* JXCategoryTitleCell.h */,
 				19870CBF2122BB6100C23CAA /* JXCategoryTitleView.h */,
-				19870CC02122BB6100C23CAA /* JXCategoryTitleCellModel.m */,
-				19870CC12122BB6100C23CAA /* JXCategoryTitleCell.m */,
 				19870CC22122BB6100C23CAA /* JXCategoryTitleView.m */,
+				19870CBD2122BB6100C23CAA /* JXCategoryTitleCellModel.h */,
+				19870CC02122BB6100C23CAA /* JXCategoryTitleCellModel.m */,
+				19870CBE2122BB6100C23CAA /* JXCategoryTitleCell.h */,
+				19870CC12122BB6100C23CAA /* JXCategoryTitleCell.m */,
 			);
 			path = Title;
 			sourceTree = "<group>";
@@ -812,6 +815,8 @@
 				196428FB2148FA5C009C1D31 /* JXCategoryListVCContainerView.m */,
 				1979336521C9D6FE00007733 /* JXCategoryListContainerView.h */,
 				1979336621C9D6FE00007733 /* JXCategoryListContainerView.m */,
+				190C48DF21F95F6C008032C7 /* JXCategoryViewAnimator.h */,
+				190C48E021F95F6C008032C7 /* JXCategoryViewAnimator.m */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -820,11 +825,11 @@
 			isa = PBXGroup;
 			children = (
 				19870CE62122BB6100C23CAA /* JXCategoryBaseView.h */,
-				19870CE72122BB6100C23CAA /* JXCategoryBaseCell.h */,
-				19870CE82122BB6100C23CAA /* JXCategoryBaseCellModel.h */,
 				19870CE92122BB6100C23CAA /* JXCategoryBaseView.m */,
-				19870CEA2122BB6100C23CAA /* JXCategoryBaseCell.m */,
+				19870CE82122BB6100C23CAA /* JXCategoryBaseCellModel.h */,
 				19870CEB2122BB6100C23CAA /* JXCategoryBaseCellModel.m */,
+				19870CE72122BB6100C23CAA /* JXCategoryBaseCell.h */,
+				19870CEA2122BB6100C23CAA /* JXCategoryBaseCell.m */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -1030,6 +1035,7 @@
 				19302325211AD1B300AF1444 /* TitleImageSettingViewController.m in Sources */,
 				19346D6F21269F3A0065FD8F /* JXCategoryIndicatorBackgroundView.m in Sources */,
 				1912A533211D08C800A80826 /* FootballViewController.m in Sources */,
+				190C48E121F95F6C008032C7 /* JXCategoryViewAnimator.m in Sources */,
 				19562CE7212A9B6E0095AA27 /* JXCategoryDotView.m in Sources */,
 				19D57E78212D3FD30077DCA6 /* JXCategoryIndicatorDotLineView.m in Sources */,
 				19870D012122BB6100C23CAA /* JXCategoryBaseCell.m in Sources */,

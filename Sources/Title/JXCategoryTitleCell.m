@@ -8,6 +8,7 @@
 
 #import "JXCategoryTitleCell.h"
 #import "JXCategoryTitleCellModel.h"
+#import "JXCategoryFactory.h"
 
 @interface JXCategoryTitleCell ()
 @property (nonatomic, strong) CALayer *maskLayer;
@@ -48,12 +49,18 @@
 
     if (myCellModel.titleLabelZoomEnabled) {
         //先把font设置为缩放的最大值，再缩小到最小值，最后根据当前的titleLabelZoomScale值，进行缩放更新。这样就能避免transform从小到大时字体模糊
-        UIFont *maxScaleFont = [UIFont fontWithDescriptor:myCellModel.titleFont.fontDescriptor size:myCellModel.titleFont.pointSize*myCellModel.titleLabelMaxZoomScale];
+        UIFont *maxScaleFont = [UIFont fontWithDescriptor:myCellModel.titleFont.fontDescriptor size:myCellModel.titleFont.pointSize*myCellModel.titleLabelSelectedZoomScale];
         CGFloat baseScale = myCellModel.titleFont.lineHeight/maxScaleFont.lineHeight;
-        self.titleLabel.font = maxScaleFont;
-        self.maskTitleLabel.font = maxScaleFont;
-        self.titleLabel.transform = CGAffineTransformMakeScale(baseScale, baseScale);
-        self.titleLabel.transform  = CGAffineTransformMakeScale(baseScale*myCellModel.titleLabelZoomScale, baseScale*myCellModel.titleLabelZoomScale);
+        if (myCellModel.selectedAnimationEnabled && [self checkCanStartSelectedAnimation:myCellModel]) {
+            JXCategoryCellSelectedAnimationBlock block = [self preferredTitleZoomAnimationBlock:myCellModel baseScale:baseScale];
+            [self addSelectedAnimationBlock:block];
+        }else {
+            self.titleLabel.font = maxScaleFont;
+            self.maskTitleLabel.font = maxScaleFont;
+            CGAffineTransform currentTransform = CGAffineTransformMakeScale(baseScale*myCellModel.titleLabelCurrentZoomScale, baseScale*myCellModel.titleLabelCurrentZoomScale);
+            self.titleLabel.transform = currentTransform;
+            self.maskTitleLabel.transform = currentTransform;
+        }
     }else {
         if (myCellModel.selected) {
             self.titleLabel.font = myCellModel.titleSelectedFont;
@@ -65,17 +72,25 @@
     }
 
     NSString *titleString = myCellModel.title ? myCellModel.title : @"";
-    NSMutableAttributedString *attriString = [[NSMutableAttributedString alloc] initWithString:titleString];
+    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:titleString];
     if (myCellModel.titleLabelStrokeWidthEnabled) {
-        [attriString addAttribute:NSStrokeWidthAttributeName value:@(myCellModel.titleLabelSelectedStrokeWidth) range:NSMakeRange(0, titleString.length)];
+        if (myCellModel.selectedAnimationEnabled && [self checkCanStartSelectedAnimation:myCellModel]) {
+            JXCategoryCellSelectedAnimationBlock block = [self preferredTitleStrokeWidthAnimationBlock:myCellModel attributedString:attributedString];
+            [self addSelectedAnimationBlock:block];
+        }else {
+            [attributedString addAttribute:NSStrokeWidthAttributeName value:@(myCellModel.titleLabelCurrentStrokeWidth) range:NSMakeRange(0, titleString.length)];
+            self.titleLabel.attributedText = attributedString;
+        }
+    }else {
+        self.titleLabel.attributedText = attributedString;
     }
 
     self.maskTitleLabel.hidden = !myCellModel.titleLabelMaskEnabled;
     if (myCellModel.titleLabelMaskEnabled) {
-        self.titleLabel.textColor = myCellModel.titleColor;
+        self.maskTitleLabel.hidden = NO;
+        self.titleLabel.textColor = myCellModel.titleNormalColor;
         self.maskTitleLabel.textColor = myCellModel.titleSelectedColor;
-
-        self.maskTitleLabel.attributedText = attriString;
+        self.maskTitleLabel.attributedText = attributedString;
         [self.maskTitleLabel sizeToFit];
 
         CGRect frame = myCellModel.backgroundViewMaskFrame;
@@ -86,17 +101,64 @@
         self.maskLayer.frame = frame;
         [CATransaction commit];
     }else {
-        if (myCellModel.selected) {
-            self.titleLabel.textColor = myCellModel.titleSelectedColor;
+        self.maskTitleLabel.hidden = YES;
+        if (myCellModel.selectedAnimationEnabled && [self checkCanStartSelectedAnimation:myCellModel]) {
+            JXCategoryCellSelectedAnimationBlock block = [self preferredTitleColorAnimationBlock:myCellModel];
+            [self addSelectedAnimationBlock:block];
         }else {
-            self.titleLabel.textColor = myCellModel.titleColor;
+           self.titleLabel.textColor = myCellModel.titleCurrentColor;
         }
     }
 
-    self.titleLabel.attributedText = attriString;
+    [self startSelectedAnimationIfNeeded:myCellModel];
+
     [self.titleLabel sizeToFit];
     [self setNeedsLayout];
-    [self layoutIfNeeded];
+}
+
+- (JXCategoryCellSelectedAnimationBlock)preferredTitleZoomAnimationBlock:(JXCategoryTitleCellModel *)cellModel baseScale:(CGFloat)baseScale {
+    __weak typeof(self) weakSelf = self;
+    return ^(CGFloat percent) {
+        if (cellModel.selected) {
+            //将要选中，scale从小到大插值渐变
+            cellModel.titleLabelCurrentZoomScale = [JXCategoryFactory interpolationFrom:cellModel.titleLabelNormalZoomScale to:cellModel.titleLabelSelectedZoomScale percent:percent];
+        }else {
+            //将要取消选中，scale从大到小插值渐变
+            cellModel.titleLabelCurrentZoomScale = [JXCategoryFactory interpolationFrom:cellModel.titleLabelSelectedZoomScale to:cellModel.titleLabelNormalZoomScale percent:percent];
+        }
+        CGAffineTransform currentTransform = CGAffineTransformMakeScale(baseScale*cellModel.titleLabelCurrentZoomScale, baseScale*cellModel.titleLabelCurrentZoomScale);
+        weakSelf.titleLabel.transform = currentTransform;
+        weakSelf.maskTitleLabel.transform = currentTransform;
+    };
+}
+
+- (JXCategoryCellSelectedAnimationBlock)preferredTitleStrokeWidthAnimationBlock:(JXCategoryTitleCellModel *)cellModel attributedString:(NSMutableAttributedString *)attributedString {
+    __weak typeof(self) weakSelf = self;
+    return ^(CGFloat percent) {
+        if (cellModel.selected) {
+            //将要选中，StrokeWidth从小到大插值渐变
+            cellModel.titleLabelCurrentStrokeWidth = [JXCategoryFactory interpolationFrom:cellModel.titleLabelNormalStrokeWidth to:cellModel.titleLabelSelectedStrokeWidth percent:percent];
+        }else {
+            //将要取消选中，StrokeWidth从大到小插值渐变
+            cellModel.titleLabelCurrentStrokeWidth = [JXCategoryFactory interpolationFrom:cellModel.titleLabelSelectedStrokeWidth to:cellModel.titleLabelNormalStrokeWidth percent:percent];
+        }
+        [attributedString addAttribute:NSStrokeWidthAttributeName value:@(cellModel.titleLabelCurrentStrokeWidth) range:NSMakeRange(0, attributedString.string.length)];
+        weakSelf.titleLabel.attributedText = attributedString;
+    };
+}
+
+- (JXCategoryCellSelectedAnimationBlock)preferredTitleColorAnimationBlock:(JXCategoryTitleCellModel *)cellModel {
+    __weak typeof(self) weakSelf = self;
+    return ^(CGFloat percent) {
+        if (cellModel.selected) {
+            //将要选中，textColor从titleNormalColor到titleSelectedColor插值渐变
+            cellModel.titleCurrentColor = [JXCategoryFactory interpolationColorFrom:cellModel.titleNormalColor to:cellModel.titleSelectedColor percent:percent];
+        }else {
+            //将要取消选中，textColor从titleSelectedColor到titleNormalColor插值渐变
+            cellModel.titleCurrentColor = [JXCategoryFactory interpolationColorFrom:cellModel.titleSelectedColor to:cellModel.titleNormalColor percent:percent];
+        }
+        weakSelf.titleLabel.textColor = cellModel.titleCurrentColor;
+    };
 }
 
 
