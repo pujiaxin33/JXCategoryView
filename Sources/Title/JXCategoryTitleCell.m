@@ -81,9 +81,11 @@
         }else {
             [attributedString addAttribute:NSStrokeWidthAttributeName value:@(myCellModel.titleLabelCurrentStrokeWidth) range:NSMakeRange(0, titleString.length)];
             self.titleLabel.attributedText = attributedString;
+            self.maskTitleLabel.attributedText = attributedString;
         }
     }else {
         self.titleLabel.attributedText = attributedString;
+        self.maskTitleLabel.attributedText = attributedString;
     }
 
     self.maskTitleLabel.hidden = !myCellModel.titleLabelMaskEnabled;
@@ -91,7 +93,6 @@
         self.maskTitleLabel.hidden = NO;
         self.titleLabel.textColor = myCellModel.titleNormalColor;
         self.maskTitleLabel.textColor = myCellModel.titleSelectedColor;
-        self.maskTitleLabel.attributedText = attributedString;
         [self.maskTitleLabel sizeToFit];
 
         CGRect frame = myCellModel.backgroundViewMaskFrame;
@@ -145,6 +146,7 @@
         }
         [attributedString addAttribute:NSStrokeWidthAttributeName value:@(cellModel.titleLabelCurrentStrokeWidth) range:NSMakeRange(0, attributedString.string.length)];
         weakSelf.titleLabel.attributedText = attributedString;
+        weakSelf.maskTitleLabel.attributedText = attributedString;
     };
 }
 
