@@ -8,7 +8,6 @@
 
 #import "LoadDataListContainerViewController.h"
 #import "JXCategoryView.h"
-#import "UIWindow+JXSafeArea.h"
 #import "JXCategoryListContainerView.h"
 #import "LoadDataListContainerListViewController.h"
 
@@ -28,12 +27,7 @@
     CGFloat naviHeight = [UIApplication.sharedApplication.keyWindow jx_navigationHeight];
 
     self.titles = [self getRandomTitles];
-    CGFloat categoryViewHeight = 50;
-    CGFloat width = WindowsSize.width;
-    CGFloat height = WindowsSize.height - naviHeight - categoryViewHeight;
-
     self.categoryView = [[JXCategoryTitleView alloc] init];
-    self.categoryView.frame = CGRectMake(0, 0, WindowsSize.width, categoryViewHeight);
     self.categoryView.delegate = self;
     self.categoryView.titles = self.titles;
     self.categoryView.defaultSelectedIndex = 0;
@@ -42,11 +36,17 @@
     [self.view addSubview:self.categoryView];
 
     self.listContainerView = [[JXCategoryListContainerView alloc] initWithParentVC:self delegate:self];
-    self.listContainerView.frame = CGRectMake(0, categoryViewHeight, width, height);
     self.listContainerView.defaultSelectedIndex = 0;
     [self.view addSubview:self.listContainerView];
 
     self.categoryView.contentScrollView = self.listContainerView.scrollView;
+}
+
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+
+    self.categoryView.frame = CGRectMake(0, 0, self.view.bounds.size.width, 50);
+    self.listContainerView.frame = CGRectMake(0, 50, self.view.bounds.size.width, self.view.bounds.size.height);
 }
 
 /**

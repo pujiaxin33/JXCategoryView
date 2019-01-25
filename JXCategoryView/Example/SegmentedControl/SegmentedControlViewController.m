@@ -20,8 +20,7 @@
 
     [super viewDidLoad];
 
-    CGFloat totalItemWidth = WindowsSize.width - 30*2;
-    self.categoryView.frame = CGRectMake(30, 10, totalItemWidth, 30);
+    CGFloat totalItemWidth = self.view.bounds.size.width - 30*2;
     self.myCategoryView.layer.cornerRadius = 15;
     self.myCategoryView.layer.masksToBounds = YES;
     self.myCategoryView.layer.borderColor = [UIColor redColor].CGColor;
@@ -38,6 +37,13 @@
     backgroundView.backgroundViewWidthIncrement = 0;
     backgroundView.backgroundViewColor = [UIColor redColor];
     self.myCategoryView.indicators = @[backgroundView];
+}
+
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+
+    CGFloat totalItemWidth = self.view.bounds.size.width - 30*2;
+    self.myCategoryView.frame = CGRectMake(30, 10, totalItemWidth, 30);
 }
 
 - (JXCategoryTitleView *)myCategoryView {

@@ -94,7 +94,6 @@
     [self.categoryView reloadData];
 }
 
-
 #pragma mark - JXCategoryViewDelegate
 
 - (void)categoryView:(JXCategoryBaseView *)categoryView didSelectedItemAtIndex:(NSInteger)index {

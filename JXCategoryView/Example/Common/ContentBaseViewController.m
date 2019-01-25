@@ -9,7 +9,6 @@
 #import "ContentBaseViewController.h"
 #import "ListViewController.h"
 #import "NestViewController.h"
-#import "UIWindow+JXSafeArea.h"
 
 @interface ContentBaseViewController () <JXCategoryViewDelegate, JXCategoryListContainerViewDelegate>
 @end
@@ -29,20 +28,13 @@
     [super viewDidLoad];
 
     self.view.backgroundColor = [UIColor whiteColor];
-    //fixme:布局位置
-    CGFloat naviHeight = [UIApplication.sharedApplication.keyWindow jx_navigationHeight];
-    CGFloat categoryViewHeight = [self preferredCategoryViewHeight];
-    CGFloat width = WindowsSize.width;
-    CGFloat height = WindowsSize.height - naviHeight - categoryViewHeight;
 
-    self.categoryView.frame = CGRectMake(0, 0, WindowsSize.width, categoryViewHeight);
     self.categoryView.delegate = self;
     self.categoryView.defaultSelectedIndex = 0;
     [self.view addSubview:self.categoryView];
 
     self.listContainerView = [[JXCategoryListContainerView alloc] initWithParentVC:self delegate:self];
     self.listContainerView.didAppearPercent = 0.01; //滚动一点就触发加载
-    self.listContainerView.frame = CGRectMake(0, categoryViewHeight, width, height);
     self.listContainerView.defaultSelectedIndex = 0;
     [self.view addSubview:self.listContainerView];
 
@@ -52,6 +44,13 @@
         UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithTitle:@"指示器位置切换" style:UIBarButtonItemStylePlain target:self action:@selector(rightItemClicked)];
         self.navigationItem.rightBarButtonItem = rightItem;
     }
+}
+
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+
+    self.categoryView.frame = CGRectMake(0, 0, self.view.bounds.size.width, [self preferredCategoryViewHeight]);
+    self.listContainerView.frame = CGRectMake(0, [self preferredCategoryViewHeight], self.view.bounds.size.width, self.view.bounds.size.height);
 }
 
 - (void)viewDidAppear:(BOOL)animated {

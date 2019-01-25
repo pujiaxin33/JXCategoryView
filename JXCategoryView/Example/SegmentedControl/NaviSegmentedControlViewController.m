@@ -20,7 +20,7 @@
 
     [super viewDidLoad];
 
-    self.categoryView.frame = CGRectMake(0, 0, 120, 30);
+    self.myCategoryView.frame = CGRectMake(0, 0, 120, 30);
     self.myCategoryView.layer.cornerRadius = 15;
     self.myCategoryView.layer.masksToBounds = YES;
     self.myCategoryView.layer.borderColor = [UIColor redColor].CGColor;
@@ -40,6 +40,12 @@
 
     [self.myCategoryView removeFromSuperview];
     self.navigationItem.titleView = self.myCategoryView;
+}
+
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+
+    self.myCategoryView.frame = CGRectMake(0, 0, 120, 30);
 }
 
 - (JXCategoryTitleView *)myCategoryView {

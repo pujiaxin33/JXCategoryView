@@ -46,6 +46,12 @@
     self.listContainerView.scrollView.delegate = self;
 }
 
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+
+    self.myCategoryView.frame = CGRectMake(0, 0, 180, 30);
+}
+
 - (JXCategoryTitleView *)myCategoryView {
     return (JXCategoryTitleView *)self.categoryView;
 }
