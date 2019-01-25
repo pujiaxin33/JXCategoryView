@@ -24,8 +24,6 @@
 
     self.view.backgroundColor = [UIColor whiteColor];
 
-    CGFloat naviHeight = [UIApplication.sharedApplication.keyWindow jx_navigationHeight];
-
     self.titles = [self getRandomTitles];
     self.categoryView = [[JXCategoryTitleView alloc] init];
     self.categoryView.delegate = self;
@@ -40,6 +38,8 @@
     [self.view addSubview:self.listContainerView];
 
     self.categoryView.contentScrollView = self.listContainerView.scrollView;
+
+    [self reloadData];
 }
 
 - (void)viewDidLayoutSubviews {
