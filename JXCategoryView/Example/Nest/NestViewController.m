@@ -10,21 +10,20 @@
 #import "JXCategoryTitleView.h"
 #import "TitleViewController.h"
 
-@interface NestViewController ()
-@property (nonatomic, strong) NSArray *titles;
+@interface NestViewController () <UIScrollViewDelegate>
 @property (nonatomic, strong) JXCategoryTitleView *myCategoryView;
+@property (nonatomic, assign) NSInteger currentIndex;
 @end
 
 @implementation NestViewController
 
 - (void)viewDidLoad {
-    _titles = @[@"主题一", @"主题二", @"主题三", ];
+    self.titles = @[@"主题一", @"主题二", @"主题三", ];
 
     [super viewDidLoad];
 
     self.myCategoryView.titles = self.titles;
-
-    self.categoryView.frame = CGRectMake(0, 0, 180, 30);
+    self.myCategoryView.frame = CGRectMake(0, 0, 180, 30);
     self.myCategoryView.layer.cornerRadius = 15;
     self.myCategoryView.layer.masksToBounds = YES;
     self.myCategoryView.layer.borderColor = [UIColor redColor].CGColor;
@@ -43,43 +42,54 @@
 
     [self.myCategoryView removeFromSuperview];
     self.navigationItem.titleView = self.myCategoryView;
+
+    self.listContainerView.scrollView.delegate = self;
 }
 
 - (JXCategoryTitleView *)myCategoryView {
     return (JXCategoryTitleView *)self.categoryView;
 }
 
-- (NSUInteger)preferredListViewCount {
-    return self.titles.count;
-}
-
 - (CGFloat)preferredCategoryViewHeight {
     return 0;
 }
 
-- (Class)preferredCategoryViewClass {
-    return [JXCategoryTitleView class];
+- (JXCategoryBaseView *)preferredCategoryView {
+    return [[JXCategoryTitleView alloc] init];
 }
 
-- (Class)preferredListViewControllerClass {
-    return [TitleViewController class];
-}
-
-- (void)configListViewController:(UIViewController *)controller index:(NSUInteger)index {
-    TitleViewController *listController = (TitleViewController *)controller;
-    listController.shouldHandleScreenEdgeGesture = NO;
+- (id<JXCategoryListContentViewDelegate>)preferredListAtIndex:(NSInteger)index {
+    TitleViewController *list = [[TitleViewController alloc] init];
+    list.shouldHandleScreenEdgeGesture = NO;
     if (index == 0) {
-        listController.titles = @[@"香蕉", @"苹果", @"荔枝"];
+        list.titles = @[@"香蕉", @"苹果", @"荔枝"];
     }else if(index == 1) {
-        listController.titles = @[@"冰淇淋", @"可乐"];
+        list.titles = @[@"冰淇淋", @"可乐"];
     }else if (index == 2) {
-        listController.titles = @[@"火锅", @"砂锅", @"干锅"];
+        list.titles = @[@"火锅", @"砂锅", @"干锅"];
     }
 
-    JXCategoryTitleView *titleCategoryView = (JXCategoryTitleView *)listController.categoryView;
+    JXCategoryTitleView *titleCategoryView = (JXCategoryTitleView *)list.categoryView;
 
     JXCategoryIndicatorLineView *lineView = [[JXCategoryIndicatorLineView alloc ]init];
     titleCategoryView.indicators = @[lineView];
+    return list;
+}
+
+#pragma mark - UIScrollViewDelegate
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    if ([self isKindOfClass:[NestViewController class]]) {
+        CGFloat index = scrollView.contentOffset.x/scrollView.bounds.size.width;
+        CGFloat absIndex = fabs(index - self.currentIndex);
+        if (absIndex >= 1) {
+            //”快速滑动的时候，只响应最外层VC持有的scrollView“，说实话，完全可以不用处理这种情况。如果你们的产品经理坚持认为这是个问题，就把这块代码加上吧。
+            //嵌套使用的时候，最外层的VC持有的scrollView在翻页之后，就断掉一次手势。解决快速滑动的时候，只响应最外层VC持有的scrollView。子VC持有的scrollView却没有响应
+            self.listContainerView.scrollView.panGestureRecognizer.enabled = NO;
+            self.listContainerView.scrollView.panGestureRecognizer.enabled = YES;
+            _currentIndex = floor(index);
+        }
+    }
 }
 
 @end

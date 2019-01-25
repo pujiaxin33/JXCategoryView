@@ -55,12 +55,8 @@
     return (JXCategoryTitleAttributeView *)self.categoryView;
 }
 
-- (NSUInteger)preferredListViewCount {
-    return self.attributeTitles.count;
-}
-
-- (Class)preferredCategoryViewClass {
-    return [JXCategoryTitleAttributeView class];
+- (JXCategoryBaseView *)preferredCategoryView {
+    return [[JXCategoryTitleAttributeView alloc] init];
 }
 
 @end

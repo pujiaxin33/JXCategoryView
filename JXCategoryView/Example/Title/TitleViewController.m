@@ -18,7 +18,7 @@
 
 - (void)viewDidLoad {
     if (self.titles == nil) {
-        _titles = @[@"螃蟹", @"麻辣小龙虾", @"苹果", @"营养胡萝卜", @"葡萄", @"美味西瓜", @"香蕉", @"香甜菠萝", @"鸡肉", @"鱼", @"海星"];
+        self.titles = @[@"螃蟹", @"麻辣小龙虾", @"苹果", @"营养胡萝卜", @"葡萄", @"美味西瓜", @"香蕉", @"香甜菠萝", @"鸡肉", @"鱼", @"海星"];
     }
 
     [super viewDidLoad];
@@ -30,12 +30,14 @@
     return (JXCategoryTitleView *)self.categoryView;
 }
 
-- (NSUInteger)preferredListViewCount {
-    return self.titles.count;
+- (JXCategoryBaseView *)preferredCategoryView {
+    return [[JXCategoryTitleView alloc] init];
 }
 
-- (Class)preferredCategoryViewClass {
-    return [JXCategoryTitleView class];
+#pragma mark - JXCategoryListContentViewDelegate
+
+- (UIView *)listView {
+    return self.view;
 }
 
 @end

@@ -9,14 +9,13 @@
 #import "FootballViewController.h"
 
 @interface FootballViewController ()
-@property (nonatomic, strong) NSArray *titles;
 @property (nonatomic, strong) JXCategoryTitleView *myCategoryView;
 @end
 
 @implementation FootballViewController
 
 - (void)viewDidLoad {
-    _titles = @[@"中国U-19", @"中国超级联赛", @"亚足联冠军联赛", @"亚运会足球赛", @"世界杯🎉"];
+    self.titles = @[@"中国U-19", @"中国超级联赛", @"亚足联冠军联赛", @"亚运会足球赛", @"世界杯🎉"];
     self.isNeedIndicatorPositionChangeItem = YES;
 
     [super viewDidLoad];
@@ -35,12 +34,8 @@
     return (JXCategoryTitleView *)self.categoryView;
 }
 
-- (NSUInteger)preferredListViewCount {
-    return self.titles.count;
-}
-
-- (Class)preferredCategoryViewClass {
-    return [JXCategoryTitleView class];
+- (JXCategoryBaseView *)preferredCategoryView {
+    return [[JXCategoryTitleView alloc] init];
 }
 
 - (CGFloat)preferredCategoryViewHeight {

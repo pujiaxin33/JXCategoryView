@@ -10,14 +10,13 @@
 #import "JXCategoryTitleView.h"
 
 @interface BackgroundImageViewController ()
-@property (nonatomic, strong) NSArray *titles;
 @property (nonatomic, strong) JXCategoryTitleView *myCategoryView;
 @end
 
 @implementation BackgroundImageViewController
 
 - (void)viewDidLoad {
-    _titles = @[@"周杰伦", @"王力宏", @"林俊杰", @"潘玮柏", @"陶吉吉", @"薛之谦", @"五月天", @"毛不易"];
+    self.titles = @[@"周杰伦", @"王力宏", @"林俊杰", @"潘玮柏", @"陶吉吉", @"薛之谦", @"五月天", @"毛不易"];
 
     [super viewDidLoad];
 
@@ -36,12 +35,8 @@
     return (JXCategoryTitleView *)self.categoryView;
 }
 
-- (NSUInteger)preferredListViewCount {
-    return self.titles.count;
-}
-
-- (Class)preferredCategoryViewClass {
-    return [JXCategoryTitleView class];
+- (JXCategoryBaseView *)preferredCategoryView {
+    return [[JXCategoryTitleView alloc] init];
 }
 
 

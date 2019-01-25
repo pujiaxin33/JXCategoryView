@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "JXCategoryListContainerView.h"
 
-@interface ListViewController : UIViewController
+@interface ListViewController : UIViewController <JXCategoryListContentViewDelegate>
 
 @end

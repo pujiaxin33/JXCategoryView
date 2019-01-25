@@ -8,28 +8,26 @@
 
 #import <UIKit/UIKit.h>
 #import "JXCategoryView.h"
+#import "JXCategoryListContainerView.h"
 
 #define WindowsSize [UIScreen mainScreen].bounds.size
 
 @interface ContentBaseViewController : UIViewController
 
-@property (nonatomic, assign) BOOL isNeedIndicatorPositionChangeItem;
+@property (nonatomic, strong) NSArray *titles;
 
 @property (nonatomic, strong) JXCategoryBaseView *categoryView;
 
-@property (nonatomic, strong) UIScrollView *scrollView;
+@property (nonatomic, strong) JXCategoryListContainerView *listContainerView;
+
+@property (nonatomic, assign) BOOL isNeedIndicatorPositionChangeItem;
 
 @property (nonatomic, assign) BOOL shouldHandleScreenEdgeGesture;
 
-
-- (Class)preferredCategoryViewClass;
-
-- (NSUInteger)preferredListViewCount;
+- (JXCategoryBaseView *)preferredCategoryView;
 
 - (CGFloat)preferredCategoryViewHeight;
 
-- (Class)preferredListViewControllerClass;
-
-- (void)configListViewController:(UIViewController *)controller index:(NSUInteger)index;
+- (id<JXCategoryListContentViewDelegate>)preferredListAtIndex:(NSInteger)index;
 
 @end

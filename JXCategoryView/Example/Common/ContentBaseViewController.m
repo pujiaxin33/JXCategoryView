@@ -11,8 +11,7 @@
 #import "NestViewController.h"
 #import "UIWindow+JXSafeArea.h"
 
-@interface ContentBaseViewController () <JXCategoryViewDelegate, UIScrollViewDelegate>
-@property (nonatomic, assign) NSInteger currentIndex;
+@interface ContentBaseViewController () <JXCategoryViewDelegate, JXCategoryListContainerViewDelegate>
 @end
 
 @implementation ContentBaseViewController
@@ -28,58 +27,30 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    //FIXME:默认使用JXCategoryListContainerView
+
     self.view.backgroundColor = [UIColor whiteColor];
-
+    //fixme:布局位置
     CGFloat naviHeight = [UIApplication.sharedApplication.keyWindow jx_navigationHeight];
-
-    NSUInteger count = [self preferredListViewCount];
     CGFloat categoryViewHeight = [self preferredCategoryViewHeight];
     CGFloat width = WindowsSize.width;
     CGFloat height = WindowsSize.height - naviHeight - categoryViewHeight;
 
-    _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, categoryViewHeight, width, height)];
-    self.scrollView.delegate = self;
-    self.scrollView.pagingEnabled = YES;
-    self.scrollView.contentSize = CGSizeMake(width*count, height);
-    self.scrollView.bounces = NO;
-    [self.view addSubview:self.scrollView];
-
-    self.automaticallyAdjustsScrollViewInsets = NO;
-    if (@available(iOS 11.0, *)) {
-        self.scrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
-    }
-
-    for (int i = 0; i < count; i ++) {
-        UIViewController *listVC = [[[self preferredListViewControllerClass] alloc] init];
-        [self configListViewController:listVC index:i];
-        [self addChildViewController:listVC];
-        listVC.view.frame = CGRectMake(i*width, 0, width, height);
-        [self.scrollView addSubview:listVC.view];
-    }
-
     self.categoryView.frame = CGRectMake(0, 0, WindowsSize.width, categoryViewHeight);
     self.categoryView.delegate = self;
-    self.categoryView.contentScrollView = self.scrollView;
+    self.categoryView.defaultSelectedIndex = 0;
     [self.view addSubview:self.categoryView];
+
+    self.listContainerView = [[JXCategoryListContainerView alloc] initWithParentVC:self delegate:self];
+    self.listContainerView.didAppearPercent = 0.01; //滚动一点就触发加载
+    self.listContainerView.frame = CGRectMake(0, categoryViewHeight, width, height);
+    self.listContainerView.defaultSelectedIndex = 0;
+    [self.view addSubview:self.listContainerView];
+
+    self.categoryView.contentScrollView = self.listContainerView.scrollView;
 
     if (self.isNeedIndicatorPositionChangeItem) {
         UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithTitle:@"指示器位置切换" style:UIBarButtonItemStylePlain target:self action:@selector(rightItemClicked)];
         self.navigationItem.rightBarButtonItem = rightItem;
-    }
-}
-
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    if ([self isKindOfClass:[NestViewController class]]) {
-        CGFloat index = scrollView.contentOffset.x/scrollView.bounds.size.width;
-        CGFloat absIndex = fabs(index - self.currentIndex);
-        if (absIndex >= 1) {
-            //”快速滑动的时候，只响应最外层VC持有的scrollView“，说实话，完全可以不用处理这种情况。如果你们的产品经理坚持认为这是个问题，就把这块代码加上吧。
-            //嵌套使用的时候，最外层的VC持有的scrollView在翻页之后，就断掉一次手势。解决快速滑动的时候，只响应最外层VC持有的scrollView。子VC持有的scrollView却没有响应
-            self.scrollView.panGestureRecognizer.enabled = NO;
-            self.scrollView.panGestureRecognizer.enabled = YES;
-            _currentIndex = floor(index);
-        }
     }
 }
 
@@ -89,29 +60,21 @@
     self.navigationController.interactivePopGestureRecognizer.enabled = (self.categoryView.selectedIndex == 0);
 }
 
-- (Class)preferredCategoryViewClass {
-    return [JXCategoryBaseView class];
-}
-
-- (NSUInteger)preferredListViewCount {
-    return 0;
+- (JXCategoryBaseView *)preferredCategoryView {
+    return [[JXCategoryBaseView alloc] init];
 }
 
 - (CGFloat)preferredCategoryViewHeight {
     return 50;
 }
 
-- (Class)preferredListViewControllerClass {
-    return [ListViewController class];
-}
-
-- (void)configListViewController:(UIViewController *)controller index:(NSUInteger)index {
-    
+- (id<JXCategoryListContentViewDelegate>)preferredListAtIndex:(NSInteger)index {
+    return [[ListViewController alloc] init];
 }
 
 - (JXCategoryBaseView *)categoryView {
     if (_categoryView == nil) {
-        _categoryView = [[[self preferredCategoryViewClass] alloc] init];
+        _categoryView = [self preferredCategoryView];
     }
     return _categoryView;
 }
@@ -144,6 +107,22 @@
 
 - (void)categoryView:(JXCategoryBaseView *)categoryView didClickSelectedItemAtIndex:(NSInteger)index {
     NSLog(@"%@", NSStringFromSelector(_cmd));
+    [self.listContainerView didClickSelectedItemAtIndex:index];
+}
+
+- (void)categoryView:(JXCategoryBaseView *)categoryView scrollingFromLeftIndex:(NSInteger)leftIndex toRightIndex:(NSInteger)rightIndex ratio:(CGFloat)ratio {
+    [self.listContainerView scrollingFromLeftIndex:leftIndex toRightIndex:rightIndex ratio:ratio selectedIndex:categoryView.selectedIndex];
+}
+
+#pragma mark - JXCategoryListContainerViewDelegate
+
+- (id<JXCategoryListContentViewDelegate>)listContainerView:(JXCategoryListContainerView *)listContainerView initListForIndex:(NSInteger)index {
+    id<JXCategoryListContentViewDelegate> list = [self preferredListAtIndex:index];
+    return list;
+}
+
+- (NSInteger)numberOfListsInlistContainerView:(JXCategoryListContainerView *)listContainerView {
+    return self.titles.count;
 }
 
 @end

@@ -9,8 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "ContentBaseViewController.h"
 
-@interface TitleViewController : ContentBaseViewController
-
-@property (nonatomic, strong) NSArray *titles;
+@interface TitleViewController : ContentBaseViewController <JXCategoryListContentViewDelegate>
 
 @end

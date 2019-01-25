@@ -10,14 +10,13 @@
 #import "JXCategoryTitleView.h"
 
 @interface SegmentedControlViewController ()
-@property (nonatomic, strong) NSArray *titles;
 @property (nonatomic, strong) JXCategoryTitleView *myCategoryView;
 @end
 
 @implementation SegmentedControlViewController
 
 - (void)viewDidLoad {
-    _titles = @[@"螃蟹", @"苹果", @"胡萝卜", @"葡萄", ];
+    self.titles = @[@"螃蟹", @"苹果", @"胡萝卜", @"葡萄", ];
 
     [super viewDidLoad];
 
@@ -45,12 +44,8 @@
     return (JXCategoryTitleView *)self.categoryView;
 }
 
-- (NSUInteger)preferredListViewCount {
-    return self.titles.count;
-}
-
-- (Class)preferredCategoryViewClass {
-    return [JXCategoryTitleView class];
+- (JXCategoryBaseView *)preferredCategoryView {
+    return [[JXCategoryTitleView alloc] init];
 }
 
 - (CGFloat)preferredCategoryViewHeight {

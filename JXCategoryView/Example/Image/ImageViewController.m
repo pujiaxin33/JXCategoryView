@@ -37,12 +37,8 @@
     return (JXCategoryImageView *)self.categoryView;
 }
 
-- (NSUInteger)preferredListViewCount {
-    return self.imageNames.count;
-}
-
-- (Class)preferredCategoryViewClass {
-    return [JXCategoryImageView class];
+- (JXCategoryBaseView *)preferredCategoryView {
+    return [[JXCategoryImageView alloc] init];
 }
 
 @end
