@@ -17,6 +17,7 @@
 @implementation ImageViewController
 
 - (void)viewDidLoad {
+    self.titles = @[@"crab", @"lobster", @"apple", @"carrot", @"grape", @"watermelon"];
     _imageNames = @[@"crab", @"lobster", @"apple", @"carrot", @"grape", @"watermelon"];
 
     [super viewDidLoad];

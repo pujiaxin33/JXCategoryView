@@ -102,15 +102,25 @@
         CGRect topMaskframe = myCellModel.backgroundViewMaskFrame;
         //将相对于cell的backgroundViewMaskFrame转换为相对于maskTitleLabel
         //使用self.bounds.size.width而不是self.contentView.bounds.size.width。因为某些情况下，会出现self.bounds是正确的，而self.contentView.bounds还是重用前的状态。
-        topMaskframe.origin.x -= (self.maskTitleLabel.bounds.size.width -self.bounds.size.width)/2;
         topMaskframe.origin.y = 0;
         CGRect bottomMaskFrame = topMaskframe;
-        bottomMaskFrame.size.width = self.maskTitleLabel.bounds.size.width;
-        if (topMaskframe.origin.x > -(self.maskTitleLabel.bounds.size.width -self.bounds.size.width)/2) {
+        CGFloat maskStartX = 0;
+        if (self.maskTitleLabel.bounds.size.width >= self.bounds.size.width) {
+            topMaskframe.origin.x -= (self.maskTitleLabel.bounds.size.width -self.bounds.size.width)/2;
+            bottomMaskFrame.size.width = self.maskTitleLabel.bounds.size.width;
+            maskStartX = -(self.maskTitleLabel.bounds.size.width -self.bounds.size.width)/2;
+        }else {
+            bottomMaskFrame.size.width = self.bounds.size.width;
+            topMaskframe.origin.x -= (self.bounds.size.width -self.maskTitleLabel.bounds.size.width)/2;
+            maskStartX = 0;
+        }
+        bottomMaskFrame.origin.x = topMaskframe.origin.x;
+        if (topMaskframe.origin.x > maskStartX) {
             bottomMaskFrame.origin.x = topMaskframe.origin.x - bottomMaskFrame.size.width;
         }else {
             bottomMaskFrame.origin.x = CGRectGetMaxX(topMaskframe);
         }
+
         [CATransaction begin];
         [CATransaction setDisableActions:YES];
         if (topMaskframe.size.width > 0 && CGRectIntersectsRect(topMaskframe, self.maskTitleLabel.frame)) {
