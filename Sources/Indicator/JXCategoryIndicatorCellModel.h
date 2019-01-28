@@ -17,7 +17,7 @@
 
 @property (nonatomic, assign) CGSize separatorLineSize;
 
-@property (nonatomic, assign) CGRect backgroundViewMaskFrame;
+@property (nonatomic, assign) CGRect backgroundViewMaskFrame;   //底部指示器的frame转换到cell的frame
 
 @property (nonatomic, assign) BOOL cellBackgroundColorGradientEnabled;
 

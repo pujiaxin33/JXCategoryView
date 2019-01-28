@@ -35,11 +35,11 @@
     self.myCategoryView.imageZoomScale = 1.3;
     self.myCategoryView.averageCellSpacingEnabled = NO;
 
-    [self configCategoryViewWithType:JXCategoryTitleImageType_LeftImage];
-
     JXCategoryIndicatorLineView *lineView = [[JXCategoryIndicatorLineView alloc] init];
     lineView.indicatorLineWidth = 20;
     self.myCategoryView.indicators = @[lineView];
+
+    [self configCategoryViewWithType:JXCategoryTitleImageType_LeftImage];
 }
 
 - (JXCategoryTitleImageView *)myCategoryView {

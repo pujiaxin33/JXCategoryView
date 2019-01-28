@@ -11,8 +11,8 @@
 #import "JXCategoryFactory.h"
 
 @interface JXCategoryTitleCell ()
-@property (nonatomic, strong) CALayer *maskLayer;
-
+@property (nonatomic, strong) CALayer *titleMaskLayer;
+@property (nonatomic, strong) CALayer *maskTitleMaskLayer;
 @end
 
 @implementation JXCategoryTitleCell
@@ -22,17 +22,21 @@
     [super initializeViews];
     
     _titleLabel = [[UILabel alloc] init];
+    self.titleLabel.clipsToBounds = YES;
     self.titleLabel.textAlignment = NSTextAlignmentCenter;
     [self.contentView addSubview:self.titleLabel];
+
+    _titleMaskLayer = [CALayer layer];
+    self.titleMaskLayer.backgroundColor = [UIColor redColor].CGColor;
 
     _maskTitleLabel = [[UILabel alloc] init];
     _maskTitleLabel.hidden = YES;
     self.maskTitleLabel.textAlignment = NSTextAlignmentCenter;
     [self.contentView addSubview:self.maskTitleLabel];
 
-    _maskLayer = [CALayer layer];
-    self.maskLayer.backgroundColor = [UIColor redColor].CGColor;
-    self.maskTitleLabel.layer.mask = self.maskLayer;
+    _maskTitleMaskLayer = [CALayer layer];
+    self.maskTitleMaskLayer.backgroundColor = [UIColor redColor].CGColor;
+    self.maskTitleLabel.layer.mask = self.maskTitleMaskLayer;
 }
 
 - (void)layoutSubviews {
@@ -95,15 +99,32 @@
         self.maskTitleLabel.textColor = myCellModel.titleSelectedColor;
         [self.maskTitleLabel sizeToFit];
 
-        CGRect frame = myCellModel.backgroundViewMaskFrame;
-        frame.origin.x -= (self.contentView.bounds.size.width - self.maskTitleLabel.bounds.size.width)/2;
-        frame.origin.y = 0;
+        CGRect topMaskframe = myCellModel.backgroundViewMaskFrame;
+        //将相对于cell的backgroundViewMaskFrame转换为相对于maskTitleLabel
+        //使用self.bounds.size.width而不是self.contentView.bounds.size.width。因为某些情况下，会出现self.bounds是正确的，而self.contentView.bounds还是重用前的状态。
+        topMaskframe.origin.x -= (self.maskTitleLabel.bounds.size.width -self.bounds.size.width)/2;
+        topMaskframe.origin.y = 0;
+        CGRect bottomMaskFrame = topMaskframe;
+        bottomMaskFrame.size.width = self.maskTitleLabel.bounds.size.width;
+        if (topMaskframe.origin.x > -(self.maskTitleLabel.bounds.size.width -self.bounds.size.width)/2) {
+            bottomMaskFrame.origin.x = topMaskframe.origin.x - bottomMaskFrame.size.width;
+        }else {
+            bottomMaskFrame.origin.x = CGRectGetMaxX(topMaskframe);
+        }
         [CATransaction begin];
         [CATransaction setDisableActions:YES];
-        self.maskLayer.frame = frame;
+        if (topMaskframe.size.width > 0 && CGRectIntersectsRect(topMaskframe, self.maskTitleLabel.frame)) {
+            self.titleLabel.layer.mask = self.titleMaskLayer;
+            self.maskTitleMaskLayer.frame = topMaskframe;
+            self.titleMaskLayer.frame = bottomMaskFrame;
+        }else {
+            self.maskTitleMaskLayer.frame = topMaskframe;
+            self.titleLabel.layer.mask = nil;
+        }
         [CATransaction commit];
     }else {
         self.maskTitleLabel.hidden = YES;
+        self.titleLabel.layer.mask = nil;
         if (myCellModel.selectedAnimationEnabled && [self checkCanStartSelectedAnimation:myCellModel]) {
             JXCategoryCellSelectedAnimationBlock block = [self preferredTitleColorAnimationBlock:myCellModel];
             [self addSelectedAnimationBlock:block];
