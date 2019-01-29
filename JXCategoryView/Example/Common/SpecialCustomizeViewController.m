@@ -36,8 +36,6 @@
         }
     }
 
-    //FIXME:部分点击加动画
-    //FIXME:多加点个人主页示例
     if ([title isEqualToString:@"个人主页"]) {
         PagingViewController *pagingVC = [[PagingViewController alloc] init];
         pagingVC.title = title;

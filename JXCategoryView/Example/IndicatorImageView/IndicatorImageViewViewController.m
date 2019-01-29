@@ -49,6 +49,12 @@
     [self.view sendSubviewToBack:self.bgUnselectedImageView];
 }
 
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+
+    self.categoryView.frame = CGRectMake(30, 20, WindowsSize.width - 30*2, 60);
+}
+
 - (JXCategoryTitleView *)myCategoryView {
     return (JXCategoryTitleView *)self.categoryView;
 }
