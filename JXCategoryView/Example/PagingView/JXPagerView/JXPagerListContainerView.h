@@ -48,6 +48,8 @@
 
 - (void)reloadData;
 
+- (void)deviceOrientationDidChanged;
+
 @end
 
 

@@ -88,12 +88,24 @@
 - (UIView *)viewForPinSectionHeaderInPagerView:(JXPagerView *)pagerView;
 
 /**
- 返回listViews，只要遵循JXPagerViewListViewDelegate即可，无论你返回的是UIView还是UIViewController都可以。
+ 返回列表的数量
 
  @param pagerView pagerView description
- @return listViews
+ @return 列表的数量
  */
-- (NSArray <id<JXPagerViewListViewDelegate>> *)listViewsInPagerView:(JXPagerView *)pagerView;
+- (NSInteger)numberOfListsInPagerView:(JXPagerView *)pagerView;
+
+/**
+ 根据index初始化一个对应列表实例，需要是遵从`JXPagerViewListViewDelegate`协议的对象。
+ 如果列表是用自定义UIView封装的，就让自定义UIView遵从`JXPagerViewListViewDelegate`协议，该方法返回自定义UIView即可。
+ 如果列表是用自定义UIViewController封装的，就让自定义UIViewController遵从`JXPagerViewListViewDelegate`协议，该方法返回自定义UIViewController即可。
+ 注意：一定要是新生成的实例！！！
+
+ @param pagerView pagerView description
+ @param index index description
+ @return 新生成的列表实例
+ */
+- (id<JXPagerViewListViewDelegate>)pagerView:(JXPagerView *)pagerView initListAtIndex:(NSInteger)index;
 
 @optional
 
@@ -116,9 +128,7 @@
 
 - (instancetype)initWithDelegate:(id<JXPagerViewDelegate>)delegate NS_DESIGNATED_INITIALIZER;
 
-@property (nonatomic, strong, readonly) UIScrollView *currentScrollingListView;
-
-@property (nonatomic, strong, readonly) id<JXPagerViewListViewDelegate> currentListView;
+@property (nonatomic, assign) BOOL isListHorizontalScrollEnabled;     //是否允许列表左右滑动。默认：YES
 
 - (instancetype)init NS_UNAVAILABLE;
 
@@ -131,6 +141,12 @@
 - (void)reloadData;
 
 #pragma mark - Subclass
+
+@property (nonatomic, strong, readonly) UIScrollView *currentScrollingListView; //暴露给子类使用，请勿直接使用该属性！
+
+@property (nonatomic, strong, readonly) id<JXPagerViewListViewDelegate> currentList;    //暴露给子类使用，请勿直接使用该属性！
+
+@property (nonatomic, strong, readonly) NSDictionary <NSNumber *, id<JXPagerViewListViewDelegate>> *validListDict;   //当前已经加载过可用的列表字典，key就是index值，value是对应的列表。
 
 - (void)preferredProcessListViewDidScroll:(UIScrollView *)scrollView;
 

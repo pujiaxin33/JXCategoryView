@@ -91,7 +91,6 @@
         self.maskTitleLabel.attributedText = attributedString;
     }
 
-    self.maskTitleLabel.hidden = !myCellModel.titleLabelMaskEnabled;
     if (myCellModel.titleLabelMaskEnabled) {
         self.maskTitleLabel.hidden = NO;
         self.titleLabel.textColor = myCellModel.titleNormalColor;

@@ -11,6 +11,7 @@
 
 @interface JXPagerListContainerView() <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 @property (nonatomic, strong) JXPagerListContainerCollectionView *collectionView;
+@property (nonatomic, strong) NSIndexPath *selectedIndexPath;
 @end
 
 @implementation JXPagerListContainerView
@@ -39,6 +40,12 @@
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
     [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
+    if (@available(iOS 10.0, *)) {
+        self.collectionView.prefetchingEnabled = NO;
+    }
+    if (@available(iOS 11.0, *)) {
+        self.collectionView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+    }
     [self addSubview:self.collectionView];
 }
 
@@ -46,10 +53,17 @@
     [super layoutSubviews];
 
     self.collectionView.frame = self.bounds;
+    if (self.selectedIndexPath != nil) {
+        [self.collectionView scrollToItemAtIndexPath:self.selectedIndexPath atScrollPosition:UICollectionViewScrollPositionNone animated:NO];
+    }
 }
 
 - (void)reloadData {
     [self.collectionView reloadData];
+}
+
+- (void)deviceOrientationDidChanged {
+    self.selectedIndexPath = [NSIndexPath indexPathForItem:self.collectionView.contentOffset.x/self.bounds.size.width inSection:0];
 }
 
 #pragma mark - UICollectionViewDataSource, UICollectionViewDelegate
@@ -64,13 +78,17 @@
         [view removeFromSuperview];
     }
     UIView *listView = [self.delegate listContainerView:self listViewInRow:indexPath.item];
-    listView.frame = cell.contentView.bounds;
+    listView.frame = cell.bounds;
     [cell.contentView addSubview:listView];
     return cell;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
     [self.delegate listContainerView:self willDisplayCellAtRow:indexPath.item];
+}
+
+- (BOOL)collectionView:(UICollectionView *)collectionView shouldHighlightItemAtIndexPath:(NSIndexPath *)indexPath {
+    return false;
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
