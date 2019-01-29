@@ -26,6 +26,8 @@ struct DelegateFlags {
 @property (nonatomic, assign) CGFloat innerCellSpacing;
 @property (nonatomic, assign) CGPoint lastContentViewContentOffset;
 @property (nonatomic, strong) JXCategoryViewAnimator *animator;
+// 正在滚动中的目标index。用于处理正在滚动列表的时候，立即点击item，会导致界面显示异常。
+@property (nonatomic, assign) NSInteger scrollingTargetIndex;
 
 @end
 
@@ -75,6 +77,7 @@ struct DelegateFlags {
     _lastContentViewContentOffset = CGPointZero;
     _selectedAnimationEnabled = NO;
     _selectedAnimationDuration = 0.25;
+    _scrollingTargetIndex = -1;
 }
 
 - (void)initializeViews
@@ -283,6 +286,7 @@ struct DelegateFlags {
         if (self.delegateFlags.didSelectedItemAtIndexFlag) {
             [self.delegate categoryView:self didSelectedItemAtIndex:targetIndex];
         }
+        self.scrollingTargetIndex = -1;
         return NO;
     }
 
@@ -298,6 +302,15 @@ struct DelegateFlags {
     [lastCell reloadData:lastCellModel];
     JXCategoryBaseCell *selectedCell = (JXCategoryBaseCell *)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:targetIndex inSection:0]];
     [selectedCell reloadData:selectedCellModel];
+
+    if (self.scrollingTargetIndex != -1 && self.scrollingTargetIndex != targetIndex) {
+        JXCategoryBaseCellModel *scrollingTargetCellModel = self.dataSource[self.scrollingTargetIndex];
+        scrollingTargetCellModel.selected = NO;
+        scrollingTargetCellModel.selectedType = selectedType;
+        [self refreshSelectedCellModel:selectedCellModel unselectedCellModel:scrollingTargetCellModel];
+        JXCategoryBaseCell *scrollingTargetCell = (JXCategoryBaseCell *)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:self.scrollingTargetIndex inSection:0]];
+        [scrollingTargetCell reloadData:scrollingTargetCellModel];
+    }
 
     if (self.cellWidthZoomEnabled) {
         [self.collectionView.collectionViewLayout invalidateLayout];
@@ -330,6 +343,7 @@ struct DelegateFlags {
     if (self.delegateFlags.didSelectedItemAtIndexFlag) {
         [self.delegate categoryView:self didSelectedItemAtIndex:targetIndex];
     }
+    self.scrollingTargetIndex = -1;
 
     return YES;
 }
@@ -393,6 +407,13 @@ struct DelegateFlags {
             }
             [self scrollSelectItemAtIndex:targetIndex];
         }
+
+        if (self.selectedIndex == baseIndex) {
+            self.scrollingTargetIndex = baseIndex + 1;
+        }else {
+            self.scrollingTargetIndex = baseIndex;
+        }
+
         if (self.cellWidthZoomEnabled && self.cellWidthZoomScrollGradientEnabled) {
             JXCategoryBaseCellModel *leftCellModel = (JXCategoryBaseCellModel *)self.dataSource[baseIndex];
             JXCategoryBaseCellModel *rightCellModel = (JXCategoryBaseCellModel *)self.dataSource[baseIndex + 1];
