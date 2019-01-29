@@ -24,6 +24,7 @@ LineView  |  <img src="JXCategoryView/Images/LineView.gif" width="343" height="8
 LineView京东风格  |  <img src="JXCategoryView/Images/JDLineStyle.gif" width="343" height="80"> |
 LineView爱奇艺风格  |  <img src="JXCategoryView/Images/IQIYILineStyle.gif" width="343" height="80"> |
 LineView🌈彩虹风格  |  <img src="JXCategoryView/Images/RainbowLineView.gif" width="343" height="80"> |
+DotLineView点线效果 |  <img src="JXCategoryView/Images/IndicatorCustomizeGuide.gif" width="343" height="80"> |
 BallView QQ黏性红点  |  <img src="JXCategoryView/Images/QQBall.gif" width="343" height="84"> |
 TriangleView 三角形底部  |  <img src="JXCategoryView/Images/TriangleBottom.gif" width="343" height="80"> |
 TriangleView 三角形顶部  |  <img src="JXCategoryView/Images/TriangleTop.gif" width="343" height="80"> |
@@ -37,7 +38,6 @@ ImageView底部(小船)  |  <img src="JXCategoryView/Images/IndicatorImageView.g
 ImageView背景(最佳男歌手)  |  <img src="JXCategoryView/Images/BackgroundImageView.gif" width="343" height="80"> |
 ImageView滚动效果(足球)  |  <img src="JXCategoryView/Images/Football.gif" width="343" height="135"> |
 混合使用 |  <img src="JXCategoryView/Images/Mixed.gif" width="343" height="80"> |
-indicator自定义-点线效果 |  <img src="JXCategoryView/Images/IndicatorCustomizeGuide.gif" width="343" height="80"> |
 
 JXCategoryIndicatorLineView、JXCategoryIndicatorImageView、JXCategoryIndicatorBallView、JXCategoryIndicatorTriangleView均支持上下位置切换。
 
@@ -46,9 +46,10 @@ JXCategoryIndicatorLineView、JXCategoryIndicatorImageView、JXCategoryIndicator
 说明 | Gif |
 ----|------|
 颜色渐变  |  <img src="JXCategoryView/Images/TitleColorGradient.gif" width="343" height="80"> |
-大小缩放  |  <img src="JXCategoryView/Images/Zoom.gif" width="343" height="80"> |
-Cell背景色渐变  |  <img src="JXCategoryView/Images/CellBackgroundColorGradient.gif" width="343" height="80"> |
-分割线 |  <img src="JXCategoryView/Images/SeparatorLine.gif" width="343" height="80"> |
+大小缩放  |  <img src="JXCategoryView/Images/TitleZoom.gif" width="350" height="80"> |
+大小缩放+字体粗细  |  <img src="JXCategoryView/Images/TitleZoomStrokeWidth.gif" width="350" height="80"> |
+大小缩放+点击动画  |  <img src="JXCategoryView/Images/TitleZoomSelectedAnimation.gif" width="350" height="80"> |
+大小缩放+cell宽度缩放  |  <img src="JXCategoryView/Images/TitleZoomCellWidth.gif" width="350" height="80"> |
 TitleImage_Top |  <img src="JXCategoryView/Images/TitleImageTop.gif" width="343" height="80"> |
 TitleImage_Left |  <img src="JXCategoryView/Images/TitleImageLeft.gif" width="343" height="80"> |
 TitleImage_Bottom |  <img src="JXCategoryView/Images/TitleImageBottom.gif" width="343" height="80"> |
@@ -58,7 +59,8 @@ Image |  <img src="JXCategoryView/Images/CellImage.gif" width="343" height="80">
 数字 |  <img src="JXCategoryView/Images/Number.gif" width="343" height="80"> |
 红点 |  <img src="JXCategoryView/Images/CellRedDot.gif" width="343" height="80"> |
 自定义-多行+富文本 |  <img src="JXCategoryView/Images/AttributeView.gif" width="343" height="80"> |
-汽车之家效果<br/>字体大小、粗细、颜色<br/>皆有变化  |  <img src="JXCategoryView/Images/CarHome.gif" width="343" height="80">  |
+Cell背景色渐变  |  <img src="JXCategoryView/Images/CellBackgroundColorGradient.gif" width="343" height="80"> |
+分割线 |  <img src="JXCategoryView/Images/SeparatorLine.gif" width="343" height="80"> |
 
 ### 特殊效果预览
 
