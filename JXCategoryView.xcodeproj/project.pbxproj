@@ -31,7 +31,6 @@
 		191A95F0212BF5DA00DBF784 /* Mixed.gif in Resources */ = {isa = PBXBuildFile; fileRef = 191A95E4212BF5D800DBF784 /* Mixed.gif */; };
 		191A95F1212BF5DA00DBF784 /* BackgroundImageView.gif in Resources */ = {isa = PBXBuildFile; fileRef = 191A95E5212BF5D900DBF784 /* BackgroundImageView.gif */; };
 		191A95F2212BF5DA00DBF784 /* QQBall.gif in Resources */ = {isa = PBXBuildFile; fileRef = 191A95E6212BF5D900DBF784 /* QQBall.gif */; };
-		191A95F3212BF5DA00DBF784 /* TitleMaskNoBackgroundView.gif in Resources */ = {isa = PBXBuildFile; fileRef = 191A95E7212BF5D900DBF784 /* TitleMaskNoBackgroundView.gif */; };
 		191A95F4212BF5DA00DBF784 /* TriangleTop.gif in Resources */ = {isa = PBXBuildFile; fileRef = 191A95E8212BF5D900DBF784 /* TriangleTop.gif */; };
 		191A95F5212BF5DA00DBF784 /* CellImage.gif in Resources */ = {isa = PBXBuildFile; fileRef = 191A95E9212BF5D900DBF784 /* CellImage.gif */; };
 		191A95F6212BF5DA00DBF784 /* Nest.gif in Resources */ = {isa = PBXBuildFile; fileRef = 191A95EA212BF5D900DBF784 /* Nest.gif */; };
@@ -89,11 +88,12 @@
 		1979C1F821FFFD1900DA40E7 /* TitleZoom.gif in Resources */ = {isa = PBXBuildFile; fileRef = 1979C1F421FFFD1900DA40E7 /* TitleZoom.gif */; };
 		1979C1F921FFFD1900DA40E7 /* TitleZoomStrokeWidth.gif in Resources */ = {isa = PBXBuildFile; fileRef = 1979C1F521FFFD1900DA40E7 /* TitleZoomStrokeWidth.gif */; };
 		1979C1FA21FFFD1900DA40E7 /* TitleZoomCellWidth.gif in Resources */ = {isa = PBXBuildFile; fileRef = 1979C1F621FFFD1900DA40E7 /* TitleZoomCellWidth.gif */; };
+		1979C1FD21FFFEEA00DA40E7 /* TitleMaskNoBackgroundView.gif in Resources */ = {isa = PBXBuildFile; fileRef = 1979C1FB21FFFEE900DA40E7 /* TitleMaskNoBackgroundView.gif */; };
+		1979C1FE21FFFEEA00DA40E7 /* TitleMask.gif in Resources */ = {isa = PBXBuildFile; fileRef = 1979C1FC21FFFEE900DA40E7 /* TitleMask.gif */; };
 		19870C29211D857F00C23CAA /* lufei.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 19870C28211D857F00C23CAA /* lufei.jpg */; };
 		19870C8321218DAC00C23CAA /* NaviSegmentedControlViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19870C8221218DAC00C23CAA /* NaviSegmentedControlViewController.m */; };
 		19870C8621218E3A00C23CAA /* SegmentedListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19870C8521218E3A00C23CAA /* SegmentedListViewController.m */; };
 		19870C9D2122703B00C23CAA /* IndicatorImageView.gif in Resources */ = {isa = PBXBuildFile; fileRef = 19870C882122703B00C23CAA /* IndicatorImageView.gif */; };
-		19870C9E2122703B00C23CAA /* TitleMask.gif in Resources */ = {isa = PBXBuildFile; fileRef = 19870C892122703B00C23CAA /* TitleMask.gif */; };
 		19870C9F2122703B00C23CAA /* JDLineStyle.gif in Resources */ = {isa = PBXBuildFile; fileRef = 19870C8A2122703B00C23CAA /* JDLineStyle.gif */; };
 		19870CA02122703B00C23CAA /* SeparatorLine.gif in Resources */ = {isa = PBXBuildFile; fileRef = 19870C8B2122703B00C23CAA /* SeparatorLine.gif */; };
 		19870CA12122703B00C23CAA /* Football.gif in Resources */ = {isa = PBXBuildFile; fileRef = 19870C8C2122703B00C23CAA /* Football.gif */; };
@@ -181,7 +181,6 @@
 		191A95E4212BF5D800DBF784 /* Mixed.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Mixed.gif; sourceTree = "<group>"; };
 		191A95E5212BF5D900DBF784 /* BackgroundImageView.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = BackgroundImageView.gif; sourceTree = "<group>"; };
 		191A95E6212BF5D900DBF784 /* QQBall.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = QQBall.gif; sourceTree = "<group>"; };
-		191A95E7212BF5D900DBF784 /* TitleMaskNoBackgroundView.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = TitleMaskNoBackgroundView.gif; sourceTree = "<group>"; };
 		191A95E8212BF5D900DBF784 /* TriangleTop.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = TriangleTop.gif; sourceTree = "<group>"; };
 		191A95E9212BF5D900DBF784 /* CellImage.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = CellImage.gif; sourceTree = "<group>"; };
 		191A95EA212BF5D900DBF784 /* Nest.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Nest.gif; sourceTree = "<group>"; };
@@ -281,13 +280,14 @@
 		1979C1F421FFFD1900DA40E7 /* TitleZoom.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = TitleZoom.gif; sourceTree = "<group>"; };
 		1979C1F521FFFD1900DA40E7 /* TitleZoomStrokeWidth.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = TitleZoomStrokeWidth.gif; sourceTree = "<group>"; };
 		1979C1F621FFFD1900DA40E7 /* TitleZoomCellWidth.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = TitleZoomCellWidth.gif; sourceTree = "<group>"; };
+		1979C1FB21FFFEE900DA40E7 /* TitleMaskNoBackgroundView.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = TitleMaskNoBackgroundView.gif; sourceTree = "<group>"; };
+		1979C1FC21FFFEE900DA40E7 /* TitleMask.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = TitleMask.gif; sourceTree = "<group>"; };
 		19870C28211D857F00C23CAA /* lufei.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = lufei.jpg; sourceTree = "<group>"; };
 		19870C8121218DAC00C23CAA /* NaviSegmentedControlViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NaviSegmentedControlViewController.h; sourceTree = "<group>"; };
 		19870C8221218DAC00C23CAA /* NaviSegmentedControlViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NaviSegmentedControlViewController.m; sourceTree = "<group>"; };
 		19870C8421218E3A00C23CAA /* SegmentedListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SegmentedListViewController.h; sourceTree = "<group>"; };
 		19870C8521218E3A00C23CAA /* SegmentedListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SegmentedListViewController.m; sourceTree = "<group>"; };
 		19870C882122703B00C23CAA /* IndicatorImageView.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = IndicatorImageView.gif; sourceTree = "<group>"; };
-		19870C892122703B00C23CAA /* TitleMask.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = TitleMask.gif; sourceTree = "<group>"; };
 		19870C8A2122703B00C23CAA /* JDLineStyle.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = JDLineStyle.gif; sourceTree = "<group>"; };
 		19870C8B2122703B00C23CAA /* SeparatorLine.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = SeparatorLine.gif; sourceTree = "<group>"; };
 		19870C8C2122703B00C23CAA /* Football.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Football.gif; sourceTree = "<group>"; };
@@ -677,6 +677,8 @@
 		19870C872122703B00C23CAA /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				1979C1FC21FFFEE900DA40E7 /* TitleMask.gif */,
+				1979C1FB21FFFEE900DA40E7 /* TitleMaskNoBackgroundView.gif */,
 				1979C1F421FFFD1900DA40E7 /* TitleZoom.gif */,
 				1979C1F621FFFD1900DA40E7 /* TitleZoomCellWidth.gif */,
 				1979C1F321FFFD1900DA40E7 /* TitleZoomSelectedAnimation.gif */,
@@ -693,7 +695,6 @@
 				19D57E6D212D01180077DCA6 /* AttributeView.gif */,
 				191A95FA212BFE3200DBF784 /* JXCategoryViewStructure.png */,
 				19870C882122703B00C23CAA /* IndicatorImageView.gif */,
-				19870C892122703B00C23CAA /* TitleMask.gif */,
 				19870C8A2122703B00C23CAA /* JDLineStyle.gif */,
 				19870C8B2122703B00C23CAA /* SeparatorLine.gif */,
 				19870C8C2122703B00C23CAA /* Football.gif */,
@@ -718,7 +719,6 @@
 				191A95EA212BF5D900DBF784 /* Nest.gif */,
 				191A95E6212BF5D900DBF784 /* QQBall.gif */,
 				191A95EB212BF5DA00DBF784 /* Rectangle.gif */,
-				191A95E7212BF5D900DBF784 /* TitleMaskNoBackgroundView.gif */,
 				191A95EC212BF5DA00DBF784 /* TriangleBottom.gif */,
 				191A95E8212BF5D900DBF784 /* TriangleTop.gif */,
 				19870C28211D857F00C23CAA /* lufei.jpg */,
@@ -926,10 +926,10 @@
 				191A95F7212BF5DA00DBF784 /* Rectangle.gif in Resources */,
 				191A95F4212BF5DA00DBF784 /* TriangleTop.gif in Resources */,
 				192AD15B212FCD660031AD46 /* VerticalList.gif in Resources */,
+				1979C1FE21FFFEEA00DA40E7 /* TitleMask.gif in Resources */,
 				1979C1F721FFFD1900DA40E7 /* TitleZoomSelectedAnimation.gif in Resources */,
 				1904A8BD21CB9C4700316F97 /* GradientBGIndicatorView.gif in Resources */,
 				19870CA12122703B00C23CAA /* Football.gif in Resources */,
-				191A95F3212BF5DA00DBF784 /* TitleMaskNoBackgroundView.gif in Resources */,
 				190F6A6C213E889F00870498 /* CellMixed.gif in Resources */,
 				19870CB02122703B00C23CAA /* JXCategoryView.png in Resources */,
 				19870C9D2122703B00C23CAA /* IndicatorImageView.gif in Resources */,
@@ -939,13 +939,13 @@
 				192AD167212FF45F0031AD46 /* BackgroundViewShadow.gif in Resources */,
 				19870C29211D857F00C23CAA /* lufei.jpg in Resources */,
 				19870CA32122703B00C23CAA /* SegmentedControl.gif in Resources */,
-				19870C9E2122703B00C23CAA /* TitleMask.gif in Resources */,
 				19870CA92122703B00C23CAA /* SegmentedControlNavi.gif in Resources */,
 				19870CAE2122703B00C23CAA /* TitleImageTop.gif in Resources */,
 				191A95F8212BF5DA00DBF784 /* TriangleBottom.gif in Resources */,
 				1920463A21C3557E006538C0 /* RainbowLineView.gif in Resources */,
 				191A95F2212BF5DA00DBF784 /* QQBall.gif in Resources */,
 				196429E8214B8091009C1D31 /* averageCellSpacingEnabledYES.gif in Resources */,
+				1979C1FD21FFFEEA00DA40E7 /* TitleMaskNoBackgroundView.gif in Resources */,
 				191A95F6212BF5DA00DBF784 /* Nest.gif in Resources */,
 				19870CA72122703B00C23CAA /* TitleImageBottom.gif in Resources */,
 				190A54E7206397370050B327 /* Assets.xcassets in Resources */,
