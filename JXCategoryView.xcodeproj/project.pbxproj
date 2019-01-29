@@ -85,7 +85,10 @@
 		1979336A21C9DBD500007733 /* LoadDataListContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1979336921C9DBD500007733 /* LoadDataListContainerViewController.m */; };
 		1979336D21C9DC3500007733 /* LoadDataBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1979336C21C9DC3500007733 /* LoadDataBaseViewController.m */; };
 		1979337821CA32B000007733 /* LoadDataListContainerListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1979337721CA32B000007733 /* LoadDataListContainerListViewController.m */; };
-		1979813021B625B900A587B5 /* CarHome.gif in Resources */ = {isa = PBXBuildFile; fileRef = 1979812F21B625B800A587B5 /* CarHome.gif */; };
+		1979C1F721FFFD1900DA40E7 /* TitleZoomSelectedAnimation.gif in Resources */ = {isa = PBXBuildFile; fileRef = 1979C1F321FFFD1900DA40E7 /* TitleZoomSelectedAnimation.gif */; };
+		1979C1F821FFFD1900DA40E7 /* TitleZoom.gif in Resources */ = {isa = PBXBuildFile; fileRef = 1979C1F421FFFD1900DA40E7 /* TitleZoom.gif */; };
+		1979C1F921FFFD1900DA40E7 /* TitleZoomStrokeWidth.gif in Resources */ = {isa = PBXBuildFile; fileRef = 1979C1F521FFFD1900DA40E7 /* TitleZoomStrokeWidth.gif */; };
+		1979C1FA21FFFD1900DA40E7 /* TitleZoomCellWidth.gif in Resources */ = {isa = PBXBuildFile; fileRef = 1979C1F621FFFD1900DA40E7 /* TitleZoomCellWidth.gif */; };
 		19870C29211D857F00C23CAA /* lufei.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 19870C28211D857F00C23CAA /* lufei.jpg */; };
 		19870C8321218DAC00C23CAA /* NaviSegmentedControlViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19870C8221218DAC00C23CAA /* NaviSegmentedControlViewController.m */; };
 		19870C8621218E3A00C23CAA /* SegmentedListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19870C8521218E3A00C23CAA /* SegmentedListViewController.m */; };
@@ -102,7 +105,6 @@
 		19870CA72122703B00C23CAA /* TitleImageBottom.gif in Resources */ = {isa = PBXBuildFile; fileRef = 19870C922122703B00C23CAA /* TitleImageBottom.gif */; };
 		19870CA92122703B00C23CAA /* SegmentedControlNavi.gif in Resources */ = {isa = PBXBuildFile; fileRef = 19870C942122703B00C23CAA /* SegmentedControlNavi.gif */; };
 		19870CAB2122703B00C23CAA /* Number.gif in Resources */ = {isa = PBXBuildFile; fileRef = 19870C962122703B00C23CAA /* Number.gif */; };
-		19870CAC2122703B00C23CAA /* Zoom.gif in Resources */ = {isa = PBXBuildFile; fileRef = 19870C972122703B00C23CAA /* Zoom.gif */; };
 		19870CAD2122703B00C23CAA /* TitleImageRight.gif in Resources */ = {isa = PBXBuildFile; fileRef = 19870C982122703B00C23CAA /* TitleImageRight.gif */; };
 		19870CAE2122703B00C23CAA /* TitleImageTop.gif in Resources */ = {isa = PBXBuildFile; fileRef = 19870C992122703B00C23CAA /* TitleImageTop.gif */; };
 		19870CAF2122703B00C23CAA /* BackgroundEllipseLayer.gif in Resources */ = {isa = PBXBuildFile; fileRef = 19870C9A2122703B00C23CAA /* BackgroundEllipseLayer.gif */; };
@@ -275,7 +277,10 @@
 		1979336C21C9DC3500007733 /* LoadDataBaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoadDataBaseViewController.m; sourceTree = "<group>"; };
 		1979337621CA32B000007733 /* LoadDataListContainerListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoadDataListContainerListViewController.h; sourceTree = "<group>"; };
 		1979337721CA32B000007733 /* LoadDataListContainerListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoadDataListContainerListViewController.m; sourceTree = "<group>"; };
-		1979812F21B625B800A587B5 /* CarHome.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = CarHome.gif; sourceTree = "<group>"; };
+		1979C1F321FFFD1900DA40E7 /* TitleZoomSelectedAnimation.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = TitleZoomSelectedAnimation.gif; sourceTree = "<group>"; };
+		1979C1F421FFFD1900DA40E7 /* TitleZoom.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = TitleZoom.gif; sourceTree = "<group>"; };
+		1979C1F521FFFD1900DA40E7 /* TitleZoomStrokeWidth.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = TitleZoomStrokeWidth.gif; sourceTree = "<group>"; };
+		1979C1F621FFFD1900DA40E7 /* TitleZoomCellWidth.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = TitleZoomCellWidth.gif; sourceTree = "<group>"; };
 		19870C28211D857F00C23CAA /* lufei.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = lufei.jpg; sourceTree = "<group>"; };
 		19870C8121218DAC00C23CAA /* NaviSegmentedControlViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NaviSegmentedControlViewController.h; sourceTree = "<group>"; };
 		19870C8221218DAC00C23CAA /* NaviSegmentedControlViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NaviSegmentedControlViewController.m; sourceTree = "<group>"; };
@@ -294,7 +299,6 @@
 		19870C922122703B00C23CAA /* TitleImageBottom.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = TitleImageBottom.gif; sourceTree = "<group>"; };
 		19870C942122703B00C23CAA /* SegmentedControlNavi.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = SegmentedControlNavi.gif; sourceTree = "<group>"; };
 		19870C962122703B00C23CAA /* Number.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Number.gif; sourceTree = "<group>"; };
-		19870C972122703B00C23CAA /* Zoom.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Zoom.gif; sourceTree = "<group>"; };
 		19870C982122703B00C23CAA /* TitleImageRight.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = TitleImageRight.gif; sourceTree = "<group>"; };
 		19870C992122703B00C23CAA /* TitleImageTop.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = TitleImageTop.gif; sourceTree = "<group>"; };
 		19870C9A2122703B00C23CAA /* BackgroundEllipseLayer.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = BackgroundEllipseLayer.gif; sourceTree = "<group>"; };
@@ -673,6 +677,10 @@
 		19870C872122703B00C23CAA /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				1979C1F421FFFD1900DA40E7 /* TitleZoom.gif */,
+				1979C1F621FFFD1900DA40E7 /* TitleZoomCellWidth.gif */,
+				1979C1F321FFFD1900DA40E7 /* TitleZoomSelectedAnimation.gif */,
+				1979C1F521FFFD1900DA40E7 /* TitleZoomStrokeWidth.gif */,
 				1904A8BC21CB9C4700316F97 /* GradientBGIndicatorView.gif */,
 				1920463921C3557D006538C0 /* RainbowLineView.gif */,
 				196429E5214B8090009C1D31 /* averageCellSpacingEnabledNO.gif */,
@@ -694,11 +702,9 @@
 				19870C8F2122703B00C23CAA /* IQIYILineStyle.gif */,
 				19870C902122703B00C23CAA /* TitleImageLeft.gif */,
 				19870C912122703B00C23CAA /* UserProfile.gif */,
-				1979812F21B625B800A587B5 /* CarHome.gif */,
 				19870C922122703B00C23CAA /* TitleImageBottom.gif */,
 				19870C942122703B00C23CAA /* SegmentedControlNavi.gif */,
 				19870C962122703B00C23CAA /* Number.gif */,
-				19870C972122703B00C23CAA /* Zoom.gif */,
 				19870C982122703B00C23CAA /* TitleImageRight.gif */,
 				19870C992122703B00C23CAA /* TitleImageTop.gif */,
 				19870C9A2122703B00C23CAA /* BackgroundEllipseLayer.gif */,
@@ -906,6 +912,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				19D57E6E212D01180077DCA6 /* AttributeView.gif in Resources */,
+				1979C1FA21FFFD1900DA40E7 /* TitleZoomCellWidth.gif in Resources */,
 				191A95F9212BF5DA00DBF784 /* CellBackgroundColorGradient.gif in Resources */,
 				19D57E7A212D48AC0077DCA6 /* IndicatorCustomizeGuide.gif in Resources */,
 				19870CA42122703B00C23CAA /* IQIYILineStyle.gif in Resources */,
@@ -919,6 +926,7 @@
 				191A95F7212BF5DA00DBF784 /* Rectangle.gif in Resources */,
 				191A95F4212BF5DA00DBF784 /* TriangleTop.gif in Resources */,
 				192AD15B212FCD660031AD46 /* VerticalList.gif in Resources */,
+				1979C1F721FFFD1900DA40E7 /* TitleZoomSelectedAnimation.gif in Resources */,
 				1904A8BD21CB9C4700316F97 /* GradientBGIndicatorView.gif in Resources */,
 				19870CA12122703B00C23CAA /* Football.gif in Resources */,
 				191A95F3212BF5DA00DBF784 /* TitleMaskNoBackgroundView.gif in Resources */,
@@ -932,7 +940,6 @@
 				19870C29211D857F00C23CAA /* lufei.jpg in Resources */,
 				19870CA32122703B00C23CAA /* SegmentedControl.gif in Resources */,
 				19870C9E2122703B00C23CAA /* TitleMask.gif in Resources */,
-				19870CAC2122703B00C23CAA /* Zoom.gif in Resources */,
 				19870CA92122703B00C23CAA /* SegmentedControlNavi.gif in Resources */,
 				19870CAE2122703B00C23CAA /* TitleImageTop.gif in Resources */,
 				191A95F8212BF5DA00DBF784 /* TriangleBottom.gif in Resources */,
@@ -943,14 +950,15 @@
 				19870CA72122703B00C23CAA /* TitleImageBottom.gif in Resources */,
 				190A54E7206397370050B327 /* Assets.xcassets in Resources */,
 				194DCDD72134EF18000E89EF /* LoadData.gif in Resources */,
+				1979C1F821FFFD1900DA40E7 /* TitleZoom.gif in Resources */,
 				19870CA22122703B00C23CAA /* LineView.gif in Resources */,
 				191A95F5212BF5DA00DBF784 /* CellImage.gif in Resources */,
-				1979813021B625B900A587B5 /* CarHome.gif in Resources */,
 				19870CB12122703B00C23CAA /* TitleColorGradient.gif in Resources */,
 				191A95EF212BF5DA00DBF784 /* CellRedDot.gif in Resources */,
 				19870CA02122703B00C23CAA /* SeparatorLine.gif in Resources */,
 				19870CAD2122703B00C23CAA /* TitleImageRight.gif in Resources */,
 				190A54E5206397370050B327 /* Main.storyboard in Resources */,
+				1979C1F921FFFD1900DA40E7 /* TitleZoomStrokeWidth.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
