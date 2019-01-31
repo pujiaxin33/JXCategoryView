@@ -179,7 +179,6 @@ struct DelegateFlags {
     for (int i = 0; i < self.dataSource.count; i++) {
         JXCategoryBaseCellModel *cellModel = self.dataSource[i];
         cellModel.index = i;
-        cellModel.cellWidth = [self preferredCellWidthAtIndex:i] + self.cellWidthIncrement;
         cellModel.cellWidthZoomEnabled = self.cellWidthZoomEnabled;
         cellModel.cellWidthNormalZoomScale = 1;
         cellModel.cellWidthSelectedZoomScale = self.cellWidthZoomScale;
@@ -192,6 +191,11 @@ struct DelegateFlags {
         }else {
             cellModel.selected = NO;
             cellModel.cellWidthCurrentZoomScale = cellModel.cellWidthNormalZoomScale;
+        }
+        if (self.cellWidthZoomEnabled) {
+            cellModel.cellWidth = [self getCellWidthAtIndex:i]*cellModel.cellWidthCurrentZoomScale;
+        }else {
+            cellModel.cellWidth = [self getCellWidthAtIndex:i];
         }
         totalCellWidth += cellModel.cellWidth;
         if (i == self.dataSource.count - 1) {
@@ -356,18 +360,26 @@ struct DelegateFlags {
     if (self.cellWidthZoomEnabled) {
         if (selectedCellModel.selectedType == JXCategoryCellSelectedTypeCode ||
             selectedCellModel.selectedType == JXCategoryCellSelectedTypeClick) {
+            selectedCellModel.transitionAnimating = YES;
+            unselectedCellModel.transitionAnimating = YES;
             self.animator = [[JXCategoryViewAnimator alloc] init];
             self.animator.duration = self.selectedAnimationDuration;
             __weak typeof(self) weakSelf = self;
             self.animator.progressCallback = ^(CGFloat percent) {
+                selectedCellModel.transitionAnimating = NO;
+                unselectedCellModel.transitionAnimating = NO;
                 selectedCellModel.cellWidthCurrentZoomScale = [JXCategoryFactory interpolationFrom:selectedCellModel.cellWidthNormalZoomScale to:selectedCellModel.cellWidthSelectedZoomScale percent:percent];
+                selectedCellModel.cellWidth = [self getCellWidthAtIndex:selectedCellModel.index] * selectedCellModel.cellWidthCurrentZoomScale;
                 unselectedCellModel.cellWidthCurrentZoomScale = [JXCategoryFactory interpolationFrom:unselectedCellModel.cellWidthSelectedZoomScale to:unselectedCellModel.cellWidthNormalZoomScale percent:percent];
+                unselectedCellModel.cellWidth = [self getCellWidthAtIndex:unselectedCellModel.index] * unselectedCellModel.cellWidthCurrentZoomScale;
                 [weakSelf.collectionView.collectionViewLayout invalidateLayout];
             };
             [self.animator start];
         }else {
             selectedCellModel.cellWidthCurrentZoomScale = selectedCellModel.cellWidthSelectedZoomScale;
+            selectedCellModel.cellWidth = [self getCellWidthAtIndex:selectedCellModel.index] * selectedCellModel.cellWidthCurrentZoomScale;
             unselectedCellModel.cellWidthCurrentZoomScale = unselectedCellModel.cellWidthNormalZoomScale;
+            unselectedCellModel.cellWidth = [self getCellWidthAtIndex:unselectedCellModel.index] * unselectedCellModel.cellWidthCurrentZoomScale;
         }
     }
 }
@@ -418,7 +430,9 @@ struct DelegateFlags {
             JXCategoryBaseCellModel *leftCellModel = (JXCategoryBaseCellModel *)self.dataSource[baseIndex];
             JXCategoryBaseCellModel *rightCellModel = (JXCategoryBaseCellModel *)self.dataSource[baseIndex + 1];
             leftCellModel.cellWidthCurrentZoomScale = [JXCategoryFactory interpolationFrom:leftCellModel.cellWidthSelectedZoomScale to:leftCellModel.cellWidthNormalZoomScale percent:remainderRatio];
+            leftCellModel.cellWidth = [self getCellWidthAtIndex:leftCellModel.index] * leftCellModel.cellWidthCurrentZoomScale;
             rightCellModel.cellWidthCurrentZoomScale = [JXCategoryFactory interpolationFrom:rightCellModel.cellWidthNormalZoomScale to:rightCellModel.cellWidthSelectedZoomScale percent:remainderRatio];
+            rightCellModel.cellWidth = [self getCellWidthAtIndex:rightCellModel.index] * rightCellModel.cellWidthCurrentZoomScale;
             [self.collectionView.collectionViewLayout invalidateLayout];
         }
 
@@ -512,9 +526,26 @@ struct DelegateFlags {
     CGFloat x = [self getContentEdgeInsetLeft];
     for (int i = 0; i < targetIndex; i ++) {
         JXCategoryBaseCellModel *cellModel = self.dataSource[i];
-        x += cellModel.cellWidth + self.innerCellSpacing;
+        CGFloat cellWidth;
+        if (cellModel.isTransitionAnimating && cellModel.cellWidthZoomEnabled) {
+            //正在进行动画的时候，cellWidthCurrentZoomScale是随着动画渐变的，而没有立即更新到目标值
+            if (cellModel.selected) {
+                cellWidth = [self getCellWidthAtIndex:cellModel.index]*cellModel.cellWidthSelectedZoomScale;
+            }else {
+                cellWidth = [self getCellWidthAtIndex:cellModel.index]*cellModel.cellWidthNormalZoomScale;
+            }
+        }else {
+            cellWidth = cellModel.cellWidth;
+        }
+        x += cellWidth + self.innerCellSpacing;
     }
-    CGFloat width = self.dataSource[targetIndex].cellWidth;
+    CGFloat width;
+    JXCategoryBaseCellModel *selectedCellModel = self.dataSource[targetIndex];
+    if (selectedCellModel.isTransitionAnimating && selectedCellModel.cellWidthZoomEnabled) {
+        width = [self getCellWidthAtIndex:selectedCellModel.index]*selectedCellModel.cellWidthSelectedZoomScale;
+    }else {
+        width = selectedCellModel.cellWidth;
+    }
     return CGRectMake(x, 0, width, self.bounds.size.height);
 }
 
@@ -532,6 +563,10 @@ struct DelegateFlags {
         return self.innerCellSpacing;
     }
     return self.contentEdgeInsetRight;
+}
+
+- (CGFloat)getCellWidthAtIndex:(NSInteger)index {
+    return [self preferredCellWidthAtIndex:index] + self.cellWidthIncrement;
 }
 
 - (void)clickSelectItemAtIndex:(NSInteger)index {

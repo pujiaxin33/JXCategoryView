@@ -10,11 +10,4 @@
 
 @implementation JXCategoryBaseCellModel
 
-- (CGFloat)cellWidth {
-    if (_cellWidthZoomEnabled) {
-        return _cellWidth * _cellWidthCurrentZoomScale;
-    }
-    return _cellWidth;
-}
-
 @end

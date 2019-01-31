@@ -157,7 +157,7 @@
     }
 
     CGRect clickedCellFrame = [self getTargetCellFrame:index];
-
+    
     JXCategoryIndicatorCellModel *selectedCellModel = (JXCategoryIndicatorCellModel *)self.dataSource[index];
     selectedCellModel.selectedType = selectedType;
     for (UIView<JXCategoryIndicatorProtocol> *indicator in self.indicators) {
