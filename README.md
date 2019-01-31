@@ -21,8 +21,8 @@ A powerful and easy to use category view (segmentedcontrol, segmentview, pagingv
 说明 | Gif |
 ----|------|
 LineView  |  <img src="JXCategoryView/Images/LineView.gif" width="343" height="80"> |
-LineView京东风格  |  <img src="JXCategoryView/Images/JDLineStyle.gif" width="343" height="80"> |
-LineView爱奇艺风格  |  <img src="JXCategoryView/Images/IQIYILineStyle.gif" width="343" height="80"> |
+LineView延长  |  <img src="JXCategoryView/Images/JDLineStyle.gif" width="343" height="80"> |
+LineView延长+偏移  |  <img src="JXCategoryView/Images/IQIYILineStyle.gif" width="343" height="80"> |
 LineView🌈彩虹风格  |  <img src="JXCategoryView/Images/RainbowLineView.gif" width="343" height="80"> |
 DotLineView点线效果 |  <img src="JXCategoryView/Images/IndicatorCustomizeGuide.gif" width="334" height="88"> |
 BallView QQ黏性红点  |  <img src="JXCategoryView/Images/QQBall.gif" width="343" height="84"> |
