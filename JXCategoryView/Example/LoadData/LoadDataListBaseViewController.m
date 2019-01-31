@@ -72,8 +72,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     DetailViewController *vc = [[DetailViewController alloc] init];
-    UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:vc];
-    [self.naviController presentViewController:navi animated:true completion:nil];
+    [self.naviController pushViewController:vc animated:true];
 }
 
 @end
