@@ -41,7 +41,8 @@ ImageView背景(最佳男歌手)  |  <img src="JXCategoryView/Images/BackgroundI
 ImageView滚动效果(足球)  |  <img src="JXCategoryView/Images/Football.gif" width="343" height="135"> |
 混合使用 |  <img src="JXCategoryView/Images/Mixed.gif" width="343" height="80"> |
 
-JXCategoryIndicatorLineView、JXCategoryIndicatorImageView、JXCategoryIndicatorBallView、JXCategoryIndicatorTriangleView均支持上下位置切换。
+以下均支持上下位置切换：
+JXCategoryIndicatorLineView、JXCategoryIndicatorImageView、JXCategoryIndicatorBallView、JXCategoryIndicatorTriangleView
 
 ### Cell样式效果预览
 
@@ -105,43 +106,130 @@ end
 
 ## 使用
 
-### 高度自定义使用示例代码
+### JXCategoryTitleView使用示例
 
+1.初始化JXCategoryTitleView
 ```Objective-C
-//在使用JXCategoryView的VC里面加上下面的代码
-if (@available(iOS 11.0, *)) {
-    self.scrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
-}else {
-    self.automaticallyAdjustsScrollViewInsets = NO;
-}
-
-//1、初始化JXCategoryTitleView
-self.categoryView = [[JXCategoryTitleView alloc] initWithFrame:CGRectMake(0, 0, WindowsSize.width, categoryViewHeight)];
+self.categoryView = [[JXCategoryTitleView alloc] initWithFrame:CGRectMake(0, 0, WindowsSize.width, 50)];
 self.categoryView.delegate = self;
+[self.view addSubview:self.categoryView];
+```
+2.配置JXCategoryTitleView的属性
+```Objective-C
+self.categoryView.titles = @[@"螃蟹", @"麻辣小龙虾", @"苹果"...]
+self.categoryView.titleColorGradientEnabled = YES;
+```
 
-//2、添加并配置指示器
-//lineView
+3.添加指示器
+```Objective-C
 JXCategoryIndicatorLineView *lineView = [[JXCategoryIndicatorLineView alloc] init];
 lineView.indicatorLineViewColor = [UIColor redColor];
 lineView.indicatorLineWidth = JXCategoryViewAutomaticDimension;
-//backgroundView
-JXCategoryIndicatorBackgroundView *backgroundView = [[JXCategoryIndicatorBackgroundView alloc] init];
-backgroundView.backgroundViewColor = [UIColor redColor];
-backgroundView.backgroundViewWidth = JXCategoryViewAutomaticDimension;
-self.categoryView.indicators = @[lineView, backgroundView];
-
-//3、绑定contentScrollView。self.scrollView的初始化细节参考BaseViewController类。
-self.categoryView.contentScrollView = self.scrollView;
-[self.view addSubview:self.categoryView];
+self.categoryView.indicators = @[lineView];
 ```
 
-### `JXCategoryListContainerView`封装类使用示例，强烈建议！！！
+4.实现`JXCategoryViewDelegate`代理
 
-- 高度封装contentScrollView逻辑，只需少量代码即可完成列表容器逻辑；
-- 列表懒加载，当通过滚动、点击选中显示某个列表的时候，才进行列表初始化，性能更优；
+```Objective-C
+//点击选中或者滚动选中都会调用该方法。适用于只关心选中事件，不关心具体是点击还是滚动选中的。
+- (void)categoryView:(JXCategoryBaseView *)categoryView didSelectedItemAtIndex:(NSInteger)index;
 
-强烈建议先使用`JXCategoryListContainerView`，如果需求比较特殊，再使用上面的高度自定义。
-[JXCategoryListContainerView的详细使用说明](https://github.com/pujiaxin33/JXCategoryView/blob/master/Document/JXCategoryListContainerView%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md)
+//点击选中的情况才会调用该方法
+- (void)categoryView:(JXCategoryBaseView *)categoryView didClickSelectedItemAtIndex:(NSInteger)index;
+
+//滚动选中的情况才会调用该方法
+- (void)categoryView:(JXCategoryBaseView *)categoryView didScrollSelectedItemAtIndex:(NSInteger)index;
+
+//正在滚动中的回调
+- (void)categoryView:(JXCategoryBaseView *)categoryView scrollingFromLeftIndex:(NSInteger)leftIndex toRightIndex:(NSInteger)rightIndex ratio:(CGFloat)ratio;
+
+//自定义contentScrollView点击选中切换效果
+- (void)categoryView:(JXCategoryBaseView *)categoryView didClickedItemContentScrollViewTransitionToIndex:(NSInteger)index;
+```
+
+### `contentScrollView`列表容器使用示例
+
+#### 直接使用UIScrollView自定义
+
+因为代码比较分散，而且代码量也比较多，所有不推荐使用该方法。要正确使用需要注意的地方比较多，尤其对于刚接触iOS的同学来说不太友好。
+
+不直接贴代码了，具体点击[LoadDataListCustomViewController](https://github.com/pujiaxin33/JXCategoryView/blob/master/JXCategoryView/Example/LoadData/LoadDataListCustomViewController.m)查看源代码了解。
+
+作为替代，官方使用&强烈推荐使用下面这种方式👇👇👇。
+
+#### `JXCategoryListContainerView`封装类使用示例
+
+`JXCategoryListContainerView`是对列表视图高度封装的类，具有以下优点：
+- 相对于直接使用`UIScrollView`自定义，封装度高、代码集中、使用简单；
+- 列表懒加载：当显示某个列表的时候，才进行列表初始化。而不是一次性加载全部列表，性能更优；
+
+1.初始化`JXCategoryListContainerView`
+```Objective-C
+self.listContainerView = [[JXCategoryListContainerView alloc] initWithParentVC:self delegate:self];
+[self.view addSubview:self.listContainerView];
+//关联cotentScrollView，关联之后才可以互相联动！！！
+self.categoryView.contentScrollView = self.listContainerView.scrollView;
+```
+
+2.实现`JXCategoryListContainerViewDelegate`代理方法
+```Objective-C
+//返回列表的数量
+- (NSInteger)numberOfListsInlistContainerView:(JXCategoryListContainerView *)listContainerView {
+    return self.titles.count;
+}
+//返回遵从`JXCategoryListContentViewDelegate`协议的实例
+- (id<JXCategoryListContentViewDelegate>)listContainerView:(JXCategoryListContainerView *)listContainerView initListForIndex:(NSInteger)index {
+    return [[ListViewController alloc] init];
+}
+```
+
+3.列表实现`JXCategoryListContainerViewDelegate`代理方法
+
+不管列表是UIView还是UIViewController都可以，提高使用灵活性，更便于现有的业务接入。
+```Objective-C
+// 返回列表视图
+// 如果列表是VC，就返回VC.view
+// 如果列表是View，就返回View自己
+- (UIView *)listView {
+    return self.view;
+}
+
+//可选使用，列表显示的时候调用
+- (void)listDidAppear {}
+
+//可选使用，列表消失的时候调用
+- (void)listDidDisappear {}
+```
+
+4.将关键事件告知`JXCategoryListContainerView`
+
+在下面两个`JXCategoryViewDelegate`代理方法里面调用对应的代码，一定不要忘记这一条❗️❗️❗️
+```Objective-C
+//传递didClickSelectedItemAt事件给listContainerView，必须调用！！！
+- (void)categoryView:(JXCategoryBaseView *)categoryView didClickSelectedItemAtIndex:(NSInteger)index {
+    [self.listContainerView didClickSelectedItemAtIndex:index];
+}
+
+//传递scrolling事件给listContainerView，必须调用！！！
+- (void)categoryView:(JXCategoryBaseView *)categoryView scrollingFromLeftIndex:(NSInteger)leftIndex toRightIndex:(NSInteger)rightIndex ratio:(CGFloat)ratio {
+    [self.listContainerView scrollingFromLeftIndex:leftIndex toRightIndex:rightIndex ratio:ratio selectedIndex:categoryView.selectedIndex];
+}
+```
+
+具体点击[LoadDataListContainerViewController](https://github.com/pujiaxin33/JXCategoryView/blob/master/JXCategoryView/Example/LoadData/LoadDataListContainerViewController.m)查看源代码了解
+
+## 指示器样式自定义
+
+- 需要继承`JXCategoryIndicatorProtocol`协议，点击参看[JXCategoryIndicatorProtocol](https://github.com/pujiaxin33/JXCategoryView/blob/master/Sources/Common/JXCategoryIndicatorProtocol.h)
+- 提供了继承`JXCategoryIndicatorProtocol`协议的基类`JXCategoryIndicatorComponentView`，里面提供了许多基础属性。点击参看[JXCategoryIndicatorComponentView](https://github.com/pujiaxin33/JXCategoryView/blob/master/Sources/Indicator/IndicatorViews/JXCategoryIndicatorComponentView.m)
+- 自定义指示器，请参考已实现的指示器视图，多尝试、多思考，再有问题请提Issue或加入反馈QQ群
+
+## Cell自定义
+
+- 任何子类化需求，view、cell、cellModel三个都要子类化，即使某个子类cell什么事情都不做。用于维护继承链，以免以后子类化都不知道要继承谁了；
+- 如果你想完全自定义cell里面的内容，那就继承`JXCategoryIndicatorView、JXCategoryIndicatorCell、JXCategoryIndicatorCellModel`，就像`JXCategoryTitleView、JXCategoryTitleCell、JXCategoryTitleCellModel`那样去做；
+- 如果你只是在父类进行一些微调，那就继承目标view、cell、cellModel，对cell原有控件微调、或者加入新的控件皆可。就像`JXCategoryTitleImageView系列、JXCategoryTitleAttributeView系列`那样去做；
+- Cell自定义，请参考已实现的cell样式，多尝试、多思考，再有问题请提Issue或加入反馈QQ群
 
 ### 其他使用注意事项
 
@@ -151,39 +239,6 @@ self.categoryView.contentScrollView = self.scrollView;
 - **点击Item之后contentScrollView切换自定义：** 实现协议方法`- (void)categoryView:(JXCategoryBaseView *)categoryView didClickedItemContentScrollViewTransitionToIndex:(NSInteger)index`即可。
 - **侧滑手势处理：**[侧滑手势处理说明文档](https://github.com/pujiaxin33/JXCategoryView/blob/master/Document/%E4%BE%A7%E6%BB%91%E6%89%8B%E5%8A%BF%E5%A4%84%E7%90%86.md)
 - **自定义建议：** `JXCategoryView`即使提供了灵活扩展，也不可能满足所有情况。未能满足特殊需求的情况，建议通过fork仓库，实现特殊效果。
-
-### 指示器样式自定义
-
-仓库自带：`JXCategoryIndicatorLineView、JXCategoryIndicatorTriangleView、JXCategoryIndicatorImageView、JXCategoryIndicatorBackgroundView、JXCategoryIndicatorBallView`
-
-主要实现的方法：
-- 继承JXCategoryIndicatorComponentView，内部遵从了`JXCategoryIndicatorProtocol`协议；
-- 实现协议方法，自定义效果：
-    - `- (void)jx_refreshState:(JXCategoryIndicatorParamsModel *)model`视图重置状态时调用；
-    - `- (void)jx_contentScrollViewDidScroll:(JXCategoryIndicatorParamsModel *)model` contentScrollView在进行手势滑动时，处理指示器跟随手势变化UI逻辑；
-    - `- (void)jx_selectedCell:(JXCategoryIndicatorParamsModel *)model`根据选中的某个cell，处理过渡效果；
-    
-具体实例：参考demo工程里面的`JXCategoryIndicatorDotLineView`
-
-### Cell子类化注意事项
-
-仓库自带：`JXCategoryTitleView、JXCategoryTitleImageView、JXCategoryNumberView、JXCategoryDotView、JXCategoryImageView`
-
-主要实现的方法：
-- `- (Class)preferredCellClass`返回自定义的cell；
-- `- (void)refreshDataSource`刷新数据源，使用自定义的cellModel；
-- `- (void)refreshCellModel:(JXCategoryBaseCellModel *)cellModel index:(NSInteger)index `初始化、reloadData时对数据源重置；
-- `- (CGFloat)preferredCellWidthAtIndex:(NSInteger)index`根据cell的内容返回对应的宽度；
-- `- (void)refreshSelectedCellModel:(JXCategoryBaseCellModel *)selectedCellModel unselectedCellModel:(JXCategoryBaseCellModel *)unselectedCellModel`cell选中时进行状态刷新；
-- `- (void)refreshLeftCellModel:(JXCategoryBaseCellModel *)leftCellModel rightCellModel:(JXCategoryBaseCellModel *)rightCellModel ratio:(CGFloat)ratio`cell左右滚动切换的时候，进行状态刷新；
-
-具体实例：参考demo工程里面的`JXCategoryTitleAttributeView`
-
-#### 子类化注意事项
-
-- 任何子类化需求，view、cell、cellModel三个都要子类化，即使某个子类cell什么事情都不做。用于维护继承链，以免以后子类化都不知道要继承谁了；
-- 如果你想完全自定义cell里面的内容，那就继承`JXCategoryIndicatorView、JXCategoryIndicatorCell、JXCategoryIndicatorCellModel`，就像`JXCategoryTitleView、JXCategoryTitleCell、JXCategoryTitleCellModel`那样去做；
-- 如果你只是在父类进行一些微调，那就继承目标view、cell、cellModel，对cell原有控件微调、或者加入新的控件皆可。就像`JXCategoryTitleImageView系列、JXCategoryTitleAttributeView系列`那样去做；
 
 ## 常用属性说明
 
