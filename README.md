@@ -149,13 +149,15 @@ self.categoryView.indicators = @[lineView];
 
 ### `contentScrollView`列表容器使用示例
 
+#### 直接使用UIScrollView自定义
+
 因为代码比较分散，而且代码量也比较多，所有不推荐使用该方法。要正确使用需要注意的地方比较多，尤其对于刚接触iOS的同学来说不太友好。
 
 不直接贴代码了，具体点击[LoadDataListCustomViewController](https://github.com/pujiaxin33/JXCategoryView/blob/master/JXCategoryView/Example/LoadData/LoadDataListCustomViewController.m)查看源代码了解。
 
 作为替代，官方使用&强烈推荐使用下面这种方式👇👇👇。
 
-### `JXCategoryListContainerView`封装类使用示例
+#### `JXCategoryListContainerView`封装类使用示例
 
 `JXCategoryListContainerView`是对列表视图高度封装的类，具有以下优点：
 - 相对于直接使用`UIScrollView`自定义，封装度高、代码集中、使用简单；
