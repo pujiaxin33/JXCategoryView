@@ -218,6 +218,19 @@ self.categoryView.contentScrollView = self.listContainerView.scrollView;
 
 具体点击[LoadDataListContainerViewController](https://github.com/pujiaxin33/JXCategoryView/blob/master/JXCategoryView/Example/LoadData/LoadDataListContainerViewController.m)查看源代码了解
 
+## 指示器样式自定义
+
+- 需要继承`JXCategoryIndicatorProtocol`协议，点击参看[JXCategoryIndicatorProtocol](https://github.com/pujiaxin33/JXCategoryView/blob/master/Sources/Common/JXCategoryIndicatorProtocol.h)
+- 提供了继承`JXCategoryIndicatorProtocol`协议的基类`JXCategoryIndicatorComponentView`，里面提供了许多基础属性。点击参看[JXCategoryIndicatorComponentView](https://github.com/pujiaxin33/JXCategoryView/blob/master/Sources/Indicator/IndicatorViews/JXCategoryIndicatorComponentView.m)
+- 自定义指示器，请参考已实现的指示器视图，多尝试、多思考，再有问题请提Issue或加入反馈QQ群
+
+## Cell自定义
+
+- 任何子类化需求，view、cell、cellModel三个都要子类化，即使某个子类cell什么事情都不做。用于维护继承链，以免以后子类化都不知道要继承谁了；
+- 如果你想完全自定义cell里面的内容，那就继承`JXCategoryIndicatorView、JXCategoryIndicatorCell、JXCategoryIndicatorCellModel`，就像`JXCategoryTitleView、JXCategoryTitleCell、JXCategoryTitleCellModel`那样去做；
+- 如果你只是在父类进行一些微调，那就继承目标view、cell、cellModel，对cell原有控件微调、或者加入新的控件皆可。就像`JXCategoryTitleImageView系列、JXCategoryTitleAttributeView系列`那样去做；
+- Cell自定义，请参考已实现的cell样式，多尝试、多思考，再有问题请提Issue或加入反馈QQ群
+
 ### 其他使用注意事项
 
 - **单个cell刷新：** 比如红点示例里面，调用`- (void)reloadCellAtIndex:(NSUInteger)index`
@@ -226,39 +239,6 @@ self.categoryView.contentScrollView = self.listContainerView.scrollView;
 - **点击Item之后contentScrollView切换自定义：** 实现协议方法`- (void)categoryView:(JXCategoryBaseView *)categoryView didClickedItemContentScrollViewTransitionToIndex:(NSInteger)index`即可。
 - **侧滑手势处理：**[侧滑手势处理说明文档](https://github.com/pujiaxin33/JXCategoryView/blob/master/Document/%E4%BE%A7%E6%BB%91%E6%89%8B%E5%8A%BF%E5%A4%84%E7%90%86.md)
 - **自定义建议：** `JXCategoryView`即使提供了灵活扩展，也不可能满足所有情况。未能满足特殊需求的情况，建议通过fork仓库，实现特殊效果。
-
-### 指示器样式自定义
-
-仓库自带：`JXCategoryIndicatorLineView、JXCategoryIndicatorTriangleView、JXCategoryIndicatorImageView、JXCategoryIndicatorBackgroundView、JXCategoryIndicatorBallView`
-
-主要实现的方法：
-- 继承JXCategoryIndicatorComponentView，内部遵从了`JXCategoryIndicatorProtocol`协议；
-- 实现协议方法，自定义效果：
-    - `- (void)jx_refreshState:(JXCategoryIndicatorParamsModel *)model`视图重置状态时调用；
-    - `- (void)jx_contentScrollViewDidScroll:(JXCategoryIndicatorParamsModel *)model` contentScrollView在进行手势滑动时，处理指示器跟随手势变化UI逻辑；
-    - `- (void)jx_selectedCell:(JXCategoryIndicatorParamsModel *)model`根据选中的某个cell，处理过渡效果；
-    
-具体实例：参考demo工程里面的`JXCategoryIndicatorDotLineView`
-
-### Cell子类化注意事项
-
-仓库自带：`JXCategoryTitleView、JXCategoryTitleImageView、JXCategoryNumberView、JXCategoryDotView、JXCategoryImageView`
-
-主要实现的方法：
-- `- (Class)preferredCellClass`返回自定义的cell；
-- `- (void)refreshDataSource`刷新数据源，使用自定义的cellModel；
-- `- (void)refreshCellModel:(JXCategoryBaseCellModel *)cellModel index:(NSInteger)index `初始化、reloadData时对数据源重置；
-- `- (CGFloat)preferredCellWidthAtIndex:(NSInteger)index`根据cell的内容返回对应的宽度；
-- `- (void)refreshSelectedCellModel:(JXCategoryBaseCellModel *)selectedCellModel unselectedCellModel:(JXCategoryBaseCellModel *)unselectedCellModel`cell选中时进行状态刷新；
-- `- (void)refreshLeftCellModel:(JXCategoryBaseCellModel *)leftCellModel rightCellModel:(JXCategoryBaseCellModel *)rightCellModel ratio:(CGFloat)ratio`cell左右滚动切换的时候，进行状态刷新；
-
-具体实例：参考demo工程里面的`JXCategoryTitleAttributeView`
-
-#### 子类化注意事项
-
-- 任何子类化需求，view、cell、cellModel三个都要子类化，即使某个子类cell什么事情都不做。用于维护继承链，以免以后子类化都不知道要继承谁了；
-- 如果你想完全自定义cell里面的内容，那就继承`JXCategoryIndicatorView、JXCategoryIndicatorCell、JXCategoryIndicatorCellModel`，就像`JXCategoryTitleView、JXCategoryTitleCell、JXCategoryTitleCellModel`那样去做；
-- 如果你只是在父类进行一些微调，那就继承目标view、cell、cellModel，对cell原有控件微调、或者加入新的控件皆可。就像`JXCategoryTitleImageView系列、JXCategoryTitleAttributeView系列`那样去做；
 
 ## 常用属性说明
 
