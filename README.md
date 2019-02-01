@@ -165,7 +165,7 @@ self.categoryView.indicators = @[lineView];
 
 1.初始化`JXCategoryListContainerView`
 ```Objective-C
-self.listContainerView = [[JXCategoryListContainerView alloc] initWithParentVC:self delegate:self];
+self.listContainerView = [[JXCategoryListContainerView alloc] initWithDelegate:self];
 [self.view addSubview:self.listContainerView];
 //关联cotentScrollView，关联之后才可以互相联动！！！
 self.categoryView.contentScrollView = self.listContainerView.scrollView;
