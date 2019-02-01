@@ -98,6 +98,19 @@ struct DelegateFlags {
     [self addSubview:self.collectionView];
 }
 
+- (void)willMoveToSuperview:(UIView *)newSuperview {
+    [super willMoveToSuperview:newSuperview];
+
+    UIResponder *next = newSuperview;
+    while (next != nil) {
+        if ([next isKindOfClass:[UIViewController class]]) {
+            ((UIViewController *)next).automaticallyAdjustsScrollViewInsets = NO;
+            break;
+        }
+        next = next.nextResponder;
+    }
+}
+
 - (void)reloadData {
     [self refreshDataSource];
     [self refreshState];

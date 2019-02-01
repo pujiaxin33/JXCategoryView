@@ -26,3 +26,4 @@ typedef NS_ENUM(NSUInteger, JXCategoryCellSelectedType) {
     JXCategoryCellSelectedTypeScroll            //通过滚动到某个cell选中
 };
 
+#define JXCategoryViewDeprecated(instead) NS_DEPRECATED(2_0, 2_0, 2_0, 2_0, instead)

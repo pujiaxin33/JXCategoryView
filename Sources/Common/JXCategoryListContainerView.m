@@ -10,7 +10,6 @@
 
 @interface JXCategoryListContainerView ()
 @property (nonatomic, weak) id<JXCategoryListContainerViewDelegate> delegate;
-@property (nonatomic, weak) UIViewController *parentViewController;
 @property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, assign) NSInteger currentIndex;
 @property (nonatomic, strong) NSMutableDictionary <NSNumber *, id<JXCategoryListContentViewDelegate>> *validListDict;
@@ -19,12 +18,10 @@
 
 @implementation JXCategoryListContainerView
 
-- (instancetype)initWithParentVC:(UIViewController *)parentVC delegate:(id<JXCategoryListContainerViewDelegate>)delegate {
+- (instancetype)initWithDelegate:(id<JXCategoryListContainerViewDelegate>)delegate{
     self = [super initWithFrame:CGRectZero];
     if (self) {
         _didAppearPercent = 0.5;
-        _parentViewController = parentVC;
-        _parentViewController.automaticallyAdjustsScrollViewInsets = NO;
         _delegate = delegate;
         _validListDict = [NSMutableDictionary dictionary];
         [self initializeViews];
@@ -145,5 +142,13 @@
     }
 }
 
+
+@end
+
+@implementation JXCategoryListContainerView (Deprecated)
+
+- (instancetype)initWithParentVC:(UIViewController *)parentVC delegate:(id<JXCategoryListContainerViewDelegate>)delegate {
+    return [self initWithDelegate:delegate];
+}
 
 @end

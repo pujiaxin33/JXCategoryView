@@ -29,4 +29,8 @@
     return self.view;
 }
 
+- (void)listDidAppear {}
+
+- (void)listDidDisappear {}
+
 @end

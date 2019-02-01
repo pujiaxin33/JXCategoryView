@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "JXCategoryViewDefines.h"
 @class JXCategoryListContainerView;
 
 @protocol JXCategoryListContentViewDelegate <NSObject>
@@ -82,14 +83,7 @@
 - (instancetype)init NS_UNAVAILABLE;
 - (instancetype)initWithFrame:(CGRect)frame NS_UNAVAILABLE;
 - (instancetype)initWithCoder:(NSCoder *)aDecoder NS_UNAVAILABLE;
-/**
- 指定的初始化器
-
- @param parentVC 父vc
- @param delegate JXCategoryListContainerViewDelegate代理
- @return JXCategoryListContainerView实例
- */
-- (instancetype)initWithParentVC:(UIViewController *)parentVC delegate:(id<JXCategoryListContainerViewDelegate>)delegate NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithDelegate:(id<JXCategoryListContainerViewDelegate>)delegate NS_DESIGNATED_INITIALIZER;
 
 - (void)reloadData;
 
@@ -100,3 +94,17 @@
 - (void)didClickSelectedItemAtIndex:(NSInteger)index;
 
 @end
+
+@interface JXCategoryListContainerView (Deprecated)
+
+/**
+ 初始化方法
+
+ @param parentVC 父vc，可选。主要用于将其automaticallyAdjustsScrollViewInsets设置为NO。但是现在JXCategoryBaseView内部已经做了该操作。所以该方法已经弃用！！！
+ @param delegate JXCategoryListContainerViewDelegate代理
+ @return JXCategoryListContainerView实例
+ */
+- (instancetype)initWithParentVC:(UIViewController *)parentVC delegate:(id<JXCategoryListContainerViewDelegate>)delegate  JXCategoryViewDeprecated("请使用`- (instancetype)initWithDelegate:(id<JXCategoryListContainerViewDelegate>)delegate`方法");
+
+@end
+
