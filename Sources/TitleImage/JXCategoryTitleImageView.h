@@ -12,24 +12,25 @@
 
 @interface JXCategoryTitleImageView : JXCategoryTitleView
 
+//普通状态下的imageNames，通过[UIImage imageNamed:]方法加载
 @property (nonatomic, strong) NSArray <NSString *>*imageNames;
-
-@property (nonatomic, strong) NSArray <NSURL *>*imageURLs;
-
+//选中状态下的imageNames，通过[UIImage imageNamed:]方法加载。可选
 @property (nonatomic, strong) NSArray <NSString *>*selectedImageNames;
-
+//普通状态下的imageURLs，通过loadImageCallback回调加载
+@property (nonatomic, strong) NSArray <NSURL *>*imageURLs;
+//选中状态下的selectedImageURLs，通过loadImageCallback回调加载
 @property (nonatomic, strong) NSArray <NSURL *>*selectedImageURLs;
-
-@property (nonatomic, strong) NSArray <NSNumber *> *imageTypes;    //默认JXCategoryTitleImageType_LeftImage
-
-@property (nonatomic, copy) void(^loadImageCallback)(UIImageView *imageView, NSURL *imageURL);   //使用imageURL从远端下载图片进行加载，建议使用SDWebImage等第三方库进行下载。
-
-@property (nonatomic, assign) CGSize imageSize;     //默认CGSizeMake(20, 20)
-
-@property (nonatomic, assign) CGFloat titleImageSpacing;    //titleLabel和ImageView的间距，默认5
-
-@property (nonatomic, assign) BOOL imageZoomEnabled;     //默认为NO
-
-@property (nonatomic, assign) CGFloat imageZoomScale;    //默认1.2，imageZoomEnabled为YES才生效
+//默认@[JXCategoryTitleImageType_LeftImage...]
+@property (nonatomic, strong) NSArray <NSNumber *> *imageTypes;
+//使用imageURL从远端下载图片进行加载，建议使用SDWebImage等第三方库进行下载。
+@property (nonatomic, copy) void(^loadImageCallback)(UIImageView *imageView, NSURL *imageURL);
+//图片尺寸。默认CGSizeMake(20, 20)
+@property (nonatomic, assign) CGSize imageSize;
+//titleLabel和ImageView的间距，默认5
+@property (nonatomic, assign) CGFloat titleImageSpacing;
+//图片是否缩放。默认为NO
+@property (nonatomic, assign) BOOL imageZoomEnabled;
+//图片缩放的最大scale。默认1.2，imageZoomEnabled为YES才生效
+@property (nonatomic, assign) CGFloat imageZoomScale;
 
 @end

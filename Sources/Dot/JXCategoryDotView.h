@@ -12,14 +12,15 @@
 
 @interface JXCategoryDotView : JXCategoryTitleView
 
-@property (nonatomic, assign) JXCategoryDotRelativePosition relativePosition;   //相对于titleLabel的位置，默认：JXCategoryDotRelativePosition_TopRight
-
-@property (nonatomic, strong) NSArray <NSNumber *> *dotStates;  //@(布尔值)，控制红点是否显示
-
-@property (nonatomic, assign) CGSize dotSize;   //默认：CGSizeMake(10, 10)
-
-@property (nonatomic, assign) CGFloat dotCornerRadius;  //默认：JXCategoryViewAutomaticDimension（self.dotSize.height/2）
-
-@property (nonatomic, strong) UIColor *dotColor;    //默认：[UIColor redColor]
+//相对于titleLabel的位置，默认：JXCategoryDotRelativePosition_TopRight
+@property (nonatomic, assign) JXCategoryDotRelativePosition relativePosition;
+//@[@(布尔值)]数组，控制红点是否显示
+@property (nonatomic, strong) NSArray <NSNumber *> *dotStates;
+//红点的尺寸。默认：CGSizeMake(10, 10)
+@property (nonatomic, assign) CGSize dotSize;
+//红点的圆角值。默认：JXCategoryViewAutomaticDimension（self.dotSize.height/2）
+@property (nonatomic, assign) CGFloat dotCornerRadius;
+//红点的颜色。默认：[UIColor redColor]
+@property (nonatomic, strong) UIColor *dotColor;
 
 @end

@@ -9,11 +9,11 @@
 #import "JXCategoryIndicatorComponentView.h"
 
 @interface JXCategoryIndicatorImageView : JXCategoryIndicatorComponentView
-
+//显示指示器图片的UIImageView
 @property (nonatomic, strong, readonly) UIImageView *indicatorImageView;
-
-@property (nonatomic, assign) BOOL indicatorImageViewRollEnabled;      //默认NO
-
-@property (nonatomic, assign) CGSize indicatorImageViewSize;    //默认：CGSizeMake(30, 20)
+//图片是否开启滚动。默认NO
+@property (nonatomic, assign) BOOL indicatorImageViewRollEnabled;
+//图片的尺寸。默认：CGSizeMake(30, 20)
+@property (nonatomic, assign) CGSize indicatorImageViewSize;
 
 @end

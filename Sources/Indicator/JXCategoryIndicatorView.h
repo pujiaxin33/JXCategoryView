@@ -16,18 +16,20 @@
 @property (nonatomic, strong) NSArray <UIView<JXCategoryIndicatorProtocol> *> *indicators;
 
 //----------------------ellBackgroundColor-----------------------//
-@property (nonatomic, assign) BOOL cellBackgroundColorGradientEnabled;      //默认：NO
-
-@property (nonatomic, strong) UIColor *cellBackgroundUnselectedColor;       //默认：[UIColor clearColor]
-
-@property (nonatomic, strong) UIColor *cellBackgroundSelectedColor;     //默认：[UIColor grayColor]
+//cell的背景色是否渐变。默认：NO
+@property (nonatomic, assign) BOOL cellBackgroundColorGradientEnabled;
+//cell普通状态的背景色。默认：[UIColor clearColor]
+@property (nonatomic, strong) UIColor *cellBackgroundUnselectedColor;
+//cell选中状态的背景色。默认：[UIColor grayColor]
+@property (nonatomic, strong) UIColor *cellBackgroundSelectedColor;
 
 //----------------------separatorLine-----------------------//
-@property (nonatomic, assign) BOOL separatorLineShowEnabled;    //默认为NO
-
-@property (nonatomic, strong) UIColor *separatorLineColor;    //默认为[UIColor lightGrayColor]
-
-@property (nonatomic, assign) CGSize separatorLineSize;    //默认为CGSizeMake(1/[UIScreen mainScreen].scale, 20)
+//是否显示分割线。默认为NO
+@property (nonatomic, assign) BOOL separatorLineShowEnabled;
+//分割线颜色。默认为[UIColor lightGrayColor]
+@property (nonatomic, strong) UIColor *separatorLineColor;
+//分割线的size。默认为CGSizeMake(1/[UIScreen mainScreen].scale, 20)
+@property (nonatomic, assign) CGSize separatorLineSize;
 
 /**
  当contentScrollView滚动时候，处理跟随手势的过渡效果。

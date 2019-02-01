@@ -12,13 +12,14 @@
 
 @interface JXCategoryIndicatorComponentView : UIView <JXCategoryIndicatorProtocol>
 
+//指示器的位置。底部或者顶部
 @property (nonatomic, assign) JXCategoryComponentPosition componentPosition;
-
-@property (nonatomic, assign) CGFloat verticalMargin;     //垂直方向边距；默认：0
-
-@property (nonatomic, assign) BOOL scrollEnabled;   //手势滚动、点击切换的时候，是否允许滚动，默认YES
-
-@property (nonatomic, assign) NSTimeInterval scrollAnimationDuration;   //滚动动画的时间。默认0.25
+//垂直方向偏移。数值越大越靠近中心。默认：0。
+@property (nonatomic, assign) CGFloat verticalMargin;
+//手势滚动、点击切换的时候，是否允许滚动，默认YES
+@property (nonatomic, assign) BOOL scrollEnabled;
+//滚动动画的时间。默认0.25
+@property (nonatomic, assign) NSTimeInterval scrollAnimationDuration;
 
 
 @end

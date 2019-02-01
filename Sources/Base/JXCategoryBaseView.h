@@ -91,7 +91,7 @@
 @property (nonatomic, assign) BOOL averageCellSpacingEnabled;     //当collectionView.contentSize.width小于JXCategoryBaseView的宽度，是否将cellSpacing均分。默认为YES。
 
 //----------------------cellWidthZoomEnabled-----------------------//
-//cell宽度的缩放主要是为了腾讯视频、汽车之家效果打造的，一般情况下慎用，不太好控制。
+//cell宽度是否缩放
 @property (nonatomic, assign) BOOL cellWidthZoomEnabled;     //默认为NO
 
 @property (nonatomic, assign) BOOL cellWidthZoomScrollGradientEnabled;     //手势滚动过程中，是否需要更新cell的宽度。默认为YES
