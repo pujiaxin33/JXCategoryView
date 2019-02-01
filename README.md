@@ -14,6 +14,10 @@ A powerful and easy to use category view (segmentedcontrol, segmentview, pagingv
 - 提供更加全面丰富、高度自定义的效果；
 - 使用子类化管理cell样式，逻辑更清晰，扩展更简单；
 
+## Swift版本
+
+如果你在找Swift版本，请点击查看[JXSegmentedView](https://github.com/pujiaxin33/JXSegmentedView)
+
 ## 效果预览
 
 ### 指示器效果预览
