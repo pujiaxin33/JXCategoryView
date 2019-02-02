@@ -33,7 +33,7 @@
     self.categoryView.defaultSelectedIndex = 0;
     [self.view addSubview:self.categoryView];
 
-    self.listContainerView = [[JXCategoryListContainerView alloc] initWithParentVC:self delegate:self];
+    self.listContainerView = [[JXCategoryListContainerView alloc] initWithDelegate:self];
     self.listContainerView.didAppearPercent = 0.01; //滚动一点就触发加载
     self.listContainerView.defaultSelectedIndex = 0;
     [self.view addSubview:self.listContainerView];

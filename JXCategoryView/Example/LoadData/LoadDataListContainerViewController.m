@@ -33,7 +33,7 @@
     self.categoryView.indicators = @[lineView];
     [self.view addSubview:self.categoryView];
 
-    self.listContainerView = [[JXCategoryListContainerView alloc] initWithParentVC:self delegate:self];
+    self.listContainerView = [[JXCategoryListContainerView alloc] initWithDelegate:self];
     self.listContainerView.defaultSelectedIndex = 0;
     [self.view addSubview:self.listContainerView];
 
