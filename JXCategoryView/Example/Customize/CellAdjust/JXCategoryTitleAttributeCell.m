@@ -23,10 +23,22 @@
 
     JXCategoryTitleAttributeCellModel *myCellModel = (JXCategoryTitleAttributeCellModel *)cellModel;
 
-    self.maskTitleLabel.attributedText = myCellModel.attributeTitle;
-    [self.maskTitleLabel sizeToFit];
-    self.titleLabel.attributedText = myCellModel.attributeTitle;
+    self.titleLabel.numberOfLines = myCellModel.titleNumberOfLines;
+    if (myCellModel.selected && myCellModel.selectedAttributeTitle != nil) {
+        self.titleLabel.attributedText = myCellModel.selectedAttributeTitle;
+    }else {
+        self.titleLabel.attributedText = myCellModel.attributeTitle;
+    }
     [self.titleLabel sizeToFit];
+
+    self.maskTitleLabel.numberOfLines = myCellModel.titleNumberOfLines;
+    if (myCellModel.selected && myCellModel.selectedAttributeTitle != nil) {
+        self.maskTitleLabel.attributedText = myCellModel.selectedAttributeTitle;
+    }else {
+        self.maskTitleLabel.attributedText = myCellModel.attributeTitle;
+    }
+    [self.maskTitleLabel sizeToFit];
+
     [self setNeedsLayout];
 }
 

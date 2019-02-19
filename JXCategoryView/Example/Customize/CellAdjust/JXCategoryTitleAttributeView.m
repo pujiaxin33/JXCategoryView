@@ -12,6 +12,12 @@
 
 #pragma mark - Override
 
+- (void)initializeData {
+    [super initializeData];
+
+    _titleNumberOfLines = 2;
+}
+
 //返回自定义的cell class
 - (Class)preferredCellClass {
     return [JXCategoryTitleAttributeCell class];
@@ -49,7 +55,9 @@
     [super refreshCellModel:cellModel index:index];
 
     JXCategoryTitleAttributeCellModel *model = (JXCategoryTitleAttributeCellModel *)cellModel;
+    model.titleNumberOfLines = self.titleNumberOfLines;
     model.attributeTitle = self.attributeTitles[index];
+    model.selectedAttributeTitle = self.selectedAttributeTitles[index];
 }
 
 @end

@@ -10,6 +10,8 @@
 
 @interface JXCategoryTitleAttributeCellModel : JXCategoryTitleCellModel
 
+@property (nonatomic, assign) NSInteger titleNumberOfLines;
 @property (nonatomic, copy) NSAttributedString *attributeTitle;
+@property (nonatomic, copy) NSAttributedString *selectedAttributeTitle;
 
 @end
