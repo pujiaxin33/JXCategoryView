@@ -48,7 +48,7 @@
 
 - (void)reloadData {
     for (id<JXCategoryListContentViewDelegate> list in _validListDict.allValues) {
-        [list.listView removeFromSuperview];
+        [[list listView] removeFromSuperview];
     }
     [_validListDict removeAllObjects];
 
@@ -63,7 +63,7 @@
     self.scrollView.frame = self.bounds;
     self.scrollView.contentSize = CGSizeMake(self.scrollView.bounds.size.width*[self.delegate numberOfListsInlistContainerView:self], self.scrollView.bounds.size.height);
     [_validListDict enumerateKeysAndObjectsUsingBlock:^(NSNumber * _Nonnull index, id<JXCategoryListContentViewDelegate>  _Nonnull list, BOOL * _Nonnull stop) {
-        list.listView.frame = CGRectMake(index.intValue*self.scrollView.bounds.size.width, 0, self.scrollView.bounds.size.width, self.scrollView.bounds.size.height);
+        [list listView].frame = CGRectMake(index.intValue*self.scrollView.bounds.size.width, 0, self.scrollView.bounds.size.width, self.scrollView.bounds.size.height);
     }];
     if (!self.isLayoutSubviewsed) {
         self.isLayoutSubviewsed = YES;
@@ -104,8 +104,10 @@
 }
 
 - (void)didClickSelectedItemAtIndex:(NSInteger)index {
-    [self listDidDisappear:self.currentIndex];
-    [self listDidAppear:index];
+    if (self.currentIndex != index) {
+        [self listDidDisappear:self.currentIndex];
+        [self listDidAppear:index];
+    }
 }
 
 #pragma mark - Private
@@ -121,9 +123,9 @@
     if (list == nil) {
         list = [self.delegate listContainerView:self initListForIndex:index];
     }
-    if (list.listView.superview == nil) {
-        list.listView.frame = CGRectMake(index*self.scrollView.bounds.size.width, 0, self.scrollView.bounds.size.width, self.scrollView.bounds.size.height);
-        [self.scrollView addSubview:list.listView];
+    if ([list listView].superview == nil) {
+        [list listView].frame = CGRectMake(index*self.scrollView.bounds.size.width, 0, self.scrollView.bounds.size.width, self.scrollView.bounds.size.height);
+        [self.scrollView addSubview:[list listView]];
         _validListDict[@(index)] = list;
     }
     if (list && [list respondsToSelector:@selector(listDidAppear)]) {

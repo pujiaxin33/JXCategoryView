@@ -339,7 +339,8 @@ struct DelegateFlags {
         [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:targetIndex inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
     }
 
-    if (selectedType == JXCategoryCellSelectedTypeClick) {
+    if (selectedType == JXCategoryCellSelectedTypeClick ||
+        selectedType == JXCategoryCellSelectedTypeCode) {
         if (self.delegateFlags.didClickedItemContentScrollViewTransitionToIndexFlag) {
             [self.delegate categoryView:self didClickedItemContentScrollViewTransitionToIndex:targetIndex];
         }else {
