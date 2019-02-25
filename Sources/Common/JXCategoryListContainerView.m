@@ -57,6 +57,14 @@
     [self listDidAppear:self.currentIndex];
 }
 
+- (void)currentListDidAppear {
+    [self listDidAppear:self.currentIndex];
+}
+
+- (void)currentListDidDisappear {
+    [self listDidDisappear:self.currentIndex];
+}
+
 - (void)layoutSubviews {
     [super layoutSubviews];
 
