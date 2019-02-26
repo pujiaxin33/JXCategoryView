@@ -14,7 +14,9 @@
 @property (nonatomic, strong) JXPagerListContainerView *listContainerView;
 @property (nonatomic, strong) UIScrollView *currentScrollingListView;
 @property (nonatomic, strong) id<JXPagerViewListViewDelegate> currentList;
-@property (nonatomic, strong) NSMutableDictionary <NSNumber *, id<JXPagerViewListViewDelegate>> *validListDict; 
+@property (nonatomic, strong) NSMutableDictionary <NSNumber *, id<JXPagerViewListViewDelegate>> *validListDict;
+@property (nonatomic, assign) UIDeviceOrientation currentDeviceOrientation;
+@property (nonatomic, assign) NSInteger currentIndex;
 @end
 
 @implementation JXPagerView
@@ -54,6 +56,7 @@
 
     self.isListHorizontalScrollEnabled = YES;
 
+    self.currentDeviceOrientation = [UIDevice currentDevice].orientation;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deviceOrientationDidChangeNotification:) name:UIDeviceOrientationDidChangeNotification object:nil];
 }
 
@@ -81,6 +84,14 @@
     self.mainTableView.tableHeaderView = [self.delegate tableHeaderViewInPagerView:self];
     [self.mainTableView reloadData];
     [self.listContainerView reloadData];
+}
+
+- (void)currentListDidAppear {
+    [self listDidAppear:self.currentIndex];
+}
+
+- (void)currentListDidDisappear {
+    [self listDidDisappear:self.currentIndex];
 }
 
 - (void)preferredProcessListViewDidScroll:(UIScrollView *)scrollView {
@@ -129,9 +140,37 @@
 }
 
 - (void)deviceOrientationDidChangeNotification:(NSNotification *)notification {
-    [self.mainTableView reloadData];
-    [self.listContainerView deviceOrientationDidChanged];
-    [self.listContainerView reloadData];
+    if (self.currentDeviceOrientation != [UIDevice currentDevice].orientation) {
+        self.currentDeviceOrientation = [UIDevice currentDevice].orientation;
+        //前后台切换也会触发该通知，所以不相同的时候才处理
+        [self.mainTableView reloadData];
+        [self.listContainerView deviceOrientationDidChanged];
+        [self.listContainerView reloadData];
+    }
+}
+
+- (void)listDidAppear:(NSInteger)index {
+    NSUInteger count = [self.delegate numberOfListsInPagerView:self];
+    if (count <= 0 || index >= count) {
+        return;
+    }
+    self.currentIndex = index;
+
+    id<JXPagerViewListViewDelegate> list = _validListDict[@(index)];
+    if (list && [list respondsToSelector:@selector(listDidAppear)]) {
+        [list listDidAppear];
+    }
+}
+
+- (void)listDidDisappear:(NSInteger)index {
+    NSUInteger count = [self.delegate numberOfListsInPagerView:self];
+    if (count <= 0 || index >= count) {
+        return;
+    }
+    id<JXPagerViewListViewDelegate> list = _validListDict[@(index)];
+    if (list && [list respondsToSelector:@selector(listDidDisappear)]) {
+        [list listDidDisappear];
+    }
 }
 
 #pragma mark - UITableViewDataSource, UITableViewDelegate
@@ -232,7 +271,12 @@
 }
 
 - (void)listContainerView:(JXPagerListContainerView *)listContainerView willDisplayCellAtRow:(NSInteger)row {
+    [self listDidAppear:row];
     self.currentScrollingListView = [self.validListDict[@(row)] listScrollView];
+}
+
+- (void)listContainerView:(JXPagerListContainerView *)listContainerView didEndDisplayingCellAtRow:(NSInteger)row {
+    [self listDidDisappear:row];
 }
 
 @end
