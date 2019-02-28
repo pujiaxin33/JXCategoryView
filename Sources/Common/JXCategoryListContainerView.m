@@ -16,6 +16,7 @@
 @property (nonatomic, strong) NSLock *lock;
 @property (nonatomic, assign) BOOL willRemoveFromWindow;
 @property (nonatomic, assign) BOOL isFirstMoveToWindow;
+@property (nonatomic, strong) JXCategoryListContainerView *retainedSelf;
 @end
 
 @implementation JXCategoryListContainerView
@@ -59,10 +60,13 @@
     //根据上述事实，第一次和第二次为无效调用，可以根据其间隔1ms左右过滤掉
     if (newWindow == nil) {
         self.willRemoveFromWindow = YES;
+        //当前页面被pop的时候，willMoveToWindow只会调用一次，而且整个页面会被销毁掉，所以需要循环引用自己，确保能延迟执行currentListDidDisappear方法，触发列表消失事件。由此可见，循环引用也不一定是个坏事。是天使还是魔鬼，就看你如何对待它了。
+        self.retainedSelf = self;
         [self performSelector:@selector(currentListDidDisappear) withObject:nil afterDelay:0.02];
     }else {
         if (self.willRemoveFromWindow) {
             self.willRemoveFromWindow = NO;
+            self.retainedSelf = nil;
             [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(currentListDidDisappear) object:nil];
         }else {
             [self currentListDidAppear];
@@ -154,8 +158,14 @@
 }
 
 - (void)currentListDidDisappear {
+    [_lock lock];
+    id<JXCategoryListContentViewDelegate> list = _validListDict[@(self.currentIndex)];
+    [_lock unlock];
+    if (list && [list respondsToSelector:@selector(listDidDisappear)]) {
+        [list listDidDisappear];
+    }
     self.willRemoveFromWindow = NO;
-    [self listDidDisappear:self.currentIndex];
+    self.retainedSelf = nil;
 }
 
 - (void)listDidAppear:(NSInteger)index {
