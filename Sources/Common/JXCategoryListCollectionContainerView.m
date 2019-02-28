@@ -97,6 +97,14 @@
     [self.collectionView reloadData];
 }
 
+- (void)layoutSubviews {
+    [super layoutSubviews];
+
+    self.collectionView.frame = self.bounds;
+}
+
+#pragma mark - Private
+
 - (void)currentListDidAppear {
     [self listDidAppear:self.currentIndex];
 }
@@ -105,22 +113,6 @@
     self.willRemoveFromWindow = NO;
     [self listDidDisappear:self.currentIndex];
 }
-
-- (void)layoutSubviews {
-    [super layoutSubviews];
-
-    self.collectionView.frame = self.bounds;
-}
-
-- (void)didReceiveMemoryWarningNotification:(NSNotification *)notification {
-    [_lock lock];
-    id<JXCategoryListCollectionContentViewDelegate> currentList = _validListDict[@(_currentIndex)];
-    [_validListDict removeAllObjects];
-    [_validListDict setObject:currentList forKey:@(_currentIndex)];
-    [_lock unlock];
-}
-
-#pragma mark - Private
 
 - (void)listDidAppear:(NSInteger)index {
     NSUInteger count = 0;
@@ -154,6 +146,14 @@
     if (list && [list respondsToSelector:@selector(listDidDisappear)]) {
         [list listDidDisappear];
     }
+}
+
+- (void)didReceiveMemoryWarningNotification:(NSNotification *)notification {
+    [_lock lock];
+    id<JXCategoryListCollectionContentViewDelegate> currentList = _validListDict[@(_currentIndex)];
+    [_validListDict removeAllObjects];
+    [_validListDict setObject:currentList forKey:@(_currentIndex)];
+    [_lock unlock];
 }
 
 #pragma mark - UICollectionViewDelegate, UICollectionViewDataSource

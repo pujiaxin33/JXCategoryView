@@ -13,8 +13,9 @@
 @property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, assign) NSInteger currentIndex;
 @property (nonatomic, strong) NSMutableDictionary <NSNumber *, id<JXCategoryListContentViewDelegate>> *validListDict;
-@property (nonatomic, assign) BOOL isLayoutSubviewsed;
 @property (nonatomic, strong) NSLock *lock;
+@property (nonatomic, assign) BOOL willRemoveFromWindow;
+@property (nonatomic, assign) BOOL isFirstMoveToWindow;
 @end
 
 @implementation JXCategoryListContainerView
@@ -53,6 +54,22 @@
     [self addSubview:self.scrollView];
 }
 
+- (void)willMoveToWindow:(UIWindow *)newWindow {
+    //当前页面push到一个新的页面时，willMoveToWindow会调用三次。第一次调用的newWindow为nil，第二次调用间隔1ms左右newWindow有值，第三次调用间隔400ms左右newWindow为nil。
+    //根据上述事实，第一次和第二次为无效调用，可以根据其间隔1ms左右过滤掉
+    if (newWindow == nil) {
+        self.willRemoveFromWindow = YES;
+        [self performSelector:@selector(currentListDidDisappear) withObject:nil afterDelay:0.02];
+    }else {
+        if (self.willRemoveFromWindow) {
+            self.willRemoveFromWindow = NO;
+            [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(currentListDidDisappear) object:nil];
+        }else {
+            [self currentListDidAppear];
+        }
+    }
+}
+
 - (void)reloadData {
     [_lock lock];
     for (id<JXCategoryListContentViewDelegate> list in _validListDict.allValues) {
@@ -66,14 +83,6 @@
     [self listDidAppear:self.currentIndex];
 }
 
-- (void)currentListDidAppear {
-    [self listDidAppear:self.currentIndex];
-}
-
-- (void)currentListDidDisappear {
-    [self listDidDisappear:self.currentIndex];
-}
-
 - (void)layoutSubviews {
     [super layoutSubviews];
 
@@ -84,11 +93,6 @@
         [list listView].frame = CGRectMake(index.intValue*self.scrollView.bounds.size.width, 0, self.scrollView.bounds.size.width, self.scrollView.bounds.size.height);
     }];
     [_lock unlock];
-    if (!self.isLayoutSubviewsed) {
-        self.isLayoutSubviewsed = YES;
-        //初始化第一次调用
-        [self listDidAppear:self.currentIndex];
-    }
 }
 
 - (void)setDefaultSelectedIndex:(NSInteger)defaultSelectedIndex {
@@ -144,6 +148,15 @@
 }
 
 #pragma mark - Private
+
+- (void)currentListDidAppear {
+    [self listDidAppear:self.currentIndex];
+}
+
+- (void)currentListDidDisappear {
+    self.willRemoveFromWindow = NO;
+    [self listDidDisappear:self.currentIndex];
+}
 
 - (void)listDidAppear:(NSInteger)index {
     NSUInteger count = [self.delegate numberOfListsInlistContainerView:self];
