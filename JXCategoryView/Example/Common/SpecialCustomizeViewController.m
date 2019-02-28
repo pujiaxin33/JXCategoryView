@@ -14,6 +14,7 @@
 #import "PagingViewController.h"
 #import "LoadDataListCustomViewController.h"
 #import "LoadDataListContainerViewController.h"
+#import "LoadDataListCollectionViewController.h"
 
 @interface SpecialCustomizeViewController ()
 
@@ -56,8 +57,12 @@
         VerticalListViewController *vc = [[VerticalListViewController alloc] init];
         vc.title = title;
         [self.navigationController pushViewController:vc animated:YES];
-    }else if ([title isEqualToString:@"刷新数据+ListContainerView"]) {
+    }else if ([title isEqualToString:@"刷新数据+UIScrollView封装列表"]) {
         LoadDataListContainerViewController *vc = [[LoadDataListContainerViewController alloc] init];
+        vc.title = title;
+        [self.navigationController pushViewController:vc animated:YES];
+    }else if ([title isEqualToString:@"刷新数据+UICollectionView封装列表"]) {
+        LoadDataListCollectionViewController *vc = [[LoadDataListCollectionViewController alloc] init];
         vc.title = title;
         [self.navigationController pushViewController:vc animated:YES];
     }else if ([title isEqualToString:@"刷新数据+列表自定义"]) {

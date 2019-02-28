@@ -60,7 +60,7 @@
     [super viewDidLayoutSubviews];
 
     self.categoryView.frame = CGRectMake(0, 0, self.view.bounds.size.width, 50);
-    self.listContainerView.frame = CGRectMake(0, 50, self.view.bounds.size.width, self.view.bounds.size.height);
+    self.listContainerView.frame = CGRectMake(0, 50, self.view.bounds.size.width, self.view.bounds.size.height - 50);
 }
 
 /**

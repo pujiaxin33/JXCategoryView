@@ -78,6 +78,7 @@ struct DelegateFlags {
     _selectedAnimationEnabled = NO;
     _selectedAnimationDuration = 0.25;
     _scrollingTargetIndex = -1;
+    _contentScrollViewClickTransitionAnimationEnabled = YES;
 }
 
 - (void)initializeViews
@@ -344,7 +345,7 @@ struct DelegateFlags {
         if (self.delegateFlags.didClickedItemContentScrollViewTransitionToIndexFlag) {
             [self.delegate categoryView:self didClickedItemContentScrollViewTransitionToIndex:targetIndex];
         }else {
-            [self.contentScrollView setContentOffset:CGPointMake(targetIndex*self.contentScrollView.bounds.size.width, 0) animated:YES];
+            [self.contentScrollView setContentOffset:CGPointMake(targetIndex*self.contentScrollView.bounds.size.width, 0) animated:self.contentScrollViewClickTransitionAnimationEnabled];
         }
     }
 

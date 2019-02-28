@@ -19,6 +19,10 @@
 
 @implementation JXCategoryListContainerView
 
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 - (instancetype)initWithDelegate:(id<JXCategoryListContainerViewDelegate>)delegate{
     self = [super initWithFrame:CGRectZero];
     if (self) {
@@ -105,10 +109,6 @@
     [_validListDict removeAllObjects];
     [_validListDict setObject:currentList forKey:@(_currentIndex)];
     [_lock unlock];
-}
-
-- (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark - JXCategoryBaseView回调
