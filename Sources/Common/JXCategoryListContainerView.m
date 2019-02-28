@@ -129,12 +129,18 @@
         if (ratio < (1 - self.didAppearPercent)) {
             targetIndex = leftIndex;
             disappearIndex = rightIndex;
+        }else {
+            targetIndex = rightIndex;
+            disappearIndex = leftIndex;
         }
     }else {
         //当前选中的在左边，用户正在从左边往右边滑动
         if (ratio > self.didAppearPercent) {
             targetIndex = rightIndex;
             disappearIndex = leftIndex;
+        }else {
+            targetIndex = leftIndex;
+            disappearIndex = rightIndex;
         }
     }
 
