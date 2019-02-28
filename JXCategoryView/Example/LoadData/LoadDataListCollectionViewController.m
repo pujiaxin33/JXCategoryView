@@ -11,7 +11,7 @@
 #import "JXCategoryListCollectionContainerView.h"
 #import "LoadDataListCollectionListViewController.h"
 
-@interface LoadDataListCollectionViewController () < JXCategoryListCollectionContainerViewDelegate>
+@interface LoadDataListCollectionViewController () < JXCategoryListCollectionContainerViewDataSource>
 @property (nonatomic, strong) JXCategoryTitleView *categoryView;
 @property (nonatomic, strong) JXCategoryListCollectionContainerView *listContainerView;
 @property (nonatomic, strong) NSArray <NSString *> *titles;
@@ -61,7 +61,7 @@
     [self.listContainerView reloadData];
 }
 
-#pragma mark - JXCategoryListContainerViewDelegate
+#pragma mark - JXCategoryListCollectionContainerViewDataSource
 
 - (id<JXCategoryListCollectionContentViewDelegate>)listContainerView:(JXCategoryListContainerView *)listContainerView initListForIndex:(NSInteger)index {
     LoadDataListCollectionListViewController *listVC = [[LoadDataListCollectionListViewController alloc] init];

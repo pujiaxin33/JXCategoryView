@@ -218,6 +218,13 @@ self.categoryView.contentScrollView = self.listContainerView.scrollView;
 
 具体点击[LoadDataListContainerViewController](https://github.com/pujiaxin33/JXCategoryView/blob/master/JXCategoryView/Example/LoadData/LoadDataListContainerViewController.m)查看源代码了解
 
+#### `JXCategoryListCollectionContainerView`封装类使用示例
+
+##### 有了`JXCategoryListContainerView`为什么还要`JXCategoryListCollectionContainerView`类呢？
+
+因为`JXCategoryListContainerView`内部使用的是`UIScrollView`，当所有列表都加载出来后，所有的列表都被addSubview到`UIScrollView`上面了。所以，在视图内存这一块会比较大，对于一些列表复杂且数量多的应用，内存表现不太好。经过调研，内部使用`UICollectionView`在视图内存上表现良好，能够很好适应列表复杂且数量多的应用。
+正是因为内部使用`UICollectionView`，发现可以在api设计上更加简洁，当然也会有一些副作用。具体使用示例，点击参看[JXCategoryListCollectionContainerView使用示例]()
+
 ## 指示器样式自定义
 
 - 需要继承`JXCategoryIndicatorProtocol`协议，点击参看[JXCategoryIndicatorProtocol](https://github.com/pujiaxin33/JXCategoryView/blob/master/Sources/Common/JXCategoryIndicatorProtocol.h)
