@@ -30,6 +30,8 @@
     _titleLabelZoomScrollGradientEnabled = YES;
     _titleLabelStrokeWidthEnabled = NO;
     _titleLabelSelectedStrokeWidth = -3;
+    _titleLabelVerticalOffset = 0;
+    _titleLabelAnchorPointStyle = JXCategoryTitleLabelAnchorPointStyleCenter;
 }
 
 - (UIFont *)titleSelectedFont {
@@ -115,6 +117,8 @@
     model.titleLabelStrokeWidthEnabled = self.titleLabelStrokeWidthEnabled;
     model.titleLabelNormalStrokeWidth = 0;
     model.titleLabelSelectedStrokeWidth = self.titleLabelSelectedStrokeWidth;
+    model.titleLabelVerticalOffset = self.titleLabelVerticalOffset;
+    model.titleLabelAnchorPointStyle = self.titleLabelAnchorPointStyle;
     if (index == self.selectedIndex) {
         model.titleCurrentColor = model.titleSelectedColor;
         model.titleLabelCurrentZoomScale = model.titleLabelSelectedZoomScale;

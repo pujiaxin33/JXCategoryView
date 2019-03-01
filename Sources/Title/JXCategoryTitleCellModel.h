@@ -8,6 +8,7 @@
 
 #import "JXCategoryIndicatorCellModel.h"
 #import <UIKit/UIKit.h>
+#import "JXCategoryViewDefines.h"
 
 @interface JXCategoryTitleCellModel : JXCategoryIndicatorCellModel
 
@@ -42,5 +43,9 @@
 @property (nonatomic, assign) CGFloat titleLabelCurrentStrokeWidth;
 
 @property (nonatomic, assign) CGFloat titleLabelSelectedStrokeWidth;
+
+@property (nonatomic, assign) CGFloat titleLabelVerticalOffset;
+
+@property (nonatomic, assign) JXCategoryTitleLabelAnchorPointStyle titleLabelAnchorPointStyle;
 
 @end

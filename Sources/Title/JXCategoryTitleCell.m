@@ -13,6 +13,7 @@
 @interface JXCategoryTitleCell ()
 @property (nonatomic, strong) CALayer *titleMaskLayer;
 @property (nonatomic, strong) CALayer *maskTitleMaskLayer;
+@property (nonatomic, strong) NSLayoutConstraint *titleLabelCenterY;
 @end
 
 @implementation JXCategoryTitleCell
@@ -29,6 +30,7 @@
 
     NSLayoutConstraint *titleLabelCenterX = [NSLayoutConstraint constraintWithItem:self.titleLabel attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeCenterX multiplier:1 constant:0];
     NSLayoutConstraint *titleLabelCenterY = [NSLayoutConstraint constraintWithItem:self.titleLabel attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeCenterY multiplier:1 constant:0];
+    self.titleLabelCenterY = titleLabelCenterY;
     [NSLayoutConstraint activateConstraints:@[titleLabelCenterX, titleLabelCenterY]];
 
     _titleMaskLayer = [CALayer layer];
@@ -55,6 +57,20 @@
     //因为titleLabel是通过约束布局的，在layoutSubviews方法中，它的frame并没有确定。像子类JXCategoryNumberCell中的numberLabel需要依赖于titleLabel的frame进行布局。所以这里必须立马触发self.contentView的视图布局。
     [self.contentView setNeedsLayout];
     [self.contentView layoutIfNeeded];
+    JXCategoryTitleCellModel *myCellModel = (JXCategoryTitleCellModel *)self.cellModel;
+    switch (myCellModel.titleLabelAnchorPointStyle) {
+        case JXCategoryTitleLabelAnchorPointStyleCenter:
+            self.titleLabelCenterY.constant = 0 + myCellModel.titleLabelVerticalOffset;
+            break;
+        case JXCategoryTitleLabelAnchorPointStyleTop:
+            self.titleLabelCenterY.constant = -self.titleLabel.bounds.size.height/2 - myCellModel.titleLabelVerticalOffset;
+            break;
+        case JXCategoryTitleLabelAnchorPointStyleBottom:
+            self.titleLabelCenterY.constant = self.titleLabel.bounds.size.height/2 + myCellModel.titleLabelVerticalOffset;
+            break;
+        default:
+            break;
+    }
 }
 
 - (void)reloadData:(JXCategoryBaseCellModel *)cellModel {
@@ -63,6 +79,22 @@
     JXCategoryTitleCellModel *myCellModel = (JXCategoryTitleCellModel *)cellModel;
     self.titleLabel.numberOfLines = myCellModel.titleNumberOfLines;
     self.maskTitleLabel.numberOfLines = myCellModel.titleNumberOfLines;
+    switch (myCellModel.titleLabelAnchorPointStyle) {
+        case JXCategoryTitleLabelAnchorPointStyleCenter:
+            self.titleLabel.layer.anchorPoint = CGPointMake(0.5, 0.5);
+            self.maskTitleLabel.layer.anchorPoint = CGPointMake(0.5, 0.5);
+            break;
+        case JXCategoryTitleLabelAnchorPointStyleTop:
+            self.titleLabel.layer.anchorPoint = CGPointMake(0.5, 0);
+            self.maskTitleLabel.layer.anchorPoint = CGPointMake(0.5, 0);
+            break;
+        case JXCategoryTitleLabelAnchorPointStyleBottom:
+            self.titleLabel.layer.anchorPoint = CGPointMake(0.5, 1);
+            self.maskTitleLabel.layer.anchorPoint = CGPointMake(0.5, 1);
+            break;
+        default:
+            break;
+    }
 
     if (myCellModel.titleLabelZoomEnabled) {
         //先把font设置为缩放的最大值，再缩小到最小值，最后根据当前的titleLabelZoomScale值，进行缩放更新。这样就能避免transform从小到大时字体模糊

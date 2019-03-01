@@ -9,6 +9,7 @@
 #import "JXCategoryIndicatorView.h"
 #import "JXCategoryTitleCell.h"
 #import "JXCategoryTitleCellModel.h"
+#import "JXCategoryViewDefines.h"
 
 @interface JXCategoryTitleView : JXCategoryIndicatorView
 
@@ -40,4 +41,8 @@
 
 @property (nonatomic, assign) CGFloat titleLabelSelectedStrokeWidth;    //默认：-3，用于控制字体的粗细（底层通过NSStrokeWidthAttributeName实现）。使用该属性，务必让titleFont和titleSelectedFont设置为一样的！！！
 
+//----------------------titleLabel缩放中心位置-----------------------//
+@property (nonatomic, assign) CGFloat titleLabelVerticalOffset; //垂直方向的位置偏移，数值越大越偏离中心，默认为：0
+
+@property (nonatomic, assign) JXCategoryTitleLabelAnchorPointStyle titleLabelAnchorPointStyle;  //titleLabel锚点位置，用于调整titleLabel缩放时的基准位置。默认为：JXCategoryTitleLabelAnchorPointStyleCenter
 @end

@@ -50,6 +50,8 @@ JXCategoryIndicatorLineView、JXCategoryIndicatorImageView、JXCategoryIndicator
 ----|------|
 颜色渐变  |  <img src="JXCategoryView/Images/TitleColorGradient.gif" width="343" height="80"> |
 大小缩放  |  <img src="JXCategoryView/Images/TitleZoom.gif" width="350" height="80"> |
+大小缩放+底部锚点  |  <img src="JXCategoryView/Images/TitleLabelAnchorBottom.gif" width="350" height="80"> |
+大小缩放+顶部锚点  |  <img src="JXCategoryView/Images/TitleLabelAnchorTop.gif" width="350" height="80"> |
 大小缩放+字体粗细  |  <img src="JXCategoryView/Images/TitleZoomStrokeWidth.gif" width="350" height="80"> |
 大小缩放+点击动画  |  <img src="JXCategoryView/Images/TitleZoomSelectedAnimation.gif" width="350" height="80"> |
 大小缩放+cell宽度缩放  |  <img src="JXCategoryView/Images/TitleZoomCellWidth.gif" width="350" height="80"> |
