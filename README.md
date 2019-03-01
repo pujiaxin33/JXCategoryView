@@ -61,7 +61,8 @@ cell图文混用 |  <img src="JXCategoryView/Images/CellMixed.gif" width="343" h
 Image |  <img src="JXCategoryView/Images/CellImage.gif" width="343" height="80"> |
 数字 |  <img src="JXCategoryView/Images/Number.gif" width="343" height="80"> |
 红点 |  <img src="JXCategoryView/Images/CellRedDot.gif" width="343" height="80"> |
-自定义-多行+富文本 |  <img src="JXCategoryView/Images/AttributeView.gif" width="343" height="80"> |
+多行文本 |  <img src="JXCategoryView/Images/MultiLineText.gif" width="350" height="80"> |
+多行富文本 |  <img src="JXCategoryView/Images/AttributeView.gif" width="343" height="80"> |
 Cell背景色渐变  |  <img src="JXCategoryView/Images/CellBackgroundColorGradient.gif" width="343" height="80"> |
 分割线 |  <img src="JXCategoryView/Images/SeparatorLine.gif" width="343" height="80"> |
 
