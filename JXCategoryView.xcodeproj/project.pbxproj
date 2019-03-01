@@ -79,6 +79,7 @@
 		19562CF5212AA3600095AA27 /* NestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19562CF4212AA3600095AA27 /* NestViewController.m */; };
 		196429E7214B8091009C1D31 /* averageCellSpacingEnabledNO.gif in Resources */ = {isa = PBXBuildFile; fileRef = 196429E5214B8090009C1D31 /* averageCellSpacingEnabledNO.gif */; };
 		196429E8214B8091009C1D31 /* averageCellSpacingEnabledYES.gif in Resources */ = {isa = PBXBuildFile; fileRef = 196429E6214B8091009C1D31 /* averageCellSpacingEnabledYES.gif */; };
+		19731D962229178800483A54 /* MultiLineText.gif in Resources */ = {isa = PBXBuildFile; fileRef = 19731D952229178800483A54 /* MultiLineText.gif */; };
 		1974583C2225361B00C740EB /* JXCategoryListCollectionContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1974583B2225361B00C740EB /* JXCategoryListCollectionContainerView.m */; };
 		1974583F22253FA100C740EB /* LoadDataListCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1974583E22253FA100C740EB /* LoadDataListCollectionViewController.m */; };
 		197458422225402D00C740EB /* LoadDataListCollectionListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 197458412225402D00C740EB /* LoadDataListCollectionListViewController.m */; };
@@ -268,6 +269,7 @@
 		19562CF4212AA3600095AA27 /* NestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NestViewController.m; sourceTree = "<group>"; };
 		196429E5214B8090009C1D31 /* averageCellSpacingEnabledNO.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = averageCellSpacingEnabledNO.gif; sourceTree = "<group>"; };
 		196429E6214B8091009C1D31 /* averageCellSpacingEnabledYES.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = averageCellSpacingEnabledYES.gif; sourceTree = "<group>"; };
+		19731D952229178800483A54 /* MultiLineText.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = MultiLineText.gif; sourceTree = "<group>"; };
 		1974583A2225361A00C740EB /* JXCategoryListCollectionContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXCategoryListCollectionContainerView.h; sourceTree = "<group>"; };
 		1974583B2225361B00C740EB /* JXCategoryListCollectionContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXCategoryListCollectionContainerView.m; sourceTree = "<group>"; };
 		1974583D22253FA100C740EB /* LoadDataListCollectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoadDataListCollectionViewController.h; sourceTree = "<group>"; };
@@ -687,6 +689,7 @@
 		19870C872122703B00C23CAA /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				19731D952229178800483A54 /* MultiLineText.gif */,
 				1979C1FC21FFFEE900DA40E7 /* TitleMask.gif */,
 				1979C1FB21FFFEE900DA40E7 /* TitleMaskNoBackgroundView.gif */,
 				1979C1F421FFFD1900DA40E7 /* TitleZoom.gif */,
@@ -950,6 +953,7 @@
 				19870C29211D857F00C23CAA /* lufei.jpg in Resources */,
 				19870CA32122703B00C23CAA /* SegmentedControl.gif in Resources */,
 				19870CA92122703B00C23CAA /* SegmentedControlNavi.gif in Resources */,
+				19731D962229178800483A54 /* MultiLineText.gif in Resources */,
 				19870CAE2122703B00C23CAA /* TitleImageTop.gif in Resources */,
 				191A95F8212BF5DA00DBF784 /* TriangleBottom.gif in Resources */,
 				1920463A21C3557E006538C0 /* RainbowLineView.gif in Resources */,
