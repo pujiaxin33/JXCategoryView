@@ -14,6 +14,8 @@
 
 @property (nonatomic, strong) NSArray <NSString *>*titles;
 
+@property (nonatomic, assign) NSInteger titleNumberOfLines; //默认：1
+
 @property (nonatomic, strong) UIColor *titleColor;      //默认：[UIColor blackColor]
 
 @property (nonatomic, strong) UIColor *titleSelectedColor;      //默认：[UIColor redColor]

@@ -24,15 +24,25 @@
     _titleLabel = [[UILabel alloc] init];
     self.titleLabel.clipsToBounds = YES;
     self.titleLabel.textAlignment = NSTextAlignmentCenter;
+    self.titleLabel.translatesAutoresizingMaskIntoConstraints = NO;
     [self.contentView addSubview:self.titleLabel];
+
+    NSLayoutConstraint *titleLabelCenterX = [NSLayoutConstraint constraintWithItem:self.titleLabel attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeCenterX multiplier:1 constant:0];
+    NSLayoutConstraint *titleLabelCenterY = [NSLayoutConstraint constraintWithItem:self.titleLabel attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeCenterY multiplier:1 constant:0];
+    [NSLayoutConstraint activateConstraints:@[titleLabelCenterX, titleLabelCenterY]];
 
     _titleMaskLayer = [CALayer layer];
     self.titleMaskLayer.backgroundColor = [UIColor redColor].CGColor;
 
     _maskTitleLabel = [[UILabel alloc] init];
-    _maskTitleLabel.hidden = YES;
+    self.maskTitleLabel.hidden = YES;
+    self.maskTitleLabel.translatesAutoresizingMaskIntoConstraints = NO;
     self.maskTitleLabel.textAlignment = NSTextAlignmentCenter;
     [self.contentView addSubview:self.maskTitleLabel];
+
+    NSLayoutConstraint *maskTitleLabelCenterX = [NSLayoutConstraint constraintWithItem:self.maskTitleLabel attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeCenterX multiplier:1 constant:0];
+    NSLayoutConstraint *maskTitleLabelCenterY = [NSLayoutConstraint constraintWithItem:self.maskTitleLabel attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeCenterY multiplier:1 constant:0];
+    [NSLayoutConstraint activateConstraints:@[maskTitleLabelCenterX, maskTitleLabelCenterY]];
 
     _maskTitleMaskLayer = [CALayer layer];
     self.maskTitleMaskLayer.backgroundColor = [UIColor redColor].CGColor;
@@ -42,14 +52,17 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
 
-    self.titleLabel.center = self.contentView.center;
-    self.maskTitleLabel.center = self.contentView.center;
+    //因为titleLabel是通过约束布局的，在layoutSubviews方法中，它的frame并没有确定。像子类JXCategoryNumberCell中的numberLabel需要依赖于titleLabel的frame进行布局。所以这里必须立马触发self.contentView的视图布局。
+    [self.contentView setNeedsLayout];
+    [self.contentView layoutIfNeeded];
 }
 
 - (void)reloadData:(JXCategoryBaseCellModel *)cellModel {
     [super reloadData:cellModel];
 
     JXCategoryTitleCellModel *myCellModel = (JXCategoryTitleCellModel *)cellModel;
+    self.titleLabel.numberOfLines = myCellModel.titleNumberOfLines;
+    self.maskTitleLabel.numberOfLines = myCellModel.titleNumberOfLines;
 
     if (myCellModel.titleLabelZoomEnabled) {
         //先把font设置为缩放的最大值，再缩小到最小值，最后根据当前的titleLabelZoomScale值，进行缩放更新。这样就能避免transform从小到大时字体模糊
@@ -95,7 +108,8 @@
         self.maskTitleLabel.hidden = NO;
         self.titleLabel.textColor = myCellModel.titleNormalColor;
         self.maskTitleLabel.textColor = myCellModel.titleSelectedColor;
-        [self.maskTitleLabel sizeToFit];
+        [self.contentView setNeedsLayout];
+        [self.contentView layoutIfNeeded];
 
         CGRect topMaskframe = myCellModel.backgroundViewMaskFrame;
         //将相对于cell的backgroundViewMaskFrame转换为相对于maskTitleLabel
@@ -142,9 +156,6 @@
     }
 
     [self startSelectedAnimationIfNeeded:myCellModel];
-
-    [self.titleLabel sizeToFit];
-    [self setNeedsLayout];
 }
 
 - (JXCategoryCellSelectedAnimationBlock)preferredTitleZoomAnimationBlock:(JXCategoryTitleCellModel *)cellModel baseScale:(CGFloat)baseScale {

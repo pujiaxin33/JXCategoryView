@@ -93,6 +93,9 @@ struct DelegateFlags {
     self.collectionView.dataSource = self;
     self.collectionView.delegate = self;
     [self.collectionView registerClass:[self preferredCellClass] forCellWithReuseIdentifier:NSStringFromClass([self preferredCellClass])];
+    if (@available(iOS 10.0, *)) {
+        self.collectionView.prefetchingEnabled = NO;
+    }
     if (@available(iOS 11.0, *)) {
         self.collectionView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
     }

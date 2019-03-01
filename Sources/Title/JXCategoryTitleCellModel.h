@@ -13,6 +13,8 @@
 
 @property (nonatomic, copy) NSString *title;
 
+@property (nonatomic, assign) NSInteger titleNumberOfLines;
+
 @property (nonatomic, strong) UIColor *titleNormalColor;
 
 @property (nonatomic, strong) UIColor *titleCurrentColor;

@@ -19,6 +19,7 @@
 {
     [super initializeData];
 
+    _titleNumberOfLines = 1;
     _titleLabelZoomEnabled = NO;
     _titleLabelZoomScale = 1.2;
     _titleColor = [UIColor blackColor];
@@ -102,6 +103,7 @@
 
     JXCategoryTitleCellModel *model = (JXCategoryTitleCellModel *)cellModel;
     model.title = self.titles[index];
+    model.titleNumberOfLines = self.titleNumberOfLines;
     model.titleFont = self.titleFont;
     model.titleSelectedFont = self.titleSelectedFont;
     model.titleNormalColor = self.titleColor;
