@@ -32,6 +32,11 @@
  */
 - (void)listDidDisappear;
 
+/**
+ 可选实现，返回列表持有的滚动视图
+ */
+- (UIScrollView *)listScrollView;
+
 @end
 
 @protocol JXCategoryListContainerViewDelegate <NSObject>

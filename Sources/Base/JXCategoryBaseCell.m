@@ -67,7 +67,7 @@
 - (void)startSelectedAnimationIfNeeded:(JXCategoryBaseCellModel *)cellModel {
     if (cellModel.selectedAnimationEnabled && [self checkCanStartSelectedAnimation:cellModel]) {
         //需要更新isTransitionAnimating，用于处理在过滤时，禁止响应点击，避免界面异常。
-        cellModel.transitionAnimating = true;
+        cellModel.transitionAnimating = YES;
         __weak typeof(self)weakSelf = self;
         self.animator.progressCallback = ^(CGFloat percent) {
             for (JXCategoryCellSelectedAnimationBlock block in weakSelf.animationBlockArray) {

@@ -16,6 +16,11 @@
 
 @implementation LoadDataListBaseViewController
 
+- (void)dealloc
+{
+    self.didScrollCallback = nil;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 
@@ -59,6 +64,10 @@
 }
 
 #pragma mark - UITableViewDataSource, UITableViewDelegate
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    !self.didScrollCallback ?: self.didScrollCallback(scrollView);
+}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.dataSource.count;

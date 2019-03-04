@@ -378,19 +378,21 @@ struct DelegateFlags {
     if (self.cellWidthZoomEnabled) {
         if (selectedCellModel.selectedType == JXCategoryCellSelectedTypeCode ||
             selectedCellModel.selectedType == JXCategoryCellSelectedTypeClick) {
-            selectedCellModel.transitionAnimating = YES;
-            unselectedCellModel.transitionAnimating = YES;
             self.animator = [[JXCategoryViewAnimator alloc] init];
             self.animator.duration = self.selectedAnimationDuration;
             __weak typeof(self) weakSelf = self;
             self.animator.progressCallback = ^(CGFloat percent) {
-                selectedCellModel.transitionAnimating = NO;
-                unselectedCellModel.transitionAnimating = NO;
+                selectedCellModel.transitionAnimating = YES;
+                unselectedCellModel.transitionAnimating = YES;
                 selectedCellModel.cellWidthCurrentZoomScale = [JXCategoryFactory interpolationFrom:selectedCellModel.cellWidthNormalZoomScale to:selectedCellModel.cellWidthSelectedZoomScale percent:percent];
                 selectedCellModel.cellWidth = [self getCellWidthAtIndex:selectedCellModel.index] * selectedCellModel.cellWidthCurrentZoomScale;
                 unselectedCellModel.cellWidthCurrentZoomScale = [JXCategoryFactory interpolationFrom:unselectedCellModel.cellWidthSelectedZoomScale to:unselectedCellModel.cellWidthNormalZoomScale percent:percent];
                 unselectedCellModel.cellWidth = [self getCellWidthAtIndex:unselectedCellModel.index] * unselectedCellModel.cellWidthCurrentZoomScale;
                 [weakSelf.collectionView.collectionViewLayout invalidateLayout];
+            };
+            self.animator.completeCallback = ^{
+                selectedCellModel.transitionAnimating = NO;
+                unselectedCellModel.transitionAnimating = NO;
             };
             [self.animator start];
         }else {

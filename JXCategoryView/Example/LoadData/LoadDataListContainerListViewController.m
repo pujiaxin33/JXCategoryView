@@ -35,4 +35,8 @@
     NSLog(@"%@", NSStringFromSelector(_cmd));
 }
 
+- (UIScrollView *)listScrollView {
+    return self.tableView;
+}
+
 @end

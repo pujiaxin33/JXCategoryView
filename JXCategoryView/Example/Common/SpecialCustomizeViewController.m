@@ -15,6 +15,7 @@
 #import "LoadDataListCustomViewController.h"
 #import "LoadDataListContainerViewController.h"
 #import "LoadDataListCollectionViewController.h"
+#import "ScrollZoomViewController.h"
 
 @interface SpecialCustomizeViewController ()
 
@@ -69,7 +70,12 @@
         LoadDataListCustomViewController *vc = [[LoadDataListCustomViewController alloc] init];
         vc.title = title;
         [self.navigationController pushViewController:vc animated:YES];
+    }else if ([title isEqualToString:@"垂直滚动缩放"]) {
+        ScrollZoomViewController *vc = [[ScrollZoomViewController alloc] init];
+        vc.title = title;
+        [self.navigationController pushViewController:vc animated:YES];
     }
+
 }
 
 @end
