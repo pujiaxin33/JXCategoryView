@@ -79,7 +79,7 @@ SegmentedControl<br/>参考[`SegmentedControlViewController`](https://github.com
 嵌套使用<br/>参考[`NestViewController`](https://github.com/pujiaxin33/JXCategoryView/blob/master/JXCategoryView/Example/Nest/NestViewController.m)类 |  <img src="JXCategoryView/Images/Nest.gif" width="343" height="272"> |
 个人主页(上下左右滚动、header悬浮)<br/>参考[`PagingViewController`](https://github.com/pujiaxin33/JXCategoryView/blob/master/JXCategoryView/Example/PagingView/Example/PagingViewController.m)类<br/> 更多样式请点击查看[JXPagingView库](https://github.com/pujiaxin33/JXPagingView) |  <img src="JXCategoryView/Images/UserProfile.gif" width="343" height="562"> |
 垂直列表滚动<br/>参考[`VerticalListViewController`](https://github.com/pujiaxin33/JXCategoryView/blob/master/JXCategoryView/Example/VerticalListView/VerticalListViewController.m)类<br/> 高仿腾讯视频<br/>（背景色异常是录屏软件bug） |  <img src="JXCategoryView/Images/VerticalList.gif" width="343" height="607"> |
-| 垂直缩放<br/>参考[`ScrollZoomViewController`](https://github.com/pujiaxin33/JXCategoryView/blob/master/JXCategoryView/Example/ScrollZoomView/ScrollZoomViewController.m)类 | <img src="JXCategoryView/Images/VerticalZoomTitle.gif" width="350" height="306"> |
+| 垂直缩放(仿网易圈圈、脉脉首页)<br/>参考[`ScrollZoomViewController`](https://github.com/pujiaxin33/JXCategoryView/blob/master/JXCategoryView/Example/ScrollZoomView/ScrollZoomViewController.m)类 | <img src="JXCategoryView/Images/VerticalZoomTitle.gif" width="350" height="306"> |
 数据源刷新&列表数据加载<br/>参考[`LoadDataListContainerViewController`](https://github.com/pujiaxin33/JXCategoryView/blob/master/JXCategoryView/Example/LoadData/LoadDataListContainerViewController.m)类 |  <img src="JXCategoryView/Images/LoadData.gif" width="343" height="619"> |
 
 
