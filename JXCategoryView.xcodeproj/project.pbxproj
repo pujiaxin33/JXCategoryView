@@ -139,6 +139,7 @@
 		19C417C8215F14E30090E518 /* UIWindow+JXSafeArea.m in Sources */ = {isa = PBXBuildFile; fileRef = 19C417C7215F14E30090E518 /* UIWindow+JXSafeArea.m */; };
 		19CF184B216D9BD90093C775 /* VerticalListCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 19CF184A216D9BD90093C775 /* VerticalListCollectionView.m */; };
 		19D3858A222D1D9700AE7537 /* BaseNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19D38589222D1D9700AE7537 /* BaseNavigationViewController.m */; };
+		19D3858D222D22CE00AE7537 /* VerticalZoomTitle.gif in Resources */ = {isa = PBXBuildFile; fileRef = 19D3858C222D22CE00AE7537 /* VerticalZoomTitle.gif */; };
 		19D57E6E212D01180077DCA6 /* AttributeView.gif in Resources */ = {isa = PBXBuildFile; fileRef = 19D57E6D212D01180077DCA6 /* AttributeView.gif */; };
 		19D57E78212D3FD30077DCA6 /* JXCategoryIndicatorDotLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 19D57E77212D3FD30077DCA6 /* JXCategoryIndicatorDotLineView.m */; };
 		19D57E7A212D48AC0077DCA6 /* IndicatorCustomizeGuide.gif in Resources */ = {isa = PBXBuildFile; fileRef = 19D57E79212D48AB0077DCA6 /* IndicatorCustomizeGuide.gif */; };
@@ -370,6 +371,7 @@
 		19CF184A216D9BD90093C775 /* VerticalListCollectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VerticalListCollectionView.m; sourceTree = "<group>"; };
 		19D38588222D1D9700AE7537 /* BaseNavigationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseNavigationViewController.h; sourceTree = "<group>"; };
 		19D38589222D1D9700AE7537 /* BaseNavigationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseNavigationViewController.m; sourceTree = "<group>"; };
+		19D3858C222D22CE00AE7537 /* VerticalZoomTitle.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = VerticalZoomTitle.gif; sourceTree = "<group>"; };
 		19D57E6D212D01180077DCA6 /* AttributeView.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = AttributeView.gif; sourceTree = "<group>"; };
 		19D57E76212D3FD30077DCA6 /* JXCategoryIndicatorDotLineView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JXCategoryIndicatorDotLineView.h; sourceTree = "<group>"; };
 		19D57E77212D3FD30077DCA6 /* JXCategoryIndicatorDotLineView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JXCategoryIndicatorDotLineView.m; sourceTree = "<group>"; };
@@ -720,6 +722,7 @@
 		19870C872122703B00C23CAA /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				19D3858C222D22CE00AE7537 /* VerticalZoomTitle.gif */,
 				19731D982229329700483A54 /* TitleLabelAnchorBottom.gif */,
 				19731D972229329700483A54 /* TitleLabelAnchorTop.gif */,
 				19731D952229178800483A54 /* MultiLineText.gif */,
@@ -981,6 +984,7 @@
 				19870CA52122703B00C23CAA /* TitleImageLeft.gif in Resources */,
 				19870CAF2122703B00C23CAA /* BackgroundEllipseLayer.gif in Resources */,
 				19870CAB2122703B00C23CAA /* Number.gif in Resources */,
+				19D3858D222D22CE00AE7537 /* VerticalZoomTitle.gif in Resources */,
 				191A95FB212BFE3200DBF784 /* JXCategoryViewStructure.png in Resources */,
 				196429E7214B8091009C1D31 /* averageCellSpacingEnabledNO.gif in Resources */,
 				191A95F7212BF5DA00DBF784 /* Rectangle.gif in Resources */,

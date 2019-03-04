@@ -36,7 +36,7 @@
     self.categoryView = [[JXCategoryTitleVerticalZoomView alloc] init];
     self.categoryView.frame = CGRectMake(0, topStatusBarHeight, self.view.bounds.size.width, self.maxCategoryViewHeight);
     self.categoryView.averageCellSpacingEnabled = NO;
-    self.categoryView.titles = @[@"螃蟹", @"龙虾", @"哈哈", @"呵呵", @"嘻嘻"];
+    self.categoryView.titles = @[@"推荐", @"关注"];
     self.categoryView.delegate = self;
     self.categoryView.titleLabelAnchorPointStyle = JXCategoryTitleLabelAnchorPointStyleBottom;
     self.categoryView.titleLabelVerticalOffset = -5;
