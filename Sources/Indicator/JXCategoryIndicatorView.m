@@ -180,6 +180,9 @@
     return YES;
 }
 
+@end
+
+@implementation JXCategoryIndicatorView (UISubclassingIndicatorHooks)
 
 - (void)refreshLeftCellModel:(JXCategoryBaseCellModel *)leftCellModel rightCellModel:(JXCategoryBaseCellModel *)rightCellModel ratio:(CGFloat)ratio {
     if (self.cellBackgroundColorGradientEnabled) {

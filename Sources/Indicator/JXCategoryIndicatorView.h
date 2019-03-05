@@ -31,10 +31,14 @@
 //分割线的size。默认为CGSizeMake(1/[UIScreen mainScreen].scale, 20)
 @property (nonatomic, assign) CGSize separatorLineSize;
 
+@end
+
+@interface JXCategoryIndicatorView (UISubclassingIndicatorHooks)
+
 /**
  当contentScrollView滚动时候，处理跟随手势的过渡效果。
  根据cellModel的左右位置、是否选中、ratio进行过滤数据计算。
- 
+
  @param leftCellModel 左边的cellModel
  @param rightCellModel 右边的cellModel
  @param ratio 从左往右方向计算的百分比

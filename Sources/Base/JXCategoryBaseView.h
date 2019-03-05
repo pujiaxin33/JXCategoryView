@@ -93,7 +93,6 @@
 
 @property (nonatomic, assign) BOOL averageCellSpacingEnabled;     //当collectionView.contentSize.width小于JXCategoryBaseView的宽度，是否将cellSpacing均分。默认为YES。
 
-//----------------------cellWidthZoomEnabled-----------------------//
 //cell宽度是否缩放
 @property (nonatomic, assign) BOOL cellWidthZoomEnabled;     //默认为NO
 
@@ -125,11 +124,11 @@
  */
 - (void)reloadCellAtIndex:(NSInteger)index;
 
-#pragma mark - Subclass use
+@end
+
+@interface JXCategoryBaseView (UISubclassingBaseHooks)
 
 - (CGRect)getTargetCellFrame:(NSInteger)targetIndex;
-
-#pragma mark - Subclass Override
 
 - (void)initializeData NS_REQUIRES_SUPER;
 
@@ -191,6 +190,6 @@
  @param cellModel 待重置的cellModel
  @param index cellModel在数组中的index
  */
-- (void)refreshCellModel:(JXCategoryBaseCellModel *)cellModel index:(NSInteger)index;
+- (void)refreshCellModel:(JXCategoryBaseCellModel *)cellModel index:(NSInteger)index NS_REQUIRES_SUPER;
 
 @end
