@@ -30,12 +30,9 @@
     self.view.backgroundColor = [UIColor whiteColor];
 
     self.categoryView.delegate = self;
-    self.categoryView.defaultSelectedIndex = 0;
     [self.view addSubview:self.categoryView];
 
-    self.listContainerView = [[JXCategoryListContainerView alloc] initWithDelegate:self];
     self.listContainerView.didAppearPercent = 0.01; //滚动一点就触发加载
-    self.listContainerView.defaultSelectedIndex = 0;
     [self.view addSubview:self.listContainerView];
 
     self.categoryView.contentScrollView = self.listContainerView.scrollView;
@@ -84,6 +81,13 @@
         _categoryView = [self preferredCategoryView];
     }
     return _categoryView;
+}
+
+- (JXCategoryListContainerView *)listContainerView {
+    if (_listContainerView == nil) {
+        _listContainerView = [[JXCategoryListContainerView alloc] initWithDelegate:self];
+    }
+    return _listContainerView;
 }
 
 - (void)rightItemClicked {
