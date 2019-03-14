@@ -26,9 +26,9 @@
 
 @property (nonatomic, strong) UIFont *titleSelectedFont;
 
-@property (nonatomic, assign) BOOL titleLabelMaskEnabled;
+@property (nonatomic, assign, getter=isTitleLabelMaskEnabled) BOOL titleLabelMaskEnabled;
 
-@property (nonatomic, assign) BOOL titleLabelZoomEnabled;
+@property (nonatomic, assign, getter=isTitleLabelZoomEnabled) BOOL titleLabelZoomEnabled;
 
 @property (nonatomic, assign) CGFloat titleLabelNormalZoomScale;
 
@@ -36,7 +36,7 @@
 
 @property (nonatomic, assign) CGFloat titleLabelSelectedZoomScale;
 
-@property (nonatomic, assign) BOOL titleLabelStrokeWidthEnabled;
+@property (nonatomic, assign, getter=isTitleLabelStrokeWidthEnabled) BOOL titleLabelStrokeWidthEnabled;
 
 @property (nonatomic, assign) CGFloat titleLabelNormalStrokeWidth;
 

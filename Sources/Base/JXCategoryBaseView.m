@@ -239,9 +239,9 @@ struct DelegateFlags {
     for (int i = 0; i < targetIndex; i ++) {
         JXCategoryBaseCellModel *cellModel = self.dataSource[i];
         CGFloat cellWidth;
-        if (cellModel.isTransitionAnimating && cellModel.cellWidthZoomEnabled) {
+        if (cellModel.isTransitionAnimating && cellModel.isCellWidthZoomEnabled) {
             //正在进行动画的时候，cellWidthCurrentZoomScale是随着动画渐变的，而没有立即更新到目标值
-            if (cellModel.selected) {
+            if (cellModel.isSelected) {
                 cellWidth = [self getCellWidthAtIndex:cellModel.index]*cellModel.cellWidthSelectedZoomScale;
             }else {
                 cellWidth = [self getCellWidthAtIndex:cellModel.index]*cellModel.cellWidthNormalZoomScale;
@@ -253,7 +253,7 @@ struct DelegateFlags {
     }
     CGFloat width;
     JXCategoryBaseCellModel *selectedCellModel = self.dataSource[targetIndex];
-    if (selectedCellModel.isTransitionAnimating && selectedCellModel.cellWidthZoomEnabled) {
+    if (selectedCellModel.isTransitionAnimating && selectedCellModel.isCellWidthZoomEnabled) {
         width = [self getCellWidthAtIndex:selectedCellModel.index]*selectedCellModel.cellWidthSelectedZoomScale;
     }else {
         width = selectedCellModel.cellWidth;
@@ -332,7 +332,7 @@ struct DelegateFlags {
             cellModel.selected = NO;
             cellModel.cellWidthCurrentZoomScale = cellModel.cellWidthNormalZoomScale;
         }
-        if (self.cellWidthZoomEnabled) {
+        if (self.isCellWidthZoomEnabled) {
             cellModel.cellWidth = [self getCellWidthAtIndex:i]*cellModel.cellWidthCurrentZoomScale;
         }else {
             cellModel.cellWidth = [self getCellWidthAtIndex:i];
@@ -346,7 +346,7 @@ struct DelegateFlags {
         [self refreshCellModel:cellModel index:i];
     }
 
-    if (self.averageCellSpacingEnabled && totalItemWidth < self.bounds.size.width) {
+    if (self.isAverageCellSpacingEnabled && totalItemWidth < self.bounds.size.width) {
         //如果总的内容宽度都没有超过视图宽度，就将cellSpacing等分
         NSInteger cellSpacingItemCount = self.dataSource.count - 1;
         CGFloat totalCellSpacingWidth = self.bounds.size.width - totalCellWidth;
@@ -456,7 +456,7 @@ struct DelegateFlags {
         [scrollingTargetCell reloadData:scrollingTargetCellModel];
     }
 
-    if (self.cellWidthZoomEnabled) {
+    if (self.isCellWidthZoomEnabled) {
         [self.collectionView.collectionViewLayout invalidateLayout];
         //延时为了解决cellwidth变化，点击最后几个cell，scrollToItem会出现位置偏移bu。需要等cellWidth动画渐变结束后再滚动到index的cell位置。
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(self.selectedAnimationDuration * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
@@ -471,7 +471,7 @@ struct DelegateFlags {
         if (self.delegateFlags.didClickedItemContentScrollViewTransitionToIndexFlag) {
             [self.delegate categoryView:self didClickedItemContentScrollViewTransitionToIndex:targetIndex];
         }else {
-            [self.contentScrollView setContentOffset:CGPointMake(targetIndex*self.contentScrollView.bounds.size.width, 0) animated:self.contentScrollViewClickTransitionAnimationEnabled];
+            [self.contentScrollView setContentOffset:CGPointMake(targetIndex*self.contentScrollView.bounds.size.width, 0) animated:self.isContentScrollViewClickTransitionAnimationEnabled];
         }
     }
 
@@ -498,7 +498,7 @@ struct DelegateFlags {
     selectedCellModel.selected = YES;
     unselectedCellModel.selected = NO;
 
-    if (self.cellWidthZoomEnabled) {
+    if (self.isCellWidthZoomEnabled) {
         if (selectedCellModel.selectedType == JXCategoryCellSelectedTypeCode ||
             selectedCellModel.selectedType == JXCategoryCellSelectedTypeClick) {
             self.animator = [[JXCategoryViewAnimator alloc] init];
@@ -569,7 +569,7 @@ struct DelegateFlags {
             self.scrollingTargetIndex = baseIndex;
         }
 
-        if (self.cellWidthZoomEnabled && self.cellWidthZoomScrollGradientEnabled) {
+        if (self.isCellWidthZoomEnabled && self.isCellWidthZoomScrollGradientEnabled) {
             JXCategoryBaseCellModel *leftCellModel = (JXCategoryBaseCellModel *)self.dataSource[baseIndex];
             JXCategoryBaseCellModel *rightCellModel = (JXCategoryBaseCellModel *)self.dataSource[baseIndex + 1];
             leftCellModel.cellWidthCurrentZoomScale = [JXCategoryFactory interpolationFrom:leftCellModel.cellWidthSelectedZoomScale to:leftCellModel.cellWidthNormalZoomScale percent:remainderRatio];

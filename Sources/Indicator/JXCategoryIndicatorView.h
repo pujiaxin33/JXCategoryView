@@ -17,7 +17,7 @@
 
 //----------------------ellBackgroundColor-----------------------//
 //cell的背景色是否渐变。默认：NO
-@property (nonatomic, assign) BOOL cellBackgroundColorGradientEnabled;
+@property (nonatomic, assign, getter=isCellBackgroundColorGradientEnabled) BOOL cellBackgroundColorGradientEnabled;
 //cell普通状态的背景色。默认：[UIColor clearColor]
 @property (nonatomic, strong) UIColor *cellBackgroundUnselectedColor;
 //cell选中状态的背景色。默认：[UIColor grayColor]
@@ -25,7 +25,7 @@
 
 //----------------------separatorLine-----------------------//
 //是否显示分割线。默认为NO
-@property (nonatomic, assign) BOOL separatorLineShowEnabled;
+@property (nonatomic, assign, getter=isSeparatorLineShowEnabled) BOOL separatorLineShowEnabled;
 //分割线颜色。默认为[UIColor lightGrayColor]
 @property (nonatomic, strong) UIColor *separatorLineColor;
 //分割线的size。默认为CGSizeMake(1/[UIScreen mainScreen].scale, 20)

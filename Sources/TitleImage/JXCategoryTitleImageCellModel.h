@@ -35,7 +35,7 @@ typedef NS_ENUM(NSUInteger, JXCategoryTitleImageType) {
 
 @property (nonatomic, assign) CGFloat titleImageSpacing;    //titleLabel和ImageView的间距，默认5
 
-@property (nonatomic, assign) BOOL imageZoomEnabled;
+@property (nonatomic, assign, getter=isImageZoomEnabled) BOOL imageZoomEnabled;
 
 @property (nonatomic, assign) CGFloat imageZoomScale;
 

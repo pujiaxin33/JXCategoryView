@@ -76,17 +76,17 @@
     JXCategoryTitleCellModel *leftModel = (JXCategoryTitleCellModel *)leftCellModel;
     JXCategoryTitleCellModel *rightModel = (JXCategoryTitleCellModel *)rightCellModel;
 
-    if (self.titleLabelZoomEnabled && self.titleLabelZoomScrollGradientEnabled) {
+    if (self.isTitleLabelZoomEnabled && self.isTitleLabelZoomScrollGradientEnabled) {
         leftModel.titleLabelCurrentZoomScale = [JXCategoryFactory interpolationFrom:self.titleLabelZoomScale to:1.0 percent:ratio];
         rightModel.titleLabelCurrentZoomScale = [JXCategoryFactory interpolationFrom:1.0 to:self.titleLabelZoomScale percent:ratio];
     }
 
-    if (self.titleLabelStrokeWidthEnabled) {
+    if (self.isTitleLabelStrokeWidthEnabled) {
         leftModel.titleLabelCurrentStrokeWidth = [JXCategoryFactory interpolationFrom:leftModel.titleLabelSelectedStrokeWidth to:leftModel.titleLabelNormalStrokeWidth percent:ratio];
         rightModel.titleLabelCurrentStrokeWidth = [JXCategoryFactory interpolationFrom:rightModel.titleLabelNormalStrokeWidth to:rightModel.titleLabelSelectedStrokeWidth percent:ratio];
     }
 
-    if (self.titleColorGradientEnabled) {
+    if (self.isTitleColorGradientEnabled) {
         leftModel.titleCurrentColor = [JXCategoryFactory interpolationColorFrom:self.titleSelectedColor to:self.titleColor percent:ratio];
         rightModel.titleCurrentColor = [JXCategoryFactory interpolationColorFrom:self.titleColor to:self.titleSelectedColor percent:ratio];
     }
@@ -110,11 +110,11 @@
     model.titleSelectedFont = self.titleSelectedFont;
     model.titleNormalColor = self.titleColor;
     model.titleSelectedColor = self.titleSelectedColor;
-    model.titleLabelMaskEnabled = self.titleLabelMaskEnabled;
-    model.titleLabelZoomEnabled = self.titleLabelZoomEnabled;
+    model.titleLabelMaskEnabled = self.isTitleLabelMaskEnabled;
+    model.titleLabelZoomEnabled = self.isTitleLabelZoomEnabled;
     model.titleLabelNormalZoomScale = 1;
     model.titleLabelSelectedZoomScale = self.titleLabelZoomScale;
-    model.titleLabelStrokeWidthEnabled = self.titleLabelStrokeWidthEnabled;
+    model.titleLabelStrokeWidthEnabled = self.isTitleLabelStrokeWidthEnabled;
     model.titleLabelNormalStrokeWidth = 0;
     model.titleLabelSelectedStrokeWidth = self.titleLabelSelectedStrokeWidth;
     model.titleLabelVerticalOffset = self.titleLabelVerticalOffset;

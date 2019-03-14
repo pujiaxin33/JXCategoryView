@@ -59,7 +59,7 @@
 //        lineView.indicatorWidthIncrement = 10;
         titleCategoryView.indicators = @[lineView];
         [self.navigationController pushViewController:testVC animated:YES];
-
+        
     }else if ([title isEqualToString:@"LineView延长style"]) {
 
         testVC.isNeedIndicatorPositionChangeItem = YES;

@@ -98,7 +98,7 @@
 - (void)refreshSelectedCellModel:(JXCategoryBaseCellModel *)selectedCellModel unselectedCellModel:(JXCategoryBaseCellModel *)unselectedCellModel {
     [super refreshSelectedCellModel:selectedCellModel unselectedCellModel:unselectedCellModel];
 
-    if (self.selectedAnimationEnabled) {
+    if (self.isSelectedAnimationEnabled) {
         if (selectedCellModel.selectedType == JXCategoryCellSelectedTypeCode ||
             selectedCellModel.selectedType == JXCategoryCellSelectedTypeClick) {
             self.edgeLeftAnimator = [[JXCategoryViewAnimator alloc] init];

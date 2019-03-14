@@ -50,7 +50,7 @@
 /**
  手势滚动、点击切换的时候，是否允许滚动，默认YES
  */
-@property (nonatomic, assign) BOOL scrollEnabled;
+@property (nonatomic, assign, getter=isScrollEnabled) BOOL scrollEnabled;
 
 /**
  滚动动画的时间。默认0.25

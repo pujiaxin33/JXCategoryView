@@ -14,13 +14,13 @@
 
 @property (nonatomic, assign) NSUInteger index;
 
-@property (nonatomic, assign) BOOL selected;
+@property (nonatomic, assign, getter=isSelected) BOOL selected;
 
 @property (nonatomic, assign) CGFloat cellWidth;
 
 @property (nonatomic, assign) CGFloat cellSpacing;
 
-@property (nonatomic, assign) BOOL cellWidthZoomEnabled;
+@property (nonatomic, assign, getter=isCellWidthZoomEnabled) BOOL cellWidthZoomEnabled;
 
 @property (nonatomic, assign) CGFloat cellWidthNormalZoomScale;
 
@@ -28,7 +28,7 @@
 
 @property (nonatomic, assign) CGFloat cellWidthSelectedZoomScale;
 
-@property (nonatomic, assign) BOOL selectedAnimationEnabled;
+@property (nonatomic, assign, getter=isSelectedAnimationEnabled) BOOL selectedAnimationEnabled;
 
 @property (nonatomic, assign) NSTimeInterval selectedAnimationDuration;
 

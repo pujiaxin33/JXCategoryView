@@ -89,7 +89,7 @@
     }
 
     //允许变动frame的情况：1、允许滚动；2、不允许滚动，但是已经通过手势滚动切换一页内容了；
-    if (self.scrollEnabled == YES || (self.scrollEnabled == NO && percent == 0)) {
+    if (self.isScrollEnabled == YES || (self.isScrollEnabled == NO && percent == 0)) {
         CGRect bigBallFrame = self.bigBall.frame;
         bigBallFrame.origin.x = targetXOfBigBall;
         self.bigBall.frame = bigBallFrame;
@@ -119,7 +119,7 @@
     }
     CGRect toFrame = CGRectMake(x, y, ballWidth, ballHeight);
 
-    if (self.scrollEnabled) {
+    if (self.isScrollEnabled) {
         [UIView animateWithDuration:self.scrollAnimationDuration delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
             self.smallBall.frame = toFrame;
             self.bigBall.frame = toFrame;

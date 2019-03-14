@@ -16,11 +16,11 @@
 
     JXCategoryTitleVerticalZoomCellModel *myCellModel = (JXCategoryTitleVerticalZoomCellModel *)cellModel;
 
-    if (myCellModel.titleLabelZoomEnabled) {
+    if (myCellModel.isTitleLabelZoomEnabled) {
         //先把font设置为缩放的最大值，再缩小到最小值，最后根据当前的titleLabelZoomScale值，进行缩放更新。这样就能避免transform从小到大时字体模糊
         UIFont *maxScaleFont = [UIFont fontWithDescriptor:myCellModel.titleFont.fontDescriptor size:myCellModel.titleFont.pointSize*myCellModel.maxVerticalFontScale];
         CGFloat baseScale = myCellModel.titleFont.lineHeight/maxScaleFont.lineHeight;
-        if (myCellModel.selectedAnimationEnabled && [self checkCanStartSelectedAnimation:myCellModel]) {
+        if (myCellModel.isSelectedAnimationEnabled && [self checkCanStartSelectedAnimation:myCellModel]) {
             JXCategoryCellSelectedAnimationBlock block = [self preferredTitleZoomAnimationBlock:myCellModel baseScale:baseScale];
             [self addSelectedAnimationBlock:block];
         }else {
@@ -31,7 +31,7 @@
             self.maskTitleLabel.transform = currentTransform;
         }
     }else {
-        if (myCellModel.selected) {
+        if (myCellModel.isSelected) {
             self.titleLabel.font = myCellModel.titleSelectedFont;
             self.maskTitleLabel.font = myCellModel.titleSelectedFont;
         }else {

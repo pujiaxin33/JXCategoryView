@@ -61,7 +61,7 @@
     }
 
     //允许变动frame的情况：1、允许滚动；2、不允许滚动，但是已经通过手势滚动切换一页内容了；
-    if (self.scrollEnabled == YES || (self.scrollEnabled == NO && percent == 0)) {
+    if (self.isScrollEnabled == YES || (self.isScrollEnabled == NO && percent == 0)) {
         CGFloat height = [self indicatorHeightValue:leftCellFrame];
         CGFloat y = (leftCellFrame.size.height - height)/2;
         self.frame = CGRectMake(targetX, y, targetWidth, height);
@@ -75,7 +75,7 @@
     CGFloat y = (model.selectedCellFrame.size.height - height)/2;
     CGRect toFrame = CGRectMake(x, y, width, height);
 
-    if (self.scrollEnabled) {
+    if (self.isScrollEnabled) {
         [UIView animateWithDuration:self.scrollAnimationDuration delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
             self.frame = toFrame;
         } completion:^(BOOL finished) {

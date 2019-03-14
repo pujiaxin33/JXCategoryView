@@ -79,7 +79,7 @@
 
 @property (nonatomic, assign, readonly) NSInteger selectedIndex;
 
-@property (nonatomic, assign) BOOL contentScrollViewClickTransitionAnimationEnabled;    //默认为YES，只有当delegate未实现`- (void)categoryView:(JXCategoryBaseView *)categoryView didClickedItemContentScrollViewTransitionToIndex:(NSInteger)index`代理方法时才有效
+@property (nonatomic, assign, getter=isContentScrollViewClickTransitionAnimationEnabled) BOOL contentScrollViewClickTransitionAnimationEnabled;    //默认为YES，只有当delegate未实现`- (void)categoryView:(JXCategoryBaseView *)categoryView didClickedItemContentScrollViewTransitionToIndex:(NSInteger)index`代理方法时才有效
 
 @property (nonatomic, assign) CGFloat contentEdgeInsetLeft;     //整体内容的左边距，默认JXCategoryViewAutomaticDimension（等于cellSpacing）
 
@@ -91,16 +91,16 @@
 
 @property (nonatomic, assign) CGFloat cellSpacing;    //cell之间的间距，默认20
 
-@property (nonatomic, assign) BOOL averageCellSpacingEnabled;     //当collectionView.contentSize.width小于JXCategoryBaseView的宽度，是否将cellSpacing均分。默认为YES。
+@property (nonatomic, assign, getter=isAverageCellSpacingEnabled) BOOL averageCellSpacingEnabled;     //当collectionView.contentSize.width小于JXCategoryBaseView的宽度，是否将cellSpacing均分。默认为YES。
 
 //cell宽度是否缩放
-@property (nonatomic, assign) BOOL cellWidthZoomEnabled;     //默认为NO
+@property (nonatomic, assign, getter=isCellWidthZoomEnabled) BOOL cellWidthZoomEnabled;     //默认为NO
 
-@property (nonatomic, assign) BOOL cellWidthZoomScrollGradientEnabled;     //手势滚动过程中，是否需要更新cell的宽度。默认为YES
+@property (nonatomic, assign, getter=isCellWidthZoomScrollGradientEnabled) BOOL cellWidthZoomScrollGradientEnabled;     //手势滚动过程中，是否需要更新cell的宽度。默认为YES
 
 @property (nonatomic, assign) CGFloat cellWidthZoomScale;    //默认1.2，cellWidthZoomEnabled为YES才生效
 
-@property (nonatomic, assign) BOOL selectedAnimationEnabled;    //是否开启选中动画。默认为NO。自定义的cell选中动画需要自己实现。
+@property (nonatomic, assign, getter=isSelectedAnimationEnabled) BOOL selectedAnimationEnabled;    //是否开启选中动画。默认为NO。自定义的cell选中动画需要自己实现。
 
 @property (nonatomic, assign) NSTimeInterval selectedAnimationDuration;     //cell选中动画的时间。默认0.25
 
