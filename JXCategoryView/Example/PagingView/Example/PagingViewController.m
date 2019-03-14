@@ -43,8 +43,8 @@ static const CGFloat JXheightForHeaderInSection = 50;
     self.categoryView.titleLabelZoomEnabled = YES;
 
     JXCategoryIndicatorLineView *lineView = [[JXCategoryIndicatorLineView alloc] init];
-    lineView.indicatorLineViewColor = [UIColor colorWithRed:105/255.0 green:144/255.0 blue:239/255.0 alpha:1];
-    lineView.indicatorLineWidth = 30;
+    lineView.indicatorColor = [UIColor colorWithRed:105/255.0 green:144/255.0 blue:239/255.0 alpha:1];
+    lineView.indicatorWidth = 30;
     self.categoryView.indicators = @[lineView];
 
     _pagingView = [[JXPagerView alloc] initWithDelegate:self];

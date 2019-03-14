@@ -45,7 +45,7 @@
         testVC.isNeedIndicatorPositionChangeItem = YES;
         titleCategoryView.titleColorGradientEnabled = YES;
         JXCategoryIndicatorLineView *lineView = [[JXCategoryIndicatorLineView alloc] init];
-        lineView.indicatorLineWidth = 20;
+        lineView.indicatorWidth = 20;
         titleCategoryView.indicators = @[lineView];
         [self.navigationController pushViewController:testVC animated:YES];
 
@@ -54,7 +54,9 @@
         testVC.isNeedIndicatorPositionChangeItem = YES;
         titleCategoryView.titleColorGradientEnabled = YES;
         JXCategoryIndicatorLineView *lineView = [[JXCategoryIndicatorLineView alloc] init];
-        lineView.indicatorLineWidth = JXCategoryViewAutomaticDimension;
+        lineView.indicatorWidth = JXCategoryViewAutomaticDimension;
+        //可以试试宽度补偿
+//        lineView.indicatorWidthIncrement = 10;
         titleCategoryView.indicators = @[lineView];
         [self.navigationController pushViewController:testVC animated:YES];
 
@@ -63,9 +65,9 @@
         testVC.isNeedIndicatorPositionChangeItem = YES;
         titleCategoryView.titleColorGradientEnabled = YES;
         JXCategoryIndicatorLineView *lineView = [[JXCategoryIndicatorLineView alloc] init];
-        lineView.indicatorLineWidth = JXCategoryViewAutomaticDimension;
+        lineView.indicatorWidth = JXCategoryViewAutomaticDimension;
         //也可以试试固定宽度
-//        lineView.indicatorLineWidth = 20;
+//        lineView.indicatorWidth = 20;
         lineView.lineStyle = JXCategoryIndicatorLineStyle_Lengthen;
         titleCategoryView.indicators = @[lineView];
         [self.navigationController pushViewController:testVC animated:YES];
@@ -75,9 +77,9 @@
         testVC.isNeedIndicatorPositionChangeItem = YES;
         titleCategoryView.titleColorGradientEnabled = YES;
         JXCategoryIndicatorLineView *lineView = [[JXCategoryIndicatorLineView alloc] init];
-        lineView.indicatorLineWidth = JXCategoryViewAutomaticDimension;
+        lineView.indicatorWidth = JXCategoryViewAutomaticDimension;
         //也可以试试固定宽度
-//        lineView.indicatorLineWidth = 20;
+//        lineView.indicatorWidth = 20;
         lineView.lineStyle = JXCategoryIndicatorLineStyle_LengthenOffset;
         titleCategoryView.indicators = @[lineView];
         [self.navigationController pushViewController:testVC animated:YES];
@@ -106,7 +108,7 @@
                             [UIColor yellowColor],
                             [UIColor blueColor],];
         lineView.indicatorColors = colors;
-        lineView.indicatorLineWidth = JXCategoryViewAutomaticDimension;
+        lineView.indicatorWidth = JXCategoryViewAutomaticDimension;
         titleCategoryView.indicators = @[lineView];
         [self.navigationController pushViewController:testVC animated:YES];
 
@@ -130,8 +132,8 @@
 
         titleCategoryView.titleColorGradientEnabled = YES;
         JXCategoryIndicatorBackgroundView *backgroundView = [[JXCategoryIndicatorBackgroundView alloc] init];
-        backgroundView.backgroundViewHeight = 20;
-        backgroundView.backgroundViewCornerRadius = JXCategoryViewAutomaticDimension;
+        backgroundView.indicatorHeight = 20;
+        backgroundView.indicatorCornerRadius = JXCategoryViewAutomaticDimension;
         titleCategoryView.indicators = @[backgroundView];
         [self.navigationController pushViewController:testVC animated:YES];
 
@@ -139,8 +141,8 @@
 
         titleCategoryView.titleColorGradientEnabled = YES;
         JXCategoryIndicatorBackgroundView *backgroundView = [[JXCategoryIndicatorBackgroundView alloc] init];
-        backgroundView.backgroundViewHeight = 20;
-        backgroundView.backgroundViewCornerRadius = JXCategoryViewAutomaticDimension;
+        backgroundView.indicatorHeight = 20;
+        backgroundView.indicatorCornerRadius = JXCategoryViewAutomaticDimension;
         backgroundView.layer.shadowColor = [UIColor redColor].CGColor;
         backgroundView.layer.shadowRadius = 3;
         backgroundView.layer.shadowOffset = CGSizeMake(3, 4);
@@ -152,8 +154,8 @@
 
         titleCategoryView.titleColorGradientEnabled = YES;
         JXCategoryIndicatorBackgroundView *backgroundView = [[JXCategoryIndicatorBackgroundView alloc] init];
-        backgroundView.backgroundViewHeight = JXCategoryViewAutomaticDimension;
-        backgroundView.backgroundViewCornerRadius = 0;
+        backgroundView.indicatorHeight = JXCategoryViewAutomaticDimension;
+        backgroundView.indicatorCornerRadius = 0;
         titleCategoryView.indicators = @[backgroundView];
         [self.navigationController pushViewController:testVC animated:YES];
 
@@ -163,8 +165,8 @@
         titleCategoryView.titleLabelMaskEnabled = YES;
 
         JXCategoryIndicatorBackgroundView *backgroundView = [[JXCategoryIndicatorBackgroundView alloc] init];
-        backgroundView.backgroundViewWidthIncrement = 10;
-        backgroundView.backgroundViewHeight = 20;
+        backgroundView.indicatorWidthIncrement = 10;
+        backgroundView.indicatorHeight = 20;
         titleCategoryView.indicators = @[backgroundView];
         [self.navigationController pushViewController:testVC animated:YES];
 
@@ -174,8 +176,8 @@
         titleCategoryView.titleLabelMaskEnabled = YES;
 
         JXCategoryIndicatorBackgroundView *backgroundView = [[JXCategoryIndicatorBackgroundView alloc] init];
-        backgroundView.backgroundViewWidthIncrement = 10;
-        backgroundView.backgroundViewHeight = 20;
+        backgroundView.indicatorWidthIncrement = 10;
+        backgroundView.indicatorHeight = 20;
         backgroundView.alpha = 0;
         titleCategoryView.indicators = @[backgroundView];
         [self.navigationController pushViewController:testVC animated:YES];
@@ -194,8 +196,8 @@
         gradientView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         [backgroundView addSubview:gradientView];
 
-        backgroundView.backgroundViewHeight = 20;
-        backgroundView.backgroundViewCornerRadius = 0;
+        backgroundView.indicatorHeight = 20;
+        backgroundView.indicatorCornerRadius = 0;
         titleCategoryView.indicators = @[backgroundView];
         [self.navigationController pushViewController:testVC animated:YES];
 
@@ -224,7 +226,7 @@
 
         JXCategoryIndicatorLineView *lineView = [[JXCategoryIndicatorLineView alloc] init];
         JXCategoryIndicatorBackgroundView *backgroundView = [[JXCategoryIndicatorBackgroundView alloc] init];
-        backgroundView.backgroundViewHeight = 20;
+        backgroundView.indicatorHeight = 20;
 
         titleCategoryView.indicators = @[backgroundView, lineView];
         [self.navigationController pushViewController:testVC animated:YES];

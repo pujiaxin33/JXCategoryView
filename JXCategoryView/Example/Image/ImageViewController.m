@@ -30,7 +30,7 @@
     self.myCategoryView.imageCornerRadius = 0;
 
     JXCategoryIndicatorLineView *lineView = [[JXCategoryIndicatorLineView alloc] init];
-    lineView.indicatorLineWidth = 20;
+    lineView.indicatorWidth = 20;
     self.myCategoryView.indicators = @[lineView];
 }
 
