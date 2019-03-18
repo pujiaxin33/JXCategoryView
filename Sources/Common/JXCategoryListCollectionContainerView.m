@@ -207,7 +207,7 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didEndDisplayingCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
     id<JXCategoryListCollectionContentViewDelegate> list = _validListDict[@(indexPath.item)];
-    if (list && [list respondsToSelector:@selector(listDidAppear)]) {
+    if (list && [list respondsToSelector:@selector(listDidDisappear)]) {
         [list listDidDisappear];
     }
 }
