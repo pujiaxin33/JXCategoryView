@@ -65,8 +65,8 @@
     self.categoryView.contentScrollView = self.listContainerView.scrollView;
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
 
     [self.navigationController setNavigationBarHidden:YES animated:YES];
 }
@@ -140,6 +140,7 @@
 
 - (id<JXCategoryListContentViewDelegate>)listContainerView:(JXCategoryListContainerView *)listContainerView initListForIndex:(NSInteger)index {
     LoadDataListContainerListViewController *list = [[LoadDataListContainerListViewController alloc] init];
+    list.naviController = self.navigationController;
     __weak typeof(self) weakSelf = self;
     list.didScrollCallback = ^(UIScrollView *scrollView) {
         [weakSelf listScrollViewDidScroll:scrollView];
