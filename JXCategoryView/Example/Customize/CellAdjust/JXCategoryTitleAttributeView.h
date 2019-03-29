@@ -12,7 +12,7 @@
 
 @interface JXCategoryTitleAttributeView : JXCategoryTitleView
 
-@property (nonatomic, assign) NSInteger titleNumberOfLines;
+//@property (nonatomic, assign) NSInteger titleNumberOfLines;
 @property (nonatomic, strong) NSArray <NSAttributedString *> *attributeTitles;
 @property (nonatomic, strong) NSArray <NSAttributedString *> *selectedAttributeTitles;
 

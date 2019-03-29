@@ -26,7 +26,7 @@
 
 @property (nonatomic, assign) CGFloat imageCornerRadius; //图片圆角
 
-@property (nonatomic, assign) BOOL imageZoomEnabled;     //默认为NO
+@property (nonatomic, assign, getter=isImageZoomEnabled) BOOL imageZoomEnabled;     //默认为NO
 
 @property (nonatomic, assign) CGFloat imageZoomScale;    //默认1.2，imageZoomEnabled为YES才生效
 

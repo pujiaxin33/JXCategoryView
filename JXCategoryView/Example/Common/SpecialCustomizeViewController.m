@@ -14,6 +14,8 @@
 #import "PagingViewController.h"
 #import "LoadDataListCustomViewController.h"
 #import "LoadDataListContainerViewController.h"
+#import "LoadDataListCollectionViewController.h"
+#import "ScrollZoomViewController.h"
 
 @interface SpecialCustomizeViewController ()
 
@@ -56,15 +58,24 @@
         VerticalListViewController *vc = [[VerticalListViewController alloc] init];
         vc.title = title;
         [self.navigationController pushViewController:vc animated:YES];
-    }else if ([title isEqualToString:@"刷新数据+ListContainerView"]) {
+    }else if ([title isEqualToString:@"刷新数据+UIScrollView封装列表"]) {
         LoadDataListContainerViewController *vc = [[LoadDataListContainerViewController alloc] init];
+        vc.title = title;
+        [self.navigationController pushViewController:vc animated:YES];
+    }else if ([title isEqualToString:@"刷新数据+UICollectionView封装列表"]) {
+        LoadDataListCollectionViewController *vc = [[LoadDataListCollectionViewController alloc] init];
         vc.title = title;
         [self.navigationController pushViewController:vc animated:YES];
     }else if ([title isEqualToString:@"刷新数据+列表自定义"]) {
         LoadDataListCustomViewController *vc = [[LoadDataListCustomViewController alloc] init];
         vc.title = title;
         [self.navigationController pushViewController:vc animated:YES];
+    }else if ([title isEqualToString:@"垂直滚动缩放"]) {
+        ScrollZoomViewController *vc = [[ScrollZoomViewController alloc] init];
+        vc.title = title;
+        [self.navigationController pushViewController:vc animated:YES];
     }
+
 }
 
 @end

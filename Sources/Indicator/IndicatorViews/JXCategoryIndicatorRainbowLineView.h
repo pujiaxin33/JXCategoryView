@@ -11,7 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 /**
- 会无视JXCategoryIndicatorLineView的indicatorLineViewColor属性，以indicatorColors为准
+ 会无视JXCategoryIndicatorLineView的indicatorColor属性，以indicatorColors为准
  */
 @interface JXCategoryIndicatorRainbowLineView : JXCategoryIndicatorLineView
 

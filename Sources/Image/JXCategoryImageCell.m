@@ -53,7 +53,7 @@
     }else if (myCellModel.imageURL != nil) {
         currentImageURL = myCellModel.imageURL;
     }
-    if (myCellModel.selected) {
+    if (myCellModel.isSelected) {
         if (myCellModel.selectedImageName != nil) {
             currentImageName = myCellModel.selectedImageName;
         }else if (myCellModel.selectedImageURL != nil) {
@@ -70,7 +70,7 @@
         }
     }
 
-    if (myCellModel.imageZoomEnabled) {
+    if (myCellModel.isImageZoomEnabled) {
         self.imageView.transform = CGAffineTransformMakeScale(myCellModel.imageZoomScale, myCellModel.imageZoomScale);
     }else {
         self.imageView.transform = CGAffineTransformIdentity;

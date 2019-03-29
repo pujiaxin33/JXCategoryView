@@ -44,11 +44,11 @@
     JXCategoryIndicatorCellModel *selectedCellModel = nil;
     for (int i = 0; i < self.dataSource.count; i++) {
         JXCategoryIndicatorCellModel *cellModel = (JXCategoryIndicatorCellModel *)self.dataSource[i];
-        cellModel.sepratorLineShowEnabled = self.separatorLineShowEnabled;
+        cellModel.sepratorLineShowEnabled = self.isSeparatorLineShowEnabled;
         cellModel.separatorLineColor = self.separatorLineColor;
         cellModel.separatorLineSize = self.separatorLineSize;
         cellModel.backgroundViewMaskFrame = CGRectZero;
-        cellModel.cellBackgroundColorGradientEnabled = self.cellBackgroundColorGradientEnabled;
+        cellModel.cellBackgroundColorGradientEnabled = self.isCellBackgroundColorGradientEnabled;
         cellModel.cellBackgroundSelectedColor = self.cellBackgroundSelectedColor;
         cellModel.cellBackgroundUnselectedColor = self.cellBackgroundUnselectedColor;
         if (i == self.dataSource.count - 1) {
@@ -180,20 +180,23 @@
     return YES;
 }
 
+@end
+
+@implementation JXCategoryIndicatorView (UISubclassingIndicatorHooks)
 
 - (void)refreshLeftCellModel:(JXCategoryBaseCellModel *)leftCellModel rightCellModel:(JXCategoryBaseCellModel *)rightCellModel ratio:(CGFloat)ratio {
-    if (self.cellBackgroundColorGradientEnabled) {
+    if (self.isCellBackgroundColorGradientEnabled) {
         //处理cell背景色渐变
         JXCategoryIndicatorCellModel *leftModel = (JXCategoryIndicatorCellModel *)leftCellModel;
         JXCategoryIndicatorCellModel *rightModel = (JXCategoryIndicatorCellModel *)rightCellModel;
-        if (leftModel.selected) {
+        if (leftModel.isSelected) {
             leftModel.cellBackgroundSelectedColor = [JXCategoryFactory interpolationColorFrom:self.cellBackgroundSelectedColor to:self.cellBackgroundUnselectedColor percent:ratio];
             leftModel.cellBackgroundUnselectedColor = self.cellBackgroundUnselectedColor;
         }else {
             leftModel.cellBackgroundUnselectedColor = [JXCategoryFactory interpolationColorFrom:self.cellBackgroundSelectedColor to:self.cellBackgroundUnselectedColor percent:ratio];
             leftModel.cellBackgroundSelectedColor = self.cellBackgroundSelectedColor;
         }
-        if (rightModel.selected) {
+        if (rightModel.isSelected) {
             rightModel.cellBackgroundSelectedColor = [JXCategoryFactory interpolationColorFrom:self.cellBackgroundUnselectedColor to:self.cellBackgroundSelectedColor percent:ratio];
             rightModel.cellBackgroundUnselectedColor = self.cellBackgroundUnselectedColor;
         }else {

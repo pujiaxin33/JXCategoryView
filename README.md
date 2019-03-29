@@ -50,6 +50,8 @@ JXCategoryIndicatorLineView、JXCategoryIndicatorImageView、JXCategoryIndicator
 ----|------|
 颜色渐变  |  <img src="JXCategoryView/Images/TitleColorGradient.gif" width="343" height="80"> |
 大小缩放  |  <img src="JXCategoryView/Images/TitleZoom.gif" width="350" height="80"> |
+大小缩放+底部锚点  |  <img src="JXCategoryView/Images/TitleLabelAnchorBottom.gif" width="350" height="80"> |
+大小缩放+顶部锚点  |  <img src="JXCategoryView/Images/TitleLabelAnchorTop.gif" width="350" height="80"> |
 大小缩放+字体粗细  |  <img src="JXCategoryView/Images/TitleZoomStrokeWidth.gif" width="350" height="80"> |
 大小缩放+点击动画  |  <img src="JXCategoryView/Images/TitleZoomSelectedAnimation.gif" width="350" height="80"> |
 大小缩放+cell宽度缩放  |  <img src="JXCategoryView/Images/TitleZoomCellWidth.gif" width="350" height="80"> |
@@ -61,7 +63,8 @@ cell图文混用 |  <img src="JXCategoryView/Images/CellMixed.gif" width="343" h
 Image |  <img src="JXCategoryView/Images/CellImage.gif" width="343" height="80"> |
 数字 |  <img src="JXCategoryView/Images/Number.gif" width="343" height="80"> |
 红点 |  <img src="JXCategoryView/Images/CellRedDot.gif" width="343" height="80"> |
-自定义-多行+富文本 |  <img src="JXCategoryView/Images/AttributeView.gif" width="343" height="80"> |
+多行文本 |  <img src="JXCategoryView/Images/MultiLineText.gif" width="350" height="80"> |
+多行富文本 |  <img src="JXCategoryView/Images/AttributeView.gif" width="343" height="80"> |
 Cell背景色渐变  |  <img src="JXCategoryView/Images/CellBackgroundColorGradient.gif" width="343" height="80"> |
 分割线 |  <img src="JXCategoryView/Images/SeparatorLine.gif" width="343" height="80"> |
 
@@ -76,6 +79,7 @@ SegmentedControl<br/>参考[`SegmentedControlViewController`](https://github.com
 嵌套使用<br/>参考[`NestViewController`](https://github.com/pujiaxin33/JXCategoryView/blob/master/JXCategoryView/Example/Nest/NestViewController.m)类 |  <img src="JXCategoryView/Images/Nest.gif" width="343" height="272"> |
 个人主页(上下左右滚动、header悬浮)<br/>参考[`PagingViewController`](https://github.com/pujiaxin33/JXCategoryView/blob/master/JXCategoryView/Example/PagingView/Example/PagingViewController.m)类<br/> 更多样式请点击查看[JXPagingView库](https://github.com/pujiaxin33/JXPagingView) |  <img src="JXCategoryView/Images/UserProfile.gif" width="343" height="562"> |
 垂直列表滚动<br/>参考[`VerticalListViewController`](https://github.com/pujiaxin33/JXCategoryView/blob/master/JXCategoryView/Example/VerticalListView/VerticalListViewController.m)类<br/> 高仿腾讯视频<br/>（背景色异常是录屏软件bug） |  <img src="JXCategoryView/Images/VerticalList.gif" width="343" height="607"> |
+| 垂直缩放(仿网易圈圈、脉脉首页)<br/>参考[`ScrollZoomViewController`](https://github.com/pujiaxin33/JXCategoryView/blob/master/JXCategoryView/Example/ScrollZoomView/ScrollZoomViewController.m)类 | <img src="JXCategoryView/Images/VerticalZoomTitle.gif" width="350" height="306"> |
 数据源刷新&列表数据加载<br/>参考[`LoadDataListContainerViewController`](https://github.com/pujiaxin33/JXCategoryView/blob/master/JXCategoryView/Example/LoadData/LoadDataListContainerViewController.m)类 |  <img src="JXCategoryView/Images/LoadData.gif" width="343" height="619"> |
 
 
@@ -217,6 +221,17 @@ self.categoryView.contentScrollView = self.listContainerView.scrollView;
 ```
 
 具体点击[LoadDataListContainerViewController](https://github.com/pujiaxin33/JXCategoryView/blob/master/JXCategoryView/Example/LoadData/LoadDataListContainerViewController.m)查看源代码了解
+
+#### `JXCategoryListCollectionContainerView`封装类使用示例
+
+- 有了`JXCategoryListContainerView`为什么还要`JXCategoryListCollectionContainerView`类呢？
+    - 因为`JXCategoryListContainerView`内部使用的是`UIScrollView`，当所有列表都加载出来后，所有的列表都被addSubview到`UIScrollView`上面了。所以，在视图内存这一块会比较大，对于一些列表复杂且数量多的应用，内存表现不太好。
+
+- `JXCategoryListCollectionContainerView`的优势
+    - 只有当前显示的列表才会被addSubview，视图内存表现良好；
+    - 因为内部使用`UICollectionView`，在api设计上更加简洁；
+
+具体使用示例，点击参看[JXCategoryListCollectionContainerView使用示例](https://github.com/pujiaxin33/JXCategoryView/blob/master/Document/JXCategoryListCollectionContainerView%E4%BD%BF%E7%94%A8.md)
 
 ## 指示器样式自定义
 

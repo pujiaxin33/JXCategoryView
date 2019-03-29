@@ -51,8 +51,8 @@
     self.myCategoryView.attributeTitles = self.attributeTitles;
 
     JXCategoryIndicatorBackgroundView *backgroundView = [[JXCategoryIndicatorBackgroundView alloc] init];
-    backgroundView.backgroundViewHeight = 40;
-    backgroundView.backgroundViewCornerRadius = 5;
+    backgroundView.indicatorHeight = 40;
+    backgroundView.indicatorCornerRadius = 5;
     self.myCategoryView.indicators = @[backgroundView];
 }
 

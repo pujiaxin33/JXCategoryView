@@ -11,7 +11,7 @@
 
 @interface JXCategoryIndicatorCellModel : JXCategoryBaseCellModel
 
-@property (nonatomic, assign) BOOL sepratorLineShowEnabled;
+@property (nonatomic, assign, getter=isSepratorLineShowEnabled) BOOL sepratorLineShowEnabled;
 
 @property (nonatomic, strong) UIColor *separatorLineColor;
 
@@ -19,7 +19,7 @@
 
 @property (nonatomic, assign) CGRect backgroundViewMaskFrame;   //底部指示器的frame转换到cell的frame
 
-@property (nonatomic, assign) BOOL cellBackgroundColorGradientEnabled;
+@property (nonatomic, assign, getter=isCellBackgroundColorGradientEnabled) BOOL cellBackgroundColorGradientEnabled;
 
 @property (nonatomic, strong) UIColor *cellBackgroundUnselectedColor;
 

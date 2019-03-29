@@ -13,11 +13,17 @@
 @property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, assign) NSInteger currentIndex;
 @property (nonatomic, strong) NSMutableDictionary <NSNumber *, id<JXCategoryListContentViewDelegate>> *validListDict;
-@property (nonatomic, assign) BOOL isLayoutSubviewsed;
 @property (nonatomic, strong) NSLock *lock;
+@property (nonatomic, assign) BOOL willRemoveFromWindow;
+@property (nonatomic, assign) BOOL isFirstMoveToWindow;
+@property (nonatomic, strong) JXCategoryListContainerView *retainedSelf;
 @end
 
 @implementation JXCategoryListContainerView
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 
 - (instancetype)initWithDelegate:(id<JXCategoryListContainerViewDelegate>)delegate{
     self = [super initWithFrame:CGRectZero];
@@ -49,6 +55,25 @@
     [self addSubview:self.scrollView];
 }
 
+- (void)willMoveToWindow:(UIWindow *)newWindow {
+    //当前页面push到一个新的页面时，willMoveToWindow会调用三次。第一次调用的newWindow为nil，第二次调用间隔1ms左右newWindow有值，第三次调用间隔400ms左右newWindow为nil。
+    //根据上述事实，第一次和第二次为无效调用，可以根据其间隔1ms左右过滤掉
+    if (newWindow == nil) {
+        self.willRemoveFromWindow = YES;
+        //当前页面被pop的时候，willMoveToWindow只会调用一次，而且整个页面会被销毁掉，所以需要循环引用自己，确保能延迟执行currentListDidDisappear方法，触发列表消失事件。由此可见，循环引用也不一定是个坏事。是天使还是魔鬼，就看你如何对待它了。
+        self.retainedSelf = self;
+        [self performSelector:@selector(currentListDidDisappear) withObject:nil afterDelay:0.02];
+    }else {
+        if (self.willRemoveFromWindow) {
+            self.willRemoveFromWindow = NO;
+            self.retainedSelf = nil;
+            [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(currentListDidDisappear) object:nil];
+        }else {
+            [self currentListDidAppear];
+        }
+    }
+}
+
 - (void)reloadData {
     [_lock lock];
     for (id<JXCategoryListContentViewDelegate> list in _validListDict.allValues) {
@@ -62,14 +87,6 @@
     [self listDidAppear:self.currentIndex];
 }
 
-- (void)currentListDidAppear {
-    [self listDidAppear:self.currentIndex];
-}
-
-- (void)currentListDidDisappear {
-    [self listDidDisappear:self.currentIndex];
-}
-
 - (void)layoutSubviews {
     [super layoutSubviews];
 
@@ -80,11 +97,6 @@
         [list listView].frame = CGRectMake(index.intValue*self.scrollView.bounds.size.width, 0, self.scrollView.bounds.size.width, self.scrollView.bounds.size.height);
     }];
     [_lock unlock];
-    if (!self.isLayoutSubviewsed) {
-        self.isLayoutSubviewsed = YES;
-        //初始化第一次调用
-        [self listDidAppear:self.currentIndex];
-    }
 }
 
 - (void)setDefaultSelectedIndex:(NSInteger)defaultSelectedIndex {
@@ -108,10 +120,6 @@
     [_lock unlock];
 }
 
-- (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
 #pragma mark - JXCategoryBaseView回调
 
 - (void)scrollingFromLeftIndex:(NSInteger)leftIndex toRightIndex:(NSInteger)rightIndex ratio:(CGFloat)ratio selectedIndex:(NSInteger)selectedIndex {
@@ -122,12 +130,18 @@
         if (ratio < (1 - self.didAppearPercent)) {
             targetIndex = leftIndex;
             disappearIndex = rightIndex;
+        }else {
+            targetIndex = rightIndex;
+            disappearIndex = leftIndex;
         }
     }else {
         //当前选中的在左边，用户正在从左边往右边滑动
         if (ratio > self.didAppearPercent) {
             targetIndex = rightIndex;
             disappearIndex = leftIndex;
+        }else {
+            targetIndex = leftIndex;
+            disappearIndex = rightIndex;
         }
     }
 
@@ -145,6 +159,21 @@
 }
 
 #pragma mark - Private
+
+- (void)currentListDidAppear {
+    [self listDidAppear:self.currentIndex];
+}
+
+- (void)currentListDidDisappear {
+    [_lock lock];
+    id<JXCategoryListContentViewDelegate> list = _validListDict[@(self.currentIndex)];
+    [_lock unlock];
+    if (list && [list respondsToSelector:@selector(listDidDisappear)]) {
+        [list listDidDisappear];
+    }
+    self.willRemoveFromWindow = NO;
+    self.retainedSelf = nil;
+}
 
 - (void)listDidAppear:(NSInteger)index {
     NSUInteger count = [self.delegate numberOfListsInlistContainerView:self];

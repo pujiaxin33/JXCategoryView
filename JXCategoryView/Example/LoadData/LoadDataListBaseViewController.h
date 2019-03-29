@@ -11,6 +11,7 @@
 @interface LoadDataListBaseViewController : UITableViewController
 
 @property (nonatomic, strong) UINavigationController *naviController;
+@property (nonatomic, copy) void(^didScrollCallback)(UIScrollView *scrollView);
 - (void)loadDataForFirst;
 
 @end

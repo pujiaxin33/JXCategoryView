@@ -15,7 +15,7 @@
 - (void)initializeData {
     [super initializeData];
 
-    _titleNumberOfLines = 2;
+    self.titleNumberOfLines = 2;
 }
 
 //返回自定义的cell class

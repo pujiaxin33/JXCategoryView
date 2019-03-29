@@ -21,9 +21,9 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        _ballViewSize = CGSizeMake(15, 15);
+        self.indicatorWidth = 15;
+        self.indicatorHeight = 15;
         _ballScrollOffsetX = 20;
-        _ballViewColor = [UIColor redColor];
 
         _smallBall = [[UIView alloc] init];
         [self addSubview:self.smallBall];
@@ -40,60 +40,64 @@
 #pragma mark - JXCategoryIndicatorProtocol
 
 - (void)jx_refreshState:(JXCategoryIndicatorParamsModel *)model {
+    CGFloat ballWidth = [self indicatorWidthValue:model.selectedCellFrame];
+    CGFloat ballHeight = [self indicatorHeightValue:model.selectedCellFrame];
     [CATransaction begin];
     [CATransaction setDisableActions:YES];
-    self.shapeLayer.fillColor = self.ballViewColor.CGColor;
+    self.shapeLayer.fillColor = self.indicatorColor.CGColor;
     [CATransaction commit];
-    self.smallBall.backgroundColor = self.ballViewColor;
-    self.smallBall.layer.cornerRadius = self.ballViewSize.height/2;
-    self.bigBall.backgroundColor = self.ballViewColor;
-    self.bigBall.layer.cornerRadius = self.ballViewSize.height/2;
+    self.smallBall.backgroundColor = self.indicatorColor;
+    self.smallBall.layer.cornerRadius = ballHeight/2;
+    self.bigBall.backgroundColor = self.indicatorColor;
+    self.bigBall.layer.cornerRadius = ballHeight/2;
 
-    CGFloat x = model.selectedCellFrame.origin.x + (model.selectedCellFrame.size.width - self.ballViewSize.width)/2;
-    CGFloat y = self.superview.bounds.size.height - self.ballViewSize.height - self.verticalMargin;
+    CGFloat x = model.selectedCellFrame.origin.x + (model.selectedCellFrame.size.width - ballWidth)/2;
+    CGFloat y = self.superview.bounds.size.height - ballHeight - self.verticalMargin;
     if (self.componentPosition == JXCategoryComponentPosition_Top) {
         y = self.verticalMargin;
     }
-    self.smallBall.frame = CGRectMake(x, y, self.ballViewSize.width, self.ballViewSize.height);
-    self.bigBall.frame = CGRectMake(x, y, self.ballViewSize.width, self.ballViewSize.height);
+    self.smallBall.frame = CGRectMake(x, y, ballWidth, ballHeight);
+    self.bigBall.frame = CGRectMake(x, y, ballWidth, ballHeight);
 }
 
 - (void)jx_contentScrollViewDidScroll:(JXCategoryIndicatorParamsModel *)model {
+    CGFloat ballWidth = [self indicatorWidthValue:model.leftCellFrame];
+    CGFloat ballHeight = [self indicatorHeightValue:model.leftCellFrame];
     CGRect rightCellFrame = model.rightCellFrame;
     CGRect leftCellFrame = model.leftCellFrame;
     CGFloat percent = model.percent;
     CGFloat targetXOfBigBall = 0;
-    CGFloat targetXOfSmallBall = leftCellFrame.origin.x + (leftCellFrame.size.width - self.ballViewSize.width)/2;
-    CGFloat targetWidthOfSmallBall = self.ballViewSize.width;
+    CGFloat targetXOfSmallBall = leftCellFrame.origin.x + (leftCellFrame.size.width - ballWidth)/2;
+    CGFloat targetWidthOfSmallBall = ballWidth;
 
     if (percent == 0) {
-        targetXOfBigBall = leftCellFrame.origin.x + (leftCellFrame.size.width - self.ballViewSize.width)/2.0;
+        targetXOfBigBall = leftCellFrame.origin.x + (leftCellFrame.size.width - ballWidth)/2.0;
         targetXOfSmallBall = leftCellFrame.origin.x + (leftCellFrame.size.width - targetWidthOfSmallBall)/2.0;
     }else {
-        CGFloat leftX = leftCellFrame.origin.x + (leftCellFrame.size.width - self.ballViewSize.width)/2;
-        CGFloat rightX = rightCellFrame.origin.x + (rightCellFrame.size.width - self.ballViewSize.width)/2;
+        CGFloat leftX = leftCellFrame.origin.x + (leftCellFrame.size.width - ballWidth)/2;
+        CGFloat rightX = rightCellFrame.origin.x + (rightCellFrame.size.width - ballWidth)/2;
 
         //前50%，移动bigBall的x，缩小smallBall；后50%，移动bigBall的x，缩小smallBall，移动smallBall的x
         if (percent <= 0.5) {
             targetXOfBigBall = [JXCategoryFactory interpolationFrom:leftX to:(rightX - self.ballScrollOffsetX) percent:percent*2];
-            targetWidthOfSmallBall = [JXCategoryFactory interpolationFrom:self.ballViewSize.width to:self.ballViewSize.width/2 percent:percent*2];
+            targetWidthOfSmallBall = [JXCategoryFactory interpolationFrom:ballWidth to:ballWidth/2 percent:percent*2];
         }else {
             targetXOfBigBall = [JXCategoryFactory interpolationFrom:(rightX - self.ballScrollOffsetX) to:rightX percent:(percent - 0.5)*2];
-            targetWidthOfSmallBall = [JXCategoryFactory interpolationFrom:self.ballViewSize.width/2 to:0 percent:(percent - 0.5)*2];
+            targetWidthOfSmallBall = [JXCategoryFactory interpolationFrom:ballWidth/2 to:0 percent:(percent - 0.5)*2];
             targetXOfSmallBall = [JXCategoryFactory interpolationFrom:leftX to:rightX percent:(percent - 0.5)*2];
         }
     }
 
     //允许变动frame的情况：1、允许滚动；2、不允许滚动，但是已经通过手势滚动切换一页内容了；
-    if (self.scrollEnabled == YES || (self.scrollEnabled == NO && percent == 0)) {
+    if (self.isScrollEnabled == YES || (self.isScrollEnabled == NO && percent == 0)) {
         CGRect bigBallFrame = self.bigBall.frame;
         bigBallFrame.origin.x = targetXOfBigBall;
         self.bigBall.frame = bigBallFrame;
         self.bigBall.layer.cornerRadius = bigBallFrame.size.height/2;
 
-        CGFloat targetYOfSmallBall = self.superview.bounds.size.height - self.ballViewSize.height/2 - targetWidthOfSmallBall/2 - self.verticalMargin;
+        CGFloat targetYOfSmallBall = self.superview.bounds.size.height - ballHeight/2 - targetWidthOfSmallBall/2 - self.verticalMargin;
         if (self.componentPosition == JXCategoryComponentPosition_Top) {
-            targetYOfSmallBall = self.ballViewSize.height/2 - targetWidthOfSmallBall/2 + self.verticalMargin;
+            targetYOfSmallBall = ballHeight/2 - targetWidthOfSmallBall/2 + self.verticalMargin;
         }
         self.smallBall.frame = CGRectMake(targetXOfSmallBall, targetYOfSmallBall, targetWidthOfSmallBall, targetWidthOfSmallBall);
         self.smallBall.layer.cornerRadius = targetWidthOfSmallBall/2;
@@ -106,28 +110,29 @@
 }
 
 - (void)jx_selectedCell:(JXCategoryIndicatorParamsModel *)model {
-
-    CGFloat x = model.selectedCellFrame.origin.x + (model.selectedCellFrame.size.width - self.ballViewSize.width)/2;
-    CGFloat y = self.superview.bounds.size.height - self.ballViewSize.height - self.verticalMargin;
+    CGFloat ballWidth = [self indicatorWidthValue:model.selectedCellFrame];
+    CGFloat ballHeight = [self indicatorHeightValue:model.selectedCellFrame];
+    CGFloat x = model.selectedCellFrame.origin.x + (model.selectedCellFrame.size.width - ballWidth)/2;
+    CGFloat y = self.superview.bounds.size.height - ballHeight - self.verticalMargin;
     if (self.componentPosition == JXCategoryComponentPosition_Top) {
         y = self.verticalMargin;
     }
-    CGRect toFrame = CGRectMake(x, y, self.ballViewSize.width, self.ballViewSize.height);
+    CGRect toFrame = CGRectMake(x, y, ballWidth, ballHeight);
 
-    if (self.scrollEnabled) {
+    if (self.isScrollEnabled) {
         [UIView animateWithDuration:self.scrollAnimationDuration delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
             self.smallBall.frame = toFrame;
             self.bigBall.frame = toFrame;
-            self.smallBall.layer.cornerRadius = self.ballViewSize.height/2;
-            self.bigBall.layer.cornerRadius = self.ballViewSize.height/2;
+            self.smallBall.layer.cornerRadius = ballHeight/2;
+            self.bigBall.layer.cornerRadius = ballHeight/2;
         } completion:^(BOOL finished) {
 
         }];
     }else {
         self.smallBall.frame = toFrame;
         self.bigBall.frame = toFrame;
-        self.smallBall.layer.cornerRadius = self.ballViewSize.height/2;
-        self.bigBall.layer.cornerRadius = self.ballViewSize.height/2;
+        self.smallBall.layer.cornerRadius = ballHeight/2;
+        self.bigBall.layer.cornerRadius = ballHeight/2;
     }
 }
 
@@ -174,6 +179,30 @@
     [path addLineToPoint:pointD];
     [path addQuadCurveToPoint:pointA controlPoint:pointO];
     return path;
+}
+
+@end
+
+@implementation JXCategoryIndicatorBallView (JXDeprecated)
+
+@dynamic ballViewColor;
+@dynamic ballViewSize;
+
+- (void)setBallViewSize:(CGSize)ballViewSize {
+    self.indicatorWidth = ballViewSize.width;
+    self.indicatorHeight = ballViewSize.height;
+}
+
+- (CGSize)ballViewSize {
+    return CGSizeMake(self.indicatorWidth, self.indicatorHeight);
+}
+
+- (void)setBallViewColor:(UIColor *)ballViewColor {
+    self.indicatorColor = ballViewColor;
+}
+
+- (UIColor *)ballViewColor {
+    return self.indicatorColor;
 }
 
 @end

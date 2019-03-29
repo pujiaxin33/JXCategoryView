@@ -35,9 +35,9 @@
     self.myCategoryView.titleLabelMaskEnabled = YES;
 
     JXCategoryIndicatorBackgroundView *backgroundView = [[JXCategoryIndicatorBackgroundView alloc] init];
-    backgroundView.backgroundViewHeight = 30;
-    backgroundView.backgroundViewWidthIncrement = 20;
-    backgroundView.backgroundViewColor = [UIColor redColor];
+    backgroundView.indicatorHeight = 30;
+    backgroundView.indicatorWidthIncrement = 20;
+    backgroundView.indicatorColor = [UIColor redColor];
     self.myCategoryView.indicators = @[backgroundView];
 
     [self.myCategoryView removeFromSuperview];

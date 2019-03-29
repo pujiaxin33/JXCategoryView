@@ -18,10 +18,7 @@
     if (self) {
         _lineStyle = JXCategoryIndicatorLineStyle_Normal;
         _lineScrollOffsetX = 10;
-        _indicatorLineViewHeight = 3;
-        _indicatorLineWidth = JXCategoryViewAutomaticDimension;
-        _indicatorLineViewColor = [UIColor redColor];
-        _indicatorLineViewCornerRadius = JXCategoryViewAutomaticDimension;
+        self.indicatorHeight = 3;
     }
     return self;
 }
@@ -29,16 +26,16 @@
 #pragma mark - JXCategoryIndicatorProtocol
 
 - (void)jx_refreshState:(JXCategoryIndicatorParamsModel *)model {
-    self.backgroundColor = self.indicatorLineViewColor;
-    self.layer.cornerRadius = [self getIndicatorLineViewCornerRadius];
+    self.backgroundColor = self.indicatorColor;
+    self.layer.cornerRadius = [self indicatorCornerRadiusValue:model.selectedCellFrame];
 
-    CGFloat selectedLineWidth = [self getIndicatorLineViewWidth:model.selectedCellFrame];
+    CGFloat selectedLineWidth = [self indicatorWidthValue:model.selectedCellFrame];
     CGFloat x = model.selectedCellFrame.origin.x + (model.selectedCellFrame.size.width - selectedLineWidth)/2;
-    CGFloat y = self.superview.bounds.size.height - self.indicatorLineViewHeight - self.verticalMargin;
+    CGFloat y = self.superview.bounds.size.height - [self indicatorHeightValue:model.selectedCellFrame] - self.verticalMargin;
     if (self.componentPosition == JXCategoryComponentPosition_Top) {
         y = self.verticalMargin;
     }
-    self.frame = CGRectMake(x, y, selectedLineWidth, self.indicatorLineViewHeight);
+    self.frame = CGRectMake(x, y, selectedLineWidth, [self indicatorHeightValue:model.selectedCellFrame]);
 }
 
 - (void)jx_contentScrollViewDidScroll:(JXCategoryIndicatorParamsModel *)model {
@@ -46,13 +43,13 @@
     CGRect leftCellFrame = model.leftCellFrame;
     CGFloat percent = model.percent;
     CGFloat targetX = leftCellFrame.origin.x;
-    CGFloat targetWidth = [self getIndicatorLineViewWidth:leftCellFrame];
+    CGFloat targetWidth = [self indicatorWidthValue:leftCellFrame];
 
     if (percent == 0) {
         targetX = leftCellFrame.origin.x + (leftCellFrame.size.width - targetWidth)/2.0;
     }else {
         CGFloat leftWidth = targetWidth;
-        CGFloat rightWidth = [self getIndicatorLineViewWidth:rightCellFrame];
+        CGFloat rightWidth = [self indicatorWidthValue:rightCellFrame];
 
         CGFloat leftX = leftCellFrame.origin.x + (leftCellFrame.size.width - leftWidth)/2;
         CGFloat rightX = rightCellFrame.origin.x + (rightCellFrame.size.width - rightWidth)/2;
@@ -60,8 +57,8 @@
         if (self.lineStyle == JXCategoryIndicatorLineStyle_Normal) {
             targetX = [JXCategoryFactory interpolationFrom:leftX to:rightX percent:percent];
 
-            if (self.indicatorLineWidth == JXCategoryViewAutomaticDimension) {
-                targetWidth = [JXCategoryFactory interpolationFrom:leftCellFrame.size.width to:rightCellFrame.size.width percent:percent];
+            if (self.indicatorWidth == JXCategoryViewAutomaticDimension) {
+                targetWidth = [JXCategoryFactory interpolationFrom:leftWidth to:rightWidth percent:percent];
             }
         }else if (self.lineStyle == JXCategoryIndicatorLineStyle_Lengthen) {
             CGFloat maxWidth = rightX - leftX + rightWidth;
@@ -88,7 +85,7 @@
     }
 
     //允许变动frame的情况：1、允许滚动；2、不允许滚动，但是已经通过手势滚动切换一页内容了；
-    if (self.scrollEnabled == YES || (self.scrollEnabled == NO && percent == 0)) {
+    if (self.isScrollEnabled == YES || (self.isScrollEnabled == NO && percent == 0)) {
         CGRect frame = self.frame;
         frame.origin.x = targetX;
         frame.size.width = targetWidth;
@@ -97,12 +94,12 @@
 }
 
 - (void)jx_selectedCell:(JXCategoryIndicatorParamsModel *)model {
-    CGFloat targetWidth = [self getIndicatorLineViewWidth:model.selectedCellFrame];
+    CGFloat targetWidth = [self indicatorWidthValue:model.selectedCellFrame];
     CGRect toFrame = self.frame;
     toFrame.origin.x = model.selectedCellFrame.origin.x + (model.selectedCellFrame.size.width - targetWidth)/2.0;
     toFrame.size.width = targetWidth;
 
-    if (self.scrollEnabled) {
+    if (self.isScrollEnabled) {
         [UIView animateWithDuration:self.scrollAnimationDuration delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
             self.frame = toFrame;
         } completion:^(BOOL finished) {
@@ -113,22 +110,45 @@
     }
 }
 
-# pragma mark - Private
+@end
 
-- (CGFloat)getIndicatorLineViewCornerRadius
-{
-    if (self.indicatorLineViewCornerRadius == JXCategoryViewAutomaticDimension) {
-        return self.indicatorLineViewHeight/2;
-    }
-    return self.indicatorLineViewCornerRadius;
+@implementation JXCategoryIndicatorLineView (JXDeprecated)
+
+@dynamic indicatorLineWidth;
+@dynamic indicatorLineViewHeight;
+@dynamic indicatorLineViewCornerRadius;
+@dynamic indicatorLineViewColor;
+
+- (void)setIndicatorLineWidth:(CGFloat)indicatorLineWidth {
+    self.indicatorWidth = indicatorLineWidth;
 }
 
-- (CGFloat)getIndicatorLineViewWidth:(CGRect)cellFrame
-{
-    if (self.indicatorLineWidth == JXCategoryViewAutomaticDimension) {
-        return cellFrame.size.width;
-    }
-    return self.indicatorLineWidth;
+- (CGFloat)indicatorLineWidth {
+    return self.indicatorWidth;
+}
+
+- (void)setIndicatorLineViewHeight:(CGFloat)indicatorLineViewHeight {
+    self.indicatorHeight = indicatorLineViewHeight;
+}
+
+- (CGFloat)indicatorLineViewHeight {
+    return self.indicatorHeight;
+}
+
+- (void)setIndicatorLineViewCornerRadius:(CGFloat)indicatorLineViewCornerRadius {
+    self.indicatorCornerRadius = indicatorLineViewCornerRadius;
+}
+
+- (CGFloat)indicatorLineViewCornerRadius {
+    return self.indicatorCornerRadius;
+}
+
+- (void)setIndicatorLineViewColor:(UIColor *)indicatorLineViewColor {
+    self.indicatorColor = indicatorLineViewColor;
+}
+
+- (UIColor *)indicatorLineViewColor {
+    return self.indicatorColor;
 }
 
 @end

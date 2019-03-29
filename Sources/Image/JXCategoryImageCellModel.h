@@ -24,7 +24,7 @@
 
 @property (nonatomic, assign) CGFloat imageCornerRadius;
 
-@property (nonatomic, assign) BOOL imageZoomEnabled;    
+@property (nonatomic, assign, getter=isImageZoomEnabled) BOOL imageZoomEnabled;
 
 @property (nonatomic, assign) CGFloat imageZoomScale;
 

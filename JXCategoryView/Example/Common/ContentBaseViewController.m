@@ -9,6 +9,7 @@
 #import "ContentBaseViewController.h"
 #import "ListViewController.h"
 #import "NestViewController.h"
+#import "NaviSegmentedControlViewController.h"
 
 @interface ContentBaseViewController () <JXCategoryViewDelegate, JXCategoryListContainerViewDelegate>
 @end
@@ -30,12 +31,9 @@
     self.view.backgroundColor = [UIColor whiteColor];
 
     self.categoryView.delegate = self;
-    self.categoryView.defaultSelectedIndex = 0;
     [self.view addSubview:self.categoryView];
 
-    self.listContainerView = [[JXCategoryListContainerView alloc] initWithDelegate:self];
     self.listContainerView.didAppearPercent = 0.01; //滚动一点就触发加载
-    self.listContainerView.defaultSelectedIndex = 0;
     [self.view addSubview:self.listContainerView];
 
     self.categoryView.contentScrollView = self.listContainerView.scrollView;
@@ -49,7 +47,9 @@
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
 
-    self.categoryView.frame = CGRectMake(0, 0, self.view.bounds.size.width, [self preferredCategoryViewHeight]);
+    if (![self isKindOfClass:[NaviSegmentedControlViewController class]]) {
+        self.categoryView.frame = CGRectMake(0, 0, self.view.bounds.size.width, [self preferredCategoryViewHeight]);
+    }
     self.listContainerView.frame = CGRectMake(0, [self preferredCategoryViewHeight], self.view.bounds.size.width, self.view.bounds.size.height);
 }
 
@@ -84,6 +84,13 @@
         _categoryView = [self preferredCategoryView];
     }
     return _categoryView;
+}
+
+- (JXCategoryListContainerView *)listContainerView {
+    if (_listContainerView == nil) {
+        _listContainerView = [[JXCategoryListContainerView alloc] initWithDelegate:self];
+    }
+    return _listContainerView;
 }
 
 - (void)rightItemClicked {

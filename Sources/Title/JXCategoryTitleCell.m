@@ -13,6 +13,7 @@
 @interface JXCategoryTitleCell ()
 @property (nonatomic, strong) CALayer *titleMaskLayer;
 @property (nonatomic, strong) CALayer *maskTitleMaskLayer;
+@property (nonatomic, strong) NSLayoutConstraint *titleLabelCenterY;
 @end
 
 @implementation JXCategoryTitleCell
@@ -24,15 +25,26 @@
     _titleLabel = [[UILabel alloc] init];
     self.titleLabel.clipsToBounds = YES;
     self.titleLabel.textAlignment = NSTextAlignmentCenter;
+    self.titleLabel.translatesAutoresizingMaskIntoConstraints = NO;
     [self.contentView addSubview:self.titleLabel];
+
+    NSLayoutConstraint *titleLabelCenterX = [NSLayoutConstraint constraintWithItem:self.titleLabel attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeCenterX multiplier:1 constant:0];
+    NSLayoutConstraint *titleLabelCenterY = [NSLayoutConstraint constraintWithItem:self.titleLabel attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeCenterY multiplier:1 constant:0];
+    self.titleLabelCenterY = titleLabelCenterY;
+    [NSLayoutConstraint activateConstraints:@[titleLabelCenterX, titleLabelCenterY]];
 
     _titleMaskLayer = [CALayer layer];
     self.titleMaskLayer.backgroundColor = [UIColor redColor].CGColor;
 
     _maskTitleLabel = [[UILabel alloc] init];
-    _maskTitleLabel.hidden = YES;
+    self.maskTitleLabel.hidden = YES;
+    self.maskTitleLabel.translatesAutoresizingMaskIntoConstraints = NO;
     self.maskTitleLabel.textAlignment = NSTextAlignmentCenter;
     [self.contentView addSubview:self.maskTitleLabel];
+
+    NSLayoutConstraint *maskTitleLabelCenterX = [NSLayoutConstraint constraintWithItem:self.maskTitleLabel attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeCenterX multiplier:1 constant:0];
+    NSLayoutConstraint *maskTitleLabelCenterY = [NSLayoutConstraint constraintWithItem:self.maskTitleLabel attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeCenterY multiplier:1 constant:0];
+    [NSLayoutConstraint activateConstraints:@[maskTitleLabelCenterX, maskTitleLabelCenterY]];
 
     _maskTitleMaskLayer = [CALayer layer];
     self.maskTitleMaskLayer.backgroundColor = [UIColor redColor].CGColor;
@@ -42,20 +54,53 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
 
-    self.titleLabel.center = self.contentView.center;
-    self.maskTitleLabel.center = self.contentView.center;
+    //因为titleLabel是通过约束布局的，在layoutSubviews方法中，它的frame并没有确定。像子类JXCategoryNumberCell中的numberLabel需要依赖于titleLabel的frame进行布局。所以这里必须立马触发self.contentView的视图布局。
+    [self.contentView setNeedsLayout];
+    [self.contentView layoutIfNeeded];
+    JXCategoryTitleCellModel *myCellModel = (JXCategoryTitleCellModel *)self.cellModel;
+    switch (myCellModel.titleLabelAnchorPointStyle) {
+        case JXCategoryTitleLabelAnchorPointStyleCenter:
+            self.titleLabelCenterY.constant = 0 + myCellModel.titleLabelVerticalOffset;
+            break;
+        case JXCategoryTitleLabelAnchorPointStyleTop:
+            self.titleLabelCenterY.constant = -self.titleLabel.bounds.size.height/2 - myCellModel.titleLabelVerticalOffset;
+            break;
+        case JXCategoryTitleLabelAnchorPointStyleBottom:
+            self.titleLabelCenterY.constant = self.titleLabel.bounds.size.height/2 + myCellModel.titleLabelVerticalOffset;
+            break;
+        default:
+            break;
+    }
 }
 
 - (void)reloadData:(JXCategoryBaseCellModel *)cellModel {
     [super reloadData:cellModel];
 
     JXCategoryTitleCellModel *myCellModel = (JXCategoryTitleCellModel *)cellModel;
+    self.titleLabel.numberOfLines = myCellModel.titleNumberOfLines;
+    self.maskTitleLabel.numberOfLines = myCellModel.titleNumberOfLines;
+    switch (myCellModel.titleLabelAnchorPointStyle) {
+        case JXCategoryTitleLabelAnchorPointStyleCenter:
+            self.titleLabel.layer.anchorPoint = CGPointMake(0.5, 0.5);
+            self.maskTitleLabel.layer.anchorPoint = CGPointMake(0.5, 0.5);
+            break;
+        case JXCategoryTitleLabelAnchorPointStyleTop:
+            self.titleLabel.layer.anchorPoint = CGPointMake(0.5, 0);
+            self.maskTitleLabel.layer.anchorPoint = CGPointMake(0.5, 0);
+            break;
+        case JXCategoryTitleLabelAnchorPointStyleBottom:
+            self.titleLabel.layer.anchorPoint = CGPointMake(0.5, 1);
+            self.maskTitleLabel.layer.anchorPoint = CGPointMake(0.5, 1);
+            break;
+        default:
+            break;
+    }
 
-    if (myCellModel.titleLabelZoomEnabled) {
+    if (myCellModel.isTitleLabelZoomEnabled) {
         //先把font设置为缩放的最大值，再缩小到最小值，最后根据当前的titleLabelZoomScale值，进行缩放更新。这样就能避免transform从小到大时字体模糊
         UIFont *maxScaleFont = [UIFont fontWithDescriptor:myCellModel.titleFont.fontDescriptor size:myCellModel.titleFont.pointSize*myCellModel.titleLabelSelectedZoomScale];
         CGFloat baseScale = myCellModel.titleFont.lineHeight/maxScaleFont.lineHeight;
-        if (myCellModel.selectedAnimationEnabled && [self checkCanStartSelectedAnimation:myCellModel]) {
+        if (myCellModel.isSelectedAnimationEnabled && [self checkCanStartSelectedAnimation:myCellModel]) {
             JXCategoryCellSelectedAnimationBlock block = [self preferredTitleZoomAnimationBlock:myCellModel baseScale:baseScale];
             [self addSelectedAnimationBlock:block];
         }else {
@@ -66,7 +111,7 @@
             self.maskTitleLabel.transform = currentTransform;
         }
     }else {
-        if (myCellModel.selected) {
+        if (myCellModel.isSelected) {
             self.titleLabel.font = myCellModel.titleSelectedFont;
             self.maskTitleLabel.font = myCellModel.titleSelectedFont;
         }else {
@@ -77,8 +122,8 @@
 
     NSString *titleString = myCellModel.title ? myCellModel.title : @"";
     NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:titleString];
-    if (myCellModel.titleLabelStrokeWidthEnabled) {
-        if (myCellModel.selectedAnimationEnabled && [self checkCanStartSelectedAnimation:myCellModel]) {
+    if (myCellModel.isTitleLabelStrokeWidthEnabled) {
+        if (myCellModel.isSelectedAnimationEnabled && [self checkCanStartSelectedAnimation:myCellModel]) {
             JXCategoryCellSelectedAnimationBlock block = [self preferredTitleStrokeWidthAnimationBlock:myCellModel attributedString:attributedString];
             [self addSelectedAnimationBlock:block];
         }else {
@@ -91,11 +136,12 @@
         self.maskTitleLabel.attributedText = attributedString;
     }
 
-    if (myCellModel.titleLabelMaskEnabled) {
+    if (myCellModel.isTitleLabelMaskEnabled) {
         self.maskTitleLabel.hidden = NO;
         self.titleLabel.textColor = myCellModel.titleNormalColor;
         self.maskTitleLabel.textColor = myCellModel.titleSelectedColor;
-        [self.maskTitleLabel sizeToFit];
+        [self.contentView setNeedsLayout];
+        [self.contentView layoutIfNeeded];
 
         CGRect topMaskframe = myCellModel.backgroundViewMaskFrame;
         //将相对于cell的backgroundViewMaskFrame转换为相对于maskTitleLabel
@@ -133,7 +179,7 @@
     }else {
         self.maskTitleLabel.hidden = YES;
         self.titleLabel.layer.mask = nil;
-        if (myCellModel.selectedAnimationEnabled && [self checkCanStartSelectedAnimation:myCellModel]) {
+        if (myCellModel.isSelectedAnimationEnabled && [self checkCanStartSelectedAnimation:myCellModel]) {
             JXCategoryCellSelectedAnimationBlock block = [self preferredTitleColorAnimationBlock:myCellModel];
             [self addSelectedAnimationBlock:block];
         }else {
@@ -142,15 +188,12 @@
     }
 
     [self startSelectedAnimationIfNeeded:myCellModel];
-
-    [self.titleLabel sizeToFit];
-    [self setNeedsLayout];
 }
 
 - (JXCategoryCellSelectedAnimationBlock)preferredTitleZoomAnimationBlock:(JXCategoryTitleCellModel *)cellModel baseScale:(CGFloat)baseScale {
     __weak typeof(self) weakSelf = self;
     return ^(CGFloat percent) {
-        if (cellModel.selected) {
+        if (cellModel.isSelected) {
             //将要选中，scale从小到大插值渐变
             cellModel.titleLabelCurrentZoomScale = [JXCategoryFactory interpolationFrom:cellModel.titleLabelNormalZoomScale to:cellModel.titleLabelSelectedZoomScale percent:percent];
         }else {
@@ -166,7 +209,7 @@
 - (JXCategoryCellSelectedAnimationBlock)preferredTitleStrokeWidthAnimationBlock:(JXCategoryTitleCellModel *)cellModel attributedString:(NSMutableAttributedString *)attributedString {
     __weak typeof(self) weakSelf = self;
     return ^(CGFloat percent) {
-        if (cellModel.selected) {
+        if (cellModel.isSelected) {
             //将要选中，StrokeWidth从小到大插值渐变
             cellModel.titleLabelCurrentStrokeWidth = [JXCategoryFactory interpolationFrom:cellModel.titleLabelNormalStrokeWidth to:cellModel.titleLabelSelectedStrokeWidth percent:percent];
         }else {
@@ -182,7 +225,7 @@
 - (JXCategoryCellSelectedAnimationBlock)preferredTitleColorAnimationBlock:(JXCategoryTitleCellModel *)cellModel {
     __weak typeof(self) weakSelf = self;
     return ^(CGFloat percent) {
-        if (cellModel.selected) {
+        if (cellModel.isSelected) {
             //将要选中，textColor从titleNormalColor到titleSelectedColor插值渐变
             cellModel.titleCurrentColor = [JXCategoryFactory interpolationColorFrom:cellModel.titleNormalColor to:cellModel.titleSelectedColor percent:percent];
         }else {

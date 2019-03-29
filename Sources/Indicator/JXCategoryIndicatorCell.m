@@ -40,10 +40,10 @@
 
     JXCategoryIndicatorCellModel *model = (JXCategoryIndicatorCellModel *)cellModel;
     self.separatorLine.backgroundColor = model.separatorLineColor;
-    self.separatorLine.hidden = !model.sepratorLineShowEnabled;
+    self.separatorLine.hidden = !model.isSepratorLineShowEnabled;
 
-    if (model.cellBackgroundColorGradientEnabled) {
-        if (model.selected) {
+    if (model.isCellBackgroundColorGradientEnabled) {
+        if (model.isSelected) {
             self.contentView.backgroundColor = model.cellBackgroundSelectedColor;
         }else {
             self.contentView.backgroundColor = model.cellBackgroundUnselectedColor;
