@@ -115,8 +115,10 @@
         }
     }
     id<JXCategoryListContentViewDelegate> currentList = _validListDict[@(_currentIndex)];
-    [_validListDict removeAllObjects];
-    [_validListDict setObject:currentList forKey:@(_currentIndex)];
+    if (currentList != nil) {
+        [_validListDict removeAllObjects];
+        [_validListDict setObject:currentList forKey:@(_currentIndex)];
+    }
     [_lock unlock];
 }
 
