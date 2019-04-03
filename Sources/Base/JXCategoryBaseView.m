@@ -223,10 +223,8 @@ struct DelegateFlags {
 }
 
 - (void)clickSelectItemAtIndex:(NSInteger)index {
-    if (self.delegateFlags.canClickItemAtIndexFlag) {
-        if (![self.delegate categoryView:self canClickItemAtIndex:index]) {
-            return;
-        }
+    if (self.delegateFlags.canClickItemAtIndexFlag && ![self.delegate categoryView:self canClickItemAtIndex:index]) {
+        return;
     }
 
     [self selectCellAtIndex:index selectedType:JXCategoryCellSelectedTypeClick];
