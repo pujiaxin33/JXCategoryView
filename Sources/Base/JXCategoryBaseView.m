@@ -111,11 +111,12 @@ struct DelegateFlags {
 
 - (void)setDelegate:(id<JXCategoryViewDelegate>)delegate {
     _delegate = delegate;
-    _delegateFlags.canClickItemAtIndexFlag = [delegate respondsToSelector:@selector(categoryView:canClickItemAtIndex:)];
+
     _delegateFlags.didSelectedItemAtIndexFlag = [delegate respondsToSelector:@selector(categoryView:didSelectedItemAtIndex:)];
     _delegateFlags.didClickSelectedItemAtIndexFlag = [delegate respondsToSelector:@selector(categoryView:didClickSelectedItemAtIndex:)];
     _delegateFlags.didScrollSelectedItemAtIndexFlag = [delegate respondsToSelector:@selector(categoryView:didScrollSelectedItemAtIndex:)];
     _delegateFlags.didClickedItemContentScrollViewTransitionToIndexFlag = [delegate respondsToSelector:@selector(categoryView:didClickedItemContentScrollViewTransitionToIndex:)];
+    _delegateFlags.canClickItemAtIndexFlag = [delegate respondsToSelector:@selector(categoryView:canClickItemAtIndex:)];
     _delegateFlags.scrollingFromLeftIndexToRightIndexFlag = [delegate respondsToSelector:@selector(categoryView:scrollingFromLeftIndex:toRightIndex:ratio:)];
 }
 
