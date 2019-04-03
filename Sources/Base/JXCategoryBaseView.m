@@ -11,11 +11,11 @@
 #import "JXCategoryViewAnimator.h"
 
 struct DelegateFlags {
-    unsigned int canClickItemAtIndexFlag : 1;
     unsigned int didSelectedItemAtIndexFlag : 1;
     unsigned int didClickSelectedItemAtIndexFlag : 1;
     unsigned int didScrollSelectedItemAtIndexFlag : 1;
     unsigned int didClickedItemContentScrollViewTransitionToIndexFlag : 1;
+    unsigned int canClickItemAtIndexFlag : 1;
     unsigned int scrollingFromLeftIndexToRightIndexFlag : 1;
 };
 
