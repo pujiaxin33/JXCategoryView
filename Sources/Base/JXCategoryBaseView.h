@@ -19,7 +19,7 @@
 @optional
 
 /**
- 控制能否点击cell
+ 控制能否点击Item
 
  @param categoryView categoryView对象
  @param index 准备点击的index
