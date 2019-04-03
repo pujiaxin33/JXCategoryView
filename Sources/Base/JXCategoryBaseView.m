@@ -11,6 +11,7 @@
 #import "JXCategoryViewAnimator.h"
 
 struct DelegateFlags {
+    unsigned int canClickItemAtIndexFlag : 1;
     unsigned int didSelectedItemAtIndexFlag : 1;
     unsigned int didClickSelectedItemAtIndexFlag : 1;
     unsigned int didScrollSelectedItemAtIndexFlag : 1;
@@ -110,7 +111,7 @@ struct DelegateFlags {
 
 - (void)setDelegate:(id<JXCategoryViewDelegate>)delegate {
     _delegate = delegate;
-
+    _delegateFlags.canClickItemAtIndexFlag = [delegate respondsToSelector:@selector(categoryView:canClickItemAtIndex:)];
     _delegateFlags.didSelectedItemAtIndexFlag = [delegate respondsToSelector:@selector(categoryView:didSelectedItemAtIndex:)];
     _delegateFlags.didClickSelectedItemAtIndexFlag = [delegate respondsToSelector:@selector(categoryView:didClickSelectedItemAtIndex:)];
     _delegateFlags.didScrollSelectedItemAtIndexFlag = [delegate respondsToSelector:@selector(categoryView:didScrollSelectedItemAtIndex:)];
@@ -222,6 +223,12 @@ struct DelegateFlags {
 }
 
 - (void)clickSelectItemAtIndex:(NSInteger)index {
+    if (self.delegateFlags.canClickItemAtIndexFlag) {
+        if (![self.delegate categoryView:self canClickItemAtIndex:index]) {
+            return;
+        }
+    }
+
     [self selectCellAtIndex:index selectedType:JXCategoryCellSelectedTypeClick];
 }
 
