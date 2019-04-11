@@ -13,7 +13,10 @@
 @interface JXCategoryTitleCell ()
 @property (nonatomic, strong) CALayer *titleMaskLayer;
 @property (nonatomic, strong) CALayer *maskTitleMaskLayer;
+@property (nonatomic, strong) NSLayoutConstraint *titleLabelCenterX;
 @property (nonatomic, strong) NSLayoutConstraint *titleLabelCenterY;
+@property (nonatomic, strong) NSLayoutConstraint *maskTitleLabelCenterX;
+@property (nonatomic, strong) NSLayoutConstraint *maskTitleLabelCenterY;
 @end
 
 @implementation JXCategoryTitleCell
@@ -28,10 +31,9 @@
     self.titleLabel.translatesAutoresizingMaskIntoConstraints = NO;
     [self.contentView addSubview:self.titleLabel];
 
-    NSLayoutConstraint *titleLabelCenterX = [NSLayoutConstraint constraintWithItem:self.titleLabel attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeCenterX multiplier:1 constant:0];
-    NSLayoutConstraint *titleLabelCenterY = [NSLayoutConstraint constraintWithItem:self.titleLabel attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeCenterY multiplier:1 constant:0];
-    self.titleLabelCenterY = titleLabelCenterY;
-    [NSLayoutConstraint activateConstraints:@[titleLabelCenterX, titleLabelCenterY]];
+    self.titleLabelCenterX = [NSLayoutConstraint constraintWithItem:self.titleLabel attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeCenterX multiplier:1 constant:0];
+    self.titleLabelCenterY = [NSLayoutConstraint constraintWithItem:self.titleLabel attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeCenterY multiplier:1 constant:0];
+    [NSLayoutConstraint activateConstraints:@[self.titleLabelCenterX, self.titleLabelCenterY]];
 
     _titleMaskLayer = [CALayer layer];
     self.titleMaskLayer.backgroundColor = [UIColor redColor].CGColor;
@@ -42,9 +44,9 @@
     self.maskTitleLabel.textAlignment = NSTextAlignmentCenter;
     [self.contentView addSubview:self.maskTitleLabel];
 
-    NSLayoutConstraint *maskTitleLabelCenterX = [NSLayoutConstraint constraintWithItem:self.maskTitleLabel attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeCenterX multiplier:1 constant:0];
-    NSLayoutConstraint *maskTitleLabelCenterY = [NSLayoutConstraint constraintWithItem:self.maskTitleLabel attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeCenterY multiplier:1 constant:0];
-    [NSLayoutConstraint activateConstraints:@[maskTitleLabelCenterX, maskTitleLabelCenterY]];
+    self.maskTitleLabelCenterX = [NSLayoutConstraint constraintWithItem:self.maskTitleLabel attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeCenterX multiplier:1 constant:0];
+    self.maskTitleLabelCenterY = [NSLayoutConstraint constraintWithItem:self.maskTitleLabel attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeCenterY multiplier:1 constant:0];
+    [NSLayoutConstraint activateConstraints:@[self.maskTitleLabelCenterX, self.maskTitleLabelCenterY]];
 
     _maskTitleMaskLayer = [CALayer layer];
     self.maskTitleMaskLayer.backgroundColor = [UIColor redColor].CGColor;
