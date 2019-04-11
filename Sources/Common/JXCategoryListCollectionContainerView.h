@@ -72,6 +72,10 @@
 @property (nonatomic, weak) id<JXCategoryListCollectionContainerViewDataSource> dataSource;
 @property (nonatomic, strong, readonly) UICollectionView *collectionView;
 @property (nonatomic, strong, readonly) NSDictionary <NSNumber *, id<JXCategoryListCollectionContentViewDelegate>> *validListDict;   //已经加载过的列表字典。key是index，value是对应的列表
+/**
+ 需要和self.categoryView.defaultSelectedIndex保持一致
+ */
+@property (nonatomic, assign) NSInteger defaultSelectedIndex;
 
 - (void)reloadData;
 

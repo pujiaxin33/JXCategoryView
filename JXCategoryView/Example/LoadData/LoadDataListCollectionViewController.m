@@ -58,6 +58,7 @@
     self.categoryView.titles = self.titles;
     [self.categoryView reloadData];
 
+    self.listContainerView.defaultSelectedIndex = 0;
     [self.listContainerView reloadData];
 }
 
