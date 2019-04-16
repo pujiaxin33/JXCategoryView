@@ -13,7 +13,7 @@ self.listContainerView = [[JXCategoryListCollectionContainerView alloc] init];
 self.listContainerView.dataSource = self;
 [self.view addSubview:self.listContainerView];
 //关联cotentScrollView，关联之后才可以互相联动！！！
-self.categoryView.contentScrollView = self.listContainerView.scrollView;
+self.categoryView.contentScrollView = self.listContainerView.collectionView;
 ```
 
 2.实现`JXCategoryListContainerViewDelegate`代理方法
