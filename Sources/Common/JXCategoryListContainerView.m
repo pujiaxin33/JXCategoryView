@@ -21,8 +21,10 @@
 
 @implementation JXCategoryListContainerView
 
-- (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+- (void)willMoveToSuperview:(UIView *)newSuperview {
+    if (newSuperview == nil) {
+        [[NSNotificationCenter defaultCenter] removeObserver:self];
+    }
 }
 
 - (instancetype)initWithDelegate:(id<JXCategoryListContainerViewDelegate>)delegate{
