@@ -138,7 +138,17 @@
 
 @interface JXCategoryBaseView (UISubclassingBaseHooks)
 
+
+/**
+ 获取目标cell当前的frame，反应当前真实的frame受到cellWidthSelectedZoomScale的影响。
+ */
 - (CGRect)getTargetCellFrame:(NSInteger)targetIndex;
+
+
+/**
+ 获取目标cell的选中时的frame，其他cell的状态都当做普通状态处理。
+ */
+- (CGRect)getTargetSelectedCellFrame:(NSInteger)targetIndex;
 
 - (void)initializeData NS_REQUIRES_SUPER;
 

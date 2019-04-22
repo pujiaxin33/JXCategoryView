@@ -156,7 +156,7 @@
         return NO;
     }
 
-    CGRect clickedCellFrame = [self getTargetCellFrame:index];
+    CGRect clickedCellFrame = [self getTargetSelectedCellFrame:index];
     
     JXCategoryIndicatorCellModel *selectedCellModel = (JXCategoryIndicatorCellModel *)self.dataSource[index];
     selectedCellModel.selectedType = selectedType;

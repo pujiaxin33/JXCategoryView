@@ -267,6 +267,23 @@ struct DelegateFlags {
     return CGRectMake(x, 0, width, self.bounds.size.height);
 }
 
+- (CGRect)getTargetSelectedCellFrame:(NSInteger)targetIndex
+{
+    CGFloat x = [self getContentEdgeInsetLeft];
+    for (int i = 0; i < targetIndex; i ++) {
+        JXCategoryBaseCellModel *cellModel = self.dataSource[i];
+        x += [self getCellWidthAtIndex:cellModel.index] + self.innerCellSpacing;
+    }
+    CGFloat cellWidth = 0;
+    JXCategoryBaseCellModel *selectedCellModel = self.dataSource[targetIndex];
+    if (selectedCellModel.cellWidthZoomEnabled) {
+        cellWidth = [self getCellWidthAtIndex:targetIndex]*selectedCellModel.cellWidthSelectedZoomScale;
+    }else {
+        cellWidth = [self getCellWidthAtIndex:targetIndex];
+    }
+    return CGRectMake(x, 0, cellWidth, self.bounds.size.height);
+}
+
 - (void)initializeData
 {
     _dataSource = [NSMutableArray array];
