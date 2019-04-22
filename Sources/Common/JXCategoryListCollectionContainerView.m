@@ -21,10 +21,6 @@
 
 @implementation JXCategoryListCollectionContainerView
 
-- (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
 - (instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -37,6 +33,12 @@
         [self initializeViews];
     }
     return self;
+}
+
+- (void)willMoveToSuperview:(UIView *)newSuperview {
+    if (newSuperview == nil) {
+        [[NSNotificationCenter defaultCenter] removeObserver:self];
+    }
 }
 
 - (void)willMoveToWindow:(UIWindow *)newWindow {
