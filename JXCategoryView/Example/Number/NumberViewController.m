@@ -28,6 +28,7 @@
 
     self.myCategoryView.titles = self.titles;
     self.myCategoryView.counts = self.numbers;
+    self.myCategoryView.numberLabelOffset = CGPointMake(5, 2);
     self.myCategoryView.numberStringFormatterBlock = ^NSString *(NSInteger number) {
         if (number > 999) {
             return @"999+";
@@ -50,6 +51,11 @@
 - (void)reloadNumbers {
     self.numbers = @[@33, @33, @33, @33, @33, @33, @33, @33, @33, @33, @33];
     self.myCategoryView.counts = self.numbers;
+    
+    int x = arc4random()%15;
+    int y = arc4random()%10;
+    
+    self.myCategoryView.numberLabelOffset = CGPointMake(x, y);
     [self.myCategoryView reloadData];
 }
 

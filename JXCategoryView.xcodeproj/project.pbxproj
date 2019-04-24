@@ -896,12 +896,12 @@
 		19870CCB2122BB6100C23CAA /* Number */ = {
 			isa = PBXGroup;
 			children = (
-				19870CCC2122BB6100C23CAA /* JXCategoryNumberCellModel.h */,
-				19870CCD2122BB6100C23CAA /* JXCategoryNumberView.m */,
+				19870CD12122BB6100C23CAA /* JXCategoryNumberCell.h */,
 				19870CCE2122BB6100C23CAA /* JXCategoryNumberCell.m */,
+				19870CCC2122BB6100C23CAA /* JXCategoryNumberCellModel.h */,
 				19870CCF2122BB6100C23CAA /* JXCategoryNumberCellModel.m */,
 				19870CD02122BB6100C23CAA /* JXCategoryNumberView.h */,
-				19870CD12122BB6100C23CAA /* JXCategoryNumberCell.h */,
+				19870CCD2122BB6100C23CAA /* JXCategoryNumberView.m */,
 			);
 			path = Number;
 			sourceTree = "<group>";
