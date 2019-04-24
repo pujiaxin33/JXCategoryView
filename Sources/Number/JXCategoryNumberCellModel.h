@@ -18,5 +18,5 @@
 @property (nonatomic, assign) CGFloat numberLabelWidthIncrement;
 @property (nonatomic, assign) CGFloat numberLabelHeight;
 @property (nonatomic, strong) UIFont *numberLabelFont;
-
+@property (nonatomic, assign) CGPoint numberLabelOffset;
 @end
