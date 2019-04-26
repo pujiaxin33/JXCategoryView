@@ -52,6 +52,7 @@
     myCellModel.numberBackgroundColor = self.numberBackgroundColor;
     myCellModel.numberTitleColor = self.numberTitleColor;
     myCellModel.numberLabelHeight = self.numberLabelHeight;
+    myCellModel.numberLabelOffset = self.numberLabelOffset;
     myCellModel.numberLabelWidthIncrement = self.numberLabelWidthIncrement;
     myCellModel.numberLabelFont = self.numberLabelFont;
 }

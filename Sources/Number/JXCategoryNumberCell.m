@@ -34,7 +34,8 @@
     JXCategoryNumberCellModel *myCellModel = (JXCategoryNumberCellModel *)self.cellModel;
     self.numberLabel.bounds = CGRectMake(0, 0, self.numberLabel.bounds.size.width + myCellModel.numberLabelWidthIncrement, myCellModel.numberLabelHeight);
     self.numberLabel.layer.cornerRadius = myCellModel.numberLabelHeight/2.0;
-    self.numberLabel.center = CGPointMake(CGRectGetMaxX(self.titleLabel.frame), CGRectGetMinY(self.titleLabel.frame));
+    
+    self.numberLabel.center = CGPointMake(CGRectGetMaxX(self.titleLabel.frame)+myCellModel.numberLabelOffset.x, CGRectGetMinY(self.titleLabel.frame)+myCellModel.numberLabelOffset.y);
 }
 
 - (void)reloadData:(JXCategoryBaseCellModel *)cellModel {
