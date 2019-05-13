@@ -37,7 +37,7 @@
     dateFormatter.calendar = [NSCalendar currentCalendar];
     dateFormatter.dateFormat = @"HH:mm:ss";
     NSString *dateString = [dateFormatter stringFromDate:[NSDate date]];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(11.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self.dataSource removeAllObjects];
         for (int i = 0; i < 20; i++) {
             [self.dataSource addObject:[NSString stringWithFormat:@"%@测试数据:%d", dateString, i]];
