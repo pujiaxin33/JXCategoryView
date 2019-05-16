@@ -22,5 +22,8 @@
 @property (nonatomic, assign) CGFloat dotCornerRadius;
 //红点的颜色。默认：[UIColor redColor]
 @property (nonatomic, strong) UIColor *dotColor;
-
+/**
+ 红点  x,y方向的偏移 （+值：水平方向向右，竖直方向向下）
+ */
+@property (nonatomic, assign) CGPoint dotOffset;
 @end

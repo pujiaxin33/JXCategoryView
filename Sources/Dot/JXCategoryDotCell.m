@@ -27,36 +27,30 @@
 
     [CATransaction begin];
     [CATransaction setDisableActions:YES];
-
     JXCategoryDotCellModel *myCellModel = (JXCategoryDotCellModel *)self.cellModel;
     self.dotLayer.bounds = CGRectMake(0, 0, myCellModel.dotSize.width, myCellModel.dotSize.height);
     switch (myCellModel.relativePosition) {
         case JXCategoryDotRelativePosition_TopLeft:
         {
-            self.dotLayer.position = CGPointMake(CGRectGetMinX(self.titleLabel.frame), CGRectGetMinY(self.titleLabel.frame));
+            self.dotLayer.position = CGPointMake(CGRectGetMinX(self.titleLabel.frame) + myCellModel.dotOffset.x, CGRectGetMinY(self.titleLabel.frame) + myCellModel.dotOffset.y);
         }
             break;
         case JXCategoryDotRelativePosition_TopRight:
         {
-            self.dotLayer.position = CGPointMake(CGRectGetMaxX(self.titleLabel.frame), CGRectGetMinY(self.titleLabel.frame));
+            self.dotLayer.position = CGPointMake(CGRectGetMaxX(self.titleLabel.frame) + myCellModel.dotOffset.x, CGRectGetMinY(self.titleLabel.frame) + myCellModel.dotOffset.y);
         }
             break;
         case JXCategoryDotRelativePosition_BottomLeft:
         {
-            self.dotLayer.position = CGPointMake(CGRectGetMinX(self.titleLabel.frame), CGRectGetMaxY(self.titleLabel.frame));
+            self.dotLayer.position = CGPointMake(CGRectGetMinX(self.titleLabel.frame) + myCellModel.dotOffset.x, CGRectGetMaxY(self.titleLabel.frame) + myCellModel.dotOffset.y);
         }
             break;
         case JXCategoryDotRelativePosition_BottomRight:
         {
-            self.dotLayer.position = CGPointMake(CGRectGetMaxX(self.titleLabel.frame), CGRectGetMaxY(self.titleLabel.frame));
+            self.dotLayer.position = CGPointMake(CGRectGetMaxX(self.titleLabel.frame) + myCellModel.dotOffset.x, CGRectGetMaxY(self.titleLabel.frame) + myCellModel.dotOffset.y);
         }
             break;
-
-        default:
-            break;
     }
-    self.dotLayer.position = CGPointMake(CGRectGetMaxX(self.titleLabel.frame), CGRectGetMinY(self.titleLabel.frame));
-
     [CATransaction commit];
 }
 

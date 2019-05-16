@@ -18,14 +18,10 @@ typedef NS_ENUM(NSUInteger, JXCategoryDotRelativePosition) {
 @interface JXCategoryDotCellModel : JXCategoryTitleCellModel
 
 @property (nonatomic, assign) BOOL dotHidden;
-
 @property (nonatomic, assign) JXCategoryDotRelativePosition relativePosition;
-
 @property (nonatomic, assign) CGSize dotSize;
-
 @property (nonatomic, assign) CGFloat dotCornerRadius;
-
 @property (nonatomic, strong) UIColor *dotColor;
-
+@property (nonatomic, assign) CGPoint dotOffset;
 
 @end

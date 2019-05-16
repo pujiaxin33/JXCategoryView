@@ -17,6 +17,7 @@
     _dotSize = CGSizeMake(10, 10);
     _dotCornerRadius = JXCategoryViewAutomaticDimension;
     _dotColor = [UIColor redColor];
+    _dotOffset = CGPointZero;
 }
 
 - (Class)preferredCellClass {
@@ -40,6 +41,7 @@
     myCellModel.relativePosition = self.relativePosition;
     myCellModel.dotSize = self.dotSize;
     myCellModel.dotColor = self.dotColor;
+    myCellModel.dotOffset = self.dotOffset;
     if (self.dotCornerRadius == JXCategoryViewAutomaticDimension) {
         myCellModel.dotCornerRadius = self.dotSize.height/2;
     }else {
