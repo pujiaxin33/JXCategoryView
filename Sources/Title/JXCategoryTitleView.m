@@ -51,6 +51,7 @@
     NSMutableArray *tempArray = [NSMutableArray array];
     for (int i = 0; i < self.titles.count; i++) {
         JXCategoryTitleCellModel *cellModel = [[JXCategoryTitleCellModel alloc] init];
+        cellModel.titleWidth = [self widthForTitle:self.titles[i]];
         [tempArray addObject:cellModel];
     }
     self.dataSource = tempArray;
@@ -92,9 +93,10 @@
     }
 }
 
+//因为该方法会被频繁调用，所以需要提前计算好titleWidth，在这里直接返回计算好的titleWidth即可
 - (CGFloat)preferredCellWidthAtIndex:(NSInteger)index {
     if (self.cellWidth == JXCategoryViewAutomaticDimension) {
-        return ceilf([self.titles[index] boundingRectWithSize:CGSizeMake(MAXFLOAT, self.bounds.size.height) options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName : self.titleFont} context:nil].size.width);
+        return ((JXCategoryTitleCellModel *)self.dataSource[index]).titleWidth;
     }else {
         return self.cellWidth;
     }
@@ -127,6 +129,16 @@
         model.titleCurrentColor = model.titleNormalColor;
         model.titleLabelCurrentZoomScale = model.titleLabelNormalZoomScale;
         model.titleLabelCurrentStrokeWidth = model.titleLabelNormalStrokeWidth;
+    }
+}
+
+#pragma mark - Private
+
+- (CGFloat)widthForTitle:(NSString *)title {
+    if (self.titleDataSource && [self.titleDataSource respondsToSelector:@selector(categoryTitleView:widthForTitle:)]) {
+        return [self.titleDataSource categoryTitleView:self widthForTitle:title];
+    }else {
+        return ceilf([title boundingRectWithSize:CGSizeMake(MAXFLOAT, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName : self.titleFont} context:nil].size.width);
     }
 }
 

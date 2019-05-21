@@ -14,6 +14,8 @@
 
 @property (nonatomic, copy) NSString *title;
 
+@property (nonatomic, assign) CGFloat titleWidth;
+
 @property (nonatomic, assign) NSInteger titleNumberOfLines;
 
 @property (nonatomic, strong) UIColor *titleNormalColor;
