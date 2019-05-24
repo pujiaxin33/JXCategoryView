@@ -23,8 +23,13 @@
 
 - (void)willMoveToSuperview:(UIView *)newSuperview {
     if (newSuperview == nil) {
-        [[NSNotificationCenter defaultCenter] removeObserver:self];
+
     }
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationDidReceiveMemoryWarningNotification object:nil];
 }
 
 - (instancetype)initWithDelegate:(id<JXCategoryListContainerViewDelegate>)delegate{
