@@ -246,13 +246,15 @@ self.categoryView.contentScrollView = self.listContainerView.scrollView;
 - 如果你只是在父类进行一些微调，那就继承目标view、cell、cellModel，对cell原有控件微调、或者加入新的控件皆可。就像`JXCategoryTitleImageView系列、JXCategoryTitleAttributeView系列`那样去做；
 - Cell自定义，请参考已实现的cell样式，多尝试、多思考，再有问题请提Issue或加入反馈QQ群
 
+## 常见问题和答案
+
+❗️❗️❗️这里面包含了许多常见问题和答案，使用之前请务必浏览此文档，或者遇到问题先看此文档❗️❗️❗️
+
+[常见问题和答案](https://github.com/pujiaxin33/JXCategoryView/blob/master/Document/%E4%BD%BF%E7%94%A8%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9.md)
+
 ## 常用属性说明
 
 [常用属性说明文档地址](https://github.com/pujiaxin33/JXCategoryView/blob/master/Document/%E5%B8%B8%E7%94%A8%E5%B1%9E%E6%80%A7%E8%AF%B4%E6%98%8E.md)
-
-## 其他使用注意事项
-
-[其他使用注意事项文档地址](https://github.com/pujiaxin33/JXCategoryView/blob/master/Document/%E4%BD%BF%E7%94%A8%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9.md)
 
 ## 更新记录
 
