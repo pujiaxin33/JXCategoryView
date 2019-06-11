@@ -36,6 +36,7 @@
 }
 
 - (void)stop {
+    !self.progressCallback ?: self.progressCallback(1);
     [self.displayLink invalidate];
     !self.completeCallback ?: self.completeCallback();
 }
