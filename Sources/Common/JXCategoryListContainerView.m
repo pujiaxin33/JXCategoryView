@@ -21,12 +21,6 @@
 
 @implementation JXCategoryListContainerView
 
-- (void)willMoveToSuperview:(UIView *)newSuperview {
-    if (newSuperview == nil) {
-
-    }
-}
-
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationDidReceiveMemoryWarningNotification object:nil];
