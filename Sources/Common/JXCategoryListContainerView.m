@@ -88,6 +88,29 @@
     [self listDidAppear:self.currentIndex];
 }
 
+- (void)rearrangeList {
+    //记录当前的list，重新排序之后定位到它
+    [_lock lock];
+    id<JXCategoryListContentViewDelegate> currentSelectedList = _validListDict[@(self.currentIndex)];
+    NSUInteger newSelectedIndex = 0;
+    NSMutableDictionary *tempDict = [NSMutableDictionary dictionary];
+    for (id<JXCategoryListContentViewDelegate> list in _validListDict.allValues) {
+        if (self.delegate && [self.delegate respondsToSelector:@selector(listContainerView:rearrangeList:)]) {
+            NSUInteger newIndex = [self.delegate listContainerView:self rearrangeList:list];
+            if (list == currentSelectedList) {
+                newSelectedIndex = newIndex;
+            }
+            tempDict[@(newIndex)] = list;
+        }
+    }
+    _validListDict = tempDict;
+    [_validListDict enumerateKeysAndObjectsUsingBlock:^(NSNumber * _Nonnull index, id<JXCategoryListContentViewDelegate>  _Nonnull list, BOOL * _Nonnull stop) {
+        [list listView].frame = CGRectMake(index.intValue*self.scrollView.bounds.size.width, 0, self.scrollView.bounds.size.width, self.scrollView.bounds.size.height);
+    }];
+    [self.scrollView setContentOffset:CGPointMake(newSelectedIndex*self.scrollView.bounds.size.width, 0) animated:NO];
+    [_lock unlock];
+}
+
 - (void)layoutSubviews {
     [super layoutSubviews];
 

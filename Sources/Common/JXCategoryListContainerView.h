@@ -69,6 +69,8 @@
  @return 自定义UIScrollView实例
  */
 - (UIScrollView *)scrollViewInlistContainerView:(JXCategoryListContainerView *)listContainerView;
+
+- (NSUInteger)listContainerView:(JXCategoryListContainerView *)listContainerView rearrangeList:(id<JXCategoryListContentViewDelegate>)list;
 @end
 
 
@@ -91,6 +93,8 @@
 - (instancetype)initWithDelegate:(id<JXCategoryListContainerViewDelegate>)delegate NS_DESIGNATED_INITIALIZER;
 
 - (void)reloadData;
+//重新排序列表，类似于今日头条可以重新排序，但是无需重新初始化列表。
+- (void)rearrangeList;
 
 //必须调用，请按照demo示例那样调用
 - (void)scrollingFromLeftIndex:(NSInteger)leftIndex toRightIndex:(NSInteger)rightIndex ratio:(CGFloat)ratio selectedIndex:(NSInteger)selectedIndex;

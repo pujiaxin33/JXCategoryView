@@ -7,14 +7,11 @@
 //
 
 #import "LoadDataListContainerViewController.h"
-#import "JXCategoryView.h"
 #import "JXCategoryListContainerView.h"
 #import "LoadDataListContainerListViewController.h"
 
-@interface LoadDataListContainerViewController () <JXCategoryViewDelegate, JXCategoryListContainerViewDelegate>
-@property (nonatomic, strong) JXCategoryTitleView *categoryView;
-@property (nonatomic, strong) JXCategoryListContainerView *listContainerView;
-@property (nonatomic, strong) NSArray <NSString *> *titles;
+@interface LoadDataListContainerViewController () <JXCategoryViewDelegate>
+
 @end
 
 @implementation LoadDataListContainerViewController
@@ -77,6 +74,7 @@
 - (id<JXCategoryListContentViewDelegate>)listContainerView:(JXCategoryListContainerView *)listContainerView initListForIndex:(NSInteger)index {
     LoadDataListContainerListViewController *listVC = [[LoadDataListContainerListViewController alloc] init];
     listVC.naviController = self.navigationController;
+    listVC.itemTitle = self.titles[index];
     return listVC;
 }
 

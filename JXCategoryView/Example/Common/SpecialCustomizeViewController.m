@@ -16,6 +16,7 @@
 #import "LoadDataListContainerViewController.h"
 #import "LoadDataListCollectionViewController.h"
 #import "ScrollZoomViewController.h"
+#import "RearrangeViewController.h"
 
 @interface SpecialCustomizeViewController ()
 
@@ -74,8 +75,11 @@
         ScrollZoomViewController *vc = [[ScrollZoomViewController alloc] init];
         vc.title = title;
         [self.navigationController pushViewController:vc animated:YES];
+    }else if ([title isEqualToString:@"重新排序"]) {
+        RearrangeViewController *vc = [[RearrangeViewController alloc] init];
+        vc.title = title;
+        [self.navigationController pushViewController:vc animated:YES];
     }
-
 }
 
 @end

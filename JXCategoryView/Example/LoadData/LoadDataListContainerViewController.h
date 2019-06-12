@@ -8,10 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import "LoadDataBaseViewController.h"
-
+#import "JXCategoryView.h"
+#import "JXCategoryListContainerView.h"
 NS_ASSUME_NONNULL_BEGIN
 
-@interface LoadDataListContainerViewController : LoadDataBaseViewController
+@interface LoadDataListContainerViewController : LoadDataBaseViewController <JXCategoryListContainerViewDelegate>
+
+@property (nonatomic, strong) JXCategoryTitleView *categoryView;
+@property (nonatomic, strong) JXCategoryListContainerView *listContainerView;
+@property (nonatomic, strong) NSArray <NSString *> *titles;
 
 @end
 

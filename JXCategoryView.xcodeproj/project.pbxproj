@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1904A8BB21CB949A00316F97 /* JXGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1904A8BA21CB949A00316F97 /* JXGradientView.m */; };
 		1904AA1921D1D61800316F97 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1904AA1821D1D61800316F97 /* DetailViewController.m */; };
+		190921D522B0FAB40045D18F /* RearrangeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 190921D422B0FAB40045D18F /* RearrangeViewController.m */; };
 		190A54DF206397370050B327 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 190A54DE206397370050B327 /* AppDelegate.m */; };
 		190A54E2206397370050B327 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 190A54E1206397370050B327 /* ViewController.m */; };
 		190A54E5206397370050B327 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 190A54E3206397370050B327 /* Main.storyboard */; };
@@ -130,6 +131,8 @@
 		1904A8BA21CB949A00316F97 /* JXGradientView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JXGradientView.m; sourceTree = "<group>"; };
 		1904AA1721D1D61800316F97 /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		1904AA1821D1D61800316F97 /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		190921D322B0FAB40045D18F /* RearrangeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RearrangeViewController.h; sourceTree = "<group>"; };
+		190921D422B0FAB40045D18F /* RearrangeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RearrangeViewController.m; sourceTree = "<group>"; };
 		190A54DA206397370050B327 /* JXCategoryView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JXCategoryView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		190A54DD206397370050B327 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		190A54DE206397370050B327 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -384,6 +387,15 @@
 			path = JXPagerView;
 			sourceTree = "<group>";
 		};
+		190921D222B0F3620045D18F /* Rearrange */ = {
+			isa = PBXGroup;
+			children = (
+				190921D322B0FAB40045D18F /* RearrangeViewController.h */,
+				190921D422B0FAB40045D18F /* RearrangeViewController.m */,
+			);
+			path = Rearrange;
+			sourceTree = "<group>";
+		};
 		190A54D1206397370050B327 = {
 			isa = PBXGroup;
 			children = (
@@ -513,6 +525,7 @@
 		19302322211ACE1500AF1444 /* Example */ = {
 			isa = PBXGroup;
 			children = (
+				190921D222B0F3620045D18F /* Rearrange */,
 				1930232A211AD33000AF1444 /* Common */,
 				1912A527211C3CF400A80826 /* IndicatorImageView */,
 				1912A51F211C1AC100A80826 /* BackgroundImage */,
@@ -1011,6 +1024,7 @@
 			files = (
 				1974583C2225361B00C740EB /* JXCategoryListCollectionContainerView.m in Sources */,
 				191A9612212CF70300DBF784 /* JXCategoryTitleAttributeCellModel.m in Sources */,
+				190921D522B0FAB40045D18F /* RearrangeViewController.m in Sources */,
 				19302329211AD31C00AF1444 /* TitleImageViewController.m in Sources */,
 				19870CF92122BB6100C23CAA /* UIColor+JXAdd.m in Sources */,
 				19302337211AEB6300AF1444 /* NumberViewController.m in Sources */,
