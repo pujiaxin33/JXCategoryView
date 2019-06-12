@@ -148,7 +148,7 @@
 /**
  获取目标cell的选中时的frame，其他cell的状态都当做普通状态处理。
  */
-- (CGRect)getTargetSelectedCellFrame:(NSInteger)targetIndex;
+- (CGRect)getTargetSelectedCellFrame:(NSInteger)targetIndex selectedType:(JXCategoryCellSelectedType)selectedType;
 
 - (void)initializeData NS_REQUIRES_SUPER;
 

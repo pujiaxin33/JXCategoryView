@@ -51,6 +51,10 @@
     self.categoryView.minVerticalContentEdgeInsetLeft = 15;
     [self.view addSubview:self.categoryView];
 
+    JXCategoryIndicatorLineView *lineView = [[JXCategoryIndicatorLineView alloc] init];
+    lineView.indicatorWidth = 20;
+    self.categoryView.indicators = @[lineView];
+
     UIView *separatorLine = [[UIView alloc] initWithFrame:CGRectMake(0, self.categoryView.bounds.size.height - 1, self.categoryView.bounds.size.width, 1)];
     separatorLine.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
     separatorLine.backgroundColor = [UIColor redColor];
