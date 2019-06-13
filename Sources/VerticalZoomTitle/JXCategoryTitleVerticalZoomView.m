@@ -79,7 +79,8 @@
 - (CGRect)getTargetSelectedCellFrame:(NSInteger)targetIndex selectedType:(JXCategoryCellSelectedType)selectedType
 {
     CGRect frame = [super getTargetSelectedCellFrame:targetIndex selectedType:selectedType];
-    if (selectedType == JXCategoryCellSelectedTypeClick) {
+    if (selectedType == JXCategoryCellSelectedTypeClick ||
+        selectedType == JXCategoryCellSelectedTypeCode) {
         CGFloat contentEdgeInsetScale = self.currentVerticalScale/self.maxVerticalFontScale;
         if (targetIndex == 0) {
             frame.origin.x += (self.maxVerticalContentEdgeInsetLeft - self.minVerticalContentEdgeInsetLeft)*contentEdgeInsetScale;
