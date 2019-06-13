@@ -74,6 +74,8 @@
 - (id<JXCategoryListContentViewDelegate>)listContainerView:(JXCategoryListContainerView *)listContainerView initListForIndex:(NSInteger)index {
     LoadDataListContainerListViewController *listVC = [[LoadDataListContainerListViewController alloc] init];
     listVC.naviController = self.navigationController;
+    //如果列表是UIViewController包裹的，需要添加addChildViewController代码，这样子在iPhoneX系列手机就不会有底部安全距离错误的问题！！！
+    [self addChildViewController:listVC];
     return listVC;
 }
 
