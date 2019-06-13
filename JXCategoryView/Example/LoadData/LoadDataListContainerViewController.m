@@ -74,7 +74,6 @@
 - (id<JXCategoryListContentViewDelegate>)listContainerView:(JXCategoryListContainerView *)listContainerView initListForIndex:(NSInteger)index {
     LoadDataListContainerListViewController *listVC = [[LoadDataListContainerListViewController alloc] init];
     listVC.naviController = self.navigationController;
-    listVC.itemTitle = self.titles[index];
     return listVC;
 }
 

@@ -75,7 +75,7 @@
         ScrollZoomViewController *vc = [[ScrollZoomViewController alloc] init];
         vc.title = title;
         [self.navigationController pushViewController:vc animated:YES];
-    }else if ([title isEqualToString:@"重新排序"]) {
+    }else if ([title isEqualToString:@"删除、增加、重新排序不重复创建列表"]) {
         RearrangeViewController *vc = [[RearrangeViewController alloc] init];
         vc.title = title;
         [self.navigationController pushViewController:vc animated:YES];

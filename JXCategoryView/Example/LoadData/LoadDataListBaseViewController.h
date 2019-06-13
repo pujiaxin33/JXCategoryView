@@ -10,7 +10,6 @@
 
 @interface LoadDataListBaseViewController : UITableViewController
 
-@property (nonatomic, copy) NSString *itemTitle;
 @property (nonatomic, strong) UINavigationController *naviController;
 @property (nonatomic, copy) void(^didScrollCallback)(UIScrollView *scrollView);
 - (void)loadDataForFirst;
