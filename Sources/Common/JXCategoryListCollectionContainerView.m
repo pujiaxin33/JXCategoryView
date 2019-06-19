@@ -16,7 +16,7 @@
 @property (nonatomic, assign) BOOL willRemoveFromWindow;
 @property (nonatomic, assign) BOOL isFirstMoveToWindow;
 @property (nonatomic, strong) JXCategoryListCollectionContainerView *retainedSelf;
-@property (nonatomic, assign) BOOL isFirstLayoutSubviews;
+@property (nonatomic, assign) BOOL shouldRefreshSelectedContentOffset;
 @end
 
 @implementation JXCategoryListCollectionContainerView
@@ -32,7 +32,7 @@
     if (self) {
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didReceiveMemoryWarningNotification:) name:UIApplicationDidReceiveMemoryWarningNotification object:nil];
         _isFirstMoveToWindow = YES;
-        _isFirstLayoutSubviews = YES;
+        _shouldRefreshSelectedContentOffset = YES;
         _validListDict = [NSMutableDictionary dictionary];
         _lock = [[NSLock alloc] init];
         [self initializeViews];
@@ -107,11 +107,23 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
 
-    self.collectionView.frame = self.bounds;
-    if (self.isFirstLayoutSubviews) {
-        self.isFirstLayoutSubviews = NO;
-        [self.collectionView setContentOffset:CGPointMake(self.collectionView.bounds.size.width*self.defaultSelectedIndex, 0) animated:NO];
+    if (!CGRectEqualToRect(self.collectionView.frame, CGRectZero) &&  !CGSizeEqualToSize(self.collectionView.bounds.size, self.bounds.size)) {
+        [self.collectionView.collectionViewLayout invalidateLayout];
+        self.shouldRefreshSelectedContentOffset = YES;
     }
+    self.collectionView.frame = self.bounds;
+    if (self.shouldRefreshSelectedContentOffset) {
+        self.shouldRefreshSelectedContentOffset = NO;
+        [self.collectionView setContentOffset:CGPointMake(self.collectionView.bounds.size.width*self.currentIndex, 0) animated:NO];
+    }
+}
+
+#pragma mark - Setter
+
+- (void)setDefaultSelectedIndex:(NSInteger)defaultSelectedIndex {
+    _defaultSelectedIndex = defaultSelectedIndex;
+
+    self.currentIndex = defaultSelectedIndex;
 }
 
 #pragma mark - Private
