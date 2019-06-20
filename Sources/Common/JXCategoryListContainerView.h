@@ -52,11 +52,10 @@
  根据index初始化一个对应列表实例，需要是遵从`JXCategoryListContentViewDelegate`协议的对象。
  如果列表是用自定义UIView封装的，就让自定义UIView遵从`JXCategoryListContentViewDelegate`协议，该方法返回自定义UIView即可。
  如果列表是用自定义UIViewController封装的，就让自定义UIViewController遵从`JXCategoryListContentViewDelegate`协议，该方法返回自定义UIViewController即可。
- 注意：一定要是新生成的实例！！！
 
  @param listContainerView 列表的容器视图
  @param index 目标下标
- @return 新的遵从JXCategoryListContentViewDelegate协议的list实例
+ @return 遵从JXCategoryListContentViewDelegate协议的list实例
  */
 - (id<JXCategoryListContentViewDelegate>)listContainerView:(JXCategoryListContainerView *)listContainerView initListForIndex:(NSInteger)index;
 
