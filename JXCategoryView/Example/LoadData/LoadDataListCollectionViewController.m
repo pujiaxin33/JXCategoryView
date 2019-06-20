@@ -33,8 +33,7 @@
     self.categoryView.indicators = @[lineView];
     [self.view addSubview:self.categoryView];
 
-    self.listContainerView = [[JXCategoryListCollectionContainerView alloc] init];
-    self.listContainerView.dataSource = self;
+    self.listContainerView = [[JXCategoryListCollectionContainerView alloc] initWithDataSource:self];
     [self.view addSubview:self.listContainerView];
 
     self.categoryView.contentScrollView = self.listContainerView.collectionView;

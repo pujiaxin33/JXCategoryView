@@ -9,6 +9,7 @@
 #import "JXCategoryListCollectionContainerView.h"
 
 @interface JXCategoryListCollectionContainerView () <UICollectionViewDelegate, UICollectionViewDataSource>
+@property (nonatomic, weak) id<JXCategoryListCollectionContainerViewDataSource> dataSource;
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, assign) NSInteger currentIndex;
 @property (nonatomic, strong) NSMutableDictionary <NSNumber *, id<JXCategoryListCollectionContentViewDelegate>> *validListDict;
@@ -26,10 +27,10 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationDidReceiveMemoryWarningNotification object:nil];
 }
 
-- (instancetype)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
+- (instancetype)initWithDataSource:(id<JXCategoryListCollectionContainerViewDataSource>)dataSource {
+    self = [super initWithFrame:CGRectZero];
     if (self) {
+        self.dataSource = dataSource;
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didReceiveMemoryWarningNotification:) name:UIApplicationDidReceiveMemoryWarningNotification object:nil];
         _isFirstMoveToWindow = YES;
         _shouldRefreshSelectedContentOffset = YES;
@@ -180,8 +181,10 @@
 - (void)didReceiveMemoryWarningNotification:(NSNotification *)notification {
     [_lock lock];
     id<JXCategoryListCollectionContentViewDelegate> currentList = _validListDict[@(_currentIndex)];
-    [_validListDict removeAllObjects];
-    [_validListDict setObject:currentList forKey:@(_currentIndex)];
+    if (currentList != nil) {
+        [_validListDict removeAllObjects];
+        [_validListDict setObject:currentList forKey:@(_currentIndex)];
+    }
     [_lock unlock];
 }
 
