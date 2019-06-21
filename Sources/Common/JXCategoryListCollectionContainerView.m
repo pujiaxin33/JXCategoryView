@@ -13,7 +13,6 @@
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, assign) NSInteger currentIndex;
 @property (nonatomic, strong) NSMutableDictionary <NSNumber *, id<JXCategoryListCollectionContentViewDelegate>> *validListDict;
-@property (nonatomic, strong) NSLock *lock;
 @property (nonatomic, assign) BOOL willRemoveFromWindow;
 @property (nonatomic, assign) BOOL isFirstMoveToWindow;
 @property (nonatomic, strong) JXCategoryListCollectionContainerView *retainedSelf;
@@ -22,20 +21,13 @@
 
 @implementation JXCategoryListCollectionContainerView
 
-- (void)dealloc
-{
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationDidReceiveMemoryWarningNotification object:nil];
-}
-
 - (instancetype)initWithDataSource:(id<JXCategoryListCollectionContainerViewDataSource>)dataSource {
     self = [super initWithFrame:CGRectZero];
     if (self) {
         self.dataSource = dataSource;
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didReceiveMemoryWarningNotification:) name:UIApplicationDidReceiveMemoryWarningNotification object:nil];
         _isFirstMoveToWindow = YES;
         _shouldRefreshSelectedContentOffset = YES;
         _validListDict = [NSMutableDictionary dictionary];
-        _lock = [[NSLock alloc] init];
         [self initializeViews];
     }
     return self;
@@ -95,12 +87,10 @@
 }
 
 - (void)reloadData {
-    [_lock lock];
     for (id<JXCategoryListCollectionContentViewDelegate> list in _validListDict.allValues) {
         [[list listView] removeFromSuperview];
     }
     [_validListDict removeAllObjects];
-    [_lock unlock];
 
     [self.collectionView reloadData];
 }
@@ -134,9 +124,7 @@
 }
 
 - (void)currentListDidDisappear {
-    [_lock lock];
     id<JXCategoryListCollectionContentViewDelegate> list = _validListDict[@(self.currentIndex)];
-    [_lock unlock];
     if (list && [list respondsToSelector:@selector(listDidDisappear)]) {
         [list listDidDisappear];
     }
@@ -154,9 +142,7 @@
     }
     self.currentIndex = index;
 
-    [_lock lock];
     id<JXCategoryListCollectionContentViewDelegate> list = _validListDict[@(index)];
-    [_lock unlock];
     if (list && [list respondsToSelector:@selector(listDidAppear)]) {
         [list listDidAppear];
     }
@@ -170,22 +156,10 @@
     if (count <= 0 || index >= count) {
         return;
     }
-    [_lock lock];
     id<JXCategoryListCollectionContentViewDelegate> list = _validListDict[@(index)];
-    [_lock unlock];
     if (list && [list respondsToSelector:@selector(listDidDisappear)]) {
         [list listDidDisappear];
     }
-}
-
-- (void)didReceiveMemoryWarningNotification:(NSNotification *)notification {
-    [_lock lock];
-    id<JXCategoryListCollectionContentViewDelegate> currentList = _validListDict[@(_currentIndex)];
-    if (currentList != nil) {
-        [_validListDict removeAllObjects];
-        [_validListDict setObject:currentList forKey:@(_currentIndex)];
-    }
-    [_lock unlock];
 }
 
 #pragma mark - UICollectionViewDelegate, UICollectionViewDataSource
@@ -209,7 +183,6 @@
         canInitList = [self.dataSource listContainerView:self canInitListAtIndex:indexPath.item];
     }
     if (canInitList) {
-        [_lock lock];
         id<JXCategoryListCollectionContentViewDelegate> list = _validListDict[@(indexPath.item)];
         if (list == nil && self.dataSource && [self.dataSource respondsToSelector:@selector(listContainerView:initListForIndex:)]) {
             list = [self.dataSource listContainerView:self initListForIndex:indexPath.item];
@@ -217,7 +190,6 @@
                 _validListDict[@(indexPath.item)] = list;
             }
         }
-        [_lock unlock];
         if (list != nil) {
             [list listView].frame = cell.contentView.bounds;
             [cell.contentView addSubview:[list listView]];
