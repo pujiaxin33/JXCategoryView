@@ -204,18 +204,24 @@
         [subview removeFromSuperview];
     }
     self.currentIndex = indexPath.item;
-    [_lock lock];
-    id<JXCategoryListCollectionContentViewDelegate> list = _validListDict[@(indexPath.item)];
-    if (list == nil && self.dataSource && [self.dataSource respondsToSelector:@selector(listContainerView:initListForIndex:)]) {
-        list = [self.dataSource listContainerView:self initListForIndex:indexPath.item];
-        if (list != nil) {
-            _validListDict[@(indexPath.item)] = list;
-        }
+    BOOL canInitList = YES;
+    if (self.dataSource && [self.dataSource respondsToSelector:@selector(listContainerView:canInitListAtIndex:)]) {
+        canInitList = [self.dataSource listContainerView:self canInitListAtIndex:indexPath.item];
     }
-    [_lock unlock];
-    if (list != nil) {
-        [list listView].frame = cell.contentView.bounds;
-        [cell.contentView addSubview:[list listView]];
+    if (canInitList) {
+        [_lock lock];
+        id<JXCategoryListCollectionContentViewDelegate> list = _validListDict[@(indexPath.item)];
+        if (list == nil && self.dataSource && [self.dataSource respondsToSelector:@selector(listContainerView:initListForIndex:)]) {
+            list = [self.dataSource listContainerView:self initListForIndex:indexPath.item];
+            if (list != nil) {
+                _validListDict[@(indexPath.item)] = list;
+            }
+        }
+        [_lock unlock];
+        if (list != nil) {
+            [list listView].frame = cell.contentView.bounds;
+            [cell.contentView addSubview:[list listView]];
+        }
     }
     return cell;
 }

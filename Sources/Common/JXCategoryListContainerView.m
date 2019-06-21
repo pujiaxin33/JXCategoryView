@@ -185,20 +185,28 @@
     }
     [_lock lock];
     self.currentIndex = index;
-    id<JXCategoryListContentViewDelegate> list = _validListDict[@(index)];
     [_lock unlock];
-    if (list == nil) {
-        list = [self.delegate listContainerView:self initListForIndex:index];
+    BOOL canInitList = YES;
+    if (self.delegate && [self.delegate respondsToSelector:@selector(listContainerView:canInitListAtIndex:)]) {
+        canInitList = [self.delegate listContainerView:self canInitListAtIndex:index];
     }
-    if ([list listView].superview == nil) {
-        [list listView].frame = CGRectMake(index*self.scrollView.bounds.size.width, 0, self.scrollView.bounds.size.width, self.scrollView.bounds.size.height);
-        [self.scrollView addSubview:[list listView]];
+    if (canInitList) {
         [_lock lock];
-        _validListDict[@(index)] = list;
+        id<JXCategoryListContentViewDelegate> list = _validListDict[@(index)];
         [_lock unlock];
-    }
-    if (list && [list respondsToSelector:@selector(listDidAppear)]) {
-        [list listDidAppear];
+        if (list == nil) {
+            list = [self.delegate listContainerView:self initListForIndex:index];
+        }
+        if ([list listView].superview == nil) {
+            [list listView].frame = CGRectMake(index*self.scrollView.bounds.size.width, 0, self.scrollView.bounds.size.width, self.scrollView.bounds.size.height);
+            [self.scrollView addSubview:[list listView]];
+            [_lock lock];
+            _validListDict[@(index)] = list;
+            [_lock unlock];
+        }
+        if (list && [list respondsToSelector:@selector(listDidAppear)]) {
+            [list listDidAppear];
+        }
     }
 }
 
