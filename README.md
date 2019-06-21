@@ -265,6 +265,7 @@ self.categoryView.contentScrollView = self.listContainerView.scrollView;
 - 2018.9.4 发布1.0.4版本，更新内容：修复bug、添加cell图文混用示例;
 - 2018.12.19 发布1.1.7版本，更新内容：添加`JXCategoryListContainerView`，高度封装列表逻辑，支持懒加载列表，提升初始化性能；
 - 2019.1.24 发布1.2.2版本，更新内容：非兼容更新接口`- (BOOL)selectCellAtIndex:(NSInteger)index selectedType:(JXCategoryCellSelectedType)selectedType`，自定义有用到该接口的请及时更新。
+- 2019.6.21 发布1.3.13版本，更新内容：将`JXCategoryListCollectionContainerView.dataSource`移动到m实现文件，添加`- (instancetype)initWithDataSource:(id<JXCategoryListCollectionContainerViewDataSource>)dataSource`初始化方法。
 
 ## 补充
 
