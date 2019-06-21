@@ -114,6 +114,11 @@
         titleCategoryView.selectedAnimationEnabled = YES;
         titleCategoryView.cellWidthZoomEnabled = YES;
         titleCategoryView.cellWidthZoomScale = 1.3;
+
+        JXCategoryIndicatorLineView *lineView = [[JXCategoryIndicatorLineView alloc] init];
+        lineView.indicatorWidth = 20;
+        titleCategoryView.indicators = @[lineView];
+
         [self.navigationController pushViewController:testVC animated:YES];
 
     }else if ([title isEqualToString:@"Cell图片样式"]) {

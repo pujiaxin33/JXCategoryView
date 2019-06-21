@@ -576,7 +576,19 @@ struct DelegateFlags {
             [self scrollSelectItemAtIndex:baseIndex];
         }
     }else {
-        [self.animator stop];
+        if (self.animator.isExecuting) {
+            [self.animator invalid];
+            //需要重置之前animator.progessCallback为处理完的状态
+            for (JXCategoryBaseCellModel *model in self.dataSource) {
+                if (model.isSelected) {
+                    model.cellWidthCurrentZoomScale = model.cellWidthSelectedZoomScale;
+                    model.cellWidth = [self getCellWidthAtIndex:model.index] * model.cellWidthCurrentZoomScale;
+                }else {
+                    model.cellWidthCurrentZoomScale = model.cellWidthNormalZoomScale;
+                    model.cellWidth = [self getCellWidthAtIndex:model.index] * model.cellWidthCurrentZoomScale;
+                }
+            }
+        }
         //快速滑动翻页，当remainderRatio没有变成0，但是已经翻页了，需要通过下面的判断，触发选中
         if (fabs(ratio - self.selectedIndex) > 1) {
             NSInteger targetIndex = baseIndex;
