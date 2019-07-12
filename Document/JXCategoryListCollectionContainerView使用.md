@@ -9,8 +9,7 @@
 //因为JXCategoryListCollectionContainerView触发列表加载是在willDisplayCell代理方法里面。如果categoryView跨item点击（比如当前index=0，点击了index=10），并且过渡有动画就会依次触发中间cell的willDisplayCell方法，进而加载列表（即触发index:1~9的列表加载）。这显然违背懒加载，所以如果你选择使用JXCategoryListCollectionContainerView，那么最好就是将contentScrollViewClickTransitionAnimationEnabled设置为NO。
 self.categoryView.contentScrollViewClickTransitionAnimationEnabled = NO;
 
-self.listContainerView = [[JXCategoryListCollectionContainerView alloc] init];
-self.listContainerView.dataSource = self;
+self.listContainerView = [[JXCategoryListCollectionContainerView alloc] initWithDataSource:self];
 [self.view addSubview:self.listContainerView];
 //关联cotentScrollView，关联之后才可以互相联动！！！
 self.categoryView.contentScrollView = self.listContainerView.collectionView;
