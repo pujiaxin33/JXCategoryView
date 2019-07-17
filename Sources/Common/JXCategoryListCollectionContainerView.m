@@ -7,6 +7,7 @@
 //
 
 #import "JXCategoryListCollectionContainerView.h"
+#import <objc/runtime.h>
 
 @interface JXCategoryListCollectionContainerView () <UICollectionViewDelegate, UICollectionViewDataSource>
 @property (nonatomic, weak) id<JXCategoryListCollectionContainerViewDataSource> dataSource;
@@ -64,7 +65,7 @@
     layout.minimumInteritemSpacing = 0;
     if (self.dataSource &&
         [self.dataSource respondsToSelector:@selector(collectionViewClassInListContainerView:)] &&
-        [[self.dataSource collectionViewClassInListContainerView:self] isKindOfClass:[UICollectionView class]]) {
+        [[self.dataSource collectionViewClassInListContainerView:self] isKindOfClass:object_getClass([UICollectionView class])]) {
         _collectionView = (UICollectionView *)[[[self.dataSource collectionViewClassInListContainerView:self] alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
     }else {
         _collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
