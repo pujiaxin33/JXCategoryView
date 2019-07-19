@@ -53,6 +53,12 @@
 @property (nonatomic, assign, getter=isScrollEnabled) BOOL scrollEnabled;
 
 /**
+ 手势滚动、点击切换的时候，如果允许滚动，分为简单滚动和复杂滚动。默认为：JXCategoryIndicatorScrollStyleSimple
+ 目前仅JXCategoryIndicatorLineView、JXCategoryIndicatorDotLineView支持，其他子类暂不支持。
+ */
+@property (nonatomic, assign) JXCategoryIndicatorScrollStyle scrollStyle;
+
+/**
  滚动动画的时间。默认0.25
  */
 @property (nonatomic, assign) NSTimeInterval scrollAnimationDuration;

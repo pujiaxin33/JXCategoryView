@@ -32,4 +32,9 @@ typedef NS_ENUM(NSUInteger, JXCategoryTitleLabelAnchorPointStyle) {
     JXCategoryTitleLabelAnchorPointStyleBottom,
 };
 
+typedef NS_ENUM(NSUInteger, JXCategoryIndicatorScrollStyle) {
+    JXCategoryIndicatorScrollStyleSimple,                   //简单滚动，即从当前位置过渡到目标位置
+    JXCategoryIndicatorScrollStyleSameAsUserScroll,         //和用户左右滚动列表时的效果一样
+};
+
 #define JXCategoryViewDeprecated(instead) NS_DEPRECATED(2_0, 2_0, 2_0, 2_0, instead)
