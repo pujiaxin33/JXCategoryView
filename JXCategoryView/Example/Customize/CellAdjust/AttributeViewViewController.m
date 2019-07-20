@@ -12,48 +12,40 @@
 @interface AttributeViewViewController ()
 
 @property (nonatomic, strong) JXCategoryTitleAttributeView *myCategoryView;
-@property (nonatomic, strong) NSArray <NSAttributedString *> *attributeTitles;
 @end
 
 @implementation AttributeViewViewController
 
 - (void)viewDidLoad {
-    NSMutableAttributedString *monday = [[NSMutableAttributedString alloc] initWithString:@"周一\n8月20号" attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:15], NSForegroundColorAttributeName : [UIColor blackColor]}];
-    [monday addAttribute:NSForegroundColorAttributeName value:[UIColor blueColor] range:NSMakeRange(0, 2)];
-
-    NSMutableAttributedString *tuesday = [[NSMutableAttributedString alloc] initWithString:@"周二\n8月21号" attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:15], NSForegroundColorAttributeName : [UIColor blackColor]}];
-    [tuesday addAttribute:NSForegroundColorAttributeName value:[UIColor blueColor] range:NSMakeRange(0, 2)];
-
-    NSMutableAttributedString *wednesday = [[NSMutableAttributedString alloc] initWithString:@"周三\n8月22号" attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:15], NSForegroundColorAttributeName : [UIColor blackColor]}];
-    [wednesday addAttribute:NSForegroundColorAttributeName value:[UIColor blueColor] range:NSMakeRange(0, 2)];
-
-    NSMutableAttributedString *thursday = [[NSMutableAttributedString alloc] initWithString:@"周四\n8月23号" attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:15], NSForegroundColorAttributeName : [UIColor blackColor]}];
-    [thursday addAttribute:NSForegroundColorAttributeName value:[UIColor blueColor] range:NSMakeRange(0, 2)];
-
-    NSMutableAttributedString *friday = [[NSMutableAttributedString alloc] initWithString:@"周五\n8月24号" attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:15], NSForegroundColorAttributeName : [UIColor blackColor]}];
-    [friday addAttribute:NSForegroundColorAttributeName value:[UIColor blueColor] range:NSMakeRange(0, 2)];
-
-    NSMutableAttributedString *saturday = [[NSMutableAttributedString alloc] initWithString:@"周六\n8月25号" attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:15], NSForegroundColorAttributeName : [UIColor blackColor]}];
-    [saturday addAttribute:NSForegroundColorAttributeName value:[UIColor blueColor] range:NSMakeRange(0, 2)];
-
-    NSMutableAttributedString *sunday = [[NSMutableAttributedString alloc] initWithString:@"周日\n8月26号" attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:15], NSForegroundColorAttributeName : [UIColor blackColor]}];
-    [sunday addAttribute:NSForegroundColorAttributeName value:[UIColor blueColor] range:NSMakeRange(0, 2)];
-
-    _attributeTitles = @[monday, tuesday, wednesday, thursday, friday, saturday, sunday];
-    NSMutableArray *titles = [NSMutableArray array];
-    for (NSMutableAttributedString *attriString in self.attributeTitles) {
-        [titles addObject:attriString.string];
-    }
-    self.titles = titles;
+    NSArray <NSString *>*weekStringArray = @[@"周一\n8月20号", @"周二\n8月21号", @"周三\n8月22号", @"周四\n8月23号", @"周五\n8月24号", @"周六\n8月25号", @"周日\n8月26号"];
+    self.titles = weekStringArray;  //主要是为了父类创建列表，实际使用不要参考这个写法。
 
     [super viewDidLoad];
 
-    self.myCategoryView.attributeTitles = self.attributeTitles;
+    NSMutableArray <NSAttributedString *>*weekAttributedStringArray = [NSMutableArray array];
+    NSMutableArray <NSAttributedString *>*weekSelectedAttributedStringArray = [NSMutableArray array];
+    for (NSString *day in weekStringArray) {
+        [weekAttributedStringArray addObject:[self weekAttributedText:day isSelected:NO]];
+        [weekSelectedAttributedStringArray addObject:[self weekAttributedText:day isSelected:YES]];
+    }
+    self.myCategoryView.attributeTitles = weekAttributedStringArray;
+    self.myCategoryView.selectedAttributeTitles = weekSelectedAttributedStringArray;
+    self.myCategoryView.titleLabelZoomEnabled = YES;
 
     JXCategoryIndicatorBackgroundView *backgroundView = [[JXCategoryIndicatorBackgroundView alloc] init];
     backgroundView.indicatorHeight = 40;
     backgroundView.indicatorCornerRadius = 5;
     self.myCategoryView.indicators = @[backgroundView];
+}
+
+- (NSAttributedString *)weekAttributedText:(NSString *)day isSelected:(BOOL)isSelected {
+    NSMutableAttributedString *attrubtedText = [[NSMutableAttributedString alloc] initWithString:day attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:15], NSForegroundColorAttributeName : [UIColor blackColor]}];
+    if (isSelected) {
+        [attrubtedText addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:NSMakeRange(0, 2)];
+    }else {
+        [attrubtedText addAttribute:NSForegroundColorAttributeName value:[UIColor blueColor] range:NSMakeRange(0, 2)];
+    }
+    return attrubtedText;
 }
 
 - (JXCategoryTitleAttributeView *)myCategoryView {

@@ -29,7 +29,6 @@
     }else {
         self.titleLabel.attributedText = myCellModel.attributeTitle;
     }
-    [self.titleLabel sizeToFit];
 
     self.maskTitleLabel.numberOfLines = myCellModel.titleNumberOfLines;
     if (myCellModel.isSelected && myCellModel.selectedAttributeTitle != nil) {
@@ -37,9 +36,6 @@
     }else {
         self.maskTitleLabel.attributedText = myCellModel.attributeTitle;
     }
-    [self.maskTitleLabel sizeToFit];
-
-    [self setNeedsLayout];
 }
 
 
