@@ -146,9 +146,6 @@ self.categoryView.indicators = @[lineView];
 
 //正在滚动中的回调
 - (void)categoryView:(JXCategoryBaseView *)categoryView scrollingFromLeftIndex:(NSInteger)leftIndex toRightIndex:(NSInteger)rightIndex ratio:(CGFloat)ratio;
-
-//自定义contentScrollView点击选中切换效果
-- (void)categoryView:(JXCategoryBaseView *)categoryView didClickedItemContentScrollViewTransitionToIndex:(NSInteger)index;
 ```
 
 ### `contentScrollView`列表容器使用示例
