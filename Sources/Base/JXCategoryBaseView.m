@@ -14,7 +14,6 @@ struct DelegateFlags {
     unsigned int didSelectedItemAtIndexFlag : 1;
     unsigned int didClickSelectedItemAtIndexFlag : 1;
     unsigned int didScrollSelectedItemAtIndexFlag : 1;
-    unsigned int didClickedItemContentScrollViewTransitionToIndexFlag : 1;
     unsigned int canClickItemAtIndexFlag : 1;
     unsigned int scrollingFromLeftIndexToRightIndexFlag : 1;
 };
@@ -115,7 +114,6 @@ struct DelegateFlags {
     _delegateFlags.didSelectedItemAtIndexFlag = [delegate respondsToSelector:@selector(categoryView:didSelectedItemAtIndex:)];
     _delegateFlags.didClickSelectedItemAtIndexFlag = [delegate respondsToSelector:@selector(categoryView:didClickSelectedItemAtIndex:)];
     _delegateFlags.didScrollSelectedItemAtIndexFlag = [delegate respondsToSelector:@selector(categoryView:didScrollSelectedItemAtIndex:)];
-    _delegateFlags.didClickedItemContentScrollViewTransitionToIndexFlag = [delegate respondsToSelector:@selector(categoryView:didClickedItemContentScrollViewTransitionToIndex:)];
     _delegateFlags.canClickItemAtIndexFlag = [delegate respondsToSelector:@selector(categoryView:canClickItemAtIndex:)];
     _delegateFlags.scrollingFromLeftIndexToRightIndexFlag = [delegate respondsToSelector:@selector(categoryView:scrollingFromLeftIndex:toRightIndex:ratio:)];
 }
@@ -491,11 +489,7 @@ struct DelegateFlags {
 
     if (selectedType == JXCategoryCellSelectedTypeClick ||
         selectedType == JXCategoryCellSelectedTypeCode) {
-        if (self.delegateFlags.didClickedItemContentScrollViewTransitionToIndexFlag) {
-            [self.delegate categoryView:self didClickedItemContentScrollViewTransitionToIndex:targetIndex];
-        }else {
-            [self.contentScrollView setContentOffset:CGPointMake(targetIndex*self.contentScrollView.bounds.size.width, 0) animated:self.isContentScrollViewClickTransitionAnimationEnabled];
-        }
+        [self.contentScrollView setContentOffset:CGPointMake(targetIndex*self.contentScrollView.bounds.size.width, 0) animated:self.isContentScrollViewClickTransitionAnimationEnabled];
     }
 
     self.selectedIndex = targetIndex;
