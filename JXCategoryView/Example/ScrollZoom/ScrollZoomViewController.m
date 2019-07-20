@@ -41,14 +41,19 @@
     self.categoryView.titleLabelAnchorPointStyle = JXCategoryTitleLabelAnchorPointStyleBottom;
     self.categoryView.titleLabelVerticalOffset = -5;
     self.categoryView.titleColorGradientEnabled = YES;
-    self.categoryView.contentEdgeInsetLeft = 30;
-    self.categoryView.cellSpacing = 30;
-    self.categoryView.maxVerticalCellSpacing = 30;
-    self.categoryView.minVerticalCellSpacing = 20;
+    self.categoryView.contentEdgeInsetLeft = 15;    //设置内容左边距
+    //推荐配置方案
+    self.categoryView.maxVerticalCellSpacing = 20;
+    self.categoryView.minVerticalCellSpacing = 10;
     self.categoryView.maxVerticalFontScale = 2;
     self.categoryView.minVerticalFontScale = 1.3;
-    self.categoryView.maxVerticalContentEdgeInsetLeft = 30;
-    self.categoryView.minVerticalContentEdgeInsetLeft = 15;
+    //你可以试试下面的配置方案
+    /*
+    self.categoryView.maxVerticalCellSpacing = 20;
+    self.categoryView.minVerticalCellSpacing = 20;
+    self.categoryView.maxVerticalFontScale = 2;
+    self.categoryView.minVerticalFontScale = 1;
+     */
     [self.view addSubview:self.categoryView];
 
     JXCategoryIndicatorLineView *lineView = [[JXCategoryIndicatorLineView alloc] init];
@@ -91,10 +96,6 @@
 - (void)listScrollViewDidScroll:(UIScrollView *)scrollView {
     if (!(scrollView.isTracking || scrollView.isDecelerating)) {
         //用户交互引起的滚动才处理
-        return;
-    }
-    if (self.categoryView.isHorizontalZoomTransitionAnimating) {
-        //当前cell正在进行动画过渡
         return;
     }
     //用于垂直方向滚动时，视图的frame调整
