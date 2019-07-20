@@ -8,6 +8,7 @@
 
 #import "CustomizationListViewController.h"
 #import "AlignmentLineExampleViewController.h"
+#import "SpringIndicatorExampleViewController.h"
 
 @interface CustomizationListViewController ()
 
@@ -31,6 +32,10 @@
 
     if ([title isEqualToString:@"左右对齐指示器"]){
         AlignmentLineExampleViewController *vc = [[AlignmentLineExampleViewController alloc] init];
+        vc.title = title;
+        [self.navigationController pushViewController:vc animated:YES];
+    }else if ([title isEqualToString:@"Spring动画指示器"]) {
+        SpringIndicatorExampleViewController *vc = [[SpringIndicatorExampleViewController alloc] init];
         vc.title = title;
         [self.navigationController pushViewController:vc animated:YES];
     }
