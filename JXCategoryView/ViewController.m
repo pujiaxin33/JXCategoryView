@@ -10,6 +10,7 @@
 #import "IndicatorCustomizeViewController.h"
 #import "CellCustomizeViewController.h"
 #import "SpecialCustomizeViewController.h"
+#import "CustomizationListViewController.h"
 
 @interface ViewController ()
 
@@ -60,6 +61,13 @@
             [self.navigationController pushViewController:vc animated:YES];
         }
             break;
+        case 3:
+        {
+            UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+            CustomizationListViewController *vc = [storyBoard instantiateViewControllerWithIdentifier:NSStringFromClass([CustomizationListViewController class])];
+            vc.title = title;
+            [self.navigationController pushViewController:vc animated:YES];
+        }
 
         default:
             break;
