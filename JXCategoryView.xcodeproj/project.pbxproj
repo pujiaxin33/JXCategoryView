@@ -122,6 +122,7 @@
 		19D4BC3422E2C77A00ACC1A4 /* CustomizationListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19D4BC3322E2C77A00ACC1A4 /* CustomizationListViewController.m */; };
 		19D4BC3822E300D400ACC1A4 /* JXCategoryIndicatorSpringBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 19D4BC3722E300D400ACC1A4 /* JXCategoryIndicatorSpringBackgroundView.m */; };
 		19D4BC3B22E301D200ACC1A4 /* SpringIndicatorExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19D4BC3A22E301D200ACC1A4 /* SpringIndicatorExampleViewController.m */; };
+		19D4BC3F22E3635000ACC1A4 /* CountCellExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19D4BC3E22E3635000ACC1A4 /* CountCellExampleViewController.m */; };
 		19D57E78212D3FD30077DCA6 /* JXCategoryIndicatorDotLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 19D57E77212D3FD30077DCA6 /* JXCategoryIndicatorDotLineView.m */; };
 		19D57E7E212D5C600077DCA6 /* VerticalListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19D57E7D212D5C600077DCA6 /* VerticalListViewController.m */; };
 		19D57E81212D5DFB0077DCA6 /* VerticalListSectionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 19D57E80212D5DFB0077DCA6 /* VerticalListSectionModel.m */; };
@@ -360,6 +361,8 @@
 		19D4BC3722E300D400ACC1A4 /* JXCategoryIndicatorSpringBackgroundView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JXCategoryIndicatorSpringBackgroundView.m; sourceTree = "<group>"; };
 		19D4BC3922E301D200ACC1A4 /* SpringIndicatorExampleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SpringIndicatorExampleViewController.h; sourceTree = "<group>"; };
 		19D4BC3A22E301D200ACC1A4 /* SpringIndicatorExampleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpringIndicatorExampleViewController.m; sourceTree = "<group>"; };
+		19D4BC3D22E3635000ACC1A4 /* CountCellExampleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CountCellExampleViewController.h; sourceTree = "<group>"; };
+		19D4BC3E22E3635000ACC1A4 /* CountCellExampleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CountCellExampleViewController.m; sourceTree = "<group>"; };
 		19D57E76212D3FD30077DCA6 /* JXCategoryIndicatorDotLineView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JXCategoryIndicatorDotLineView.h; sourceTree = "<group>"; };
 		19D57E77212D3FD30077DCA6 /* JXCategoryIndicatorDotLineView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JXCategoryIndicatorDotLineView.m; sourceTree = "<group>"; };
 		19D57E7C212D5C600077DCA6 /* VerticalListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VerticalListViewController.h; sourceTree = "<group>"; };
@@ -510,6 +513,7 @@
 			children = (
 				19D4BC3222E2C77A00ACC1A4 /* CustomizationListViewController.h */,
 				19D4BC3322E2C77A00ACC1A4 /* CustomizationListViewController.m */,
+				19D4BC3C22E362F400ACC1A4 /* CountCell */,
 				19D4BC3522E3008700ACC1A4 /* SpringIndicator */,
 				19D4BC2B22E2B85200ACC1A4 /* AlignmentIndicator */,
 				191A9609212CF68000DBF784 /* CellAdjust */,
@@ -966,6 +970,15 @@
 			path = SpringIndicator;
 			sourceTree = "<group>";
 		};
+		19D4BC3C22E362F400ACC1A4 /* CountCell */ = {
+			isa = PBXGroup;
+			children = (
+				19D4BC3D22E3635000ACC1A4 /* CountCellExampleViewController.h */,
+				19D4BC3E22E3635000ACC1A4 /* CountCellExampleViewController.m */,
+			);
+			path = CountCell;
+			sourceTree = "<group>";
+		};
 		19D57E7B212D5C180077DCA6 /* VerticalListView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1145,6 +1158,7 @@
 				19870D012122BB6100C23CAA /* JXCategoryBaseCell.m in Sources */,
 				19870CF82122BB6100C23CAA /* JXCategoryCollectionView.m in Sources */,
 				19870C8321218DAC00C23CAA /* NaviSegmentedControlViewController.m in Sources */,
+				19D4BC3F22E3635000ACC1A4 /* CountCellExampleViewController.m in Sources */,
 				19D4BC3122E2C76300ACC1A4 /* AlignmentLineExampleViewController.m in Sources */,
 				19346D612126639B0065FD8F /* JXCategoryFactory.m in Sources */,
 				19562CED212A9B9C0095AA27 /* JXCategoryDotCellModel.m in Sources */,

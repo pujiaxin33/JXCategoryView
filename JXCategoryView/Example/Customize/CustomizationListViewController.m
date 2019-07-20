@@ -9,6 +9,7 @@
 #import "CustomizationListViewController.h"
 #import "AlignmentLineExampleViewController.h"
 #import "SpringIndicatorExampleViewController.h"
+#import "CountCellExampleViewController.h"
 
 @interface CustomizationListViewController ()
 
@@ -36,6 +37,10 @@
         [self.navigationController pushViewController:vc animated:YES];
     }else if ([title isEqualToString:@"Spring动画指示器"]) {
         SpringIndicatorExampleViewController *vc = [[SpringIndicatorExampleViewController alloc] init];
+        vc.title = title;
+        [self.navigationController pushViewController:vc animated:YES];
+    }else if ([title isEqualToString:@"数量富文本cell"]) {
+        CountCellExampleViewController *vc = [[CountCellExampleViewController alloc] init];
         vc.title = title;
         [self.navigationController pushViewController:vc animated:YES];
     }
