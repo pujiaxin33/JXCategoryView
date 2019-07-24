@@ -53,6 +53,7 @@
 		19482D9322E71107008F9CD7 /* JXCategoryTimelineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 19482D9222E71107008F9CD7 /* JXCategoryTimelineCell.m */; };
 		19482D9622E71117008F9CD7 /* JXCategoryTimelineCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 19482D9522E71117008F9CD7 /* JXCategoryTimelineCellModel.m */; };
 		19482D9922E718E3008F9CD7 /* TimelineExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19482D9822E718E3008F9CD7 /* TimelineExampleViewController.m */; };
+		19482D9C22E7FC76008F9CD7 /* LoadDataListScrollZoomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19482D9B22E7FC75008F9CD7 /* LoadDataListScrollZoomViewController.m */; };
 		194DCDB32133C8E8000E89EF /* PagingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 194DCDB12133C8E8000E89EF /* PagingViewController.m */; };
 		194DCDC02133C948000E89EF /* PagingViewTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 194DCDBF2133C948000E89EF /* PagingViewTableHeaderView.m */; };
 		194DCDC32133CAA8000E89EF /* TestListBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 194DCDC22133CAA8000E89EF /* TestListBaseView.m */; };
@@ -228,6 +229,8 @@
 		19482D9522E71117008F9CD7 /* JXCategoryTimelineCellModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JXCategoryTimelineCellModel.m; sourceTree = "<group>"; };
 		19482D9722E718E3008F9CD7 /* TimelineExampleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TimelineExampleViewController.h; sourceTree = "<group>"; };
 		19482D9822E718E3008F9CD7 /* TimelineExampleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TimelineExampleViewController.m; sourceTree = "<group>"; };
+		19482D9A22E7FC75008F9CD7 /* LoadDataListScrollZoomViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoadDataListScrollZoomViewController.h; sourceTree = "<group>"; };
+		19482D9B22E7FC75008F9CD7 /* LoadDataListScrollZoomViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoadDataListScrollZoomViewController.m; sourceTree = "<group>"; };
 		194DCDB12133C8E8000E89EF /* PagingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PagingViewController.m; sourceTree = "<group>"; };
 		194DCDB22133C8E8000E89EF /* PagingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PagingViewController.h; sourceTree = "<group>"; };
 		194DCDBE2133C948000E89EF /* PagingViewTableHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PagingViewTableHeaderView.h; sourceTree = "<group>"; };
@@ -554,6 +557,8 @@
 			children = (
 				192255632215473A00AF9C21 /* ScrollZoomViewController.h */,
 				192255642215473A00AF9C21 /* ScrollZoomViewController.m */,
+				19482D9A22E7FC75008F9CD7 /* LoadDataListScrollZoomViewController.h */,
+				19482D9B22E7FC75008F9CD7 /* LoadDataListScrollZoomViewController.m */,
 			);
 			path = ScrollZoom;
 			sourceTree = "<group>";
@@ -1176,6 +1181,7 @@
 				19C2A47C2270487600B78C69 /* MJRefreshBackNormalFooter.m in Sources */,
 				19278E7A2223DA070041C293 /* JXPagerView.m in Sources */,
 				19482D9022E710ED008F9CD7 /* JXCategoryTimelineView.m in Sources */,
+				19482D9C22E7FC76008F9CD7 /* LoadDataListScrollZoomViewController.m in Sources */,
 				19346D6F21269F3A0065FD8F /* JXCategoryIndicatorBackgroundView.m in Sources */,
 				1912A533211D08C800A80826 /* FootballViewController.m in Sources */,
 				190C48E121F95F6C008032C7 /* JXCategoryViewAnimator.m in Sources */,

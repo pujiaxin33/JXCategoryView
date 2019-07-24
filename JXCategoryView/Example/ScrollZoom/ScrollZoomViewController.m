@@ -11,6 +11,7 @@
 #import "LoadDataListContainerListViewController.h"
 #import "JXCategoryTitleVerticalZoomView.h"
 #import "JXCategoryFactory.h"
+#import "LoadDataListScrollZoomViewController.h"
 
 @interface ScrollZoomViewController () <JXCategoryViewDelegate, JXCategoryListContainerViewDelegate, UIGestureRecognizerDelegate>
 @property (nonatomic, strong) JXCategoryTitleVerticalZoomView *categoryView;
@@ -157,6 +158,14 @@
     list.didScrollCallback = ^(UIScrollView *scrollView) {
         [weakSelf listScrollViewDidScroll:scrollView];
     };
+    //列表顶部有自定义视图
+    /*
+    LoadDataListScrollZoomViewController *list = [[LoadDataListScrollZoomViewController alloc] init];
+    __weak typeof(self) weakSelf = self;
+    list.didScrollCallback = ^(UIScrollView *scrollView) {
+        [weakSelf listScrollViewDidScroll:scrollView];
+    };
+     */
     return list;
 }
 
