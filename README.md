@@ -82,6 +82,16 @@ SegmentedControl<br/>参考[`SegmentedControlViewController`](https://github.com
 | 垂直缩放(仿网易圈圈、脉脉首页)<br/>参考[`ScrollZoomViewController`](https://github.com/pujiaxin33/JXCategoryView/blob/master/JXCategoryView/Example/ScrollZoomView/ScrollZoomViewController.m)类 | <img src="https://github.com/pujiaxin33/JXExampleImages/blob/master/JXCategoryView/VerticalZoomTitle.gif" width="350" height="306"> |
 数据源刷新&列表数据加载<br/>参考[`LoadDataListContainerViewController`](https://github.com/pujiaxin33/JXCategoryView/blob/master/JXCategoryView/Example/LoadData/LoadDataListContainerViewController.m)类 |  <img src="https://github.com/pujiaxin33/JXExampleImages/blob/master/JXCategoryView/LoadData.gif" width="343" height="619"> |
 
+### 自定义效果预览
+
+收录来自其他使用者的自定义示例，这些自定义类只在Demo项目里面，Pod库并没有这些文件。所以，如果你需要使用这些自定义效果，请通过文件导入的方式。
+这些自定义类可以当做示例代码学习如何自定义，也可以对其进行微调以快速实现自己的业务需求。如果，你有不一样的自定义示例，欢迎提PullRequest进行收录。
+
+| 说明 | Gif |
+| ----|------|
+| Spring动画指示器 |  <img src="https://github.com/pujiaxin33/JXExampleImages/blob/master/JXCategoryView/SpringIndicator.gif" width="336" height="70"> |
+| 富文本数量cell |  <img src="https://github.com/pujiaxin33/JXExampleImages/blob/master/JXCategoryView/CountCell.gif" width="336" height="70"> |
+| 左右对齐指示器 |  <img src="https://github.com/pujiaxin33/JXExampleImages/blob/master/JXCategoryView/AlignmentIndicator.gif" width="336" height="70"> |
 
 ## 要求
 
