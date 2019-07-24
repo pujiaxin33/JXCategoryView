@@ -14,13 +14,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface JXCategoryTimelineView : JXCategoryTitleView
 @property (nonatomic, strong) NSArray <NSString *> *timeTitles;
-
 @property (nonatomic, strong) UIColor *timeTitleNormalColor;
-
 @property (nonatomic, strong) UIColor *timeTitleSelectedColor;
-
 @property (nonatomic, strong) UIFont *timeTitleFont;
-
 @property (nonatomic, strong) UIFont *timeTitleSelectedFont;
 @end
 

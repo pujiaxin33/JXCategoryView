@@ -37,16 +37,6 @@
     self.dataSource = tempArray;
 }
 
-//- (void)refreshSelectedCellModel:(JXCategoryBaseCellModel *)selectedCellModel unselectedCellModel:(JXCategoryBaseCellModel *)unselectedCellModel {
-//    [super refreshSelectedCellModel:selectedCellModel unselectedCellModel:unselectedCellModel];
-//
-//    JXCategoryTimelineCellModel *myUnselectedCellModel = (JXCategoryTimelineCellModel *)unselectedCellModel;
-//    myUnselectedCellModel.timeTitleCurrentColor = myUnselectedCellModel.timeTitleNormalColor;
-//
-//    JXCategoryTimelineCellModel *myselectedCellModel = (JXCategoryTimelineCellModel *)selectedCellModel;
-//    myselectedCellModel.timeTitleCurrentColor = myUnselectedCellModel.timeTitleSelectedColor;
-//}
-
 - (void)refreshCellModel:(JXCategoryBaseCellModel *)cellModel index:(NSInteger)index {
     [super refreshCellModel:cellModel index:index];
 
