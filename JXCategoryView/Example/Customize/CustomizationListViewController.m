@@ -10,6 +10,7 @@
 #import "AlignmentLineExampleViewController.h"
 #import "SpringIndicatorExampleViewController.h"
 #import "CountCellExampleViewController.h"
+#import "TimelineExampleViewController.h"
 
 @interface CustomizationListViewController ()
 
@@ -41,6 +42,10 @@
         [self.navigationController pushViewController:vc animated:YES];
     }else if ([title isEqualToString:@"数量富文本cell"]) {
         CountCellExampleViewController *vc = [[CountCellExampleViewController alloc] init];
+        vc.title = title;
+        [self.navigationController pushViewController:vc animated:YES];
+    }else if ([title isEqualToString:@"秒杀时间线cell"]) {
+        TimelineExampleViewController *vc = [[TimelineExampleViewController alloc] init];
         vc.title = title;
         [self.navigationController pushViewController:vc animated:YES];
     }

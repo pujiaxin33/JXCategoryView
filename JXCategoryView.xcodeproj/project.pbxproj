@@ -49,6 +49,10 @@
 		19346D6C2126934B0065FD8F /* JXCategoryIndicatorImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 19346D6B2126934B0065FD8F /* JXCategoryIndicatorImageView.m */; };
 		19346D6F21269F3A0065FD8F /* JXCategoryIndicatorBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 19346D6E21269F3A0065FD8F /* JXCategoryIndicatorBackgroundView.m */; };
 		19346D722126B0D80065FD8F /* JXCategoryIndicatorTriangleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 19346D712126B0D80065FD8F /* JXCategoryIndicatorTriangleView.m */; };
+		19482D9022E710ED008F9CD7 /* JXCategoryTimelineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 19482D8F22E710ED008F9CD7 /* JXCategoryTimelineView.m */; };
+		19482D9322E71107008F9CD7 /* JXCategoryTimelineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 19482D9222E71107008F9CD7 /* JXCategoryTimelineCell.m */; };
+		19482D9622E71117008F9CD7 /* JXCategoryTimelineCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 19482D9522E71117008F9CD7 /* JXCategoryTimelineCellModel.m */; };
+		19482D9922E718E3008F9CD7 /* TimelineExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19482D9822E718E3008F9CD7 /* TimelineExampleViewController.m */; };
 		194DCDB32133C8E8000E89EF /* PagingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 194DCDB12133C8E8000E89EF /* PagingViewController.m */; };
 		194DCDC02133C948000E89EF /* PagingViewTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 194DCDBF2133C948000E89EF /* PagingViewTableHeaderView.m */; };
 		194DCDC32133CAA8000E89EF /* TestListBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 194DCDC22133CAA8000E89EF /* TestListBaseView.m */; };
@@ -216,6 +220,14 @@
 		19346D6E21269F3A0065FD8F /* JXCategoryIndicatorBackgroundView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JXCategoryIndicatorBackgroundView.m; sourceTree = "<group>"; };
 		19346D702126B0D80065FD8F /* JXCategoryIndicatorTriangleView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JXCategoryIndicatorTriangleView.h; sourceTree = "<group>"; };
 		19346D712126B0D80065FD8F /* JXCategoryIndicatorTriangleView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JXCategoryIndicatorTriangleView.m; sourceTree = "<group>"; };
+		19482D8E22E710ED008F9CD7 /* JXCategoryTimelineView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JXCategoryTimelineView.h; sourceTree = "<group>"; };
+		19482D8F22E710ED008F9CD7 /* JXCategoryTimelineView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JXCategoryTimelineView.m; sourceTree = "<group>"; };
+		19482D9122E71107008F9CD7 /* JXCategoryTimelineCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JXCategoryTimelineCell.h; sourceTree = "<group>"; };
+		19482D9222E71107008F9CD7 /* JXCategoryTimelineCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JXCategoryTimelineCell.m; sourceTree = "<group>"; };
+		19482D9422E71117008F9CD7 /* JXCategoryTimelineCellModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JXCategoryTimelineCellModel.h; sourceTree = "<group>"; };
+		19482D9522E71117008F9CD7 /* JXCategoryTimelineCellModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JXCategoryTimelineCellModel.m; sourceTree = "<group>"; };
+		19482D9722E718E3008F9CD7 /* TimelineExampleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TimelineExampleViewController.h; sourceTree = "<group>"; };
+		19482D9822E718E3008F9CD7 /* TimelineExampleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TimelineExampleViewController.m; sourceTree = "<group>"; };
 		194DCDB12133C8E8000E89EF /* PagingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PagingViewController.m; sourceTree = "<group>"; };
 		194DCDB22133C8E8000E89EF /* PagingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PagingViewController.h; sourceTree = "<group>"; };
 		194DCDBE2133C948000E89EF /* PagingViewTableHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PagingViewTableHeaderView.h; sourceTree = "<group>"; };
@@ -513,6 +525,7 @@
 			children = (
 				19D4BC3222E2C77A00ACC1A4 /* CustomizationListViewController.h */,
 				19D4BC3322E2C77A00ACC1A4 /* CustomizationListViewController.m */,
+				19482D8D22E71094008F9CD7 /* TimeLine */,
 				19D4BC3C22E362F400ACC1A4 /* CountCell */,
 				19D4BC3522E3008700ACC1A4 /* SpringIndicator */,
 				19D4BC2B22E2B85200ACC1A4 /* AlignmentIndicator */,
@@ -625,6 +638,21 @@
 				19870C8221218DAC00C23CAA /* NaviSegmentedControlViewController.m */,
 			);
 			path = SegmentedControl;
+			sourceTree = "<group>";
+		};
+		19482D8D22E71094008F9CD7 /* TimeLine */ = {
+			isa = PBXGroup;
+			children = (
+				19482D8E22E710ED008F9CD7 /* JXCategoryTimelineView.h */,
+				19482D8F22E710ED008F9CD7 /* JXCategoryTimelineView.m */,
+				19482D9122E71107008F9CD7 /* JXCategoryTimelineCell.h */,
+				19482D9222E71107008F9CD7 /* JXCategoryTimelineCell.m */,
+				19482D9422E71117008F9CD7 /* JXCategoryTimelineCellModel.h */,
+				19482D9522E71117008F9CD7 /* JXCategoryTimelineCellModel.m */,
+				19482D9722E718E3008F9CD7 /* TimelineExampleViewController.h */,
+				19482D9822E718E3008F9CD7 /* TimelineExampleViewController.m */,
+			);
+			path = TimeLine;
 			sourceTree = "<group>";
 		};
 		194DCDCD2133F1D8000E89EF /* LoadData */ = {
@@ -1114,6 +1142,7 @@
 				19C2A47F2270487600B78C69 /* MJRefreshAutoNormalFooter.m in Sources */,
 				1920463521C25A93006538C0 /* JXCategoryIndicatorRainbowLineView.m in Sources */,
 				19D57E84212D5E0E0077DCA6 /* VerticalListCellModel.m in Sources */,
+				19482D9322E71107008F9CD7 /* JXCategoryTimelineCell.m in Sources */,
 				19562CCE212A8C350095AA27 /* IndicatorCustomizeViewController.m in Sources */,
 				19278E792223DA070041C293 /* JXPagerListRefreshView.m in Sources */,
 				19870CF62122BB6100C23CAA /* JXCategoryNumberCell.m in Sources */,
@@ -1127,6 +1156,7 @@
 				1912A526211C257000A80826 /* BackgroundImageViewController.m in Sources */,
 				19302389211B22E300AF1444 /* SegmentedControlViewController.m in Sources */,
 				19562CD4212A8C740095AA27 /* SpecialCustomizeViewController.m in Sources */,
+				19482D9922E718E3008F9CD7 /* TimelineExampleViewController.m in Sources */,
 				1974583F22253FA100C740EB /* LoadDataListCollectionViewController.m in Sources */,
 				1904A8BB21CB949A00316F97 /* JXGradientView.m in Sources */,
 				191A95E0212BBC2500DBF784 /* JXCategoryIndicatorBallView.m in Sources */,
@@ -1145,6 +1175,7 @@
 				19C2A4842270487600B78C69 /* MJRefreshHeader.m in Sources */,
 				19C2A47C2270487600B78C69 /* MJRefreshBackNormalFooter.m in Sources */,
 				19278E7A2223DA070041C293 /* JXPagerView.m in Sources */,
+				19482D9022E710ED008F9CD7 /* JXCategoryTimelineView.m in Sources */,
 				19346D6F21269F3A0065FD8F /* JXCategoryIndicatorBackgroundView.m in Sources */,
 				1912A533211D08C800A80826 /* FootballViewController.m in Sources */,
 				190C48E121F95F6C008032C7 /* JXCategoryViewAnimator.m in Sources */,
@@ -1192,6 +1223,7 @@
 				1904AA1921D1D61800316F97 /* DetailViewController.m in Sources */,
 				19C2A4862270487600B78C69 /* MJRefreshAutoFooter.m in Sources */,
 				19C2A4832270487600B78C69 /* MJRefreshFooter.m in Sources */,
+				19482D9622E71117008F9CD7 /* JXCategoryTimelineCellModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

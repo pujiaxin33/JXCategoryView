@@ -33,7 +33,7 @@
     CGFloat width = [self indicatorWidthValue:model.selectedCellFrame];
     CGFloat height = [self indicatorHeightValue:model.selectedCellFrame];
     CGFloat x = model.selectedCellFrame.origin.x + (model.selectedCellFrame.size.width - width)/2;
-    CGFloat y = (model.selectedCellFrame.size.height - height)/2;
+    CGFloat y = (model.selectedCellFrame.size.height - height)/2 - self.verticalMargin;
     self.frame = CGRectMake(x, y, width, height);
 }
 
@@ -62,18 +62,25 @@
 
     //允许变动frame的情况：1、允许滚动；2、不允许滚动，但是已经通过手势滚动切换一页内容了；
     if (self.isScrollEnabled == YES || (self.isScrollEnabled == NO && percent == 0)) {
-        CGFloat height = [self indicatorHeightValue:leftCellFrame];
-        CGFloat y = (leftCellFrame.size.height - height)/2;
-        self.frame = CGRectMake(targetX, y, targetWidth, height);
+//        CGFloat height = [self indicatorHeightValue:leftCellFrame];
+//        CGFloat y = (leftCellFrame.size.height - height)/2;
+        CGRect toFrame = self.frame;
+        toFrame.origin.x = targetX;
+        toFrame.size.width = targetWidth;
+//        self.frame = CGRectMake(targetX, y, targetWidth, height);
+        self.frame = toFrame;
     }
 }
 
 - (void)jx_selectedCell:(JXCategoryIndicatorParamsModel *)model {
     CGFloat width = [self indicatorWidthValue:model.selectedCellFrame];
-    CGFloat height = [self indicatorHeightValue:model.selectedCellFrame];
+//    CGFloat height = [self indicatorHeightValue:model.selectedCellFrame];
     CGFloat x = model.selectedCellFrame.origin.x + (model.selectedCellFrame.size.width - width)/2;
-    CGFloat y = (model.selectedCellFrame.size.height - height)/2;
-    CGRect toFrame = CGRectMake(x, y, width, height);
+//    CGFloat y = (model.selectedCellFrame.size.height - height)/2;
+//    CGRect toFrame = CGRectMake(x, y, width, height);
+    CGRect toFrame = self.frame;
+    toFrame.origin.x = model.selectedCellFrame.origin.x + (model.selectedCellFrame.size.width - width)/2;
+    toFrame.size.width = [self indicatorWidthValue:model.selectedCellFrame];
 
     if (self.isScrollEnabled) {
         [UIView animateWithDuration:self.scrollAnimationDuration delay:0 options:UIViewAnimationOptionCurveLinear animations:^{

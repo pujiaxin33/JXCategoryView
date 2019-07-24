@@ -10,7 +10,6 @@
 #import "JXCategoryTitleAttributeView.h"
 
 @interface AttributeViewViewController ()
-
 @property (nonatomic, strong) JXCategoryTitleAttributeView *myCategoryView;
 @end
 
