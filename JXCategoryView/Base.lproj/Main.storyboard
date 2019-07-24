@@ -1270,6 +1270,27 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" id="n7u-6B-dPw">
+                                        <rect key="frame" x="0.0" y="440" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="n7u-6B-dPw" id="8K1-WL-EVX">
+                                            <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="指示器等分屏幕宽度" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vxD-oI-Dql">
+                                                    <rect key="frame" x="16" y="11.5" width="156" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="vxD-oI-Dql" firstAttribute="centerY" secondItem="8K1-WL-EVX" secondAttribute="centerY" id="CqW-ze-kEm"/>
+                                                <constraint firstItem="vxD-oI-Dql" firstAttribute="leading" secondItem="8K1-WL-EVX" secondAttribute="leading" constant="16" id="VzO-fA-1Ml"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="vxD-oI-Dql" secondAttribute="trailing" constant="20" symbolic="YES" id="W2e-eL-E2v"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>

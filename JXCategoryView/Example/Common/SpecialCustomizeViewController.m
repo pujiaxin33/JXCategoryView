@@ -17,6 +17,7 @@
 #import "LoadDataListCollectionViewController.h"
 #import "ScrollZoomViewController.h"
 #import "RearrangeViewController.h"
+#import "TitleViewController.h"
 
 @interface SpecialCustomizeViewController ()
 
@@ -79,7 +80,22 @@
         RearrangeViewController *vc = [[RearrangeViewController alloc] init];
         vc.title = title;
         [self.navigationController pushViewController:vc animated:YES];
+    }else if ([title isEqualToString:@"指示器等分屏幕宽度"]) {
+        TitleViewController *testVC = [[TitleViewController alloc] init];
+        testVC.title = title;
+        testVC.titles = @[@"👈左边", @"右边👉"];
+        JXCategoryTitleView *titleCategoryView = (JXCategoryTitleView *)testVC.categoryView;
+        titleCategoryView.cellSpacing = 0;
+        titleCategoryView.contentEdgeInsetLeft = 0;
+        titleCategoryView.contentEdgeInsetRight = 0;
+        titleCategoryView.averageCellSpacingEnabled = NO;
+        titleCategoryView.cellWidth = [UIScreen mainScreen].bounds.size.width/2;
+        JXCategoryIndicatorLineView *lineView = [[JXCategoryIndicatorLineView alloc] init];
+        lineView.indicatorWidth = [UIScreen mainScreen].bounds.size.width/2;
+        titleCategoryView.indicators = @[lineView];
+        [self.navigationController pushViewController:testVC animated:YES];
     }
+
 }
 
 @end
