@@ -85,13 +85,19 @@ SegmentedControl<br/>参考[`SegmentedControlViewController`](https://github.com
 ### 自定义效果预览
 
 收录来自其他使用者的自定义示例，这些自定义类只在Demo项目里面，Pod库并没有这些文件。所以，如果你需要使用这些自定义效果，请通过文件导入的方式。
-这些自定义类可以当做示例代码学习如何自定义，也可以对其进行微调以快速实现自己的业务需求。如果，你有不一样的自定义示例，欢迎提PullRequest进行收录。
+
+目的：
+- 参考学习如何自定义
+- 直接修改自定义示例类以快速实现自己的需求
+
+欢迎提PullRequest进行收录你的自定义效果。
 
 | 说明 | Gif |
 | ----|------|
 | Spring动画指示器 |  <img src="https://github.com/pujiaxin33/JXExampleImages/blob/master/JXCategoryView/SpringIndicator.gif" width="336" height="70"> |
 | 富文本数量cell |  <img src="https://github.com/pujiaxin33/JXExampleImages/blob/master/JXCategoryView/CountCell.gif" width="336" height="70"> |
 | 左右对齐指示器 |  <img src="https://github.com/pujiaxin33/JXExampleImages/blob/master/JXCategoryView/AlignmentIndicator.gif" width="336" height="70"> |
+| 秒杀时间线cell |  <img src="https://github.com/pujiaxin33/JXExampleImages/blob/master/JXCategoryView/timeline.gif" width="336" height="70"> |
 
 ## 要求
 
