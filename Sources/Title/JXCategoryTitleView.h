@@ -48,6 +48,8 @@
 
 @property (nonatomic, assign) CGFloat titleLabelZoomScale;    //默认1.2，titleLabelZoomEnabled为YES才生效。是对字号的缩放，比如titleFont的pointSize为10，放大之后字号就是10*1.2=12。
 
+@property (nonatomic, assign) CGFloat titleLabelZoomSelectedVerticalOffset; //titleLabelZoomEnabled设置为YES，会对titleLabel进行transform缩放，当titleLabelZoomScale过大时（比如设置为2），选中的文本被放大之后底部会有很大的空白，从视觉上看就跟其他未选中的文本不在一个水平线上。这个时候就可以用这个值进行调整。
+
 //----------------------titleLabelStrokeWidth-----------------------//
 @property (nonatomic, assign, getter=isTitleLabelStrokeWidthEnabled) BOOL titleLabelStrokeWidthEnabled;     //默认：NO
 

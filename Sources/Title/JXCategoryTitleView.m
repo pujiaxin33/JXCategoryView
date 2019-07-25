@@ -60,14 +60,16 @@
     [super refreshSelectedCellModel:selectedCellModel unselectedCellModel:unselectedCellModel];
 
     JXCategoryTitleCellModel *myUnselectedCellModel = (JXCategoryTitleCellModel *)unselectedCellModel;
-    myUnselectedCellModel.titleCurrentColor = myUnselectedCellModel.titleNormalColor;
-    myUnselectedCellModel.titleLabelCurrentZoomScale = myUnselectedCellModel.titleLabelNormalZoomScale;
-    myUnselectedCellModel.titleLabelCurrentStrokeWidth = myUnselectedCellModel.titleLabelNormalStrokeWidth;
-
     JXCategoryTitleCellModel *myselectedCellModel = (JXCategoryTitleCellModel *)selectedCellModel;
-    myselectedCellModel.titleCurrentColor = myUnselectedCellModel.titleSelectedColor;
-    myselectedCellModel.titleLabelCurrentZoomScale = myUnselectedCellModel.titleLabelSelectedZoomScale;
-    myselectedCellModel.titleLabelCurrentStrokeWidth = myUnselectedCellModel.titleLabelSelectedStrokeWidth;
+    if (!self.selectedAnimationEnabled) {
+        //开启了动画过渡，current的属性值会在cell里面进行插值更新，所以这里就不要更新了。
+        myUnselectedCellModel.titleCurrentColor = myUnselectedCellModel.titleNormalColor;
+        myselectedCellModel.titleCurrentColor = myUnselectedCellModel.titleSelectedColor;
+        myUnselectedCellModel.titleLabelCurrentZoomScale = myUnselectedCellModel.titleLabelNormalZoomScale;
+        myselectedCellModel.titleLabelCurrentZoomScale = myUnselectedCellModel.titleLabelSelectedZoomScale;
+        myUnselectedCellModel.titleLabelCurrentStrokeWidth = myUnselectedCellModel.titleLabelNormalStrokeWidth;
+        myselectedCellModel.titleLabelCurrentStrokeWidth = myUnselectedCellModel.titleLabelSelectedStrokeWidth;
+    }
 }
 
 - (void)refreshLeftCellModel:(JXCategoryBaseCellModel *)leftCellModel rightCellModel:(JXCategoryBaseCellModel *)rightCellModel ratio:(CGFloat)ratio {
@@ -117,6 +119,7 @@
     model.titleLabelMaskEnabled = self.isTitleLabelMaskEnabled;
     model.titleLabelZoomEnabled = self.isTitleLabelZoomEnabled;
     model.titleLabelNormalZoomScale = 1;
+    model.titleLabelZoomSelectedVerticalOffset = self.titleLabelZoomSelectedVerticalOffset;
     model.titleLabelSelectedZoomScale = self.titleLabelZoomScale;
     model.titleLabelStrokeWidthEnabled = self.isTitleLabelStrokeWidthEnabled;
     model.titleLabelNormalStrokeWidth = 0;

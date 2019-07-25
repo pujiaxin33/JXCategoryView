@@ -62,9 +62,24 @@
         JXCategoryTitleView *titleCategoryView = (JXCategoryTitleView *)testVC.categoryView;
         titleCategoryView.titleColorGradientEnabled = YES;
         titleCategoryView.titleLabelZoomEnabled = YES;
-        titleCategoryView.titleLabelZoomScale = 1.3;
         titleCategoryView.titleLabelAnchorPointStyle = JXCategoryTitleLabelAnchorPointStyleBottom;
 //        titleCategoryView.titleLabelVerticalOffset = 5;
+        [self.navigationController pushViewController:testVC animated:YES];
+
+    }else if ([title isEqualToString:@"大小缩放+底部锚点+视觉对齐"]) {
+
+        TitleViewController *testVC = [[TitleViewController alloc] init];
+        testVC.title = title;
+        JXCategoryTitleView *titleCategoryView = (JXCategoryTitleView *)testVC.categoryView;
+        titleCategoryView.titleColorGradientEnabled = YES;
+        titleCategoryView.titleLabelZoomEnabled = YES;
+        titleCategoryView.titleLabelZoomScale = 1.85;
+        titleCategoryView.cellWidthZoomEnabled = YES;
+        titleCategoryView.cellWidthZoomScale = 1.85;
+        titleCategoryView.titleLabelAnchorPointStyle = JXCategoryTitleLabelAnchorPointStyleBottom;
+        titleCategoryView.selectedAnimationEnabled = YES;
+        titleCategoryView.titleLabelZoomSelectedVerticalOffset = 3;
+        //        titleCategoryView.titleLabelVerticalOffset = 5;
         [self.navigationController pushViewController:testVC animated:YES];
 
     }else if ([title isEqualToString:@"大小缩放+顶部锚点"]) {
@@ -72,11 +87,13 @@
         TitleViewController *testVC = [[TitleViewController alloc] init];
         testVC.title = title;
         JXCategoryTitleView *titleCategoryView = (JXCategoryTitleView *)testVC.categoryView;
+
         titleCategoryView.titleColorGradientEnabled = YES;
         titleCategoryView.titleLabelZoomEnabled = YES;
         titleCategoryView.titleLabelZoomScale = 1.3;
         titleCategoryView.titleLabelAnchorPointStyle = JXCategoryTitleLabelAnchorPointStyleTop;
 //        titleCategoryView.titleLabelVerticalOffset = 5;
+
         [self.navigationController pushViewController:testVC animated:YES];
 
     }else if ([title isEqualToString:@"大小缩放+字体粗细"]) {

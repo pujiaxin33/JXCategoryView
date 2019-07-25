@@ -36,6 +36,8 @@
 
 @property (nonatomic, assign) CGFloat titleLabelSelectedZoomScale;
 
+@property (nonatomic, assign) CGFloat titleLabelZoomSelectedVerticalOffset;
+
 @property (nonatomic, assign, getter=isTitleLabelStrokeWidthEnabled) BOOL titleLabelStrokeWidthEnabled;
 
 @property (nonatomic, assign) CGFloat titleLabelNormalStrokeWidth;
