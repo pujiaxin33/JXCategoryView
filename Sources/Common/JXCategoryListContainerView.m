@@ -93,6 +93,14 @@
     self.currentIndex = defaultSelectedIndex;
 }
 
+- (void)setDidAppearPercent:(CGFloat)didAppearPercent {
+    _didAppearPercent = didAppearPercent;
+
+    if (didAppearPercent <= 0 || didAppearPercent >= 1) {
+        NSAssert(NO, @"didAppearPercent值范围为开区间(0,1)，即不包括0和1");
+    }
+}
+
 #pragma mark - JXCategoryBaseView回调
 
 - (void)scrollingFromLeftIndex:(NSInteger)leftIndex toRightIndex:(NSInteger)rightIndex ratio:(CGFloat)ratio selectedIndex:(NSInteger)selectedIndex {
