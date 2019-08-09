@@ -28,6 +28,7 @@ struct DelegateFlags {
 @property (nonatomic, strong) JXCategoryViewAnimator *animator;
 // 正在滚动中的目标index。用于处理正在滚动列表的时候，立即点击item，会导致界面显示异常。
 @property (nonatomic, assign) NSInteger scrollingTargetIndex;
+@property (nonatomic, assign, getter=isNeedReloadByBecomeActive) BOOL needReloadByBecomeActive;
 
 @end
 
@@ -38,6 +39,7 @@ struct DelegateFlags {
     if (self.contentScrollView) {
         [self.contentScrollView removeObserver:self forKeyPath:@"contentOffset"];
     }
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationDidBecomeActiveNotification object:nil];
     [self.animator stop];
 }
 
@@ -233,6 +235,13 @@ struct DelegateFlags {
     [self selectCellAtIndex:index selectedType:JXCategoryCellSelectedTypeScroll];
 }
 
+- (void)applicationDidBecomeActive:(NSNotification *)notification {
+    if (self.isNeedReloadByBecomeActive) {
+        self.needReloadByBecomeActive = NO;
+        [self reloadData];
+    }
+}
+
 @end
 
 @implementation JXCategoryBaseView (UISubclassingBaseHooks)
@@ -300,6 +309,7 @@ struct DelegateFlags {
     _selectedAnimationDuration = 0.25;
     _scrollingTargetIndex = -1;
     _contentScrollViewClickTransitionAnimationEnabled = YES;
+    _needReloadByBecomeActive = YES;
 }
 
 - (void)initializeViews
@@ -321,6 +331,8 @@ struct DelegateFlags {
         self.collectionView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
     }
     [self addSubview:self.collectionView];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidBecomeActive:) name:UIApplicationDidBecomeActiveNotification object:nil];
 }
 
 - (void)refreshDataSource {
@@ -437,6 +449,7 @@ struct DelegateFlags {
         return NO;
     }
 
+    self.needReloadByBecomeActive = NO;
     if (self.selectedIndex == targetIndex) {
         //目标index和当前选中的index相等，就不需要处理后续的选中更新逻辑，只需要回调代理方法即可。
         if (selectedType == JXCategoryCellSelectedTypeClick) {
@@ -570,6 +583,7 @@ struct DelegateFlags {
             [self scrollSelectItemAtIndex:baseIndex];
         }
     }else {
+        self.needReloadByBecomeActive = YES;
         if (self.animator.isExecuting) {
             [self.animator invalid];
             //需要重置之前animator.progessCallback为处理完的状态
