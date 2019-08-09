@@ -23,10 +23,10 @@
 /**
  请使用indicatorHeight和indicatorWidth！默认宽度15，高度15
  */
-@property (nonatomic, assign) CGSize ballViewSize;
+@property (nonatomic, assign) CGSize ballViewSize JXCategoryViewDeprecated("请使用indicatorHeight和indicatorWidth，未来版本会删除该属性！");
 /**
  请使用indicatorColor
  */
-@property (nonatomic, strong) UIColor *ballViewColor;
+@property (nonatomic, strong) UIColor *ballViewColor JXCategoryViewDeprecated("请使用indicatorColor，未来版本会删除该属性！");
 
 @end

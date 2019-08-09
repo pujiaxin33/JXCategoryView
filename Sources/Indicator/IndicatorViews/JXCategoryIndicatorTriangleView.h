@@ -20,11 +20,11 @@
 /**
  请使用indicatorHeight和indicatorWidth！默认宽度14，高度10
  */
-@property (nonatomic, assign) CGSize triangleViewSize;
+@property (nonatomic, assign) CGSize triangleViewSize JXCategoryViewDeprecated("请使用indicatorHeight和indicatorWidth，未来版本会删除该属性！");
 
 /**
  请使用indicatorColor
  */
-@property (nonatomic, strong) UIColor *triangleViewColor;
+@property (nonatomic, strong) UIColor *triangleViewColor JXCategoryViewDeprecated("请使用indicatorColor，未来版本会删除该属性！");
 
 @end

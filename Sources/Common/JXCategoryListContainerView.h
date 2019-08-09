@@ -114,7 +114,7 @@
  @param delegate JXCategoryListContainerViewDelegate代理
  @return JXCategoryListContainerView实例
  */
-- (instancetype)initWithParentVC:(UIViewController *)parentVC delegate:(id<JXCategoryListContainerViewDelegate>)delegate  JXCategoryViewDeprecated("请使用`- (instancetype)initWithDelegate:(id<JXCategoryListContainerViewDelegate>)delegate`方法");
+- (instancetype)initWithParentVC:(UIViewController *)parentVC delegate:(id<JXCategoryListContainerViewDelegate>)delegate  JXCategoryViewDeprecated("请使用`- (instancetype)initWithDelegate:(id<JXCategoryListContainerViewDelegate>)delegate`方法，未来版本会删除该方法！");
 
 @end
 

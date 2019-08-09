@@ -23,10 +23,10 @@
 /**
  请使用indicatorHeight和indicatorWidth！默认宽度10，高度10
  */
-@property (nonatomic, assign) CGSize dotSize;
+@property (nonatomic, assign) CGSize dotSize JXCategoryViewDeprecated("请使用indicatorHeight和indicatorWidth，未来版本会删除该属性！");
 /**
  请使用indicatorColor
  */
-@property (nonatomic, strong) UIColor *dotLineViewColor;
+@property (nonatomic, strong) UIColor *dotLineViewColor JXCategoryViewDeprecated("请使用indicatorColor，未来版本会删除该属性！");
 
 @end

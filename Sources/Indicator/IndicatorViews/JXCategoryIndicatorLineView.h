@@ -13,8 +13,8 @@ typedef NS_ENUM(NSUInteger, JXCategoryIndicatorLineStyle) {
     JXCategoryIndicatorLineStyle_Lengthen           = 1,
     JXCategoryIndicatorLineStyle_LengthenOffset     = 2,
     
-    JXCategoryIndicatorLineStyle_JD                 = 1,    // Deprecated. Use JXCategoryIndicatorLineStyle_Lengthen
-    JXCategoryIndicatorLineStyle_IQIYI              = 2,    // Deprecated. Use JXCategoryIndicatorLineStyle_LengthenOffset
+    JXCategoryIndicatorLineStyle_JD               JXCategoryViewDeprecated("请使用JXCategoryIndicatorLineStyle_Lengthen，未来版本会删除该属性！")  = 1,    // Deprecated. Use JXCategoryIndicatorLineStyle_Lengthen
+    JXCategoryIndicatorLineStyle_IQIYI            JXCategoryViewDeprecated("请使用JXCategoryIndicatorLineStyle_LengthenOffset，未来版本会删除该属性！")  = 2,    // Deprecated. Use JXCategoryIndicatorLineStyle_LengthenOffset
 };
 
 @interface JXCategoryIndicatorLineView : JXCategoryIndicatorComponentView
@@ -37,18 +37,18 @@ typedef NS_ENUM(NSUInteger, JXCategoryIndicatorLineStyle) {
 /**
  请使用indicatorHeight
  */
-@property (nonatomic, assign) CGFloat indicatorLineViewHeight;
+@property (nonatomic, assign) CGFloat indicatorLineViewHeight JXCategoryViewDeprecated("请使用indicatorHeight，未来版本会删除该属性！");
 /**
  请使用indicatorWidth
  */
-@property (nonatomic, assign) CGFloat indicatorLineWidth;
+@property (nonatomic, assign) CGFloat indicatorLineWidth JXCategoryViewDeprecated("请使用indicatorWidth，未来版本会删除该属性！");
 /**
  请使用indicatorCornerRadius
  */
-@property (nonatomic, assign) CGFloat indicatorLineViewCornerRadius;
+@property (nonatomic, assign) CGFloat indicatorLineViewCornerRadius JXCategoryViewDeprecated("请使用indicatorCornerRadius，未来版本会删除该属性！");
 /**
  请使用indicatorColor
  */
-@property (nonatomic, strong) UIColor *indicatorLineViewColor;
+@property (nonatomic, strong) UIColor *indicatorLineViewColor JXCategoryViewDeprecated("请使用indicatorColor，未来版本会删除该属性！");
 
 @end

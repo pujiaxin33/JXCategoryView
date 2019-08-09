@@ -22,26 +22,26 @@
  请使用indicatorWidth
  默认：JXCategoryViewAutomaticDimension
  */
-@property (nonatomic, assign) CGFloat backgroundViewWidth;
+@property (nonatomic, assign) CGFloat backgroundViewWidth JXCategoryViewDeprecated("请使用indicatorWidth，未来版本会删除该属性！");
 /**
  请使用indicatorWidthIncrement
  背景指示器的宽度增量补偿，背景指示器一般要比cell宽度大。默认10
  */
-@property (nonatomic, assign) CGFloat backgroundViewWidthIncrement;
+@property (nonatomic, assign) CGFloat backgroundViewWidthIncrement JXCategoryViewDeprecated("请使用indicatorWidthIncrement，未来版本会删除该属性！");
 /**
  请使用indicatorHeight
  默认：JXCategoryViewAutomaticDimension
  */
-@property (nonatomic, assign) CGFloat backgroundViewHeight;
+@property (nonatomic, assign) CGFloat backgroundViewHeight JXCategoryViewDeprecated("请使用indicatorHeight，未来版本会删除该属性！");
 /**
  请使用indicatorCornerRadius
  默认：JXCategoryViewAutomaticDimension
  */
-@property (nonatomic, assign) CGFloat backgroundViewCornerRadius;
+@property (nonatomic, assign) CGFloat backgroundViewCornerRadius JXCategoryViewDeprecated("请使用indicatorCornerRadius，未来版本会删除该属性！");
 /**
  请使用indicatorColor
  默认：[UIColor lightGrayColor]
  */
-@property (nonatomic, strong) UIColor *backgroundViewColor;
+@property (nonatomic, strong) UIColor *backgroundViewColor JXCategoryViewDeprecated("请使用indicatorColor，未来版本会删除该属性！");
 
 @end
