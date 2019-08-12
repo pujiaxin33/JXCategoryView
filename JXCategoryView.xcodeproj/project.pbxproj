@@ -59,6 +59,10 @@
 		194DCDC32133CAA8000E89EF /* TestListBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 194DCDC22133CAA8000E89EF /* TestListBaseView.m */; };
 		194DCDD02133F1F5000E89EF /* LoadDataListCustomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 194DCDCF2133F1F5000E89EF /* LoadDataListCustomViewController.m */; };
 		194DCDD52134DEF2000E89EF /* LoadDataListBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 194DCDD42134DEF2000E89EF /* LoadDataListBaseViewController.m */; };
+		1954ADD823014FCE00CEA3A5 /* VerticalListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1954ADD723014FCE00CEA3A5 /* VerticalListTableViewController.m */; };
+		1954ADDB2301554700CEA3A5 /* VerticalTableSectionCategoryHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1954ADDA2301554700CEA3A5 /* VerticalTableSectionCategoryHeaderView.m */; };
+		1954ADDE230158A800CEA3A5 /* VerticalTableSectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1954ADDD230158A800CEA3A5 /* VerticalTableSectionHeaderView.m */; };
+		1954ADE12301622300CEA3A5 /* VerticalListTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1954ADE02301622300CEA3A5 /* VerticalListTableView.m */; };
 		19562CCE212A8C350095AA27 /* IndicatorCustomizeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19562CCD212A8C350095AA27 /* IndicatorCustomizeViewController.m */; };
 		19562CD1212A8C450095AA27 /* CellCustomizeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19562CD0212A8C450095AA27 /* CellCustomizeViewController.m */; };
 		19562CD4212A8C740095AA27 /* SpecialCustomizeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19562CD3212A8C740095AA27 /* SpecialCustomizeViewController.m */; };
@@ -245,6 +249,14 @@
 		194DCDCF2133F1F5000E89EF /* LoadDataListCustomViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoadDataListCustomViewController.m; sourceTree = "<group>"; };
 		194DCDD32134DEF2000E89EF /* LoadDataListBaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoadDataListBaseViewController.h; sourceTree = "<group>"; };
 		194DCDD42134DEF2000E89EF /* LoadDataListBaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoadDataListBaseViewController.m; sourceTree = "<group>"; };
+		1954ADD623014FCE00CEA3A5 /* VerticalListTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VerticalListTableViewController.h; sourceTree = "<group>"; };
+		1954ADD723014FCE00CEA3A5 /* VerticalListTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VerticalListTableViewController.m; sourceTree = "<group>"; };
+		1954ADD92301554700CEA3A5 /* VerticalTableSectionCategoryHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VerticalTableSectionCategoryHeaderView.h; sourceTree = "<group>"; };
+		1954ADDA2301554700CEA3A5 /* VerticalTableSectionCategoryHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VerticalTableSectionCategoryHeaderView.m; sourceTree = "<group>"; };
+		1954ADDC230158A800CEA3A5 /* VerticalTableSectionHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VerticalTableSectionHeaderView.h; sourceTree = "<group>"; };
+		1954ADDD230158A800CEA3A5 /* VerticalTableSectionHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VerticalTableSectionHeaderView.m; sourceTree = "<group>"; };
+		1954ADDF2301622300CEA3A5 /* VerticalListTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VerticalListTableView.h; sourceTree = "<group>"; };
+		1954ADE02301622300CEA3A5 /* VerticalListTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VerticalListTableView.m; sourceTree = "<group>"; };
 		19562CCC212A8C350095AA27 /* IndicatorCustomizeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IndicatorCustomizeViewController.h; sourceTree = "<group>"; };
 		19562CCD212A8C350095AA27 /* IndicatorCustomizeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IndicatorCustomizeViewController.m; sourceTree = "<group>"; };
 		19562CCF212A8C450095AA27 /* CellCustomizeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CellCustomizeViewController.h; sourceTree = "<group>"; };
@@ -1057,6 +1069,14 @@
 				19D57E80212D5DFB0077DCA6 /* VerticalListSectionModel.m */,
 				19D57E82212D5E0E0077DCA6 /* VerticalListCellModel.h */,
 				19D57E83212D5E0E0077DCA6 /* VerticalListCellModel.m */,
+				1954ADD623014FCE00CEA3A5 /* VerticalListTableViewController.h */,
+				1954ADD723014FCE00CEA3A5 /* VerticalListTableViewController.m */,
+				1954ADDF2301622300CEA3A5 /* VerticalListTableView.h */,
+				1954ADE02301622300CEA3A5 /* VerticalListTableView.m */,
+				1954ADDC230158A800CEA3A5 /* VerticalTableSectionHeaderView.h */,
+				1954ADDD230158A800CEA3A5 /* VerticalTableSectionHeaderView.m */,
+				1954ADD92301554700CEA3A5 /* VerticalTableSectionCategoryHeaderView.h */,
+				1954ADDA2301554700CEA3A5 /* VerticalTableSectionCategoryHeaderView.m */,
 			);
 			path = VerticalListView;
 			sourceTree = "<group>";
@@ -1164,6 +1184,7 @@
 				19D57E8D212D68D10077DCA6 /* VerticalSectionHeaderView.m in Sources */,
 				19562CD9212A94A40095AA27 /* JXCategoryImageView.m in Sources */,
 				19870CF52122BB6100C23CAA /* JXCategoryNumberView.m in Sources */,
+				1954ADD823014FCE00CEA3A5 /* VerticalListTableViewController.m in Sources */,
 				19870CEE2122BB6100C23CAA /* JXCategoryTitleImageCellModel.m in Sources */,
 				19870CF02122BB6100C23CAA /* JXCategoryTitleCell.m in Sources */,
 				194DCDB32133C8E8000E89EF /* PagingViewController.m in Sources */,
@@ -1180,6 +1201,7 @@
 				1992D95F22FD56C000461D4D /* JXCategoryTitleSortView.m in Sources */,
 				19562CCE212A8C350095AA27 /* IndicatorCustomizeViewController.m in Sources */,
 				19278E792223DA070041C293 /* JXPagerListRefreshView.m in Sources */,
+				1954ADDE230158A800CEA3A5 /* VerticalTableSectionHeaderView.m in Sources */,
 				19870CF62122BB6100C23CAA /* JXCategoryNumberCell.m in Sources */,
 				1979337821CA32B000007733 /* LoadDataListContainerListViewController.m in Sources */,
 				19870D022122BB6100C23CAA /* JXCategoryBaseCellModel.m in Sources */,
@@ -1201,6 +1223,7 @@
 				191A960F212CF6F600DBF784 /* JXCategoryTitleAttributeCell.m in Sources */,
 				19870C8621218E3A00C23CAA /* SegmentedListViewController.m in Sources */,
 				19346D69212677A50065FD8F /* JXCategoryIndicatorComponentView.m in Sources */,
+				1954ADE12301622300CEA3A5 /* VerticalListTableView.m in Sources */,
 				1979336A21C9DBD500007733 /* LoadDataListContainerViewController.m in Sources */,
 				19870CF12122BB6100C23CAA /* JXCategoryTitleView.m in Sources */,
 				19870CEF2122BB6100C23CAA /* JXCategoryTitleCellModel.m in Sources */,
@@ -1237,6 +1260,7 @@
 				19CF184B216D9BD90093C775 /* VerticalListCollectionView.m in Sources */,
 				19562CDC212A94BE0095AA27 /* JXCategoryImageCell.m in Sources */,
 				190A54E2206397370050B327 /* ViewController.m in Sources */,
+				1954ADDB2301554700CEA3A5 /* VerticalTableSectionCategoryHeaderView.m in Sources */,
 				19D4BC3822E300D400ACC1A4 /* JXCategoryIndicatorSpringBackgroundView.m in Sources */,
 				190A54ED206397370050B327 /* main.m in Sources */,
 				19C2A4752270487600B78C69 /* MJRefreshConst.m in Sources */,

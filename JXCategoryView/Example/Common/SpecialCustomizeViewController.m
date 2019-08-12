@@ -18,6 +18,7 @@
 #import "ScrollZoomViewController.h"
 #import "RearrangeViewController.h"
 #import "TitleViewController.h"
+#import "VerticalListTableViewController.h"
 
 @interface SpecialCustomizeViewController ()
 
@@ -56,8 +57,12 @@
         NestViewController *vc = [[NestViewController alloc] init];
         vc.title = title;
         [self.navigationController pushViewController:vc animated:YES];
-    }else if ([title isEqualToString:@"垂直列表滚动"]) {
+    }else if ([title isEqualToString:@"垂直列表滚动(UICollectionView)"]) {
         VerticalListViewController *vc = [[VerticalListViewController alloc] init];
+        vc.title = title;
+        [self.navigationController pushViewController:vc animated:YES];
+    }else if ([title isEqualToString:@"垂直列表滚动(UITableView)"]) {
+        VerticalListTableViewController *vc = [[VerticalListTableViewController alloc] init];
         vc.title = title;
         [self.navigationController pushViewController:vc animated:YES];
     }else if ([title isEqualToString:@"刷新数据+UIScrollView封装列表"]) {
