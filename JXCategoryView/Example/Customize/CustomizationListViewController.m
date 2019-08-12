@@ -11,6 +11,7 @@
 #import "SpringIndicatorExampleViewController.h"
 #import "CountCellExampleViewController.h"
 #import "TimelineExampleViewController.h"
+#import "SortExampleViewController.h"
 
 @interface CustomizationListViewController ()
 
@@ -46,6 +47,10 @@
         [self.navigationController pushViewController:vc animated:YES];
     }else if ([title isEqualToString:@"秒杀时间线cell"]) {
         TimelineExampleViewController *vc = [[TimelineExampleViewController alloc] init];
+        vc.title = title;
+        [self.navigationController pushViewController:vc animated:YES];
+    }else if ([title isEqualToString:@"京东商品排序cell"]) {
+        SortExampleViewController *vc = [[SortExampleViewController alloc] init];
         vc.title = title;
         [self.navigationController pushViewController:vc animated:YES];
     }
