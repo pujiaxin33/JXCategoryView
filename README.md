@@ -98,6 +98,8 @@ SegmentedControl<br/>参考[`SegmentedControlViewController`](https://github.com
 | 富文本数量cell |  <img src="https://github.com/pujiaxin33/JXExampleImages/blob/master/JXCategoryView/CountCell.gif" width="336" height="70"> |
 | 左右对齐指示器 |  <img src="https://github.com/pujiaxin33/JXExampleImages/blob/master/JXCategoryView/AlignmentIndicator.gif" width="336" height="70"> |
 | 秒杀时间线cell |  <img src="https://github.com/pujiaxin33/JXExampleImages/blob/master/JXCategoryView/timeline.gif" width="336" height="70"> |
+| 京东商品排序cell |  <img src="https://github.com/pujiaxin33/JXExampleImages/blob/master/JXCategoryView/JDProductSort.gif" width="336" height="70"> |
+| title背景块cell |  <img src="https://github.com/pujiaxin33/JXExampleImages/blob/master/JXCategoryView/TitleBackgroundExample.gif" width="336" height="70"> |
 
 ## 要求
 
