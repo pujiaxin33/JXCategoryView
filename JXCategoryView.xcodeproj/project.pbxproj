@@ -63,6 +63,10 @@
 		1954ADDB2301554700CEA3A5 /* VerticalTableSectionCategoryHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1954ADDA2301554700CEA3A5 /* VerticalTableSectionCategoryHeaderView.m */; };
 		1954ADDE230158A800CEA3A5 /* VerticalTableSectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1954ADDD230158A800CEA3A5 /* VerticalTableSectionHeaderView.m */; };
 		1954ADE12301622300CEA3A5 /* VerticalListTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1954ADE02301622300CEA3A5 /* VerticalListTableView.m */; };
+		1954ADEE2306909F00CEA3A5 /* JXCategoryTitleBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1954ADED2306909F00CEA3A5 /* JXCategoryTitleBackgroundView.m */; };
+		1954ADF1230690B000CEA3A5 /* JXCategoryTitleBackgroundCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1954ADF0230690B000CEA3A5 /* JXCategoryTitleBackgroundCellModel.m */; };
+		1954ADF4230690C400CEA3A5 /* JXCategoryTitleBackgroundCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1954ADF3230690C400CEA3A5 /* JXCategoryTitleBackgroundCell.m */; };
+		1954ADF72306994C00CEA3A5 /* TitleBackgroundExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1954ADF62306994C00CEA3A5 /* TitleBackgroundExampleViewController.m */; };
 		19562CCE212A8C350095AA27 /* IndicatorCustomizeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19562CCD212A8C350095AA27 /* IndicatorCustomizeViewController.m */; };
 		19562CD1212A8C450095AA27 /* CellCustomizeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19562CD0212A8C450095AA27 /* CellCustomizeViewController.m */; };
 		19562CD4212A8C740095AA27 /* SpecialCustomizeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19562CD3212A8C740095AA27 /* SpecialCustomizeViewController.m */; };
@@ -257,6 +261,14 @@
 		1954ADDD230158A800CEA3A5 /* VerticalTableSectionHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VerticalTableSectionHeaderView.m; sourceTree = "<group>"; };
 		1954ADDF2301622300CEA3A5 /* VerticalListTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VerticalListTableView.h; sourceTree = "<group>"; };
 		1954ADE02301622300CEA3A5 /* VerticalListTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VerticalListTableView.m; sourceTree = "<group>"; };
+		1954ADEC2306909F00CEA3A5 /* JXCategoryTitleBackgroundView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JXCategoryTitleBackgroundView.h; sourceTree = "<group>"; };
+		1954ADED2306909F00CEA3A5 /* JXCategoryTitleBackgroundView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JXCategoryTitleBackgroundView.m; sourceTree = "<group>"; };
+		1954ADEF230690B000CEA3A5 /* JXCategoryTitleBackgroundCellModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JXCategoryTitleBackgroundCellModel.h; sourceTree = "<group>"; };
+		1954ADF0230690B000CEA3A5 /* JXCategoryTitleBackgroundCellModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JXCategoryTitleBackgroundCellModel.m; sourceTree = "<group>"; };
+		1954ADF2230690C400CEA3A5 /* JXCategoryTitleBackgroundCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JXCategoryTitleBackgroundCell.h; sourceTree = "<group>"; };
+		1954ADF3230690C400CEA3A5 /* JXCategoryTitleBackgroundCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JXCategoryTitleBackgroundCell.m; sourceTree = "<group>"; };
+		1954ADF52306994C00CEA3A5 /* TitleBackgroundExampleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TitleBackgroundExampleViewController.h; sourceTree = "<group>"; };
+		1954ADF62306994C00CEA3A5 /* TitleBackgroundExampleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TitleBackgroundExampleViewController.m; sourceTree = "<group>"; };
 		19562CCC212A8C350095AA27 /* IndicatorCustomizeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IndicatorCustomizeViewController.h; sourceTree = "<group>"; };
 		19562CCD212A8C350095AA27 /* IndicatorCustomizeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IndicatorCustomizeViewController.m; sourceTree = "<group>"; };
 		19562CCF212A8C450095AA27 /* CellCustomizeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CellCustomizeViewController.h; sourceTree = "<group>"; };
@@ -552,17 +564,18 @@
 			children = (
 				19D4BC3222E2C77A00ACC1A4 /* CustomizationListViewController.h */,
 				19D4BC3322E2C77A00ACC1A4 /* CustomizationListViewController.m */,
+				1954ADEB23068FC100CEA3A5 /* TitleBackground */,
 				1992D95C22FD52FD00461D4D /* Sort */,
 				19482D8D22E71094008F9CD7 /* TimeLine */,
 				19D4BC3C22E362F400ACC1A4 /* CountCell */,
 				19D4BC3522E3008700ACC1A4 /* SpringIndicator */,
 				19D4BC2B22E2B85200ACC1A4 /* AlignmentIndicator */,
-				191A9609212CF68000DBF784 /* CellAdjust */,
+				191A9609212CF68000DBF784 /* TitleAtrribute */,
 			);
 			path = Customize;
 			sourceTree = "<group>";
 		};
-		191A9609212CF68000DBF784 /* CellAdjust */ = {
+		191A9609212CF68000DBF784 /* TitleAtrribute */ = {
 			isa = PBXGroup;
 			children = (
 				191A960A212CF6EA00DBF784 /* JXCategoryTitleAttributeView.h */,
@@ -574,7 +587,7 @@
 				191A9613212CFA4D00DBF784 /* AttributeViewViewController.h */,
 				191A9614212CFA4D00DBF784 /* AttributeViewViewController.m */,
 			);
-			path = CellAdjust;
+			path = TitleAtrribute;
 			sourceTree = "<group>";
 		};
 		192255622215470C00AF9C21 /* ScrollZoom */ = {
@@ -705,6 +718,21 @@
 				197458412225402D00C740EB /* LoadDataListCollectionListViewController.m */,
 			);
 			path = LoadData;
+			sourceTree = "<group>";
+		};
+		1954ADEB23068FC100CEA3A5 /* TitleBackground */ = {
+			isa = PBXGroup;
+			children = (
+				1954ADEC2306909F00CEA3A5 /* JXCategoryTitleBackgroundView.h */,
+				1954ADED2306909F00CEA3A5 /* JXCategoryTitleBackgroundView.m */,
+				1954ADEF230690B000CEA3A5 /* JXCategoryTitleBackgroundCellModel.h */,
+				1954ADF0230690B000CEA3A5 /* JXCategoryTitleBackgroundCellModel.m */,
+				1954ADF2230690C400CEA3A5 /* JXCategoryTitleBackgroundCell.h */,
+				1954ADF3230690C400CEA3A5 /* JXCategoryTitleBackgroundCell.m */,
+				1954ADF52306994C00CEA3A5 /* TitleBackgroundExampleViewController.h */,
+				1954ADF62306994C00CEA3A5 /* TitleBackgroundExampleViewController.m */,
+			);
+			path = TitleBackground;
 			sourceTree = "<group>";
 		};
 		19562CD6212A934F0095AA27 /* Image */ = {
@@ -1164,6 +1192,7 @@
 				19870CF92122BB6100C23CAA /* UIColor+JXAdd.m in Sources */,
 				19302337211AEB6300AF1444 /* NumberViewController.m in Sources */,
 				19870D002122BB6100C23CAA /* JXCategoryBaseView.m in Sources */,
+				1954ADF1230690B000CEA3A5 /* JXCategoryTitleBackgroundCellModel.m in Sources */,
 				19870CF32122BB6100C23CAA /* JXCategoryIndicatorView.m in Sources */,
 				19C2A47E2270487600B78C69 /* MJRefreshAutoGifFooter.m in Sources */,
 				19C2A4872270487600B78C69 /* MJRefreshComponent.m in Sources */,
@@ -1203,6 +1232,7 @@
 				19278E792223DA070041C293 /* JXPagerListRefreshView.m in Sources */,
 				1954ADDE230158A800CEA3A5 /* VerticalTableSectionHeaderView.m in Sources */,
 				19870CF62122BB6100C23CAA /* JXCategoryNumberCell.m in Sources */,
+				1954ADF72306994C00CEA3A5 /* TitleBackgroundExampleViewController.m in Sources */,
 				1979337821CA32B000007733 /* LoadDataListContainerListViewController.m in Sources */,
 				19870D022122BB6100C23CAA /* JXCategoryBaseCellModel.m in Sources */,
 				19D57E7E212D5C600077DCA6 /* VerticalListViewController.m in Sources */,
@@ -1220,6 +1250,7 @@
 				19346D722126B0D80065FD8F /* JXCategoryIndicatorTriangleView.m in Sources */,
 				194DCDD02133F1F5000E89EF /* LoadDataListCustomViewController.m in Sources */,
 				19302333211AD8B200AF1444 /* ListViewController.m in Sources */,
+				1954ADF4230690C400CEA3A5 /* JXCategoryTitleBackgroundCell.m in Sources */,
 				191A960F212CF6F600DBF784 /* JXCategoryTitleAttributeCell.m in Sources */,
 				19870C8621218E3A00C23CAA /* SegmentedListViewController.m in Sources */,
 				19346D69212677A50065FD8F /* JXCategoryIndicatorComponentView.m in Sources */,
@@ -1284,6 +1315,7 @@
 				19278E782223DA070041C293 /* JXPagerMainTableView.m in Sources */,
 				1904AA1921D1D61800316F97 /* DetailViewController.m in Sources */,
 				19C2A4862270487600B78C69 /* MJRefreshAutoFooter.m in Sources */,
+				1954ADEE2306909F00CEA3A5 /* JXCategoryTitleBackgroundView.m in Sources */,
 				19C2A4832270487600B78C69 /* MJRefreshFooter.m in Sources */,
 				19482D9622E71117008F9CD7 /* JXCategoryTimelineCellModel.m in Sources */,
 			);

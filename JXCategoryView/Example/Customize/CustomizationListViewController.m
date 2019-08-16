@@ -12,6 +12,7 @@
 #import "CountCellExampleViewController.h"
 #import "TimelineExampleViewController.h"
 #import "SortExampleViewController.h"
+#import "TitleBackgroundExampleViewController.h"
 
 @interface CustomizationListViewController ()
 
@@ -53,7 +54,12 @@
         SortExampleViewController *vc = [[SortExampleViewController alloc] init];
         vc.title = title;
         [self.navigationController pushViewController:vc animated:YES];
+    }else if ([title isEqualToString:@"title背景cell"]) {
+        TitleBackgroundExampleViewController *vc = [[TitleBackgroundExampleViewController alloc] init];
+        vc.title = title;
+        [self.navigationController pushViewController:vc animated:YES];
     }
+
 }
 
 @end
