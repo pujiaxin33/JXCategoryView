@@ -105,6 +105,7 @@
 
 /**
  选中目标index的item
+ 如果要同时触发列表容器对应index的列表加载，请再调用`[self.listContainerView didClickSelectedItemAtIndex:index];`方法
 
  @param index 目标index
  */
