@@ -61,14 +61,31 @@
 
     JXCategoryTitleCellModel *myUnselectedCellModel = (JXCategoryTitleCellModel *)unselectedCellModel;
     JXCategoryTitleCellModel *myselectedCellModel = (JXCategoryTitleCellModel *)selectedCellModel;
-    if (!self.selectedAnimationEnabled) {
-        //开启了动画过渡，current的属性值会在cell里面进行插值更新，所以这里就不要更新了。
+    if (!self.isSelectedAnimationEnabled) {
+        //没有开启动画，可以直接更新属性
+        myselectedCellModel.titleCurrentColor = myselectedCellModel.titleSelectedColor;
+        myselectedCellModel.titleLabelCurrentZoomScale = myselectedCellModel.titleLabelSelectedZoomScale;
+        myselectedCellModel.titleLabelCurrentStrokeWidth = myselectedCellModel.titleLabelSelectedStrokeWidth;
+
         myUnselectedCellModel.titleCurrentColor = myUnselectedCellModel.titleNormalColor;
-        myselectedCellModel.titleCurrentColor = myUnselectedCellModel.titleSelectedColor;
         myUnselectedCellModel.titleLabelCurrentZoomScale = myUnselectedCellModel.titleLabelNormalZoomScale;
-        myselectedCellModel.titleLabelCurrentZoomScale = myUnselectedCellModel.titleLabelSelectedZoomScale;
         myUnselectedCellModel.titleLabelCurrentStrokeWidth = myUnselectedCellModel.titleLabelNormalStrokeWidth;
-        myselectedCellModel.titleLabelCurrentStrokeWidth = myUnselectedCellModel.titleLabelSelectedStrokeWidth;
+    }else {
+        //开启了动画过渡，current的属性值会在cell里面进行动画插值更新
+        BOOL isUnselectedCellVisible = NO;
+        NSArray *indexPaths = [self.collectionView indexPathsForVisibleItems];
+        for (NSIndexPath *indexPath in indexPaths) {
+            if (indexPath.item == myUnselectedCellModel.index) {
+                isUnselectedCellVisible = YES;
+                break;
+            }
+        }
+        if (!isUnselectedCellVisible) {
+            //但是当unselectedCell在屏幕外时，不会在cell里面通过动画插值更新，在这里直接更新
+            myUnselectedCellModel.titleCurrentColor = myUnselectedCellModel.titleNormalColor;
+            myUnselectedCellModel.titleLabelCurrentZoomScale = myUnselectedCellModel.titleLabelNormalZoomScale;
+            myUnselectedCellModel.titleLabelCurrentStrokeWidth = myUnselectedCellModel.titleLabelNormalStrokeWidth;
+        }
     }
 }
 
