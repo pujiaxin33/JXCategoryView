@@ -289,9 +289,9 @@ self.categoryView.contentScrollView = self.listContainerView.scrollView;
 
 该仓库保持随时更新，对于主流新的分类选择效果会第一时间支持。使用过程中，有任何建议或问题，可以通过以下方式联系我：</br>
 邮箱：317437084@qq.com </br>
-QQ群： 112440151
+QQ群： 112440473
 
-<img src="https://note.youdao.com/yws/public/resource/c6fa96a65e424afcf7f6304ddf5c283a/xmlnote/WEBRESOURCE625c5369d52b2852d33e6e7887d7b5ab/2800" width="300" height="411">
+<img src="https://github.com/pujiaxin33/JXExampleImages/blob/master/JXCategoryView/JXCategoryViewQQGroupTwo.JPG" width="300" height="411">
 
 喜欢就star❤️一下吧
 
