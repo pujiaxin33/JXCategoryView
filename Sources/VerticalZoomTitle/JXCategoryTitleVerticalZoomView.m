@@ -61,6 +61,13 @@
     self.cellSpacing = maxVerticalCellSpacing;
 }
 
+- (void)setMaxVerticalFontScale:(CGFloat)maxVerticalFontScale {
+    _maxVerticalFontScale = maxVerticalFontScale;
+
+    self.titleLabelZoomScale = maxVerticalFontScale;
+    self.cellWidthZoomScale = maxVerticalFontScale;
+}
+
 - (Class)preferredCellClass {
     return [JXCategoryTitleVerticalZoomCell class];
 }
