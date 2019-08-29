@@ -1,5 +1,5 @@
 //
-//  JXCategoryImageView.h
+//  JXCategoryTitleImageView.h
 //  JXCategoryView
 //
 //  Created by jiaxin on 2018/8/8.

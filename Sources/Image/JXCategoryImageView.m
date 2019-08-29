@@ -86,7 +86,10 @@
 }
 
 - (CGFloat)preferredCellWidthAtIndex:(NSInteger)index {
-    return self.imageSize.width;
+    if (self.cellWidth == JXCategoryViewAutomaticDimension) {
+        return self.imageSize.width;
+    }
+    return self.cellWidth;
 }
 
 @end
