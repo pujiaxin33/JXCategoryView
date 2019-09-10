@@ -113,8 +113,9 @@
         if (self.categoryView.bounds.size.height == self.maxCategoryViewHeight) {
             //从小缩放到最大，将其他列表的contentOffset重置
             for (id<JXCategoryListContentViewDelegate>list in self.listContainerView.validListDict.allValues) {
-                if ([list listScrollView] != scrollView) {
-                    [[list listScrollView] setContentOffset:CGPointZero animated:NO];
+                UIScrollView *listScrollView = [self listScrollView:list];
+                if (listScrollView != scrollView) {
+                    [listScrollView setContentOffset:CGPointZero animated:NO];
                 }
             }
         }
@@ -137,6 +138,11 @@
     //必须调用
     CGFloat percent = (self.categoryView.bounds.size.height - self.minCategoryViewHeight)/(self.maxCategoryViewHeight - self.minCategoryViewHeight);
     [self.categoryView listDidScrollWithVerticalHeightPercent:percent];
+}
+
+- (UIScrollView *)listScrollView:(id<JXCategoryListContentViewDelegate>)list {
+    LoadDataListContainerListViewController *listVC = (LoadDataListContainerListViewController *)list;
+    return listVC.tableView;
 }
 
 #pragma mark - JXCategoryViewDelegate
