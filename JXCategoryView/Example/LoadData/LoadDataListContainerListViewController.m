@@ -21,19 +21,51 @@
     [self loadDataForFirst];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+
+    NSLog(@"%@", NSStringFromSelector(_cmd));
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+
+    NSLog(@"%@", NSStringFromSelector(_cmd));
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+
+    NSLog(@"%@", NSStringFromSelector(_cmd));
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+
+    NSLog(@"%@", NSStringFromSelector(_cmd));
+}
+
 #pragma mark - JXCategoryListContentViewDelegate
 
 - (UIView *)listView {
     return self.view;
 }
 
-- (void)listDidAppear {
-    NSLog(@"%@", NSStringFromSelector(_cmd));
-}
-
-- (void)listDidDisappear {
-    NSLog(@"%@", NSStringFromSelector(_cmd));
-}
+//- (void)listWillAppear {
+//    NSLog(@"%@", NSStringFromSelector(_cmd));
+//}
+//
+//- (void)listDidAppear {
+//    NSLog(@"%@", NSStringFromSelector(_cmd));
+//}
+//
+//- (void)listWillDisappear {
+//    NSLog(@"%@", NSStringFromSelector(_cmd));
+//}
+//
+//- (void)listDidDisappear {
+//    NSLog(@"%@", NSStringFromSelector(_cmd));
+//}
 
 - (UIScrollView *)listScrollView {
     return self.tableView;

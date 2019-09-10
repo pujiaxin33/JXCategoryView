@@ -18,6 +18,7 @@
 @property (nonatomic, assign) BOOL isFirstMoveToWindow;
 @property (nonatomic, strong) JXCategoryListCollectionContainerView *retainedSelf;
 @property (nonatomic, assign) BOOL shouldRefreshSelectedContentOffset;
+@property (nonatomic, assign) NSInteger didAppearTargetIndex;
 @end
 
 @implementation JXCategoryListCollectionContainerView
@@ -44,16 +45,16 @@
     //根据上述事实，第一次和第二次为无效调用，可以根据其间隔1ms左右过滤掉
     if (newWindow == nil) {
         self.willRemoveFromWindow = YES;
-        //当前页面被pop的时候，willMoveToWindow只会调用一次，而且整个页面会被销毁掉，所以需要循环引用自己，确保能延迟执行currentListDidDisappear方法，触发列表消失事件。由此可见，循环引用也不一定是个坏事。是天使还是魔鬼，就看你如何对待它了。
+        //当前页面被pop的时候，willMoveToWindow只会调用一次，而且整个页面会被销毁掉，所以需要循环引用自己，确保能延迟执行currentListWillAndDidDisappear方法，触发列表消失事件。由此可见，循环引用也不一定是个坏事。是天使还是魔鬼，就看你如何对待它了。
         self.retainedSelf = self;
-        [self performSelector:@selector(currentListDidDisappear) withObject:nil afterDelay:0.02];
+        [self performSelector:@selector(currentListWillAndDidDisappear) withObject:nil afterDelay:0.02];
     }else {
         if (self.willRemoveFromWindow) {
             self.willRemoveFromWindow = NO;
             self.retainedSelf = nil;
-            [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(currentListDidDisappear) object:nil];
+            [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(currentListWillAndDidDisappear) object:nil];
         }else {
-            [self currentListDidAppear];
+            [self currentListWillAndDidAppear];
         }
     }
 }
@@ -120,57 +121,100 @@
 
 #pragma mark - Private
 
-- (void)currentListDidAppear {
+- (void)currentListWillAndDidAppear {
+    [self listWillAppear:self.currentIndex];
     [self listDidAppear:self.currentIndex];
 }
 
-- (void)currentListDidDisappear {
+- (void)currentListWillAndDidDisappear {
     id<JXCategoryListCollectionContentViewDelegate> list = _validListDict[@(self.currentIndex)];
+    if (list && [list respondsToSelector:@selector(listWillDisappear)]) {
+        [list listWillDisappear];
+    }
+    if ([list isKindOfClass:[UIViewController class]]) {
+        UIViewController *listVC = (UIViewController *)list;
+        [listVC beginAppearanceTransition:NO animated:NO];
+    }
     if (list && [list respondsToSelector:@selector(listDidDisappear)]) {
         [list listDidDisappear];
+    }
+    if ([list isKindOfClass:[UIViewController class]]) {
+        UIViewController *listVC = (UIViewController *)list;
+        [listVC endAppearanceTransition];
     }
     self.willRemoveFromWindow = NO;
     self.retainedSelf = nil;
 }
 
-- (void)listDidAppear:(NSInteger)index {
-    NSUInteger count = 0;
-    if (self.dataSource && [self.dataSource respondsToSelector:@selector(numberOfListsInlistContainerView:)]) {
-        count = [self.dataSource numberOfListsInlistContainerView:self];
+- (void)listWillAppear:(NSInteger)index {
+    if (![self checkIndexValid:index]) {
+        return;
     }
-    if (count <= 0 || index >= count) {
+    id<JXCategoryListCollectionContentViewDelegate> list = _validListDict[@(index)];
+    if (list && [list respondsToSelector:@selector(listWillAppear)]) {
+        [list listWillAppear];
+    }
+    if ([list isKindOfClass:[UIViewController class]]) {
+        UIViewController *listVC = (UIViewController *)list;
+        [listVC beginAppearanceTransition:YES animated:NO];
+    }
+}
+
+- (void)listDidAppear:(NSInteger)index {
+    if (![self checkIndexValid:index]) {
         return;
     }
     self.currentIndex = index;
-
     id<JXCategoryListCollectionContentViewDelegate> list = _validListDict[@(index)];
     if (list && [list respondsToSelector:@selector(listDidAppear)]) {
         [list listDidAppear];
     }
+    if ([list isKindOfClass:[UIViewController class]]) {
+        UIViewController *listVC = (UIViewController *)list;
+        [listVC endAppearanceTransition];
+    }
+}
+
+- (void)listWillDisappear:(NSInteger)index {
+    if (![self checkIndexValid:index]) {
+        return;
+    }
+    id<JXCategoryListCollectionContentViewDelegate> list = _validListDict[@(index)];
+    if (list && [list respondsToSelector:@selector(listWillDisappear)]) {
+        [list listWillDisappear];
+    }
+    if ([list isKindOfClass:[UIViewController class]]) {
+        UIViewController *listVC = (UIViewController *)list;
+        [listVC beginAppearanceTransition:NO animated:NO];
+    }
 }
 
 - (void)listDidDisappear:(NSInteger)index {
-    NSUInteger count = 0;
-    if (self.dataSource && [self.dataSource respondsToSelector:@selector(numberOfListsInlistContainerView:)]) {
-        count = [self.dataSource numberOfListsInlistContainerView:self];
-    }
-    if (count <= 0 || index >= count) {
+    if (![self checkIndexValid:index]) {
         return;
     }
     id<JXCategoryListCollectionContentViewDelegate> list = _validListDict[@(index)];
     if (list && [list respondsToSelector:@selector(listDidDisappear)]) {
         [list listDidDisappear];
     }
+    if ([list isKindOfClass:[UIViewController class]]) {
+        UIViewController *listVC = (UIViewController *)list;
+        [listVC endAppearanceTransition];
+    }
+}
+
+- (BOOL)checkIndexValid:(NSInteger)index {
+    NSUInteger count = [self.dataSource numberOfListsInlistContainerView:self];
+    if (count <= 0 || index >= count) {
+        return NO;
+    }
+    return YES;
 }
 
 #pragma mark - UICollectionViewDelegate, UICollectionViewDataSource
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    NSUInteger count = 0;
-    if (self.dataSource && [self.dataSource respondsToSelector:@selector(numberOfListsInlistContainerView:)]) {
-        count = [self.dataSource numberOfListsInlistContainerView:self];
-    }
-    return count;
+    return [self.dataSource numberOfListsInlistContainerView:self];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -178,7 +222,6 @@
     for (UIView *subview in cell.contentView.subviews) {
         [subview removeFromSuperview];
     }
-    self.currentIndex = indexPath.item;
     BOOL canInitList = YES;
     if (self.dataSource && [self.dataSource respondsToSelector:@selector(listContainerView:canInitListAtIndex:)]) {
         canInitList = [self.dataSource listContainerView:self canInitListAtIndex:indexPath.item];
@@ -195,21 +238,27 @@
             [list listView].frame = cell.contentView.bounds;
             [cell.contentView addSubview:[list listView]];
         }
+        [self listWillAppear:indexPath.item];
     }
     return cell;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
-    id<JXCategoryListCollectionContentViewDelegate> list = _validListDict[@(indexPath.item)];
-    if (list && [list respondsToSelector:@selector(listDidAppear)]) {
-        [list listDidAppear];
+    if (self.currentIndex == indexPath.item) {
+        //整个页面首次显示
+        [self listDidAppear:self.currentIndex];
+    }else {
+        [self listWillDisappear:self.currentIndex];
     }
+    self.didAppearTargetIndex = indexPath.item;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didEndDisplayingCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
-    id<JXCategoryListCollectionContentViewDelegate> list = _validListDict[@(indexPath.item)];
-    if (list && [list respondsToSelector:@selector(listDidDisappear)]) {
-        [list listDidDisappear];
+    [self listDidDisappear:indexPath.item];
+    if (self.currentIndex == indexPath.item) {
+        [self listDidAppear:self.didAppearTargetIndex];
+    }else {
+        [self listDidAppear:self.currentIndex];
     }
 }
 

@@ -22,6 +22,30 @@
     [self loadDataForFirst];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+
+    NSLog(@"%@", NSStringFromSelector(_cmd));
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+
+    NSLog(@"%@", NSStringFromSelector(_cmd));
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+
+    NSLog(@"%@", NSStringFromSelector(_cmd));
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+
+    NSLog(@"%@", NSStringFromSelector(_cmd));
+}
+
 #pragma mark - JXCategoryListCollectionContentViewDelegate
 
 - (UIView *)listView {
@@ -29,7 +53,7 @@
 }
 
 - (void)listDidAppear {
-    NSLog(@"%@", NSStringFromSelector(_cmd));
+//    NSLog(@"%@", NSStringFromSelector(_cmd));
     //因为`JXCategoryListCollectionContainerView`内部通过`UICollectionView`的cell加载列表。当切换tab的时候，之前的列表所在的cell就被回收到缓存池，就会从视图层级树里面被剔除掉，即没有显示出来且不在视图层级里面。这个时候MJRefreshHeader所持有的UIActivityIndicatorView就会被设置hidden。所以需要在列表显示的时候，且isRefreshing==YES的时候，再让UIActivityIndicatorView重新开启动画。
     if (self.tableView.mj_header.isRefreshing) {
         UIActivityIndicatorView *activity = [self.tableView.mj_header valueForKey:@"loadingView"];
@@ -38,7 +62,7 @@
 }
 
 - (void)listDidDisappear {
-    NSLog(@"%@", NSStringFromSelector(_cmd));
+//    NSLog(@"%@", NSStringFromSelector(_cmd));
 }
 
 @end

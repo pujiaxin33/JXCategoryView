@@ -23,9 +23,19 @@
 @optional
 
 /**
+ 可选实现，列表将要显示的时候调用
+ */
+- (void)listWillAppear;
+
+/**
  可选实现，列表显示的时候调用
  */
 - (void)listDidAppear;
+
+/**
+ 可选实现，列表将要消失的时候调用
+ */
+- (void)listWillDisappear;
 
 /**
  可选实现，列表消失的时候调用
