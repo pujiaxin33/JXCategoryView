@@ -54,7 +54,8 @@
 - (NSInteger)numberOfListsInlistContainerView:(JXCategoryListCollectionContainerView *)listContainerView;
 
 /**
- 根据index初始化一个对应列表实例，需要是遵从`JXCategoryListCollectionContentViewDelegate`协议的对象。
+ 根据index返回一个对应列表实例，需要是遵从`JXCategoryListCollectionContentViewDelegate`协议的对象。
+ 你可以代理方法调用的时候初始化对应列表，达到懒加载的效果。这也是默认推荐的初始化列表方法。你也可以提前创建好列表，等该代理方法回调的时候再返回也可以，达到预加载的效果。
  如果列表是用自定义UIView封装的，就让自定义UIView遵从`JXCategoryListCollectionContentViewDelegate`协议，该方法返回自定义UIView即可。
  如果列表是用自定义UIViewController封装的，就让自定义UIViewController遵从`JXCategoryListCollectionContentViewDelegate`协议，该方法返回自定义UIViewController即可。
  注意：一定要是新生成的实例！！！
