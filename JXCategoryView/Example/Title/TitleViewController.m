@@ -34,10 +34,4 @@
     return [[JXCategoryTitleView alloc] init];
 }
 
-#pragma mark - JXCategoryListContentViewDelegate
-
-- (UIView *)listView {
-    return self.view;
-}
-
 @end

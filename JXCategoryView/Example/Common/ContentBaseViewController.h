@@ -22,8 +22,6 @@
 
 @property (nonatomic, assign) BOOL isNeedIndicatorPositionChangeItem;
 
-@property (nonatomic, assign) BOOL shouldHandleScreenEdgeGesture;
-
 - (JXCategoryBaseView *)preferredCategoryView;
 
 - (CGFloat)preferredCategoryViewHeight;

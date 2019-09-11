@@ -8,7 +8,7 @@
 
 #import "NestViewController.h"
 #import "JXCategoryTitleView.h"
-#import "TitleViewController.h"
+#import "NestSubjectViewController.h"
 
 @interface NestViewController () <UIScrollViewDelegate>
 @property (nonatomic, strong) JXCategoryTitleView *myCategoryView;
@@ -65,8 +65,7 @@
 }
 
 - (id<JXCategoryListContentViewDelegate>)preferredListAtIndex:(NSInteger)index {
-    TitleViewController *list = [[TitleViewController alloc] init];
-    list.shouldHandleScreenEdgeGesture = NO;
+    NestSubjectViewController *list = [[NestSubjectViewController alloc] init];
     if (index == 0) {
         list.titles = @[@"香蕉", @"苹果", @"荔枝"];
     }else if(index == 1) {
@@ -74,11 +73,6 @@
     }else if (index == 2) {
         list.titles = @[@"火锅", @"砂锅", @"干锅"];
     }
-
-    JXCategoryTitleView *titleCategoryView = (JXCategoryTitleView *)list.categoryView;
-
-    JXCategoryIndicatorLineView *lineView = [[JXCategoryIndicatorLineView alloc ]init];
-    titleCategoryView.indicators = @[lineView];
     return list;
 }
 

@@ -16,15 +16,6 @@
 
 @implementation ContentBaseViewController
 
-- (instancetype)init
-{
-    self = [super init];
-    if (self) {
-        _shouldHandleScreenEdgeGesture = YES;
-    }
-    return self;
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
 
@@ -108,9 +99,7 @@
 
 - (void)categoryView:(JXCategoryBaseView *)categoryView didSelectedItemAtIndex:(NSInteger)index {
     //侧滑手势处理
-    if (_shouldHandleScreenEdgeGesture) {
-        self.navigationController.interactivePopGestureRecognizer.enabled = (index == 0);
-    }
+    self.navigationController.interactivePopGestureRecognizer.enabled = (index == 0);
     NSLog(@"%@", NSStringFromSelector(_cmd));
 }
 

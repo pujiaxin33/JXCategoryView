@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "ContentBaseViewController.h"
 
-@interface TitleViewController : ContentBaseViewController <JXCategoryListContentViewDelegate>
+@interface TitleViewController : ContentBaseViewController
 
 @end

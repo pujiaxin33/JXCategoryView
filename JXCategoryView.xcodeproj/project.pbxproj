@@ -147,6 +147,7 @@
 		19D57E8A212D66C20077DCA6 /* VerticalListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 19D57E89212D66C20077DCA6 /* VerticalListCell.m */; };
 		19D57E8D212D68D10077DCA6 /* VerticalSectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 19D57E8C212D68D10077DCA6 /* VerticalSectionHeaderView.m */; };
 		19D57E92212E8F340077DCA6 /* VerticalSectionCategoryHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 19D57E91212E8F340077DCA6 /* VerticalSectionCategoryHeaderView.m */; };
+		19DAB4BB2328C84C0086CAC9 /* NestSubjectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19DAB4BA2328C84C0086CAC9 /* NestSubjectViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -428,6 +429,8 @@
 		19D57E8C212D68D10077DCA6 /* VerticalSectionHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VerticalSectionHeaderView.m; sourceTree = "<group>"; };
 		19D57E90212E8F340077DCA6 /* VerticalSectionCategoryHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VerticalSectionCategoryHeaderView.h; sourceTree = "<group>"; };
 		19D57E91212E8F340077DCA6 /* VerticalSectionCategoryHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VerticalSectionCategoryHeaderView.m; sourceTree = "<group>"; };
+		19DAB4B92328C84C0086CAC9 /* NestSubjectViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NestSubjectViewController.h; sourceTree = "<group>"; };
+		19DAB4BA2328C84C0086CAC9 /* NestSubjectViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NestSubjectViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -784,6 +787,8 @@
 			children = (
 				19562CF3212AA3600095AA27 /* NestViewController.h */,
 				19562CF4212AA3600095AA27 /* NestViewController.m */,
+				19DAB4B92328C84C0086CAC9 /* NestSubjectViewController.h */,
+				19DAB4BA2328C84C0086CAC9 /* NestSubjectViewController.m */,
 			);
 			path = Nest;
 			sourceTree = "<group>";
@@ -1236,6 +1241,7 @@
 				1979337821CA32B000007733 /* LoadDataListContainerListViewController.m in Sources */,
 				19870D022122BB6100C23CAA /* JXCategoryBaseCellModel.m in Sources */,
 				19D57E7E212D5C600077DCA6 /* VerticalListViewController.m in Sources */,
+				19DAB4BB2328C84C0086CAC9 /* NestSubjectViewController.m in Sources */,
 				19D57E81212D5DFB0077DCA6 /* VerticalListSectionModel.m in Sources */,
 				1922556B221561FB00AF9C21 /* JXCategoryTitleVerticalZoomCell.m in Sources */,
 				19C2A4852270487600B78C69 /* MJRefreshBackFooter.m in Sources */,
