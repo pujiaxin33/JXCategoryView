@@ -11,7 +11,7 @@
 #import "JXCategoryListCollectionContainerView.h"
 #import "LoadDataListCollectionListViewController.h"
 
-@interface LoadDataListCollectionViewController () < JXCategoryListCollectionContainerViewDataSource>
+@interface LoadDataListCollectionViewController () <JXCategoryViewDelegate, JXCategoryListCollectionContainerViewDataSource>
 @property (nonatomic, strong) JXCategoryTitleView *categoryView;
 @property (nonatomic, strong) JXCategoryListCollectionContainerView *listContainerView;
 @property (nonatomic, strong) NSArray <NSString *> *titles;
@@ -26,9 +26,9 @@
 
     self.titles = [self getRandomTitles];
     self.categoryView = [[JXCategoryTitleView alloc] init];
-    //因为JXCategoryListCollectionContainerView触发列表加载是在willDisplayCell代理方法里面。如果categoryView跨item点击（比如当前index=0，点击了index=10），并且过渡有动画就会依次触发中间cell的willDisplayCell方法，进而加载列表（即触发index:1~9的列表加载）。这显然违背懒加载，所以如果你选择使用JXCategoryListCollectionContainerView，那么最好就是将contentScrollViewClickTransitionAnimationEnabled设置为NO。
-    self.categoryView.contentScrollViewClickTransitionAnimationEnabled = NO;
+
     self.categoryView.titles = self.titles;
+    self.categoryView.delegate = self;
     JXCategoryIndicatorLineView *lineView = [[JXCategoryIndicatorLineView alloc] init];
     self.categoryView.indicators = @[lineView];
     [self.view addSubview:self.categoryView];
@@ -66,11 +66,22 @@
     [self.listContainerView reloadData];
 }
 
+#pragma mark - JXCategoryViewDelegate
+
+- (void)categoryView:(JXCategoryBaseView *)categoryView didClickSelectedItemAtIndex:(NSInteger)index {
+    [self.listContainerView didClickSelectedItemAtIndex:index];
+}
+
+- (void)categoryView:(JXCategoryBaseView *)categoryView scrollingFromLeftIndex:(NSInteger)leftIndex toRightIndex:(NSInteger)rightIndex ratio:(CGFloat)ratio {
+    [self.listContainerView scrollingFromLeftIndex:leftIndex toRightIndex:rightIndex ratio:ratio selectedIndex:categoryView.selectedIndex];
+}
+
 #pragma mark - JXCategoryListCollectionContainerViewDataSource
 
 - (id<JXCategoryListCollectionContentViewDelegate>)listContainerView:(JXCategoryListContainerView *)listContainerView initListForIndex:(NSInteger)index {
     LoadDataListCollectionListViewController *listVC = [[LoadDataListCollectionListViewController alloc] init];
     listVC.naviController = self.navigationController;
+    listVC.title = self.titles[index];
     return listVC;
 }
 

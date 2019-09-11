@@ -87,6 +87,10 @@
 @property (nonatomic, strong, readonly) UICollectionView *collectionView;
 @property (nonatomic, strong, readonly) NSDictionary <NSNumber *, id<JXCategoryListCollectionContentViewDelegate>> *validListDict;   //已经加载过的列表字典。key是index，value是对应的列表
 /**
+ 滚动切换的时候，滚动距离超过一页的多少百分比，就触发列表的初始化。默认0.01（即列表显示了一点就触发加载）。范围0~1，开区间不包括0和1
+ */
+@property (nonatomic, assign) CGFloat initListPercent;
+/**
  需要和self.categoryView.defaultSelectedIndex保持一致
  */
 @property (nonatomic, assign) NSInteger defaultSelectedIndex;
@@ -96,6 +100,9 @@
 - (instancetype)initWithCoder:(NSCoder *)aDecoder NS_UNAVAILABLE;
 - (instancetype)initWithDataSource:(id<JXCategoryListCollectionContainerViewDataSource>)dataSource NS_DESIGNATED_INITIALIZER;
 - (void)reloadData;
-
+//必须调用，请按照demo示例那样调用
+- (void)scrollingFromLeftIndex:(NSInteger)leftIndex toRightIndex:(NSInteger)rightIndex ratio:(CGFloat)ratio selectedIndex:(NSInteger)selectedIndex;
+//必须调用，请按照demo示例那样调用（注意是是点击选中的回调，不是其他回调）
+- (void)didClickSelectedItemAtIndex:(NSInteger)index;
 @end
 

@@ -15,10 +15,10 @@
 @property (nonatomic, assign) NSInteger currentIndex;
 @property (nonatomic, strong) NSMutableDictionary <NSNumber *, id<JXCategoryListCollectionContentViewDelegate>> *validListDict;
 @property (nonatomic, assign) BOOL willRemoveFromWindow;
-@property (nonatomic, assign) BOOL isFirstMoveToWindow;
 @property (nonatomic, strong) JXCategoryListCollectionContainerView *retainedSelf;
 @property (nonatomic, assign) BOOL shouldRefreshSelectedContentOffset;
-@property (nonatomic, assign) NSInteger didAppearTargetIndex;
+@property (nonatomic, assign) NSInteger willAppearIndex;
+@property (nonatomic, assign) NSInteger willDisappearIndex;
 @end
 
 @implementation JXCategoryListCollectionContainerView
@@ -27,20 +27,17 @@
     self = [super initWithFrame:CGRectZero];
     if (self) {
         self.dataSource = dataSource;
-        _isFirstMoveToWindow = YES;
         _shouldRefreshSelectedContentOffset = YES;
         _validListDict = [NSMutableDictionary dictionary];
+        _willAppearIndex = -1;
+        _willDisappearIndex = -1;
+        _initListPercent = 0.01;
         [self initializeViews];
     }
     return self;
 }
 
 - (void)willMoveToWindow:(UIWindow *)newWindow {
-    if (self.isFirstMoveToWindow) {
-        //第一次调用过滤，因为第一次列表显示通知会从willDisplayCell方法通知
-        self.isFirstMoveToWindow = NO;
-        return;
-    }
     //当前页面push到一个新的页面时，willMoveToWindow会调用三次。第一次调用的newWindow为nil，第二次调用间隔1ms左右newWindow有值，第三次调用间隔400ms左右newWindow为nil。
     //根据上述事实，第一次和第二次为无效调用，可以根据其间隔1ms左右过滤掉
     if (newWindow == nil) {
@@ -95,6 +92,7 @@
     [_validListDict removeAllObjects];
 
     [self.collectionView reloadData];
+    [self listDidAppear:self.currentIndex];
 }
 
 - (void)layoutSubviews {
@@ -111,6 +109,74 @@
     }
 }
 
+- (void)scrollingFromLeftIndex:(NSInteger)leftIndex toRightIndex:(NSInteger)rightIndex ratio:(CGFloat)ratio selectedIndex:(NSInteger)selectedIndex {
+    NSInteger targetIndex = -1;
+    NSInteger disappearIndex = -1;
+    CGFloat didAppearRatio = 0.98;
+    if (rightIndex == selectedIndex) {
+        //当前选中的在右边，用户正在从右边往左边滑动
+        if (ratio < (1 - self.initListPercent)) {
+            [self initListIfNeededAtIndex:leftIndex];
+        }
+        if (ratio < (1 - didAppearRatio)) {
+            targetIndex = leftIndex;
+            disappearIndex = rightIndex;
+        }else {
+            if (self.willAppearIndex == -1) {
+                self.willAppearIndex = leftIndex;
+                [self listWillAppear:self.willAppearIndex];
+            }
+            if (self.willDisappearIndex == -1) {
+                self.willDisappearIndex = rightIndex;
+                [self listWillDisappear:self.willDisappearIndex];
+            }
+            targetIndex = rightIndex;
+            disappearIndex = leftIndex;
+        }
+    }else {
+        //当前选中的在左边，用户正在从左边往右边滑动
+        if (ratio > self.initListPercent) {
+            [self initListIfNeededAtIndex:rightIndex];
+        }
+        if (ratio > didAppearRatio) {
+            targetIndex = rightIndex;
+            disappearIndex = leftIndex;
+        }else {
+            if (self.willAppearIndex == -1) {
+                self.willAppearIndex = rightIndex;
+                [self listWillAppear:self.willAppearIndex];
+            }
+            if (self.willDisappearIndex == -1) {
+                self.willDisappearIndex = leftIndex;
+                [self listWillDisappear:self.willDisappearIndex];
+            }
+            targetIndex = leftIndex;
+            disappearIndex = rightIndex;
+        }
+    }
+
+    if (targetIndex != -1 && self.currentIndex != targetIndex) {
+        self.willAppearIndex = -1;
+        self.willDisappearIndex = -1;
+        [self listDidAppear:targetIndex];
+        [self listDidDisappear:disappearIndex];
+    }
+}
+
+- (void)didClickSelectedItemAtIndex:(NSInteger)index {
+    if (![self checkIndexValid:index]) {
+        return;
+    }
+    self.willAppearIndex = -1;
+    self.willDisappearIndex = -1;
+    if (self.currentIndex != index) {
+        [self listWillDisappear:self.currentIndex];
+        [self listDidDisappear:self.currentIndex];
+        [self listWillAppear:index];
+        [self listDidAppear:index];
+    }
+}
+
 #pragma mark - Setter
 
 - (void)setDefaultSelectedIndex:(NSInteger)defaultSelectedIndex {
@@ -121,35 +187,40 @@
 
 #pragma mark - Private
 
+- (void)initListIfNeededAtIndex:(NSInteger)index {
+    if (self.dataSource && [self.dataSource respondsToSelector:@selector(listContainerView:canInitListAtIndex:)]) {
+        BOOL canInitList = [self.dataSource listContainerView:self canInitListAtIndex:index];
+        if (!canInitList) {
+            return;
+        }
+    }
+    id<JXCategoryListCollectionContentViewDelegate> list = _validListDict[@(index)];
+    if (list != nil) {
+        //列表已经创建好了
+        return;
+    }
+    list = [self.dataSource listContainerView:self initListForIndex:index];
+    _validListDict[@(index)] = list;
+
+    UICollectionViewCell *cell = [self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0]];
+    [list listView].frame = cell.contentView.bounds;
+    [cell.contentView addSubview:[list listView]];
+    [self listWillAppear:index];
+}
+
 - (void)currentListWillAndDidAppear {
     [self listWillAppear:self.currentIndex];
     [self listDidAppear:self.currentIndex];
 }
 
 - (void)currentListWillAndDidDisappear {
-    id<JXCategoryListCollectionContentViewDelegate> list = _validListDict[@(self.currentIndex)];
-    if (list && [list respondsToSelector:@selector(listWillDisappear)]) {
-        [list listWillDisappear];
-    }
-    if ([list isKindOfClass:[UIViewController class]]) {
-        UIViewController *listVC = (UIViewController *)list;
-        [listVC beginAppearanceTransition:NO animated:NO];
-    }
-    if (list && [list respondsToSelector:@selector(listDidDisappear)]) {
-        [list listDidDisappear];
-    }
-    if ([list isKindOfClass:[UIViewController class]]) {
-        UIViewController *listVC = (UIViewController *)list;
-        [listVC endAppearanceTransition];
-    }
+    [self listWillDisappear:self.currentIndex];
+    [self listDidDisappear:self.currentIndex];
     self.willRemoveFromWindow = NO;
     self.retainedSelf = nil;
 }
 
 - (void)listWillAppear:(NSInteger)index {
-    if (![self checkIndexValid:index]) {
-        return;
-    }
     id<JXCategoryListCollectionContentViewDelegate> list = _validListDict[@(index)];
     if (list && [list respondsToSelector:@selector(listWillAppear)]) {
         [list listWillAppear];
@@ -161,24 +232,46 @@
 }
 
 - (void)listDidAppear:(NSInteger)index {
-    if (![self checkIndexValid:index]) {
-        return;
-    }
     self.currentIndex = index;
     id<JXCategoryListCollectionContentViewDelegate> list = _validListDict[@(index)];
-    if (list && [list respondsToSelector:@selector(listDidAppear)]) {
-        [list listDidAppear];
-    }
-    if ([list isKindOfClass:[UIViewController class]]) {
-        UIViewController *listVC = (UIViewController *)list;
-        [listVC endAppearanceTransition];
+    if (list != nil) {
+        if (list && [list respondsToSelector:@selector(listDidAppear)]) {
+            [list listDidAppear];
+        }
+        if ([list isKindOfClass:[UIViewController class]]) {
+            UIViewController *listVC = (UIViewController *)list;
+            [listVC endAppearanceTransition];
+        }
+    }else {
+        //当前列表未被创建（通过点击触发的listDidAppear）
+        BOOL canInitList = YES;
+        if (self.dataSource && [self.dataSource respondsToSelector:@selector(listContainerView:canInitListAtIndex:)]) {
+            canInitList = [self.dataSource listContainerView:self canInitListAtIndex:index];
+        }
+        if (canInitList) {
+            id<JXCategoryListCollectionContentViewDelegate> list = _validListDict[@(index)];
+            if (list == nil) {
+                list = [self.dataSource listContainerView:self initListForIndex:index];
+                _validListDict[@(index)] = list;
+            }
+            if ([list listView].superview == nil) {
+                UICollectionViewCell *cell = [self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0]];
+                [list listView].frame = cell.contentView.bounds;
+                [cell.contentView addSubview:[list listView]];
+                [self listWillAppear:index];
+            }
+            if (list && [list respondsToSelector:@selector(listDidAppear)]) {
+                [list listDidAppear];
+            }
+            if ([list isKindOfClass:[UIViewController class]]) {
+                UIViewController *listVC = (UIViewController *)list;
+                [listVC endAppearanceTransition];
+            }
+        }
     }
 }
 
 - (void)listWillDisappear:(NSInteger)index {
-    if (![self checkIndexValid:index]) {
-        return;
-    }
     id<JXCategoryListCollectionContentViewDelegate> list = _validListDict[@(index)];
     if (list && [list respondsToSelector:@selector(listWillDisappear)]) {
         [list listWillDisappear];
@@ -190,9 +283,6 @@
 }
 
 - (void)listDidDisappear:(NSInteger)index {
-    if (![self checkIndexValid:index]) {
-        return;
-    }
     id<JXCategoryListCollectionContentViewDelegate> list = _validListDict[@(index)];
     if (list && [list respondsToSelector:@selector(listDidDisappear)]) {
         [list listDidDisappear];
@@ -219,51 +309,33 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
+    cell.contentView.backgroundColor = [UIColor whiteColor];
     for (UIView *subview in cell.contentView.subviews) {
         [subview removeFromSuperview];
     }
-    BOOL canInitList = YES;
-    if (self.dataSource && [self.dataSource respondsToSelector:@selector(listContainerView:canInitListAtIndex:)]) {
-        canInitList = [self.dataSource listContainerView:self canInitListAtIndex:indexPath.item];
-    }
-    if (canInitList) {
-        id<JXCategoryListCollectionContentViewDelegate> list = _validListDict[@(indexPath.item)];
-        if (list == nil && self.dataSource && [self.dataSource respondsToSelector:@selector(listContainerView:initListForIndex:)]) {
-            list = [self.dataSource listContainerView:self initListForIndex:indexPath.item];
-            if (list != nil) {
-                _validListDict[@(indexPath.item)] = list;
-            }
-        }
-        if (list != nil) {
-            [list listView].frame = cell.contentView.bounds;
-            [cell.contentView addSubview:[list listView]];
-        }
-        [self listWillAppear:indexPath.item];
+    id<JXCategoryListCollectionContentViewDelegate> list = _validListDict[@(indexPath.item)];
+    if (list && [list listView].superview == nil) {
+        [list listView].frame = cell.contentView.bounds;
+        [cell.contentView addSubview:[list listView]];
     }
     return cell;
 }
 
-- (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
-    if (self.currentIndex == indexPath.item) {
-        //整个页面首次显示
-        [self listDidAppear:self.currentIndex];
-    }else {
-        [self listWillDisappear:self.currentIndex];
-    }
-    self.didAppearTargetIndex = indexPath.item;
-}
-
-- (void)collectionView:(UICollectionView *)collectionView didEndDisplayingCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
-    [self listDidDisappear:indexPath.item];
-    if (self.currentIndex == indexPath.item) {
-        [self listDidAppear:self.didAppearTargetIndex];
-    }else {
-        [self listDidAppear:self.currentIndex];
-    }
-}
-
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     return self.bounds.size;
+}
+
+#pragma mark - UIScrollViewDelegate
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    if (self.willDisappearIndex != -1) {
+        [self listWillAppear:self.willDisappearIndex];
+        [self listWillDisappear:self.willAppearIndex];
+        [self listDidAppear:self.willDisappearIndex];
+        [self listDidDisappear:self.willAppearIndex];
+        self.willDisappearIndex = -1;
+        self.willAppearIndex = -1;
+    }
 }
 
 @end

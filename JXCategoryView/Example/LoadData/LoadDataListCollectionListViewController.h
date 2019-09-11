@@ -12,7 +12,6 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface LoadDataListCollectionListViewController : LoadDataListBaseViewController <JXCategoryListCollectionContentViewDelegate>
-
 @end
 
 NS_ASSUME_NONNULL_END
