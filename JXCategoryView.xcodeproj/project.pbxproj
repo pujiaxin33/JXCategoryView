@@ -607,7 +607,6 @@
 		19302322211ACE1500AF1444 /* Example */ = {
 			isa = PBXGroup;
 			children = (
-				190921D222B0F3620045D18F /* Rearrange */,
 				1930232A211AD33000AF1444 /* Common */,
 				1912A527211C3CF400A80826 /* IndicatorImageView */,
 				1912A51F211C1AC100A80826 /* BackgroundImage */,
@@ -619,6 +618,7 @@
 				19870BB3211D73DC00C23CAA /* PagingView */,
 				19302384211B22B700AF1444 /* SegmentedControl */,
 				19562CF2212AA3400095AA27 /* Nest */,
+				190921D222B0F3620045D18F /* Rearrange */,
 				1912A530211D08B500A80826 /* Football */,
 				191A9608212CF66500DBF784 /* Customize */,
 				19D57E7B212D5C180077DCA6 /* VerticalListView */,
