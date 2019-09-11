@@ -68,7 +68,6 @@
 
     self.listContainerView = [[JXCategoryListContainerView alloc] initWithDelegate:self];
     self.listContainerView.frame = CGRectMake(0, topStatusBarHeight + self.maxCategoryViewHeight, self.view.bounds.size.width, self.view.bounds.size.height - topStatusBarHeight - self.maxCategoryViewHeight);
-    self.listContainerView.didAppearPercent = 0.01; //滚动一点就触发加载
     self.listContainerView.defaultSelectedIndex = 0;
     [self.view addSubview:self.listContainerView];
 

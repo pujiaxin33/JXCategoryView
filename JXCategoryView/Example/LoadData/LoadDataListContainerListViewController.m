@@ -24,25 +24,25 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
 
-    NSLog(@"%@", NSStringFromSelector(_cmd));
+    NSLog(@"%@:%@", NSStringFromSelector(_cmd), self.title);
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
 
-    NSLog(@"%@", NSStringFromSelector(_cmd));
+    NSLog(@"%@:%@", NSStringFromSelector(_cmd), self.title);
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
 
-    NSLog(@"%@", NSStringFromSelector(_cmd));
+    NSLog(@"%@:%@", NSStringFromSelector(_cmd), self.title);
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
 
-    NSLog(@"%@", NSStringFromSelector(_cmd));
+    NSLog(@"%@:%@", NSStringFromSelector(_cmd), self.title);
 }
 
 #pragma mark - JXCategoryListContentViewDelegate
@@ -52,19 +52,19 @@
 }
 
 //- (void)listWillAppear {
-//    NSLog(@"%@", NSStringFromSelector(_cmd));
+//    NSLog(@"%@:%@", NSStringFromSelector(_cmd), self.title);
 //}
 //
 //- (void)listDidAppear {
-//    NSLog(@"%@", NSStringFromSelector(_cmd));
+//    NSLog(@"%@:%@", NSStringFromSelector(_cmd), self.title);
 //}
 //
 //- (void)listWillDisappear {
-//    NSLog(@"%@", NSStringFromSelector(_cmd));
+//    NSLog(@"%@:%@", NSStringFromSelector(_cmd), self.title);
 //}
 //
 //- (void)listDidDisappear {
-//    NSLog(@"%@", NSStringFromSelector(_cmd));
+//    NSLog(@"%@:%@", NSStringFromSelector(_cmd), self.title);
 //}
 
 @end

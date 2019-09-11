@@ -24,11 +24,11 @@
 - (instancetype)initWithDelegate:(id<JXCategoryListContainerViewDelegate>)delegate{
     self = [super initWithFrame:CGRectZero];
     if (self) {
-        _didAppearPercent = 0.5;
         _delegate = delegate;
         _validListDict = [NSMutableDictionary dictionary];
         _willAppearIndex = -1;
         _willDisappearIndex = -1;
+        _initListPercent = 0.01;
         [self initializeViews];
     }
     return self;
@@ -98,10 +98,13 @@
 }
 
 - (void)setDidAppearPercent:(CGFloat)didAppearPercent {
-    _didAppearPercent = didAppearPercent;
+    self.initListPercent = didAppearPercent;
+}
 
-    if (didAppearPercent <= 0 || didAppearPercent >= 1) {
-        NSAssert(NO, @"didAppearPercent值范围为开区间(0,1)，即不包括0和1");
+- (void)setinitListPercent:(CGFloat)initListPercent {
+    _initListPercent = initListPercent;
+    if (initListPercent <= 0 || initListPercent >= 1) {
+        NSAssert(NO, @"initListPercent值范围为开区间(0,1)，即不包括0和1");
     }
 }
 
@@ -109,16 +112,10 @@
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     if (self.willDisappearIndex != -1) {
-        id<JXCategoryListContentViewDelegate> willDisappearList = _validListDict[@(self.willDisappearIndex)];
-        if ([willDisappearList isKindOfClass:[UIViewController class]]) {
-            UIViewController *listVC = (UIViewController *)willDisappearList;
-            [listVC endAppearanceTransition];
-        }
-        id<JXCategoryListContentViewDelegate> willAppearList = _validListDict[@(self.willAppearIndex)];
-        if ([willAppearList isKindOfClass:[UIViewController class]]) {
-            UIViewController *listVC = (UIViewController *)willAppearList;
-            [listVC endAppearanceTransition];
-        }
+        [self listWillAppear:self.willDisappearIndex];
+        [self listWillDisappear:self.willAppearIndex];
+        [self listDidAppear:self.willDisappearIndex];
+        [self listDidDisappear:self.willAppearIndex];
         self.willDisappearIndex = -1;
         self.willAppearIndex = -1;
     }
@@ -129,9 +126,13 @@
 - (void)scrollingFromLeftIndex:(NSInteger)leftIndex toRightIndex:(NSInteger)rightIndex ratio:(CGFloat)ratio selectedIndex:(NSInteger)selectedIndex {
     NSInteger targetIndex = -1;
     NSInteger disappearIndex = -1;
+    CGFloat didAppearRatio = 0.98;
     if (rightIndex == selectedIndex) {
         //当前选中的在右边，用户正在从右边往左边滑动
-        if (ratio < (1 - self.didAppearPercent)) {
+        if (ratio < (1 - self.initListPercent)) {
+            [self initListIfNeededAtIndex:leftIndex];
+        }
+        if (ratio < (1 - didAppearRatio)) {
             targetIndex = leftIndex;
             disappearIndex = rightIndex;
         }else {
@@ -148,7 +149,10 @@
         }
     }else {
         //当前选中的在左边，用户正在从左边往右边滑动
-        if (ratio > self.didAppearPercent) {
+        if (ratio > self.initListPercent) {
+            [self initListIfNeededAtIndex:rightIndex];
+        }
+        if (ratio > didAppearRatio) {
             targetIndex = rightIndex;
             disappearIndex = leftIndex;
         }else {
@@ -174,6 +178,9 @@
 }
 
 - (void)didClickSelectedItemAtIndex:(NSInteger)index {
+    if (![self checkIndexValid:index]) {
+        return;
+    }
     self.willAppearIndex = -1;
     self.willDisappearIndex = -1;
     if (self.currentIndex != index) {
@@ -186,36 +193,39 @@
 
 #pragma mark - Private
 
+- (void)initListIfNeededAtIndex:(NSInteger)index {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(listContainerView:canInitListAtIndex:)]) {
+        BOOL canInitList = [self.delegate listContainerView:self canInitListAtIndex:index];
+        if (!canInitList) {
+            return;
+        }
+    }
+    id<JXCategoryListContentViewDelegate> list = _validListDict[@(index)];
+    if (list != nil) {
+        //列表已经创建好了
+        return;
+    }
+    list = [self.delegate listContainerView:self initListForIndex:index];
+    _validListDict[@(index)] = list;
+
+    [list listView].frame = CGRectMake(index*self.scrollView.bounds.size.width, 0, self.scrollView.bounds.size.width, self.scrollView.bounds.size.height);
+    [self.scrollView addSubview:[list listView]];
+    [self listWillAppear:index];
+}
+
 - (void)currentListWillAndDidAppear {
     [self listWillAppear:self.currentIndex];
     [self listDidAppear:self.currentIndex];
 }
 
 - (void)currentListWillAndDidDisappear {
-    //这个时候的delegate已经为空，所以list生命周期方法，需要自己调用
-    id<JXCategoryListContentViewDelegate> list = _validListDict[@(self.currentIndex)];
-    if (list && [list respondsToSelector:@selector(listWillDisappear)]) {
-        [list listWillDisappear];
-    }
-    if ([list isKindOfClass:[UIViewController class]]) {
-        UIViewController *listVC = (UIViewController *)list;
-        [listVC beginAppearanceTransition:NO animated:NO];
-    }
-    if (list && [list respondsToSelector:@selector(listDidDisappear)]) {
-        [list listDidDisappear];
-    }
-    if ([list isKindOfClass:[UIViewController class]]) {
-        UIViewController *listVC = (UIViewController *)list;
-        [listVC endAppearanceTransition];
-    }
+    [self listWillDisappear:self.currentIndex];
+    [self listDidDisappear:self.currentIndex];
     self.willRemoveFromWindow = NO;
     self.retainedSelf = nil;
 }
 
 - (void)listWillAppear:(NSInteger)index {
-    if (![self checkIndexValid:index]) {
-        return;
-    }
     id<JXCategoryListContentViewDelegate> list = _validListDict[@(index)];
     if (list && [list respondsToSelector:@selector(listWillAppear)]) {
         [list listWillAppear];
@@ -227,27 +237,9 @@
 }
 
 - (void)listDidAppear:(NSInteger)index {
-    if (![self checkIndexValid:index]) {
-        return;
-    }
     self.currentIndex = index;
-    BOOL canInitList = YES;
-    if (self.delegate && [self.delegate respondsToSelector:@selector(listContainerView:canInitListAtIndex:)]) {
-        canInitList = [self.delegate listContainerView:self canInitListAtIndex:index];
-    }
-    if (canInitList) {
-        id<JXCategoryListContentViewDelegate> list = _validListDict[@(index)];
-        if (list == nil) {
-            list = [self.delegate listContainerView:self initListForIndex:index];
-            if (list != nil) {
-                _validListDict[@(index)] = list;
-            }
-            [self listWillAppear:index];
-        }
-        if ([list listView].superview == nil) {
-            [list listView].frame = CGRectMake(index*self.scrollView.bounds.size.width, 0, self.scrollView.bounds.size.width, self.scrollView.bounds.size.height);
-            [self.scrollView addSubview:[list listView]];
-        }
+    id<JXCategoryListContentViewDelegate> list = _validListDict[@(index)];
+    if (list != nil) {
         if (list && [list respondsToSelector:@selector(listDidAppear)]) {
             [list listDidAppear];
         }
@@ -255,13 +247,35 @@
             UIViewController *listVC = (UIViewController *)list;
             [listVC endAppearanceTransition];
         }
+    }else {
+        //当前列表未被创建（通过点击触发的listDidAppear）
+        BOOL canInitList = YES;
+        if (self.delegate && [self.delegate respondsToSelector:@selector(listContainerView:canInitListAtIndex:)]) {
+            canInitList = [self.delegate listContainerView:self canInitListAtIndex:index];
+        }
+        if (canInitList) {
+            id<JXCategoryListContentViewDelegate> list = _validListDict[@(index)];
+            if (list == nil) {
+                list = [self.delegate listContainerView:self initListForIndex:index];
+                _validListDict[@(index)] = list;
+            }
+            if ([list listView].superview == nil) {
+                [list listView].frame = CGRectMake(index*self.scrollView.bounds.size.width, 0, self.scrollView.bounds.size.width, self.scrollView.bounds.size.height);
+                [self.scrollView addSubview:[list listView]];
+                [self listWillAppear:index];
+            }
+            if (list && [list respondsToSelector:@selector(listDidAppear)]) {
+                [list listDidAppear];
+            }
+            if ([list isKindOfClass:[UIViewController class]]) {
+                UIViewController *listVC = (UIViewController *)list;
+                [listVC endAppearanceTransition];
+            }
+        }
     }
 }
 
 - (void)listWillDisappear:(NSInteger)index {
-    if (![self checkIndexValid:index]) {
-        return;
-    }
     id<JXCategoryListContentViewDelegate> list = _validListDict[@(index)];
     if (list && [list respondsToSelector:@selector(listWillDisappear)]) {
         [list listWillDisappear];
@@ -273,9 +287,6 @@
 }
 
 - (void)listDidDisappear:(NSInteger)index {
-    if (![self checkIndexValid:index]) {
-        return;
-    }
     id<JXCategoryListContentViewDelegate> list = _validListDict[@(index)];
     if (list && [list respondsToSelector:@selector(listDidDisappear)]) {
         [list listDidDisappear];

@@ -33,7 +33,6 @@
     self.categoryView.delegate = self;
     [self.view addSubview:self.categoryView];
 
-    self.listContainerView.didAppearPercent = 0.01; //滚动一点就触发加载
     [self.view addSubview:self.listContainerView];
 
     self.categoryView.contentScrollView = self.listContainerView.scrollView;
