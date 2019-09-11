@@ -6,9 +6,6 @@
 
 1.初始化`JXCategoryListCollectionContainerView`
 ```Objective-C
-//因为JXCategoryListCollectionContainerView触发列表加载是在willDisplayCell代理方法里面。如果categoryView跨item点击（比如当前index=0，点击了index=10），并且过渡有动画就会依次触发中间cell的willDisplayCell方法，进而加载列表（即触发index:1~9的列表加载）。这显然违背懒加载，所以如果你选择使用JXCategoryListCollectionContainerView，那么最好就是将contentScrollViewClickTransitionAnimationEnabled设置为NO。
-self.categoryView.contentScrollViewClickTransitionAnimationEnabled = NO;
-
 self.listContainerView = [[JXCategoryListCollectionContainerView alloc] initWithDataSource:self];
 [self.view addSubview:self.listContainerView];
 //关联cotentScrollView，关联之后才可以互相联动！！！
@@ -39,12 +36,21 @@ self.categoryView.contentScrollView = self.listContainerView.collectionView;
 - (UIView *)listView {
     return self.view;
 }
+```
 
-//可选使用，列表显示的时候调用
-- (void)listDidAppear {}
+4.将关键事件告知`JXCategoryListContainerView`
 
-//可选使用，列表消失的时候调用
-- (void)listDidDisappear {}
+在下面两个`JXCategoryViewDelegate`代理方法里面调用对应的代码，一定不要忘记这一条❗️❗️❗️
+```Objective-C
+//传递点击选中事件给listContainerView，必须调用！！！是点击选中回调方法，而不是滚动选中和通用选中方法，请注意辨别❗️❗️❗️
+- (void)categoryView:(JXCategoryBaseView *)categoryView didClickSelectedItemAtIndex:(NSInteger)index {
+    [self.listContainerView didClickSelectedItemAtIndex:index];
+}
+
+//传递scrolling事件给listContainerView，必须调用！！！
+- (void)categoryView:(JXCategoryBaseView *)categoryView scrollingFromLeftIndex:(NSInteger)leftIndex toRightIndex:(NSInteger)rightIndex ratio:(CGFloat)ratio {
+    [self.listContainerView scrollingFromLeftIndex:leftIndex toRightIndex:rightIndex ratio:ratio selectedIndex:categoryView.selectedIndex];
+}
 ```
 
 具体点击[LoadDataListCollectionViewController](https://github.com/pujiaxin33/JXCategoryView/blob/master/JXCategoryView/Example/LoadData/LoadDataListCollectionViewController.m)查看源代码了解

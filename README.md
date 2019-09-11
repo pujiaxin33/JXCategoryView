@@ -150,7 +150,7 @@ lineView.indicatorLineWidth = JXCategoryViewAutomaticDimension;
 self.categoryView.indicators = @[lineView];
 ```
 
-4.实现`JXCategoryViewDelegate`代理
+4.可选实现`JXCategoryViewDelegate`代理
 
 ```Objective-C
 //点击选中或者滚动选中都会调用该方法。适用于只关心选中事件，不关心具体是点击还是滚动选中的。
@@ -212,19 +212,13 @@ self.categoryView.contentScrollView = self.listContainerView.scrollView;
 - (UIView *)listView {
     return self.view;
 }
-
-//可选使用，列表显示的时候调用
-- (void)listDidAppear {}
-
-//可选使用，列表消失的时候调用
-- (void)listDidDisappear {}
 ```
 
 4.将关键事件告知`JXCategoryListContainerView`
 
 在下面两个`JXCategoryViewDelegate`代理方法里面调用对应的代码，一定不要忘记这一条❗️❗️❗️
 ```Objective-C
-//传递didClickSelectedItemAt事件给listContainerView，必须调用！！！
+//传递点击选中事件给listContainerView，必须调用！！！是点击选中回调方法，而不是滚动选中和通用选中方法，请注意辨别❗️❗️❗️
 - (void)categoryView:(JXCategoryBaseView *)categoryView didClickSelectedItemAtIndex:(NSInteger)index {
     [self.listContainerView didClickSelectedItemAtIndex:index];
 }
@@ -243,8 +237,7 @@ self.categoryView.contentScrollView = self.listContainerView.scrollView;
     - 因为`JXCategoryListContainerView`内部使用的是`UIScrollView`，当所有列表都加载出来后，所有的列表都被addSubview到`UIScrollView`上面了。所以，在视图内存这一块会比较大，对于一些列表复杂且数量多的应用，内存表现不太好。
 
 - `JXCategoryListCollectionContainerView`的优势
-    - 只有当前显示的列表才会被addSubview，视图内存表现良好；
-    - 因为内部使用`UICollectionView`，在api设计上更加简洁；
+    - 只有当前显示的列表才会被addSubview，视图内存表现更好；
 
 具体使用示例，点击参看[JXCategoryListCollectionContainerView使用示例](https://github.com/pujiaxin33/JXCategoryView/blob/master/Document/JXCategoryListCollectionContainerView%E4%BD%BF%E7%94%A8.md)
 
