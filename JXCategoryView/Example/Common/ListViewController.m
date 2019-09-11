@@ -29,20 +29,4 @@
     return self.view;
 }
 
-- (void)listWillAppear {
-    NSLog(@"%@", NSStringFromSelector(_cmd));
-}
-
-- (void)listDidAppear {
-    NSLog(@"%@", NSStringFromSelector(_cmd));
-}
-
-- (void)listWillDisappear {
-    NSLog(@"%@", NSStringFromSelector(_cmd));
-}
-
-- (void)listDidDisappear {
-    NSLog(@"%@", NSStringFromSelector(_cmd));
-}
-
 @end
