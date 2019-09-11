@@ -65,10 +65,6 @@
     return 50;
 }
 
-- (id<JXCategoryListContentViewDelegate>)preferredListAtIndex:(NSInteger)index {
-    return [[ListViewController alloc] init];
-}
-
 - (JXCategoryBaseView *)categoryView {
     if (_categoryView == nil) {
         _categoryView = [self preferredCategoryView];
@@ -119,7 +115,7 @@
 #pragma mark - JXCategoryListContainerViewDelegate
 
 - (id<JXCategoryListContentViewDelegate>)listContainerView:(JXCategoryListContainerView *)listContainerView initListForIndex:(NSInteger)index {
-    id<JXCategoryListContentViewDelegate> list = [self preferredListAtIndex:index];
+    ListViewController *list = [[ListViewController alloc] init];
     return list;
 }
 

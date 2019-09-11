@@ -26,6 +26,4 @@
 
 - (CGFloat)preferredCategoryViewHeight;
 
-- (id<JXCategoryListContentViewDelegate>)preferredListAtIndex:(NSInteger)index;
-
 @end

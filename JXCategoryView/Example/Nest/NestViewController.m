@@ -64,7 +64,9 @@
     return [[JXCategoryTitleView alloc] init];
 }
 
-- (id<JXCategoryListContentViewDelegate>)preferredListAtIndex:(NSInteger)index {
+#pragma mark - JXCategoryListContainerViewDelegate
+
+- (id<JXCategoryListContentViewDelegate>)listContainerView:(JXCategoryListContainerView *)listContainerView initListForIndex:(NSInteger)index {
     NestSubjectViewController *list = [[NestSubjectViewController alloc] init];
     if (index == 0) {
         list.titles = @[@"香蕉", @"苹果", @"荔枝"];
