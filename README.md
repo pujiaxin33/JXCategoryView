@@ -241,6 +241,33 @@ self.categoryView.contentScrollView = self.listContainerView.scrollView;
 
 具体使用示例，点击参看[JXCategoryListCollectionContainerView使用示例](https://github.com/pujiaxin33/JXCategoryView/blob/master/Document/JXCategoryListCollectionContainerView%E4%BD%BF%E7%94%A8.md)
 
+## 常见问题和答案
+
+❗️❗️❗️这里面包含了许多常见问题和答案，使用之前请务必浏览此文档，或者遇到问题先看此文档❗️❗️❗️
+
+[常见问题和答案总文档](https://github.com/pujiaxin33/JXCategoryView/blob/master/Document/%E4%BD%BF%E7%94%A8%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9.md)
+
+- [个人主页效果更丰富的示例:JXPagingView](https://github.com/pujiaxin33/JXPagingView)
+- [侧滑手势处理](https://github.com/pujiaxin33/JXCategoryView/blob/master/Document/%E4%BE%A7%E6%BB%91%E6%89%8B%E5%8A%BF%E5%A4%84%E7%90%86.md)
+- [列表的生命周期方法处理](https://github.com/pujiaxin33/JXCategoryView/blob/master/Document/%E5%88%97%E8%A1%A8%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E6%96%B9%E6%B3%95%E5%A4%84%E7%90%86.md)
+- [cell左滑删除]()
+- [`FDFullscreenPopGesture`等全屏手势处理](https://github.com/pujiaxin33/JXCategoryView/blob/master/Document/%E5%85%A8%E5%B1%8F%E6%89%8B%E5%8A%BF%E5%A4%84%E7%90%86.md)
+- [JXCategoryView数据源刷新]()
+- [defaultSelectedIndex使用](https://github.com/pujiaxin33/JXCategoryView/blob/master/Document/%E4%BD%BF%E7%94%A8%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9.md#defaultselectedindex%E4%BD%BF%E7%94%A8)
+- [contentScrollView关联说明](https://github.com/pujiaxin33/JXCategoryView/blob/master/Document/%E4%BD%BF%E7%94%A8%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9.md#contentscrollview%E5%85%B3%E8%81%94%E8%AF%B4%E6%98%8E)
+- [点击切换列表的动画控制]()
+- [列表cell点击跳转示例](https://github.com/pujiaxin33/JXCategoryView/blob/master/Document/%E4%BD%BF%E7%94%A8%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9.md#%E5%88%97%E8%A1%A8cell%E7%82%B9%E5%87%BB%E8%B7%B3%E8%BD%AC%E7%A4%BA%E4%BE%8B)
+- [列表调用`presentViewController`方法](https://github.com/pujiaxin33/JXCategoryView/blob/master/Document/%E4%BD%BF%E7%94%A8%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9.md#%E5%88%97%E8%A1%A8%E8%B0%83%E7%94%A8presentviewcontroller%E6%96%B9%E6%B3%95)
+- [代码选中指定index](https://github.com/pujiaxin33/JXCategoryView/blob/master/Document/%E4%BD%BF%E7%94%A8%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9.md#%E4%BB%A3%E7%A0%81%E9%80%89%E4%B8%AD%E6%8C%87%E5%AE%9Aindex)
+- [JXCategoryView.collectionView高度取整说明](https://github.com/pujiaxin33/JXCategoryView/blob/master/Document/%E4%BD%BF%E7%94%A8%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9.md#jxcategoryviewcollectionview%E9%AB%98%E5%BA%A6%E5%8F%96%E6%95%B4%E8%AF%B4%E6%98%8E)
+- [对父VC的automaticallyAdjustsScrollViewInsets属性设置为NO](https://github.com/pujiaxin33/JXCategoryView/blob/master/Document/%E4%BD%BF%E7%94%A8%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9.md#%E5%AF%B9%E7%88%B6vc%E7%9A%84automaticallyadjustsscrollviewinsets%E5%B1%9E%E6%80%A7%E8%AE%BE%E7%BD%AE%E4%B8%BAno)
+- [使用多行文本](https://github.com/pujiaxin33/JXCategoryView/blob/master/Document/%E4%BD%BF%E7%94%A8%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9.md#%E4%BD%BF%E7%94%A8%E5%A4%9A%E8%A1%8C%E6%96%87%E6%9C%AC)
+- [iPhoneX刘海屏手机列表底部安全距离显示建议](https://github.com/pujiaxin33/JXCategoryView/blob/master/Document/%E4%BD%BF%E7%94%A8%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9.md#iphonex%E5%88%98%E6%B5%B7%E5%B1%8F%E6%89%8B%E6%9C%BA%E5%88%97%E8%A1%A8%E5%BA%95%E9%83%A8%E5%AE%89%E5%85%A8%E8%B7%9D%E7%A6%BB%E6%98%BE%E7%A4%BA%E5%BB%BA%E8%AE%AE)
+- [列表容器禁止左右滑动](https://github.com/pujiaxin33/JXCategoryView/blob/master/Document/%E4%BD%BF%E7%94%A8%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9.md#%E5%88%97%E8%A1%A8%E5%AE%B9%E5%99%A8%E7%A6%81%E6%AD%A2%E5%B7%A6%E5%8F%B3%E6%BB%91%E5%8A%A8)
+- [单个cell刷新 ](https://github.com/pujiaxin33/JXCategoryView/blob/master/Document/%E4%BD%BF%E7%94%A8%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9.md#%E5%8D%95%E4%B8%AAcell%E5%88%B7%E6%96%B0)
+- [点击item时指示器和列表滚动时效果一致](https://github.com/pujiaxin33/JXCategoryView/blob/master/Document/%E4%BD%BF%E7%94%A8%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9.md#%E7%82%B9%E5%87%BBitem%E6%97%B6%E6%8C%87%E7%A4%BA%E5%99%A8%E5%92%8C%E5%88%97%E8%A1%A8%E6%BB%9A%E5%8A%A8%E6%97%B6%E6%95%88%E6%9E%9C%E4%B8%80%E8%87%B4)
+- [自定义建议](https://github.com/pujiaxin33/JXCategoryView/blob/master/Document/%E4%BD%BF%E7%94%A8%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9.md#%E8%87%AA%E5%AE%9A%E4%B9%89%E5%BB%BA%E8%AE%AE)
+
 ## 指示器样式自定义
 
 - 需要继承`JXCategoryIndicatorProtocol`协议，点击参看[JXCategoryIndicatorProtocol](https://github.com/pujiaxin33/JXCategoryView/blob/master/Sources/Common/JXCategoryIndicatorProtocol.h)
@@ -253,12 +280,6 @@ self.categoryView.contentScrollView = self.listContainerView.scrollView;
 - 如果你想完全自定义cell里面的内容，那就继承`JXCategoryIndicatorView、JXCategoryIndicatorCell、JXCategoryIndicatorCellModel`，就像`JXCategoryTitleView、JXCategoryTitleCell、JXCategoryTitleCellModel`那样去做；
 - 如果你只是在父类进行一些微调，那就继承目标view、cell、cellModel，对cell原有控件微调、或者加入新的控件皆可。就像`JXCategoryTitleImageView系列、JXCategoryTitleAttributeView系列`那样去做；
 - Cell自定义，请参考已实现的cell样式，多尝试、多思考，再有问题请提Issue或加入反馈QQ群
-
-## 常见问题和答案
-
-❗️❗️❗️这里面包含了许多常见问题和答案，使用之前请务必浏览此文档，或者遇到问题先看此文档❗️❗️❗️
-
-[常见问题和答案](https://github.com/pujiaxin33/JXCategoryView/blob/master/Document/%E4%BD%BF%E7%94%A8%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9.md)
 
 ## 常用属性说明
 
