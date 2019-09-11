@@ -86,7 +86,6 @@
 
 @property (nonatomic, strong, readonly) UIScrollView *scrollView;
 @property (nonatomic, strong, readonly) NSDictionary <NSNumber *, id<JXCategoryListContentViewDelegate>> *validListDict;   //已经加载过的列表字典。key是index，value是对应的列表
-
 @property (nonatomic, assign) CGFloat didAppearPercent JXCategoryViewDeprecated("请使用initListPercent属性，未来将会删除");
 /**
  滚动切换的时候，滚动距离超过一页的多少百分比，就触发列表的初始化。默认0.01（即列表显示了一点就触发加载）。范围0~1，开区间不包括0和1
@@ -107,19 +106,6 @@
 - (void)scrollingFromLeftIndex:(NSInteger)leftIndex toRightIndex:(NSInteger)rightIndex ratio:(CGFloat)ratio selectedIndex:(NSInteger)selectedIndex;
 //必须调用，请按照demo示例那样调用（注意是是点击选中的回调，不是其他回调）
 - (void)didClickSelectedItemAtIndex:(NSInteger)index;
-
-@end
-
-@interface JXCategoryListContainerView (Deprecated)
-
-/**
- 初始化方法
-
- @param parentVC 父vc，可选。主要用于将其automaticallyAdjustsScrollViewInsets设置为NO。但是现在JXCategoryBaseView内部已经做了该操作。所以该方法已经弃用！！！
- @param delegate JXCategoryListContainerViewDelegate代理
- @return JXCategoryListContainerView实例
- */
-- (instancetype)initWithParentVC:(UIViewController *)parentVC delegate:(id<JXCategoryListContainerViewDelegate>)delegate  JXCategoryViewDeprecated("请使用`- (instancetype)initWithDelegate:(id<JXCategoryListContainerViewDelegate>)delegate`方法，未来版本会删除该方法！");
 
 @end
 

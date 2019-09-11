@@ -306,11 +306,3 @@
 }
 
 @end
-
-@implementation JXCategoryListContainerView (Deprecated)
-
-- (instancetype)initWithParentVC:(UIViewController *)parentVC delegate:(id<JXCategoryListContainerViewDelegate>)delegate {
-    return [self initWithDelegate:delegate];
-}
-
-@end

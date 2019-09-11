@@ -94,27 +94,3 @@
 }
 
 @end
-
-@implementation JXCategoryIndicatorTriangleView (JXDeprecated)
-
-@dynamic triangleViewSize;
-@dynamic triangleViewColor;
-
-- (void)setTriangleViewSize:(CGSize)triangleViewSize {
-    self.indicatorWidth = triangleViewSize.width;
-    self.indicatorHeight = triangleViewSize.height;
-}
-
-- (CGSize)triangleViewSize {
-    return CGSizeMake(self.indicatorWidth, self.indicatorHeight);
-}
-
-- (void)setTriangleViewColor:(UIColor *)triangleViewColor {
-    self.indicatorColor = triangleViewColor;
-}
-
-- (UIColor *)triangleViewColor {
-    return self.indicatorColor;
-}
-
-@end

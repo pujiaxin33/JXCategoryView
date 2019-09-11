@@ -182,27 +182,3 @@
 }
 
 @end
-
-@implementation JXCategoryIndicatorBallView (JXDeprecated)
-
-@dynamic ballViewColor;
-@dynamic ballViewSize;
-
-- (void)setBallViewSize:(CGSize)ballViewSize {
-    self.indicatorWidth = ballViewSize.width;
-    self.indicatorHeight = ballViewSize.height;
-}
-
-- (CGSize)ballViewSize {
-    return CGSizeMake(self.indicatorWidth, self.indicatorHeight);
-}
-
-- (void)setBallViewColor:(UIColor *)ballViewColor {
-    self.indicatorColor = ballViewColor;
-}
-
-- (UIColor *)ballViewColor {
-    return self.indicatorColor;
-}
-
-@end

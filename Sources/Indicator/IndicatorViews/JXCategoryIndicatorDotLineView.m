@@ -133,27 +133,3 @@
 }
 
 @end
-
-@implementation JXCategoryIndicatorDotLineView (JXDeprecated)
-
-@dynamic dotSize;
-@dynamic dotLineViewColor;
-
-- (void)setDotSize:(CGSize)dotSize {
-    self.indicatorWidth = dotSize.width;
-    self.indicatorHeight = dotSize.height;
-}
-
-- (CGSize)dotSize {
-    return CGSizeMake(self.indicatorWidth, self.indicatorHeight);
-}
-
-- (void)setDotLineViewColor:(UIColor *)dotLineViewColor {
-    self.indicatorColor = dotLineViewColor;
-}
-
-- (UIColor *)dotLineViewColor {
-    return self.indicatorColor;
-}
-
-@end
