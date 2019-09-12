@@ -14,6 +14,14 @@
 
 @class JXCategoryBaseView;
 
+@protocol JXCategoryViewListContainer <NSObject>
+- (void)setDefaultSelectedIndex:(NSInteger)index;
+- (UIScrollView *)contentScrollView;
+- (void)reloadData;
+- (void)scrollingFromLeftIndex:(NSInteger)leftIndex toRightIndex:(NSInteger)rightIndex ratio:(CGFloat)ratio selectedIndex:(NSInteger)selectedIndex;
+- (void)didClickSelectedItemAtIndex:(NSInteger)index;
+@end
+
 @protocol JXCategoryViewDelegate <NSObject>
 
 @optional
@@ -72,6 +80,8 @@
 
 @property (nonatomic, weak) id<JXCategoryViewDelegate> delegate;
 
+@property (nonatomic, weak) id<JXCategoryViewListContainer> listContainer;
+
 @property (nonatomic, strong) UIScrollView *contentScrollView;    //需要关联的contentScrollView
 
 @property (nonatomic, assign) NSInteger defaultSelectedIndex;   //修改初始化的时候默认选择的index
@@ -126,22 +136,20 @@
 
 @end
 
-@interface JXCategoryBaseView (UISubclassingBaseHooks)
 
+
+@interface JXCategoryBaseView (UISubclassingBaseHooks)
 
 /**
  获取目标cell当前的frame，反应当前真实的frame受到cellWidthSelectedZoomScale的影响。
  */
 - (CGRect)getTargetCellFrame:(NSInteger)targetIndex;
 
-
 /**
  获取目标cell的选中时的frame，其他cell的状态都当做普通状态处理。
  */
 - (CGRect)getTargetSelectedCellFrame:(NSInteger)targetIndex selectedType:(JXCategoryCellSelectedType)selectedType;
-
 - (void)initializeData NS_REQUIRES_SUPER;
-
 - (void)initializeViews NS_REQUIRES_SUPER;
 
 /**

@@ -34,7 +34,12 @@
     self.minCategoryViewHeight = 50;
     self.maxCategoryViewHeight = 80;
 
+    self.listContainerView = [[JXCategoryListContainerView alloc] initWithDelegate:self];
+    self.listContainerView.frame = CGRectMake(0, topStatusBarHeight + self.maxCategoryViewHeight, self.view.bounds.size.width, self.view.bounds.size.height - topStatusBarHeight - self.maxCategoryViewHeight);
+    [self.view addSubview:self.listContainerView];
+
     self.categoryView = [[JXCategoryTitleVerticalZoomView alloc] init];
+    self.categoryView.listContainer = self.listContainerView;
     self.categoryView.frame = CGRectMake(0, topStatusBarHeight, self.view.bounds.size.width, self.maxCategoryViewHeight);
     self.categoryView.averageCellSpacingEnabled = NO;
     self.categoryView.titles = @[@"推荐", @"关注"];
@@ -65,13 +70,6 @@
     separatorLine.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
     separatorLine.backgroundColor = [UIColor redColor];
     [self.categoryView addSubview:separatorLine];
-
-    self.listContainerView = [[JXCategoryListContainerView alloc] initWithDelegate:self];
-    self.listContainerView.frame = CGRectMake(0, topStatusBarHeight + self.maxCategoryViewHeight, self.view.bounds.size.width, self.view.bounds.size.height - topStatusBarHeight - self.maxCategoryViewHeight);
-    self.listContainerView.defaultSelectedIndex = 0;
-    [self.view addSubview:self.listContainerView];
-
-    self.categoryView.contentScrollView = self.listContainerView.scrollView;
 }
 
 - (void)viewWillAppear:(BOOL)animated {

@@ -81,6 +81,7 @@ struct DelegateFlags {
     [self refreshState];
     [self.collectionView.collectionViewLayout invalidateLayout];
     [self.collectionView reloadData];
+    [self.listContainer reloadData];
 }
 
 - (void)reloadCellAtIndex:(NSInteger)index {
@@ -125,6 +126,7 @@ struct DelegateFlags {
     _defaultSelectedIndex = defaultSelectedIndex;
 
     self.selectedIndex = defaultSelectedIndex;
+    [self.listContainer setDefaultSelectedIndex:defaultSelectedIndex];
 }
 
 - (void)setContentScrollView:(UIScrollView *)contentScrollView
@@ -136,6 +138,11 @@ struct DelegateFlags {
 
     self.contentScrollView.scrollsToTop = NO;
     [self.contentScrollView addObserver:self forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionNew context:nil];
+}
+
+- (void)setListContainer:(id<JXCategoryViewListContainer>)listContainer {
+    _listContainer = listContainer;
+    self.contentScrollView = [listContainer contentScrollView];
 }
 
 #pragma mark - <UICollectionViewDataSource, UICollectionViewDelegate>
@@ -453,6 +460,7 @@ struct DelegateFlags {
     if (self.selectedIndex == targetIndex) {
         //目标index和当前选中的index相等，就不需要处理后续的选中更新逻辑，只需要回调代理方法即可。
         if (selectedType == JXCategoryCellSelectedTypeClick) {
+            [self.listContainer didClickSelectedItemAtIndex:targetIndex];
             if (self.delegateFlags.didClickSelectedItemAtIndexFlag) {
                 [self.delegate categoryView:self didClickSelectedItemAtIndex:targetIndex];
             }
@@ -507,6 +515,7 @@ struct DelegateFlags {
 
     self.selectedIndex = targetIndex;
     if (selectedType == JXCategoryCellSelectedTypeClick) {
+        [self.listContainer didClickSelectedItemAtIndex:targetIndex];
         if (self.delegateFlags.didClickSelectedItemAtIndexFlag) {
             [self.delegate categoryView:self didClickSelectedItemAtIndex:targetIndex];
         }
@@ -622,6 +631,7 @@ struct DelegateFlags {
             [self.collectionView.collectionViewLayout invalidateLayout];
         }
 
+        [self.listContainer scrollingFromLeftIndex:baseIndex toRightIndex:baseIndex + 1 ratio:remainderRatio selectedIndex:self.selectedIndex];
         if (self.delegateFlags.scrollingFromLeftIndexToRightIndexFlag) {
             [self.delegate categoryView:self scrollingFromLeftIndex:baseIndex toRightIndex:baseIndex + 1 ratio:remainderRatio];
         }

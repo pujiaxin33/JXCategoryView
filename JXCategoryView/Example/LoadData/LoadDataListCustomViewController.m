@@ -48,7 +48,7 @@
     if (@available(iOS 11.0, *)) {
         self.scrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
     }
-
+    //FIXME:如果和自定义UIScrollView联动，删除纯UIScrollView示例
     self.categoryView.contentScrollView = self.scrollView;
 
     [self reloadData];

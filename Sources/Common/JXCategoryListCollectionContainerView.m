@@ -85,16 +85,6 @@
     [self addSubview:self.collectionView];
 }
 
-- (void)reloadData {
-    for (id<JXCategoryListCollectionContentViewDelegate> list in _validListDict.allValues) {
-        [[list listView] removeFromSuperview];
-    }
-    [_validListDict removeAllObjects];
-
-    [self.collectionView reloadData];
-    [self listDidAppear:self.currentIndex];
-}
-
 - (void)layoutSubviews {
     [super layoutSubviews];
 
@@ -107,6 +97,16 @@
         self.shouldRefreshSelectedContentOffset = NO;
         [self.collectionView setContentOffset:CGPointMake(self.collectionView.bounds.size.width*self.currentIndex, 0) animated:NO];
     }
+}
+
+#pragma mark - JXCategoryViewListContainer
+
+- (void)setDefaultSelectedIndex:(NSInteger)index {
+    self.currentIndex = index;
+}
+
+- (UIScrollView *)contentScrollView {
+    return self.collectionView;
 }
 
 - (void)scrollingFromLeftIndex:(NSInteger)leftIndex toRightIndex:(NSInteger)rightIndex ratio:(CGFloat)ratio selectedIndex:(NSInteger)selectedIndex {
@@ -177,12 +177,14 @@
     }
 }
 
-#pragma mark - Setter
+- (void)reloadData {
+    for (id<JXCategoryListCollectionContentViewDelegate> list in _validListDict.allValues) {
+        [[list listView] removeFromSuperview];
+    }
+    [_validListDict removeAllObjects];
 
-- (void)setDefaultSelectedIndex:(NSInteger)defaultSelectedIndex {
-    _defaultSelectedIndex = defaultSelectedIndex;
-
-    self.currentIndex = defaultSelectedIndex;
+    [self.collectionView reloadData];
+    [self listDidAppear:self.currentIndex];
 }
 
 #pragma mark - Private

@@ -21,20 +21,18 @@
 
     self.view.backgroundColor = [UIColor whiteColor];
 
+    self.listContainerView = [[JXCategoryListContainerView alloc] initWithDelegate:self];
+    [self.view addSubview:self.listContainerView];
+
     self.titles = [self getRandomTitles];
     self.categoryView = [[JXCategoryTitleView alloc] init];
+    self.categoryView.listContainer = self.listContainerView;
     self.categoryView.delegate = self;
     self.categoryView.titles = self.titles;
     self.categoryView.defaultSelectedIndex = 0;
     JXCategoryIndicatorLineView *lineView = [[JXCategoryIndicatorLineView alloc] init];
     self.categoryView.indicators = @[lineView];
     [self.view addSubview:self.categoryView];
-
-    self.listContainerView = [[JXCategoryListContainerView alloc] initWithDelegate:self];
-    self.listContainerView.defaultSelectedIndex = 0;
-    [self.view addSubview:self.listContainerView];
-
-    self.categoryView.contentScrollView = self.listContainerView.scrollView;
 }
 
 //!!!!!!!!!!!!!!!!!!!如果你的列表是UIViewController，且你的列表依赖ViewWillAppear等生命周期方法，请添加下面的方法。避免生命周期方法重复调用!!!!!!!!!!!!!!!!!!!!!!!!
@@ -56,22 +54,9 @@
     self.titles = [self getRandomTitles];
 
     //重载之后默认回到0，你也可以指定一个index
-    self.categoryView.defaultSelectedIndex = 0;
+    self.categoryView.defaultSelectedIndex = 1;
     self.categoryView.titles = self.titles;
     [self.categoryView reloadData];
-
-    self.listContainerView.defaultSelectedIndex = 0;
-    [self.listContainerView reloadData];
-}
-
-#pragma mark - JXCategoryViewDelegate
-
-- (void)categoryView:(JXCategoryBaseView *)categoryView didClickSelectedItemAtIndex:(NSInteger)index {
-    [self.listContainerView didClickSelectedItemAtIndex:index];
-}
-
-- (void)categoryView:(JXCategoryBaseView *)categoryView scrollingFromLeftIndex:(NSInteger)leftIndex toRightIndex:(NSInteger)rightIndex ratio:(CGFloat)ratio {
-    [self.listContainerView scrollingFromLeftIndex:leftIndex toRightIndex:rightIndex ratio:ratio selectedIndex:categoryView.selectedIndex];
 }
 
 #pragma mark - JXCategoryListContainerViewDelegate

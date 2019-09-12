@@ -24,19 +24,17 @@
 
     self.view.backgroundColor = [UIColor whiteColor];
 
+    self.listContainerView = [[JXCategoryListCollectionContainerView alloc] initWithDataSource:self];
+    [self.view addSubview:self.listContainerView];
+
     self.titles = [self getRandomTitles];
     self.categoryView = [[JXCategoryTitleView alloc] init];
-
+    self.categoryView.listContainer = self.listContainerView;
     self.categoryView.titles = self.titles;
     self.categoryView.delegate = self;
     JXCategoryIndicatorLineView *lineView = [[JXCategoryIndicatorLineView alloc] init];
     self.categoryView.indicators = @[lineView];
     [self.view addSubview:self.categoryView];
-
-    self.listContainerView = [[JXCategoryListCollectionContainerView alloc] initWithDataSource:self];
-    [self.view addSubview:self.listContainerView];
-
-    self.categoryView.contentScrollView = self.listContainerView.collectionView;
 }
 
 //!!!!!!!!!!!!!!!!!!!如果你的列表是UIViewController，且你的列表依赖ViewWillAppear等生命周期方法，请添加下面的方法。避免生命周期方法重复调用!!!!!!!!!!!!!!!!!!!!!!!!
@@ -61,19 +59,6 @@
     self.categoryView.defaultSelectedIndex = 0;
     self.categoryView.titles = self.titles;
     [self.categoryView reloadData];
-
-    self.listContainerView.defaultSelectedIndex = 0;
-    [self.listContainerView reloadData];
-}
-
-#pragma mark - JXCategoryViewDelegate
-
-- (void)categoryView:(JXCategoryBaseView *)categoryView didClickSelectedItemAtIndex:(NSInteger)index {
-    [self.listContainerView didClickSelectedItemAtIndex:index];
-}
-
-- (void)categoryView:(JXCategoryBaseView *)categoryView scrollingFromLeftIndex:(NSInteger)leftIndex toRightIndex:(NSInteger)rightIndex ratio:(CGFloat)ratio {
-    [self.listContainerView scrollingFromLeftIndex:leftIndex toRightIndex:rightIndex ratio:ratio selectedIndex:categoryView.selectedIndex];
 }
 
 #pragma mark - JXCategoryListCollectionContainerViewDataSource

@@ -19,13 +19,13 @@
 
     self.view.backgroundColor = [UIColor whiteColor];
 
+    [self.view addSubview:self.listContainerView];
+
     self.categoryView.frame = CGRectMake(0, 0, self.view.bounds.size.width, [self preferredCategoryViewHeight]);
+    self.categoryView.listContainer = self.listContainerView;
     self.categoryView.delegate = self;
     [self.view addSubview:self.categoryView];
 
-    [self.view addSubview:self.listContainerView];
-
-    self.categoryView.contentScrollView = self.listContainerView.scrollView;
 
     if (self.isNeedIndicatorPositionChangeItem) {
         UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithTitle:@"指示器位置切换" style:UIBarButtonItemStylePlain target:self action:@selector(rightItemClicked)];
@@ -97,15 +97,6 @@
 
 - (void)categoryView:(JXCategoryBaseView *)categoryView didScrollSelectedItemAtIndex:(NSInteger)index {
     NSLog(@"%@", NSStringFromSelector(_cmd));
-}
-
-- (void)categoryView:(JXCategoryBaseView *)categoryView didClickSelectedItemAtIndex:(NSInteger)index {
-    NSLog(@"%@", NSStringFromSelector(_cmd));
-    [self.listContainerView didClickSelectedItemAtIndex:index];
-}
-
-- (void)categoryView:(JXCategoryBaseView *)categoryView scrollingFromLeftIndex:(NSInteger)leftIndex toRightIndex:(NSInteger)rightIndex ratio:(CGFloat)ratio {
-    [self.listContainerView scrollingFromLeftIndex:leftIndex toRightIndex:rightIndex ratio:ratio selectedIndex:categoryView.selectedIndex];
 }
 
 #pragma mark - JXCategoryListContainerViewDelegate

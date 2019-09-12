@@ -71,17 +71,6 @@
     }
 }
 
-- (void)reloadData {
-    for (id<JXCategoryListContentViewDelegate> list in _validListDict.allValues) {
-        [[list listView] removeFromSuperview];
-    }
-    [_validListDict removeAllObjects];
-
-    self.scrollView.contentSize = CGSizeMake(self.scrollView.bounds.size.width*[self.delegate numberOfListsInlistContainerView:self], self.scrollView.bounds.size.height);
-
-    [self listDidAppear:self.currentIndex];
-}
-
 - (void)layoutSubviews {
     [super layoutSubviews];
 
@@ -90,11 +79,6 @@
     [_validListDict enumerateKeysAndObjectsUsingBlock:^(NSNumber * _Nonnull index, id<JXCategoryListContentViewDelegate>  _Nonnull list, BOOL * _Nonnull stop) {
         [list listView].frame = CGRectMake(index.intValue*self.scrollView.bounds.size.width, 0, self.scrollView.bounds.size.width, self.scrollView.bounds.size.height);
     }];
-}
-
-- (void)setDefaultSelectedIndex:(NSInteger)defaultSelectedIndex {
-    _defaultSelectedIndex = defaultSelectedIndex;
-    self.currentIndex = defaultSelectedIndex;
 }
 
 - (void)setDidAppearPercent:(CGFloat)didAppearPercent {
@@ -121,7 +105,15 @@
     }
 }
 
-#pragma mark - JXCategoryBaseView回调
+#pragma mark - JXCategoryViewListContainer
+
+- (UIScrollView *)contentScrollView {
+    return self.scrollView;
+}
+
+- (void)setDefaultSelectedIndex:(NSInteger)index {
+    self.currentIndex = index;
+}
 
 - (void)scrollingFromLeftIndex:(NSInteger)leftIndex toRightIndex:(NSInteger)rightIndex ratio:(CGFloat)ratio selectedIndex:(NSInteger)selectedIndex {
     NSInteger targetIndex = -1;
@@ -189,6 +181,17 @@
         [self listWillAppear:index];
         [self listDidAppear:index];
     }
+}
+
+- (void)reloadData {
+    for (id<JXCategoryListContentViewDelegate> list in _validListDict.allValues) {
+        [[list listView] removeFromSuperview];
+    }
+    [_validListDict removeAllObjects];
+
+    self.scrollView.contentSize = CGSizeMake(self.scrollView.bounds.size.width*[self.delegate numberOfListsInlistContainerView:self], self.scrollView.bounds.size.height);
+
+    [self listDidAppear:self.currentIndex];
 }
 
 #pragma mark - Private
