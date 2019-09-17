@@ -203,6 +203,9 @@
     _validListDict[@(index)] = list;
 
     UICollectionViewCell *cell = [self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0]];
+    for (UIView *subview in cell.contentView.subviews) {
+        [subview removeFromSuperview];
+    }
     [list listView].frame = cell.contentView.bounds;
     [cell.contentView addSubview:[list listView]];
     [self listWillAppear:index];
@@ -254,12 +257,14 @@
                 list = [self.dataSource listContainerView:self initListForIndex:index];
                 _validListDict[@(index)] = list;
             }
-            if ([list listView].superview == nil) {
-                UICollectionViewCell *cell = [self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0]];
-                [list listView].frame = cell.contentView.bounds;
-                [cell.contentView addSubview:[list listView]];
-                [self listWillAppear:index];
+            UICollectionViewCell *cell = [self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0]];
+            for (UIView *subview in cell.contentView.subviews) {
+                [subview removeFromSuperview];
             }
+            [list listView].frame = cell.contentView.bounds;
+            [cell.contentView addSubview:[list listView]];
+            [self listWillAppear:index];
+
             if (list && [list respondsToSelector:@selector(listDidAppear)]) {
                 [list listDidAppear];
             }
@@ -314,10 +319,8 @@
         [subview removeFromSuperview];
     }
     id<JXCategoryListCollectionContentViewDelegate> list = _validListDict[@(indexPath.item)];
-    if (list && [list listView].superview == nil) {
-        [list listView].frame = cell.contentView.bounds;
-        [cell.contentView addSubview:[list listView]];
-    }
+    [list listView].frame = cell.contentView.bounds;
+    [cell.contentView addSubview:[list listView]];
     return cell;
 }
 
