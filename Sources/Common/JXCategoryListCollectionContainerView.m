@@ -224,6 +224,9 @@
 }
 
 - (void)listWillAppear:(NSInteger)index {
+    if (![self checkIndexValid:index]) {
+        return;
+    }
     id<JXCategoryListCollectionContentViewDelegate> list = _validListDict[@(index)];
     if (list && [list respondsToSelector:@selector(listWillAppear)]) {
         [list listWillAppear];
@@ -235,6 +238,9 @@
 }
 
 - (void)listDidAppear:(NSInteger)index {
+    if (![self checkIndexValid:index]) {
+        return;
+    }
     self.currentIndex = index;
     id<JXCategoryListCollectionContentViewDelegate> list = _validListDict[@(index)];
     if (list != nil) {
@@ -277,6 +283,9 @@
 }
 
 - (void)listWillDisappear:(NSInteger)index {
+    if (![self checkIndexValid:index]) {
+        return;
+    }
     id<JXCategoryListCollectionContentViewDelegate> list = _validListDict[@(index)];
     if (list && [list respondsToSelector:@selector(listWillDisappear)]) {
         [list listWillDisappear];
@@ -288,6 +297,9 @@
 }
 
 - (void)listDidDisappear:(NSInteger)index {
+    if (![self checkIndexValid:index]) {
+        return;
+    }
     id<JXCategoryListCollectionContentViewDelegate> list = _validListDict[@(index)];
     if (list && [list respondsToSelector:@selector(listDidDisappear)]) {
         [list listDidDisappear];
