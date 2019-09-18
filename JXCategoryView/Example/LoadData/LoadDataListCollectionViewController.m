@@ -8,12 +8,12 @@
 
 #import "LoadDataListCollectionViewController.h"
 #import "JXCategoryView.h"
-#import "JXCategoryListCollectionContainerView.h"
+#import "JXCategoryListContainerView.h"
 #import "LoadDataListCollectionListViewController.h"
 
-@interface LoadDataListCollectionViewController () <JXCategoryViewDelegate, JXCategoryListCollectionContainerViewDataSource>
+@interface LoadDataListCollectionViewController () <JXCategoryViewDelegate, JXCategoryListContainerViewDelegate>
 @property (nonatomic, strong) JXCategoryTitleView *categoryView;
-@property (nonatomic, strong) JXCategoryListCollectionContainerView *listContainerView;
+@property (nonatomic, strong) JXCategoryListContainerView *listContainerView;
 @property (nonatomic, strong) NSArray <NSString *> *titles;
 @end
 
@@ -24,7 +24,7 @@
 
     self.view.backgroundColor = [UIColor whiteColor];
 
-    self.listContainerView = [[JXCategoryListCollectionContainerView alloc] initWithDataSource:self];
+    self.listContainerView = [[JXCategoryListContainerView alloc] initWithType:JXCategoryListContainerType_CollectionView delegate:self];
     [self.view addSubview:self.listContainerView];
 
     self.titles = [self getRandomTitles];
@@ -61,9 +61,9 @@
     [self.categoryView reloadData];
 }
 
-#pragma mark - JXCategoryListCollectionContainerViewDataSource
+#pragma mark - JXCategoryListContainerViewDataSource
 
-- (id<JXCategoryListCollectionContentViewDelegate>)listContainerView:(JXCategoryListContainerView *)listContainerView initListForIndex:(NSInteger)index {
+- (id<JXCategoryListContentViewDelegate>)listContainerView:(JXCategoryListContainerView *)listContainerView initListForIndex:(NSInteger)index {
     LoadDataListCollectionListViewController *listVC = [[LoadDataListCollectionListViewController alloc] init];
     listVC.naviController = self.navigationController;
     listVC.title = self.titles[index];

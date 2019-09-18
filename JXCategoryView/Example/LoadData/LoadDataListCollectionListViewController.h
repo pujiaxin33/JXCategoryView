@@ -7,11 +7,11 @@
 //
 
 #import "LoadDataListBaseViewController.h"
-#import "JXCategoryListCollectionContainerView.h"
+#import "JXCategoryListContainerView.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface LoadDataListCollectionListViewController : LoadDataListBaseViewController <JXCategoryListCollectionContentViewDelegate>
+@interface LoadDataListCollectionListViewController : LoadDataListBaseViewController <JXCategoryListContentViewDelegate>
 @end
 
 NS_ASSUME_NONNULL_END

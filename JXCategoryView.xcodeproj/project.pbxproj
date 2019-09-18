@@ -79,7 +79,6 @@
 		19562CED212A9B9C0095AA27 /* JXCategoryDotCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 19562CEC212A9B9C0095AA27 /* JXCategoryDotCellModel.m */; };
 		19562CF1212AA1360095AA27 /* DotViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19562CF0212AA1360095AA27 /* DotViewController.m */; };
 		19562CF5212AA3600095AA27 /* NestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19562CF4212AA3600095AA27 /* NestViewController.m */; };
-		1974583C2225361B00C740EB /* JXCategoryListCollectionContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1974583B2225361B00C740EB /* JXCategoryListCollectionContainerView.m */; };
 		1974583F22253FA100C740EB /* LoadDataListCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1974583E22253FA100C740EB /* LoadDataListCollectionViewController.m */; };
 		197458422225402D00C740EB /* LoadDataListCollectionListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 197458412225402D00C740EB /* LoadDataListCollectionListViewController.m */; };
 		1979336721C9D6FF00007733 /* JXCategoryListContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1979336621C9D6FE00007733 /* JXCategoryListContainerView.m */; };
@@ -294,8 +293,6 @@
 		19562CF0212AA1360095AA27 /* DotViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DotViewController.m; sourceTree = "<group>"; };
 		19562CF3212AA3600095AA27 /* NestViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NestViewController.h; sourceTree = "<group>"; };
 		19562CF4212AA3600095AA27 /* NestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NestViewController.m; sourceTree = "<group>"; };
-		1974583A2225361A00C740EB /* JXCategoryListCollectionContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXCategoryListCollectionContainerView.h; sourceTree = "<group>"; };
-		1974583B2225361B00C740EB /* JXCategoryListCollectionContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXCategoryListCollectionContainerView.m; sourceTree = "<group>"; };
 		1974583D22253FA100C740EB /* LoadDataListCollectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoadDataListCollectionViewController.h; sourceTree = "<group>"; };
 		1974583E22253FA100C740EB /* LoadDataListCollectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoadDataListCollectionViewController.m; sourceTree = "<group>"; };
 		197458402225402D00C740EB /* LoadDataListCollectionListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoadDataListCollectionListViewController.h; sourceTree = "<group>"; };
@@ -910,8 +907,6 @@
 				19346D602126639B0065FD8F /* JXCategoryFactory.m */,
 				1979336521C9D6FE00007733 /* JXCategoryListContainerView.h */,
 				1979336621C9D6FE00007733 /* JXCategoryListContainerView.m */,
-				1974583A2225361A00C740EB /* JXCategoryListCollectionContainerView.h */,
-				1974583B2225361B00C740EB /* JXCategoryListCollectionContainerView.m */,
 				190C48DF21F95F6C008032C7 /* JXCategoryViewAnimator.h */,
 				190C48E021F95F6C008032C7 /* JXCategoryViewAnimator.m */,
 			);
@@ -1190,7 +1185,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1974583C2225361B00C740EB /* JXCategoryListCollectionContainerView.m in Sources */,
 				191A9612212CF70300DBF784 /* JXCategoryTitleAttributeCellModel.m in Sources */,
 				190921D522B0FAB40045D18F /* RearrangeViewController.m in Sources */,
 				19302329211AD31C00AF1444 /* TitleImageViewController.m in Sources */,

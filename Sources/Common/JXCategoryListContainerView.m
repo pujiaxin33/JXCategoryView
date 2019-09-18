@@ -7,8 +7,9 @@
 //
 
 #import "JXCategoryListContainerView.h"
+#import <objc/runtime.h>
 
-@interface JXCategoryListContainerView () <UIScrollViewDelegate>
+@interface JXCategoryListContainerView () <UIScrollViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource>
 @property (nonatomic, weak) id<JXCategoryListContainerViewDelegate> delegate;
 @property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, assign) NSInteger currentIndex;
@@ -17,13 +18,15 @@
 @property (nonatomic, strong) JXCategoryListContainerView *retainedSelf;
 @property (nonatomic, assign) NSInteger willAppearIndex;
 @property (nonatomic, assign) NSInteger willDisappearIndex;
+@property (nonatomic, strong) UICollectionView *collectionView;
 @end
 
 @implementation JXCategoryListContainerView
 
-- (instancetype)initWithDelegate:(id<JXCategoryListContainerViewDelegate>)delegate{
+- (instancetype)initWithType:(JXCategoryListContainerType)type delegate:(id<JXCategoryListContainerViewDelegate>)delegate{
     self = [super initWithFrame:CGRectZero];
     if (self) {
+        _containerType = type;
         _delegate = delegate;
         _validListDict = [NSMutableDictionary dictionary];
         _willAppearIndex = -1;
@@ -35,21 +38,54 @@
 }
 
 - (void)initializeViews {
-    if (self.delegate && [self.delegate respondsToSelector:@selector(scrollViewInlistContainerView:)]) {
-        _scrollView = [self.delegate scrollViewInlistContainerView:self];
+    if (self.containerType == JXCategoryListContainerType_ScrollView) {
+        if (self.delegate &&
+            [self.delegate respondsToSelector:@selector(scrollViewClassInlistContainerView:)] &&
+            [[self.delegate scrollViewClassInlistContainerView:self] isKindOfClass:object_getClass([UIScrollView class])]) {
+            _scrollView = (UICollectionView *)[[[self.delegate scrollViewClassInlistContainerView:self] alloc] init];
+        }else {
+            _scrollView = [[UIScrollView alloc] init];
+        }
+        self.scrollView.delegate = self;
+        self.scrollView.pagingEnabled = YES;
+        self.scrollView.showsHorizontalScrollIndicator = NO;
+        self.scrollView.showsVerticalScrollIndicator = NO;
+        self.scrollView.scrollsToTop = NO;
+        self.scrollView.bounces = NO;
+        if (@available(iOS 11.0, *)) {
+            self.scrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+        }
+        [self addSubview:self.scrollView];
     }else {
-        _scrollView = [[UIScrollView alloc] init];
+        UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
+        layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+        layout.minimumLineSpacing = 0;
+        layout.minimumInteritemSpacing = 0;
+        if (self.delegate &&
+            [self.delegate respondsToSelector:@selector(scrollViewClassInlistContainerView:)] &&
+            [[self.delegate scrollViewClassInlistContainerView:self] isKindOfClass:object_getClass([UICollectionView class])]) {
+            _collectionView = (UICollectionView *)[[[self.delegate scrollViewClassInlistContainerView:self] alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
+        }else {
+            _collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
+        }
+        self.collectionView.pagingEnabled = YES;
+        self.collectionView.showsHorizontalScrollIndicator = NO;
+        self.collectionView.showsVerticalScrollIndicator = NO;
+        self.collectionView.scrollsToTop = NO;
+        self.collectionView.bounces = NO;
+        self.collectionView.dataSource = self;
+        self.collectionView.delegate = self;
+        [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
+        if (@available(iOS 10.0, *)) {
+            self.collectionView.prefetchingEnabled = NO;
+        }
+        if (@available(iOS 11.0, *)) {
+            self.collectionView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+        }
+        [self addSubview:self.collectionView];
+        //让外部统一访问scrollView
+        _scrollView = _collectionView;
     }
-    self.scrollView.delegate = self;
-    self.scrollView.pagingEnabled = YES;
-    self.scrollView.showsHorizontalScrollIndicator = NO;
-    self.scrollView.showsVerticalScrollIndicator = NO;
-    self.scrollView.scrollsToTop = NO;
-    self.scrollView.bounces = NO;
-    if (@available(iOS 11.0, *)) {
-        self.scrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
-    }
-    [self addSubview:self.scrollView];
 }
 
 - (void)willMoveToWindow:(UIWindow *)newWindow {
@@ -74,16 +110,23 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
 
-    self.scrollView.frame = self.bounds;
-    self.scrollView.contentSize = CGSizeMake(self.scrollView.bounds.size.width*[self.delegate numberOfListsInlistContainerView:self], self.scrollView.bounds.size.height);
-    [_validListDict enumerateKeysAndObjectsUsingBlock:^(NSNumber * _Nonnull index, id<JXCategoryListContentViewDelegate>  _Nonnull list, BOOL * _Nonnull stop) {
-        [list listView].frame = CGRectMake(index.intValue*self.scrollView.bounds.size.width, 0, self.scrollView.bounds.size.width, self.scrollView.bounds.size.height);
-    }];
+    if (self.containerType == JXCategoryListContainerType_ScrollView) {
+        self.scrollView.frame = self.bounds;
+        self.scrollView.contentSize = CGSizeMake(self.scrollView.bounds.size.width*[self.delegate numberOfListsInlistContainerView:self], self.scrollView.bounds.size.height);
+        [_validListDict enumerateKeysAndObjectsUsingBlock:^(NSNumber * _Nonnull index, id<JXCategoryListContentViewDelegate>  _Nonnull list, BOOL * _Nonnull stop) {
+            [list listView].frame = CGRectMake(index.intValue*self.scrollView.bounds.size.width, 0, self.scrollView.bounds.size.width, self.scrollView.bounds.size.height);
+        }];
+    }else {
+        if (!CGRectEqualToRect(self.collectionView.frame, CGRectZero) &&  !CGSizeEqualToSize(self.collectionView.bounds.size, self.bounds.size)) {
+            [self.collectionView.collectionViewLayout invalidateLayout];
+            self.collectionView.frame = self.bounds;
+            [self.collectionView setContentOffset:CGPointMake(self.collectionView.bounds.size.width*self.currentIndex, 0) animated:NO];
+        }else {
+            self.collectionView.frame = self.bounds;
+        }
+    }
 }
 
-- (void)setDidAppearPercent:(CGFloat)didAppearPercent {
-    self.initListPercent = didAppearPercent;
-}
 
 - (void)setinitListPercent:(CGFloat)initListPercent {
     _initListPercent = initListPercent;
@@ -103,6 +146,28 @@
         self.willDisappearIndex = -1;
         self.willAppearIndex = -1;
     }
+}
+
+#pragma mark - UICollectionViewDelegate, UICollectionViewDataSource
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return [self.delegate numberOfListsInlistContainerView:self];
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
+    cell.contentView.backgroundColor = [UIColor whiteColor];
+    for (UIView *subview in cell.contentView.subviews) {
+        [subview removeFromSuperview];
+    }
+    id<JXCategoryListContentViewDelegate> list = _validListDict[@(indexPath.item)];
+    [list listView].frame = cell.contentView.bounds;
+    [cell.contentView addSubview:[list listView]];
+    return cell;
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    return self.bounds.size;
 }
 
 #pragma mark - JXCategoryViewListContainer
@@ -189,8 +254,11 @@
     }
     [_validListDict removeAllObjects];
 
-    self.scrollView.contentSize = CGSizeMake(self.scrollView.bounds.size.width*[self.delegate numberOfListsInlistContainerView:self], self.scrollView.bounds.size.height);
-
+    if (self.containerType == JXCategoryListContainerType_ScrollView) {
+        self.scrollView.contentSize = CGSizeMake(self.scrollView.bounds.size.width*[self.delegate numberOfListsInlistContainerView:self], self.scrollView.bounds.size.height);
+    }else {
+        [self.collectionView reloadData];
+    }
     [self listDidAppear:self.currentIndex];
 }
 
@@ -211,8 +279,17 @@
     list = [self.delegate listContainerView:self initListForIndex:index];
     _validListDict[@(index)] = list;
 
-    [list listView].frame = CGRectMake(index*self.scrollView.bounds.size.width, 0, self.scrollView.bounds.size.width, self.scrollView.bounds.size.height);
-    [self.scrollView addSubview:[list listView]];
+    if (self.containerType == JXCategoryListContainerType_ScrollView) {
+        [list listView].frame = CGRectMake(index*self.scrollView.bounds.size.width, 0, self.scrollView.bounds.size.width, self.scrollView.bounds.size.height);
+        [self.scrollView addSubview:[list listView]];
+    }else {
+        UICollectionViewCell *cell = [self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0]];
+        for (UIView *subview in cell.contentView.subviews) {
+            [subview removeFromSuperview];
+        }
+        [list listView].frame = cell.contentView.bounds;
+        [cell.contentView addSubview:[list listView]];
+    }
     [self listWillAppear:index];
 }
 
@@ -268,9 +345,19 @@
                 list = [self.delegate listContainerView:self initListForIndex:index];
                 _validListDict[@(index)] = list;
             }
-            if ([list listView].superview == nil) {
-                [list listView].frame = CGRectMake(index*self.scrollView.bounds.size.width, 0, self.scrollView.bounds.size.width, self.scrollView.bounds.size.height);
-                [self.scrollView addSubview:[list listView]];
+            if (self.containerType == JXCategoryListContainerType_ScrollView) {
+                if ([list listView].superview == nil) {
+                    [list listView].frame = CGRectMake(index*self.scrollView.bounds.size.width, 0, self.scrollView.bounds.size.width, self.scrollView.bounds.size.height);
+                    [self.scrollView addSubview:[list listView]];
+                    [self listWillAppear:index];
+                }
+            }else {
+                UICollectionViewCell *cell = [self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0]];
+                for (UIView *subview in cell.contentView.subviews) {
+                    [subview removeFromSuperview];
+                }
+                [list listView].frame = cell.contentView.bounds;
+                [cell.contentView addSubview:[list listView]];
                 [self listWillAppear:index];
             }
             if (list && [list respondsToSelector:@selector(listDidAppear)]) {

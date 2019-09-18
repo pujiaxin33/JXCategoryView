@@ -75,7 +75,7 @@
 
 - (JXCategoryListContainerView *)listContainerView {
     if (_listContainerView == nil) {
-        _listContainerView = [[JXCategoryListContainerView alloc] initWithDelegate:self];
+        _listContainerView = [[JXCategoryListContainerView alloc] initWithType:JXCategoryListContainerType_ScrollView delegate:self];
     }
     return _listContainerView;
 }

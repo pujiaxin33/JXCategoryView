@@ -34,7 +34,7 @@
     self.minCategoryViewHeight = 50;
     self.maxCategoryViewHeight = 80;
 
-    self.listContainerView = [[JXCategoryListContainerView alloc] initWithDelegate:self];
+    self.listContainerView = [[JXCategoryListContainerView alloc] initWithType:JXCategoryListContainerType_ScrollView delegate:self];
     self.listContainerView.frame = CGRectMake(0, topStatusBarHeight + self.maxCategoryViewHeight, self.view.bounds.size.width, self.view.bounds.size.height - topStatusBarHeight - self.maxCategoryViewHeight);
     [self.view addSubview:self.listContainerView];
 

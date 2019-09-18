@@ -80,9 +80,15 @@
 
 @property (nonatomic, weak) id<JXCategoryViewDelegate> delegate;
 
+/**
+ 高封装度的列表容器，使用该类可以让列表拥有完成的生命周期、自动同步defaultSelectedIndex、自动调用reloadData。
+ */
 @property (nonatomic, weak) id<JXCategoryViewListContainer> listContainer;
 
-@property (nonatomic, strong) UIScrollView *contentScrollView;    //需要关联的contentScrollView
+/**
+ 推荐使用封装度更高的listContainer属性。如果使用contentScrollView请参考`LoadDataListCustomViewController`使用示例。
+ */
+@property (nonatomic, strong) UIScrollView *contentScrollView;
 
 @property (nonatomic, assign) NSInteger defaultSelectedIndex;   //修改初始化的时候默认选择的index
 
