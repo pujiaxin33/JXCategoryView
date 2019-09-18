@@ -29,6 +29,7 @@
 
     self.titles = [self getRandomTitles];
     self.categoryView = [[JXCategoryTitleView alloc] init];
+    //优化关联listContainer，以后后续比如defaultSelectedIndex等属性，才能同步给listContainer
     self.categoryView.listContainer = self.listContainerView;
     self.categoryView.titles = self.titles;
     self.categoryView.delegate = self;
