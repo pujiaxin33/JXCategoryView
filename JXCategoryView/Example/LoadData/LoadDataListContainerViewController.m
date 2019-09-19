@@ -22,6 +22,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
 
     self.listContainerView = [[JXCategoryListContainerView alloc] initWithType:JXCategoryListContainerType_ScrollView delegate:self];
+//    self.listContainerView.initListPercent = 0.5;
     [self.view addSubview:self.listContainerView];
 
     self.titles = [self getRandomTitles];

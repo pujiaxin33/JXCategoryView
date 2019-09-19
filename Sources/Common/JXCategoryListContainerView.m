@@ -263,7 +263,9 @@
         }
         if (self.willAppearIndex == -1) {
             self.willAppearIndex = leftIndex;
-            [self listWillAppear:self.willAppearIndex];
+            if (self.validListDict[@(leftIndex)] != nil) {
+                [self listWillAppear:self.willAppearIndex];
+            }
         }
         if (self.willDisappearIndex == -1) {
             self.willDisappearIndex = rightIndex;
@@ -276,7 +278,9 @@
         }
         if (self.willAppearIndex == -1) {
             self.willAppearIndex = rightIndex;
-            [self listWillAppear:self.willAppearIndex];
+            if (_validListDict[@(rightIndex)] != nil) {
+                [self listWillAppear:self.willAppearIndex];
+            }
         }
         if (self.willDisappearIndex == -1) {
             self.willDisappearIndex = leftIndex;
@@ -345,6 +349,7 @@
         [list listView].frame = cell.contentView.bounds;
         [cell.contentView addSubview:[list listView]];
     }
+    [self listWillAppear:index];
 }
 
 - (void)listWillAppear:(NSInteger)index {
