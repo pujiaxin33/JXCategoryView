@@ -209,6 +209,31 @@
 
 #pragma mark - UIScrollViewDelegate
 
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    CGFloat currentIndexPercent = scrollView.contentOffset.x/scrollView.bounds.size.width;
+    if (self.willAppearIndex != -1 || self.willDisappearIndex != -1) {
+        NSInteger disappearIndex = self.willDisappearIndex;
+        NSInteger appearIndex = self.willAppearIndex;
+        if (self.willAppearIndex > self.willDisappearIndex) {
+            //将要出现的列表在右边
+            if (currentIndexPercent >= self.willAppearIndex) {
+                self.willDisappearIndex = -1;
+                self.willAppearIndex = -1;
+                [self listDidDisappear:disappearIndex];
+                [self listDidAppear:appearIndex];
+            }
+        }else {
+            //将要出现的列表在左边
+            if (currentIndexPercent <= self.willAppearIndex) {
+                self.willDisappearIndex = -1;
+                self.willAppearIndex = -1;
+                [self listDidDisappear:disappearIndex];
+                [self listDidAppear:appearIndex];
+            }
+        }
+    }
+}
+
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     if (self.willDisappearIndex != -1) {
         [self listWillAppear:self.willDisappearIndex];
@@ -231,60 +256,32 @@
 }
 
 - (void)scrollingFromLeftIndex:(NSInteger)leftIndex toRightIndex:(NSInteger)rightIndex ratio:(CGFloat)ratio selectedIndex:(NSInteger)selectedIndex {
-    NSInteger targetIndex = -1;
-    NSInteger disappearIndex = -1;
-    CGFloat didAppearRatio = 0.95;
     if (rightIndex == selectedIndex) {
         //当前选中的在右边，用户正在从右边往左边滑动
         if (ratio < (1 - self.initListPercent)) {
-            if (_validListDict[@(leftIndex)] == nil) {
-                [self listWillAppear:leftIndex];
-            }
+            [self initListIfNeededAtIndex:leftIndex];
         }
-        if (ratio < (1 - didAppearRatio)) {
-            targetIndex = leftIndex;
-            disappearIndex = rightIndex;
-        }else {
-            if (self.willAppearIndex == -1 && _validListDict[@(leftIndex)] != nil) {
-                self.willAppearIndex = leftIndex;
-                [self listWillAppear:self.willAppearIndex];
-            }
-            if (self.willDisappearIndex == -1) {
-                self.willDisappearIndex = rightIndex;
-                [self listWillDisappear:self.willDisappearIndex];
-            }
-            targetIndex = rightIndex;
-            disappearIndex = leftIndex;
+        if (self.willAppearIndex == -1) {
+            self.willAppearIndex = leftIndex;
+            [self listWillAppear:self.willAppearIndex];
+        }
+        if (self.willDisappearIndex == -1) {
+            self.willDisappearIndex = rightIndex;
+            [self listWillDisappear:self.willDisappearIndex];
         }
     }else {
         //当前选中的在左边，用户正在从左边往右边滑动
         if (ratio > self.initListPercent) {
-            if (_validListDict[@(rightIndex)] == nil) {
-                [self listWillAppear:rightIndex];
-            }
+            [self initListIfNeededAtIndex:rightIndex];
         }
-        if (ratio > didAppearRatio) {
-            targetIndex = rightIndex;
-            disappearIndex = leftIndex;
-        }else {
-            if (self.willAppearIndex == -1 && _validListDict[@(rightIndex)] != nil) {
-                self.willAppearIndex = rightIndex;
-                [self listWillAppear:self.willAppearIndex];
-            }
-            if (self.willDisappearIndex == -1) {
-                self.willDisappearIndex = leftIndex;
-                [self listWillDisappear:self.willDisappearIndex];
-            }
-            targetIndex = leftIndex;
-            disappearIndex = rightIndex;
+        if (self.willAppearIndex == -1) {
+            self.willAppearIndex = rightIndex;
+            [self listWillAppear:self.willAppearIndex];
         }
-    }
-
-    if (targetIndex != -1 && self.currentIndex != targetIndex) {
-        self.willAppearIndex = -1;
-        self.willDisappearIndex = -1;
-        [self listDidAppear:targetIndex];
-        [self listDidDisappear:disappearIndex];
+        if (self.willDisappearIndex == -1) {
+            self.willDisappearIndex = leftIndex;
+            [self listWillDisappear:self.willDisappearIndex];
+        }
     }
 }
 
@@ -348,7 +345,6 @@
         [list listView].frame = cell.contentView.bounds;
         [cell.contentView addSubview:[list listView]];
     }
-    [self listWillAppear:index];
 }
 
 - (void)listWillAppear:(NSInteger)index {
