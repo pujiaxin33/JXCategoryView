@@ -73,7 +73,12 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     DetailViewController *vc = [[DetailViewController alloc] init];
-    [self.naviController pushViewController:vc animated:true];
+    if (self.navigationController != nil) {
+        [self.navigationController pushViewController:vc animated:true];
+    }else {
+        //仅仅是自定义列表容器示例才生效
+        [self.naviController pushViewController:vc animated:true];
+    }
 }
 
 @end

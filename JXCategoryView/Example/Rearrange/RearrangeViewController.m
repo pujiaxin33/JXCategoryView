@@ -51,7 +51,6 @@
         return list;
     }else {
         LoadDataListContainerListViewController *listVC = [[LoadDataListContainerListViewController alloc] init];
-        listVC.naviController = self.navigationController;
         //①自己缓存已经初始化的列表
         _listCache[targetTitle] = listVC;
         return listVC;

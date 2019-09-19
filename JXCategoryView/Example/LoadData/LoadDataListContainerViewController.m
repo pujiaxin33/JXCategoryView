@@ -36,11 +36,6 @@
     [self.view addSubview:self.categoryView];
 }
 
-//!!!!!!!!!!!!!!!!!!!如果你的列表是UIViewController，且你的列表依赖ViewWillAppear等生命周期方法，请添加下面的方法。避免生命周期方法重复调用!!!!!!!!!!!!!!!!!!!!!!!!
-- (BOOL)shouldAutomaticallyForwardAppearanceMethods {
-    return NO;
-}
-
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
 
@@ -64,9 +59,6 @@
 
 - (id<JXCategoryListContentViewDelegate>)listContainerView:(JXCategoryListContainerView *)listContainerView initListForIndex:(NSInteger)index {
     LoadDataListContainerListViewController *listVC = [[LoadDataListContainerListViewController alloc] init];
-    listVC.naviController = self.navigationController;
-    //如果列表是UIViewController包裹的，需要添加addChildViewController代码，这样子在iPhoneX系列手机就不会有底部安全距离错误的问题！！！
-    [self addChildViewController:listVC];
     listVC.title = self.titles[index];
     return listVC;
 }

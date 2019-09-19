@@ -12,6 +12,7 @@
 #import "JXCategoryTitleVerticalZoomView.h"
 #import "JXCategoryFactory.h"
 #import "LoadDataListScrollZoomViewController.h"
+#import "JXCategoryIndicatorScrollZoomLineView.h"
 
 @interface ScrollZoomViewController () <JXCategoryViewDelegate, JXCategoryListContainerViewDelegate, UIGestureRecognizerDelegate>
 @property (nonatomic, strong) JXCategoryTitleVerticalZoomView *categoryView;
@@ -62,7 +63,8 @@
      */
     [self.view addSubview:self.categoryView];
 
-    JXCategoryIndicatorLineView *lineView = [[JXCategoryIndicatorLineView alloc] init];
+    //如果你非要在scrollZoom效果上面加指示器效果，请使用JXCategoryIndicatorScrollZoomLineView自定义类，里面做了一点点特殊处理。
+    JXCategoryIndicatorScrollZoomLineView *lineView = [[JXCategoryIndicatorScrollZoomLineView alloc] init];
     lineView.indicatorWidth = 20;
     self.categoryView.indicators = @[lineView];
 
@@ -156,7 +158,6 @@
 
 - (id<JXCategoryListContentViewDelegate>)listContainerView:(JXCategoryListContainerView *)listContainerView initListForIndex:(NSInteger)index {
     LoadDataListContainerListViewController *list = [[LoadDataListContainerListViewController alloc] init];
-    list.naviController = self.navigationController;
     __weak typeof(self) weakSelf = self;
     list.didScrollCallback = ^(UIScrollView *scrollView) {
         [weakSelf listScrollViewDidScroll:scrollView];

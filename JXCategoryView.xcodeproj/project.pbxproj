@@ -16,6 +16,7 @@
 		190A54E7206397370050B327 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 190A54E6206397370050B327 /* Assets.xcassets */; };
 		190A54EA206397370050B327 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 190A54E8206397370050B327 /* LaunchScreen.storyboard */; };
 		190A54ED206397370050B327 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 190A54EC206397370050B327 /* main.m */; };
+		190B98FD233346D0001F9CA9 /* JXCategoryIndicatorScrollZoomLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 190B98FC233346D0001F9CA9 /* JXCategoryIndicatorScrollZoomLineView.m */; };
 		190C48E121F95F6C008032C7 /* JXCategoryViewAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 190C48E021F95F6C008032C7 /* JXCategoryViewAnimator.m */; };
 		1912A522211C1BD000A80826 /* ContentBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1912A521211C1BD000A80826 /* ContentBaseViewController.m */; };
 		1912A526211C257000A80826 /* BackgroundImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1912A525211C257000A80826 /* BackgroundImageViewController.m */; };
@@ -166,6 +167,8 @@
 		190A54E9206397370050B327 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		190A54EB206397370050B327 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		190A54EC206397370050B327 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		190B98FB233346D0001F9CA9 /* JXCategoryIndicatorScrollZoomLineView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JXCategoryIndicatorScrollZoomLineView.h; sourceTree = "<group>"; };
+		190B98FC233346D0001F9CA9 /* JXCategoryIndicatorScrollZoomLineView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JXCategoryIndicatorScrollZoomLineView.m; sourceTree = "<group>"; };
 		190C48DF21F95F6C008032C7 /* JXCategoryViewAnimator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JXCategoryViewAnimator.h; sourceTree = "<group>"; };
 		190C48E021F95F6C008032C7 /* JXCategoryViewAnimator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JXCategoryViewAnimator.m; sourceTree = "<group>"; };
 		1912A520211C1BD000A80826 /* ContentBaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContentBaseViewController.h; sourceTree = "<group>"; };
@@ -595,6 +598,8 @@
 			children = (
 				192255632215473A00AF9C21 /* ScrollZoomViewController.h */,
 				192255642215473A00AF9C21 /* ScrollZoomViewController.m */,
+				190B98FB233346D0001F9CA9 /* JXCategoryIndicatorScrollZoomLineView.h */,
+				190B98FC233346D0001F9CA9 /* JXCategoryIndicatorScrollZoomLineView.m */,
 				19482D9A22E7FC75008F9CD7 /* LoadDataListScrollZoomViewController.h */,
 				19482D9B22E7FC75008F9CD7 /* LoadDataListScrollZoomViewController.m */,
 			);
@@ -1245,6 +1250,7 @@
 				19562CD4212A8C740095AA27 /* SpecialCustomizeViewController.m in Sources */,
 				19482D9922E718E3008F9CD7 /* TimelineExampleViewController.m in Sources */,
 				1974583F22253FA100C740EB /* LoadDataListCollectionViewController.m in Sources */,
+				190B98FD233346D0001F9CA9 /* JXCategoryIndicatorScrollZoomLineView.m in Sources */,
 				1904A8BB21CB949A00316F97 /* JXGradientView.m in Sources */,
 				191A95E0212BBC2500DBF784 /* JXCategoryIndicatorBallView.m in Sources */,
 				19346D722126B0D80065FD8F /* JXCategoryIndicatorTriangleView.m in Sources */,

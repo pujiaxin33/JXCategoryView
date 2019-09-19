@@ -87,29 +87,27 @@ static const NSUInteger VerticalListPinSectionIndex = 1;    //悬浮固定sectio
 }
 
 - (void)updateSectionHeaderAttributes {
-    if (self.sectionHeaderRectArray == nil) {
-        //获取到所有的sectionHeaderRect，用于后续的点击，滚动到指定contentOffset.y使用
-        NSMutableArray *rects = [NSMutableArray array];
-        CGRect lastHeaderRect = CGRectZero;
-        for (int i = 0; i < self.headerTitles.count; i++) {
-            CGRect rect = [self.tableView rectForHeaderInSection:i];
-            [rects addObject:[NSValue valueWithCGRect:rect]];
-            if (i == self.headerTitles.count - 1) {
-                lastHeaderRect = rect;
-            }
+    //获取到所有的sectionHeaderRect，用于后续的点击，滚动到指定contentOffset.y使用
+    NSMutableArray *rects = [NSMutableArray array];
+    CGRect lastHeaderRect = CGRectZero;
+    for (int i = 0; i < self.headerTitles.count; i++) {
+        CGRect rect = [self.tableView rectForHeaderInSection:i];
+        [rects addObject:[NSValue valueWithCGRect:rect]];
+        if (i == self.headerTitles.count - 1) {
+            lastHeaderRect = rect;
         }
-        if (rects.count == 0) {
-            return;
-        }
-        self.sectionHeaderRectArray = rects;
+    }
+    if (rects.count == 0) {
+        return;
+    }
+    self.sectionHeaderRectArray = rects;
 
-        //如果最后一个section条目太少了，会导致滚动最底部，但是却不能触发categoryView选中最后一个item。而且点击最后一个滚动的contentOffset.y也不要弄。所以添加contentInset，让最后一个section滚到最下面能显示完整个屏幕。
-        CGRect lastCellRect = [self.tableView rectForRowAtIndexPath:[NSIndexPath indexPathForRow:self.dataSource[self.headerTitles.count - 1].count - 1 inSection:self.headerTitles.count - 1]];
-        CGFloat lastSectionHeight = CGRectGetMaxY(lastCellRect) - CGRectGetMinY(lastHeaderRect);
-        CGFloat value = (self.view.bounds.size.height - VerticalListCategoryViewHeight) - lastSectionHeight;
-        if (value > 0) {
-            self.tableView.contentInset = UIEdgeInsetsMake(0, 0, value, 0);
-        }
+    //如果最后一个section条目太少了，会导致滚动最底部，但是却不能触发categoryView选中最后一个item。而且点击最后一个滚动的contentOffset.y也不好弄。所以添加contentInset，让最后一个section滚到最下面能显示完整个屏幕。
+    CGRect lastCellRect = [self.tableView rectForRowAtIndexPath:[NSIndexPath indexPathForRow:self.dataSource[self.headerTitles.count - 1].count - 1 inSection:self.headerTitles.count - 1]];
+    CGFloat lastSectionHeight = CGRectGetMaxY(lastCellRect) - CGRectGetMinY(lastHeaderRect);
+    CGFloat value = (self.view.bounds.size.height - VerticalListCategoryViewHeight) - lastSectionHeight;
+    if (value > 0) {
+        self.tableView.contentInset = UIEdgeInsetsMake(0, 0, value, 0);
     }
 }
 
@@ -156,6 +154,14 @@ static const NSUInteger VerticalListPinSectionIndex = 1;    //悬浮固定sectio
         headerView.textLabel.text = self.headerTitles[section];
         return headerView;
     }
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    return 0.01;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
+    return [[UIView alloc] init];
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {

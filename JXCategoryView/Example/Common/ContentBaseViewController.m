@@ -53,11 +53,6 @@
     self.navigationController.interactivePopGestureRecognizer.enabled = YES;
 }
 
-//!!!!!!!!!!!!!!!!!!!如果你的列表是UIViewController，且你的列表依赖ViewWillAppear等生命周期方法，请添加下面的方法。避免生命周期方法重复调用!!!!!!!!!!!!!!!!!!!!!!!!
-- (BOOL)shouldAutomaticallyForwardAppearanceMethods {
-    return NO;
-}
-
 - (JXCategoryBaseView *)preferredCategoryView {
     return [[JXCategoryBaseView alloc] init];
 }
