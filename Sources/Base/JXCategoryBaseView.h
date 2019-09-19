@@ -133,6 +133,11 @@
 - (void)reloadData;
 
 /**
+ 重新配置categoryView但是不需要reload listContainer。特殊情况是该方法。
+ */
+- (void)reloadDataWithoutListContainer;
+
+/**
  刷新指定的index的cell
  内部会触发`- (void)refreshCellModel:(JXCategoryBaseCellModel *)cellModel index:(NSInteger)index`方法进行cellModel刷新
 

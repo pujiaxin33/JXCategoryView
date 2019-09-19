@@ -56,7 +56,7 @@
     int y = arc4random()%10;
     
     self.myCategoryView.numberLabelOffset = CGPointMake(x, y);
-    [self.myCategoryView reloadData];
+    [self.myCategoryView reloadDataWithoutListContainer];
 }
 
 

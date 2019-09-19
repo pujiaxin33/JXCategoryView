@@ -44,7 +44,7 @@
 - (void)reloadDot {
     self.dotStates = @[@NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO, @NO].mutableCopy;
     self.myCategoryView.dotStates = self.dotStates;
-    [self.myCategoryView reloadData];
+    [self.myCategoryView reloadDataWithoutListContainer];
 }
 
 #pragma mark - JXCategoryViewDelegate

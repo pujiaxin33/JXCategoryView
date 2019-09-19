@@ -78,11 +78,15 @@ struct DelegateFlags {
 }
 
 - (void)reloadData {
+    [self reloadDataWithoutListContainer];
+    [self.listContainer reloadData];
+}
+
+- (void)reloadDataWithoutListContainer {
     [self refreshDataSource];
     [self refreshState];
     [self.collectionView.collectionViewLayout invalidateLayout];
     [self.collectionView reloadData];
-    [self.listContainer reloadData];
 }
 
 - (void)reloadCellAtIndex:(NSInteger)index {
@@ -109,10 +113,7 @@ struct DelegateFlags {
     self.collectionView.frame = CGRectMake(0, 0, self.bounds.size.width, floor(self.bounds.size.height));
     if (self.isFirstLayoutSubviews) {
         self.firstLayoutSubviews = NO;
-        [self refreshDataSource];
-        [self refreshState];
-        [self.collectionView.collectionViewLayout invalidateLayout];
-        [self.collectionView reloadData];
+        [self reloadDataWithoutListContainer];
     }else {
         [self.collectionView.collectionViewLayout invalidateLayout];
         [self.collectionView reloadData];

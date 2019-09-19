@@ -38,7 +38,6 @@
     self.titles = tempTitles.copy;
     self.categoryView.titles = self.titles;
     [self.categoryView reloadData];
-    [self.listContainerView reloadData];
 }
 
 #pragma mark - JXCategoryListContainerViewDelegate

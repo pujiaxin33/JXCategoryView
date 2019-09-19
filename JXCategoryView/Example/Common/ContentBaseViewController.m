@@ -84,7 +84,7 @@
             view.componentPosition = JXCategoryComponentPosition_Top;
         }
     }
-    [componentView reloadData];
+    [componentView reloadDataWithoutListContainer];
 }
 
 #pragma mark - JXCategoryViewDelegate
