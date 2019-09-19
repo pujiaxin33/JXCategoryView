@@ -245,7 +245,7 @@
             targetIndex = leftIndex;
             disappearIndex = rightIndex;
         }else {
-            if (self.willAppearIndex == -1) {
+            if (self.willAppearIndex == -1 && _validListDict[@(leftIndex)] != nil) {
                 self.willAppearIndex = leftIndex;
                 [self listWillAppear:self.willAppearIndex];
             }
@@ -259,7 +259,7 @@
     }else {
         //当前选中的在左边，用户正在从左边往右边滑动
         if (ratio > self.initListPercent) {
-            if (_validListDict[@(leftIndex)] == nil) {
+            if (_validListDict[@(rightIndex)] == nil) {
                 [self listWillAppear:rightIndex];
             }
         }
@@ -267,7 +267,7 @@
             targetIndex = rightIndex;
             disappearIndex = leftIndex;
         }else {
-            if (self.willAppearIndex == -1) {
+            if (self.willAppearIndex == -1 && _validListDict[@(rightIndex)] != nil) {
                 self.willAppearIndex = rightIndex;
                 [self listWillAppear:self.willAppearIndex];
             }
