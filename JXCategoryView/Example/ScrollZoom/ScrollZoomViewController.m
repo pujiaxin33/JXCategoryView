@@ -144,16 +144,6 @@
     return listVC.tableView;
 }
 
-#pragma mark - JXCategoryViewDelegate
-
-- (void)categoryView:(JXCategoryBaseView *)categoryView didClickSelectedItemAtIndex:(NSInteger)index {
-    [self.listContainerView didClickSelectedItemAtIndex:index];
-}
-
-- (void)categoryView:(JXCategoryBaseView *)categoryView scrollingFromLeftIndex:(NSInteger)leftIndex toRightIndex:(NSInteger)rightIndex ratio:(CGFloat)ratio {
-    [self.listContainerView scrollingFromLeftIndex:leftIndex toRightIndex:rightIndex ratio:ratio selectedIndex:categoryView.selectedIndex];
-}
-
 #pragma mark - JXCategoryListContainerViewDelegate
 
 - (id<JXCategoryListContentViewDelegate>)listContainerView:(JXCategoryListContainerView *)listContainerView initListForIndex:(NSInteger)index {
