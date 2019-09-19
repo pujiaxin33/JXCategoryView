@@ -226,7 +226,7 @@ self.categoryView.listContainer = self.listContainerView;
 - [个人主页效果更丰富的示例:JXPagingView](https://github.com/pujiaxin33/JXPagingView)
 - [侧滑手势处理](https://github.com/pujiaxin33/JXCategoryView/blob/master/Document/%E4%BE%A7%E6%BB%91%E6%89%8B%E5%8A%BF%E5%A4%84%E7%90%86.md)
 - [列表的生命周期方法处理](https://github.com/pujiaxin33/JXCategoryView/blob/master/Document/%E5%88%97%E8%A1%A8%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E6%96%B9%E6%B3%95%E5%A4%84%E7%90%86.md)
-- [`JXCategoryListContainerType`的`scrollView`和`collectionView`对比]()
+- [`JXCategoryListContainerType`的`scrollView`和`collectionView`对比](https://github.com/pujiaxin33/JXCategoryView/blob/master/Document/%E4%BD%BF%E7%94%A8%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9.md#jxcategorylistcontainertype%E7%9A%84scrollview%E5%92%8Ccollectionview%E5%AF%B9%E6%AF%94)
 - [cell左滑删除](https://github.com/pujiaxin33/JXCategoryView/blob/master/Document/%E4%BD%BF%E7%94%A8%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9.md#cell%E5%B7%A6%E6%BB%91%E5%88%A0%E9%99%A4)
 - [`FDFullscreenPopGesture`等全屏手势处理](https://github.com/pujiaxin33/JXCategoryView/blob/master/Document/%E5%85%A8%E5%B1%8F%E6%89%8B%E5%8A%BF%E5%A4%84%E7%90%86.md)
 - [JXCategoryView数据源刷新](https://github.com/pujiaxin33/JXCategoryView/blob/master/Document/%E4%BD%BF%E7%94%A8%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9.md#jxcategoryview%E6%95%B0%E6%8D%AE%E6%BA%90%E5%88%B7%E6%96%B0)
@@ -272,7 +272,7 @@ self.categoryView.listContainer = self.listContainerView;
 - 2019.6.21 发布1.3.13版本，更新内容：将`JXCategoryListCollectionContainerView.dataSource`移动到m实现文件，添加`- (instancetype)initWithDataSource:(id<JXCategoryListCollectionContainerViewDataSource>)dataSource`初始化方法。
 - 2019.7.20 发布1.3.16版本，删除代理方法`- (void)categoryView:(JXCategoryBaseView *)categoryView didClickedItemContentScrollViewTransitionToIndex:(NSInteger)index;`，请使用`contentScrollViewClickTransitionAnimationEnabled`属性。`JXCategoryTitleVerticalZoomView`进行了重构，内容左边距只需要使用`contentEdgeLeft`属性即可。
 - 2019.9.11 发布1.4.0版本，删除一波被标记为弃用的属性和方法；完善列表的生命周期方法的调用；`JXCategoryListCollectionContainerView`类新增和必须要调用`- (void)scrollingFromLeftIndex:(NSInteger)leftIndex toRightIndex:(NSInteger)rightIndex ratio:(CGFloat)ratio selectedIndex:(NSInteger)selectedIndex`和`- (void)didClickSelectedItemAtIndex:(NSInteger)index`两个方法。
-- 2019.9.19 发布1.5.0版本，重构列表容器，具体修改请参考[1.5.0版本迁移指南]()
+- 2019.9.19 发布1.5.0版本，重构列表容器，具体修改请参考[1.5.0版本迁移指南](https://github.com/pujiaxin33/JXCategoryView/blob/master/Migration/1.5.0%E7%89%88%E6%9C%AC%E8%BF%81%E7%A7%BB%E6%8C%87%E5%8D%97.md)
 
 ## 补充
 
