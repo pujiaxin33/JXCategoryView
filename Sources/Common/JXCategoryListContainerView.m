@@ -233,7 +233,7 @@
 - (void)scrollingFromLeftIndex:(NSInteger)leftIndex toRightIndex:(NSInteger)rightIndex ratio:(CGFloat)ratio selectedIndex:(NSInteger)selectedIndex {
     NSInteger targetIndex = -1;
     NSInteger disappearIndex = -1;
-    CGFloat didAppearRatio = 0.98;
+    CGFloat didAppearRatio = 0.95;
     if (rightIndex == selectedIndex) {
         //当前选中的在右边，用户正在从右边往左边滑动
         if (ratio < (1 - self.initListPercent)) {
