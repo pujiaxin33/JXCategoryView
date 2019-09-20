@@ -174,8 +174,9 @@ self.categoryView.indicators = @[lineView];
 `JXCategoryListContainerView`是对列表视图高度封装的类，具有以下优点：
 - 相对于直接使用`UIScrollView`自定义，封装度高、代码集中、使用简单；
 - 列表懒加载：当显示某个列表的时候，才进行列表初始化。而不是一次性加载全部列表，性能更优；
+- 支持列表的willAppear、didAppear、willDisappear、didDisappear生命周期方法调用；
 
-1.初始化`JXCategoryListContainerView`
+1.初始化`JXCategoryListContainerView`并关联到`categoryView`
 ```Objective-C
 self.listContainerView = [[JXCategoryListContainerView alloc] initWithType:JXCategoryListContainerType_ScrollView delegate:self];
 [self.view addSubview:self.listContainerView];
@@ -189,13 +190,13 @@ self.categoryView.listContainer = self.listContainerView;
 - (NSInteger)numberOfListsInlistContainerView:(JXCategoryListContainerView *)listContainerView {
     return self.titles.count;
 }
-//返回遵从`JXCategoryListContentViewDelegate`协议的实例
+//根据下标index返回对应遵从`JXCategoryListContentViewDelegate`协议的列表实例
 - (id<JXCategoryListContentViewDelegate>)listContainerView:(JXCategoryListContainerView *)listContainerView initListForIndex:(NSInteger)index {
     return [[ListViewController alloc] init];
 }
 ```
 
-3.列表实现`JXCategoryListContainerViewDelegate`代理方法
+3.列表实现`JXCategoryListContentViewDelegate`代理方法
 
 不管列表是UIView还是UIViewController都可以，提高使用灵活性，更便于现有的业务接入。
 ```Objective-C
@@ -230,13 +231,15 @@ self.categoryView.listContainer = self.listContainerView;
 - [cell左滑删除](https://github.com/pujiaxin33/JXCategoryView/blob/master/Document/%E4%BD%BF%E7%94%A8%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9.md#cell%E5%B7%A6%E6%BB%91%E5%88%A0%E9%99%A4)
 - [`FDFullscreenPopGesture`等全屏手势处理](https://github.com/pujiaxin33/JXCategoryView/blob/master/Document/%E5%85%A8%E5%B1%8F%E6%89%8B%E5%8A%BF%E5%A4%84%E7%90%86.md)
 - [JXCategoryView数据源刷新](https://github.com/pujiaxin33/JXCategoryView/blob/master/Document/%E4%BD%BF%E7%94%A8%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9.md#jxcategoryview%E6%95%B0%E6%8D%AE%E6%BA%90%E5%88%B7%E6%96%B0)
-- [contentScrollView关联说明](https://github.com/pujiaxin33/JXCategoryView/blob/master/Document/%E4%BD%BF%E7%94%A8%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9.md#contentscrollview%E5%85%B3%E8%81%94%E8%AF%B4%E6%98%8E)
+- [`reloadDataWithoutListContainer`方法使用说明]()
+- [listContainer或contentScrollView关联说明](https://github.com/pujiaxin33/JXCategoryView/blob/master/Document/%E4%BD%BF%E7%94%A8%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9.md#contentscrollview%E5%85%B3%E8%81%94%E8%AF%B4%E6%98%8E)
 - [点击切换列表的动画控制](https://github.com/pujiaxin33/JXCategoryView/blob/master/Document/%E4%BD%BF%E7%94%A8%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9.md#%E7%82%B9%E5%87%BB%E5%88%87%E6%8D%A2%E5%88%97%E8%A1%A8%E7%9A%84%E5%8A%A8%E7%94%BB%E6%8E%A7%E5%88%B6)
 - [列表cell点击跳转示例](https://github.com/pujiaxin33/JXCategoryView/blob/master/Document/%E4%BD%BF%E7%94%A8%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9.md#%E5%88%97%E8%A1%A8cell%E7%82%B9%E5%87%BB%E8%B7%B3%E8%BD%AC%E7%A4%BA%E4%BE%8B)
 - [列表调用`presentViewController`方法](https://github.com/pujiaxin33/JXCategoryView/blob/master/Document/%E4%BD%BF%E7%94%A8%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9.md#%E5%88%97%E8%A1%A8%E8%B0%83%E7%94%A8presentviewcontroller%E6%96%B9%E6%B3%95)
 - [代码选中指定index](https://github.com/pujiaxin33/JXCategoryView/blob/master/Document/%E4%BD%BF%E7%94%A8%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9.md#%E4%BB%A3%E7%A0%81%E9%80%89%E4%B8%AD%E6%8C%87%E5%AE%9Aindex)
 - [JXCategoryView.collectionView高度取整说明](https://github.com/pujiaxin33/JXCategoryView/blob/master/Document/%E4%BD%BF%E7%94%A8%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9.md#jxcategoryviewcollectionview%E9%AB%98%E5%BA%A6%E5%8F%96%E6%95%B4%E8%AF%B4%E6%98%8E)
 - [对父VC的automaticallyAdjustsScrollViewInsets属性设置为NO](https://github.com/pujiaxin33/JXCategoryView/blob/master/Document/%E4%BD%BF%E7%94%A8%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9.md#%E5%AF%B9%E7%88%B6vc%E7%9A%84automaticallyadjustsscrollviewinsets%E5%B1%9E%E6%80%A7%E8%AE%BE%E7%BD%AE%E4%B8%BAno)
+- [`JXCategoryListContainerView`内部使用`UIViewController`当做列表容器使用说明]()
 - [使用多行文本](https://github.com/pujiaxin33/JXCategoryView/blob/master/Document/%E4%BD%BF%E7%94%A8%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9.md#%E4%BD%BF%E7%94%A8%E5%A4%9A%E8%A1%8C%E6%96%87%E6%9C%AC)
 - [列表容器禁止左右滑动](https://github.com/pujiaxin33/JXCategoryView/blob/master/Document/%E4%BD%BF%E7%94%A8%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9.md#%E5%88%97%E8%A1%A8%E5%AE%B9%E5%99%A8%E7%A6%81%E6%AD%A2%E5%B7%A6%E5%8F%B3%E6%BB%91%E5%8A%A8)
 - [单个cell刷新 ](https://github.com/pujiaxin33/JXCategoryView/blob/master/Document/%E4%BD%BF%E7%94%A8%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9.md#%E5%8D%95%E4%B8%AAcell%E5%88%B7%E6%96%B0)
