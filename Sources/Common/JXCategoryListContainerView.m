@@ -155,7 +155,7 @@
 
     self.containerVC.view.frame = self.bounds;
     if (self.containerType == JXCategoryListContainerType_ScrollView) {
-        if (!CGRectEqualToRect(self.scrollView.frame, CGRectZero) &&  !CGSizeEqualToSize(self.scrollView.bounds.size, self.bounds.size)) {
+        if (CGRectEqualToRect(self.scrollView.frame, CGRectZero) ||  !CGSizeEqualToSize(self.scrollView.bounds.size, self.bounds.size)) {
             self.scrollView.frame = self.bounds;
             self.scrollView.contentSize = CGSizeMake(self.scrollView.bounds.size.width*[self.delegate numberOfListsInlistContainerView:self], self.scrollView.bounds.size.height);
             [_validListDict enumerateKeysAndObjectsUsingBlock:^(NSNumber * _Nonnull index, id<JXCategoryListContentViewDelegate>  _Nonnull list, BOOL * _Nonnull stop) {
@@ -167,7 +167,7 @@
             self.scrollView.contentSize = CGSizeMake(self.scrollView.bounds.size.width*[self.delegate numberOfListsInlistContainerView:self], self.scrollView.bounds.size.height);
         }
     }else {
-        if (!CGRectEqualToRect(self.collectionView.frame, CGRectZero) &&  !CGSizeEqualToSize(self.collectionView.bounds.size, self.bounds.size)) {
+        if (CGRectEqualToRect(self.collectionView.frame, CGRectZero) ||  !CGSizeEqualToSize(self.collectionView.bounds.size, self.bounds.size)) {
             self.collectionView.frame = self.bounds;
             [self.collectionView.collectionViewLayout invalidateLayout];
             [self.collectionView setContentOffset:CGPointMake(self.collectionView.bounds.size.width*self.currentIndex, 0) animated:NO];

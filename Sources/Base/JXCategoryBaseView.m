@@ -153,6 +153,7 @@ struct DelegateFlags {
 
 - (void)setListContainer:(id<JXCategoryViewListContainer>)listContainer {
     _listContainer = listContainer;
+    [listContainer setDefaultSelectedIndex:self.defaultSelectedIndex];
     self.contentScrollView = [listContainer contentScrollView];
 }
 
