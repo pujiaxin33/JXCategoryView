@@ -328,7 +328,7 @@ struct DelegateFlags {
     _selectedAnimationDuration = 0.25;
     _scrollingTargetIndex = -1;
     _contentScrollViewClickTransitionAnimationEnabled = YES;
-    _needReloadByBecomeActive = YES;
+    _needReloadByBecomeActive = NO;
 }
 
 - (void)initializeViews
