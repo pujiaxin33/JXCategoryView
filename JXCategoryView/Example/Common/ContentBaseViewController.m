@@ -21,7 +21,6 @@
 
     [self.view addSubview:self.listContainerView];
 
-    self.categoryView.frame = CGRectMake(0, 0, self.view.bounds.size.width, [self preferredCategoryViewHeight]);
     self.categoryView.listContainer = self.listContainerView;
     self.categoryView.delegate = self;
     [self.view addSubview:self.categoryView];
@@ -36,6 +35,7 @@
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
 
+    self.categoryView.frame = CGRectMake(0, 0, self.view.bounds.size.width, [self preferredCategoryViewHeight]);
     self.listContainerView.frame = CGRectMake(0, [self preferredCategoryViewHeight], self.view.bounds.size.width, self.view.bounds.size.height);
 }
 
