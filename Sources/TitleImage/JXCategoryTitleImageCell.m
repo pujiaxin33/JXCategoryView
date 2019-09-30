@@ -99,7 +99,10 @@
     }else if (myCellModel.titleLabelAnchorPointStyle == JXCategoryTitleLabelAnchorPointStyleTop) {
         center.y -= (self.titleLabel.bounds.size.height/2 + myCellModel.titleLabelVerticalOffset);
     }
-    self.titleLabel.center = center;
+    self.titleLabelCenterX.constant = center.x - self.contentView.bounds.size.width/2;
+    self.titleLabelCenterY.constant = center.y - self.contentView.bounds.size.height/2;
+    [self.contentView setNeedsLayout];
+    [self.contentView layoutIfNeeded];
 }
 
 - (void)reloadData:(JXCategoryBaseCellModel *)cellModel {

@@ -15,6 +15,7 @@
 @property (nonatomic, strong) UILabel *titleLabel;
 @property (nonatomic, strong) UILabel *maskTitleLabel;
 @property (nonatomic, strong) NSLayoutConstraint *titleLabelCenterX;
+@property (nonatomic, strong) NSLayoutConstraint *titleLabelCenterY;
 @property (nonatomic, strong) NSLayoutConstraint *maskTitleLabelCenterX;
 
 - (JXCategoryCellSelectedAnimationBlock)preferredTitleZoomAnimationBlock:(JXCategoryTitleCellModel *)cellModel baseScale:(CGFloat)baseScale;
