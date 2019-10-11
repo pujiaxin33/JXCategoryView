@@ -9,7 +9,7 @@
 #import "ContentBaseViewController.h"
 #import "ListViewController.h"
 
-@interface ContentBaseViewController () <JXCategoryViewDelegate, JXCategoryListContainerViewDelegate>
+@interface ContentBaseViewController () <JXCategoryViewDelegate>
 @end
 
 @implementation ContentBaseViewController

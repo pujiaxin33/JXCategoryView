@@ -210,6 +210,9 @@
 #pragma mark - UIScrollViewDelegate
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(listContainerViewDidScroll:)]) {
+        [self.delegate listContainerViewDidScroll:scrollView];
+    }
     CGFloat currentIndexPercent = scrollView.contentOffset.x/scrollView.bounds.size.width;
     if (self.willAppearIndex != -1 || self.willDisappearIndex != -1) {
         NSInteger disappearIndex = self.willDisappearIndex;

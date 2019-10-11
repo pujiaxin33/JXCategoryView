@@ -10,7 +10,7 @@
 #import "JXCategoryTitleView.h"
 #import "NestSubjectViewController.h"
 
-@interface NestViewController () <UIScrollViewDelegate>
+@interface NestViewController ()
 @property (nonatomic, strong) JXCategoryTitleView *myCategoryView;
 @property (nonatomic, assign) NSInteger currentIndex;
 @end
@@ -42,8 +42,6 @@
 
     [self.myCategoryView removeFromSuperview];
     self.navigationItem.titleView = self.myCategoryView;
-
-    self.listContainerView.scrollView.delegate = self;
 }
 
 - (void)viewDidLayoutSubviews {
@@ -78,9 +76,9 @@
     return list;
 }
 
-#pragma mark - UIScrollViewDelegate
+#pragma mark - JXCategoryListContainerViewDelegate
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+- (void)listContainerViewDidScroll:(UIScrollView *)scrollView{
     if ([self isKindOfClass:[NestViewController class]]) {
         CGFloat index = scrollView.contentOffset.x/scrollView.bounds.size.width;
         CGFloat absIndex = fabs(index - self.currentIndex);

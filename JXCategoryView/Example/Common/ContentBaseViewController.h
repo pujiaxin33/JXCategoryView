@@ -12,7 +12,7 @@
 
 #define WindowsSize [UIScreen mainScreen].bounds.size
 
-@interface ContentBaseViewController : UIViewController
+@interface ContentBaseViewController : UIViewController<JXCategoryListContainerViewDelegate>
 
 @property (nonatomic, strong) NSArray *titles;
 
