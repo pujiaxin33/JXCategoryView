@@ -1,5 +1,5 @@
 PODS:
-  - JXCategoryView (1.6.0)
+  - JXCategoryView (1.6.1)
   - JXPagingView/Pager (2.0.10)
 
 DEPENDENCIES:
@@ -15,9 +15,9 @@ EXTERNAL SOURCES:
     :path: "../../JXCategoryView"
 
 SPEC CHECKSUMS:
-  JXCategoryView: 99c87854c67659f7e2ef1b43079656a46b36b398
+  JXCategoryView: 7b1ee69ede4843c581688afe84d0f047723262f2
   JXPagingView: 7db39b9562d5fac20ac6903e6f3d2fcbc86ae542
 
 PODFILE CHECKSUM: eeaeae8638778f2993ed7a403b59d48ec34c8611
 
-COCOAPODS: 1.11.3
+COCOAPODS: 1.12.1
