@@ -42,6 +42,12 @@
     self.navigationItem.titleView = self.myCategoryView;
 }
 
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+
+    self.myCategoryView.frame = CGRectMake(0, 0, 120, 30);
+}
+
 - (JXCategoryTitleView *)myCategoryView {
     return (JXCategoryTitleView *)self.categoryView;
 }
