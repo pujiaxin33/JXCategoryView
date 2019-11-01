@@ -71,6 +71,7 @@
 }
 
 - (void)initializeViews {
+    _listCellBackgroundColor = [UIColor whiteColor];
     _containerVC = [[JXCategoryListContainerViewController alloc] init];
     self.containerVC.view.backgroundColor = [UIColor clearColor];
     [self addSubview:self.containerVC.view];
@@ -193,7 +194,7 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
-    cell.contentView.backgroundColor = [UIColor whiteColor];
+    cell.contentView.backgroundColor = self.listCellBackgroundColor;
     for (UIView *subview in cell.contentView.subviews) {
         [subview removeFromSuperview];
     }
