@@ -198,8 +198,10 @@
         [subview removeFromSuperview];
     }
     id<JXCategoryListContentViewDelegate> list = _validListDict[@(indexPath.item)];
-    [list listView].frame = cell.contentView.bounds;
-    [cell.contentView addSubview:[list listView]];
+    if (list != nil) {
+        [list listView].frame = cell.contentView.bounds;
+        [cell.contentView addSubview:[list listView]];
+    }
     return cell;
 }
 
