@@ -1,0 +1,1 @@
+../../../../../Sources/Indicator/JXCategoryIndicatorCell.h

@@ -1,0 +1,1 @@
+../../../../../Sources/Common/JXCategoryIndicatorProtocol.h
