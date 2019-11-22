@@ -75,13 +75,13 @@ Cell背景色渐变  |  <img src="https://github.com/pujiaxin33/JXExampleImages/
 ----|------|
 数据源过少<br/> averageCellSpacingEnabled默认为YES |  <img src="https://github.com/pujiaxin33/JXExampleImages/blob/master/JXCategoryView/averageCellSpacingEnabledYES.gif" width="343" height="80"> |
 数据源过少<br/> averageCellSpacingEnabled为NO |  <img src="https://github.com/pujiaxin33/JXExampleImages/blob/master/JXCategoryView/averageCellSpacingEnabledNO.gif" width="343" height="80"> |
-SegmentedControl<br/>参考[`SegmentedControlViewController`](https://github.com/pujiaxin33/JXCategoryView/blob/master/JXCategoryView/Example/SegmentedControl/SegmentedControlViewController.m)类 |  <img src="https://github.com/pujiaxin33/JXExampleImages/blob/master/JXCategoryView/SegmentedControl.gif" width="343" height="80"> |
-导航栏使用<br/>参考[`NaviSegmentedControlViewController`](https://github.com/pujiaxin33/JXCategoryView/blob/master/JXCategoryView/Example/SegmentedControl/NaviSegmentedControlViewController.m)类 |  <img src="https://github.com/pujiaxin33/JXExampleImages/blob/master/JXCategoryView/SegmentedControlNavi.gif" width="343" height="80"> |
-嵌套使用<br/>参考[`NestViewController`](https://github.com/pujiaxin33/JXCategoryView/blob/master/JXCategoryView/Example/Nest/NestViewController.m)类 |  <img src="https://github.com/pujiaxin33/JXExampleImages/blob/master/JXCategoryView/Nest.gif" width="343" height="272"> |
-个人主页(上下左右滚动、header悬浮)<br/>参考[`PagingViewController`](https://github.com/pujiaxin33/JXCategoryView/blob/master/JXCategoryView/Example/PagingView/Example/PagingViewController.m)类<br/> 更多样式请点击查看[JXPagingView库](https://github.com/pujiaxin33/JXPagingView) |  <img src="https://github.com/pujiaxin33/JXExampleImages/blob/master/JXCategoryView/UserProfile.gif" width="343" height="562"> |
-垂直列表滚动<br/>参考[`VerticalListViewController`](https://github.com/pujiaxin33/JXCategoryView/blob/master/JXCategoryView/Example/VerticalListView/VerticalListViewController.m)类<br/> 高仿腾讯视频<br/>支持UITableView，参考[`VerticalListTableViewController`](https://github.com/pujiaxin33/JXCategoryView/blob/master/JXCategoryView/Example/VerticalListView/VerticalListTableViewController.m)<br/>（背景色异常是录屏软件bug） |  <img src="https://github.com/pujiaxin33/JXExampleImages/blob/master/JXCategoryView/VerticalList.gif" width="343" height="607"> |
-| 垂直缩放(仿网易圈圈、脉脉首页)<br/>参考[`ScrollZoomViewController`](https://github.com/pujiaxin33/JXCategoryView/blob/master/JXCategoryView/Example/ScrollZoomView/ScrollZoomViewController.m)类 | <img src="https://github.com/pujiaxin33/JXExampleImages/blob/master/JXCategoryView/VerticalZoomTitle.gif" width="350" height="306"> |
-数据源刷新&列表数据加载<br/>参考[`LoadDataListContainerViewController`](https://github.com/pujiaxin33/JXCategoryView/blob/master/JXCategoryView/Example/LoadData/LoadDataListContainerViewController.m)类 |  <img src="https://github.com/pujiaxin33/JXExampleImages/blob/master/JXCategoryView/LoadData.gif" width="343" height="619"> |
+SegmentedControl<br/>参考[`SegmentedControlViewController`](https://github.com/pujiaxin33/JXCategoryView/tree/master/Example/Example/Examples/SegmentedControl/SegmentedControlViewController.m)类 |  <img src="https://github.com/pujiaxin33/JXExampleImages/blob/master/JXCategoryView/SegmentedControl.gif" width="343" height="80"> |
+导航栏使用<br/>参考[`NaviSegmentedControlViewController`](https://github.com/pujiaxin33/JXCategoryView/tree/master/Example/Example/Examples/SegmentedControl/NaviSegmentedControlViewController.m)类 |  <img src="https://github.com/pujiaxin33/JXExampleImages/blob/master/JXCategoryView/SegmentedControlNavi.gif" width="343" height="80"> |
+嵌套使用<br/>参考[`NestViewController`](https://github.com/pujiaxin33/JXCategoryView/tree/master/Example/Example/Examples/Nest/NestViewController.m)类 |  <img src="https://github.com/pujiaxin33/JXExampleImages/blob/master/JXCategoryView/Nest.gif" width="343" height="272"> |
+个人主页(上下左右滚动、header悬浮)<br/>参考[`PagingViewController`](https://github.com/pujiaxin33/JXCategoryView/tree/master/Example/Example/Examples/PagingView/Example/PagingViewController.m)类<br/> 更多样式请点击查看[JXPagingView库](https://github.com/pujiaxin33/JXPagingView) |  <img src="https://github.com/pujiaxin33/JXExampleImages/blob/master/JXCategoryView/UserProfile.gif" width="343" height="562"> |
+垂直列表滚动<br/>参考[`VerticalListViewController`](https://github.com/pujiaxin33/JXCategoryView/tree/master/Example/Example/Examples/VerticalListView/VerticalListViewController.m)类<br/> 高仿腾讯视频<br/>支持UITableView，参考[`VerticalListTableViewController`](https://github.com/pujiaxin33/JXCategoryView/tree/master/Example/Example/Examples/VerticalListView/VerticalListTableViewController.m)<br/>（背景色异常是录屏软件bug） |  <img src="https://github.com/pujiaxin33/JXExampleImages/blob/master/JXCategoryView/VerticalList.gif" width="343" height="607"> |
+| 垂直缩放(仿网易圈圈、脉脉首页)<br/>参考[`ScrollZoomViewController`](https://github.com/pujiaxin33/JXCategoryView/tree/master/Example/Example/Examples/ScrollZoomView/ScrollZoomViewController.m)类 | <img src="https://github.com/pujiaxin33/JXExampleImages/blob/master/JXCategoryView/VerticalZoomTitle.gif" width="350" height="306"> |
+数据源刷新&列表数据加载<br/>参考[`LoadDataListContainerViewController`](https://github.com/pujiaxin33/JXCategoryView/tree/master/Example/Example/Examples/LoadData/LoadDataListContainerViewController.m)类 |  <img src="https://github.com/pujiaxin33/JXExampleImages/blob/master/JXCategoryView/LoadData.gif" width="343" height="619"> |
 
 ### 自定义效果预览
 
@@ -209,13 +209,13 @@ self.categoryView.listContainer = self.listContainerView;
 ```
 
 
-具体点击[LoadDataListContainerViewController](https://github.com/pujiaxin33/JXCategoryView/blob/master/JXCategoryView/Example/LoadData/LoadDataListContainerViewController.m)查看源代码了解
+具体点击[LoadDataListContainerViewController](https://github.com/pujiaxin33/JXCategoryView/tree/master/Example/Example/Examples/LoadData/LoadDataListContainerViewController.m)查看源代码了解
 
 #### 直接使用UIScrollView自定义
 
 因为代码量较多且分散，所有不推荐使用该方法。要正确使用需要注意的地方比较多，尤其对于刚接触iOS的同学来说不太友好。
 
-不直接贴代码了，具体点击[LoadDataListCustomViewController](https://github.com/pujiaxin33/JXCategoryView/blob/master/JXCategoryView/Example/LoadData/LoadDataListCustomViewController.m)查看源代码了解。
+不直接贴代码了，具体点击[LoadDataListCustomViewController](https://github.com/pujiaxin33/JXCategoryView/tree/master/Example/Example/Examples/LoadData/LoadDataListCustomViewController.m)查看源代码了解。
 
 
 ## 常见问题和答案
