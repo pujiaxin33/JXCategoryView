@@ -1,4 +1,4 @@
-<div align=center><img src="JXCategoryView/Images/JXCategoryView.png" width="405" height="63" /></div>
+<div align=center><img src="Example/Example/Images/JXCategoryView.png" width="405" height="63" /></div>
 
 [![platform](https://img.shields.io/badge/platform-iOS-blue.svg?style=plastic)](#)
 [![languages](https://img.shields.io/badge/language-objective--c-blue.svg)](#) 
@@ -80,7 +80,7 @@ SegmentedControl<br/>参考[`SegmentedControlViewController`](https://github.com
 嵌套使用<br/>参考[`NestViewController`](https://github.com/pujiaxin33/JXCategoryView/tree/master/Example/Example/Examples/Nest/NestViewController.m)类 |  <img src="https://github.com/pujiaxin33/JXExampleImages/blob/master/JXCategoryView/Nest.gif" width="343" height="272"> |
 个人主页(上下左右滚动、header悬浮)<br/>参考[`PagingViewController`](https://github.com/pujiaxin33/JXCategoryView/tree/master/Example/Example/Examples/PagingView/Example/PagingViewController.m)类<br/> 更多样式请点击查看[JXPagingView库](https://github.com/pujiaxin33/JXPagingView) |  <img src="https://github.com/pujiaxin33/JXExampleImages/blob/master/JXCategoryView/UserProfile.gif" width="343" height="562"> |
 垂直列表滚动<br/>参考[`VerticalListViewController`](https://github.com/pujiaxin33/JXCategoryView/tree/master/Example/Example/Examples/VerticalListView/VerticalListViewController.m)类<br/> 高仿腾讯视频<br/>支持UITableView，参考[`VerticalListTableViewController`](https://github.com/pujiaxin33/JXCategoryView/tree/master/Example/Example/Examples/VerticalListView/VerticalListTableViewController.m)<br/>（背景色异常是录屏软件bug） |  <img src="https://github.com/pujiaxin33/JXExampleImages/blob/master/JXCategoryView/VerticalList.gif" width="343" height="607"> |
-| 垂直缩放(仿网易圈圈、脉脉首页)<br/>参考[`ScrollZoomViewController`](https://github.com/pujiaxin33/JXCategoryView/tree/master/Example/Example/Examples/ScrollZoomView/ScrollZoomViewController.m)类 | <img src="https://github.com/pujiaxin33/JXExampleImages/blob/master/JXCategoryView/VerticalZoomTitle.gif" width="350" height="306"> |
+| 垂直缩放(仿网易圈圈、脉脉首页)<br/>参考[`ScrollZoomViewController`](https://github.com/pujiaxin33/JXCategoryView/tree/master/Example/Example/Examples/ScrollZoom/ScrollZoomViewController.m)类 | <img src="https://github.com/pujiaxin33/JXExampleImages/blob/master/JXCategoryView/VerticalZoomTitle.gif" width="350" height="306"> |
 数据源刷新&列表数据加载<br/>参考[`LoadDataListContainerViewController`](https://github.com/pujiaxin33/JXCategoryView/tree/master/Example/Example/Examples/LoadData/LoadDataListContainerViewController.m)类 |  <img src="https://github.com/pujiaxin33/JXExampleImages/blob/master/JXCategoryView/LoadData.gif" width="343" height="619"> |
 
 ### 自定义效果预览
