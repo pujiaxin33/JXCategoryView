@@ -76,16 +76,15 @@
 }
 
 - (void)rightItemClicked {
-//    JXCategoryIndicatorView *componentView = (JXCategoryIndicatorView *)self.categoryView;
-//    for (JXCategoryIndicatorComponentView *view in componentView.indicators) {
-//        if (view.componentPosition == JXCategoryComponentPosition_Top) {
-//            view.componentPosition = JXCategoryComponentPosition_Bottom;
-//        }else {
-//            view.componentPosition = JXCategoryComponentPosition_Top;
-//        }
-//    }
-//    [componentView reloadDataWithoutListContainer];
-    [self.categoryView selectItemAtIndex:1];
+    JXCategoryIndicatorView *componentView = (JXCategoryIndicatorView *)self.categoryView;
+    for (JXCategoryIndicatorComponentView *view in componentView.indicators) {
+        if (view.componentPosition == JXCategoryComponentPosition_Top) {
+            view.componentPosition = JXCategoryComponentPosition_Bottom;
+        }else {
+            view.componentPosition = JXCategoryComponentPosition_Top;
+        }
+    }
+    [componentView reloadDataWithoutListContainer];
 }
 
 #pragma mark - JXCategoryViewDelegate
