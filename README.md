@@ -146,8 +146,8 @@ self.categoryView.titleColorGradientEnabled = YES;
 3.添加指示器
 ```Objective-C
 JXCategoryIndicatorLineView *lineView = [[JXCategoryIndicatorLineView alloc] init];
-lineView.indicatorLineViewColor = [UIColor redColor];
-lineView.indicatorLineWidth = JXCategoryViewAutomaticDimension;
+lineView.indicatorColor = [UIColor redColor];
+lineView.indicatorWidth = JXCategoryViewAutomaticDimension;
 self.categoryView.indicators = @[lineView];
 ```
 
