@@ -92,7 +92,7 @@
         if (self.delegate &&
             [self.delegate respondsToSelector:@selector(scrollViewClassInlistContainerView:)] &&
             [[self.delegate scrollViewClassInlistContainerView:self] isKindOfClass:object_getClass([UIScrollView class])]) {
-            _scrollView = (UICollectionView *)[[[self.delegate scrollViewClassInlistContainerView:self] alloc] init];
+            _scrollView = (UIScrollView *)[[[self.delegate scrollViewClassInlistContainerView:self] alloc] init];
         }else {
             _scrollView = [[UIScrollView alloc] init];
         }
