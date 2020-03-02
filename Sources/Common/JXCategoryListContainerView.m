@@ -312,6 +312,9 @@
 - (void)reloadData {
     for (id<JXCategoryListContentViewDelegate> list in _validListDict.allValues) {
         [[list listView] removeFromSuperview];
+        if ([list isKindOfClass:[UIViewController class]]) {
+            [(UIViewController *)list removeFromParentViewController];
+        }
     }
     [_validListDict removeAllObjects];
 
