@@ -101,7 +101,7 @@
     targetIndicatorFrame.origin.x = model.selectedCellFrame.origin.x + (model.selectedCellFrame.size.width - targetIndicatorWidth)/2.0;
     targetIndicatorFrame.size.width = targetIndicatorWidth;
     if (self.isScrollEnabled) {
-        if (self.scrollStyle == JXCategoryIndicatorScrollStyleSameAsUserScroll && (model.selectedType == JXCategoryCellSelectedTypeClick | model.selectedType == JXCategoryCellSelectedTypeClick)) {
+        if (self.scrollStyle == JXCategoryIndicatorScrollStyleSameAsUserScroll && (model.selectedType == JXCategoryCellSelectedTypeClick | model.selectedType == JXCategoryCellSelectedTypeCode)) {
             if (self.animator.isExecuting) {
                 [self.animator invalid];
                 self.animator = nil;
