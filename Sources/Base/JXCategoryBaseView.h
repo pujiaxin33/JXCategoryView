@@ -115,7 +115,7 @@
 
 @property (nonatomic, assign) CGFloat cellWidthZoomScale;    //默认1.2，cellWidthZoomEnabled为YES才生效
 
-@property (nonatomic, assign, getter=isSelectedAnimationEnabled) BOOL selectedAnimationEnabled;    //是否开启选中动画。默认为NO。自定义的cell选中动画需要自己实现。
+@property (nonatomic, assign, getter=isSelectedAnimationEnabled) BOOL selectedAnimationEnabled;    //是否开启点击或代码选中动画。默认为NO。自定义的cell选中动画需要自己实现。（仅点击或调用selectItemAtIndex选中才有效，滚动选中无效）
 
 @property (nonatomic, assign) NSTimeInterval selectedAnimationDuration;     //cell选中动画的时间。默认0.25
 

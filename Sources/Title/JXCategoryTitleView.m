@@ -61,7 +61,7 @@
 
     JXCategoryTitleCellModel *myUnselectedCellModel = (JXCategoryTitleCellModel *)unselectedCellModel;
     JXCategoryTitleCellModel *myselectedCellModel = (JXCategoryTitleCellModel *)selectedCellModel;
-    if (self.isSelectedAnimationEnabled) {
+    if (self.isSelectedAnimationEnabled && (selectedCellModel.selectedType == JXCategoryCellSelectedTypeClick || selectedCellModel.selectedType == JXCategoryCellSelectedTypeCode)) {
         //开启了动画过渡，且cell在屏幕内，current的属性值会在cell里面进行动画插值更新
         //1、当unselectedCell在屏幕外的时候，还是需要在这里更新值
         //2、当selectedCell在屏幕外的时候，还是需要在这里更新值（比如调用selectItemAtIndex方法选中的时候）
