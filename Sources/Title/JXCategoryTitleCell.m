@@ -22,6 +22,8 @@
 {
     [super initializeViews];
 
+    self.isAccessibilityElement = true;
+    self.accessibilityTraits = UIAccessibilityTraitButton;
     _titleLabel = [[UILabel alloc] init];
     self.titleLabel.clipsToBounds = YES;
     self.titleLabel.textAlignment = NSTextAlignmentCenter;
@@ -84,6 +86,7 @@
     [super reloadData:cellModel];
 
     JXCategoryTitleCellModel *myCellModel = (JXCategoryTitleCellModel *)cellModel;
+    self.accessibilityLabel = myCellModel.title;
     self.titleLabel.numberOfLines = myCellModel.titleNumberOfLines;
     self.maskTitleLabel.numberOfLines = myCellModel.titleNumberOfLines;
     switch (myCellModel.titleLabelAnchorPointStyle) {
