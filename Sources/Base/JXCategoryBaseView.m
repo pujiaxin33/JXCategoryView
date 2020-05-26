@@ -365,7 +365,7 @@ struct DelegateFlags {
 
 - (void)refreshState {
     if (self.selectedIndex < 0 || self.selectedIndex >= self.dataSource.count) {
-        self.selectedIndex = 0;
+        self.defaultSelectedIndex = 0;
     }
 
     self.innerCellSpacing = self.cellSpacing;
