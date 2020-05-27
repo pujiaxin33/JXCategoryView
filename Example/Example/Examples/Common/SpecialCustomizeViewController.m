@@ -19,6 +19,7 @@
 #import "RearrangeViewController.h"
 #import "TitleViewController.h"
 #import "VerticalListTableViewController.h"
+#import "ScrollUpViewController.h"
 
 @interface SpecialCustomizeViewController ()
 
@@ -99,6 +100,10 @@
         lineView.indicatorWidth = [UIScreen mainScreen].bounds.size.width/2;
         titleCategoryView.indicators = @[lineView];
         [self.navigationController pushViewController:testVC animated:YES];
+    }else if ([title isEqualToString:@"向上滚动平移"]) {
+        ScrollUpViewController *vc = [[ScrollUpViewController alloc] init];
+        vc.title = title;
+        [self.navigationController pushViewController:vc animated:YES];
     }
 
 }

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="edD-jH-7F5">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="edD-jH-7F5">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -1329,6 +1329,27 @@
                                                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="k3O-z3-JRG" secondAttribute="trailing" constant="20" symbolic="YES" id="15Y-7f-eX7"/>
                                                 <constraint firstItem="k3O-z3-JRG" firstAttribute="centerY" secondItem="bxA-Ag-hlm" secondAttribute="centerY" id="YFc-Uy-dDl"/>
                                                 <constraint firstItem="k3O-z3-JRG" firstAttribute="leading" secondItem="bxA-Ag-hlm" secondAttribute="leading" constant="16" id="crb-Qx-VN7"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" id="v4V-h9-biv">
+                                        <rect key="frame" x="0.0" y="556" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="v4V-h9-biv" id="68g-2f-lga">
+                                            <rect key="frame" x="0.0" y="0.0" width="383" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="向上滚动平移" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mYV-oz-huL">
+                                                    <rect key="frame" x="16" y="12" width="104" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="mYV-oz-huL" firstAttribute="leading" secondItem="68g-2f-lga" secondAttribute="leading" constant="16" id="8WH-J4-Vkx"/>
+                                                <constraint firstItem="mYV-oz-huL" firstAttribute="centerY" secondItem="68g-2f-lga" secondAttribute="centerY" id="BOY-dT-3dP"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="mYV-oz-huL" secondAttribute="trailing" constant="20" symbolic="YES" id="t4g-1X-5wo"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>

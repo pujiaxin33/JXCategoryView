@@ -169,8 +169,8 @@
         }
     }else {
         if (CGRectEqualToRect(self.collectionView.frame, CGRectZero) ||  !CGSizeEqualToSize(self.collectionView.bounds.size, self.bounds.size)) {
-            self.collectionView.frame = self.bounds;
             [self.collectionView.collectionViewLayout invalidateLayout];
+            self.collectionView.frame = self.bounds;
             [self.collectionView setContentOffset:CGPointMake(self.collectionView.bounds.size.width*self.currentIndex, 0) animated:NO];
         }else {
             self.collectionView.frame = self.bounds;

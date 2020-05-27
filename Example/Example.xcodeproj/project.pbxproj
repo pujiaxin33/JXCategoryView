@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		19BB172A2477B386008E242F /* ScrollUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19BB17292477B386008E242F /* ScrollUpViewController.m */; };
+		19BB172D2477B4E0008E242F /* ScrollUpNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 19BB172C2477B4E0008E242F /* ScrollUpNavigationBar.m */; };
+		19BB17302477BE10008E242F /* ScrollUpListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19BB172F2477BE10008E242F /* ScrollUpListViewController.m */; };
 		19F151502387BDA90043A86E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F1514F2387BDA90043A86E /* AppDelegate.m */; };
 		19F151562387BDA90043A86E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F151552387BDA90043A86E /* ViewController.m */; };
 		19F151592387BDA90043A86E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19F151572387BDA90043A86E /* Main.storyboard */; };
@@ -133,6 +136,12 @@
 
 /* Begin PBXFileReference section */
 		0AB425CC16D2621D71D00DAD /* Pods-Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example.debug.xcconfig"; path = "Target Support Files/Pods-Example/Pods-Example.debug.xcconfig"; sourceTree = "<group>"; };
+		19BB17282477B386008E242F /* ScrollUpViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScrollUpViewController.h; sourceTree = "<group>"; };
+		19BB17292477B386008E242F /* ScrollUpViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScrollUpViewController.m; sourceTree = "<group>"; };
+		19BB172B2477B4E0008E242F /* ScrollUpNavigationBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScrollUpNavigationBar.h; sourceTree = "<group>"; };
+		19BB172C2477B4E0008E242F /* ScrollUpNavigationBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScrollUpNavigationBar.m; sourceTree = "<group>"; };
+		19BB172E2477BE10008E242F /* ScrollUpListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScrollUpListViewController.h; sourceTree = "<group>"; };
+		19BB172F2477BE10008E242F /* ScrollUpListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScrollUpListViewController.m; sourceTree = "<group>"; };
 		19F1514B2387BDA90043A86E /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		19F1514E2387BDA90043A86E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		19F1514F2387BDA90043A86E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -365,6 +374,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		19BB17272477B2E2008E242F /* ScrollUp */ = {
+			isa = PBXGroup;
+			children = (
+				19BB17282477B386008E242F /* ScrollUpViewController.h */,
+				19BB17292477B386008E242F /* ScrollUpViewController.m */,
+				19BB172E2477BE10008E242F /* ScrollUpListViewController.h */,
+				19BB172F2477BE10008E242F /* ScrollUpListViewController.m */,
+				19BB172B2477B4E0008E242F /* ScrollUpNavigationBar.h */,
+				19BB172C2477B4E0008E242F /* ScrollUpNavigationBar.m */,
+			);
+			path = ScrollUp;
+			sourceTree = "<group>";
+		};
 		19F151422387BDA80043A86E = {
 			isa = PBXGroup;
 			children = (
@@ -405,6 +427,7 @@
 		19F151672387BE2E0043A86E /* Examples */ = {
 			isa = PBXGroup;
 			children = (
+				19BB17272477B2E2008E242F /* ScrollUp */,
 				19F151682387BE2E0043A86E /* ScrollZoom */,
 				19F1516F2387BE2E0043A86E /* Rearrange */,
 				19F151722387BE2E0043A86E /* Dot */,
@@ -1047,10 +1070,12 @@
 				19F152A22387BE2E0043A86E /* LoadDataBaseViewController.m in Sources */,
 				19F152892387BE2E0043A86E /* LoadDataListContainerListViewController.m in Sources */,
 				19F152712387BE2E0043A86E /* VerticalTableSectionCategoryHeaderView.m in Sources */,
+				19BB17302477BE10008E242F /* ScrollUpListViewController.m in Sources */,
 				19F1529B2387BE2E0043A86E /* MJRefreshBackFooter.m in Sources */,
 				19F152B62387BE2E0043A86E /* JXCategoryTitleAttributeCell.m in Sources */,
 				19F152902387BE2E0043A86E /* MJRefreshBackGifFooter.m in Sources */,
 				19F152802387BE2E0043A86E /* ContentBaseViewController.m in Sources */,
+				19BB172D2477B4E0008E242F /* ScrollUpNavigationBar.m in Sources */,
 				19F152B92387BE2E0043A86E /* SpringIndicatorExampleViewController.m in Sources */,
 				19F152A02387BE2E0043A86E /* LoadDataListCollectionViewController.m in Sources */,
 				19F152622387BE2E0043A86E /* JXCategoryIndicatorScrollZoomLineView.m in Sources */,
@@ -1096,6 +1121,7 @@
 				19F152B02387BE2E0043A86E /* JXCategoryTitleSortCell.m in Sources */,
 				19F1527D2387BE2E0043A86E /* ImageViewController.m in Sources */,
 				19F152862387BE2E0043A86E /* BaseNavigationViewController.m in Sources */,
+				19BB172A2477B386008E242F /* ScrollUpViewController.m in Sources */,
 				19F152642387BE2E0043A86E /* ScrollZoomViewController.m in Sources */,
 				19F152BC2387BE2E0043A86E /* JXCategoryTimelineView.m in Sources */,
 				19F152BB2387BE2E0043A86E /* AlignmentLineExampleViewController.m in Sources */,
