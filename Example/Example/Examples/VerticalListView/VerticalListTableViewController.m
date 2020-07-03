@@ -38,6 +38,9 @@ static const NSUInteger VerticalListPinSectionIndex = 1;    //悬浮固定sectio
     self.tableView.backgroundColor = [UIColor colorWithRed:0.94 green:0.94 blue:0.94 alpha:1];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
+    self.tableView.estimatedRowHeight = 0;
+    self.tableView.estimatedSectionHeaderHeight = 0;
+    self.tableView.estimatedSectionFooterHeight = 0;
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
     [self.tableView registerClass:[VerticalTableSectionCategoryHeaderView class] forHeaderFooterViewReuseIdentifier:@"pinHeader"];
     [self.tableView registerClass:[VerticalTableSectionHeaderView class] forHeaderFooterViewReuseIdentifier:@"header"];
@@ -127,6 +130,10 @@ static const NSUInteger VerticalListPinSectionIndex = 1;    //悬浮固定sectio
     return self.dataSource[section].count;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 50;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     cell.textLabel.text = self.dataSource[indexPath.section][indexPath.row];
@@ -175,7 +182,10 @@ static const NSUInteger VerticalListPinSectionIndex = 1;    //悬浮固定sectio
         //当滚动的contentOffset.y小于了指定sectionHeader的y值，且还没有被添加到sectionCategoryHeaderView上的时候，就需要切换superView
         [self.sectionCategoryHeaderView addSubview:self.pinCategoryView];
     }
-
+    if (self.pinCategoryView.selectedIndex != 0 && scrollView.contentOffset.y == 0) {
+        //点击了状态栏滚动到顶部时的处理
+        [self.pinCategoryView selectItemAtIndex:0];
+    }
     if (!(scrollView.isTracking || scrollView.isDecelerating)) {
         //不是用户滚动的，比如setContentOffset等方法，引起的滚动不需要处理。
         return;
