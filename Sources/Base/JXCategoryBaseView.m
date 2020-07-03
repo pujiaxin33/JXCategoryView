@@ -9,6 +9,7 @@
 #import "JXCategoryBaseView.h"
 #import "JXCategoryFactory.h"
 #import "JXCategoryViewAnimator.h"
+#import "RTLManager.h"
 
 struct DelegateFlags {
     unsigned int didSelectedItemAtIndexFlag : 1;
@@ -353,6 +354,10 @@ struct DelegateFlags {
     }
     if (@available(iOS 11.0, *)) {
         self.collectionView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+    }
+    if ([RTLManager supportRTL]) {
+        self.collectionView.semanticContentAttribute = UISemanticContentAttributeForceLeftToRight;
+        [RTLManager horizontalFlipView:self.collectionView];
     }
     [self addSubview:self.collectionView];
 

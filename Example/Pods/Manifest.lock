@@ -15,7 +15,7 @@ EXTERNAL SOURCES:
     :path: "../../JXCategoryView"
 
 SPEC CHECKSUMS:
-  JXCategoryView: 0293fcb356f10a5c2e679dac0a1a5f1899ee0c87
+  JXCategoryView: 5664a58f3ecca8659b76aaf88ba4a3fa8094de31
   JXPagingView: 5851fb8cc964d0cbd93e9611077f7bc1fca05fee
 
 PODFILE CHECKSUM: eeaeae8638778f2993ed7a403b59d48ec34c8611

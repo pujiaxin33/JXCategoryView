@@ -105,7 +105,7 @@ SegmentedControl<br/>参考[`SegmentedControlViewController`](https://github.com
 
 ## 要求
 
-- iOS 8.0+
+- iOS 9.0+
 - Xcode 9+
 - Objective-C
 

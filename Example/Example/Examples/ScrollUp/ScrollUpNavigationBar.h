@@ -11,7 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ScrollUpNavigationBar : UIView
-@property (nonatomic, copy) void (^backBlock)();
+@property (nonatomic, copy) void (^backBlock)(void);
 @end
 
 NS_ASSUME_NONNULL_END

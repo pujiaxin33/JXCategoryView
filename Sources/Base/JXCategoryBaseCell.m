@@ -7,6 +7,7 @@
 //
 
 #import "JXCategoryBaseCell.h"
+#import "RTLManager.h"
 
 @interface JXCategoryBaseCell ()
 @property (nonatomic, strong) JXCategoryBaseCellModel *cellModel;
@@ -37,6 +38,9 @@
 
 - (void)initializeViews {
     _animationBlockArray = [NSMutableArray array];
+
+    [RTLManager horizontalFlipViewIfNeeded:self];
+    [RTLManager horizontalFlipViewIfNeeded:self.contentView];
 }
 
 - (void)reloadData:(JXCategoryBaseCellModel *)cellModel {

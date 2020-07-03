@@ -42,6 +42,9 @@
     self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, categoryViewHeight, width, height)];
     self.scrollView.pagingEnabled = YES;
     self.scrollView.bounces = NO;
+    if ([UIView userInterfaceLayoutDirectionForSemanticContentAttribute:UIView.appearance.semanticContentAttribute] == UIUserInterfaceLayoutDirectionRightToLeft) {
+        self.scrollView.transform = CGAffineTransformMakeScale(-1, 1);
+    }
     [self.view addSubview:self.scrollView];
 
     self.automaticallyAdjustsScrollViewInsets = NO;

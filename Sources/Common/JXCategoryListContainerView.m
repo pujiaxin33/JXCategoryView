@@ -8,6 +8,7 @@
 
 #import "JXCategoryListContainerView.h"
 #import <objc/runtime.h>
+#import "RTLManager.h"
 
 @interface JXCategoryListContainerViewController : UIViewController
 @property (copy) void(^viewWillAppearBlock)(void);
@@ -105,6 +106,7 @@
         if (@available(iOS 11.0, *)) {
             self.scrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
         }
+        [RTLManager horizontalFlipViewIfNeeded:self.scrollView];
         [self.containerVC.view addSubview:self.scrollView];
     }else {
         UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
@@ -131,6 +133,10 @@
         }
         if (@available(iOS 11.0, *)) {
             self.collectionView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+        }
+        if ([RTLManager supportRTL]) {
+            self.collectionView.semanticContentAttribute = UISemanticContentAttributeForceLeftToRight;
+            [RTLManager horizontalFlipView:self.collectionView];
         }
         [self.containerVC.view addSubview:self.collectionView];
         //让外部统一访问scrollView
@@ -350,6 +356,7 @@
     if (self.containerType == JXCategoryListContainerType_ScrollView) {
         [list listView].frame = CGRectMake(index*self.scrollView.bounds.size.width, 0, self.scrollView.bounds.size.width, self.scrollView.bounds.size.height);
         [self.scrollView addSubview:[list listView]];
+        [RTLManager horizontalFlipViewIfNeeded:[list listView]];
     }else {
         UICollectionViewCell *cell = [self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0]];
         for (UIView *subview in cell.contentView.subviews) {
@@ -393,6 +400,7 @@
                 if ([list listView].superview == nil) {
                     [list listView].frame = CGRectMake(index*self.scrollView.bounds.size.width, 0, self.scrollView.bounds.size.width, self.scrollView.bounds.size.height);
                     [self.scrollView addSubview:[list listView]];
+                    [RTLManager horizontalFlipViewIfNeeded:[list listView]];
 
                     if (list && [list respondsToSelector:@selector(listWillAppear)]) {
                         [list listWillAppear];

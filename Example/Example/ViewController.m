@@ -25,6 +25,9 @@
     self.tableView.rowHeight = 44;
 
     self.title = @"JXCategoryView Demo";
+
+    //测试RTL
+//    UIView.appearance.semanticContentAttribute = UISemanticContentAttributeForceRightToLeft;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
