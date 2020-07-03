@@ -1,6 +1,6 @@
 PODS:
-  - JXCategoryView (1.5.2)
-  - JXPagingView/Pager (1.1.19)
+  - JXCategoryView (1.5.5)
+  - JXPagingView/Pager (2.0.6)
 
 DEPENDENCIES:
   - JXCategoryView (from `../../JXCategoryView`)
@@ -15,8 +15,8 @@ EXTERNAL SOURCES:
     :path: "../../JXCategoryView"
 
 SPEC CHECKSUMS:
-  JXCategoryView: b284d35a7a8772eada05dd78642233e1eb763ea8
-  JXPagingView: d28c0e245b850cdb47e3f04c07d8c35e30c18531
+  JXCategoryView: 0293fcb356f10a5c2e679dac0a1a5f1899ee0c87
+  JXPagingView: 5851fb8cc964d0cbd93e9611077f7bc1fca05fee
 
 PODFILE CHECKSUM: eeaeae8638778f2993ed7a403b59d48ec34c8611
 

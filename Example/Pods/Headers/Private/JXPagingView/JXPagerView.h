@@ -1,1 +1,1 @@
-../../../JXPagingView/JXPagerView/JXPagerView.h
+../../../JXPagingView/Sources/JXPagerView/JXPagerView.h

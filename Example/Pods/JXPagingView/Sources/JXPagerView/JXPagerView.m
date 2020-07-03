@@ -7,6 +7,8 @@
 //
 
 #import "JXPagerView.h"
+@class JXPagerListContainerScrollView;
+@class JXPagerListContainerCollectionView;
 
 @interface JXPagerView () <UITableViewDataSource, UITableViewDelegate, JXPagerListContainerViewDelegate>
 @property (nonatomic, weak) id<JXPagerViewDelegate> delegate;
@@ -15,55 +17,40 @@
 @property (nonatomic, strong) UIScrollView *currentScrollingListView;
 @property (nonatomic, strong) id<JXPagerViewListViewDelegate> currentList;
 @property (nonatomic, strong) NSMutableDictionary <NSNumber *, id<JXPagerViewListViewDelegate>> *validListDict;
-@property (nonatomic, assign) UIDeviceOrientation currentDeviceOrientation;
-@property (nonatomic, assign) NSInteger currentIndex;
-@property (nonatomic, assign) BOOL willRemoveFromWindow;
-@property (nonatomic, assign) BOOL isFirstMoveToWindow;
-@property (nonatomic, strong) JXPagerView *retainedSelf;
 @property (nonatomic, strong) UIView *tableHeaderContainerView;
 @end
 
 @implementation JXPagerView
 
-- (void)dealloc
-{
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIDeviceOrientationDidChangeNotification object:nil];
+- (instancetype)initWithDelegate:(id<JXPagerViewDelegate>)delegate {
+    return [self initWithDelegate:delegate listContainerType:JXPagerListContainerType_CollectionView];
 }
 
-- (instancetype)initWithDelegate:(id<JXPagerViewDelegate>)delegate {
+- (instancetype)initWithDelegate:(id<JXPagerViewDelegate>)delegate listContainerType:(JXPagerListContainerType)type {
     self = [super initWithFrame:CGRectZero];
     if (self) {
         _delegate = delegate;
         _validListDict = [NSMutableDictionary dictionary];
         _automaticallyDisplayListVerticalScrollIndicator = YES;
-        _deviceOrientationChangeEnabled = NO;
-        [self initializeViews];
+        _isListHorizontalScrollEnabled = YES;
+
+        _mainTableView = [[JXPagerMainTableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
+        self.mainTableView.showsVerticalScrollIndicator = NO;
+        self.mainTableView.showsHorizontalScrollIndicator = NO;
+        self.mainTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        self.mainTableView.scrollsToTop = NO;
+        self.mainTableView.dataSource = self;
+        self.mainTableView.delegate = self;
+        [self refreshTableHeaderView];
+        [self.mainTableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
+        if (@available(iOS 11.0, *)) {
+            self.mainTableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+        }
+        [self addSubview:self.mainTableView];
+
+        _listContainerView = [[JXPagerListContainerView alloc] initWithType:type delegate:self];
     }
     return self;
-}
-
-- (void)willMoveToWindow:(UIWindow *)newWindow {
-    if (self.isFirstMoveToWindow) {
-        //第一次调用过滤，因为第一次列表显示通知会从willDisplayCell方法通知
-        self.isFirstMoveToWindow = NO;
-        return;
-    }
-    //当前页面push到一个新的页面时，willMoveToWindow会调用三次。第一次调用的newWindow为nil，第二次调用间隔1ms左右newWindow有值，第三次调用间隔400ms左右newWindow为nil。
-    //根据上述事实，第一次和第二次为无效调用，可以根据其间隔1ms左右过滤掉
-    if (newWindow == nil) {
-        self.willRemoveFromWindow = YES;
-        //当前页面被pop的时候，willMoveToWindow只会调用一次，而且整个页面会被销毁掉，所以需要循环引用自己，确保能延迟执行currentListDidDisappear方法，触发列表消失事件。由此可见，循环引用也不一定是个坏事。是天使还是魔鬼，就看你如何对待它了。
-        self.retainedSelf = self;
-        [self performSelector:@selector(currentListDidDisappear) withObject:nil afterDelay:0.02];
-    }else {
-        if (self.willRemoveFromWindow) {
-            self.willRemoveFromWindow = NO;
-            self.retainedSelf = nil;
-            [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(currentListDidDisappear) object:nil];
-        }else {
-            [self currentListDidAppear];
-        }
-    }
 }
 
 - (void)layoutSubviews {
@@ -84,7 +71,7 @@
 - (void)setIsListHorizontalScrollEnabled:(BOOL)isListHorizontalScrollEnabled {
     _isListHorizontalScrollEnabled = isListHorizontalScrollEnabled;
 
-    self.listContainerView.collectionView.scrollEnabled = isListHorizontalScrollEnabled;
+    self.listContainerView.scrollView.scrollEnabled = isListHorizontalScrollEnabled;
 }
 
 - (void)reloadData {
@@ -103,14 +90,21 @@
 
 - (void)resizeTableHeaderViewHeightWithAnimatable:(BOOL)animatable duration:(NSTimeInterval)duration curve:(UIViewAnimationCurve)curve {
     if (animatable) {
-        [UIView beginAnimations:nil context:nil];
-        [UIView setAnimationDuration:duration];
-        [UIView setAnimationCurve:curve];
-        CGRect frame = self.tableHeaderContainerView.bounds;
-        frame.size.height = [self.delegate tableHeaderViewHeightInPagerView:self];
-        self.tableHeaderContainerView.frame = frame;
-        self.mainTableView.tableHeaderView = self.tableHeaderContainerView;
-        [UIView commitAnimations];
+        UIViewAnimationOptions options = UIViewAnimationOptionCurveLinear;
+        switch (curve) {
+            case UIViewAnimationCurveEaseIn: options = UIViewAnimationOptionCurveEaseIn; break;
+            case UIViewAnimationCurveEaseOut: options = UIViewAnimationOptionCurveEaseOut; break;
+            case UIViewAnimationCurveEaseInOut: options = UIViewAnimationOptionCurveEaseInOut; break;
+            default: break;
+        }
+        [UIView animateWithDuration:duration delay:0 options:options animations:^{
+            CGRect frame = self.tableHeaderContainerView.bounds;
+            frame.size.height = [self.delegate tableHeaderViewHeightInPagerView:self];
+            self.tableHeaderContainerView.frame = frame;
+            self.mainTableView.tableHeaderView = self.tableHeaderContainerView;
+            [self.mainTableView setNeedsLayout];
+            [self.mainTableView layoutIfNeeded];
+        } completion:^(BOOL finished) { }];
     }else {
         CGRect frame = self.tableHeaderContainerView.bounds;
         frame.size.height = [self.delegate tableHeaderViewHeightInPagerView:self];
@@ -122,9 +116,6 @@
 #pragma mark - Private
 
 - (void)refreshTableHeaderView {
-    if (self.delegate == nil) {
-        return;
-    }
     UIView *tableHeaderView = [self.delegate tableHeaderViewInPagerView:self];
     UIView *containerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, [self.delegate tableHeaderViewHeightInPagerView:self])];
     [containerView addSubview:tableHeaderView];
@@ -140,67 +131,21 @@
 
 - (void)adjustMainScrollViewToTargetContentInsetIfNeeded:(UIEdgeInsets)insets {
     if (UIEdgeInsetsEqualToEdgeInsets(insets, self.mainTableView.contentInset) == NO) {
+        self.mainTableView.delegate = nil;
         self.mainTableView.contentInset = insets;
+        self.mainTableView.delegate = self;
     }
 }
 
 - (void)listViewDidScroll:(UIScrollView *)scrollView {
     self.currentScrollingListView = scrollView;
-
     [self preferredProcessListViewDidScroll:scrollView];
 }
 
-- (void)deviceOrientationDidChangeNotification:(NSNotification *)notification {
-    if (self.isDeviceOrientationChangeEnabled && self.currentDeviceOrientation != [UIDevice currentDevice].orientation) {
-        self.currentDeviceOrientation = [UIDevice currentDevice].orientation;
-        //前后台切换也会触发该通知，所以不相同的时候才处理
-        [self.mainTableView reloadData];
-        [self.listContainerView deviceOrientationDidChanged];
-        [self.listContainerView reloadData];
-    }
-}
-
-- (void)currentListDidAppear {
-    [self listDidAppear:self.currentIndex];
-}
-
-- (void)currentListDidDisappear {
-    id<JXPagerViewListViewDelegate> list = _validListDict[@(self.currentIndex)];
-    if (list && [list respondsToSelector:@selector(listDidDisappear)]) {
-        [list listDidDisappear];
-    }
-    self.willRemoveFromWindow = NO;
-    self.retainedSelf = nil;
-}
-
-- (void)listDidAppear:(NSInteger)index {
-    if (self.delegate == nil) {
-        return;
-    }
-    NSUInteger count = [self.delegate numberOfListsInPagerView:self];
-    if (count <= 0 || index >= count) {
-        return;
-    }
-    self.currentIndex = index;
-
-    id<JXPagerViewListViewDelegate> list = _validListDict[@(index)];
-    if (list && [list respondsToSelector:@selector(listDidAppear)]) {
-        [list listDidAppear];
-    }
-}
-
-- (void)listDidDisappear:(NSInteger)index {
-    if (self.delegate == nil) {
-        return;
-    }
-    NSUInteger count = [self.delegate numberOfListsInPagerView:self];
-    if (count <= 0 || index >= count) {
-        return;
-    }
-    id<JXPagerViewListViewDelegate> list = _validListDict[@(index)];
-    if (list && [list respondsToSelector:@selector(listDidDisappear)]) {
-        [list listDidDisappear];
-    }
+//仅用于处理设置了pinSectionHeaderVerticalOffset，又添加了MJRefresh的下拉刷新。这种情况会导致JXPagingView和MJRefresh来回设置contentInset值。针对这种及其特殊的情况，就内部特殊处理了。通过下面的判断条件，来判定当前是否处于下拉刷新中。请勿让pinSectionHeaderVerticalOffset和下拉刷新设置的contentInset.top值相同。
+//具体原因参考：https://github.com/pujiaxin33/JXPagingView/issues/203
+- (BOOL)isSetMainScrollViewContentInsetToZeroEnabled:(UIScrollView *)scrollView {
+    return !(scrollView.contentInset.top != 0 && scrollView.contentInset.top != self.pinSectionHeaderVerticalOffset);
 }
 
 #pragma mark - UITableViewDataSource, UITableViewDelegate
@@ -210,15 +155,13 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (self.delegate == nil) {
-        return 0;
-    }
     return MAX(self.bounds.size.height - [self.delegate heightForPinSectionHeaderInPagerView:self] - self.pinSectionHeaderVerticalOffset, 0);
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.backgroundColor = [UIColor clearColor];
     for (UIView *view in cell.contentView.subviews) {
         [view removeFromSuperview];
     }
@@ -228,16 +171,10 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    if (self.delegate == nil) {
-        return 0;
-    }
     return [self.delegate heightForPinSectionHeaderInPagerView:self];
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    if (self.delegate == nil) {
-        return [[UIView alloc] init];
-    }
     return [self.delegate viewForPinSectionHeaderInPagerView:self];
 }
 
@@ -253,98 +190,94 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     if (self.pinSectionHeaderVerticalOffset != 0) {
-        if (scrollView.contentOffset.y < self.pinSectionHeaderVerticalOffset) {
-
-            if (scrollView.contentOffset.y >= self.mainTableViewMaxContentOffsetY) {
-                //处理mainTableViewMaxContentOffsetY比pinSectionHeaderVerticalOffset还小的情况
-                //固定的位置就是contentInset.top
-                [self adjustMainScrollViewToTargetContentInsetIfNeeded:UIEdgeInsetsMake(self.pinSectionHeaderVerticalOffset, 0, 0, 0)];
-            }else if (scrollView.contentOffset.y >= 0) {
-                //因为设置了contentInset.top，所以顶部会有对应高度的空白区间，所以需要设置负数抵消掉
-                [self adjustMainScrollViewToTargetContentInsetIfNeeded:UIEdgeInsetsMake(-scrollView.contentOffset.y, 0, 0, 0)];
-            }else if (scrollView.contentOffset.y < 0) {
-                [self adjustMainScrollViewToTargetContentInsetIfNeeded:UIEdgeInsetsZero];
-            }
-        }else if (scrollView.contentOffset.y > self.pinSectionHeaderVerticalOffset){
+        if (scrollView.contentOffset.y >= self.pinSectionHeaderVerticalOffset) {
             //固定的位置就是contentInset.top
             [self adjustMainScrollViewToTargetContentInsetIfNeeded:UIEdgeInsetsMake(self.pinSectionHeaderVerticalOffset, 0, 0, 0)];
+        }else {
+            if ([self isSetMainScrollViewContentInsetToZeroEnabled:scrollView]) {
+                [self adjustMainScrollViewToTargetContentInsetIfNeeded:UIEdgeInsetsZero];
+            }
         }
     }
-
     [self preferredProcessMainTableViewDidScroll:scrollView];
-
     if (self.delegate && [self.delegate respondsToSelector:@selector(mainTableViewDidScroll:)]) {
         [self.delegate mainTableViewDidScroll:scrollView];
     }
 }
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
-    self.listContainerView.collectionView.scrollEnabled = NO;
+    self.listContainerView.scrollView.scrollEnabled = NO;
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
     if (self.isListHorizontalScrollEnabled && !decelerate) {
-        self.listContainerView.collectionView.scrollEnabled = YES;
+        self.listContainerView.scrollView.scrollEnabled = YES;
     }
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     if (self.isListHorizontalScrollEnabled) {
-        self.listContainerView.collectionView.scrollEnabled = YES;
+        self.listContainerView.scrollView.scrollEnabled = YES;
     }
-    if (self.mainTableView.contentInset.top != 0 && self.pinSectionHeaderVerticalOffset != 0) {
-        [self adjustMainScrollViewToTargetContentInsetIfNeeded:UIEdgeInsetsZero];
+    if ([self isSetMainScrollViewContentInsetToZeroEnabled:scrollView]) {
+        if (self.mainTableView.contentInset.top != 0 && self.pinSectionHeaderVerticalOffset != 0) {
+            [self adjustMainScrollViewToTargetContentInsetIfNeeded:UIEdgeInsetsZero];
+        }
     }
 }
 
 - (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView {
     if (self.isListHorizontalScrollEnabled) {
-        self.listContainerView.collectionView.scrollEnabled = YES;
+        self.listContainerView.scrollView.scrollEnabled = YES;
     }
 }
 
-#pragma mark - JXPagingListContainerViewDelegate
+#pragma mark - JXPagerListContainerViewDelegate
 
-- (NSInteger)numberOfRowsInListContainerView:(JXPagerListContainerView *)listContainerView {
-    if (self.delegate == nil) {
-        return 0;
-    }
+- (NSInteger)numberOfListsInlistContainerView:(JXPagerListContainerView *)listContainerView {
     return [self.delegate numberOfListsInPagerView:self];
 }
 
-- (UIView *)listContainerView:(JXPagerListContainerView *)listContainerView listViewInRow:(NSInteger)row {
-    if (self.delegate == nil) {
-        return [[UIView alloc] init];
-    }
-    id<JXPagerViewListViewDelegate> list = self.validListDict[@(row)];
+- (id<JXPagerViewListViewDelegate>)listContainerView:(JXPagerListContainerView *)listContainerView initListForIndex:(NSInteger)index {
+    id<JXPagerViewListViewDelegate> list = self.validListDict[@(index)];
     if (list == nil) {
-        list = [self.delegate pagerView:self initListAtIndex:row];
+        list = [self.delegate pagerView:self initListAtIndex:index];
         __weak typeof(self)weakSelf = self;
         __weak typeof(id<JXPagerViewListViewDelegate>) weakList = list;
         [list listViewDidScrollCallback:^(UIScrollView *scrollView) {
             weakSelf.currentList = weakList;
             [weakSelf listViewDidScroll:scrollView];
         }];
-        _validListDict[@(row)] = list;
+        _validListDict[@(index)] = list;
     }
+    return list;
+}
+
+
+- (void)listContainerViewWillBeginDragging:(JXPagerListContainerView *)listContainerView {
+    self.mainTableView.scrollEnabled = NO;
+}
+
+- (void)listContainerViewWDidEndScroll:(JXPagerListContainerView *)listContainerView {
+    self.mainTableView.scrollEnabled = YES;
+}
+
+- (void)listContainerView:(JXPagerListContainerView *)listContainerView listDidAppearAtIndex:(NSInteger)index {
+    self.currentScrollingListView = [self.validListDict[@(index)] listScrollView];
     for (id<JXPagerViewListViewDelegate> listItem in self.validListDict.allValues) {
-        if (listItem == list) {
+        if (listItem == self.validListDict[@(index)]) {
             [listItem listScrollView].scrollsToTop = YES;
         }else {
             [listItem listScrollView].scrollsToTop = NO;
         }
     }
-
-    return [list listView];
 }
 
-- (void)listContainerView:(JXPagerListContainerView *)listContainerView willDisplayCellAtRow:(NSInteger)row {
-    [self listDidAppear:row];
-    self.currentScrollingListView = [self.validListDict[@(row)] listScrollView];
-}
-
-- (void)listContainerView:(JXPagerListContainerView *)listContainerView didEndDisplayingCellAtRow:(NSInteger)row {
-    [self listDidDisappear:row];
+- (Class)scrollViewClassInlistContainerView:(JXPagerListContainerView *)listContainerView {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(scrollViewClassInlistContainerViewInPagerView:)]) {
+        return [self.delegate scrollViewClassInlistContainerViewInPagerView:self];
+    }
+    return nil;
 }
 
 @end
@@ -352,39 +285,12 @@
 @implementation JXPagerView (UISubclassingGet)
 
 - (CGFloat)mainTableViewMaxContentOffsetY {
-    if (self.delegate == nil) {
-        return 0;
-    }
     return [self.delegate tableHeaderViewHeightInPagerView:self] - self.pinSectionHeaderVerticalOffset;
 }
 
 @end
 
 @implementation JXPagerView (UISubclassingHooks)
-
-- (void)initializeViews {
-    _mainTableView = [[JXPagerMainTableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
-    self.mainTableView.showsVerticalScrollIndicator = NO;
-    self.mainTableView.showsHorizontalScrollIndicator = NO;
-    self.mainTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    self.mainTableView.scrollsToTop = NO;
-    self.mainTableView.dataSource = self;
-    self.mainTableView.delegate = self;
-    [self refreshTableHeaderView];
-    [self.mainTableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
-    if (@available(iOS 11.0, *)) {
-        self.mainTableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
-    }
-    [self addSubview:self.mainTableView];
-
-    _listContainerView = [[JXPagerListContainerView alloc] initWithDelegate:self];
-    self.listContainerView.mainTableView = self.mainTableView;
-
-    self.isListHorizontalScrollEnabled = YES;
-
-    self.currentDeviceOrientation = [UIDevice currentDevice].orientation;
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deviceOrientationDidChangeNotification:) name:UIDeviceOrientationDidChangeNotification object:nil];
-}
 
 - (void)preferredProcessListViewDidScroll:(UIScrollView *)scrollView {
     if (self.mainTableView.contentOffset.y < self.mainTableViewMaxContentOffsetY) {
