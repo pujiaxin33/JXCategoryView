@@ -657,7 +657,6 @@ struct DelegateFlags {
             [self.collectionView.collectionViewLayout invalidateLayout];
         }
 
-        [self.listContainer scrollingFromLeftIndex:baseIndex toRightIndex:baseIndex + 1 ratio:remainderRatio selectedIndex:self.selectedIndex];
         if (self.delegateFlags.scrollingFromLeftIndexToRightIndexFlag) {
             [self.delegate categoryView:self scrollingFromLeftIndex:baseIndex toRightIndex:baseIndex + 1 ratio:remainderRatio];
         }

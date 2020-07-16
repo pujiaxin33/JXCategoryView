@@ -222,6 +222,47 @@
     if (self.delegate && [self.delegate respondsToSelector:@selector(listContainerViewDidScroll:)]) {
         [self.delegate listContainerViewDidScroll:scrollView];
     }
+
+    CGFloat ratio = scrollView.contentOffset.x/scrollView.bounds.size.width;
+    NSInteger maxCount = round(scrollView.contentSize.width/scrollView.bounds.size.width);
+    NSInteger leftIndex = floorf(ratio);
+    leftIndex = MAX(0, MIN(maxCount - 1, leftIndex));
+    NSInteger rightIndex = leftIndex + 1;
+    CGFloat remainderRatio = ratio - leftIndex;
+    if (remainderRatio != 0) {
+        if (rightIndex == self.currentIndex) {
+            //当前选中的在右边，用户正在从右边往左边滑动
+            if (ratio < (1 - self.initListPercent)) {
+                [self initListIfNeededAtIndex:leftIndex];
+            }
+            if (self.willAppearIndex == -1) {
+                self.willAppearIndex = leftIndex;
+                if (self.validListDict[@(leftIndex)] != nil) {
+                    [self listWillAppear:self.willAppearIndex];
+                }
+            }
+            if (self.willDisappearIndex == -1) {
+                self.willDisappearIndex = rightIndex;
+                [self listWillDisappear:self.willDisappearIndex];
+            }
+        }else {
+            //当前选中的在左边，用户正在从左边往右边滑动
+            if (ratio > self.initListPercent) {
+                [self initListIfNeededAtIndex:rightIndex];
+            }
+            if (self.willAppearIndex == -1) {
+                self.willAppearIndex = rightIndex;
+                if (_validListDict[@(rightIndex)] != nil) {
+                    [self listWillAppear:self.willAppearIndex];
+                }
+            }
+            if (self.willDisappearIndex == -1) {
+                self.willDisappearIndex = leftIndex;
+                [self listWillDisappear:self.willDisappearIndex];
+            }
+        }
+    }
+
     CGFloat currentIndexPercent = scrollView.contentOffset.x/scrollView.bounds.size.width;
     if (self.willAppearIndex != -1 || self.willDisappearIndex != -1) {
         NSInteger disappearIndex = self.willDisappearIndex;
@@ -265,40 +306,6 @@
 
 - (void)setDefaultSelectedIndex:(NSInteger)index {
     self.currentIndex = index;
-}
-
-- (void)scrollingFromLeftIndex:(NSInteger)leftIndex toRightIndex:(NSInteger)rightIndex ratio:(CGFloat)ratio selectedIndex:(NSInteger)selectedIndex {
-    if (rightIndex == selectedIndex) {
-        //当前选中的在右边，用户正在从右边往左边滑动
-        if (ratio < (1 - self.initListPercent)) {
-            [self initListIfNeededAtIndex:leftIndex];
-        }
-        if (self.willAppearIndex == -1) {
-            self.willAppearIndex = leftIndex;
-            if (self.validListDict[@(leftIndex)] != nil) {
-                [self listWillAppear:self.willAppearIndex];
-            }
-        }
-        if (self.willDisappearIndex == -1) {
-            self.willDisappearIndex = rightIndex;
-            [self listWillDisappear:self.willDisappearIndex];
-        }
-    }else {
-        //当前选中的在左边，用户正在从左边往右边滑动
-        if (ratio > self.initListPercent) {
-            [self initListIfNeededAtIndex:rightIndex];
-        }
-        if (self.willAppearIndex == -1) {
-            self.willAppearIndex = rightIndex;
-            if (_validListDict[@(rightIndex)] != nil) {
-                [self listWillAppear:self.willAppearIndex];
-            }
-        }
-        if (self.willDisappearIndex == -1) {
-            self.willDisappearIndex = leftIndex;
-            [self listWillDisappear:self.willDisappearIndex];
-        }
-    }
 }
 
 - (void)didClickSelectedItemAtIndex:(NSInteger)index {
