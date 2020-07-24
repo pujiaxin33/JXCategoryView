@@ -192,6 +192,11 @@
     }
 }
 
+- (void)setBounces:(BOOL)bounces {
+    _bounces = bounces;
+    self.scrollView.bounces = bounces;
+}
+
 #pragma mark - UICollectionViewDelegate, UICollectionViewDataSource
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
@@ -228,6 +233,9 @@
     NSInteger leftIndex = floorf(ratio);
     leftIndex = MAX(0, MIN(maxCount - 1, leftIndex));
     NSInteger rightIndex = leftIndex + 1;
+    if (ratio < 0 || rightIndex >= maxCount) {
+        return;
+    }
     CGFloat remainderRatio = ratio - leftIndex;
     if (rightIndex == self.currentIndex) {
         //当前选中的在右边，用户正在从右边往左边滑动

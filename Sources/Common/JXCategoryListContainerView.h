@@ -107,6 +107,7 @@ typedef NS_ENUM(NSUInteger, JXCategoryListContainerType) {
  滚动切换的时候，滚动距离超过一页的多少百分比，就触发列表的初始化。默认0.01（即列表显示了一点就触发加载）。范围0~1，开区间不包括0和1
  */
 @property (nonatomic, assign) CGFloat initListPercent;
+@property (nonatomic, assign) BOOL bounces; //默认NO
 
 - (instancetype)init NS_UNAVAILABLE;
 - (instancetype)initWithFrame:(CGRect)frame NS_UNAVAILABLE;
