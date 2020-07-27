@@ -52,10 +52,12 @@
 
 @optional
 
-/**
- mainTableView的滚动回调，用于实现头图跟随缩放
- */
-- (void)mainTableViewDidScroll:(UIScrollView *)scrollView;
+- (void)mainTableViewDidScroll:(UIScrollView *)scrollView __attribute__ ((deprecated));
+- (void)pagerView:(JXPagerView *)pagerView mainTableViewDidScroll:(UIScrollView *)scrollView;
+- (void)pagerView:(JXPagerView *)pagerView mainTableViewWillBeginDragging:(UIScrollView *)scrollView;
+- (void)pagerView:(JXPagerView *)pagerView mainTableViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate;
+- (void)pagerView:(JXPagerView *)pagerView mainTableViewDidEndDecelerating:(UIScrollView *)scrollView;
+- (void)pagerView:(JXPagerView *)pagerView mainTableViewDidEndScrollingAnimation:(UIScrollView *)scrollView;
 
 /**
  返回自定义UIScrollView或UICollectionView的Class

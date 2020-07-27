@@ -247,7 +247,10 @@ static NSString *JXPagerSmoothViewCollectionViewCellIdentifier = @"cell";
             CGFloat minContentSizeHeight = self.bounds.size.height - self.heightForPinHeader;
             if (minContentSizeHeight > scrollView.contentSize.height) {
                 scrollView.contentSize = CGSizeMake(scrollView.contentSize.width, minContentSizeHeight);
-                scrollView.contentOffset = CGPointMake(0, self.currentListInitializeContentOffsetY);
+                //新的scrollView第一次加载的时候重置contentOffset
+                if (_currentListScrollView != nil && scrollView != _currentListScrollView) {
+                    scrollView.contentOffset = CGPointMake(0, self.currentListInitializeContentOffsetY);
+                }
             }
         }
     }else {

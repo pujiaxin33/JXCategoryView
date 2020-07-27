@@ -77,13 +77,12 @@
 - (void)reloadData {
     self.currentList = nil;
     self.currentScrollingListView = nil;
-
-    for (id<JXPagerViewListViewDelegate> list in self.validListDict.allValues) {
-        [list.listView removeFromSuperview];
-    }
     [_validListDict removeAllObjects];
 
     [self refreshTableHeaderView];
+    if (self.pinSectionHeaderVerticalOffset != 0) {
+        self.mainTableView.contentOffset = CGPointZero;
+    }
     [self.mainTableView reloadData];
     [self.listContainerView reloadData];
 }
@@ -145,7 +144,9 @@
 //仅用于处理设置了pinSectionHeaderVerticalOffset，又添加了MJRefresh的下拉刷新。这种情况会导致JXPagingView和MJRefresh来回设置contentInset值。针对这种及其特殊的情况，就内部特殊处理了。通过下面的判断条件，来判定当前是否处于下拉刷新中。请勿让pinSectionHeaderVerticalOffset和下拉刷新设置的contentInset.top值相同。
 //具体原因参考：https://github.com/pujiaxin33/JXPagingView/issues/203
 - (BOOL)isSetMainScrollViewContentInsetToZeroEnabled:(UIScrollView *)scrollView {
-    return !(scrollView.contentInset.top != 0 && scrollView.contentInset.top != self.pinSectionHeaderVerticalOffset);
+    //scrollView.contentInset.top不为0，且scrollView.contentInset.top不等于pinSectionHeaderVerticalOffset，即可认为列表正在刷新。所以这里必须要保证pinSectionHeaderVerticalOffset和MJRefresh的mj_insetT的值不相等。
+    BOOL isRefreshing = scrollView.contentInset.top != 0 && scrollView.contentInset.top != self.pinSectionHeaderVerticalOffset;
+    return !isRefreshing;
 }
 
 #pragma mark - UITableViewDataSource, UITableViewDelegate
@@ -190,28 +191,43 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     if (self.pinSectionHeaderVerticalOffset != 0) {
-        if (scrollView.contentOffset.y >= self.pinSectionHeaderVerticalOffset) {
-            //固定的位置就是contentInset.top
-            [self adjustMainScrollViewToTargetContentInsetIfNeeded:UIEdgeInsetsMake(self.pinSectionHeaderVerticalOffset, 0, 0, 0)];
-        }else {
-            if ([self isSetMainScrollViewContentInsetToZeroEnabled:scrollView]) {
-                [self adjustMainScrollViewToTargetContentInsetIfNeeded:UIEdgeInsetsZero];
+        if (!(self.currentScrollingListView != nil && self.currentScrollingListView.contentOffset.y > [self minContentOffsetYInListScrollView:self.currentScrollingListView])) {
+            //没有处于滚动某一个listView的状态
+            if (scrollView.contentOffset.y >= self.pinSectionHeaderVerticalOffset) {
+                //固定的位置就是contentInset.top
+                [self adjustMainScrollViewToTargetContentInsetIfNeeded:UIEdgeInsetsMake(self.pinSectionHeaderVerticalOffset, 0, 0, 0)];
+            }else {
+                if ([self isSetMainScrollViewContentInsetToZeroEnabled:scrollView]) {
+                    [self adjustMainScrollViewToTargetContentInsetIfNeeded:UIEdgeInsetsZero];
+                }
             }
         }
     }
     [self preferredProcessMainTableViewDidScroll:scrollView];
     if (self.delegate && [self.delegate respondsToSelector:@selector(mainTableViewDidScroll:)]) {
+        #pragma GCC diagnostic push
+        #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
         [self.delegate mainTableViewDidScroll:scrollView];
+        #pragma GCC diagnostic pop
+    }
+    if (self.delegate && [self.delegate respondsToSelector:@selector(pagerView:mainTableViewDidScroll:)]) {
+        [self.delegate pagerView:self mainTableViewDidScroll:scrollView];
     }
 }
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
     self.listContainerView.scrollView.scrollEnabled = NO;
+    if (self.delegate && [self.delegate respondsToSelector:@selector(pagerView:mainTableViewWillBeginDragging:)]) {
+        [self.delegate pagerView:self mainTableViewWillBeginDragging:scrollView];
+    }
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
     if (self.isListHorizontalScrollEnabled && !decelerate) {
         self.listContainerView.scrollView.scrollEnabled = YES;
+    }
+    if (self.delegate && [self.delegate respondsToSelector:@selector(pagerView:mainTableViewDidEndDragging:willDecelerate:)]) {
+        [self.delegate pagerView:self mainTableViewDidEndDragging:scrollView willDecelerate:decelerate];
     }
 }
 
@@ -224,11 +240,17 @@
             [self adjustMainScrollViewToTargetContentInsetIfNeeded:UIEdgeInsetsZero];
         }
     }
+    if (self.delegate && [self.delegate respondsToSelector:@selector(pagerView:mainTableViewDidEndDecelerating:)]) {
+        [self.delegate pagerView:self mainTableViewDidEndDecelerating:scrollView];
+    }
 }
 
 - (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView {
     if (self.isListHorizontalScrollEnabled) {
         self.listContainerView.scrollView.scrollEnabled = YES;
+    }
+    if (self.delegate && [self.delegate respondsToSelector:@selector(pagerView:mainTableViewDidEndScrollingAnimation:)]) {
+        [self.delegate pagerView:self mainTableViewDidEndScrollingAnimation:scrollView];
     }
 }
 

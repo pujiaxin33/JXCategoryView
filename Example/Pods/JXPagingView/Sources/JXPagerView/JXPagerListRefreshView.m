@@ -69,12 +69,15 @@
 
 - (void)preferredProcessMainTableViewDidScroll:(UIScrollView *)scrollView {
     if (self.pinSectionHeaderVerticalOffset != 0) {
-        if (scrollView.contentOffset.y <= 0) {
-            self.mainTableView.bounces = NO;
-            self.mainTableView.contentOffset = CGPointZero;
-            return;
-        }else {
-            self.mainTableView.bounces = YES;
+        if (!(self.currentScrollingListView != nil && self.currentScrollingListView.contentOffset.y > [self minContentOffsetYInListScrollView:self.currentScrollingListView])) {
+            //没有处于滚动某一个listView的状态
+            if (scrollView.contentOffset.y <= 0) {
+                self.mainTableView.bounces = NO;
+                self.mainTableView.contentOffset = CGPointZero;
+                return;
+            }else {
+                self.mainTableView.bounces = YES;
+            }
         }
     }
     if (self.currentScrollingListView != nil && self.currentScrollingListView.contentOffset.y > [self minContentOffsetYInListScrollView:self.currentScrollingListView]) {
