@@ -19,4 +19,5 @@
 @property (nonatomic, assign) CGFloat numberLabelHeight;
 @property (nonatomic, strong) UIFont *numberLabelFont;
 @property (nonatomic, assign) CGPoint numberLabelOffset;
+@property (nonatomic, assign) BOOL shouldMakeRoundWhenSingleNumber;
 @end

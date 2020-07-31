@@ -24,6 +24,7 @@
     _numberLabelHeight = 14;
     _numberLabelWidthIncrement = 10;
     _numberLabelFont = [UIFont systemFontOfSize:11];
+    _shouldMakeRoundWhenSingleNumber = NO;
 }
 
 - (Class)preferredCellClass {
@@ -55,6 +56,7 @@
     myCellModel.numberLabelOffset = self.numberLabelOffset;
     myCellModel.numberLabelWidthIncrement = self.numberLabelWidthIncrement;
     myCellModel.numberLabelFont = self.numberLabelFont;
+    myCellModel.shouldMakeRoundWhenSingleNumber = self.shouldMakeRoundWhenSingleNumber;
 }
 
 @end

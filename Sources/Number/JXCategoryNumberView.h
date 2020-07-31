@@ -52,4 +52,9 @@
  */
 @property (nonatomic, assign) CGPoint numberLabelOffset;
 
+/**
+当是单一数字时，是否让numberLabel变成圆。即numberLabel的宽度等于高度，cornerRadius等于高度/2。当为true，单一数字时会忽略numberLabelWidthIncrement属性。默认为NO；
+*/
+@property (nonatomic, assign) BOOL shouldMakeRoundWhenSingleNumber;
+
 @end

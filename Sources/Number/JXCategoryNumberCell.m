@@ -32,9 +32,12 @@
 
     [self.numberLabel sizeToFit];
     JXCategoryNumberCellModel *myCellModel = (JXCategoryNumberCellModel *)self.cellModel;
-    self.numberLabel.bounds = CGRectMake(0, 0, self.numberLabel.bounds.size.width + myCellModel.numberLabelWidthIncrement, myCellModel.numberLabelHeight);
     self.numberLabel.layer.cornerRadius = myCellModel.numberLabelHeight/2.0;
-    
+    if (myCellModel.count < 10 && myCellModel.shouldMakeRoundWhenSingleNumber) {
+        self.numberLabel.bounds = CGRectMake(0, 0, myCellModel.numberLabelHeight, myCellModel.numberLabelHeight);
+    }else {
+        self.numberLabel.bounds = CGRectMake(0, 0, self.numberLabel.bounds.size.width + myCellModel.numberLabelWidthIncrement, myCellModel.numberLabelHeight);
+    }
     self.numberLabel.center = CGPointMake(CGRectGetMaxX(self.titleLabel.frame)+myCellModel.numberLabelOffset.x, CGRectGetMinY(self.titleLabel.frame)+myCellModel.numberLabelOffset.y);
 }
 
