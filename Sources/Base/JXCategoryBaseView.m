@@ -36,8 +36,7 @@ struct DelegateFlags {
 
 @implementation JXCategoryBaseView
 
-- (void)dealloc
-{
+- (void)dealloc {
     if (self.contentScrollView) {
         [self.contentScrollView removeObserver:self forKeyPath:@"contentOffset"];
     }
@@ -45,8 +44,7 @@ struct DelegateFlags {
     [self.animator stop];
 }
 
-- (instancetype)initWithFrame:(CGRect)frame
-{
+- (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
         [self initializeData];
@@ -55,8 +53,7 @@ struct DelegateFlags {
     return self;
 }
 
-- (instancetype)initWithCoder:(NSCoder *)coder
-{
+- (instancetype)initWithCoder:(NSCoder *)coder {
     self = [super initWithCoder:coder];
     if (self) {
         [self initializeData];
@@ -69,7 +66,7 @@ struct DelegateFlags {
     [super willMoveToSuperview:newSuperview];
 
     UIResponder *next = newSuperview;
-    while (next != nil) {
+    while (next) {
         if ([next isKindOfClass:[UIViewController class]]) {
             ((UIViewController *)next).automaticallyAdjustsScrollViewInsets = NO;
             break;
@@ -105,8 +102,7 @@ struct DelegateFlags {
     [self selectCellAtIndex:index selectedType:JXCategoryCellSelectedTypeCode];
 }
 
-- (void)layoutSubviews
-{
+- (void)layoutSubviews {
     [super layoutSubviews];
 
     //部分使用者为了适配不同的手机屏幕尺寸，JXCategoryView的宽高比要求保持一样，所以它的高度就会因为不同宽度的屏幕而不一样。计算出来的高度，有时候会是位数很长的浮点数，如果把这个高度设置给UICollectionView就会触发内部的一个错误。所以，为了规避这个问题，在这里对高度统一向下取整。
@@ -137,16 +133,14 @@ struct DelegateFlags {
     _delegateFlags.scrollingFromLeftIndexToRightIndexFlag = [delegate respondsToSelector:@selector(categoryView:scrollingFromLeftIndex:toRightIndex:ratio:)];
 }
 
-- (void)setDefaultSelectedIndex:(NSInteger)defaultSelectedIndex
-{
+- (void)setDefaultSelectedIndex:(NSInteger)defaultSelectedIndex {
     _defaultSelectedIndex = defaultSelectedIndex;
 
     self.selectedIndex = defaultSelectedIndex;
     [self.listContainer setDefaultSelectedIndex:defaultSelectedIndex];
 }
 
-- (void)setContentScrollView:(UIScrollView *)contentScrollView
-{
+- (void)setContentScrollView:(UIScrollView *)contentScrollView {
     if (_contentScrollView != nil) {
         [_contentScrollView removeObserver:self forKeyPath:@"contentOffset"];
     }
@@ -270,8 +264,7 @@ struct DelegateFlags {
 
 @implementation JXCategoryBaseView (UISubclassingBaseHooks)
 
-- (CGRect)getTargetCellFrame:(NSInteger)targetIndex
-{
+- (CGRect)getTargetCellFrame:(NSInteger)targetIndex {
     CGFloat x = [self getContentEdgeInsetLeft];
     for (int i = 0; i < targetIndex; i ++) {
         JXCategoryBaseCellModel *cellModel = self.dataSource[i];
@@ -298,8 +291,7 @@ struct DelegateFlags {
     return CGRectMake(x, 0, width, self.bounds.size.height);
 }
 
-- (CGRect)getTargetSelectedCellFrame:(NSInteger)targetIndex selectedType:(JXCategoryCellSelectedType)selectedType
-{
+- (CGRect)getTargetSelectedCellFrame:(NSInteger)targetIndex selectedType:(JXCategoryCellSelectedType)selectedType {
     CGFloat x = [self getContentEdgeInsetLeft];
     for (int i = 0; i < targetIndex; i ++) {
         JXCategoryBaseCellModel *cellModel = self.dataSource[i];
@@ -315,8 +307,7 @@ struct DelegateFlags {
     return CGRectMake(x, 0, cellWidth, self.bounds.size.height);
 }
 
-- (void)initializeData
-{
+- (void)initializeData {
     _firstLayoutSubviews = YES;
     _dataSource = [NSMutableArray array];
     _selectedIndex = 0;
@@ -337,8 +328,7 @@ struct DelegateFlags {
     _needReloadByBecomeActive = NO;
 }
 
-- (void)initializeViews
-{
+- (void)initializeViews {
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
     _collectionView = [[JXCategoryCollectionView alloc] initWithFrame:self.bounds collectionViewLayout:layout];
@@ -528,7 +518,7 @@ struct DelegateFlags {
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(self.selectedAnimationDuration * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:targetIndex inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
         });
-    }else {
+    } else {
         [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:targetIndex inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
     }
 
@@ -540,12 +530,12 @@ struct DelegateFlags {
     self.selectedIndex = targetIndex;
     if (selectedType == JXCategoryCellSelectedTypeCode) {
         [self.listContainer didClickSelectedItemAtIndex:targetIndex];
-    }else if (selectedType == JXCategoryCellSelectedTypeClick) {
+    } else if (selectedType == JXCategoryCellSelectedTypeClick) {
         [self.listContainer didClickSelectedItemAtIndex:targetIndex];
         if (self.delegateFlags.didClickSelectedItemAtIndexFlag) {
             [self.delegate categoryView:self didClickSelectedItemAtIndex:targetIndex];
         }
-    }else if(selectedType == JXCategoryCellSelectedTypeScroll) {
+    } else if(selectedType == JXCategoryCellSelectedTypeScroll) {
         if (self.delegateFlags.didScrollSelectedItemAtIndexFlag) {
             [self.delegate categoryView:self didScrollSelectedItemAtIndex:targetIndex];
         }
@@ -583,7 +573,7 @@ struct DelegateFlags {
                 unselectedCellModel.transitionAnimating = NO;
             };
             [self.animator start];
-        }else {
+        } else {
             selectedCellModel.cellWidthCurrentZoomScale = selectedCellModel.cellWidthSelectedZoomScale;
             selectedCellModel.cellWidth = [self getCellWidthAtIndex:selectedCellModel.index] * selectedCellModel.cellWidthCurrentZoomScale;
             unselectedCellModel.cellWidthCurrentZoomScale = unselectedCellModel.cellWidthNormalZoomScale;
@@ -617,7 +607,7 @@ struct DelegateFlags {
         if (!(self.lastContentViewContentOffset.x == contentOffset.x && self.selectedIndex == baseIndex)) {
             [self scrollSelectItemAtIndex:baseIndex];
         }
-    }else {
+    } else {
         self.needReloadByBecomeActive = YES;
         if (self.animator.isExecuting) {
             [self.animator invalid];
@@ -643,7 +633,7 @@ struct DelegateFlags {
 
         if (self.selectedIndex == baseIndex) {
             self.scrollingTargetIndex = baseIndex + 1;
-        }else {
+        } else {
             self.scrollingTargetIndex = baseIndex;
         }
 

@@ -59,4 +59,5 @@
 @property (nonatomic, assign) CGFloat titleLabelVerticalOffset; //titleLabel锚点垂直方向的位置偏移，数值越大越偏离中心，默认为：0
 
 @property (nonatomic, assign) JXCategoryTitleLabelAnchorPointStyle titleLabelAnchorPointStyle;  //titleLabel锚点位置，用于调整titleLabel缩放时的基准位置。默认为：JXCategoryTitleLabelAnchorPointStyleCenter
+
 @end

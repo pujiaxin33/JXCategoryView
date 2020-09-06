@@ -9,21 +9,20 @@
 #import "JXCategoryNumberCell.h"
 #import "JXCategoryNumberCellModel.h"
 
-@interface JXCategoryNumberCell ()
-
-@end
-
 @implementation JXCategoryNumberCell
+
+- (void)prepareForReuse {
+    [super prepareForReuse];
+    
+    self.numberLabel.text = nil;
+}
 
 - (void)initializeViews {
     [super initializeViews];
     
-    self.numberLabel = ({
-        UILabel *label = [[UILabel alloc] init];
-        label.textAlignment = NSTextAlignmentCenter;
-        label.layer.masksToBounds = YES;
-        label;
-    });
+    self.numberLabel = [[UILabel alloc] init];
+    self.numberLabel.textAlignment = NSTextAlignmentCenter;
+    self.numberLabel.layer.masksToBounds = YES;
     [self.contentView addSubview:self.numberLabel];
 }
 
@@ -35,7 +34,7 @@
     self.numberLabel.layer.cornerRadius = myCellModel.numberLabelHeight/2.0;
     if (myCellModel.count < 10 && myCellModel.shouldMakeRoundWhenSingleNumber) {
         self.numberLabel.bounds = CGRectMake(0, 0, myCellModel.numberLabelHeight, myCellModel.numberLabelHeight);
-    }else {
+    } else {
         self.numberLabel.bounds = CGRectMake(0, 0, self.numberLabel.bounds.size.width + myCellModel.numberLabelWidthIncrement, myCellModel.numberLabelHeight);
     }
     self.numberLabel.center = CGPointMake(CGRectGetMaxX(self.titleLabel.frame)+myCellModel.numberLabelOffset.x, CGRectGetMinY(self.titleLabel.frame)+myCellModel.numberLabelOffset.y);
@@ -45,7 +44,7 @@
     [super reloadData:cellModel];
 
     JXCategoryNumberCellModel *myCellModel = (JXCategoryNumberCellModel *)cellModel;
-    self.numberLabel.hidden = myCellModel.count == 0;
+    self.numberLabel.hidden = (myCellModel.count == 0);
     self.numberLabel.backgroundColor = myCellModel.numberBackgroundColor;
     self.numberLabel.font = myCellModel.numberLabelFont;
     self.numberLabel.textColor = myCellModel.numberTitleColor;

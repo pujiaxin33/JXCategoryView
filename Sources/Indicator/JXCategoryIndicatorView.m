@@ -41,7 +41,7 @@
     [super refreshState];
 
     CGRect selectedCellFrame = CGRectZero;
-    JXCategoryIndicatorCellModel *selectedCellModel = nil;
+    JXCategoryIndicatorCellModel *selectedCellModel;
     for (int i = 0; i < self.dataSource.count; i++) {
         JXCategoryIndicatorCellModel *cellModel = (JXCategoryIndicatorCellModel *)self.dataSource[i];
         cellModel.sepratorLineShowEnabled = self.isSeparatorLineShowEnabled;
@@ -63,7 +63,7 @@
     for (UIView<JXCategoryIndicatorProtocol> *indicator in self.indicators) {
         if (self.dataSource.count <= 0) {
             indicator.hidden = YES;
-        }else {
+        } else {
             indicator.hidden = NO;
             JXCategoryIndicatorParamsModel *indicatorParamsModel = [[JXCategoryIndicatorParamsModel alloc] init];
             indicatorParamsModel.selectedIndex = self.selectedIndex;
@@ -122,7 +122,7 @@
         for (UIView<JXCategoryIndicatorProtocol> *indicator in self.indicators) {
             [indicator jx_contentScrollViewDidScroll:indicatorParamsModel];
         }
-    }else {
+    } else {
         JXCategoryIndicatorCellModel *leftCellModel = (JXCategoryIndicatorCellModel *)self.dataSource[baseIndex];
         leftCellModel.selectedType = JXCategoryCellSelectedTypeUnknown;
         JXCategoryIndicatorCellModel *rightCellModel = (JXCategoryIndicatorCellModel *)self.dataSource[baseIndex + 1];
@@ -204,7 +204,6 @@
             rightModel.cellBackgroundSelectedColor = self.cellBackgroundSelectedColor;
         }
     }
-
 }
 
 @end

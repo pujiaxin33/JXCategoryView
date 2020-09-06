@@ -40,55 +40,40 @@
     CGSize imageSize = myCellModel.imageSize;
     self.imageView.bounds = CGRectMake(0, 0, imageSize.width, imageSize.height);
     switch (myCellModel.imageType) {
-
-        case JXCategoryTitleImageType_TopImage:
-        {
+        case JXCategoryTitleImageType_TopImage: {
             CGFloat contentHeight = imageSize.height + myCellModel.titleImageSpacing + self.titleLabel.bounds.size.height;
             self.imageView.center = CGPointMake(self.contentView.center.x, (self.contentView.bounds.size.height - contentHeight)/2 + imageSize.height/2);
             [self refreshTitleLabelCenter:CGPointMake(self.contentView.center.x, CGRectGetMaxY(self.imageView.frame) + myCellModel.titleImageSpacing + self.titleLabel.bounds.size.height/2)];
-        }
             break;
-
-        case JXCategoryTitleImageType_LeftImage:
-        {
+        }
+        case JXCategoryTitleImageType_LeftImage: {
             CGFloat contentWidth = imageSize.width + myCellModel.titleImageSpacing + self.titleLabel.bounds.size.width;
             self.imageView.center = CGPointMake((self.contentView.bounds.size.width - contentWidth)/2 + imageSize.width/2, self.contentView.center.y);
             [self refreshTitleLabelCenter:CGPointMake(CGRectGetMaxX(self.imageView.frame) + myCellModel.titleImageSpacing + self.titleLabel.bounds.size.width/2, self.contentView.center.y)];
-        }
             break;
-
-        case JXCategoryTitleImageType_BottomImage:
-        {
+        }
+        case JXCategoryTitleImageType_BottomImage: {
             CGFloat contentHeight = imageSize.height + myCellModel.titleImageSpacing + self.titleLabel.bounds.size.height;
             [self refreshTitleLabelCenter:CGPointMake(self.contentView.center.x, (self.contentView.bounds.size.height - contentHeight)/2 + self.titleLabel.bounds.size.height/2)];
             self.imageView.center = CGPointMake(self.contentView.center.x, CGRectGetMaxY(self.titleLabel.frame) + myCellModel.titleImageSpacing + imageSize.height/2);
-        }
             break;
-
-        case JXCategoryTitleImageType_RightImage:
-        {
+        }
+        case JXCategoryTitleImageType_RightImage: {
             CGFloat contentWidth = imageSize.width + myCellModel.titleImageSpacing + self.titleLabel.bounds.size.width;
             [self refreshTitleLabelCenter:CGPointMake((self.contentView.bounds.size.width - contentWidth)/2 + self.titleLabel.bounds.size.width/2, self.contentView.center.y)];
             self.imageView.center = CGPointMake(CGRectGetMaxX(self.titleLabel.frame) + myCellModel.titleImageSpacing + imageSize.width/2, self.contentView.center.y);
-        }
             break;
-
-        case JXCategoryTitleImageType_OnlyImage:
-        {
+        }
+        case JXCategoryTitleImageType_OnlyImage: {
             self.titleLabel.hidden = YES;
             self.imageView.center = self.contentView.center;
-        }
             break;
-
-        case JXCategoryTitleImageType_OnlyTitle:
-        {
+        }
+        case JXCategoryTitleImageType_OnlyTitle: {
             self.imageView.hidden = YES;
             [self refreshTitleLabelCenter:self.contentView.center];
+            break;
         }
-            break;
-
-        default:
-            break;
     }
 }
 
@@ -111,33 +96,33 @@
     JXCategoryTitleImageCellModel *myCellModel = (JXCategoryTitleImageCellModel *)cellModel;
 
     //因为`- (void)reloadData:(JXCategoryBaseCellModel *)cellModel`方法会回调多次，尤其是左右滚动的时候会调用无数次，如果每次都触发图片加载，会非常消耗性能。所以只会在图片发生了变化的时候，才进行图片加载。
-    NSString *currentImageName = nil;
-    NSURL *currentImageURL = nil;
-    if (myCellModel.imageName != nil) {
+    NSString *currentImageName;
+    NSURL *currentImageURL;
+    if (myCellModel.imageName) {
         currentImageName = myCellModel.imageName;
-    }else if (myCellModel.imageURL != nil) {
+    } else if (myCellModel.imageURL) {
         currentImageURL = myCellModel.imageURL;
     }
     if (myCellModel.isSelected) {
-        if (myCellModel.selectedImageName != nil) {
+        if (myCellModel.selectedImageName) {
             currentImageName = myCellModel.selectedImageName;
-        }else if (myCellModel.selectedImageURL != nil) {
+        } else if (myCellModel.selectedImageURL) {
             currentImageURL = myCellModel.selectedImageURL;
         }
     }
-    if (currentImageName != nil && ![currentImageName isEqualToString:self.currentImageName]) {
+    if (currentImageName && ![currentImageName isEqualToString:self.currentImageName]) {
         self.currentImageName = currentImageName;
         self.imageView.image = [UIImage imageNamed:currentImageName];
-    }else if (currentImageURL != nil && ![currentImageURL.absoluteString isEqualToString:self.currentImageURL.absoluteString]) {
+    } else if (currentImageURL && ![currentImageURL.absoluteString isEqualToString:self.currentImageURL.absoluteString]) {
         self.currentImageURL = currentImageURL;
-        if (myCellModel.loadImageCallback != nil) {
+        if (myCellModel.loadImageCallback) {
             myCellModel.loadImageCallback(self.imageView, currentImageURL);
         }
     }
 
     if (myCellModel.isImageZoomEnabled) {
         self.imageView.transform = CGAffineTransformMakeScale(myCellModel.imageZoomScale, myCellModel.imageZoomScale);
-    }else {
+    } else {
         self.imageView.transform = CGAffineTransformIdentity;
     }
 

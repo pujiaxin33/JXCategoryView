@@ -15,8 +15,7 @@
 
 @implementation JXCategoryIndicatorCell
 
-- (void)initializeViews
-{
+- (void)initializeViews {
     [super initializeViews];
 
     self.separatorLine = [[UIView alloc] init];
@@ -24,8 +23,7 @@
     [self.contentView addSubview:self.separatorLine];
 }
 
-- (void)layoutSubviews
-{
+- (void)layoutSubviews {
     [super layoutSubviews];
 
     JXCategoryIndicatorCellModel *model = (JXCategoryIndicatorCellModel *)self.cellModel;
