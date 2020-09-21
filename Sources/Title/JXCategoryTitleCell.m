@@ -43,7 +43,7 @@
     [self.contentView addSubview:self.maskTitleLabel];
 
     self.maskTitleLabelCenterX = [self.maskTitleLabel.centerXAnchor constraintEqualToAnchor:self.contentView.centerXAnchor];
-    self.maskTitleLabelCenterY = [self.titleLabel.centerYAnchor constraintEqualToAnchor:self.contentView.centerYAnchor];
+    self.maskTitleLabelCenterY = [self.maskTitleLabel.centerYAnchor constraintEqualToAnchor:self.contentView.centerYAnchor];
 
     _maskTitleMaskLayer = [CALayer layer];
     self.maskTitleMaskLayer.backgroundColor = [UIColor redColor].CGColor;
@@ -52,37 +52,10 @@
     [NSLayoutConstraint activateConstraints:@[self.titleLabelCenterX, self.titleLabelCenterY, self.maskTitleLabelCenterX, self.maskTitleLabelCenterY]];
 }
 
+- (void)layoutSubviews {
+    [super layoutSubviews];
 
-- (void)reloadData:(JXCategoryBaseCellModel *)cellModel {
-    [super reloadData:cellModel];
-
-    JXCategoryTitleCellModel *myCellModel = (JXCategoryTitleCellModel *)cellModel;
-    self.accessibilityLabel = myCellModel.title;
-    self.titleLabel.numberOfLines = myCellModel.titleNumberOfLines;
-    self.maskTitleLabel.numberOfLines = myCellModel.titleNumberOfLines;
-    //Fixme:目前anchorPoint修改之后，约束修改会有问题。
-    //正常情况下，我们去更新持有的constraint.constant即可更新约束的constant值
-    //这里比如更新self.titleLabelCenterY.constant，感觉系统就再创建了一个相同的约束，导致出现了下面的问题。
-    //介于iOS14循环调用导致crash的严重性更高，就先这样修改了。
-    /*
-    Make a symbolic breakpoint at UIViewAlertForUnsatisfiableConstraints to catch this in the debugger.
-    The methods in the UIConstraintBasedLayoutDebugging category on UIView listed in <UIKit/UIView.h> may also be helpful.
-    2020-09-21 22:50:51.072518+0800 Example[69899:3692989] [LayoutConstraints] Unable to simultaneously satisfy constraints.
-        Probably at least one of the constraints in the following list is one you don't want.
-        Try this:
-            (1) look at each constraint and try to figure out which you don't expect;
-            (2) find the code that added the unwanted constraint or constraints and fix it.
-    (
-        "<NSLayoutConstraint:0x60000028f0f0 UILabel:0x7fdbfdc477a0.centerY == UIView:0x7fdbfdc46ed0.centerY + 8.9502   (active)>",
-        "<NSLayoutConstraint:0x60000028f000 UILabel:0x7fdbfdc477a0.centerY == UIView:0x7fdbfdc46ed0.centerY   (active)>"
-    )
-
-    Will attempt to recover by breaking constraint
-    <NSLayoutConstraint:0x60000028f0f0 UILabel:0x7fdbfdc477a0.centerY == UIView:0x7fdbfdc46ed0.centerY + 8.9502   (active)>
-
-    Make a symbolic breakpoint at UIViewAlertForUnsatisfiableConstraints to catch this in the debugger.
-    The methods in the UIConstraintBasedLayoutDebugging category on UIView listed in <UIKit/UIView.h> may also be helpful.
-     */
+    JXCategoryTitleCellModel *myCellModel = (JXCategoryTitleCellModel *)self.cellModel;
     switch (myCellModel.titleLabelAnchorPointStyle) {
         case JXCategoryTitleLabelAnchorPointStyleCenter: {
             self.titleLabel.layer.anchorPoint = CGPointMake(0.5, 0.5);
@@ -107,6 +80,16 @@
         default:
             break;
     }
+}
+
+
+- (void)reloadData:(JXCategoryBaseCellModel *)cellModel {
+    [super reloadData:cellModel];
+
+    JXCategoryTitleCellModel *myCellModel = (JXCategoryTitleCellModel *)cellModel;
+    self.accessibilityLabel = myCellModel.title;
+    self.titleLabel.numberOfLines = myCellModel.titleNumberOfLines;
+    self.maskTitleLabel.numberOfLines = myCellModel.titleNumberOfLines;
 
     if (myCellModel.isTitleLabelZoomEnabled) {
         //先把font设置为缩放的最大值，再缩小到最小值，最后根据当前的titleLabelZoomScale值，进行缩放更新。这样就能避免transform从小到大时字体模糊
