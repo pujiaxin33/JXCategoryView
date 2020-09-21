@@ -84,23 +84,26 @@
     The methods in the UIConstraintBasedLayoutDebugging category on UIView listed in <UIKit/UIView.h> may also be helpful.
      */
     switch (myCellModel.titleLabelAnchorPointStyle) {
-        case JXCategoryTitleLabelAnchorPointStyleCenter:
+        case JXCategoryTitleLabelAnchorPointStyleCenter: {
             self.titleLabel.layer.anchorPoint = CGPointMake(0.5, 0.5);
             self.maskTitleLabel.layer.anchorPoint = CGPointMake(0.5, 0.5);
             self.titleLabelCenterY.constant = 0 + myCellModel.titleLabelVerticalOffset;
             break;
-        case JXCategoryTitleLabelAnchorPointStyleTop:
+        }
+        case JXCategoryTitleLabelAnchorPointStyleTop: {
             self.titleLabel.layer.anchorPoint = CGPointMake(0.5, 0);
             self.maskTitleLabel.layer.anchorPoint = CGPointMake(0.5, 0);
             CGFloat percent = (myCellModel.titleLabelCurrentZoomScale - myCellModel.titleLabelNormalZoomScale)/(myCellModel.titleLabelSelectedZoomScale - myCellModel.titleLabelNormalZoomScale);
             self.titleLabelCenterY.constant = -myCellModel.titleHeight/2 - myCellModel.titleLabelVerticalOffset - myCellModel.titleLabelZoomSelectedVerticalOffset*percent;
             break;
-        case JXCategoryTitleLabelAnchorPointStyleBottom:
+        }
+        case JXCategoryTitleLabelAnchorPointStyleBottom: {
             self.titleLabel.layer.anchorPoint = CGPointMake(0.5, 1);
             self.maskTitleLabel.layer.anchorPoint = CGPointMake(0.5, 1);
-            CGFloat percent1 = (myCellModel.titleLabelCurrentZoomScale - myCellModel.titleLabelNormalZoomScale)/(myCellModel.titleLabelSelectedZoomScale - myCellModel.titleLabelNormalZoomScale);
-            self.titleLabelCenterY.constant = myCellModel.titleHeight/2 + myCellModel.titleLabelVerticalOffset + myCellModel.titleLabelZoomSelectedVerticalOffset*percent1;
+            CGFloat percent = (myCellModel.titleLabelCurrentZoomScale - myCellModel.titleLabelNormalZoomScale)/(myCellModel.titleLabelSelectedZoomScale - myCellModel.titleLabelNormalZoomScale);
+            self.titleLabelCenterY.constant = myCellModel.titleHeight/2 + myCellModel.titleLabelVerticalOffset + myCellModel.titleLabelZoomSelectedVerticalOffset*percent;
             break;
+        }
         default:
             break;
     }
