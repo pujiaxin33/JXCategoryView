@@ -30,10 +30,8 @@
     self.titleLabel.translatesAutoresizingMaskIntoConstraints = NO;
     [self.contentView addSubview:self.titleLabel];
 
-    self.titleLabelCenterX = [NSLayoutConstraint constraintWithItem:self.titleLabel attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeCenterX multiplier:1 constant:0];
-    self.titleLabelCenterY = [NSLayoutConstraint constraintWithItem:self.titleLabel attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeCenterY multiplier:1 constant:0];
-    self.titleLabelCenterX.active = YES;
-    self.titleLabelCenterY.active = YES;
+    self.titleLabelCenterX = [self.titleLabel.centerXAnchor constraintEqualToAnchor:self.contentView.centerXAnchor constant:0];
+    self.titleLabelCenterY = [self.titleLabel.centerYAnchor constraintEqualToAnchor:self.contentView.centerYAnchor constant:0];
 
     _titleMaskLayer = [CALayer layer];
     self.titleMaskLayer.backgroundColor = [UIColor redColor].CGColor;
@@ -44,43 +42,16 @@
     self.maskTitleLabel.textAlignment = NSTextAlignmentCenter;
     [self.contentView addSubview:self.maskTitleLabel];
 
-    self.maskTitleLabelCenterX = [NSLayoutConstraint constraintWithItem:self.maskTitleLabel attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeCenterX multiplier:1 constant:0];
-    self.maskTitleLabelCenterY = [NSLayoutConstraint constraintWithItem:self.maskTitleLabel attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeCenterY multiplier:1 constant:0];
-    self.maskTitleLabelCenterX.active = YES;
-    self.maskTitleLabelCenterY.active = YES;
+    self.maskTitleLabelCenterX = [self.maskTitleLabel.centerXAnchor constraintEqualToAnchor:self.contentView.centerXAnchor];
+    self.maskTitleLabelCenterY = [self.titleLabel.centerYAnchor constraintEqualToAnchor:self.contentView.centerYAnchor];
 
     _maskTitleMaskLayer = [CALayer layer];
     self.maskTitleMaskLayer.backgroundColor = [UIColor redColor].CGColor;
     self.maskTitleLabel.layer.mask = self.maskTitleMaskLayer;
+
+    [NSLayoutConstraint activateConstraints:@[self.titleLabelCenterX, self.titleLabelCenterY, self.maskTitleLabelCenterX, self.maskTitleLabelCenterY]];
 }
 
-- (void)layoutSubviews {
-    [super layoutSubviews];
-
-    //因为titleLabel是通过约束布局的，在layoutSubviews方法中，它的frame并没有确定。像子类JXCategoryNumberCell中的numberLabel需要依赖于titleLabel的frame进行布局。所以这里必须立马触发self.contentView的视图布局。
-    [self.contentView setNeedsLayout];
-    [self.contentView layoutIfNeeded];
-    JXCategoryTitleCellModel *myCellModel = (JXCategoryTitleCellModel *)self.cellModel;
-    switch (myCellModel.titleLabelAnchorPointStyle) {
-        case JXCategoryTitleLabelAnchorPointStyleCenter:
-            self.titleLabelCenterY.constant = 0 + myCellModel.titleLabelVerticalOffset;
-            break;
-        case JXCategoryTitleLabelAnchorPointStyleTop:
-        {
-            CGFloat percent = (myCellModel.titleLabelCurrentZoomScale - myCellModel.titleLabelNormalZoomScale)/(myCellModel.titleLabelSelectedZoomScale - myCellModel.titleLabelNormalZoomScale);
-            self.titleLabelCenterY.constant = -self.titleLabel.bounds.size.height/2 - myCellModel.titleLabelVerticalOffset - myCellModel.titleLabelZoomSelectedVerticalOffset*percent;
-        }
-            break;
-        case JXCategoryTitleLabelAnchorPointStyleBottom:
-        {
-            CGFloat percent = (myCellModel.titleLabelCurrentZoomScale - myCellModel.titleLabelNormalZoomScale)/(myCellModel.titleLabelSelectedZoomScale - myCellModel.titleLabelNormalZoomScale);
-            self.titleLabelCenterY.constant = self.titleLabel.bounds.size.height/2 + myCellModel.titleLabelVerticalOffset + myCellModel.titleLabelZoomSelectedVerticalOffset*percent;
-        }
-            break;
-        default:
-            break;
-    }
-}
 
 - (void)reloadData:(JXCategoryBaseCellModel *)cellModel {
     [super reloadData:cellModel];
@@ -89,18 +60,46 @@
     self.accessibilityLabel = myCellModel.title;
     self.titleLabel.numberOfLines = myCellModel.titleNumberOfLines;
     self.maskTitleLabel.numberOfLines = myCellModel.titleNumberOfLines;
+    //Fixme:目前anchorPoint修改之后，约束修改会有问题。
+    //正常情况下，我们去更新持有的constraint.constant即可更新约束的constant值
+    //这里比如更新self.titleLabelCenterY.constant，感觉系统就再创建了一个相同的约束，导致出现了下面的问题。
+    //介于iOS14循环调用导致crash的严重性更高，就先这样修改了。
+    /*
+    Make a symbolic breakpoint at UIViewAlertForUnsatisfiableConstraints to catch this in the debugger.
+    The methods in the UIConstraintBasedLayoutDebugging category on UIView listed in <UIKit/UIView.h> may also be helpful.
+    2020-09-21 22:50:51.072518+0800 Example[69899:3692989] [LayoutConstraints] Unable to simultaneously satisfy constraints.
+        Probably at least one of the constraints in the following list is one you don't want.
+        Try this:
+            (1) look at each constraint and try to figure out which you don't expect;
+            (2) find the code that added the unwanted constraint or constraints and fix it.
+    (
+        "<NSLayoutConstraint:0x60000028f0f0 UILabel:0x7fdbfdc477a0.centerY == UIView:0x7fdbfdc46ed0.centerY + 8.9502   (active)>",
+        "<NSLayoutConstraint:0x60000028f000 UILabel:0x7fdbfdc477a0.centerY == UIView:0x7fdbfdc46ed0.centerY   (active)>"
+    )
+
+    Will attempt to recover by breaking constraint
+    <NSLayoutConstraint:0x60000028f0f0 UILabel:0x7fdbfdc477a0.centerY == UIView:0x7fdbfdc46ed0.centerY + 8.9502   (active)>
+
+    Make a symbolic breakpoint at UIViewAlertForUnsatisfiableConstraints to catch this in the debugger.
+    The methods in the UIConstraintBasedLayoutDebugging category on UIView listed in <UIKit/UIView.h> may also be helpful.
+     */
     switch (myCellModel.titleLabelAnchorPointStyle) {
         case JXCategoryTitleLabelAnchorPointStyleCenter:
             self.titleLabel.layer.anchorPoint = CGPointMake(0.5, 0.5);
             self.maskTitleLabel.layer.anchorPoint = CGPointMake(0.5, 0.5);
+            self.titleLabelCenterY.constant = 0 + myCellModel.titleLabelVerticalOffset;
             break;
         case JXCategoryTitleLabelAnchorPointStyleTop:
             self.titleLabel.layer.anchorPoint = CGPointMake(0.5, 0);
             self.maskTitleLabel.layer.anchorPoint = CGPointMake(0.5, 0);
+            CGFloat percent = (myCellModel.titleLabelCurrentZoomScale - myCellModel.titleLabelNormalZoomScale)/(myCellModel.titleLabelSelectedZoomScale - myCellModel.titleLabelNormalZoomScale);
+            self.titleLabelCenterY.constant = -myCellModel.titleHeight/2 - myCellModel.titleLabelVerticalOffset - myCellModel.titleLabelZoomSelectedVerticalOffset*percent;
             break;
         case JXCategoryTitleLabelAnchorPointStyleBottom:
             self.titleLabel.layer.anchorPoint = CGPointMake(0.5, 1);
             self.maskTitleLabel.layer.anchorPoint = CGPointMake(0.5, 1);
+            CGFloat percent1 = (myCellModel.titleLabelCurrentZoomScale - myCellModel.titleLabelNormalZoomScale)/(myCellModel.titleLabelSelectedZoomScale - myCellModel.titleLabelNormalZoomScale);
+            self.titleLabelCenterY.constant = myCellModel.titleHeight/2 + myCellModel.titleLabelVerticalOffset + myCellModel.titleLabelZoomSelectedVerticalOffset*percent1;
             break;
         default:
             break;

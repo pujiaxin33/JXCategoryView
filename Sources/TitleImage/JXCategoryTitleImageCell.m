@@ -12,6 +12,9 @@
 @interface JXCategoryTitleImageCell()
 @property (nonatomic, strong) NSString *currentImageName;
 @property (nonatomic, strong) NSURL *currentImageURL;
+@property (nonatomic, strong) UIStackView *stackView;
+@property (nonatomic, strong) NSLayoutConstraint *imageViewWidthConstraint;
+@property (nonatomic, strong) NSLayoutConstraint *imageViewHeightConstraint;
 @end
 
 @implementation JXCategoryTitleImageCell
@@ -26,89 +29,88 @@
 - (void)initializeViews {
     [super initializeViews];
 
+    [self.titleLabel removeFromSuperview];
+
     _imageView = [[UIImageView alloc] init];
-    _imageView.contentMode = UIViewContentModeScaleAspectFit;
-    [self.contentView addSubview:_imageView];
-}
+    self.imageView.translatesAutoresizingMaskIntoConstraints = NO;
+    self.imageView.contentMode = UIViewContentModeScaleAspectFit;
+    self.imageViewWidthConstraint = [self.imageView.widthAnchor constraintEqualToConstant:0];
+    self.imageViewWidthConstraint.active = YES;
+    self.imageViewHeightConstraint = [self.imageView.heightAnchor constraintEqualToConstant:0];
+    self.imageViewHeightConstraint.active = YES;
 
-- (void)layoutSubviews {
-    [super layoutSubviews];
-
-    JXCategoryTitleImageCellModel *myCellModel = (JXCategoryTitleImageCellModel *)self.cellModel;
-    self.titleLabel.hidden = NO;
-    self.imageView.hidden = NO;
-    CGSize imageSize = myCellModel.imageSize;
-    self.imageView.bounds = CGRectMake(0, 0, imageSize.width, imageSize.height);
-    switch (myCellModel.imageType) {
-
-        case JXCategoryTitleImageType_TopImage:
-        {
-            CGFloat contentHeight = imageSize.height + myCellModel.titleImageSpacing + self.titleLabel.bounds.size.height;
-            self.imageView.center = CGPointMake(self.contentView.center.x, (self.contentView.bounds.size.height - contentHeight)/2 + imageSize.height/2);
-            [self refreshTitleLabelCenter:CGPointMake(self.contentView.center.x, CGRectGetMaxY(self.imageView.frame) + myCellModel.titleImageSpacing + self.titleLabel.bounds.size.height/2)];
-        }
-            break;
-
-        case JXCategoryTitleImageType_LeftImage:
-        {
-            CGFloat contentWidth = imageSize.width + myCellModel.titleImageSpacing + self.titleLabel.bounds.size.width;
-            self.imageView.center = CGPointMake((self.contentView.bounds.size.width - contentWidth)/2 + imageSize.width/2, self.contentView.center.y);
-            [self refreshTitleLabelCenter:CGPointMake(CGRectGetMaxX(self.imageView.frame) + myCellModel.titleImageSpacing + self.titleLabel.bounds.size.width/2, self.contentView.center.y)];
-        }
-            break;
-
-        case JXCategoryTitleImageType_BottomImage:
-        {
-            CGFloat contentHeight = imageSize.height + myCellModel.titleImageSpacing + self.titleLabel.bounds.size.height;
-            [self refreshTitleLabelCenter:CGPointMake(self.contentView.center.x, (self.contentView.bounds.size.height - contentHeight)/2 + self.titleLabel.bounds.size.height/2)];
-            self.imageView.center = CGPointMake(self.contentView.center.x, CGRectGetMaxY(self.titleLabel.frame) + myCellModel.titleImageSpacing + imageSize.height/2);
-        }
-            break;
-
-        case JXCategoryTitleImageType_RightImage:
-        {
-            CGFloat contentWidth = imageSize.width + myCellModel.titleImageSpacing + self.titleLabel.bounds.size.width;
-            [self refreshTitleLabelCenter:CGPointMake((self.contentView.bounds.size.width - contentWidth)/2 + self.titleLabel.bounds.size.width/2, self.contentView.center.y)];
-            self.imageView.center = CGPointMake(CGRectGetMaxX(self.titleLabel.frame) + myCellModel.titleImageSpacing + imageSize.width/2, self.contentView.center.y);
-        }
-            break;
-
-        case JXCategoryTitleImageType_OnlyImage:
-        {
-            self.titleLabel.hidden = YES;
-            self.imageView.center = self.contentView.center;
-        }
-            break;
-
-        case JXCategoryTitleImageType_OnlyTitle:
-        {
-            self.imageView.hidden = YES;
-            [self refreshTitleLabelCenter:self.contentView.center];
-        }
-            break;
-
-        default:
-            break;
-    }
-}
-
-- (void)refreshTitleLabelCenter:(CGPoint)center {
-    JXCategoryTitleImageCellModel *myCellModel = (JXCategoryTitleImageCellModel *)self.cellModel;
-    if (myCellModel.titleLabelAnchorPointStyle == JXCategoryTitleLabelAnchorPointStyleBottom) {
-        center.y += (self.titleLabel.bounds.size.height/2 + myCellModel.titleLabelVerticalOffset);
-    }else if (myCellModel.titleLabelAnchorPointStyle == JXCategoryTitleLabelAnchorPointStyleTop) {
-        center.y -= (self.titleLabel.bounds.size.height/2 + myCellModel.titleLabelVerticalOffset);
-    }
-    self.titleLabelCenterX.constant = center.x - self.contentView.bounds.size.width/2;
-    self.titleLabelCenterY.constant = center.y - self.contentView.bounds.size.height/2;
-    [self.contentView setNeedsLayout];
-    [self.contentView layoutIfNeeded];
+    _stackView = [[UIStackView alloc] init];
+    self.stackView.alignment = UIStackViewAlignmentCenter;
+    [self.contentView addSubview:self.stackView];
+    self.stackView.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.stackView.centerXAnchor constraintEqualToAnchor:self.contentView.centerXAnchor].active = YES;
+    [self.stackView.centerYAnchor constraintEqualToAnchor:self.contentView.centerYAnchor].active = YES;
 }
 
 - (void)reloadData:(JXCategoryBaseCellModel *)cellModel {
     [super reloadData:cellModel];
 
     JXCategoryTitleImageCellModel *myCellModel = (JXCategoryTitleImageCellModel *)cellModel;
+
+    self.titleLabel.hidden = NO;
+    self.imageView.hidden = NO;
+    [self.stackView removeArrangedSubview:self.titleLabel];
+    [self.stackView removeArrangedSubview:self.imageView];
+    CGSize imageSize = myCellModel.imageSize;
+    self.imageViewWidthConstraint.constant = imageSize.width;
+    self.imageViewHeightConstraint.constant = imageSize.height;
+    self.stackView.spacing = myCellModel.titleImageSpacing;
+    switch (myCellModel.imageType) {
+
+        case JXCategoryTitleImageType_TopImage:
+        {
+            self.stackView.axis = UILayoutConstraintAxisVertical;
+            [self.stackView addArrangedSubview:self.imageView];
+            [self.stackView addArrangedSubview:self.titleLabel];
+        }
+            break;
+
+        case JXCategoryTitleImageType_LeftImage:
+        {
+            self.stackView.axis = UILayoutConstraintAxisHorizontal;
+            [self.stackView addArrangedSubview:self.imageView];
+            [self.stackView addArrangedSubview:self.titleLabel];
+        }
+            break;
+
+        case JXCategoryTitleImageType_BottomImage:
+        {
+            self.stackView.axis = UILayoutConstraintAxisVertical;
+            [self.stackView addArrangedSubview:self.titleLabel];
+            [self.stackView addArrangedSubview:self.imageView];
+        }
+            break;
+
+        case JXCategoryTitleImageType_RightImage:
+        {
+            self.stackView.axis = UILayoutConstraintAxisHorizontal;
+            [self.stackView addArrangedSubview:self.titleLabel];
+            [self.stackView addArrangedSubview:self.imageView];
+        }
+            break;
+
+        case JXCategoryTitleImageType_OnlyImage:
+        {
+            self.titleLabel.hidden = YES;
+            [self.stackView addArrangedSubview:self.imageView];
+        }
+            break;
+
+        case JXCategoryTitleImageType_OnlyTitle:
+        {
+            self.imageView.hidden = YES;
+            [self.stackView addArrangedSubview:self.titleLabel];
+        }
+            break;
+
+        default:
+            break;
+    }
 
     //因为`- (void)reloadData:(JXCategoryBaseCellModel *)cellModel`方法会回调多次，尤其是左右滚动的时候会调用无数次，如果每次都触发图片加载，会非常消耗性能。所以只会在图片发生了变化的时候，才进行图片加载。
     NSString *currentImageName = nil;
@@ -140,8 +142,6 @@
     }else {
         self.imageView.transform = CGAffineTransformIdentity;
     }
-
-    [self setNeedsLayout];
 }
 
 
