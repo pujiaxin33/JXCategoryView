@@ -206,9 +206,9 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
     cell.contentView.backgroundColor = self.listCellBackgroundColor;
-//    for (UIView *subview in cell.contentView.subviews) {
-//        [subview removeFromSuperview];
-//    }
+    for (UIView *subview in cell.contentView.subviews) {
+        [subview removeFromSuperview];
+    }
     id<JXCategoryListContentViewDelegate> list = _validListDict[@(indexPath.item)];
     if (list != nil) {
         [list listView].frame = cell.contentView.bounds;
