@@ -26,4 +26,5 @@
  红点  x,y方向的偏移 （+值：水平方向向右，竖直方向向下）
  */
 @property (nonatomic, assign) CGPoint dotOffset;
+
 @end

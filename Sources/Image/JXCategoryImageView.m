@@ -11,8 +11,7 @@
 
 @implementation JXCategoryImageView
 
-- (void)dealloc
-{
+- (void)dealloc {
     self.loadImageCallback = nil;
 }
 
@@ -30,13 +29,13 @@
 }
 
 - (void)refreshDataSource {
-    NSMutableArray *tempArray = [NSMutableArray array];
     NSUInteger count = (self.imageNames.count > 0) ? self.imageNames.count : (self.imageURLs.count > 0 ? self.imageURLs.count : 0);
+    NSMutableArray *tempArray = [NSMutableArray arrayWithCapacity:count];
     for (int i = 0; i < count; i++) {
         JXCategoryImageCellModel *cellModel = [[JXCategoryImageCellModel alloc] init];
         [tempArray addObject:cellModel];
     }
-    self.dataSource = tempArray;
+    self.dataSource = [NSArray arrayWithArray:tempArray];
 }
 
 - (void)refreshSelectedCellModel:(JXCategoryBaseCellModel *)selectedCellModel unselectedCellModel:(JXCategoryBaseCellModel *)unselectedCellModel {
@@ -56,21 +55,18 @@
     myCellModel.loadImageCallback = self.loadImageCallback;
     myCellModel.imageSize = self.imageSize;
     myCellModel.imageCornerRadius = self.imageCornerRadius;
-    if (self.imageNames != nil) {
+    if (self.imageNames && self.imageNames.count != 0) {
         myCellModel.imageName = self.imageNames[index];
-    }else if (self.imageURLs != nil) {
+    } else if (self.imageURLs && self.imageURLs.count != 0) {
         myCellModel.imageURL = self.imageURLs[index];
     }
-    if (self.selectedImageNames != nil) {
+    if (self.selectedImageNames && self.selectedImageNames != 0) {
         myCellModel.selectedImageName = self.selectedImageNames[index];
-    }else if (self.selectedImageURLs != nil) {
+    } else if (self.selectedImageURLs && self.selectedImageURLs != 0) {
         myCellModel.selectedImageURL = self.selectedImageURLs[index];
     }
     myCellModel.imageZoomEnabled = self.imageZoomEnabled;
-    myCellModel.imageZoomScale = 1.0;
-    if (index == self.selectedIndex) {
-        myCellModel.imageZoomScale = self.imageZoomScale;
-    }
+    myCellModel.imageZoomScale = ((index == self.selectedIndex) ? self.imageZoomScale : 1.0);
 }
 
 - (void)refreshLeftCellModel:(JXCategoryBaseCellModel *)leftCellModel rightCellModel:(JXCategoryBaseCellModel *)rightCellModel ratio:(CGFloat)ratio {

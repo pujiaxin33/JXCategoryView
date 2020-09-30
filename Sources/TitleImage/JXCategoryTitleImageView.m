@@ -13,8 +13,7 @@
 
 @implementation JXCategoryTitleImageView
 
-- (void)dealloc
-{
+- (void)dealloc {
     self.loadImageCallback = nil;
 }
 
@@ -32,19 +31,20 @@
 }
 
 - (void)refreshDataSource {
-    NSMutableArray *tempArray = [NSMutableArray array];
+    NSMutableArray *tempArray = [NSMutableArray arrayWithCapacity:self.titles.count];
     for (int i = 0; i < self.titles.count; i++) {
         JXCategoryTitleImageCellModel *cellModel = [[JXCategoryTitleImageCellModel alloc] init];
         [tempArray addObject:cellModel];
     }
-    if (self.imageTypes == nil || self.imageTypes.count == 0) {
-        NSMutableArray *types = [NSMutableArray array];
-        for (int i = 0; i < self.titles.count; i++) {
+    self.dataSource = [NSArray arrayWithArray:tempArray];
+    
+    if (!self.imageTypes || (self.imageTypes.count == 0)) {
+        NSMutableArray *types = [NSMutableArray arrayWithCapacity:self.titles.count];
+        for (int i = 0; i< self.titles.count; i++) {
             [types addObject:@(JXCategoryTitleImageType_LeftImage)];
         }
-        self.imageTypes = types;
+        self.imageTypes = [NSArray arrayWithArray:types];
     }
-    self.dataSource = tempArray;
 }
 
 - (void)refreshCellModel:(JXCategoryBaseCellModel *)cellModel index:(NSInteger)index {
@@ -55,21 +55,18 @@
     myCellModel.imageType = [self.imageTypes[index] integerValue];
     myCellModel.imageSize = self.imageSize;
     myCellModel.titleImageSpacing = self.titleImageSpacing;
-    if (self.imageNames != nil) {
+    if (self.imageNames && self.imageNames.count != 0) {
         myCellModel.imageName = self.imageNames[index];
-    }else if (self.imageURLs != nil) {
+    }else if (self.imageURLs && self.imageURLs.count != 0) {
         myCellModel.imageURL = self.imageURLs[index];
     }
-    if (self.selectedImageNames != nil) {
+    if (self.selectedImageNames && self.selectedImageNames.count != 0) {
         myCellModel.selectedImageName = self.selectedImageNames[index];
-    }else if (self.selectedImageURLs != nil) {
+    }else if (self.selectedImageURLs && self.selectedImageURLs.count != 0) {
         myCellModel.selectedImageURL = self.selectedImageURLs[index];
     }
     myCellModel.imageZoomEnabled = self.imageZoomEnabled;
-    myCellModel.imageZoomScale = 1.0;
-    if (index == self.selectedIndex) {
-        myCellModel.imageZoomScale = self.imageZoomScale;
-    }
+    myCellModel.imageZoomScale = ((index == self.selectedIndex) ? self.imageZoomScale : 1.0);
 }
 
 - (void)refreshSelectedCellModel:(JXCategoryBaseCellModel *)selectedCellModel unselectedCellModel:(JXCategoryBaseCellModel *)unselectedCellModel {

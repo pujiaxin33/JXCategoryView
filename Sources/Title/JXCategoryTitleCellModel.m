@@ -10,7 +10,6 @@
 
 @implementation JXCategoryTitleCellModel
 
-
 - (void)setTitle:(NSString *)title {
     _title = title;
 
@@ -24,7 +23,7 @@
 }
 
 - (void)updateNumberSizeWidthIfNeeded {
-    if (self.titleFont != nil) {
+    if (self.titleFont) {
         _titleHeight = [self.title boundingRectWithSize:CGSizeMake(CGFLOAT_MAX, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : self.titleFont} context:nil].size.height;
     }
 }

@@ -10,7 +10,6 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-
 /**
  垂直方向的缩放值范围：minVerticalFontScale~maxVerticalFontScale；
  垂直方向cellSpacing范围：minVerticalCellSpacing~maxVerticalCellSpacing，用于达到缩小时cell更加紧凑

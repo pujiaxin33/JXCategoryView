@@ -18,8 +18,7 @@
 
 @implementation JXCategoryTitleCell
 
-- (void)initializeViews
-{
+- (void)initializeViews {
     [super initializeViews];
 
     self.isAccessibilityElement = true;
@@ -77,8 +76,6 @@
             self.titleLabelCenterY.constant = myCellModel.titleHeight/2 + myCellModel.titleLabelVerticalOffset + myCellModel.titleLabelZoomSelectedVerticalOffset*percent;
             break;
         }
-        default:
-            break;
     }
 }
 
@@ -98,18 +95,18 @@
         if (myCellModel.isSelectedAnimationEnabled && [self checkCanStartSelectedAnimation:myCellModel]) {
             JXCategoryCellSelectedAnimationBlock block = [self preferredTitleZoomAnimationBlock:myCellModel baseScale:baseScale];
             [self addSelectedAnimationBlock:block];
-        }else {
+        } else {
             self.titleLabel.font = maxScaleFont;
             self.maskTitleLabel.font = maxScaleFont;
             CGAffineTransform currentTransform = CGAffineTransformMakeScale(baseScale*myCellModel.titleLabelCurrentZoomScale, baseScale*myCellModel.titleLabelCurrentZoomScale);
             self.titleLabel.transform = currentTransform;
             self.maskTitleLabel.transform = currentTransform;
         }
-    }else {
+    } else {
         if (myCellModel.isSelected) {
             self.titleLabel.font = myCellModel.titleSelectedFont;
             self.maskTitleLabel.font = myCellModel.titleSelectedFont;
-        }else {
+        } else {
             self.titleLabel.font = myCellModel.titleFont;
             self.maskTitleLabel.font = myCellModel.titleFont;
         }
@@ -121,12 +118,12 @@
         if (myCellModel.isSelectedAnimationEnabled && [self checkCanStartSelectedAnimation:myCellModel]) {
             JXCategoryCellSelectedAnimationBlock block = [self preferredTitleStrokeWidthAnimationBlock:myCellModel attributedString:attributedString];
             [self addSelectedAnimationBlock:block];
-        }else {
+        } else {
             [attributedString addAttribute:NSStrokeWidthAttributeName value:@(myCellModel.titleLabelCurrentStrokeWidth) range:NSMakeRange(0, titleString.length)];
             self.titleLabel.attributedText = attributedString;
             self.maskTitleLabel.attributedText = attributedString;
         }
-    }else {
+    } else {
         self.titleLabel.attributedText = attributedString;
         self.maskTitleLabel.attributedText = attributedString;
     }
@@ -148,7 +145,7 @@
             topMaskframe.origin.x -= (self.maskTitleLabel.bounds.size.width -self.bounds.size.width)/2;
             bottomMaskFrame.size.width = self.maskTitleLabel.bounds.size.width;
             maskStartX = -(self.maskTitleLabel.bounds.size.width -self.bounds.size.width)/2;
-        }else {
+        } else {
             bottomMaskFrame.size.width = self.bounds.size.width;
             topMaskframe.origin.x -= (self.bounds.size.width -self.maskTitleLabel.bounds.size.width)/2;
             maskStartX = 0;
@@ -156,7 +153,7 @@
         bottomMaskFrame.origin.x = topMaskframe.origin.x;
         if (topMaskframe.origin.x > maskStartX) {
             bottomMaskFrame.origin.x = topMaskframe.origin.x - bottomMaskFrame.size.width;
-        }else {
+        } else {
             bottomMaskFrame.origin.x = CGRectGetMaxX(topMaskframe);
         }
 
@@ -166,18 +163,18 @@
             self.titleLabel.layer.mask = self.titleMaskLayer;
             self.maskTitleMaskLayer.frame = topMaskframe;
             self.titleMaskLayer.frame = bottomMaskFrame;
-        }else {
+        } else {
             self.maskTitleMaskLayer.frame = topMaskframe;
             self.titleLabel.layer.mask = nil;
         }
         [CATransaction commit];
-    }else {
+    } else {
         self.maskTitleLabel.hidden = YES;
         self.titleLabel.layer.mask = nil;
         if (myCellModel.isSelectedAnimationEnabled && [self checkCanStartSelectedAnimation:myCellModel]) {
             JXCategoryCellSelectedAnimationBlock block = [self preferredTitleColorAnimationBlock:myCellModel];
             [self addSelectedAnimationBlock:block];
-        }else {
+        } else {
            self.titleLabel.textColor = myCellModel.titleCurrentColor;
         }
     }
@@ -191,7 +188,7 @@
         if (cellModel.isSelected) {
             //将要选中，scale从小到大插值渐变
             cellModel.titleLabelCurrentZoomScale = [JXCategoryFactory interpolationFrom:cellModel.titleLabelNormalZoomScale to:cellModel.titleLabelSelectedZoomScale percent:percent];
-        }else {
+        } else {
             //将要取消选中，scale从大到小插值渐变
             cellModel.titleLabelCurrentZoomScale = [JXCategoryFactory interpolationFrom:cellModel.titleLabelSelectedZoomScale to:cellModel.titleLabelNormalZoomScale percent:percent];
         }
@@ -207,7 +204,7 @@
         if (cellModel.isSelected) {
             //将要选中，StrokeWidth从小到大插值渐变
             cellModel.titleLabelCurrentStrokeWidth = [JXCategoryFactory interpolationFrom:cellModel.titleLabelNormalStrokeWidth to:cellModel.titleLabelSelectedStrokeWidth percent:percent];
-        }else {
+        } else {
             //将要取消选中，StrokeWidth从大到小插值渐变
             cellModel.titleLabelCurrentStrokeWidth = [JXCategoryFactory interpolationFrom:cellModel.titleLabelSelectedStrokeWidth to:cellModel.titleLabelNormalStrokeWidth percent:percent];
         }
@@ -223,7 +220,7 @@
         if (cellModel.isSelected) {
             //将要选中，textColor从titleNormalColor到titleSelectedColor插值渐变
             cellModel.titleCurrentColor = [JXCategoryFactory interpolationColorFrom:cellModel.titleNormalColor to:cellModel.titleSelectedColor percent:percent];
-        }else {
+        } else {
             //将要取消选中，textColor从titleSelectedColor到titleNormalColor插值渐变
             cellModel.titleCurrentColor = [JXCategoryFactory interpolationColorFrom:cellModel.titleSelectedColor to:cellModel.titleNormalColor percent:percent];
         }

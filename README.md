@@ -43,7 +43,7 @@ ImageView滚动效果(足球)  |  <img src="https://github.com/pujiaxin33/JXExam
 混合使用 |  <img src="https://github.com/pujiaxin33/JXExampleImages/blob/master/JXCategoryView/Mixed.gif" width="343" height="80"> |
 
 以下均支持上下位置切换：
-JXCategoryIndicatorLineView、JXCategoryIndicatorImageView、JXCategoryIndicatorBallView、JXCategoryIndicatorTriangleView
+`JXCategoryIndicatorLineView`、`JXCategoryIndicatorImageView`、`JXCategoryIndicatorBallView`、`JXCategoryIndicatorTriangleView`
 
 ### Cell样式效果预览
 

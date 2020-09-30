@@ -10,8 +10,7 @@
 
 @implementation JXCategoryNumberView
 
-- (void)dealloc
-{
+- (void)dealloc {
     self.numberStringFormatterBlock = nil;
 }
 
@@ -32,12 +31,12 @@
 }
 
 - (void)refreshDataSource {
-    NSMutableArray *tempArray = [NSMutableArray array];
+    NSMutableArray *tempArray = [NSMutableArray arrayWithCapacity:self.titles.count];
     for (int i = 0; i < self.titles.count; i++) {
         JXCategoryNumberCellModel *cellModel = [[JXCategoryNumberCellModel alloc] init];
         [tempArray addObject:cellModel];
     }
-    self.dataSource = tempArray;
+    self.dataSource = [NSArray arrayWithArray:tempArray];
 }
 
 - (void)refreshCellModel:(JXCategoryBaseCellModel *)cellModel index:(NSInteger)index {

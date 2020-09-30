@@ -23,14 +23,14 @@
         if (myCellModel.isSelectedAnimationEnabled && [self checkCanStartSelectedAnimation:myCellModel]) {
             JXCategoryCellSelectedAnimationBlock block = [self preferredTitleZoomAnimationBlock:myCellModel baseScale:baseScale];
             [self addSelectedAnimationBlock:block];
-        }else {
+        } else {
             self.titleLabel.font = maxScaleFont;
             self.maskTitleLabel.font = maxScaleFont;
             CGAffineTransform currentTransform = CGAffineTransformMakeScale(baseScale*myCellModel.titleLabelCurrentZoomScale, baseScale*myCellModel.titleLabelCurrentZoomScale);
             self.titleLabel.transform = currentTransform;
             self.maskTitleLabel.transform = currentTransform;
         }
-    }else {
+    } else {
         if (myCellModel.isSelected) {
             self.titleLabel.font = myCellModel.titleSelectedFont;
             self.maskTitleLabel.font = myCellModel.titleSelectedFont;

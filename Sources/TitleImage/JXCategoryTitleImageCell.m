@@ -60,89 +60,74 @@
     self.imageViewWidthConstraint.constant = imageSize.width;
     self.imageViewHeightConstraint.constant = imageSize.height;
     self.stackView.spacing = myCellModel.titleImageSpacing;
+    
     switch (myCellModel.imageType) {
-
-        case JXCategoryTitleImageType_TopImage:
-        {
+        case JXCategoryTitleImageType_TopImage: {
             self.stackView.axis = UILayoutConstraintAxisVertical;
             [self.stackView addArrangedSubview:self.imageView];
             [self.stackView addArrangedSubview:self.titleLabel];
-        }
             break;
-
-        case JXCategoryTitleImageType_LeftImage:
-        {
+        }
+        case JXCategoryTitleImageType_LeftImage: {
             self.stackView.axis = UILayoutConstraintAxisHorizontal;
             [self.stackView addArrangedSubview:self.imageView];
             [self.stackView addArrangedSubview:self.titleLabel];
-        }
             break;
-
-        case JXCategoryTitleImageType_BottomImage:
-        {
+        }
+        case JXCategoryTitleImageType_BottomImage: {
             self.stackView.axis = UILayoutConstraintAxisVertical;
             [self.stackView addArrangedSubview:self.titleLabel];
             [self.stackView addArrangedSubview:self.imageView];
-        }
             break;
-
-        case JXCategoryTitleImageType_RightImage:
-        {
+        }
+        case JXCategoryTitleImageType_RightImage: {
             self.stackView.axis = UILayoutConstraintAxisHorizontal;
             [self.stackView addArrangedSubview:self.titleLabel];
             [self.stackView addArrangedSubview:self.imageView];
-        }
             break;
-
-        case JXCategoryTitleImageType_OnlyImage:
-        {
+        }
+        case JXCategoryTitleImageType_OnlyImage: {
             self.titleLabel.hidden = YES;
             [self.stackView addArrangedSubview:self.imageView];
-        }
             break;
-
-        case JXCategoryTitleImageType_OnlyTitle:
-        {
+        }
+        case JXCategoryTitleImageType_OnlyTitle: {
             self.imageView.hidden = YES;
             [self.stackView addArrangedSubview:self.titleLabel];
+            break;
         }
-            break;
-
-        default:
-            break;
     }
 
     //因为`- (void)reloadData:(JXCategoryBaseCellModel *)cellModel`方法会回调多次，尤其是左右滚动的时候会调用无数次，如果每次都触发图片加载，会非常消耗性能。所以只会在图片发生了变化的时候，才进行图片加载。
-    NSString *currentImageName = nil;
-    NSURL *currentImageURL = nil;
-    if (myCellModel.imageName != nil) {
+    NSString *currentImageName;
+    NSURL *currentImageURL;
+    if (myCellModel.imageName) {
         currentImageName = myCellModel.imageName;
-    }else if (myCellModel.imageURL != nil) {
+    } else if (myCellModel.imageURL) {
         currentImageURL = myCellModel.imageURL;
     }
     if (myCellModel.isSelected) {
-        if (myCellModel.selectedImageName != nil) {
+        if (myCellModel.selectedImageName) {
             currentImageName = myCellModel.selectedImageName;
-        }else if (myCellModel.selectedImageURL != nil) {
+        } else if (myCellModel.selectedImageURL) {
             currentImageURL = myCellModel.selectedImageURL;
         }
     }
-    if (currentImageName != nil && ![currentImageName isEqualToString:self.currentImageName]) {
+    if (currentImageName && ![currentImageName isEqualToString:self.currentImageName]) {
         self.currentImageName = currentImageName;
         self.imageView.image = [UIImage imageNamed:currentImageName];
-    }else if (currentImageURL != nil && ![currentImageURL.absoluteString isEqualToString:self.currentImageURL.absoluteString]) {
+    } else if (currentImageURL && ![currentImageURL.absoluteString isEqualToString:self.currentImageURL.absoluteString]) {
         self.currentImageURL = currentImageURL;
-        if (myCellModel.loadImageCallback != nil) {
+        if (myCellModel.loadImageCallback) {
             myCellModel.loadImageCallback(self.imageView, currentImageURL);
         }
     }
 
     if (myCellModel.isImageZoomEnabled) {
         self.imageView.transform = CGAffineTransformMakeScale(myCellModel.imageZoomScale, myCellModel.imageZoomScale);
-    }else {
+    } else {
         self.imageView.transform = CGAffineTransformIdentity;
     }
 }
-
 
 @end

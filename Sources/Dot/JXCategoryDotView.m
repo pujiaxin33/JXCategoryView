@@ -25,12 +25,12 @@
 }
 
 - (void)refreshDataSource {
-    NSMutableArray *tempArray = [NSMutableArray array];
+    NSMutableArray *tempArray = [NSMutableArray arrayWithCapacity:self.titles.count];
     for (int i = 0; i < self.titles.count; i++) {
         JXCategoryDotCellModel *cellModel = [[JXCategoryDotCellModel alloc] init];
         [tempArray addObject:cellModel];
     }
-    self.dataSource = tempArray;
+    self.dataSource = [NSArray arrayWithArray:tempArray];
 }
 
 - (void)refreshCellModel:(JXCategoryBaseCellModel *)cellModel index:(NSInteger)index {
