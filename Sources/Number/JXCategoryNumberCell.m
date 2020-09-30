@@ -9,6 +9,16 @@
 #import "JXCategoryNumberCell.h"
 #import "JXCategoryNumberCellModel.h"
 
+<<<<<<< HEAD
+=======
+@interface JXCategoryNumberCell ()
+@property (nonatomic, strong) NSLayoutConstraint *numberCenterXConstraint;
+@property (nonatomic, strong) NSLayoutConstraint *numberCenterYConstraint;
+@property (nonatomic, strong) NSLayoutConstraint *numberHeightConstraint;
+@property (nonatomic, strong) NSLayoutConstraint *numberWidthConstraint;
+@end
+
+>>>>>>> 0d3e236bbefe737493edd6287983b88b4ccaf517
 @implementation JXCategoryNumberCell
 
 - (void)prepareForReuse {
@@ -24,6 +34,7 @@
     self.numberLabel.textAlignment = NSTextAlignmentCenter;
     self.numberLabel.layer.masksToBounds = YES;
     [self.contentView addSubview:self.numberLabel];
+<<<<<<< HEAD
 }
 
 - (void)layoutSubviews {
@@ -38,6 +49,14 @@
         self.numberLabel.bounds = CGRectMake(0, 0, self.numberLabel.bounds.size.width + myCellModel.numberLabelWidthIncrement, myCellModel.numberLabelHeight);
     }
     self.numberLabel.center = CGPointMake(CGRectGetMaxX(self.titleLabel.frame)+myCellModel.numberLabelOffset.x, CGRectGetMinY(self.titleLabel.frame)+myCellModel.numberLabelOffset.y);
+=======
+    self.numberLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    self.numberCenterXConstraint = [self.numberLabel.centerXAnchor constraintEqualToAnchor:self.titleLabel.trailingAnchor];
+    self.numberCenterYConstraint = [self.numberLabel.centerYAnchor constraintEqualToAnchor:self.titleLabel.topAnchor];
+    self.numberHeightConstraint = [self.numberLabel.heightAnchor constraintEqualToConstant:0];
+    self.numberWidthConstraint = [self.numberLabel.widthAnchor constraintEqualToConstant:0];
+    [NSLayoutConstraint activateConstraints:@[self.numberCenterXConstraint, self.numberCenterYConstraint, self.numberWidthConstraint, self.numberHeightConstraint]];
+>>>>>>> 0d3e236bbefe737493edd6287983b88b4ccaf517
 }
 
 - (void)reloadData:(JXCategoryBaseCellModel *)cellModel {
@@ -49,8 +68,15 @@
     self.numberLabel.font = myCellModel.numberLabelFont;
     self.numberLabel.textColor = myCellModel.numberTitleColor;
     self.numberLabel.text = myCellModel.numberString;
-
-    [self setNeedsLayout];
+    self.numberLabel.layer.cornerRadius = myCellModel.numberLabelHeight/2.0;
+    self.numberHeightConstraint.constant = myCellModel.numberLabelHeight;
+    self.numberCenterXConstraint.constant = myCellModel.numberLabelOffset.x;
+    self.numberCenterYConstraint.constant = myCellModel.numberLabelOffset.y;
+    if (myCellModel.count < 10 && myCellModel.shouldMakeRoundWhenSingleNumber) {
+        self.numberWidthConstraint.constant = myCellModel.numberLabelHeight;
+    }else {
+        self.numberWidthConstraint.constant = myCellModel.numberStringWidth + myCellModel.numberLabelWidthIncrement;
+    }
 }
 
 @end

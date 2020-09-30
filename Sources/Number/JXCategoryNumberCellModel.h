@@ -12,6 +12,7 @@
 
 @property (nonatomic, assign) NSInteger count;
 @property (nonatomic, copy) NSString *numberString;
+@property (nonatomic, assign, readonly) CGFloat numberStringWidth;
 @property (nonatomic, copy) void(^numberStringFormatterBlock)(NSInteger number);
 @property (nonatomic, strong) UIColor *numberBackgroundColor;
 @property (nonatomic, strong) UIColor *numberTitleColor;
