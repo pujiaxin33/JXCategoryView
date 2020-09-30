@@ -54,26 +54,6 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
 
-<<<<<<< HEAD
-    //因为titleLabel是通过约束布局的，在layoutSubviews方法中，它的frame并没有确定。像子类JXCategoryNumberCell中的numberLabel需要依赖于titleLabel的frame进行布局。所以这里必须立马触发self.contentView的视图布局。
-    [self.contentView setNeedsLayout];
-    [self.contentView layoutIfNeeded];
-    
-    JXCategoryTitleCellModel *myCellModel = (JXCategoryTitleCellModel *)self.cellModel;
-    switch (myCellModel.titleLabelAnchorPointStyle) {
-        case JXCategoryTitleLabelAnchorPointStyleCenter: {
-            self.titleLabelCenterY.constant = 0 + myCellModel.titleLabelVerticalOffset;
-            break;
-        }
-        case JXCategoryTitleLabelAnchorPointStyleTop: {
-            CGFloat percent = (myCellModel.titleLabelCurrentZoomScale - myCellModel.titleLabelNormalZoomScale)/(myCellModel.titleLabelSelectedZoomScale - myCellModel.titleLabelNormalZoomScale);
-            self.titleLabelCenterY.constant = -self.titleLabel.bounds.size.height/2 - myCellModel.titleLabelVerticalOffset - myCellModel.titleLabelZoomSelectedVerticalOffset*percent;
-             break;
-        }
-        case JXCategoryTitleLabelAnchorPointStyleBottom: {
-            CGFloat percent = (myCellModel.titleLabelCurrentZoomScale - myCellModel.titleLabelNormalZoomScale)/(myCellModel.titleLabelSelectedZoomScale - myCellModel.titleLabelNormalZoomScale);
-            self.titleLabelCenterY.constant = self.titleLabel.bounds.size.height/2 + myCellModel.titleLabelVerticalOffset + myCellModel.titleLabelZoomSelectedVerticalOffset*percent;
-=======
     JXCategoryTitleCellModel *myCellModel = (JXCategoryTitleCellModel *)self.cellModel;
     switch (myCellModel.titleLabelAnchorPointStyle) {
         case JXCategoryTitleLabelAnchorPointStyleCenter: {
@@ -96,10 +76,6 @@
             self.titleLabelCenterY.constant = myCellModel.titleHeight/2 + myCellModel.titleLabelVerticalOffset + myCellModel.titleLabelZoomSelectedVerticalOffset*percent;
             break;
         }
-        default:
->>>>>>> 0d3e236bbefe737493edd6287983b88b4ccaf517
-            break;
-        }
     }
 }
 
@@ -111,27 +87,6 @@
     self.accessibilityLabel = myCellModel.title;
     self.titleLabel.numberOfLines = myCellModel.titleNumberOfLines;
     self.maskTitleLabel.numberOfLines = myCellModel.titleNumberOfLines;
-<<<<<<< HEAD
-    
-    switch (myCellModel.titleLabelAnchorPointStyle) {
-        case JXCategoryTitleLabelAnchorPointStyleCenter: {
-            self.titleLabel.layer.anchorPoint = CGPointMake(0.5, 0.5);
-            self.maskTitleLabel.layer.anchorPoint = CGPointMake(0.5, 0.5);
-            break;
-        }
-        case JXCategoryTitleLabelAnchorPointStyleTop: {
-            self.titleLabel.layer.anchorPoint = CGPointMake(0.5, 0);
-            self.maskTitleLabel.layer.anchorPoint = CGPointMake(0.5, 0);
-            break;
-        }
-        case JXCategoryTitleLabelAnchorPointStyleBottom: {
-            self.titleLabel.layer.anchorPoint = CGPointMake(0.5, 1);
-            self.maskTitleLabel.layer.anchorPoint = CGPointMake(0.5, 1);
-            break;
-        }
-    }
-=======
->>>>>>> 0d3e236bbefe737493edd6287983b88b4ccaf517
 
     if (myCellModel.isTitleLabelZoomEnabled) {
         //先把font设置为缩放的最大值，再缩小到最小值，最后根据当前的titleLabelZoomScale值，进行缩放更新。这样就能避免transform从小到大时字体模糊

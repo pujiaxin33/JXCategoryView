@@ -60,86 +60,40 @@
     self.imageViewWidthConstraint.constant = imageSize.width;
     self.imageViewHeightConstraint.constant = imageSize.height;
     self.stackView.spacing = myCellModel.titleImageSpacing;
+    
     switch (myCellModel.imageType) {
-<<<<<<< HEAD
         case JXCategoryTitleImageType_TopImage: {
-            CGFloat contentHeight = imageSize.height + myCellModel.titleImageSpacing + self.titleLabel.bounds.size.height;
-            self.imageView.center = CGPointMake(self.contentView.center.x, (self.contentView.bounds.size.height - contentHeight)/2 + imageSize.height/2);
-            [self refreshTitleLabelCenter:CGPointMake(self.contentView.center.x, CGRectGetMaxY(self.imageView.frame) + myCellModel.titleImageSpacing + self.titleLabel.bounds.size.height/2)];
+            self.stackView.axis = UILayoutConstraintAxisVertical;
+            [self.stackView addArrangedSubview:self.imageView];
+            [self.stackView addArrangedSubview:self.titleLabel];
             break;
         }
         case JXCategoryTitleImageType_LeftImage: {
-            CGFloat contentWidth = imageSize.width + myCellModel.titleImageSpacing + self.titleLabel.bounds.size.width;
-            self.imageView.center = CGPointMake((self.contentView.bounds.size.width - contentWidth)/2 + imageSize.width/2, self.contentView.center.y);
-            [self refreshTitleLabelCenter:CGPointMake(CGRectGetMaxX(self.imageView.frame) + myCellModel.titleImageSpacing + self.titleLabel.bounds.size.width/2, self.contentView.center.y)];
+            self.stackView.axis = UILayoutConstraintAxisHorizontal;
+            [self.stackView addArrangedSubview:self.imageView];
+            [self.stackView addArrangedSubview:self.titleLabel];
             break;
         }
         case JXCategoryTitleImageType_BottomImage: {
-            CGFloat contentHeight = imageSize.height + myCellModel.titleImageSpacing + self.titleLabel.bounds.size.height;
-            [self refreshTitleLabelCenter:CGPointMake(self.contentView.center.x, (self.contentView.bounds.size.height - contentHeight)/2 + self.titleLabel.bounds.size.height/2)];
-            self.imageView.center = CGPointMake(self.contentView.center.x, CGRectGetMaxY(self.titleLabel.frame) + myCellModel.titleImageSpacing + imageSize.height/2);
+            self.stackView.axis = UILayoutConstraintAxisVertical;
+            [self.stackView addArrangedSubview:self.titleLabel];
+            [self.stackView addArrangedSubview:self.imageView];
             break;
         }
         case JXCategoryTitleImageType_RightImage: {
-            CGFloat contentWidth = imageSize.width + myCellModel.titleImageSpacing + self.titleLabel.bounds.size.width;
-            [self refreshTitleLabelCenter:CGPointMake((self.contentView.bounds.size.width - contentWidth)/2 + self.titleLabel.bounds.size.width/2, self.contentView.center.y)];
-            self.imageView.center = CGPointMake(CGRectGetMaxX(self.titleLabel.frame) + myCellModel.titleImageSpacing + imageSize.width/2, self.contentView.center.y);
-=======
-
-        case JXCategoryTitleImageType_TopImage:
-        {
-            self.stackView.axis = UILayoutConstraintAxisVertical;
-            [self.stackView addArrangedSubview:self.imageView];
-            [self.stackView addArrangedSubview:self.titleLabel];
-        }
-            break;
-
-        case JXCategoryTitleImageType_LeftImage:
-        {
-            self.stackView.axis = UILayoutConstraintAxisHorizontal;
-            [self.stackView addArrangedSubview:self.imageView];
-            [self.stackView addArrangedSubview:self.titleLabel];
-        }
-            break;
-
-        case JXCategoryTitleImageType_BottomImage:
-        {
-            self.stackView.axis = UILayoutConstraintAxisVertical;
-            [self.stackView addArrangedSubview:self.titleLabel];
-            [self.stackView addArrangedSubview:self.imageView];
-        }
-            break;
-
-        case JXCategoryTitleImageType_RightImage:
-        {
             self.stackView.axis = UILayoutConstraintAxisHorizontal;
             [self.stackView addArrangedSubview:self.titleLabel];
             [self.stackView addArrangedSubview:self.imageView];
-        }
->>>>>>> 0d3e236bbefe737493edd6287983b88b4ccaf517
             break;
         }
         case JXCategoryTitleImageType_OnlyImage: {
             self.titleLabel.hidden = YES;
-<<<<<<< HEAD
-            self.imageView.center = self.contentView.center;
-=======
             [self.stackView addArrangedSubview:self.imageView];
-        }
->>>>>>> 0d3e236bbefe737493edd6287983b88b4ccaf517
             break;
         }
         case JXCategoryTitleImageType_OnlyTitle: {
             self.imageView.hidden = YES;
-<<<<<<< HEAD
-            [self refreshTitleLabelCenter:self.contentView.center];
-=======
             [self.stackView addArrangedSubview:self.titleLabel];
-        }
-            break;
-
-        default:
->>>>>>> 0d3e236bbefe737493edd6287983b88b4ccaf517
             break;
         }
     }
@@ -175,6 +129,5 @@
         self.imageView.transform = CGAffineTransformIdentity;
     }
 }
-
 
 @end

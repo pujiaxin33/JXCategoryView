@@ -30,7 +30,7 @@
 }
 
 - (UIFont *)titleSelectedFont {
-    if (_titleSelectedFont != nil) {
+    if (_titleSelectedFont) {
         return _titleSelectedFont;
     }
     return self.titleFont;
