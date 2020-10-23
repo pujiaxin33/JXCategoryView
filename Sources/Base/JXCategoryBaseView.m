@@ -109,6 +109,9 @@ struct DelegateFlags {
     //如果向下取整导致了你的页面异常，请自己重新设置JXCategoryView的高度，保证为整数即可。
     CGRect targetFrame = CGRectMake(0, 0, self.bounds.size.width, floor(self.bounds.size.height));
     if (self.isFirstLayoutSubviews) {
+        if (self.bounds.size.width == 0 || self.bounds.size.height == 0) {
+            return;
+        }
         self.firstLayoutSubviews = NO;
         self.collectionView.frame = targetFrame;
         [self reloadDataWithoutListContainer];
