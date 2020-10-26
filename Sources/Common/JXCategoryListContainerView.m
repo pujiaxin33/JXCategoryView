@@ -242,7 +242,7 @@
         [self.delegate listContainerViewDidScroll:scrollView];
     }
 
-    if (!scrollView.isDragging && !scrollView.isTracking) {
+    if (!scrollView.isDragging && !scrollView.isTracking && !scrollView.isDecelerating) {
         return;
     }
     CGFloat ratio = scrollView.contentOffset.x/scrollView.bounds.size.width;
