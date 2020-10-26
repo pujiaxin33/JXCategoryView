@@ -358,7 +358,9 @@ struct DelegateFlags {
         self.collectionView.prefetchingEnabled = NO;
     }
     if (@available(iOS 11.0, *)) {
-        self.collectionView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+        if ([self.collectionView respondsToSelector:@selector(setContentInsetAdjustmentBehavior:)]) {
+            self.collectionView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+        }
     }
     if ([RTLManager supportRTL]) {
         self.collectionView.semanticContentAttribute = UISemanticContentAttributeForceLeftToRight;
