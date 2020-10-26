@@ -31,6 +31,7 @@ struct DelegateFlags {
 @property (nonatomic, assign) NSInteger scrollingTargetIndex;
 @property (nonatomic, assign, getter=isNeedReloadByBecomeActive) BOOL needReloadByBecomeActive;
 @property (nonatomic, assign, getter=isFirstLayoutSubviews) BOOL firstLayoutSubviews;
+@property (nonatomic, assign, getter=isNeedConfigAutomaticallyAdjustsScrollViewInsets) BOOL needConfigAutomaticallyAdjustsScrollViewInsets;
 
 @end
 
@@ -65,14 +66,7 @@ struct DelegateFlags {
 - (void)willMoveToSuperview:(UIView *)newSuperview {
     [super willMoveToSuperview:newSuperview];
 
-    UIResponder *next = newSuperview;
-    while (next) {
-        if ([next isKindOfClass:[UIViewController class]]) {
-            ((UIViewController *)next).automaticallyAdjustsScrollViewInsets = NO;
-            break;
-        }
-        next = next.nextResponder;
-    }
+    [self configAutomaticallyAdjustsScrollViewInsets:newSuperview];
 }
 
 - (void)reloadData {
@@ -111,6 +105,9 @@ struct DelegateFlags {
     if (self.isFirstLayoutSubviews) {
         if (self.bounds.size.width == 0 || self.bounds.size.height == 0) {
             return;
+        }
+        if (self.isNeedConfigAutomaticallyAdjustsScrollViewInsets) {
+            [self configAutomaticallyAdjustsScrollViewInsets:self.superview];
         }
         self.firstLayoutSubviews = NO;
         self.collectionView.frame = targetFrame;
@@ -225,6 +222,21 @@ struct DelegateFlags {
 }
 
 #pragma mark - Private
+
+- (void)configAutomaticallyAdjustsScrollViewInsets:(UIView *)view {
+    UIResponder *next = view;
+    while (next != nil) {
+        if ([next isKindOfClass:[UIViewController class]]) {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+            ((UIViewController *)next).automaticallyAdjustsScrollViewInsets = NO;
+#pragma clang diagnostic pop
+            self.needConfigAutomaticallyAdjustsScrollViewInsets = NO;
+            break;
+        }
+        next = next.nextResponder;
+    }
+}
 
 - (CGFloat)getContentEdgeInsetLeft {
     if (self.contentEdgeInsetLeft == JXCategoryViewAutomaticDimension) {
@@ -357,9 +369,7 @@ struct DelegateFlags {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidBecomeActive:) name:UIApplicationDidBecomeActiveNotification object:nil];
 }
 
-- (void)refreshDataSource {
-
-}
+- (void)refreshDataSource {}
 
 - (void)refreshState {
     if (self.selectedIndex < 0 || self.selectedIndex >= self.dataSource.count) {
