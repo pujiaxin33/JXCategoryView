@@ -31,7 +31,8 @@ static const CGFloat JXheightForHeaderInSection = 50;
 
     _userHeaderView = [[PagingViewTableHeaderView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, JXTableHeaderViewHeight)];
 
-    _categoryView = [[JXCategoryTitleView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, JXheightForHeaderInSection)];
+    _categoryView = [[JXCategoryTitleView alloc] init];
+    self.categoryView.bounds = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, JXheightForHeaderInSection);
     self.categoryView.titles = self.titles;
     self.categoryView.backgroundColor = [UIColor whiteColor];
     self.categoryView.delegate = self;

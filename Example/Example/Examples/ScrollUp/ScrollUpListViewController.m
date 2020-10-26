@@ -20,7 +20,9 @@
 
     self.tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
     if (@available(iOS 11.0, *)) {
-        self.tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+        if ([self.tableView respondsToSelector:@selector(setContentInsetAdjustmentBehavior:)]) {
+            self.tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+        }
     }
     self.tableView.dataSource = self;
     self.tableView.delegate = self;

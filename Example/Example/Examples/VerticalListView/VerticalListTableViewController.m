@@ -49,7 +49,9 @@ static const NSUInteger VerticalListPinSectionIndex = 1;    //悬浮固定sectio
         [weakSelf updateSectionHeaderAttributes];
     };
     if (@available(iOS 11.0, *)) {
-        self.tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+        if ([self.tableView respondsToSelector:@selector(setContentInsetAdjustmentBehavior:)]) {
+            self.tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+        }
     }
     [self.view addSubview:self.tableView];
 
