@@ -14,6 +14,8 @@
 
 @implementation DetailViewController
 
+#pragma mark - View life cycle
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 

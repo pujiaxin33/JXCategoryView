@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+/// 3.「特殊效果」列表视图控制器
 @interface SpecialCustomizeViewController : UITableViewController
 
 @end

@@ -136,7 +136,7 @@
 		1B2A9F144FC93CA35A925108DB775190 /* JXCategoryBaseCellModel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = JXCategoryBaseCellModel.h; sourceTree = "<group>"; };
 		1C97CF25F7CFE80E4ACA6BF85CB20B37 /* JXCategoryBaseCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = JXCategoryBaseCell.m; sourceTree = "<group>"; };
 		1E06415C6DB6CB8B53C2980E2FC6533E /* JXCategoryTitleView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = JXCategoryTitleView.m; sourceTree = "<group>"; };
-		1F667CC0E19EAF34E5A4119E2121F585 /* libPods-Example.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-Example.a"; path = "libPods-Example.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1F667CC0E19EAF34E5A4119E2121F585 /* libPods-Example.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Example.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		20DA6390A4D4D560C40B0E31EB2F1359 /* JXCategoryDotView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = JXCategoryDotView.h; sourceTree = "<group>"; };
 		25491CFCF8C67A99E2C4DD736C887DC3 /* JXCategoryBaseView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = JXCategoryBaseView.h; sourceTree = "<group>"; };
 		2662B87F9A53A080EA0F2EB03D6A4FC4 /* JXCategoryIndicatorCellModel.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = JXCategoryIndicatorCellModel.m; sourceTree = "<group>"; };
@@ -145,7 +145,7 @@
 		2970B6F55A22C35A17AB455C98E3F075 /* JXCategoryTitleView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = JXCategoryTitleView.h; sourceTree = "<group>"; };
 		2B105956A46A5950CD9B3C92A98EDF47 /* JXCategoryIndicatorTriangleView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = JXCategoryIndicatorTriangleView.h; sourceTree = "<group>"; };
 		2BCBB6871422CF167CBD6D89377B74E1 /* JXCategoryFactory.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = JXCategoryFactory.h; sourceTree = "<group>"; };
-		2F4A1CCB21DB7EA5A2ACEB11E374FBCA /* libJXPagingView.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libJXPagingView.a; path = libJXPagingView.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		2F4A1CCB21DB7EA5A2ACEB11E374FBCA /* libJXPagingView.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libJXPagingView.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		3142DFB18A116E90BF0D31A12EB927EF /* JXCategoryTitleImageCellModel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = JXCategoryTitleImageCellModel.h; sourceTree = "<group>"; };
 		330FBFC03804BA3673BAA4A7CFD5DDF8 /* JXPagerListRefreshView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = JXPagerListRefreshView.h; path = Sources/JXPagerView/JXPagerListRefreshView.h; sourceTree = "<group>"; };
 		34216C02CA0A371647C82B314C5BE751 /* JXPagerListRefreshView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = JXPagerListRefreshView.m; path = Sources/JXPagerView/JXPagerListRefreshView.m; sourceTree = "<group>"; };
@@ -156,14 +156,14 @@
 		4258A8E207DAFF3A78FE1D05248F80E0 /* JXCategoryTitleCellModel.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = JXCategoryTitleCellModel.m; sourceTree = "<group>"; };
 		438F1A3B2AECC0CA4472C4F4AB885740 /* JXCategoryIndicatorTriangleView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = JXCategoryIndicatorTriangleView.m; sourceTree = "<group>"; };
 		44BDDA9EC089C5C0B8F7377DB539DAAF /* JXCategoryView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "JXCategoryView-prefix.pch"; sourceTree = "<group>"; };
-		4638B48E8596789398EF8950D6A8E64B /* JXCategoryView.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = JXCategoryView.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		4638B48E8596789398EF8950D6A8E64B /* JXCategoryView.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = JXCategoryView.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		485BFCAF2C8BDE2C23B1E8470C64650A /* JXCategoryIndicatorParamsModel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = JXCategoryIndicatorParamsModel.h; sourceTree = "<group>"; };
 		4A2790F0E2E4808754500256FB841C22 /* JXCategoryDotCellModel.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = JXCategoryDotCellModel.m; sourceTree = "<group>"; };
 		4CFF9F6F2133DC199DBBD31B6CB6AAEF /* JXCategoryIndicatorBallView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = JXCategoryIndicatorBallView.h; sourceTree = "<group>"; };
 		4F7094B9276BE57AB38027732165E048 /* JXCategoryIndicatorProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = JXCategoryIndicatorProtocol.h; sourceTree = "<group>"; };
 		52996A69ACA45AE2EB95E84DB2D68E6E /* JXCategoryImageView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = JXCategoryImageView.m; sourceTree = "<group>"; };
 		52A09D79FE2C507D06553D88F9EC3FDB /* JXCategoryNumberView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = JXCategoryNumberView.m; sourceTree = "<group>"; };
-		52C929859047E97204595929AD5DD9A1 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		52C929859047E97204595929AD5DD9A1 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		56694FA1F17D480D428E7DBB7F5A1CE7 /* JXCategoryTitleVerticalZoomView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = JXCategoryTitleVerticalZoomView.h; sourceTree = "<group>"; };
 		56C0B2B0CC7928E85827E8786AE79B64 /* JXCategoryTitleCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = JXCategoryTitleCell.h; sourceTree = "<group>"; };
 		5AAB0BE16ACE4F1C4D521EE2C8BF1BFA /* JXPagingView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "JXPagingView-dummy.m"; sourceTree = "<group>"; };
@@ -188,14 +188,14 @@
 		873CDB2CE2AB3D55E7F7846B54D0067E /* Pods-Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Example.debug.xcconfig"; sourceTree = "<group>"; };
 		886157D5F1A9097FD50C1C728B8DB50C /* JXCategoryTitleCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = JXCategoryTitleCell.m; sourceTree = "<group>"; };
 		8A035700557E8B0EF5A4A3620392840C /* JXCategoryDotCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = JXCategoryDotCell.h; sourceTree = "<group>"; };
-		8BA5B9249C77DD58EEB4F87347436FD3 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		8BA5B9249C77DD58EEB4F87347436FD3 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		905319C7A367E5F2513556A6311FF2FB /* JXPagerSmoothView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = JXPagerSmoothView.h; path = Sources/JXPagerView/JXPagerSmoothView.h; sourceTree = "<group>"; };
 		91198359EB688B75252CB24C51ABD118 /* JXCategoryBaseCellModel.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = JXCategoryBaseCellModel.m; sourceTree = "<group>"; };
 		91791005C2E546749629354484D69BE3 /* JXCategoryListContainerView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = JXCategoryListContainerView.m; sourceTree = "<group>"; };
 		95C71D290183CE54D0B05FADDB431158 /* JXCategoryIndicatorCellModel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = JXCategoryIndicatorCellModel.h; sourceTree = "<group>"; };
 		995512BD8A1204FF064C89218D3D9059 /* Pods-Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Example-acknowledgements.plist"; sourceTree = "<group>"; };
 		9A06B2CBC7F57E9BE08460BE730B397B /* Pods-Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Example.release.xcconfig"; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9F0AAA87A4C19E7C76C704E5DD1FF9E7 /* JXCategoryDotCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = JXCategoryDotCell.m; sourceTree = "<group>"; };
 		9F490EADAEAE8D5E0E58FE2FCEDB655A /* JXCategoryImageCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = JXCategoryImageCell.h; sourceTree = "<group>"; };
 		A05BEF6F266A6490BC8617C054062F4A /* RTLManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = RTLManager.m; sourceTree = "<group>"; };
@@ -217,7 +217,7 @@
 		C05538FE86BA70CFF628036574609B24 /* JXCategoryTitleCellModel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = JXCategoryTitleCellModel.h; sourceTree = "<group>"; };
 		C1E2D59B151FA73FAF7F7B847397D459 /* JXCategoryIndicatorImageView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = JXCategoryIndicatorImageView.h; sourceTree = "<group>"; };
 		C3A321F1D10ADDE1376160C3F45E53A3 /* JXCategoryTitleVerticalZoomView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = JXCategoryTitleVerticalZoomView.m; sourceTree = "<group>"; };
-		C3A46B03C308EEEB11F2A62BA5D2E8BE /* libJXCategoryView.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libJXCategoryView.a; path = libJXCategoryView.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		C3A46B03C308EEEB11F2A62BA5D2E8BE /* libJXCategoryView.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libJXCategoryView.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD9B3C5EF503F813F12697CF2DE88AA7 /* JXCategoryView.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = JXCategoryView.xcconfig; sourceTree = "<group>"; };
 		CDDED8B6064DD9CD989DE9D15A285ECF /* JXCategoryTitleImageView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = JXCategoryTitleImageView.m; sourceTree = "<group>"; };
 		CE6388332AC1134D066CCCB013353902 /* JXPagerListContainerView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = JXPagerListContainerView.m; path = Sources/JXPagerView/JXPagerListContainerView.m; sourceTree = "<group>"; };
@@ -369,24 +369,23 @@
 		A6B3C4AD248370D14A08BD25FF78FD52 /* IndicatorViews */ = {
 			isa = PBXGroup;
 			children = (
-				7BE53B3C114BBD85A56E7B0750795A57 /* JXCategoryIndicatorBackgroundView.h */,
-				85E03F3F19A1FB134044ED5E3865D6AB /* JXCategoryIndicatorBackgroundView.m */,
-				4CFF9F6F2133DC199DBBD31B6CB6AAEF /* JXCategoryIndicatorBallView.h */,
-				F2499E42A00DA239E13F3D9775FF033D /* JXCategoryIndicatorBallView.m */,
 				155B5BC1C71344B214582FA76E9F1328 /* JXCategoryIndicatorComponentView.h */,
 				D01E09215CB615E9A959BC0F8970ADCA /* JXCategoryIndicatorComponentView.m */,
-				73CC863DBB62BEF587C6929D41BEF650 /* JXCategoryIndicatorDotLineView.h */,
-				631E7720DD2ECE560001682EEA97C397 /* JXCategoryIndicatorDotLineView.m */,
-				C1E2D59B151FA73FAF7F7B847397D459 /* JXCategoryIndicatorImageView.h */,
-				F361A0DDCC8C09BC83293EB580CBDF8F /* JXCategoryIndicatorImageView.m */,
 				403E5F4286F1E3B146856B3462D56065 /* JXCategoryIndicatorLineView.h */,
 				00BEEFA5E608D7E5CA5DD91F30BCD204 /* JXCategoryIndicatorLineView.m */,
+				73CC863DBB62BEF587C6929D41BEF650 /* JXCategoryIndicatorDotLineView.h */,
+				631E7720DD2ECE560001682EEA97C397 /* JXCategoryIndicatorDotLineView.m */,
 				BF321D3D88503CDF830F177AE369EF1A /* JXCategoryIndicatorRainbowLineView.h */,
 				82FE90561F19A2772693837F572D63FF /* JXCategoryIndicatorRainbowLineView.m */,
 				2B105956A46A5950CD9B3C92A98EDF47 /* JXCategoryIndicatorTriangleView.h */,
 				438F1A3B2AECC0CA4472C4F4AB885740 /* JXCategoryIndicatorTriangleView.m */,
+				C1E2D59B151FA73FAF7F7B847397D459 /* JXCategoryIndicatorImageView.h */,
+				F361A0DDCC8C09BC83293EB580CBDF8F /* JXCategoryIndicatorImageView.m */,
+				7BE53B3C114BBD85A56E7B0750795A57 /* JXCategoryIndicatorBackgroundView.h */,
+				85E03F3F19A1FB134044ED5E3865D6AB /* JXCategoryIndicatorBackgroundView.m */,
+				4CFF9F6F2133DC199DBBD31B6CB6AAEF /* JXCategoryIndicatorBallView.h */,
+				F2499E42A00DA239E13F3D9775FF033D /* JXCategoryIndicatorBallView.m */,
 			);
-			name = IndicatorViews;
 			path = IndicatorViews;
 			sourceTree = "<group>";
 		};
@@ -490,7 +489,6 @@
 				2E3B0440430F54DEFB10345389D5C1D2 /* Pager */,
 				AF0DD1484549627CD16C45DA298CECAB /* Support Files */,
 			);
-			name = JXPagingView;
 			path = JXPagingView;
 			sourceTree = "<group>";
 		};
@@ -522,6 +520,7 @@
 		E9C3441E866AB6D066D20969CD25BE0B /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				0BB2D33671CEE2F0580201778FE0EE2A /* JXCategoryViewDefines.h */,
 				645308330B2B1A609BD026C24DE3EB9C /* JXCategoryCollectionView.h */,
 				7C6F3D8126EF85D6E008DF8A76C016A3 /* JXCategoryCollectionView.m */,
 				2BCBB6871422CF167CBD6D89377B74E1 /* JXCategoryFactory.h */,
@@ -535,7 +534,6 @@
 				91791005C2E546749629354484D69BE3 /* JXCategoryListContainerView.m */,
 				6FED7E27EC074B0B116710473E41061E /* JXCategoryViewAnimator.h */,
 				A69F70533EC4AB1AEB942AA4874CF46B /* JXCategoryViewAnimator.m */,
-				0BB2D33671CEE2F0580201778FE0EE2A /* JXCategoryViewDefines.h */,
 				1075F33A545199CFC5E3BB0373C3EAD5 /* UIColor+JXAdd.h */,
 				A155A92B8BC2341D913F078E45839E04 /* UIColor+JXAdd.m */,
 			);

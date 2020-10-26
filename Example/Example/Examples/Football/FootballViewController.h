@@ -8,6 +8,7 @@
 
 #import "ContentBaseViewController.h"
 
+/// 指示器样式 - ImageView足球滚动
 @interface FootballViewController : ContentBaseViewController
 
 @end

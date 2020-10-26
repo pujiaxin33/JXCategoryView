@@ -10,6 +10,11 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+/**
+ 渐变视图
+ 
+ 在「指示器样式」——>「BackgroundView渐变色」 中有用到！
+ */
 @interface JXGradientView : UIView
 
 @property (nonatomic, strong, readonly) CAGradientLayer *gradientLayer;

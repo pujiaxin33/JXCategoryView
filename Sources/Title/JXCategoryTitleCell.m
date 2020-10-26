@@ -199,6 +199,8 @@
     [self startSelectedAnimationIfNeeded:myCellModel];
 }
 
+#pragma mark - Public
+
 - (JXCategoryCellSelectedAnimationBlock)preferredTitleZoomAnimationBlock:(JXCategoryTitleCellModel *)cellModel baseScale:(CGFloat)baseScale {
     __weak typeof(self) weakSelf = self;
     return ^(CGFloat percent) {
@@ -244,6 +246,5 @@
         weakSelf.titleLabel.textColor = cellModel.titleCurrentColor;
     };
 }
-
 
 @end

@@ -434,16 +434,15 @@
 				19F151752387BE2E0043A86E /* VerticalListView */,
 				19F1518C2387BE2E0043A86E /* TitleImage */,
 				19F151912387BE2E0043A86E /* Title */,
-				19F151942387BE2E0043A86E /* Football */,
 				19F151972387BE2E0043A86E /* PagingView */,
 				19F151A82387BE2E0043A86E /* Image */,
-				19F151AB2387BE2E0043A86E /* Special */,
 				19F151AD2387BE2E0043A86E /* Number */,
 				19F151B02387BE2E0043A86E /* Common */,
 				19F151C32387BE2E0043A86E /* LoadData */,
 				19F152012387BE2E0043A86E /* SegmentedControl */,
 				19F152082387BE2E0043A86E /* IndicatorImageView */,
 				19F1520B2387BE2E0043A86E /* BackgroundImage */,
+				19F151942387BE2E0043A86E /* Football */,
 				19F1520E2387BE2E0043A86E /* Nest */,
 				19F152132387BE2E0043A86E /* Customize */,
 			);
@@ -524,8 +523,8 @@
 		19F151912387BE2E0043A86E /* Title */ = {
 			isa = PBXGroup;
 			children = (
-				19F151922387BE2E0043A86E /* TitleViewController.m */,
 				19F151932387BE2E0043A86E /* TitleViewController.h */,
+				19F151922387BE2E0043A86E /* TitleViewController.m */,
 			);
 			path = Title;
 			sourceTree = "<group>";
@@ -569,21 +568,6 @@
 			path = Image;
 			sourceTree = "<group>";
 		};
-		19F151AB2387BE2E0043A86E /* Special */ = {
-			isa = PBXGroup;
-			children = (
-				19F151AC2387BE2E0043A86E /* SwipeDelete */,
-			);
-			path = Special;
-			sourceTree = "<group>";
-		};
-		19F151AC2387BE2E0043A86E /* SwipeDelete */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = SwipeDelete;
-			sourceTree = "<group>";
-		};
 		19F151AD2387BE2E0043A86E /* Number */ = {
 			isa = PBXGroup;
 			children = (
@@ -596,24 +580,24 @@
 		19F151B02387BE2E0043A86E /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				19F151B12387BE2E0043A86E /* SpecialCustomizeViewController.h */,
-				19F151B22387BE2E0043A86E /* ListViewController.m */,
 				19F151B32387BE2E0043A86E /* IndicatorCustomizeViewController.h */,
-				19F151B42387BE2E0043A86E /* ContentBaseViewController.m */,
-				19F151B52387BE2E0043A86E /* BaseNavigationViewController.h */,
-				19F151B62387BE2E0043A86E /* UIWindow+JXSafeArea.m */,
-				19F151B72387BE2E0043A86E /* DetailViewController.m */,
-				19F151B82387BE2E0043A86E /* CellCustomizeViewController.m */,
-				19F151B92387BE2E0043A86E /* JXGradientView.h */,
-				19F151BA2387BE2E0043A86E /* SpecialCustomizeViewController.m */,
 				19F151BB2387BE2E0043A86E /* IndicatorCustomizeViewController.m */,
-				19F151BC2387BE2E0043A86E /* ListViewController.h */,
+				19F151C02387BE2E0043A86E /* CellCustomizeViewController.h */,
+				19F151B82387BE2E0043A86E /* CellCustomizeViewController.m */,
+				19F151B12387BE2E0043A86E /* SpecialCustomizeViewController.h */,
+				19F151BA2387BE2E0043A86E /* SpecialCustomizeViewController.m */,
+				19F151B52387BE2E0043A86E /* BaseNavigationViewController.h */,
 				19F151BD2387BE2E0043A86E /* BaseNavigationViewController.m */,
 				19F151BE2387BE2E0043A86E /* ContentBaseViewController.h */,
-				19F151BF2387BE2E0043A86E /* JXGradientView.m */,
-				19F151C02387BE2E0043A86E /* CellCustomizeViewController.h */,
+				19F151B42387BE2E0043A86E /* ContentBaseViewController.m */,
+				19F151BC2387BE2E0043A86E /* ListViewController.h */,
+				19F151B22387BE2E0043A86E /* ListViewController.m */,
 				19F151C12387BE2E0043A86E /* DetailViewController.h */,
+				19F151B72387BE2E0043A86E /* DetailViewController.m */,
+				19F151B92387BE2E0043A86E /* JXGradientView.h */,
+				19F151BF2387BE2E0043A86E /* JXGradientView.m */,
 				19F151C22387BE2E0043A86E /* UIWindow+JXSafeArea.h */,
+				19F151B62387BE2E0043A86E /* UIWindow+JXSafeArea.m */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -751,8 +735,8 @@
 		19F152082387BE2E0043A86E /* IndicatorImageView */ = {
 			isa = PBXGroup;
 			children = (
-				19F152092387BE2E0043A86E /* IndicatorImageViewViewController.m */,
 				19F1520A2387BE2E0043A86E /* IndicatorImageViewViewController.h */,
+				19F152092387BE2E0043A86E /* IndicatorImageViewViewController.m */,
 			);
 			path = IndicatorImageView;
 			sourceTree = "<group>";
@@ -760,8 +744,8 @@
 		19F1520B2387BE2E0043A86E /* BackgroundImage */ = {
 			isa = PBXGroup;
 			children = (
-				19F1520C2387BE2E0043A86E /* BackgroundImageViewController.m */,
 				19F1520D2387BE2E0043A86E /* BackgroundImageViewController.h */,
+				19F1520C2387BE2E0043A86E /* BackgroundImageViewController.m */,
 			);
 			path = BackgroundImage;
 			sourceTree = "<group>";
@@ -780,14 +764,14 @@
 		19F152132387BE2E0043A86E /* Customize */ = {
 			isa = PBXGroup;
 			children = (
+				19F1523D2387BE2E0043A86E /* CustomizationListViewController.h */,
+				19F152262387BE2E0043A86E /* CustomizationListViewController.m */,
 				19F152142387BE2E0043A86E /* TitleBackground */,
 				19F1521D2387BE2E0043A86E /* Sort */,
-				19F152262387BE2E0043A86E /* CustomizationListViewController.m */,
 				19F152272387BE2E0043A86E /* TitleAtrribute */,
 				19F152302387BE2E0043A86E /* CountCell */,
 				19F152332387BE2E0043A86E /* SpringIndicator */,
 				19F152382387BE2E0043A86E /* AlignmentIndicator */,
-				19F1523D2387BE2E0043A86E /* CustomizationListViewController.h */,
 				19F1523E2387BE2E0043A86E /* TimeLine */,
 			);
 			path = Customize;

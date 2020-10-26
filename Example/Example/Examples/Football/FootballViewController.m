@@ -15,16 +15,18 @@
 @implementation FootballViewController
 
 - (void)viewDidLoad {
+    [super viewDidLoad];
+    
     self.titles = @[@"中国U-19", @"中国超级联赛", @"亚足联冠军联赛", @"亚运会足球赛", @"世界杯🎉"];
     self.isNeedIndicatorPositionChangeItem = YES;
 
-    [super viewDidLoad];
-
-    self.categoryView.frame = CGRectMake(0, 20, WindowsSize.width, 60);
+    // 初始化分页菜单视图
     self.myCategoryView.titles = self.titles;
     self.myCategoryView.titleColorGradientEnabled = YES;
 
+    // 初始化指示器视图
     JXCategoryIndicatorImageView *indicatorImageView = [[JXCategoryIndicatorImageView alloc] init];
+    // MARK: 开启图片滚动效果
     indicatorImageView.indicatorImageViewRollEnabled = YES;
     indicatorImageView.indicatorImageView.image = [UIImage imageNamed:@"football"];
     self.myCategoryView.indicators = @[indicatorImageView];

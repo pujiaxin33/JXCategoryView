@@ -11,17 +11,30 @@
 
 @implementation JXCategoryIndicatorBackgroundView
 
-- (instancetype)initWithFrame:(CGRect)frame
-{
+#pragma mark - Initialize
+
+- (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-        self.indicatorWidth = JXCategoryViewAutomaticDimension;
-        self.indicatorHeight = JXCategoryViewAutomaticDimension;
-        self.indicatorCornerRadius = JXCategoryViewAutomaticDimension;
-        self.indicatorColor = [UIColor lightGrayColor];
-        self.indicatorWidthIncrement = 10;
+        [self configureDefaulteValue];
     }
     return self;
+}
+
+- (instancetype)initWithCoder:(NSCoder *)coder {
+    self = [super initWithCoder:coder];
+    if (self) {
+        [self configureDefaulteValue];
+    }
+    return self;
+}
+
+- (void)configureDefaulteValue {
+    self.indicatorWidth = JXCategoryViewAutomaticDimension;
+    self.indicatorHeight = JXCategoryViewAutomaticDimension;
+    self.indicatorCornerRadius = JXCategoryViewAutomaticDimension;
+    self.indicatorColor = [UIColor lightGrayColor];
+    self.indicatorWidthIncrement = 10;
 }
 
 #pragma mark - JXCategoryIndicatorProtocol

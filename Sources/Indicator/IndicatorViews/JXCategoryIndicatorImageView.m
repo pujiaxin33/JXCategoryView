@@ -11,20 +11,35 @@
 
 @implementation JXCategoryIndicatorImageView
 
-- (instancetype)initWithFrame:(CGRect)frame
-{
+#pragma mark - Initialize
+
+- (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-        _indicatorImageViewSize = CGSizeMake(30, 20);
-        _indicatorImageViewRollEnabled = NO;
-
-        _indicatorImageView = [[UIImageView alloc] init];
-        self.indicatorImageView.frame = CGRectMake(0, 0, self.indicatorImageViewSize.width, self.indicatorImageViewSize.height);
-        self.indicatorImageView.contentMode = UIViewContentModeScaleAspectFit;
-        [self addSubview:self.indicatorImageView];
+        [self setupIndicatorImageView];
     }
     return self;
 }
+
+- (instancetype)initWithCoder:(NSCoder *)coder {
+    self = [super initWithCoder:coder];
+    if (self) {
+        [self setupIndicatorImageView];
+    }
+    return self;
+}
+
+- (void)setupIndicatorImageView {
+    _indicatorImageViewSize = CGSizeMake(30, 20);
+    _indicatorImageViewRollEnabled = NO;
+
+    _indicatorImageView = [[UIImageView alloc] init];
+    self.indicatorImageView.frame = CGRectMake(0, 0, self.indicatorImageViewSize.width, self.indicatorImageViewSize.height);
+    self.indicatorImageView.contentMode = UIViewContentModeScaleAspectFit;
+    [self addSubview:self.indicatorImageView];
+}
+
+#pragma mark - Custom Accessors
 
 - (void)setIndicatorImageViewSize:(CGSize)indicatorImageViewSize {
     _indicatorImageViewSize = indicatorImageViewSize;

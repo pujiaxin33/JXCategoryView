@@ -5,17 +5,17 @@
 [![cocoapods](https://img.shields.io/badge/cocoapods-supported-4BC51D.svg?style=plastic)](https://cocoapods.org/pods/JXCategoryView)
 [![support](https://img.shields.io/badge/support-ios%208%2B-orange.svg)](#) 
 
-A powerful and easy to use category view (segmentedcontrol, segmentview, pagingview, pagerview, pagecontrol) (腾讯新闻、今日头条、QQ音乐、网易云音乐、京东、爱奇艺、腾讯视频、淘宝、天猫、简书、微博等所有主流APP分类切换滚动视图)
+A powerful and easy to use category view (segmentedcontrol, segmentview, pagingview, pagerview, pagecontrol) (腾讯新闻、今日头条、QQ 音乐、网易云音乐、京东、爱奇艺、腾讯视频、淘宝、天猫、简书、微博等所有主流 APP 分类切换滚动视图)
 
 与其他的同类三方库对比的优点：
-- 使用协议封装指示器逻辑，可以为所欲为的自定义指示器效果；
+- 使用协议封装指示器逻辑，可以随心所欲地自定义指示器效果；
 - 提供更加全面丰富、高度自定义的效果；
-- 使用子类化管理cell样式，逻辑更清晰，扩展更简单；
+- 使用子类化管理 cell 样式，逻辑更清晰，扩展更简单；
 - 高度封装列表容器，使用便捷，完美支持列表的生命周期调用；
 
 ## Swift版本
 
-如果你在找Swift版本，请点击查看[JXSegmentedView](https://github.com/pujiaxin33/JXSegmentedView)
+如果你在找 Swift 版本，请点击查看 [JXSegmentedView](https://github.com/pujiaxin33/JXSegmentedView)。
 
 ## 效果预览
 
@@ -86,13 +86,13 @@ SegmentedControl<br/>参考[`SegmentedControlViewController`](https://github.com
 
 ### 自定义效果预览
 
-收录来自其他使用者的自定义示例，这些自定义类只在Demo项目里面，Pod库并没有这些文件。所以，如果你需要使用这些自定义效果，请通过文件导入的方式。
+收录来自其他使用者的自定义示例，这些自定义类只在 Demo 项目里面，Pod 库并没有这些文件。所以，如果你需要使用这些自定义效果，请通过文件导入的方式。
 
 目的：
-- 参考学习如何自定义
-- 直接修改自定义示例类以快速实现自己的需求
+- 参考学习如何自定义；
+- 直接修改自定义示例类以快速实现自己的需求。
 
-欢迎提PullRequest进行收录你的自定义效果。
+欢迎提 PullRequest 进行收录你的自定义效果。
 
 | 说明 | Gif |
 | ----|------|
@@ -113,7 +113,7 @@ SegmentedControl<br/>参考[`SegmentedControlViewController`](https://github.com
 
 ### 手动
 
-Clone代码，把Sources文件夹拖入项目，#import "JXCategoryView.h"，就可以使用了；
+Clone 代码，把 Sources 文件夹拖入项目，`#import "JXCategoryView.h"` 就可以使用了。
 
 ### CocoaPods
 
@@ -122,7 +122,7 @@ target '<Your Target Name>' do
     pod 'JXCategoryView'
 end
 ```
-先执行`pod repo update`，再执行`pod install`
+先执行 `pod repo update`，再执行 `pod install`。
 
 ## 结构图
 
@@ -130,21 +130,22 @@ end
 
 ## 使用
 
-### JXCategoryTitleView使用示例
+### JXCategoryTitleView 使用示例
 
-1.初始化JXCategoryTitleView
+1. 初始化 `JXCategoryTitleView`：
 ```Objective-C
 self.categoryView = [[JXCategoryTitleView alloc] initWithFrame:CGRectMake(0, 0, WindowsSize.width, 50)];
 self.categoryView.delegate = self;
 [self.view addSubview:self.categoryView];
 ```
-2.配置JXCategoryTitleView的属性
+
+2. 配置 `JXCategoryTitleView` 的属性：
 ```Objective-C
-self.categoryView.titles = @[@"螃蟹", @"麻辣小龙虾", @"苹果"...]
+self.categoryView.titles = @[@"螃蟹", @"麻辣小龙虾", @"苹果"...];
 self.categoryView.titleColorGradientEnabled = YES;
 ```
 
-3.添加指示器
+3. 添加指示器：
 ```Objective-C
 JXCategoryIndicatorLineView *lineView = [[JXCategoryIndicatorLineView alloc] init];
 lineView.indicatorColor = [UIColor redColor];
@@ -152,71 +153,70 @@ lineView.indicatorWidth = JXCategoryViewAutomaticDimension;
 self.categoryView.indicators = @[lineView];
 ```
 
-4.可选实现`JXCategoryViewDelegate`代理
-
+4. 实现 `JXCategoryViewDelegate` 代理（可选）
 ```Objective-C
-//点击选中或者滚动选中都会调用该方法。适用于只关心选中事件，不关心具体是点击还是滚动选中的。
+// 点击选中或者滚动选中都会调用该方法。适用于只关心选中事件，不关心具体是点击还是滚动选中的。
 - (void)categoryView:(JXCategoryBaseView *)categoryView didSelectedItemAtIndex:(NSInteger)index;
 
-//点击选中的情况才会调用该方法
+// 点击选中的情况才会调用该方法
 - (void)categoryView:(JXCategoryBaseView *)categoryView didClickSelectedItemAtIndex:(NSInteger)index;
 
-//滚动选中的情况才会调用该方法
+// 滚动选中的情况才会调用该方法
 - (void)categoryView:(JXCategoryBaseView *)categoryView didScrollSelectedItemAtIndex:(NSInteger)index;
 
-//正在滚动中的回调
+// 正在滚动中的回调
 - (void)categoryView:(JXCategoryBaseView *)categoryView scrollingFromLeftIndex:(NSInteger)leftIndex toRightIndex:(NSInteger)rightIndex ratio:(CGFloat)ratio;
 ```
 
 ### 列表容器使用示例
 
-#### `JXCategoryListContainerView`封装类使用示例
+#### `JXCategoryListContainerView` 封装类使用示例
 
-`JXCategoryListContainerView`是对列表视图高度封装的类，具有以下优点：
-- 相对于直接使用`UIScrollView`自定义，封装度高、代码集中、使用简单；
+`JXCategoryListContainerView` 是对列表视图高度封装的类，具有以下优点：
+
+- 相对于直接使用 `UIScrollView` 自定义，封装度高、代码集中、使用简单；
 - 列表懒加载：当显示某个列表的时候，才进行列表初始化。而不是一次性加载全部列表，性能更优；
-- 支持列表的willAppear、didAppear、willDisappear、didDisappear生命周期方法调用；
+- 支持列表的 `willAppear`、`didAppear`、`willDisappear`、`didDisappear` 生命周期方法调用；
 
-1.初始化`JXCategoryListContainerView`并关联到`categoryView`
+1. 初始化 `JXCategoryListContainerView` 并关联到 `categoryView`：
 ```Objective-C
 self.listContainerView = [[JXCategoryListContainerView alloc] initWithType:JXCategoryListContainerType_ScrollView delegate:self];
 [self.view addSubview:self.listContainerView];
-//关联到categoryView
+// 关联到 categoryView
 self.categoryView.listContainer = self.listContainerView;
 ```
 
-2.实现`JXCategoryListContainerViewDelegate`代理方法
+2. 实现 `JXCategoryListContainerViewDelegate` 代理方法：
 ```Objective-C
-//返回列表的数量
+// 返回列表的数量
 - (NSInteger)numberOfListsInlistContainerView:(JXCategoryListContainerView *)listContainerView {
     return self.titles.count;
 }
-//根据下标index返回对应遵从`JXCategoryListContentViewDelegate`协议的列表实例
+// 根据下标 index 返回对应遵守并实现 `JXCategoryListContentViewDelegate` 协议的列表实例
 - (id<JXCategoryListContentViewDelegate>)listContainerView:(JXCategoryListContainerView *)listContainerView initListForIndex:(NSInteger)index {
     return [[ListViewController alloc] init];
 }
 ```
 
-3.列表实现`JXCategoryListContentViewDelegate`代理方法
-
-不管列表是UIView还是UIViewController都可以，提高使用灵活性，更便于现有的业务接入。
+3. 列表实现 `JXCategoryListContentViewDelegate` 代理方法
+不管列表是 `UIView` 还是 `UIViewController` 都可以，提高使用灵活性，更便于现有的业务接入。
 ```Objective-C
 // 返回列表视图
-// 如果列表是VC，就返回VC.view
-// 如果列表是View，就返回View自己
+// 如果列表是 VC，就返回 VC.view
+// 如果列表是 View，就返回 View 自己
 - (UIView *)listView {
     return self.view;
 }
 ```
 
 
-具体点击[LoadDataListContainerViewController](https://github.com/pujiaxin33/JXCategoryView/tree/master/Example/Example/Examples/LoadData/LoadDataListContainerViewController.m)查看源代码了解
+具体点击 [LoadDataListContainerViewController](https://github.com/pujiaxin33/JXCategoryView/tree/master/Example/Example/Examples/LoadData/LoadDataListContainerViewController.m) 查看源代码了解
 
-#### 直接使用UIScrollView自定义
+#### 直接使用 UIScrollView 自定义
 
-因为代码量较多且分散，所有不推荐使用该方法。要正确使用需要注意的地方比较多，尤其对于刚接触iOS的同学来说不太友好。
+因为代码量较多且分散，所有不推荐使用该方法。要正确使用需要注意的地方比较多，尤其对于刚接触 iOS 的同学来说不太友好。
 
-不直接贴代码了，具体点击[LoadDataListCustomViewController](https://github.com/pujiaxin33/JXCategoryView/tree/master/Example/Example/Examples/LoadData/LoadDataListCustomViewController.m)查看源代码了解。
+不直接贴代码了，具体点击 [LoadDataListCustomViewController](https://github.com/pujiaxin33/JXCategoryView/tree/master/Example/Example/Examples/LoadData/LoadDataListCustomViewController.m) 查看源代码了解。
 
 
 ## 常见问题和答案
@@ -249,16 +249,16 @@ self.categoryView.listContainer = self.listContainerView;
 
 ## 指示器样式自定义
 
-- 需要继承`JXCategoryIndicatorProtocol`协议，点击参看[JXCategoryIndicatorProtocol](https://github.com/pujiaxin33/JXCategoryView/blob/master/Sources/Common/JXCategoryIndicatorProtocol.h)
-- 提供了继承`JXCategoryIndicatorProtocol`协议的基类`JXCategoryIndicatorComponentView`，里面提供了许多基础属性。点击参看[JXCategoryIndicatorComponentView](https://github.com/pujiaxin33/JXCategoryView/blob/master/Sources/Indicator/IndicatorViews/JXCategoryIndicatorComponentView.m)
-- 自定义指示器，请参考已实现的指示器视图，多尝试、多思考，再有问题请提Issue或加入反馈QQ群
+- 需要继承 `JXCategoryIndicatorProtocol` 协议，点击参看 [JXCategoryIndicatorProtocol](https://github.com/pujiaxin33/JXCategoryView/blob/master/Sources/Common/JXCategoryIndicatorProtocol.h)；
+- 提供了继承 `JXCategoryIndicatorProtocol` 协议的基类 `JXCategoryIndicatorComponentView`，里面提供了许多基础属性。点击参看 [JXCategoryIndicatorComponentView](https://github.com/pujiaxin33/JXCategoryView/blob/master/Sources/Indicator/IndicatorViews/JXCategoryIndicatorComponentView.m)；
+- 自定义指示器，请参考已实现的指示器视图，多尝试、多思考，再有问题请提 Issue 或加入反馈 QQ 群。
 
-## Cell自定义
+## Cell 自定义
 
-- 任何子类化需求，view、cell、cellModel三个都要子类化，即使某个子类cell什么事情都不做。用于维护继承链，以免以后子类化都不知道要继承谁了；
-- 如果你想完全自定义cell里面的内容，那就继承`JXCategoryIndicatorView、JXCategoryIndicatorCell、JXCategoryIndicatorCellModel`，就像`JXCategoryTitleView、JXCategoryTitleCell、JXCategoryTitleCellModel`那样去做；
-- 如果你只是在父类进行一些微调，那就继承目标view、cell、cellModel，对cell原有控件微调、或者加入新的控件皆可。就像`JXCategoryTitleImageView系列、JXCategoryTitleAttributeView系列`那样去做；
-- Cell自定义，请参考已实现的cell样式，多尝试、多思考，再有问题请提Issue或加入反馈QQ群
+- 任何子类化需求，view、cell、cellModel 三个都要子类化，即使某个子类 cell 什么事情都不做。用于维护继承链，以免以后子类化都不知道要继承谁了；
+- 如果你想完全自定义 cell 里面的内容，那就继承 `JXCategoryIndicatorView`、`JXCategoryIndicatorCell、`JXCategoryIndicatorCellModel`，就像`JXCategoryTitleView`、`JXCategoryTitleCell、`JXCategoryTitleCellModel`那样去做；
+- 如果你只是在父类进行一些微调，那就继承目标 view、cell、cellModel，对 cell 原有控件微调、或者加入新的控件皆可。就像 `JXCategoryTitleImageView` 系列、`JXCategoryTitleAttributeView` 系列那样去做；
+- Cell 自定义，请参考已实现的 cell 样式，多尝试、多思考，再有问题请提 Issue 或加入反馈 QQ 群
 
 ## 常用属性说明
 
