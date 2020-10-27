@@ -13,12 +13,9 @@
 @interface JXCategoryTitleCellModel : JXCategoryIndicatorCellModel
 
 @property (nonatomic, copy) NSString *title;
-<<<<<<< HEAD
-=======
 
 @property (nonatomic, assign, readonly) CGFloat titleHeight;
 
->>>>>>> master
 @property (nonatomic, assign) NSInteger titleNumberOfLines;
 @property (nonatomic, assign) CGFloat titleLabelVerticalOffset;
 

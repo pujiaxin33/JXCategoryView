@@ -10,6 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+/// 特殊效果 - 刷新数据+UICollectionView封装列表
 @interface LoadDataListCollectionViewController : LoadDataBaseViewController
 
 @end

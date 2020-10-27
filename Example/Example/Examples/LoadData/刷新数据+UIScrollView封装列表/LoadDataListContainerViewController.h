@@ -10,8 +10,10 @@
 #import "LoadDataBaseViewController.h"
 #import "JXCategoryView.h"
 #import "JXCategoryListContainerView.h"
+
 NS_ASSUME_NONNULL_BEGIN
 
+/// 特殊效果 - 刷新数据+UIScrollView封装列表
 @interface LoadDataListContainerViewController : LoadDataBaseViewController <JXCategoryListContainerViewDelegate>
 
 @property (nonatomic, strong) JXCategoryTitleView *categoryView;

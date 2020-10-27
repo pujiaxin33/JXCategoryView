@@ -75,7 +75,7 @@
     DetailViewController *vc = [[DetailViewController alloc] init];
     if (self.navigationController != nil) {
         [self.navigationController pushViewController:vc animated:true];
-    }else {
+    } else {
         //仅仅是自定义列表容器示例才生效
         [self.naviController pushViewController:vc animated:true];
     }

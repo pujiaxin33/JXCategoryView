@@ -10,6 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+/// 特殊效果 - 垂直列表滚动(UITableView)
 @interface VerticalListTableViewController : UIViewController
 
 @end
