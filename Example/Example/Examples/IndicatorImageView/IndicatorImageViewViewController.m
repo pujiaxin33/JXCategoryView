@@ -17,12 +17,21 @@
 
 @implementation IndicatorImageViewViewController
 
+#pragma mark - Initialize
+
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        self.titles = @[@"荷花", @"河流", @"海洋", @"城市" ];
+    }
+    return self;
+}
+
 #pragma mark - View life cycle
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.titles = @[@"荷花", @"河流", @"海洋", @"城市", ];
     self.isNeedIndicatorPositionChangeItem = YES;
 
     // 初始化分页菜单视图

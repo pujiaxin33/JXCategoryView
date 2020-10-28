@@ -15,13 +15,17 @@
 
 @implementation TitleViewController
 
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        self.titles = @[@"螃蟹", @"麻辣小龙虾", @"苹果", @"营养胡萝卜", @"葡萄", @"美味西瓜", @"香蕉", @"香甜菠萝", @"鸡肉", @"鱼", @"海星"];
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // 初始化分页菜单标题
-    if (!self.titles) {
-        self.titles = @[@"螃蟹", @"麻辣小龙虾", @"苹果", @"营养胡萝卜", @"葡萄", @"美味西瓜", @"香蕉", @"香甜菠萝", @"鸡肉", @"鱼", @"海星"];
-    }
     self.myCategoryView.titles = self.titles;
 }
 

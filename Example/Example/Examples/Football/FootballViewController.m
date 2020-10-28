@@ -14,10 +14,17 @@
 
 @implementation FootballViewController
 
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        self.titles = @[@"中国U-19", @"中国超级联赛", @"亚足联冠军联赛", @"亚运会足球赛", @"世界杯🎉"];
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.titles = @[@"中国U-19", @"中国超级联赛", @"亚足联冠军联赛", @"亚运会足球赛", @"世界杯🎉"];
     self.isNeedIndicatorPositionChangeItem = YES;
 
     // 初始化分页菜单视图

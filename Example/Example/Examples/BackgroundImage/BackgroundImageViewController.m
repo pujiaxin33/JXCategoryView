@@ -15,12 +15,19 @@
 
 @implementation BackgroundImageViewController
 
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        self.titles = @[@"周杰伦", @"王力宏", @"林俊杰", @"潘玮柏", @"陶吉吉", @"薛之谦", @"五月天", @"毛不易"];
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     self.title = @"最佳男歌手们";
-    self.titles = @[@"周杰伦", @"王力宏", @"林俊杰", @"潘玮柏", @"陶吉吉", @"薛之谦", @"五月天", @"毛不易"];
-
+    
     // 初始化分页菜单视图
     self.myCategoryView.titles = self.titles;
     self.myCategoryView.titleColorGradientEnabled = YES;

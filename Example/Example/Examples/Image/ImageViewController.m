@@ -16,10 +16,16 @@
 
 @implementation ImageViewController
 
-- (void)viewDidLoad {
-    self.titles = @[@"crab", @"lobster", @"apple", @"carrot", @"grape", @"watermelon"];
-    _imageNames = @[@"crab", @"lobster", @"apple", @"carrot", @"grape", @"watermelon"];
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        self.titles = @[@"crab", @"lobster", @"apple", @"carrot", @"grape", @"watermelon"];
+        self.imageNames = @[@"crab", @"lobster", @"apple", @"carrot", @"grape", @"watermelon"];
+    }
+    return self;
+}
 
+- (void)viewDidLoad {
     [super viewDidLoad];
 
     NSArray *selectedImageNames = @[@"crab_selected", @"lobster_selected", @"apple_selected", @"carrot_selected", @"grape_selected", @"watermelon_selected"];

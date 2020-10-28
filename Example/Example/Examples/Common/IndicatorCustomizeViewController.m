@@ -56,7 +56,7 @@
         titleCategoryView.titleColorGradientEnabled = YES;
         JXCategoryIndicatorLineView *lineView = [[JXCategoryIndicatorLineView alloc] init];
         lineView.indicatorWidth = JXCategoryViewAutomaticDimension;
-        //可以试试宽度补偿
+        // 可以试试宽度补偿
 //        lineView.indicatorWidthIncrement = 10;
         titleCategoryView.indicators = @[lineView];
         [self.navigationController pushViewController:testVC animated:YES];
@@ -67,7 +67,7 @@
         titleCategoryView.titleColorGradientEnabled = YES;
         JXCategoryIndicatorLineView *lineView = [[JXCategoryIndicatorLineView alloc] init];
         lineView.indicatorWidth = JXCategoryViewAutomaticDimension;
-        //也可以试试固定宽度
+        // 也可以试试固定宽度
 //        lineView.indicatorWidth = 20;
         // 设置指示器延长 style
         lineView.lineStyle = JXCategoryIndicatorLineStyle_Lengthen;
