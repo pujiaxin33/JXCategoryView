@@ -10,6 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+/// 导航视图控制器基类
 @interface BaseNavigationViewController : UINavigationController
 
 @end

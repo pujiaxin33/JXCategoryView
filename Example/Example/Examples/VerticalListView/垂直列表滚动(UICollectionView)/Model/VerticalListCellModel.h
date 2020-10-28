@@ -11,7 +11,6 @@
 @interface VerticalListCellModel : NSObject
 
 @property (nonatomic, copy) NSString *imageName;
-
 @property (nonatomic, copy) NSString *itemName;
 
 @end

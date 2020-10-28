@@ -17,24 +17,37 @@
 
 @implementation JXCategoryIndicatorBallView
 
-- (instancetype)initWithFrame:(CGRect)frame
-{
+#pragma mark - Initialize
+
+- (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-        self.indicatorWidth = 15;
-        self.indicatorHeight = 15;
-        _ballScrollOffsetX = 20;
-
-        _smallBall = [[UIView alloc] init];
-        [self addSubview:self.smallBall];
-
-        _bigBall = [[UIView alloc] init];
-        [self addSubview:self.bigBall];
-
-        _shapeLayer = [CAShapeLayer layer];
-        [self.layer addSublayer:self.shapeLayer];
+        [self configureIndicatorBall];
     }
     return self;
+}
+
+- (instancetype)initWithCoder:(NSCoder *)coder {
+    self = [super initWithCoder:coder];
+    if (self) {
+        [self configureIndicatorBall];
+    }
+    return self;
+}
+
+- (void)configureIndicatorBall {
+    self.indicatorWidth = 15;
+    self.indicatorHeight = 15;
+    _ballScrollOffsetX = 20;
+
+    _smallBall = [[UIView alloc] init];
+    [self addSubview:self.smallBall];
+
+    _bigBall = [[UIView alloc] init];
+    [self addSubview:self.bigBall];
+
+    _shapeLayer = [CAShapeLayer layer];
+    [self.layer addSublayer:self.shapeLayer];
 }
 
 #pragma mark - JXCategoryIndicatorProtocol
@@ -42,10 +55,12 @@
 - (void)jx_refreshState:(JXCategoryIndicatorParamsModel *)model {
     CGFloat ballWidth = [self indicatorWidthValue:model.selectedCellFrame];
     CGFloat ballHeight = [self indicatorHeightValue:model.selectedCellFrame];
+    
     [CATransaction begin];
     [CATransaction setDisableActions:YES];
     self.shapeLayer.fillColor = self.indicatorColor.CGColor;
     [CATransaction commit];
+    
     self.smallBall.backgroundColor = self.indicatorColor;
     self.smallBall.layer.cornerRadius = ballHeight/2;
     self.bigBall.backgroundColor = self.indicatorColor;

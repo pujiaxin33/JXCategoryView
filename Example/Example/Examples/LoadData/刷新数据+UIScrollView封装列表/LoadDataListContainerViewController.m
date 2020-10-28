@@ -64,14 +64,14 @@
 
 #pragma mark - JXCategoryListContainerViewDelegate
 
+- (NSInteger)numberOfListsInlistContainerView:(JXCategoryListContainerView *)listContainerView {
+    return self.titles.count;
+}
+
 - (id<JXCategoryListContentViewDelegate>)listContainerView:(JXCategoryListContainerView *)listContainerView initListForIndex:(NSInteger)index {
     LoadDataListContainerListViewController *listVC = [[LoadDataListContainerListViewController alloc] init];
     listVC.title = self.titles[index];
     return listVC;
-}
-
-- (NSInteger)numberOfListsInlistContainerView:(JXCategoryListContainerView *)listContainerView {
-    return self.titles.count;
 }
 
 #pragma mark - JXCategoryViewDelegate

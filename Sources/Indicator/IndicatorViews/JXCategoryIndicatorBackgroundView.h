@@ -8,7 +8,7 @@
 
 #import "JXCategoryIndicatorComponentView.h"
 
+/// BackgroundView 样式的指示器
 @interface JXCategoryIndicatorBackgroundView : JXCategoryIndicatorComponentView
-
 
 @end

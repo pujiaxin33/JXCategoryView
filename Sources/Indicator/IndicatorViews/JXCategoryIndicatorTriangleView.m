@@ -15,17 +15,30 @@
 
 @implementation JXCategoryIndicatorTriangleView
 
-- (instancetype)initWithFrame:(CGRect)frame
-{
+#pragma mark - Initialize
+
+- (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-        self.indicatorWidth = 14;
-        self.indicatorHeight = 10;
-
-        _triangleLayer = [CAShapeLayer layer];
-        [self.layer addSublayer:self.triangleLayer];
+        [self configureDefaulteValue];
     }
     return self;
+}
+
+- (instancetype)initWithCoder:(NSCoder *)coder {
+    self = [super initWithCoder:coder];
+    if (self) {
+        [self configureDefaulteValue];
+    }
+    return self;
+}
+
+- (void)configureDefaulteValue {
+    self.indicatorWidth = 14;
+    self.indicatorHeight = 10;
+
+    _triangleLayer = [CAShapeLayer layer];
+    [self.layer addSublayer:self.triangleLayer];
 }
 
 #pragma mark - JXCategoryIndicatorProtocol
@@ -47,7 +60,7 @@
         [path moveToPoint:CGPointMake(self.bounds.size.width/2, 0)];
         [path addLineToPoint:CGPointMake(0, self.bounds.size.height)];
         [path addLineToPoint:CGPointMake(self.bounds.size.width, self.bounds.size.height)];
-    }else {
+    } else {
         [path moveToPoint:CGPointMake(0, 0)];
         [path addLineToPoint:CGPointMake(self.bounds.size.width, 0)];
         [path addLineToPoint:CGPointMake(self.bounds.size.width/2, self.bounds.size.height)];
@@ -66,7 +79,7 @@
 
     if (percent == 0) {
         targetX = leftCellFrame.origin.x + (leftCellFrame.size.width - targetWidth)/2.0;
-    }else {
+    } else {
         CGFloat leftX = leftCellFrame.origin.x + (leftCellFrame.size.width - targetWidth)/2;
         CGFloat rightX = rightCellFrame.origin.x + (rightCellFrame.size.width - targetWidth)/2;
         targetX = [JXCategoryFactory interpolationFrom:leftX to:rightX percent:percent];
@@ -88,7 +101,7 @@
             self.frame = toFrame;
         } completion:^(BOOL finished) {
         }];
-    }else {
+    } else {
         self.frame = toFrame;
     }
 }

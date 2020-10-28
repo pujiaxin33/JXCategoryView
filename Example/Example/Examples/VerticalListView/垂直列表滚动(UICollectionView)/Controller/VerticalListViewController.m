@@ -7,12 +7,20 @@
 //
 
 #import "VerticalListViewController.h"
-#import "VerticalListSectionModel.h"
-#import "VerticalListCell.h"
-#import "VerticalSectionHeaderView.h"
+
+// Framework
 #import "JXCategoryView.h"
+
+// Controller
+
+// View
 #import "VerticalSectionCategoryHeaderView.h"
+#import "VerticalSectionHeaderView.h"
+#import "VerticalListCell.h"
 #import "VerticalListCollectionView.h"
+
+// Model
+#import "VerticalListSectionModel.h"
 
 static const CGFloat VerticalListCategoryViewHeight = 60;   //悬浮categoryView的高度
 static const NSUInteger VerticalListPinSectionIndex = 1;    //悬浮固定section的index
@@ -52,7 +60,7 @@ static const NSUInteger VerticalListPinSectionIndex = 1;    //悬浮固定sectio
     [self.collectionView registerClass:[VerticalSectionCategoryHeaderView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"categoryHeader"];
     [self.view addSubview:self.collectionView];
 
-    //创建pinCategoryView，但是不要被addSubview
+    // 创建 pinCategoryView，但是不要被 addSubview
     _pinCategoryView = [[JXCategoryTitleView alloc] init];
     self.pinCategoryView.backgroundColor = [UIColor colorWithRed:0.94 green:0.94 blue:0.94 alpha:1];
     self.pinCategoryView.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, VerticalListCategoryViewHeight);

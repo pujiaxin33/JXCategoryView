@@ -8,6 +8,7 @@
 
 #import "ContentBaseViewController.h"
 
+/// 指示器样式 - ImageView底部
 @interface IndicatorImageViewViewController : ContentBaseViewController
 
 @end

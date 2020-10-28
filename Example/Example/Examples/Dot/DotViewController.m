@@ -16,9 +16,15 @@
 
 @implementation DotViewController
 
-- (void)viewDidLoad {
-    self.titles = @[@"螃蟹", @"麻辣小龙虾", @"苹果", @"营养胡萝卜", @"葡萄", @"美味西瓜", @"香蕉", @"香甜菠萝", @"鸡肉", @"鱼", @"海星"];
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        self.titles = @[@"螃蟹", @"麻辣小龙虾", @"苹果", @"营养胡萝卜", @"葡萄", @"美味西瓜", @"香蕉", @"香甜菠萝", @"鸡肉", @"鱼", @"海星"];
+    }
+    return self;
+}
 
+- (void)viewDidLoad {
     [super viewDidLoad];
 
     UIBarButtonItem *reloadItem = [[UIBarButtonItem alloc] initWithTitle:@"刷新" style:UIBarButtonItemStylePlain target:self action:@selector(reloadDot)];

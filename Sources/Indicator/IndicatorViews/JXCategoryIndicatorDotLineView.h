@@ -8,9 +8,10 @@
 
 #import "JXCategoryIndicatorComponentView.h"
 
+/// 点线效果的指示器
 @interface JXCategoryIndicatorDotLineView : JXCategoryIndicatorComponentView
 
-//线状态的最大宽度。默认：50
+// 线状态的最大宽度，默认值为 50
 @property (nonatomic, assign) CGFloat lineWidth;
 
 @end

@@ -15,16 +15,24 @@
 
 @implementation BackgroundImageViewController
 
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        self.titles = @[@"周杰伦", @"王力宏", @"林俊杰", @"潘玮柏", @"陶吉吉", @"薛之谦", @"五月天", @"毛不易"];
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
-    self.titles = @[@"周杰伦", @"王力宏", @"林俊杰", @"潘玮柏", @"陶吉吉", @"薛之谦", @"五月天", @"毛不易"];
-
     [super viewDidLoad];
-
+    
     self.title = @"最佳男歌手们";
-
+    
+    // 初始化分页菜单视图
     self.myCategoryView.titles = self.titles;
     self.myCategoryView.titleColorGradientEnabled = YES;
 
+    // 初始化指示器视图
     JXCategoryIndicatorImageView *indicatorImageView = [[JXCategoryIndicatorImageView alloc] init];
     indicatorImageView.indicatorImageView.image = [UIImage imageNamed:@"light"];
     indicatorImageView.indicatorImageViewSize = CGSizeMake(50, 50);
@@ -38,6 +46,5 @@
 - (JXCategoryBaseView *)preferredCategoryView {
     return [[JXCategoryTitleView alloc] init];
 }
-
 
 @end

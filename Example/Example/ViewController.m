@@ -12,10 +12,6 @@
 #import "SpecialCustomizeViewController.h"
 #import "CustomizationListViewController.h"
 
-@interface ViewController ()
-
-@end
-
 @implementation ViewController
 
 - (void)viewDidLoad {
@@ -40,38 +36,38 @@
     }
 
     switch (indexPath.row) {
-        case 0:
-        {
+        case 0: {
+            // 指示器样式
             UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
             IndicatorCustomizeViewController *vc = [storyBoard instantiateViewControllerWithIdentifier:NSStringFromClass([IndicatorCustomizeViewController class])];
             vc.title = title;
             [self.navigationController pushViewController:vc animated:YES];
-        }
             break;
-        case 1:
-        {
+        }
+        case 1: {
+            // Cell 样式
             UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
             CellCustomizeViewController *vc = [storyBoard instantiateViewControllerWithIdentifier:NSStringFromClass([CellCustomizeViewController class])];
             vc.title = title;
             [self.navigationController pushViewController:vc animated:YES];
-        }
             break;
-        case 2:
-        {
+        }
+        case 2: {
+            // 特殊效果
             UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
             SpecialCustomizeViewController *vc = [storyBoard instantiateViewControllerWithIdentifier:NSStringFromClass([SpecialCustomizeViewController class])];
             vc.title = title;
             [self.navigationController pushViewController:vc animated:YES];
-        }
             break;
-        case 3:
-        {
+        }
+        case 3: {
+            // 自定义效果示例
             UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
             CustomizationListViewController *vc = [storyBoard instantiateViewControllerWithIdentifier:NSStringFromClass([CustomizationListViewController class])];
             vc.title = title;
             [self.navigationController pushViewController:vc animated:YES];
+            break;
         }
-
         default:
             break;
     }

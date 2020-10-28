@@ -15,9 +15,15 @@
 
 @implementation NaviSegmentedControlViewController
 
-- (void)viewDidLoad {
-    self.titles = @[@"螃蟹", @"苹果" ];
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        self.titles = @[@"螃蟹", @"苹果"];
+    }
+    return self;
+}
 
+- (void)viewDidLoad {
     [super viewDidLoad];
 
     self.myCategoryView.frame = CGRectMake(0, 0, 120, 30);

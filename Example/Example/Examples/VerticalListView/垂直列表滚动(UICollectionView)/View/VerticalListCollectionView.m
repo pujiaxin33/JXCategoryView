@@ -10,12 +10,10 @@
 
 @implementation VerticalListCollectionView
 
-
 - (void)layoutSubviews {
     [super layoutSubviews];
 
     self.layoutSubviewsCallback();
 }
-
 
 @end
