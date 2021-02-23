@@ -74,8 +74,6 @@
 - (void)initializeViews {
     _listCellBackgroundColor = [UIColor whiteColor];
     _containerVC = [[JXCategoryListContainerViewController alloc] init];
-    self.containerVC.view.backgroundColor = [UIColor clearColor];
-    [self addSubview:self.containerVC.view];
     __weak typeof(self) weakSelf = self;
     self.containerVC.viewWillAppearBlock = ^{
         [weakSelf listWillAppear:weakSelf.currentIndex];
@@ -109,7 +107,7 @@
             }
         }
         [RTLManager horizontalFlipViewIfNeeded:self.scrollView];
-        [self.containerVC.view addSubview:self.scrollView];
+        self.containerVC.view = self.scrollView;
     }else {
         UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
         layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
@@ -142,10 +140,11 @@
             self.collectionView.semanticContentAttribute = UISemanticContentAttributeForceLeftToRight;
             [RTLManager horizontalFlipView:self.collectionView];
         }
-        [self.containerVC.view addSubview:self.collectionView];
+        self.containerVC.view = self.collectionView;
         //让外部统一访问scrollView
         _scrollView = _collectionView;
     }
+    [self addSubview:self.containerVC.view];
 }
 
 - (void)willMoveToSuperview:(UIView *)newSuperview {
@@ -164,7 +163,6 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
 
-    self.containerVC.view.frame = self.bounds;
     if (self.containerType == JXCategoryListContainerType_ScrollView) {
         if (CGRectEqualToRect(self.scrollView.frame, CGRectZero) ||  !CGSizeEqualToSize(self.scrollView.bounds.size, self.bounds.size)) {
             self.scrollView.frame = self.bounds;
@@ -380,6 +378,15 @@
         return;
     }
     id<JXCategoryListContentViewDelegate> list = _validListDict[@(index)];
+    
+    if (list &&
+        _containerType == JXCategoryListContainerType_ScrollView) {
+        [NSObject cancelPreviousPerformRequestsWithTarget:[list listView] selector:@selector(removeFromSuperview) object:nil];
+        if (([list listView].superview == nil)) {
+            [_scrollView addSubview:[list listView]];
+        }
+    }
+    
     if (list != nil) {
         if (list && [list respondsToSelector:@selector(listWillAppear)]) {
             [list listWillAppear];
@@ -443,6 +450,16 @@
     }
     self.currentIndex = index;
     id<JXCategoryListContentViewDelegate> list = _validListDict[@(index)];
+    
+    if (list &&
+        _containerType == JXCategoryListContainerType_ScrollView) {
+        [NSObject cancelPreviousPerformRequestsWithTarget:[list listView] selector:@selector(removeFromSuperview) object:nil];
+        
+        if (([list listView].superview == nil)) {
+            [_scrollView addSubview:[list listView]];
+        }
+    }
+    
     if (list && [list respondsToSelector:@selector(listDidAppear)]) {
         [list listDidAppear];
     }
@@ -457,6 +474,13 @@
         return;
     }
     id<JXCategoryListContentViewDelegate> list = _validListDict[@(index)];
+    
+    if (list &&
+        _containerType == JXCategoryListContainerType_ScrollView) {
+        [NSObject cancelPreviousPerformRequestsWithTarget:[list listView] selector:@selector(removeFromSuperview) object:nil];
+        [[list listView] performSelector:@selector(removeFromSuperview) withObject:nil afterDelay:1.0];
+    }
+    
     if (list && [list respondsToSelector:@selector(listWillDisappear)]) {
         [list listWillDisappear];
     }
