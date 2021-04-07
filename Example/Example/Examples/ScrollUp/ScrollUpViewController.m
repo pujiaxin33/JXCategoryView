@@ -46,7 +46,8 @@ CGFloat NaviBarHeight = 44;
     self.categoryView.titles = self.titles;
     [self.view addSubview:self.categoryView];
     self.categoryView.translatesAutoresizingMaskIntoConstraints = NO;
-    [self.categoryView.heightAnchor constraintEqualToConstant:50].active = YES;
+    CGFloat categoryViewHeight = 50;
+    [self.categoryView.heightAnchor constraintEqualToConstant:categoryViewHeight].active = YES;
     [self.categoryView.leftAnchor constraintEqualToAnchor:self.view.leftAnchor].active = YES;
     [self.categoryView.topAnchor constraintEqualToAnchor:self.naviBar.bottomAnchor].active = YES;
     [self.categoryView.rightAnchor constraintEqualToAnchor:self.view.rightAnchor].active = YES;
@@ -58,7 +59,8 @@ CGFloat NaviBarHeight = 44;
     [self.categoryView.bottomAnchor constraintEqualToAnchor:self.listContainerView.topAnchor].active = YES;
     [self.listContainerView.leftAnchor constraintEqualToAnchor:self.view.leftAnchor].active = YES;
     [self.listContainerView.rightAnchor constraintEqualToAnchor:self.view.rightAnchor].active = YES;
-    [self.listContainerView.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor].active = YES;
+    CGFloat listContainerViewHeight = self.view.bounds.size.height - [UIApplication sharedApplication].keyWindow.jx_layoutInsets.top - categoryViewHeight;
+    [self.listContainerView.heightAnchor constraintEqualToConstant:listContainerViewHeight].active = YES;
 
     self.categoryView.listContainer = self.listContainerView;
 }
