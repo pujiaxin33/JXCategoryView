@@ -228,6 +228,11 @@
         }
         [cell.contentView addSubview:[list listView]];
     }
+    // 针对 RTL 布局
+    if ([UIView userInterfaceLayoutDirectionForSemanticContentAttribute:self.semanticContentAttribute]
+        == UIUserInterfaceLayoutDirectionRightToLeft) {
+        cell.contentView.transform = CGAffineTransformMakeScale(-1, 1);
+    }
     return cell;
 }
 
