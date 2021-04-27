@@ -211,9 +211,8 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
     cell.contentView.backgroundColor = self.listCellBackgroundColor;
-    for (UIView *subview in cell.contentView.subviews) {
-        [subview removeFromSuperview];
-    }
+    
+    UIView* listView = nil;
     id<JXCategoryListContentViewDelegate> list = _validListDict[@(indexPath.item)];
     if (list != nil) {
         //fixme:如果list是UIViewController，如果这里的frame修改是`[list listView].frame = cell.bounds;`。那么就必须给list vc添加如下代码:
@@ -221,13 +220,27 @@
         //    self.view = [[UIView alloc] init];
         //}
         //所以，总感觉是把UIViewController当做普通view使用，导致了系统内部的bug。所以，缓兵之计就是用下面的方法，暂时解决问题。
+        listView = [list listView];
         if ([list isKindOfClass:[UIViewController class]]) {
-            [list listView].frame = cell.contentView.bounds;
+            listView.frame = cell.contentView.bounds;
         } else {
-            [list listView].frame = cell.bounds;
+            listView.frame = cell.bounds;
         }
-        [cell.contentView addSubview:[list listView]];
     }
+    
+    BOOL isAdded = NO;
+    for (UIView *subview in cell.contentView.subviews) {
+        if( listView != subview ) {
+            [subview removeFromSuperview];
+        } else {
+            isAdded = YES;
+        }
+    }
+    
+    if( !isAdded && listView ) {
+        [cell.contentView addSubview:listView];
+    }
+    
     return cell;
 }
 
