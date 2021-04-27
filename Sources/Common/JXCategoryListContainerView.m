@@ -297,6 +297,31 @@
         self.willDisappearIndex = -1;
         self.willAppearIndex = -1;
     }
+
+    if (self.delegate && [self.delegate respondsToSelector:@selector(listContainerViewDidEndDecelerating:)]) {
+        [self.delegate listContainerViewDidEndDecelerating:scrollView];
+    }
+}
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(listContainerViewWillBeginDragging:)]) {
+        [self.delegate listContainerViewWillBeginDragging:scrollView];
+    }
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(listContainerViewDidEndDragging:willDecelerate:)]) {
+        [self.delegate listContainerViewDidEndDragging:scrollView willDecelerate:decelerate];
+    }
+}
+
+- (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView
+{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(listContainerViewWillBeginDecelerating:)]) {
+        [self.delegate listContainerViewWillBeginDecelerating:scrollView];
+    }
 }
 
 #pragma mark - JXCategoryViewListContainer
