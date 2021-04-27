@@ -115,6 +115,7 @@ struct DelegateFlags {
     }else {
         if (!CGRectEqualToRect(self.collectionView.frame, targetFrame)) {
             self.collectionView.frame = targetFrame;
+            [self refreshState];
             [self.collectionView.collectionViewLayout invalidateLayout];
             [self.collectionView reloadData];
         }
