@@ -12,18 +12,15 @@
 
 #define WindowsSize [UIScreen mainScreen].bounds.size
 
-@interface ContentBaseViewController : UIViewController<JXCategoryListContainerViewDelegate>
+/// 视图控制器基类
+@interface ContentBaseViewController : UIViewController <JXCategoryListContainerViewDelegate>
 
 @property (nonatomic, strong) NSArray *titles;
-
 @property (nonatomic, strong) JXCategoryBaseView *categoryView;
-
 @property (nonatomic, strong) JXCategoryListContainerView *listContainerView;
-
 @property (nonatomic, assign) BOOL isNeedIndicatorPositionChangeItem;
 
 - (JXCategoryBaseView *)preferredCategoryView;
-
 - (CGFloat)preferredCategoryViewHeight;
 
 @end

@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+/// 特殊效果 - 垂直列表滚动(UICollectionView)
 @interface VerticalListViewController : UIViewController
 
 @end

@@ -14,10 +14,6 @@
 #import "DotViewController.h"
 #import "AttributeViewViewController.h"
 
-@interface CellCustomizeViewController ()
-
-@end
-
 @implementation CellCustomizeViewController
 
 - (void)viewDidLoad {

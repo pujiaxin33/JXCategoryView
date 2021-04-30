@@ -369,22 +369,22 @@
 		A6B3C4AD248370D14A08BD25FF78FD52 /* IndicatorViews */ = {
 			isa = PBXGroup;
 			children = (
-				7BE53B3C114BBD85A56E7B0750795A57 /* JXCategoryIndicatorBackgroundView.h */,
-				85E03F3F19A1FB134044ED5E3865D6AB /* JXCategoryIndicatorBackgroundView.m */,
-				4CFF9F6F2133DC199DBBD31B6CB6AAEF /* JXCategoryIndicatorBallView.h */,
-				F2499E42A00DA239E13F3D9775FF033D /* JXCategoryIndicatorBallView.m */,
 				155B5BC1C71344B214582FA76E9F1328 /* JXCategoryIndicatorComponentView.h */,
 				D01E09215CB615E9A959BC0F8970ADCA /* JXCategoryIndicatorComponentView.m */,
-				73CC863DBB62BEF587C6929D41BEF650 /* JXCategoryIndicatorDotLineView.h */,
-				631E7720DD2ECE560001682EEA97C397 /* JXCategoryIndicatorDotLineView.m */,
-				C1E2D59B151FA73FAF7F7B847397D459 /* JXCategoryIndicatorImageView.h */,
-				F361A0DDCC8C09BC83293EB580CBDF8F /* JXCategoryIndicatorImageView.m */,
 				403E5F4286F1E3B146856B3462D56065 /* JXCategoryIndicatorLineView.h */,
 				00BEEFA5E608D7E5CA5DD91F30BCD204 /* JXCategoryIndicatorLineView.m */,
+				73CC863DBB62BEF587C6929D41BEF650 /* JXCategoryIndicatorDotLineView.h */,
+				631E7720DD2ECE560001682EEA97C397 /* JXCategoryIndicatorDotLineView.m */,
 				BF321D3D88503CDF830F177AE369EF1A /* JXCategoryIndicatorRainbowLineView.h */,
 				82FE90561F19A2772693837F572D63FF /* JXCategoryIndicatorRainbowLineView.m */,
 				2B105956A46A5950CD9B3C92A98EDF47 /* JXCategoryIndicatorTriangleView.h */,
 				438F1A3B2AECC0CA4472C4F4AB885740 /* JXCategoryIndicatorTriangleView.m */,
+				C1E2D59B151FA73FAF7F7B847397D459 /* JXCategoryIndicatorImageView.h */,
+				F361A0DDCC8C09BC83293EB580CBDF8F /* JXCategoryIndicatorImageView.m */,
+				7BE53B3C114BBD85A56E7B0750795A57 /* JXCategoryIndicatorBackgroundView.h */,
+				85E03F3F19A1FB134044ED5E3865D6AB /* JXCategoryIndicatorBackgroundView.m */,
+				4CFF9F6F2133DC199DBBD31B6CB6AAEF /* JXCategoryIndicatorBallView.h */,
+				F2499E42A00DA239E13F3D9775FF033D /* JXCategoryIndicatorBallView.m */,
 			);
 			path = IndicatorViews;
 			sourceTree = "<group>";
@@ -520,6 +520,7 @@
 		E9C3441E866AB6D066D20969CD25BE0B /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				0BB2D33671CEE2F0580201778FE0EE2A /* JXCategoryViewDefines.h */,
 				645308330B2B1A609BD026C24DE3EB9C /* JXCategoryCollectionView.h */,
 				7C6F3D8126EF85D6E008DF8A76C016A3 /* JXCategoryCollectionView.m */,
 				2BCBB6871422CF167CBD6D89377B74E1 /* JXCategoryFactory.h */,
@@ -533,7 +534,6 @@
 				91791005C2E546749629354484D69BE3 /* JXCategoryListContainerView.m */,
 				6FED7E27EC074B0B116710473E41061E /* JXCategoryViewAnimator.h */,
 				A69F70533EC4AB1AEB942AA4874CF46B /* JXCategoryViewAnimator.m */,
-				0BB2D33671CEE2F0580201778FE0EE2A /* JXCategoryViewDefines.h */,
 				1075F33A545199CFC5E3BB0373C3EAD5 /* UIColor+JXAdd.h */,
 				A155A92B8BC2341D913F078E45839E04 /* UIColor+JXAdd.m */,
 			);

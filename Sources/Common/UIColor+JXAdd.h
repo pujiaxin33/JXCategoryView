@@ -15,5 +15,4 @@
 @property (nonatomic, assign, readonly) CGFloat jx_blue;
 @property (nonatomic, assign, readonly) CGFloat jx_alpha;
 
-
 @end

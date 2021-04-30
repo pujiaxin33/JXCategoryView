@@ -17,9 +17,15 @@
 
 @implementation TitleImageViewController
 
-- (void)viewDidLoad {
-    self.titles = @[@"螃蟹", @"小龙虾", @"苹果", @"胡萝卜", @"葡萄", @"西瓜"];
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        self.titles = @[@"螃蟹", @"小龙虾", @"苹果", @"胡萝卜", @"葡萄", @"西瓜"];
+    }
+    return self;
+}
 
+- (void)viewDidLoad {
     [super viewDidLoad];
 
     UIBarButtonItem *settingItem = [[UIBarButtonItem alloc] initWithTitle:@"设置" style:UIBarButtonItemStylePlain target:self action:@selector(didSettingClicked)];

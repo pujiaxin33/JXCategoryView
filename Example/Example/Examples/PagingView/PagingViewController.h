@@ -8,9 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-
 /**
- 该库的JXPagerView不能保证为最新版本，强烈建议阅读JXPagingView库：https://github.com/pujiaxin33/JXPagingView，里面有更丰富的效果支持！！！
+ 该库的 JXPagerView 不能保证为最新版本，强烈建议阅读 JXPagingView 库：<https://github.com/pujiaxin33/JXPagingView>，里面有更丰富的效果支持！！！
  */
 @interface PagingViewController : UIViewController
 

@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+/// 个人中心，自定义表头视图
 @interface PagingViewTableHeaderView : UIView
 
 - (void)scrollViewDidScroll:(CGFloat)contentOffsetY;

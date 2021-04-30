@@ -434,16 +434,15 @@
 				19F151752387BE2E0043A86E /* VerticalListView */,
 				19F1518C2387BE2E0043A86E /* TitleImage */,
 				19F151912387BE2E0043A86E /* Title */,
-				19F151942387BE2E0043A86E /* Football */,
 				19F151972387BE2E0043A86E /* PagingView */,
 				19F151A82387BE2E0043A86E /* Image */,
-				19F151AB2387BE2E0043A86E /* Special */,
 				19F151AD2387BE2E0043A86E /* Number */,
 				19F151B02387BE2E0043A86E /* Common */,
 				19F151C32387BE2E0043A86E /* LoadData */,
 				19F152012387BE2E0043A86E /* SegmentedControl */,
 				19F152082387BE2E0043A86E /* IndicatorImageView */,
 				19F1520B2387BE2E0043A86E /* BackgroundImage */,
+				19F151942387BE2E0043A86E /* Football */,
 				19F1520E2387BE2E0043A86E /* Nest */,
 				19F152132387BE2E0043A86E /* Customize */,
 			);
@@ -453,12 +452,12 @@
 		19F151682387BE2E0043A86E /* ScrollZoom */ = {
 			isa = PBXGroup;
 			children = (
+				19F1516C2387BE2E0043A86E /* JXCategoryIndicatorScrollZoomLineView.h */,
 				19F151692387BE2E0043A86E /* JXCategoryIndicatorScrollZoomLineView.m */,
 				19F1516A2387BE2E0043A86E /* ScrollZoomViewController.h */,
-				19F1516B2387BE2E0043A86E /* LoadDataListScrollZoomViewController.h */,
-				19F1516C2387BE2E0043A86E /* JXCategoryIndicatorScrollZoomLineView.h */,
-				19F1516D2387BE2E0043A86E /* LoadDataListScrollZoomViewController.m */,
 				19F1516E2387BE2E0043A86E /* ScrollZoomViewController.m */,
+				19F1516B2387BE2E0043A86E /* LoadDataListScrollZoomViewController.h */,
+				19F1516D2387BE2E0043A86E /* LoadDataListScrollZoomViewController.m */,
 			);
 			path = ScrollZoom;
 			sourceTree = "<group>";
@@ -466,8 +465,8 @@
 		19F1516F2387BE2E0043A86E /* Rearrange */ = {
 			isa = PBXGroup;
 			children = (
-				19F151702387BE2E0043A86E /* RearrangeViewController.m */,
 				19F151712387BE2E0043A86E /* RearrangeViewController.h */,
+				19F151702387BE2E0043A86E /* RearrangeViewController.m */,
 			);
 			path = Rearrange;
 			sourceTree = "<group>";
@@ -475,8 +474,8 @@
 		19F151722387BE2E0043A86E /* Dot */ = {
 			isa = PBXGroup;
 			children = (
-				19F151732387BE2E0043A86E /* DotViewController.m */,
 				19F151742387BE2E0043A86E /* DotViewController.h */,
+				19F151732387BE2E0043A86E /* DotViewController.m */,
 			);
 			path = Dot;
 			sourceTree = "<group>";
@@ -484,28 +483,8 @@
 		19F151752387BE2E0043A86E /* VerticalListView */ = {
 			isa = PBXGroup;
 			children = (
-				19F151762387BE2E0043A86E /* VerticalSectionHeaderView.m */,
-				19F151772387BE2E0043A86E /* VerticalListTableViewController.m */,
-				19F151782387BE2E0043A86E /* VerticalListViewController.h */,
-				19F151792387BE2E0043A86E /* VerticalListCellModel.h */,
-				19F1517A2387BE2E0043A86E /* VerticalListTableView.m */,
-				19F1517B2387BE2E0043A86E /* VerticalListCell.m */,
-				19F1517C2387BE2E0043A86E /* VerticalListSectionModel.h */,
-				19F1517D2387BE2E0043A86E /* VerticalSectionCategoryHeaderView.h */,
-				19F1517E2387BE2E0043A86E /* VerticalTableSectionHeaderView.m */,
-				19F1517F2387BE2E0043A86E /* VerticalListCollectionView.m */,
-				19F151802387BE2E0043A86E /* VerticalTableSectionCategoryHeaderView.h */,
-				19F151812387BE2E0043A86E /* VerticalSectionHeaderView.h */,
-				19F151822387BE2E0043A86E /* VerticalListViewController.m */,
-				19F151832387BE2E0043A86E /* VerticalListTableViewController.h */,
-				19F151842387BE2E0043A86E /* VerticalTableSectionHeaderView.h */,
-				19F151852387BE2E0043A86E /* VerticalSectionCategoryHeaderView.m */,
-				19F151862387BE2E0043A86E /* VerticalListSectionModel.m */,
-				19F151872387BE2E0043A86E /* VerticalListCell.h */,
-				19F151882387BE2E0043A86E /* VerticalListTableView.h */,
-				19F151892387BE2E0043A86E /* VerticalListCellModel.m */,
-				19F1518A2387BE2E0043A86E /* VerticalTableSectionCategoryHeaderView.m */,
-				19F1518B2387BE2E0043A86E /* VerticalListCollectionView.h */,
+				22824AB6254828420008F629 /* 垂直列表滚动(UICollectionView) */,
+				22824AB72548284A0008F629 /* 垂直列表滚动(UITableView) */,
 			);
 			path = VerticalListView;
 			sourceTree = "<group>";
@@ -514,9 +493,9 @@
 			isa = PBXGroup;
 			children = (
 				19F1518D2387BE2E0043A86E /* TitleImageViewController.h */,
-				19F1518E2387BE2E0043A86E /* TitleImageSettingViewController.m */,
 				19F1518F2387BE2E0043A86E /* TitleImageViewController.m */,
 				19F151902387BE2E0043A86E /* TitleImageSettingViewController.h */,
+				19F1518E2387BE2E0043A86E /* TitleImageSettingViewController.m */,
 			);
 			path = TitleImage;
 			sourceTree = "<group>";
@@ -524,8 +503,8 @@
 		19F151912387BE2E0043A86E /* Title */ = {
 			isa = PBXGroup;
 			children = (
-				19F151922387BE2E0043A86E /* TitleViewController.m */,
 				19F151932387BE2E0043A86E /* TitleViewController.h */,
+				19F151922387BE2E0043A86E /* TitleViewController.m */,
 			);
 			path = Title;
 			sourceTree = "<group>";
@@ -542,53 +521,30 @@
 		19F151972387BE2E0043A86E /* PagingView */ = {
 			isa = PBXGroup;
 			children = (
-				19F151A12387BE2E0043A86E /* Example */,
-			);
-			path = PagingView;
-			sourceTree = "<group>";
-		};
-		19F151A12387BE2E0043A86E /* Example */ = {
-			isa = PBXGroup;
-			children = (
-				19F151A22387BE2E0043A86E /* TestListBaseView.h */,
-				19F151A32387BE2E0043A86E /* PagingViewTableHeaderView.m */,
+				19F151A72387BE2E0043A86E /* PagingViewController.h */,
 				19F151A42387BE2E0043A86E /* PagingViewController.m */,
 				19F151A52387BE2E0043A86E /* PagingViewTableHeaderView.h */,
+				19F151A32387BE2E0043A86E /* PagingViewTableHeaderView.m */,
+				19F151A22387BE2E0043A86E /* TestListBaseView.h */,
 				19F151A62387BE2E0043A86E /* TestListBaseView.m */,
-				19F151A72387BE2E0043A86E /* PagingViewController.h */,
 			);
-			path = Example;
+			path = PagingView;
 			sourceTree = "<group>";
 		};
 		19F151A82387BE2E0043A86E /* Image */ = {
 			isa = PBXGroup;
 			children = (
-				19F151A92387BE2E0043A86E /* ImageViewController.m */,
 				19F151AA2387BE2E0043A86E /* ImageViewController.h */,
+				19F151A92387BE2E0043A86E /* ImageViewController.m */,
 			);
 			path = Image;
-			sourceTree = "<group>";
-		};
-		19F151AB2387BE2E0043A86E /* Special */ = {
-			isa = PBXGroup;
-			children = (
-				19F151AC2387BE2E0043A86E /* SwipeDelete */,
-			);
-			path = Special;
-			sourceTree = "<group>";
-		};
-		19F151AC2387BE2E0043A86E /* SwipeDelete */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = SwipeDelete;
 			sourceTree = "<group>";
 		};
 		19F151AD2387BE2E0043A86E /* Number */ = {
 			isa = PBXGroup;
 			children = (
-				19F151AE2387BE2E0043A86E /* NumberViewController.m */,
 				19F151AF2387BE2E0043A86E /* NumberViewController.h */,
+				19F151AE2387BE2E0043A86E /* NumberViewController.m */,
 			);
 			path = Number;
 			sourceTree = "<group>";
@@ -596,24 +552,24 @@
 		19F151B02387BE2E0043A86E /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				19F151B12387BE2E0043A86E /* SpecialCustomizeViewController.h */,
-				19F151B22387BE2E0043A86E /* ListViewController.m */,
 				19F151B32387BE2E0043A86E /* IndicatorCustomizeViewController.h */,
-				19F151B42387BE2E0043A86E /* ContentBaseViewController.m */,
-				19F151B52387BE2E0043A86E /* BaseNavigationViewController.h */,
-				19F151B62387BE2E0043A86E /* UIWindow+JXSafeArea.m */,
-				19F151B72387BE2E0043A86E /* DetailViewController.m */,
-				19F151B82387BE2E0043A86E /* CellCustomizeViewController.m */,
-				19F151B92387BE2E0043A86E /* JXGradientView.h */,
-				19F151BA2387BE2E0043A86E /* SpecialCustomizeViewController.m */,
 				19F151BB2387BE2E0043A86E /* IndicatorCustomizeViewController.m */,
-				19F151BC2387BE2E0043A86E /* ListViewController.h */,
+				19F151C02387BE2E0043A86E /* CellCustomizeViewController.h */,
+				19F151B82387BE2E0043A86E /* CellCustomizeViewController.m */,
+				19F151B12387BE2E0043A86E /* SpecialCustomizeViewController.h */,
+				19F151BA2387BE2E0043A86E /* SpecialCustomizeViewController.m */,
+				19F151B52387BE2E0043A86E /* BaseNavigationViewController.h */,
 				19F151BD2387BE2E0043A86E /* BaseNavigationViewController.m */,
 				19F151BE2387BE2E0043A86E /* ContentBaseViewController.h */,
-				19F151BF2387BE2E0043A86E /* JXGradientView.m */,
-				19F151C02387BE2E0043A86E /* CellCustomizeViewController.h */,
+				19F151B42387BE2E0043A86E /* ContentBaseViewController.m */,
+				19F151BC2387BE2E0043A86E /* ListViewController.h */,
+				19F151B22387BE2E0043A86E /* ListViewController.m */,
 				19F151C12387BE2E0043A86E /* DetailViewController.h */,
+				19F151B72387BE2E0043A86E /* DetailViewController.m */,
+				19F151B92387BE2E0043A86E /* JXGradientView.h */,
+				19F151BF2387BE2E0043A86E /* JXGradientView.m */,
 				19F151C22387BE2E0043A86E /* UIWindow+JXSafeArea.h */,
+				19F151B62387BE2E0043A86E /* UIWindow+JXSafeArea.m */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -621,21 +577,14 @@
 		19F151C32387BE2E0043A86E /* LoadData */ = {
 			isa = PBXGroup;
 			children = (
-				19F151C42387BE2E0043A86E /* LoadDataListCustomViewController.m */,
-				19F151C52387BE2E0043A86E /* LoadDataListContainerListViewController.m */,
-				19F151C62387BE2E0043A86E /* MJRefresh */,
-				19F151F52387BE2E0043A86E /* LoadDataListCollectionViewController.h */,
-				19F151F62387BE2E0043A86E /* LoadDataListContainerViewController.m */,
-				19F151F72387BE2E0043A86E /* LoadDataListBaseViewController.m */,
 				19F151F82387BE2E0043A86E /* LoadDataBaseViewController.h */,
-				19F151F92387BE2E0043A86E /* LoadDataListCollectionListViewController.h */,
-				19F151FA2387BE2E0043A86E /* LoadDataListContainerListViewController.h */,
-				19F151FB2387BE2E0043A86E /* LoadDataListCustomViewController.h */,
-				19F151FC2387BE2E0043A86E /* LoadDataListContainerViewController.h */,
-				19F151FD2387BE2E0043A86E /* LoadDataListCollectionViewController.m */,
-				19F151FE2387BE2E0043A86E /* LoadDataListCollectionListViewController.m */,
 				19F151FF2387BE2E0043A86E /* LoadDataBaseViewController.m */,
 				19F152002387BE2E0043A86E /* LoadDataListBaseViewController.h */,
+				19F151F72387BE2E0043A86E /* LoadDataListBaseViewController.m */,
+				226531032548252700394C58 /* 刷新数据+UIScrollView封装列表 */,
+				226531042548253200394C58 /* 刷新数据+UICollectionView封装列表 */,
+				22653105254825F600394C58 /* 刷新数据+列表自定义 */,
+				19F151C62387BE2E0043A86E /* MJRefresh */,
 			);
 			path = LoadData;
 			sourceTree = "<group>";
@@ -741,8 +690,8 @@
 				19F152022387BE2E0043A86E /* NaviSegmentedControlViewController.m */,
 				19F152032387BE2E0043A86E /* SegmentedListViewController.m */,
 				19F152042387BE2E0043A86E /* SegmentedControlViewController.h */,
-				19F152052387BE2E0043A86E /* NaviSegmentedControlViewController.h */,
 				19F152062387BE2E0043A86E /* SegmentedControlViewController.m */,
+				19F152052387BE2E0043A86E /* NaviSegmentedControlViewController.h */,
 				19F152072387BE2E0043A86E /* SegmentedListViewController.h */,
 			);
 			path = SegmentedControl;
@@ -751,8 +700,8 @@
 		19F152082387BE2E0043A86E /* IndicatorImageView */ = {
 			isa = PBXGroup;
 			children = (
-				19F152092387BE2E0043A86E /* IndicatorImageViewViewController.m */,
 				19F1520A2387BE2E0043A86E /* IndicatorImageViewViewController.h */,
+				19F152092387BE2E0043A86E /* IndicatorImageViewViewController.m */,
 			);
 			path = IndicatorImageView;
 			sourceTree = "<group>";
@@ -760,8 +709,8 @@
 		19F1520B2387BE2E0043A86E /* BackgroundImage */ = {
 			isa = PBXGroup;
 			children = (
-				19F1520C2387BE2E0043A86E /* BackgroundImageViewController.m */,
 				19F1520D2387BE2E0043A86E /* BackgroundImageViewController.h */,
+				19F1520C2387BE2E0043A86E /* BackgroundImageViewController.m */,
 			);
 			path = BackgroundImage;
 			sourceTree = "<group>";
@@ -780,14 +729,14 @@
 		19F152132387BE2E0043A86E /* Customize */ = {
 			isa = PBXGroup;
 			children = (
+				19F1523D2387BE2E0043A86E /* CustomizationListViewController.h */,
+				19F152262387BE2E0043A86E /* CustomizationListViewController.m */,
 				19F152142387BE2E0043A86E /* TitleBackground */,
 				19F1521D2387BE2E0043A86E /* Sort */,
-				19F152262387BE2E0043A86E /* CustomizationListViewController.m */,
 				19F152272387BE2E0043A86E /* TitleAtrribute */,
 				19F152302387BE2E0043A86E /* CountCell */,
 				19F152332387BE2E0043A86E /* SpringIndicator */,
 				19F152382387BE2E0043A86E /* AlignmentIndicator */,
-				19F1523D2387BE2E0043A86E /* CustomizationListViewController.h */,
 				19F1523E2387BE2E0043A86E /* TimeLine */,
 			);
 			path = Customize;
@@ -796,10 +745,10 @@
 		19F152142387BE2E0043A86E /* TitleBackground */ = {
 			isa = PBXGroup;
 			children = (
-				19F152152387BE2E0043A86E /* JXCategoryTitleBackgroundCell.h */,
 				19F152162387BE2E0043A86E /* JXCategoryTitleBackgroundView.h */,
 				19F152172387BE2E0043A86E /* TitleBackgroundExampleViewController.m */,
 				19F152182387BE2E0043A86E /* JXCategoryTitleBackgroundCellModel.m */,
+				19F152152387BE2E0043A86E /* JXCategoryTitleBackgroundCell.h */,
 				19F152192387BE2E0043A86E /* JXCategoryTitleBackgroundCell.m */,
 				19F1521A2387BE2E0043A86E /* TitleBackgroundExampleViewController.h */,
 				19F1521B2387BE2E0043A86E /* JXCategoryTitleBackgroundView.m */,
@@ -862,8 +811,8 @@
 			isa = PBXGroup;
 			children = (
 				19F152392387BE2E0043A86E /* JXCategoryIndicatorAlignmentLineView.h */,
-				19F1523A2387BE2E0043A86E /* AlignmentLineExampleViewController.h */,
 				19F1523B2387BE2E0043A86E /* JXCategoryIndicatorAlignmentLineView.m */,
+				19F1523A2387BE2E0043A86E /* AlignmentLineExampleViewController.h */,
 				19F1523C2387BE2E0043A86E /* AlignmentLineExampleViewController.m */,
 			);
 			path = AlignmentIndicator;
@@ -873,13 +822,13 @@
 			isa = PBXGroup;
 			children = (
 				19F1523F2387BE2E0043A86E /* TimelineExampleViewController.h */,
-				19F152402387BE2E0043A86E /* JXCategoryTimelineView.m */,
-				19F152412387BE2E0043A86E /* JXCategoryTimelineCellModel.m */,
-				19F152422387BE2E0043A86E /* JXCategoryTimelineCell.m */,
 				19F152432387BE2E0043A86E /* TimelineExampleViewController.m */,
 				19F152442387BE2E0043A86E /* JXCategoryTimelineCellModel.h */,
+				19F152412387BE2E0043A86E /* JXCategoryTimelineCellModel.m */,
 				19F152452387BE2E0043A86E /* JXCategoryTimelineView.h */,
+				19F152402387BE2E0043A86E /* JXCategoryTimelineView.m */,
 				19F152462387BE2E0043A86E /* JXCategoryTimelineCell.h */,
+				19F152422387BE2E0043A86E /* JXCategoryTimelineCell.m */,
 			);
 			path = TimeLine;
 			sourceTree = "<group>";
@@ -922,6 +871,113 @@
 				19F152502387BE2E0043A86E /* seaWave.png */,
 			);
 			path = Indicator;
+			sourceTree = "<group>";
+		};
+		226531032548252700394C58 /* 刷新数据+UIScrollView封装列表 */ = {
+			isa = PBXGroup;
+			children = (
+				19F151FC2387BE2E0043A86E /* LoadDataListContainerViewController.h */,
+				19F151F62387BE2E0043A86E /* LoadDataListContainerViewController.m */,
+				19F151FA2387BE2E0043A86E /* LoadDataListContainerListViewController.h */,
+				19F151C52387BE2E0043A86E /* LoadDataListContainerListViewController.m */,
+			);
+			path = "刷新数据+UIScrollView封装列表";
+			sourceTree = "<group>";
+		};
+		226531042548253200394C58 /* 刷新数据+UICollectionView封装列表 */ = {
+			isa = PBXGroup;
+			children = (
+				19F151F52387BE2E0043A86E /* LoadDataListCollectionViewController.h */,
+				19F151FD2387BE2E0043A86E /* LoadDataListCollectionViewController.m */,
+				19F151F92387BE2E0043A86E /* LoadDataListCollectionListViewController.h */,
+				19F151FE2387BE2E0043A86E /* LoadDataListCollectionListViewController.m */,
+			);
+			path = "刷新数据+UICollectionView封装列表";
+			sourceTree = "<group>";
+		};
+		22653105254825F600394C58 /* 刷新数据+列表自定义 */ = {
+			isa = PBXGroup;
+			children = (
+				19F151FB2387BE2E0043A86E /* LoadDataListCustomViewController.h */,
+				19F151C42387BE2E0043A86E /* LoadDataListCustomViewController.m */,
+			);
+			path = "刷新数据+列表自定义";
+			sourceTree = "<group>";
+		};
+		22824AB6254828420008F629 /* 垂直列表滚动(UICollectionView) */ = {
+			isa = PBXGroup;
+			children = (
+				22824AB925482C470008F629 /* Controller */,
+				22824ABA25482C4F0008F629 /* View */,
+				22824ABB25482C540008F629 /* Model */,
+			);
+			path = "垂直列表滚动(UICollectionView)";
+			sourceTree = "<group>";
+		};
+		22824AB72548284A0008F629 /* 垂直列表滚动(UITableView) */ = {
+			isa = PBXGroup;
+			children = (
+				22824ABE25482E220008F629 /* Controller */,
+				22824ABC25482E170008F629 /* View */,
+			);
+			path = "垂直列表滚动(UITableView)";
+			sourceTree = "<group>";
+		};
+		22824AB925482C470008F629 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				19F151782387BE2E0043A86E /* VerticalListViewController.h */,
+				19F151822387BE2E0043A86E /* VerticalListViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		22824ABA25482C4F0008F629 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				19F1517D2387BE2E0043A86E /* VerticalSectionCategoryHeaderView.h */,
+				19F151852387BE2E0043A86E /* VerticalSectionCategoryHeaderView.m */,
+				19F151812387BE2E0043A86E /* VerticalSectionHeaderView.h */,
+				19F151762387BE2E0043A86E /* VerticalSectionHeaderView.m */,
+				19F151872387BE2E0043A86E /* VerticalListCell.h */,
+				19F1517B2387BE2E0043A86E /* VerticalListCell.m */,
+				19F1518B2387BE2E0043A86E /* VerticalListCollectionView.h */,
+				19F1517F2387BE2E0043A86E /* VerticalListCollectionView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		22824ABB25482C540008F629 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				19F151792387BE2E0043A86E /* VerticalListCellModel.h */,
+				19F151892387BE2E0043A86E /* VerticalListCellModel.m */,
+				19F1517C2387BE2E0043A86E /* VerticalListSectionModel.h */,
+				19F151862387BE2E0043A86E /* VerticalListSectionModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		22824ABC25482E170008F629 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				19F151802387BE2E0043A86E /* VerticalTableSectionCategoryHeaderView.h */,
+				19F1518A2387BE2E0043A86E /* VerticalTableSectionCategoryHeaderView.m */,
+				19F151842387BE2E0043A86E /* VerticalTableSectionHeaderView.h */,
+				19F1517E2387BE2E0043A86E /* VerticalTableSectionHeaderView.m */,
+				19F151882387BE2E0043A86E /* VerticalListTableView.h */,
+				19F1517A2387BE2E0043A86E /* VerticalListTableView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		22824ABE25482E220008F629 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				19F151832387BE2E0043A86E /* VerticalListTableViewController.h */,
+				19F151772387BE2E0043A86E /* VerticalListTableViewController.m */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		79561B3824A9858A3CA8B2C5 /* Pods */ = {
@@ -968,7 +1024,7 @@
 		19F151432387BDA80043A86E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1200;
+				LastUpgradeCheck = 1210;
 				ORGANIZATIONNAME = jiaxin;
 				TargetAttributes = {
 					19F1514A2387BDA90043A86E = {
@@ -1234,7 +1290,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1287,7 +1343,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -1306,12 +1362,12 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Example/PrefixHeader.pch";
 				INFOPLIST_FILE = Example/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = xinxin.Example.categoryView.33;
+				PRODUCT_BUNDLE_IDENTIFIER = xinxin.Example.categoryView.333;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1324,12 +1380,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = A8F7U6DN75;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Example/PrefixHeader.pch";
 				INFOPLIST_FILE = Example/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

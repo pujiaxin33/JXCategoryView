@@ -10,32 +10,38 @@
 
 @implementation JXCategoryIndicatorComponentView
 
-- (instancetype)initWithFrame:(CGRect)frame
-{
+#pragma mark - Initialize
+
+- (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-        _componentPosition = JXCategoryComponentPosition_Bottom;
-        _scrollEnabled = YES;
-        _verticalMargin = 0;
-        _scrollAnimationDuration = 0.25;
-        _indicatorWidth = JXCategoryViewAutomaticDimension;
-        _indicatorWidthIncrement = 0;
-        _indicatorHeight = 3;
-        _indicatorCornerRadius = JXCategoryViewAutomaticDimension;
-        _indicatorColor = [UIColor redColor];
-        _scrollStyle = JXCategoryIndicatorScrollStyleSimple;
+        [self configureDefaultValue];
     }
     return self;
 }
 
-- (instancetype)initWithCoder:(NSCoder *)coder
-{
+- (instancetype)initWithCoder:(NSCoder *)coder {
     self = [super initWithCoder:coder];
     if (self) {
-        NSAssert(NO, @"Use initWithFrame");
+        [self configureDefaultValue];
     }
     return self;
 }
+
+- (void)configureDefaultValue {
+    _componentPosition = JXCategoryComponentPosition_Bottom;
+    _scrollEnabled = YES;
+    _verticalMargin = 0;
+    _scrollAnimationDuration = 0.25;
+    _indicatorWidth = JXCategoryViewAutomaticDimension;
+    _indicatorWidthIncrement = 0;
+    _indicatorHeight = 3;
+    _indicatorCornerRadius = JXCategoryViewAutomaticDimension;
+    _indicatorColor = [UIColor redColor];
+    _scrollStyle = JXCategoryIndicatorScrollStyleSimple;
+}
+
+#pragma mark - Public
 
 - (CGFloat)indicatorWidthValue:(CGRect)cellFrame {
     if (self.indicatorWidth == JXCategoryViewAutomaticDimension) {

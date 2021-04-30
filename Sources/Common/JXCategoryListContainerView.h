@@ -93,6 +93,10 @@ typedef NS_ENUM(NSUInteger, JXCategoryListContainerType) {
 - (BOOL)listContainerView:(JXCategoryListContainerView *)listContainerView canInitListAtIndex:(NSInteger)index;
 
 - (void)listContainerViewDidScroll:(UIScrollView *)scrollView;
+- (void)listContainerViewWillBeginDragging:(UIScrollView *)scrollView;
+- (void)listContainerViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate;
+- (void)listContainerViewWillBeginDecelerating:(UIScrollView *)scrollView;
+- (void)listContainerViewDidEndDecelerating:(UIScrollView *)scrollView;
 
 @end
 

@@ -8,6 +8,7 @@
 
 #import "ContentBaseViewController.h"
 
+/// 指示器样式 - ImageView Cell背景
 @interface BackgroundImageViewController : ContentBaseViewController
 
 @end

@@ -216,9 +216,8 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
     cell.contentView.backgroundColor = self.listCellBackgroundColor;
-    for (UIView *subview in cell.contentView.subviews) {
-        [subview removeFromSuperview];
-    }
+    
+    UIView* listView = nil;
     id<JXCategoryListContentViewDelegate> list = _validListDict[@(indexPath.item)];
     if (list != nil) {
         //fixme:如果list是UIViewController，如果这里的frame修改是`[list listView].frame = cell.bounds;`。那么就必须给list vc添加如下代码:
@@ -226,18 +225,33 @@
         //    self.view = [[UIView alloc] init];
         //}
         //所以，总感觉是把UIViewController当做普通view使用，导致了系统内部的bug。所以，缓兵之计就是用下面的方法，暂时解决问题。
+        listView = [list listView];
         if ([list isKindOfClass:[UIViewController class]]) {
-            [list listView].frame = cell.contentView.bounds;
+            listView.frame = cell.contentView.bounds;
         } else {
-            [list listView].frame = cell.bounds;
+            listView.frame = cell.bounds;
         }
-        [cell.contentView addSubview:[list listView]];
     }
+    
+    BOOL isAdded = NO;
+    for (UIView *subview in cell.contentView.subviews) {
+        if( listView != subview ) {
+            [subview removeFromSuperview];
+        } else {
+            isAdded = YES;
+        }
+    }
+    
+    if( !isAdded && listView ) {
+        [cell.contentView addSubview:listView];
+    }
+    
     // 针对 RTL 布局
     if ([UIView userInterfaceLayoutDirectionForSemanticContentAttribute:self.semanticContentAttribute]
         == UIUserInterfaceLayoutDirectionRightToLeft) {
         cell.contentView.transform = CGAffineTransformMakeScale(-1, 1);
     }
+    
     return cell;
 }
 
@@ -306,6 +320,31 @@
         [self listDidDisappear:self.willAppearIndex];
         self.willDisappearIndex = -1;
         self.willAppearIndex = -1;
+    }
+
+    if (self.delegate && [self.delegate respondsToSelector:@selector(listContainerViewDidEndDecelerating:)]) {
+        [self.delegate listContainerViewDidEndDecelerating:scrollView];
+    }
+}
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(listContainerViewWillBeginDragging:)]) {
+        [self.delegate listContainerViewWillBeginDragging:scrollView];
+    }
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(listContainerViewDidEndDragging:willDecelerate:)]) {
+        [self.delegate listContainerViewDidEndDragging:scrollView willDecelerate:decelerate];
+    }
+}
+
+- (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView
+{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(listContainerViewWillBeginDecelerating:)]) {
+        [self.delegate listContainerViewWillBeginDecelerating:scrollView];
     }
 }
 

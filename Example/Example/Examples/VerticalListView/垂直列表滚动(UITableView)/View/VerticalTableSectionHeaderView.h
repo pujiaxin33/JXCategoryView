@@ -11,6 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface VerticalTableSectionHeaderView : UITableViewHeaderFooterView
+
 @end
 
 NS_ASSUME_NONNULL_END

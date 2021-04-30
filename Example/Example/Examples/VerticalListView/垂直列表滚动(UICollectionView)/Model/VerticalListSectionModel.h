@@ -12,7 +12,6 @@
 @interface VerticalListSectionModel : NSObject
 
 @property (nonatomic, copy) NSString *sectionTitle;
-
 @property (nonatomic, strong) NSArray <VerticalListCellModel *> *cellModels;
 
 @end

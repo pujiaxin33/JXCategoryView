@@ -55,12 +55,16 @@
     myCellModel.imageType = [self.imageTypes[index] integerValue];
     myCellModel.imageSize = self.imageSize;
     myCellModel.titleImageSpacing = self.titleImageSpacing;
-    if (self.imageNames && self.imageNames.count != 0) {
+    if (self.imageInfoArray && self.imageInfoArray.count != 0) {
+        myCellModel.imageInfo = self.imageInfoArray[index];
+    }else if (self.imageNames && self.imageNames.count != 0) {
         myCellModel.imageName = self.imageNames[index];
     }else if (self.imageURLs && self.imageURLs.count != 0) {
         myCellModel.imageURL = self.imageURLs[index];
     }
-    if (self.selectedImageNames && self.selectedImageNames.count != 0) {
+    if (self.selectedImageInfoArray && self.selectedImageInfoArray.count != 0) {
+        myCellModel.selectedImageInfo = self.selectedImageInfoArray[index];
+    }else if (self.selectedImageNames && self.selectedImageNames.count != 0) {
         myCellModel.selectedImageName = self.selectedImageNames[index];
     }else if (self.selectedImageURLs && self.selectedImageURLs.count != 0) {
         myCellModel.selectedImageURL = self.selectedImageURLs[index];

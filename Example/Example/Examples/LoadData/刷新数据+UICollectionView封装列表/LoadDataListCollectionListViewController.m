@@ -7,11 +7,7 @@
 //
 
 #import "LoadDataListCollectionListViewController.h"
-#import "MJRefresh/MJRefresh.h"
-
-@interface LoadDataListCollectionListViewController ()
-
-@end
+#import "MJRefresh.h"
 
 @implementation LoadDataListCollectionListViewController
 

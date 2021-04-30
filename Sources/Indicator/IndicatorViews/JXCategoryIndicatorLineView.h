@@ -9,9 +9,9 @@
 #import "JXCategoryIndicatorComponentView.h"
 
 typedef NS_ENUM(NSUInteger, JXCategoryIndicatorLineStyle) {
-    JXCategoryIndicatorLineStyle_Normal             = 0,
-    JXCategoryIndicatorLineStyle_Lengthen           = 1,
-    JXCategoryIndicatorLineStyle_LengthenOffset     = 2,
+    JXCategoryIndicatorLineStyle_Normal         = 0,
+    JXCategoryIndicatorLineStyle_Lengthen       = 1,
+    JXCategoryIndicatorLineStyle_LengthenOffset = 2,
 };
 
 @interface JXCategoryIndicatorLineView : JXCategoryIndicatorComponentView
@@ -19,8 +19,9 @@ typedef NS_ENUM(NSUInteger, JXCategoryIndicatorLineStyle) {
 @property (nonatomic, assign) JXCategoryIndicatorLineStyle lineStyle;
 
 /**
- line滚动时x的偏移量，默认为10；
- lineStyle为JXCategoryIndicatorLineStyle_LengthenOffset有用；
+ line 滚动时沿 x 轴方向上的偏移量，默认值为 10。
+ 
+ lineStyle 为 JXCategoryIndicatorLineStyle_LengthenOffset 有用。
  */
 @property (nonatomic, assign) CGFloat lineScrollOffsetX;
 

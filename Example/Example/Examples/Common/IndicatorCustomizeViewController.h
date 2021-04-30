@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+/// 1.「指示器样式」列表视图控制器
 @interface IndicatorCustomizeViewController : UITableViewController
 
 @end
