@@ -53,6 +53,11 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     self.scrollCallback(scrollView);
+    if (scrollView.isDragging || scrollView.isDecelerating) {
+        if (self.listScrollCallback != nil) {
+            self.listScrollCallback(scrollView);
+        }
+    }
 }
 
 

@@ -13,6 +13,7 @@
 #import "TimelineExampleViewController.h"
 #import "SortExampleViewController.h"
 #import "TitleBackgroundExampleViewController.h"
+#import "ScrollSmallViewController.h"
 
 @interface CustomizationListViewController ()
 
@@ -58,7 +59,12 @@
         TitleBackgroundExampleViewController *vc = [[TitleBackgroundExampleViewController alloc] init];
         vc.title = title;
         [self.navigationController pushViewController:vc animated:YES];
+    }else if ([title isEqualToString:@"滚动到顶部变小"]) {
+        ScrollSmallViewController *vc = [[ScrollSmallViewController alloc] init];
+        vc.title = title;
+        [self.navigationController pushViewController:vc animated:YES];
     }
+        
 
 }
 

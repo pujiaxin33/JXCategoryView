@@ -132,6 +132,10 @@
 		19F152D72387BE2E0043A86E /* arrow_down.png in Resources */ = {isa = PBXBuildFile; fileRef = 19F152602387BE2E0043A86E /* arrow_down.png */; };
 		19F152D82387BE2E0043A86E /* apple_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 19F152612387BE2E0043A86E /* apple_selected.png */; };
 		B038708881B01AEB14CA909B /* libPods-Example.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D40F29D0E15B01F380B08AE9 /* libPods-Example.a */; };
+		EAAD37BC2722472700271A5E /* ScrollSmallViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EAAD37BB2722472700271A5E /* ScrollSmallViewController.m */; };
+		EAAD37BF27224AAB00271A5E /* JXCategoryScrollSmallCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EAAD37BE27224AAB00271A5E /* JXCategoryScrollSmallCellModel.m */; };
+		EAAD37C227224ABE00271A5E /* JXCategoryScrollSmallView.m in Sources */ = {isa = PBXBuildFile; fileRef = EAAD37C127224ABE00271A5E /* JXCategoryScrollSmallView.m */; };
+		EAAD37C527224AC900271A5E /* JXCategoryScrollSmallCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EAAD37C427224AC900271A5E /* JXCategoryScrollSmallCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -360,6 +364,14 @@
 		19F152D92387C3380043A86E /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		C386393D13D5F799E1A1236B /* Pods-Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example.release.xcconfig"; path = "Target Support Files/Pods-Example/Pods-Example.release.xcconfig"; sourceTree = "<group>"; };
 		D40F29D0E15B01F380B08AE9 /* libPods-Example.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Example.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EAAD37BA2722472700271A5E /* ScrollSmallViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScrollSmallViewController.h; sourceTree = "<group>"; };
+		EAAD37BB2722472700271A5E /* ScrollSmallViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScrollSmallViewController.m; sourceTree = "<group>"; };
+		EAAD37BD27224AAB00271A5E /* JXCategoryScrollSmallCellModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JXCategoryScrollSmallCellModel.h; sourceTree = "<group>"; };
+		EAAD37BE27224AAB00271A5E /* JXCategoryScrollSmallCellModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JXCategoryScrollSmallCellModel.m; sourceTree = "<group>"; };
+		EAAD37C027224ABE00271A5E /* JXCategoryScrollSmallView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JXCategoryScrollSmallView.h; sourceTree = "<group>"; };
+		EAAD37C127224ABE00271A5E /* JXCategoryScrollSmallView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JXCategoryScrollSmallView.m; sourceTree = "<group>"; };
+		EAAD37C327224AC900271A5E /* JXCategoryScrollSmallCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JXCategoryScrollSmallCell.h; sourceTree = "<group>"; };
+		EAAD37C427224AC900271A5E /* JXCategoryScrollSmallCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JXCategoryScrollSmallCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -737,6 +749,7 @@
 				19F152302387BE2E0043A86E /* CountCell */,
 				19F152332387BE2E0043A86E /* SpringIndicator */,
 				19F152382387BE2E0043A86E /* AlignmentIndicator */,
+				EAAD37B9272246DB00271A5E /* ScrollSmall */,
 				19F1523E2387BE2E0043A86E /* TimeLine */,
 			);
 			path = Customize;
@@ -997,6 +1010,21 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		EAAD37B9272246DB00271A5E /* ScrollSmall */ = {
+			isa = PBXGroup;
+			children = (
+				EAAD37BA2722472700271A5E /* ScrollSmallViewController.h */,
+				EAAD37BB2722472700271A5E /* ScrollSmallViewController.m */,
+				EAAD37BD27224AAB00271A5E /* JXCategoryScrollSmallCellModel.h */,
+				EAAD37BE27224AAB00271A5E /* JXCategoryScrollSmallCellModel.m */,
+				EAAD37C027224ABE00271A5E /* JXCategoryScrollSmallView.h */,
+				EAAD37C127224ABE00271A5E /* JXCategoryScrollSmallView.m */,
+				EAAD37C327224AC900271A5E /* JXCategoryScrollSmallCell.h */,
+				EAAD37C427224AC900271A5E /* JXCategoryScrollSmallCell.m */,
+			);
+			path = ScrollSmall;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1170,6 +1198,7 @@
 				19F1527A2387BE2E0043A86E /* PagingViewTableHeaderView.m in Sources */,
 				19F1529D2387BE2E0043A86E /* MJRefreshComponent.m in Sources */,
 				19F152B32387BE2E0043A86E /* AttributeViewViewController.m in Sources */,
+				EAAD37C227224ABE00271A5E /* JXCategoryScrollSmallView.m in Sources */,
 				19F1528A2387BE2E0043A86E /* UIScrollView+MJRefresh.m in Sources */,
 				19F152692387BE2E0043A86E /* VerticalListTableView.m in Sources */,
 				19F152AE2387BE2E0043A86E /* JXCategoryTitleSortView.m in Sources */,
@@ -1195,6 +1224,7 @@
 				19F152AC2387BE2E0043A86E /* JXCategoryTitleBackgroundCell.m in Sources */,
 				19F1528F2387BE2E0043A86E /* UIView+MJExtension.m in Sources */,
 				19F152662387BE2E0043A86E /* DotViewController.m in Sources */,
+				EAAD37BF27224AAB00271A5E /* JXCategoryScrollSmallCellModel.m in Sources */,
 				19F151612387BDAC0043A86E /* main.m in Sources */,
 				19F152BD2387BE2E0043A86E /* JXCategoryTimelineCellModel.m in Sources */,
 				19F152982387BE2E0043A86E /* MJRefreshGifHeader.m in Sources */,
@@ -1203,6 +1233,7 @@
 				19F152A52387BE2E0043A86E /* SegmentedControlViewController.m in Sources */,
 				19F152AA2387BE2E0043A86E /* TitleBackgroundExampleViewController.m in Sources */,
 				19F1529F2387BE2E0043A86E /* LoadDataListBaseViewController.m in Sources */,
+				EAAD37C527224AC900271A5E /* JXCategoryScrollSmallCell.m in Sources */,
 				19F1528E2387BE2E0043A86E /* NSBundle+MJRefresh.m in Sources */,
 				19F152A12387BE2E0043A86E /* LoadDataListCollectionListViewController.m in Sources */,
 				19F152AD2387BE2E0043A86E /* JXCategoryTitleBackgroundView.m in Sources */,
@@ -1212,6 +1243,7 @@
 				19F1526A2387BE2E0043A86E /* VerticalListCell.m in Sources */,
 				19F152832387BE2E0043A86E /* CellCustomizeViewController.m in Sources */,
 				19F152BF2387BE2E0043A86E /* TimelineExampleViewController.m in Sources */,
+				EAAD37BC2722472700271A5E /* ScrollSmallViewController.m in Sources */,
 				19F152872387BE2E0043A86E /* JXGradientView.m in Sources */,
 				19F152682387BE2E0043A86E /* VerticalListTableViewController.m in Sources */,
 			);
@@ -1358,7 +1390,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = CUHY5967Q2;
+				DEVELOPMENT_TEAM = 79XDMAFDK7;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Example/PrefixHeader.pch";
 				INFOPLIST_FILE = Example/Info.plist;
@@ -1367,7 +1399,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = xinxin.Example.categoryView.333;
+				PRODUCT_BUNDLE_IDENTIFIER = xinxin.Example.categoryView.12;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
