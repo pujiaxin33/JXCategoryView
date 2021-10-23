@@ -13,15 +13,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface JXCategoryScrollSmallCellModel : JXCategoryTitleCellModel
 
-@property (nonatomic, copy) NSString *timeTitle;
+@property (nonatomic, copy) NSString *bottomTitle;
 
-@property (nonatomic, strong) UIColor *timeTitleNormalColor;
+@property (nonatomic, strong) UIColor *bottomTitleNormalColor;
 
-@property (nonatomic, strong) UIColor *timeTitleSelectedColor;
+@property (nonatomic, strong) UIColor *bottomTitleSelectedColor;
 
-@property (nonatomic, strong) UIFont *timeTitleFont;
+@property (nonatomic, strong) UIFont *bottomTitleFont;
 
-@property (nonatomic, strong) UIFont *timeTitleSelectedFont;
+@property (nonatomic, strong) UIFont *bottomTitleSelectedFont;
 
 @property (nonatomic, assign) CGFloat bottomAlpha;
 

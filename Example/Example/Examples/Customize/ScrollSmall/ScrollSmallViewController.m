@@ -13,7 +13,8 @@
 #import "JXCategoryScrollSmallView.h"
 
 static const CGFloat JXTableHeaderViewHeight = 200;
-static const CGFloat JXheightForHeaderInSection = 50;
+static const CGFloat BigHeightForHeaderInSection = 50;
+static const CGFloat SmallHeightForHeaderInSection = 30;
 
 @interface ScrollSmallViewController () <JXPagerViewDelegate, JXCategoryViewDelegate>
 @property (nonatomic, strong) JXPagerView *pagingView;
@@ -22,6 +23,7 @@ static const CGFloat JXheightForHeaderInSection = 50;
 @property (nonatomic, strong) UIView *categoryContainerView;
 @property (nonatomic, strong) NSArray <NSString *> *titles;
 @property (nonatomic, strong) NSMutableArray <TestListBaseView *> *allLists;
+@property (nonatomic, assign) CGFloat currentOffsetY;
 
 @end
 
@@ -30,9 +32,8 @@ static const CGFloat JXheightForHeaderInSection = 50;
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    NSArray <NSString *> *status = @[@"已开抢", @"已开抢", @"已开抢", @"抢购中", @"即将开抢", @"即将开抢", @"即将开抢", @"即将开抢"];
-    NSArray <NSString *> *times = @[@"10:00", @"11:00", @"12:00", @"13:00", @"14:00", @"15:00", @"16:00", @"17:00", ];
-    self.titles = status;
+    self.titles = @[@"10:00", @"11:00", @"12:00", @"13:00", @"14:00", @"15:00", @"16:00", @"17:00", ];
+    NSArray <NSString *> *bottomTitles = @[@"已开抢", @"已开抢", @"已开抢", @"抢购中", @"即将开抢", @"即将开抢", @"即将开抢", @"即将开抢"];
 
     _allLists = [NSMutableArray array];
     self.view.backgroundColor = [UIColor blackColor];
@@ -42,11 +43,10 @@ static const CGFloat JXheightForHeaderInSection = 50;
     self.categoryContainerView = [[UIView alloc] init];
     self.categoryContainerView.backgroundColor = [UIColor clearColor];
     
-    
     _categoryView = [[JXCategoryScrollSmallView alloc] init];
     self.categoryView.backgroundColor = [UIColor clearColor];
-    self.categoryView.titles = times;
-    self.categoryView.statusTitles = status;
+    self.categoryView.titles = self.titles;
+    self.categoryView.bottomTitles = bottomTitles;
     self.categoryView.titleLabelVerticalOffset = -13;
     self.categoryView.titleColorGradientEnabled = YES;
     //设置底部状态
@@ -55,11 +55,11 @@ static const CGFloat JXheightForHeaderInSection = 50;
     self.categoryView.titleFont = [UIFont boldSystemFontOfSize:13];
     self.categoryView.titleSelectedFont = [UIFont boldSystemFontOfSize:15];
     //设置顶部时间
-    self.categoryView.timeTitleFont = [UIFont systemFontOfSize:10];
-    self.categoryView.timeTitleSelectedFont = [UIFont systemFontOfSize:10];
-    self.categoryView.timeTitleNormalColor = [UIColor lightGrayColor];
-    self.categoryView.timeTitleSelectedColor = [UIColor whiteColor];
-    self.categoryView.frame = CGRectMake(0, 0, self.view.bounds.size.width, JXheightForHeaderInSection);
+    self.categoryView.bottomTitleFont = [UIFont systemFontOfSize:10];
+    self.categoryView.bottomTitleSelectedFont = [UIFont systemFontOfSize:10];
+    self.categoryView.bottomTitleNormalColor = [UIColor lightGrayColor];
+    self.categoryView.bottomTitleSelectedColor = [UIColor whiteColor];
+    self.categoryView.frame = CGRectMake(0, 0, self.view.bounds.size.width, BigHeightForHeaderInSection);
     [self.categoryContainerView addSubview:self.categoryView];
 
     JXCategoryIndicatorBackgroundView *backgroundView = [[JXCategoryIndicatorBackgroundView alloc] init];
@@ -89,18 +89,19 @@ static const CGFloat JXheightForHeaderInSection = 50;
 }
 
 - (void)listDidScrolling:(UIScrollView *)scrollView {
-    //因为列表contentInset = UIEdgeInsetsMake(20, 0, 0, 0
-    CGFloat offsetY = scrollView.contentOffset.y + 20;
-    CGFloat alpha = 1 - MIN(1, offsetY/20);
+    //因为列表contentInset = UIEdgeInsetsMake(20, 0, 0, 0)
+    CGFloat diffHeight = BigHeightForHeaderInSection - SmallHeightForHeaderInSection;
+    CGFloat offsetY = scrollView.contentOffset.y + diffHeight;
+    CGFloat alpha = 1 - MIN(1, offsetY/diffHeight);
     [self.categoryView refreshBottomAlpha:alpha];
-    if (offsetY < 20) {
+    if (offsetY < diffHeight) {
         for (TestListBaseView *list in _allLists) {
             if (list.tableView != scrollView) {
                 [list.tableView setContentOffset:CGPointMake(0, scrollView.contentOffset.y)];
             }
         }
+        self.currentOffsetY = scrollView.contentOffset.y;
     }
-    
 }
 
 #pragma mark - JXPagingViewDelegate
@@ -114,7 +115,7 @@ static const CGFloat JXheightForHeaderInSection = 50;
 }
 
 - (NSUInteger)heightForPinSectionHeaderInPagerView:(JXPagerView *)pagerView {
-    return 30;
+    return SmallHeightForHeaderInSection;
 }
 
 - (UIView *)viewForPinSectionHeaderInPagerView:(JXPagerView *)pagerView {
@@ -126,9 +127,10 @@ static const CGFloat JXheightForHeaderInSection = 50;
 }
 
 - (id<JXPagerViewListViewDelegate>)pagerView:(JXPagerView *)pagerView initListAtIndex:(NSInteger)index {
-    TestListBaseView *list = [[TestListBaseView alloc] init];
+    TestListBaseView *list = [[TestListBaseView alloc] initWithOffsetY:self.currentOffsetY];
     list.tableView.backgroundColor = [UIColor blackColor];
-    list.tableView.contentInset = UIEdgeInsetsMake(20, 0, 0, 0);
+    CGFloat diffHeight = BigHeightForHeaderInSection - SmallHeightForHeaderInSection;
+    list.tableView.contentInset = UIEdgeInsetsMake(diffHeight, 0, 0, 0);
     __weak ScrollSmallViewController *weakSelf = self;
     list.listScrollCallback = ^(UIScrollView *scrollView) {
         [weakSelf listDidScrolling:scrollView];

@@ -14,11 +14,11 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface JXCategoryScrollSmallView : JXCategoryTitleView
-@property (nonatomic, strong) NSArray <NSString *> *statusTitles;
-@property (nonatomic, strong) UIColor *timeTitleNormalColor;
-@property (nonatomic, strong) UIColor *timeTitleSelectedColor;
-@property (nonatomic, strong) UIFont *timeTitleFont;
-@property (nonatomic, strong) UIFont *timeTitleSelectedFont;
+@property (nonatomic, strong) NSArray <NSString *> *bottomTitles;
+@property (nonatomic, strong) UIColor *bottomTitleNormalColor;
+@property (nonatomic, strong) UIColor *bottomTitleSelectedColor;
+@property (nonatomic, strong) UIFont *bottomTitleFont;
+@property (nonatomic, strong) UIFont *bottomTitleSelectedFont;
 @property (nonatomic, assign) CGFloat bottomAlpha;
 - (void)refreshBottomAlpha:(CGFloat)alpha;
 @end

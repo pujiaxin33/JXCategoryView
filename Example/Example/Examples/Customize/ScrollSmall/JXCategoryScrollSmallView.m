@@ -12,13 +12,13 @@
 - (void)initializeData {
     [super initializeData];
 
-    _timeTitleFont = [UIFont boldSystemFontOfSize:13];
+    _bottomTitleFont = [UIFont boldSystemFontOfSize:13];
     self.titleFont = [UIFont systemFontOfSize:10];
-    _timeTitleSelectedFont = [UIFont boldSystemFontOfSize:15];
+    _bottomTitleSelectedFont = [UIFont boldSystemFontOfSize:15];
     self.titleSelectedFont = [UIFont systemFontOfSize:10];
-    _timeTitleNormalColor = [UIColor lightGrayColor];
+    _bottomTitleNormalColor = [UIColor lightGrayColor];
     self.titleColor = [UIColor lightGrayColor];
-    _timeTitleSelectedColor = [UIColor whiteColor];
+    _bottomTitleSelectedColor = [UIColor whiteColor];
     self.titleSelectedColor = [UIColor whiteColor];
     self.bottomAlpha = 1;
 }
@@ -30,7 +30,7 @@
 
 - (void)refreshDataSource {
     NSMutableArray *tempArray = [NSMutableArray array];
-    for (int i = 0; i < self.statusTitles.count; i++) {
+    for (int i = 0; i < self.bottomTitles.count; i++) {
         JXCategoryScrollSmallCellModel *cellModel = [[JXCategoryScrollSmallCellModel alloc] init];
         [tempArray addObject:cellModel];
     }
@@ -41,11 +41,11 @@
     [super refreshCellModel:cellModel index:index];
 
     JXCategoryScrollSmallCellModel *model = (JXCategoryScrollSmallCellModel *)cellModel;
-    model.timeTitle = self.statusTitles[index];
-    model.timeTitleNormalColor = self.timeTitleNormalColor;
-    model.timeTitleSelectedColor = self.timeTitleSelectedColor;
-    model.timeTitleFont = self.timeTitleFont;
-    model.timeTitleSelectedFont = self.timeTitleSelectedFont;
+    model.bottomTitle = self.bottomTitles[index];
+    model.bottomTitleNormalColor = self.bottomTitleNormalColor;
+    model.bottomTitleSelectedColor = self.bottomTitleSelectedColor;
+    model.bottomTitleFont = self.bottomTitleFont;
+    model.bottomTitleSelectedFont = self.bottomTitleSelectedFont;
     model.bottomAlpha = self.bottomAlpha;
 }
 
