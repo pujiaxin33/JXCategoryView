@@ -94,13 +94,15 @@ static const CGFloat SmallHeightForHeaderInSection = 30;
     CGFloat offsetY = scrollView.contentOffset.y + diffHeight;
     CGFloat alpha = 1 - MIN(1, offsetY/diffHeight);
     [self.categoryView refreshBottomAlpha:alpha];
-    if (offsetY < diffHeight) {
+    if (offsetY <= diffHeight) {
         for (TestListBaseView *list in _allLists) {
             if (list.tableView != scrollView) {
-                [list.tableView setContentOffset:CGPointMake(0, scrollView.contentOffset.y)];
+                list.tableView.contentOffset = CGPointMake(0, scrollView.contentOffset.y);
             }
         }
         self.currentOffsetY = scrollView.contentOffset.y;
+    }else {
+        self.currentOffsetY = 0;
     }
 }
 
