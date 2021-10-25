@@ -38,6 +38,9 @@ static const CGFloat SmallHeightForHeaderInSection = 30;
     _allLists = [NSMutableArray array];
     self.view.backgroundColor = [UIColor blackColor];
     
+    CGFloat diffHeight = BigHeightForHeaderInSection - SmallHeightForHeaderInSection;
+    self.currentOffsetY = -diffHeight;
+    
     _userHeaderView = [[PagingViewTableHeaderView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, JXTableHeaderViewHeight)];
 
     self.categoryContainerView = [[UIView alloc] init];
