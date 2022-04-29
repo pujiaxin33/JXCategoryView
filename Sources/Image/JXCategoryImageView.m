@@ -12,6 +12,7 @@
 @implementation JXCategoryImageView
 
 - (void)dealloc {
+    self.loadImageBlock = nil;
     self.loadImageCallback = nil;
 }
 
@@ -52,6 +53,7 @@
     [super refreshCellModel:cellModel index:index];
 
     JXCategoryImageCellModel *myCellModel = (JXCategoryImageCellModel *)cellModel;
+    myCellModel.loadImageBlock = self.loadImageBlock;
     myCellModel.loadImageCallback = self.loadImageCallback;
     myCellModel.imageSize = self.imageSize;
     myCellModel.imageCornerRadius = self.imageCornerRadius;
