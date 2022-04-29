@@ -107,6 +107,7 @@
             currentImageInfo = myCellModel.selectedImageInfo;
         }
         if (currentImageInfo && ![currentImageInfo isEqual:self.currentImageInfo]) {
+            self.currentImageInfo = currentImageInfo;
             if (myCellModel.loadImageBlock) {
                 myCellModel.loadImageBlock(self.imageView, currentImageInfo);
             }
