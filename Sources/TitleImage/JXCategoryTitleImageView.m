@@ -14,6 +14,7 @@
 @implementation JXCategoryTitleImageView
 
 - (void)dealloc {
+    self.loadImageBlock = nil;
     self.loadImageCallback = nil;
 }
 
