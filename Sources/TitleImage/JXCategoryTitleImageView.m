@@ -14,6 +14,7 @@
 @implementation JXCategoryTitleImageView
 
 - (void)dealloc {
+    /// 测试推送
     self.loadImageCallback = nil;
 }
 
