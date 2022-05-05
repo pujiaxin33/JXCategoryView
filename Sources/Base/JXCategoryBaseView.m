@@ -462,7 +462,7 @@ struct DelegateFlags {
     CGFloat minX = 0;
     CGFloat maxX = totalItemWidth - self.bounds.size.width;
     CGFloat targetX = frameXOfSelectedCell - self.bounds.size.width/2.0 + selectedCellWidth/2.0;
-    [self.collectionView setContentOffset:CGPointMake(MAX(MIN(maxX, targetX), minX), 0) animated:NO];
+//    [self.collectionView setContentOffset:CGPointMake(MAX(MIN(maxX, targetX), minX), 0) animated:NO];
     //---------------------定位collectionView到当前选中的位置----------------------
 
     if (CGRectEqualToRect(self.contentScrollView.frame, CGRectZero) && self.contentScrollView.superview != nil) {
