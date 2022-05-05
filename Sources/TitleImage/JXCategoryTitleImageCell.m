@@ -22,7 +22,8 @@
 
 - (void)prepareForReuse {
     [super prepareForReuse];
-
+    
+    self.currentImageInfo = nil;
     self.currentImageName = nil;
     self.currentImageURL = nil;
 }
@@ -105,7 +106,8 @@
         if (myCellModel.isSelected) {
             currentImageInfo = myCellModel.selectedImageInfo;
         }
-        if (currentImageInfo && ![currentImageInfo isEqualToString:self.currentImageInfo]) {
+        if (currentImageInfo && ![currentImageInfo isEqual:self.currentImageInfo]) {
+            self.currentImageInfo = currentImageInfo;
             if (myCellModel.loadImageBlock) {
                 myCellModel.loadImageBlock(self.imageView, currentImageInfo);
             }
