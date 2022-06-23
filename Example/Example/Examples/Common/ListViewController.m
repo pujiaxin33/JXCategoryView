@@ -23,6 +23,11 @@
     self.view.backgroundColor = COLOR_WITH_RGB(arc4random()%255/255.0, arc4random()%255/255.0, arc4random()%255/255.0, 1);
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    NSLog(@"%s", __func__);
+}
+
 #pragma mark - JXCategoryListContentViewDelegate
 
 - (UIView *)listView {
