@@ -38,3 +38,7 @@ DerivedData/
 **/xcshareddata/WorkspaceSettings.xcsettings
 
 # End of https://www.toptal.com/developers/gitignore/api/xcode
+Example/Pods/Target Support Files/JXCategoryView/JXCategoryView.debug.xcconfig
+Example/Pods/Target Support Files/JXCategoryView/JXCategoryView.release.xcconfig
+Example/Pods/Target Support Files/JXPagingView/JXPagingView.debug.xcconfig
+Example/Pods/Target Support Files/JXPagingView/JXPagingView.release.xcconfig
