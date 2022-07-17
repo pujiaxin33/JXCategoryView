@@ -418,60 +418,42 @@
         return;
     }
     id<JXCategoryListContentViewDelegate> list = _validListDict[@(index)];
-    if (list != nil) {
-        if (list && [list respondsToSelector:@selector(listWillAppear)]) {
-            [list listWillAppear];
-        }
-        if ([list isKindOfClass:[UIViewController class]]) {
-            UIViewController *listVC = (UIViewController *)list;
-            [listVC beginAppearanceTransition:YES animated:NO];
-        }
-    }else {
+    if (list == nil) {
         //当前列表未被创建（页面初始化或通过点击触发的listWillAppear）
         BOOL canInitList = YES;
         if (self.delegate && [self.delegate respondsToSelector:@selector(listContainerView:canInitListAtIndex:)]) {
             canInitList = [self.delegate listContainerView:self canInitListAtIndex:index];
         }
-        if (canInitList) {
-            id<JXCategoryListContentViewDelegate> list = _validListDict[@(index)];
-            if (list == nil) {
-                list = [self.delegate listContainerView:self initListForIndex:index];
-                if ([list isKindOfClass:[UIViewController class]]) {
-                    [self.containerVC addChildViewController:(UIViewController *)list];
-                }
-                _validListDict[@(index)] = list;
-            }
-            if (self.containerType == JXCategoryListContainerType_ScrollView) {
-                if ([list listView].superview == nil) {
-                    [list listView].frame = CGRectMake(index*self.scrollView.bounds.size.width, 0, self.scrollView.bounds.size.width, self.scrollView.bounds.size.height);
-                    [self.scrollView addSubview:[list listView]];
-                    [RTLManager horizontalFlipViewIfNeeded:[list listView]];
-
-                    if (list && [list respondsToSelector:@selector(listWillAppear)]) {
-                        [list listWillAppear];
-                    }
-                    if ([list isKindOfClass:[UIViewController class]]) {
-                        UIViewController *listVC = (UIViewController *)list;
-                        [listVC beginAppearanceTransition:YES animated:NO];
-                    }
-                }
-            }else {
-                UICollectionViewCell *cell = [self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0]];
-                for (UIView *subview in cell.contentView.subviews) {
-                    [subview removeFromSuperview];
-                }
-                [list listView].frame = cell.contentView.bounds;
-                [cell.contentView addSubview:[list listView]];
-
-                if (list && [list respondsToSelector:@selector(listWillAppear)]) {
-                    [list listWillAppear];
-                }
-                if ([list isKindOfClass:[UIViewController class]]) {
-                    UIViewController *listVC = (UIViewController *)list;
-                    [listVC beginAppearanceTransition:YES animated:NO];
-                }
-            }
+        if (!canInitList) {
+            return;
         }
+        list = [self.delegate listContainerView:self initListForIndex:index];
+        if ([list isKindOfClass:[UIViewController class]]) {
+            [self.containerVC addChildViewController:(UIViewController *)list];
+        }
+        _validListDict[@(index)] = list;
+        if (self.containerType == JXCategoryListContainerType_ScrollView) {
+            if ([list listView].superview == nil) {
+                [list listView].frame = CGRectMake(index*self.scrollView.bounds.size.width, 0, self.scrollView.bounds.size.width, self.scrollView.bounds.size.height);
+                [self.scrollView addSubview:[list listView]];
+                [RTLManager horizontalFlipViewIfNeeded:[list listView]];
+            }
+        }else {
+            UICollectionViewCell *cell = [self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0]];
+            for (UIView *subview in cell.contentView.subviews) {
+                [subview removeFromSuperview];
+            }
+            [list listView].frame = cell.contentView.bounds;
+            [cell.contentView addSubview:[list listView]];
+        }
+    }
+    
+    if (list && [list respondsToSelector:@selector(listWillAppear)]) {
+        [list listWillAppear];
+    }
+    if ([list isKindOfClass:[UIViewController class]]) {
+        UIViewController *listVC = (UIViewController *)list;
+        [listVC beginAppearanceTransition:YES animated:NO];
     }
 }
 
