@@ -443,7 +443,7 @@ struct DelegateFlags {
 
     //---------------------定位collectionView到当前选中的位置----------------------
     //因为初始化的时候，collectionView并没有初始化完，cell都没有被加载出来。只有自己手动计算当前选中的index的位置，然后更新到contentOffset
-    __block CGFloat frameXOfSelectedCell = self.innerCellSpacing;
+    __block CGFloat frameXOfSelectedCell = [self getContentEdgeInsetLeft];
     __block CGFloat selectedCellWidth = 0;
     totalItemWidth = [self getContentEdgeInsetLeft];
     [self.dataSource enumerateObjectsUsingBlock:^(JXCategoryBaseCellModel * cellModel, NSUInteger idx, BOOL * _Nonnull stop) {

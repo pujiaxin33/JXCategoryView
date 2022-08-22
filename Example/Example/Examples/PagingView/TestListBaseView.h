@@ -13,5 +13,6 @@
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSArray <NSString *> *dataSource;
-
+@property (nonatomic, copy) void(^listScrollCallback)(UIScrollView *scrollView);
+- (instancetype)initWithOffsetY:(CGFloat)offsety;
 @end

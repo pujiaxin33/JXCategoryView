@@ -29,6 +29,12 @@
     return self;
 }
 
+- (instancetype)initWithOffsetY:(CGFloat)offsety {
+    self = [self initWithFrame:CGRectZero];
+    self.tableView.contentOffset = CGPointMake(0, offsety);
+    return self;
+}
+
 - (void)layoutSubviews {
     [super layoutSubviews];
 
@@ -52,7 +58,12 @@
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    self.scrollCallback(scrollView);
+    if (self.scrollCallback != nil) {
+        self.scrollCallback(scrollView);
+    }
+    if (self.listScrollCallback != nil) {
+        self.listScrollCallback(scrollView);
+    }
 }
 
 

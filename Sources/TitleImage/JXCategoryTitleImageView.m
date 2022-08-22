@@ -14,6 +14,7 @@
 @implementation JXCategoryTitleImageView
 
 - (void)dealloc {
+    self.loadImageBlock = nil;
     self.loadImageCallback = nil;
 }
 
@@ -51,6 +52,7 @@
     [super refreshCellModel:cellModel index:index];
 
     JXCategoryTitleImageCellModel *myCellModel = (JXCategoryTitleImageCellModel *)cellModel;
+    myCellModel.loadImageBlock = self.loadImageBlock;
     myCellModel.loadImageCallback = self.loadImageCallback;
     myCellModel.imageType = [self.imageTypes[index] integerValue];
     myCellModel.imageSize = self.imageSize;

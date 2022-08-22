@@ -35,8 +35,12 @@
     NSArray *selectedImageNames = @[@"crab_selected", @"lobster_selected", @"apple_selected", @"carrot_selected", @"grape_selected", @"watermelon_selected"];
 
     self.myCategoryView.titles = self.titles;
-    self.myCategoryView.imageNames = imageNames;
-    self.myCategoryView.selectedImageNames = selectedImageNames;
+    self.myCategoryView.imageInfoArray = imageNames;
+    self.myCategoryView.selectedImageInfoArray = selectedImageNames;
+    self.myCategoryView.loadImageBlock = ^(UIImageView *imageView, id info) {
+        NSString *imageName = info;
+        imageView.image = [UIImage imageNamed:imageName];
+    };
     self.myCategoryView.imageZoomEnabled = YES;
     self.myCategoryView.imageZoomScale = 1.3;
     self.myCategoryView.averageCellSpacingEnabled = NO;

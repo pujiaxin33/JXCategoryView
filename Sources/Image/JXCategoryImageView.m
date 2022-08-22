@@ -12,6 +12,7 @@
 @implementation JXCategoryImageView
 
 - (void)dealloc {
+    self.loadImageBlock = nil;
     self.loadImageCallback = nil;
 }
 
@@ -29,7 +30,14 @@
 }
 
 - (void)refreshDataSource {
-    NSUInteger count = (self.imageNames.count > 0) ? self.imageNames.count : (self.imageURLs.count > 0 ? self.imageURLs.count : 0);
+    NSUInteger count = 0;
+    if (self.imageInfoArray.count > 0) {
+        count = self.imageInfoArray.count;
+    }else if (self.imageNames.count > 0) {
+        count = self.imageNames.count;
+    }else {
+        count = self.imageURLs.count;
+    }
     NSMutableArray *tempArray = [NSMutableArray arrayWithCapacity:count];
     for (int i = 0; i < count; i++) {
         JXCategoryImageCellModel *cellModel = [[JXCategoryImageCellModel alloc] init];
@@ -52,17 +60,22 @@
     [super refreshCellModel:cellModel index:index];
 
     JXCategoryImageCellModel *myCellModel = (JXCategoryImageCellModel *)cellModel;
+    myCellModel.loadImageBlock = self.loadImageBlock;
     myCellModel.loadImageCallback = self.loadImageCallback;
     myCellModel.imageSize = self.imageSize;
     myCellModel.imageCornerRadius = self.imageCornerRadius;
-    if (self.imageNames && self.imageNames.count != 0) {
+    if (self.imageInfoArray && self.imageInfoArray.count != 0) {
+        myCellModel.imageInfo = self.imageInfoArray[index];
+    }else if (self.imageNames && self.imageNames.count != 0) {
         myCellModel.imageName = self.imageNames[index];
-    } else if (self.imageURLs && self.imageURLs.count != 0) {
+    }else if (self.imageURLs && self.imageURLs.count != 0) {
         myCellModel.imageURL = self.imageURLs[index];
     }
-    if (self.selectedImageNames && self.selectedImageNames != 0) {
+    if (self.selectedImageInfoArray && self.selectedImageInfoArray.count != 0) {
+        myCellModel.selectedImageInfo = self.selectedImageInfoArray[index];
+    }else if (self.selectedImageNames && self.selectedImageNames.count != 0) {
         myCellModel.selectedImageName = self.selectedImageNames[index];
-    } else if (self.selectedImageURLs && self.selectedImageURLs != 0) {
+    }else if (self.selectedImageURLs && self.selectedImageURLs.count != 0) {
         myCellModel.selectedImageURL = self.selectedImageURLs[index];
     }
     myCellModel.imageZoomEnabled = self.imageZoomEnabled;
