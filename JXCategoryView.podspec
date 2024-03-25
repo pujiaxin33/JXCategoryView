@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "JXCategoryView"
-  s.version = "1.6.1"
+  s.version = "1.6.3"
   s.summary      = "A powerful and easy to use category view (segment view, segment control, page view, scroll viewcontroller) "
   s.homepage     = "https://github.com/pujiaxin33/JXCategoryView"
   s.license      = "MIT"
