@@ -16,23 +16,23 @@ FOUNDATION_EXPORT const unsigned char JXCategoryViewVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <JXCategoryView/PublicHeader.h>
 
-#import "JXCategoryBaseView.h"
-#import "JXCategoryIndicatorView.h"
-#import "JXCategoryTitleView.h"
-#import "JXCategoryImageView.h"
-#import "JXCategoryTitleImageView.h"
-#import "JXCategoryNumberView.h"
-#import "JXCategoryDotView.h"
+#import <JXCategoryView/JXCategoryBaseView.h>
+#import <JXCategoryView/JXCategoryIndicatorView.h>
+#import <JXCategoryView/JXCategoryTitleView.h>
+#import <JXCategoryView/JXCategoryImageView.h>
+#import <JXCategoryView/JXCategoryTitleImageView.h>
+#import <JXCategoryView/JXCategoryNumberView.h>
+#import <JXCategoryView/JXCategoryDotView.h>
 
-#import "JXCategoryFactory.h"
-#import "JXCategoryIndicatorProtocol.h"
-#import "JXCategoryViewDefines.h"
-#import "JXCategoryListContainerView.h"
+#import <JXCategoryView/JXCategoryFactory.h>
+#import <JXCategoryView/JXCategoryIndicatorProtocol.h>
+#import <JXCategoryView/JXCategoryViewDefines.h>
+#import <JXCategoryView/JXCategoryListContainerView.h>
 
-#import "JXCategoryIndicatorComponentView.h"
-#import "JXCategoryIndicatorLineView.h"
-#import "JXCategoryIndicatorTriangleView.h"
-#import "JXCategoryIndicatorImageView.h"
-#import "JXCategoryIndicatorBackgroundView.h"
-#import "JXCategoryIndicatorBallView.h"
-#import "JXCategoryIndicatorRainbowLineView.h"
+#import <JXCategoryView/JXCategoryIndicatorComponentView.h>
+#import <JXCategoryView/JXCategoryIndicatorLineView.h>
+#import <JXCategoryView/JXCategoryIndicatorTriangleView.h>
+#import <JXCategoryView/JXCategoryIndicatorImageView.h>
+#import <JXCategoryView/JXCategoryIndicatorBackgroundView.h>
+#import <JXCategoryView/JXCategoryIndicatorBallView.h>
+#import <JXCategoryView/JXCategoryIndicatorRainbowLineView.h>
