@@ -172,7 +172,9 @@
             [_validListDict enumerateKeysAndObjectsUsingBlock:^(NSNumber * _Nonnull index, id<JXCategoryListContentViewDelegate>  _Nonnull list, BOOL * _Nonnull stop) {
                 [list listView].frame = CGRectMake(index.intValue*self.scrollView.bounds.size.width, 0, self.scrollView.bounds.size.width, self.scrollView.bounds.size.height);
             }];
-            self.scrollView.contentOffset = CGPointMake(self.currentIndex*self.scrollView.bounds.size.width, 0);
+            CGPoint scrollViewContentOffset = self.scrollView.contentOffset;
+            scrollViewContentOffset.x = self.currentIndex*self.scrollView.bounds.size.width;
+            self.scrollView.contentOffset = scrollViewContentOffset;
         }else {
             self.scrollView.frame = self.bounds;
             self.scrollView.contentSize = CGSizeMake(self.scrollView.bounds.size.width*[self.delegate numberOfListsInlistContainerView:self], self.scrollView.bounds.size.height);
@@ -182,7 +184,10 @@
             [self.collectionView.collectionViewLayout invalidateLayout];
             self.collectionView.frame = self.bounds;
             [self.collectionView reloadData];
-            [self.collectionView setContentOffset:CGPointMake(self.collectionView.bounds.size.width*self.currentIndex, 0) animated:NO];
+            CGPoint collectionViewContentOffset = self.collectionView.contentOffset;
+            collectionViewContentOffset.x =
+            self.collectionView.bounds.size.width*self.currentIndex;
+            [self.collectionView setContentOffset:collectionViewContentOffset animated:NO];
         }else {
             self.collectionView.frame = self.bounds;
         }
@@ -239,6 +244,12 @@
     
     if( !isAdded && listView ) {
         [cell.contentView addSubview:listView];
+    }
+    
+    // 针对 RTL 布局
+    if ([UIView userInterfaceLayoutDirectionForSemanticContentAttribute:self.semanticContentAttribute]
+        == UIUserInterfaceLayoutDirectionRightToLeft) {
+        cell.contentView.transform = CGAffineTransformMakeScale(-1, 1);
     }
     
     return cell;
