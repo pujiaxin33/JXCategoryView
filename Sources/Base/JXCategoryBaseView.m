@@ -462,7 +462,11 @@ struct DelegateFlags {
     CGFloat minX = 0;
     CGFloat maxX = totalItemWidth - self.bounds.size.width;
     CGFloat targetX = frameXOfSelectedCell - self.bounds.size.width/2.0 + selectedCellWidth/2.0;
-    [self.collectionView setContentOffset:CGPointMake(MAX(MIN(maxX, targetX), minX), 0) animated:NO];
+    CGPoint collectionViewContentOffset = self.collectionView.contentOffset;
+    collectionViewContentOffset.x = MAX(MIN(maxX, targetX), minX);
+    
+    [self.collectionView setContentOffset:collectionViewContentOffset
+                                 animated:NO];
     //---------------------定位collectionView到当前选中的位置----------------------
 
     if (CGRectEqualToRect(self.contentScrollView.frame, CGRectZero) && self.contentScrollView.superview != nil) {
@@ -476,7 +480,9 @@ struct DelegateFlags {
         [parentView layoutIfNeeded];
     }
     //将contentScrollView的contentOffset定位到当前选中index的位置
-    [self.contentScrollView setContentOffset:CGPointMake(self.selectedIndex*self.contentScrollView.bounds.size.width, 0) animated:NO];
+    CGPoint contentScrollViewContentOffset = self.contentScrollView.contentOffset;
+    contentScrollViewContentOffset.x = self.selectedIndex*self.contentScrollView.bounds.size.width;
+    [self.contentScrollView setContentOffset:contentScrollViewContentOffset animated:NO];
 }
 
 - (BOOL)selectCellAtIndex:(NSInteger)targetIndex selectedType:(JXCategoryCellSelectedType)selectedType {
@@ -540,7 +546,11 @@ struct DelegateFlags {
 
     if (selectedType == JXCategoryCellSelectedTypeClick ||
         selectedType == JXCategoryCellSelectedTypeCode) {
-        [self.contentScrollView setContentOffset:CGPointMake(targetIndex*self.contentScrollView.bounds.size.width, 0) animated:self.isContentScrollViewClickTransitionAnimationEnabled];
+        CGPoint offset = self.contentScrollView.contentOffset;
+        offset.x =
+        targetIndex*self.contentScrollView.bounds.size.width;
+        [self.contentScrollView setContentOffset:offset
+                                        animated:self.isContentScrollViewClickTransitionAnimationEnabled];
     }
 
     self.selectedIndex = targetIndex;
