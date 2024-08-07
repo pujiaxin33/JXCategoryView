@@ -42,6 +42,7 @@
     self.imageViewHeightConstraint.active = YES;
 
     _stackView = [[UIStackView alloc] init];
+    _stackView.userInteractionEnabled = NO;
     self.stackView.alignment = UIStackViewAlignmentCenter;
     [self.contentView addSubview:self.stackView];
     self.stackView.translatesAutoresizingMaskIntoConstraints = NO;
